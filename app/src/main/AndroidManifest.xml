@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fragmentexample2">
+    package="com.example.animal_project">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,9 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".MilkCow_Question.Freestall_q4"/>
-        <activity android:name=".getStrawScore"/>
+        <activity android:name=".BreedBatchQuestion.Breed_q5"></activity>
+        <activity android:name=".BreedBatchQuestion.Breed_q4" />
+        <activity android:name=".MilkCow_Question.Freestall_q4" />
+        <activity android:name=".getStrawScore" />
         <activity android:name=".WebViewActivity" />
         <activity android:name=".Result_View" />
         <activity android:name=".Input_userinfo" />
@@ -26,21 +27,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Farm_Activity.Breed_batch_1"/>
-        <activity android:name=".Farm_Activity.Breed_batch_2"/>
-        <activity android:name=".Farm_Activity.Breed_batch_3"/>
-        <activity android:name=".Farm_Activity.Breed_batch_4"/>
-        <activity android:name=".Farm_Activity.Fatten_1"/>
-        <activity android:name=".Farm_Activity.Fatten_2"/>
-        <activity android:name=".Farm_Activity.Fatten_3"/>
-        <activity android:name=".Farm_Activity.Fatten_4"/>
-        <activity android:name=".Farm_Activity.Freestall_1"/>
-        <activity android:name=".Farm_Activity.Freestall_2"/>
-        <activity android:name=".Farm_Activity.Freestall_3"/>
-        <activity android:name=".Farm_Activity.Freestall_4"/>
-        <activity android:name=".Farm_Activity.MilkCow_1"/>
-        <activity android:name=".Farm_Activity.MilkCow_2"/>
-        <activity android:name=".Farm_Activity.MilkCow_3"/>
-        <activity android:name=".Farm_Activity.MilkCow_4"/>
+        <activity android:name=".Farm_Activity.Breed_batch_1" />
+        <activity android:name=".Farm_Activity.Breed_batch_2" />
+        <activity android:name=".Farm_Activity.Breed_batch_3" />
+        <activity android:name=".Farm_Activity.Breed_batch_4" />
+        <activity android:name=".Farm_Activity.Fatten_1" />
+        <activity android:name=".Farm_Activity.Fatten_2" />
+        <activity android:name=".Farm_Activity.Fatten_3" />
+        <activity android:name=".Farm_Activity.Fatten_4" />
+        <activity android:name=".Farm_Activity.Freestall_1" />
+        <activity android:name=".Farm_Activity.Freestall_2" />
+        <activity android:name=".Farm_Activity.Freestall_3" />
+        <activity android:name=".Farm_Activity.Freestall_4" />
+        <activity android:name=".Farm_Activity.MilkCow_1" />
+        <activity android:name=".Farm_Activity.MilkCow_2" />
+        <activity android:name=".Farm_Activity.MilkCow_3" />
+        <activity android:name=".Farm_Activity.MilkCow_4" />
     </application>
+
 </manifest>

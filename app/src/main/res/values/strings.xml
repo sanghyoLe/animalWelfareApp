@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">FragmentExample</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">animal_project</string>
+
+
     <string name="pen_location_1">
         1동 표본 펜 위치
     </string>
@@ -96,6 +96,21 @@
     </string>
     <string name="title_q4">
         동별 음수 행동 간이 점수 측정
+    </string>
+    <string name="title_q5">
+        동별 깔짚 수분 간이 점수 측정
+    </string>
+    <string name="straw_score">
+        표본 펜 깔짚 수분 간이측정 점수
+    </string>
+    <string name="breed_straw_1_title">
+        사료조 근처의 "즉시 깔짚교체 시기"의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)
+    </string>
+    <string name="breed_straw_2_title">
+        사료조와 주 휴식장소사이의 "즉시 깔짚교체 시기"의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)
+    </string>
+    <string name="breed_straw_3_title">
+        주 휴식장소사이의 "즉시 깔짚교체 시기"의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)
     </string>
 
     //프리스톨

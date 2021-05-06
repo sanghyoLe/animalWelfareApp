@@ -283,10 +283,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_circle_line"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/button_circle_line"
                 android:orientation="vertical">//여기부터
 
                 <LinearLayout
@@ -298,26 +298,25 @@
                         android:id="@+id/nb4"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  4"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
                         android:background="@drawable/survey_number"
-                        />
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:text="  4"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/q4"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
-                        android:text="음수 대기 우의 여부와 음수 시간은 어떠합니까?"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
                         android:gravity="top"
-                        />
+                        android:paddingTop="0dp"
+                        android:text="음수 대기 우의 여부와 음수 시간은 어떠합니까?"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -325,42 +324,62 @@
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
                     android:orientation="vertical">
-                    <RadioGroup
-                        android:id="@+id/breed_batch_water_Tank_Time_rdogrp4"
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="41dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="top"
+                        android:paddingTop="0dp"
+                        android:text="축사동 수를 선택하세요"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:id="@+id/divider"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_margin="10dp"
-                        android:paddingLeft="20dp">
-                        <RadioButton
-                            android:id="@+id/breed_batch_water_Tank_Time_a4_1"
+                        android:layout_height="2dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Spinner
+                            android:id="@+id/spinner_breed_q4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            />
+
+                        <Button
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="대기 우 없고, 음수시간 5분 이하"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
-                        <RadioButton
-                            android:id="@+id/breed_batch_water_Tank_Time_a4_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15dp"
-                            android:text="대기우 20% 이하, 음수 시간 10분 이하"
-                            android:layout_weight="1">
-                        </RadioButton>
-                        <RadioButton
-                            android:id="@+id/breed_batch_water_Tank_Time_a4_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="대기우 20% 이상, 음수 시간 10분 이상"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
-                    </RadioGroup>
+                            android:layout_height="match_parent"
+                            android:text="선택"
+                            android:id="@+id/breed_btn_q4"/>
+                    </LinearLayout>
 
                 </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="음수 행동 점수"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
 
-            </LinearLayout>//여기까지 하나
+                <TextView
+                    android:id="@+id/breed_Drink_Water_Score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+            //여기까지 하나
         </LinearLayout>
     </ScrollView>
     <LinearLayout
