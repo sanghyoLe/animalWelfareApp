@@ -24,6 +24,9 @@ public class Breed_q5 extends AppCompatActivity {
         Intent intent = getIntent();
         dong_size = intent.getExtras().getInt("dong_count");
 
+
+
+
         LinearLayout dong_1 = findViewById(R.id.breed_dong_q5_1);
         LinearLayout dong_2 = findViewById(R.id.breed_dong_q5_2);
         LinearLayout dong_3 = findViewById(R.id.breed_dong_q5_3);

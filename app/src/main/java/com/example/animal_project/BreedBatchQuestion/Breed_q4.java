@@ -8,16 +8,24 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.animal_project.Farm_Activity.Breed_batch_1;
 import com.example.animal_project.R;
+
+import org.w3c.dom.Text;
+
+import java.util.Arrays;
 
 public class Breed_q4 extends AppCompatActivity {
     private int dong_size;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -27,9 +35,11 @@ public class Breed_q4 extends AppCompatActivity {
 
 
         Intent intent = getIntent();
+
         dong_size = intent.getExtras().getInt("dong_count");
 
-        TextView breed_Drink_Water_Score = findViewById(R.id.breed_Drink_Water_Score);
+
+
 
         Button breed_q4_button = findViewById(R.id.breed_q4_button);
         LinearLayout dong_1 = findViewById(R.id.breed_dong_q4_1);
@@ -176,10 +186,12 @@ public class Breed_q4 extends AppCompatActivity {
 
 
 
-
         // 동 개수 만큼 화면 띄우기 ------------------------------------------------------------------------
         LinearLayout[] dong = {dong_1,dong_2,dong_3,dong_4,dong_5,dong_6,dong_7,dong_8,dong_9,dong_10,dong_11
                 ,dong_12,dong_13,dong_14,dong_15,dong_16,dong_17,dong_18,dong_19,dong_20};
+
+        TextView[] drinkScoreTvArr = { drinkScoreTv_1, drinkScoreTv_2, drinkScoreTv_3, drinkScoreTv_4, drinkScoreTv_5, drinkScoreTv_6, drinkScoreTv_7, drinkScoreTv_8, drinkScoreTv_9
+        ,drinkScoreTv_10,drinkScoreTv_11,drinkScoreTv_12,drinkScoreTv_13,drinkScoreTv_14,drinkScoreTv_15,drinkScoreTv_16,drinkScoreTv_17,drinkScoreTv_18,drinkScoreTv_19,drinkScoreTv_20};
 
 
         for(int idx = 0 ; idx < dong_size ; idx++)
@@ -212,22 +224,42 @@ public class Breed_q4 extends AppCompatActivity {
         // -------------------------------------------------------------------------------------------------------
 
         // 완료 버튼
-/*        breed_q4_button.setOnClickListener(new View.OnClickListener() {
+        int [] drinkScoreArr = new int[20];
+        breed_q4_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Arrays.sort(drinkScoreArray);
-                int max = drinkScoreArray[drinkScoreArray.length-1];
-                breed_Drink_Water_Score.setText(String.valueOf(max));
-              // 이전 화면으로 돌아가기
+                Boolean checkEmpty = false;
+                int emptyDong = 0;
+                for(int idx = 0; idx < dong_size ; idx++){
+                    if(!isNumeric((String)drinkScoreTvArr[idx].getText())){
+                        checkEmpty = true;
+                        emptyDong = idx + 1;
+                    }  else {
+                        drinkScoreArr[idx] = Integer.parseInt((String) drinkScoreTvArr[idx].getText());
+                    }
+                }
+              // 이전 화면으로 돌아가기 ( 빈 값 있는지 체크 )
+                if(checkEmpty == true){
+                    String msg = emptyDong + "동의 빈 값을 입력해주세요";
+                    Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG ).show();
+                } else {
+                    Arrays.sort(drinkScoreArr);
+                    int max = drinkScoreArr[drinkScoreArr.length-1];
+                    Intent intent = new Intent();
+                    intent.putExtra("key", max);
+                    setResult(0, intent);
+                    finish();
+                }
+
             }
-        });*/
+        });
     }
 
-    public int getWaitingRatio(float total_cow, float wating_cow){
+    private int getWaitingRatio(float total_cow, float wating_cow){
         float waitng_ratio = (wating_cow / total_cow) * 100;
         return Math.round((waitng_ratio));
     }
-    public int getDrinkWaterScore(int waitng_ratio, int drink_time) {
+    private int getDrinkWaterScore(int waitng_ratio, int drink_time) {
         int drinkWaterScore = 0;
         if(waitng_ratio == 0 && drink_time <= 5){
             drinkWaterScore = 0;
@@ -238,20 +270,20 @@ public class Breed_q4 extends AppCompatActivity {
         }
         return drinkWaterScore;
     }
-    public void setWaitingRatio(EditText totalCowEt, EditText waitngCowEt, TextView watingRatioTv){
+    private void setWaitingRatio(EditText totalCowEt, EditText waitngCowEt, TextView watingRatioTv){
         int totalCow = Integer.parseInt(totalCowEt.getText().toString());
         int waitngCow = Integer.parseInt(waitngCowEt.getText().toString());
         int waitngRatio = getWaitingRatio(totalCow,waitngCow);
         watingRatioTv.setText(String.valueOf(waitngRatio));
     }
-    public void setWaitingCowTv(EditText totalCowEt,EditText waitngCowEt,TextView waitngRatioTv){
+    private void setWaitingCowTv(EditText totalCowEt,EditText waitngCowEt,TextView waitngRatioTv){
         if (TextUtils.isEmpty(totalCowEt.getText().toString()) || TextUtils.isEmpty(waitngCowEt.getText().toString())) {
             waitngRatioTv.setText("값을 입력해주세요");
         } else{
             setWaitingRatio(totalCowEt,waitngCowEt,waitngRatioTv);
         }
     }
-    public void setDrinkTimeTv(EditText waitingCowEt, EditText drinkTimeEt, EditText totalCowEt, TextView drinkScoreTv){
+    private void setDrinkTimeTv(EditText waitingCowEt, EditText drinkTimeEt, EditText totalCowEt, TextView drinkScoreTv){
         int totalCow = 0;
         int waitingCow = 0;
         int drinkTime = 0;
@@ -274,9 +306,10 @@ public class Breed_q4 extends AppCompatActivity {
             waitingRatio  = getWaitingRatio(totalCow,waitingCow);
             drinkScore = getDrinkWaterScore(waitingRatio, drinkTime);
             drinkScoreTv.setText(String.valueOf(drinkScore));
+
         }
     }
-    public void setTextView(EditText totalCowEt, EditText drinkTimeEt, EditText waitingCowEt,
+    private void setTextView(EditText totalCowEt, EditText drinkTimeEt, EditText waitingCowEt,
                             TextView waitingRatioTv, TextView drinkScoreTv){
         totalCowEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -320,6 +353,14 @@ public class Breed_q4 extends AppCompatActivity {
             public void afterTextChanged(Editable arg0) {
                 setDrinkTimeTv(waitingCowEt, drinkTimeEt, totalCowEt,drinkScoreTv);
             }});
+    }
+    public static boolean isNumeric(String s) {
+        try {
+            Double.parseDouble(s);
+            return true;
+        } catch(NumberFormatException e) {
+            return false;
+        }
     }
 
 }

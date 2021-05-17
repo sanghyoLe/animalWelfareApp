@@ -121,185 +121,7 @@
             </LinearLayout>
             //여기까지 하나
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/button_circle_line"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">//여기부터
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/nb6"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:text="  6"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
-                        android:background="@drawable/survey_number"
-                        />
-                    <TextView
-                        android:id="@+id/q6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="110dp"
-                        android:text="사료조와 주 휴식장소사이의 '즉시 깔짚교체 시기'의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
-                        android:gravity="top"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:orientation="vertical">
-                    <RadioGroup
-                        android:id="@+id/breed_batch_straw_Normal_rdogrp6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_margin="10dp"
-                        android:paddingLeft="20dp">
-                        <RadioButton
-                            android:id="@+id/breed_batch_straw_Normal_a6_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10% 이하"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
-                        <RadioButton
-                            android:id="@+id/breed_batch_straw_Normal_a6_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15dp"
-                            android:text="20% 이하"
-                            android:layout_weight="1">
-                        </RadioButton>
-                        <RadioButton
-                            android:id="@+id/breed_batch_straw_Normal_a6_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="40% 이하"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
-                        <RadioButton
-                            android:id="@+id/breed_batch_straw_Normal_a6_4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="40% 초과"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </LinearLayout>//여기까지 하나
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/button_circle_line"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">//여기부터
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/nb7"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:text="  7"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
-                        android:background="@drawable/survey_number"
-                        />
-                    <TextView
-                        android:id="@+id/q7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="120dp"
-                        android:text="주 휴식장소사이의 '즉시 깔짚교체 시기'의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
-                        android:gravity="top"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:orientation="vertical">
-                    <RadioGroup
-                        android:id="@+id/breed_batch_straw_Resting_Place_rdogrp7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_margin="10dp"
-                        android:paddingLeft="20dp">
-                        <RadioButton
-                            android:id="@+id/breed_batch_straw_Resting_Place_a7_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0%"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
-                        <RadioButton
-                            android:id="@+id/breed_batch_straw_Resting_Place_a7_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15dp"
-                            android:text="20% 이하"
-                            android:layout_weight="1">
-                        </RadioButton>
-                        <RadioButton
-                            android:id="@+id/breed_batch_straw_Resting_Place_a7_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="20% ~ 40%"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
-                        <RadioButton
-                            android:id="@+id/breed_batch_straw_Resting_Place_a7_4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="40% 초과"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </LinearLayout>//여기까지 하나
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -342,23 +164,83 @@
 
                 </LinearLayout>
 
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGray"
+                         />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pen_location_hint"
+                        android:textSize="16dp"/>
                     <EditText
-                        android:id="@+id/breed_batch_outward_Hygiene_a8"
                         android:imeOptions="actionDone"
                         android:background="@drawable/edittext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="숫자 입력"
+                        android:textSize="10dp"
+                        android:hint="표본 설정위치 입력"
                         android:layout_margin="10dp"
                         android:inputType="number">
                     </EditText>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGray"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/outward_Hygiene"
+                        android:textSize="16dp"/>
+                    <EditText
+                        android:imeOptions="actionDone"
+                        android:background="@drawable/edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/breed_outward_hygiene_ed"
+                        android:hint="미흡 수준의 두수를 입력"
+                        android:layout_margin="10dp"
+                        android:textSize="10dp"
+                        android:inputType="number">
+                    </EditText>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/outward_hygiene_ratio"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16dp" />
 
+                    <TextView
+                        android:id="@+id/breed_outward_Hygiene_ratio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/outward_hygiene_score"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/breed_outward_Hygiene_score"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16dp" />
                 </LinearLayout>
 
             </LinearLayout>//여기까지 하나

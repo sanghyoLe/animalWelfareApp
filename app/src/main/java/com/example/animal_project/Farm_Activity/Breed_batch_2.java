@@ -2,6 +2,10 @@ package com.example.animal_project.Farm_Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,13 +20,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.animal_project.BreedBatchQuestion.Breed_q5;
+import com.example.animal_project.Input_userinfo;
 import com.example.animal_project.R;
 
 public class Breed_batch_2 extends AppCompatActivity {
     private View view;
     private String result;
     private Button btn_move;
-    private EditText ed_8_outward_Hygiene;
     Integer straw_Feed_Tank = 0, straw_Normal = 0, straw_Resting_Place = 0, outward_Hygiene = 0, shade = 0, summer_Ventilating = 0, mist_Spary = 0,
     wind_Block_Adult = 0, winter_Ventilating = 0, straw = 0, warm = 0, wind_Block_Child = 0;
 
@@ -32,9 +36,8 @@ public class Breed_batch_2 extends AppCompatActivity {
         setContentView(R.layout.breed_batch_2);
 
 
-        RadioGroup rdiog_6_straw_normal = (RadioGroup) findViewById(R.id.breed_batch_straw_Normal_rdogrp6);
-        RadioGroup rdiog_7_straw_resting_place = (RadioGroup) findViewById(R.id.breed_batch_straw_Resting_Place_rdogrp7); //7번 문항
-        ed_8_outward_Hygiene = (EditText) findViewById(R.id.breed_batch_outward_Hygiene_a8);
+
+        EditText breed_outward_hygiene_ed = findViewById(R.id.breed_outward_hygiene_ed);
         RadioGroup rdiog_9_shade = (RadioGroup) findViewById(R.id.breed_batch_shade_rdogrp9); //9번 문항
         RadioGroup rdiog_10_summer_ventilating = (RadioGroup) findViewById(R.id.breed_batch_summer_Ventilating_rdogrp10); //10번 문항
         RadioGroup rdiog_11_mist_spary = (RadioGroup) findViewById(R.id.breed_batch_mist_Spary_rdogrp11); //11번 문항
@@ -47,7 +50,8 @@ public class Breed_batch_2 extends AppCompatActivity {
         TextView breed_summer_rest_score = (TextView) findViewById(R.id.breed_summer_rest_score);
         TextView breed_winter_rest_score = (TextView) findViewById(R.id.breed_winter_rest_score);
         TextView breed_calf_winter_rest_score = (TextView) findViewById(R.id.breed_calf_winter_rest_score);
-
+        TextView breed_outward_hygiene_ratio = findViewById(R.id.breed_outward_Hygiene_ratio);
+        TextView breed_outward_hygiene_score = findViewById(R.id.breed_outward_Hygiene_score);
 
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(getApplicationContext(),
                 R.array.dong_size,
@@ -91,36 +95,30 @@ public class Breed_batch_2 extends AppCompatActivity {
 
             }
         });
-        rdiog_6_straw_normal.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        int sample_size_count = Integer.parseInt(((Input_userinfo)Input_userinfo.context_userinfo).sample_size_count);
+
+        breed_outward_hygiene_ed.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_straw_Normal_a6_1) {
-                    straw_Normal = 1;
-                } else if (checkedId == R.id.breed_batch_straw_Normal_a6_2) {
-                    straw_Normal = 2;
-                } else if (checkedId == R.id.breed_batch_straw_Normal_a6_3) {
-                    straw_Normal = 3;
-                } else if (checkedId == R.id.breed_batch_straw_Normal_a6_4) {
-                    straw_Normal = 4;
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(TextUtils.isEmpty(breed_outward_hygiene_ed.getText().toString())){
+                    breed_outward_hygiene_ratio.setText("값을 입력해주세요");
+                    breed_outward_hygiene_score.setText("값을 입력해주세요");
+                } else {
+                    float ratio = Float.parseFloat(breed_outward_hygiene_ed.getText().toString()) / sample_size_count  ;
+                    ratio = ratio * 100;
+                    ratio = Math.round(ratio);
+                    breed_outward_hygiene_ratio.setText(String.valueOf(ratio));
+                    outward_Hygiene = getOutwardHygieneScore(ratio);
+                    breed_outward_hygiene_score.setText(String.valueOf(outward_Hygiene));
                 }
             }
         });
-
-        rdiog_7_straw_resting_place.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_straw_Resting_Place_a7_1) {
-                    straw_Resting_Place = 1;
-                } else if (checkedId == R.id.breed_batch_straw_Resting_Place_a7_2) {
-                    straw_Resting_Place = 2;
-                } else if (checkedId == R.id.breed_batch_straw_Resting_Place_a7_3) {
-                    straw_Resting_Place = 3;
-                } else if (checkedId == R.id.breed_batch_straw_Resting_Place_a7_4) {
-                    straw_Resting_Place = 4;
-                }
-            }
-        });
-
         rdiog_9_shade.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -237,7 +235,7 @@ public class Breed_batch_2 extends AppCompatActivity {
                 String straw_feed_tank = Integer.toString(straw_Feed_Tank);
                 String straw_normal = Integer.toString(straw_Normal);
                 String straw_resting_place = Integer.toString(straw_Resting_Place);
-                String outward_hygiene = ed_8_outward_Hygiene.getText().toString();
+                String outward_hygiene = Integer.toString(outward_Hygiene);
                 String shade_1 = Integer.toString(shade);
                 String summer_ventilating = Integer.toString(summer_Ventilating);
                 String mist_spary = Integer.toString(mist_Spary);
@@ -255,7 +253,34 @@ public class Breed_batch_2 extends AppCompatActivity {
             }
         });
     }
-
+    private int getOutwardHygieneScore(float ratio)
+    {
+        int outwardHygieneScore = 0;
+        if (ratio == 0) {
+            outwardHygieneScore = 100;
+        } else if (ratio <= 3) {
+        outwardHygieneScore = 90;
+    } else if (ratio <= 6) {
+        outwardHygieneScore = 80;
+    } else if (ratio <= 9) {
+        outwardHygieneScore = 70;
+    } else if (ratio <= 13) {
+        outwardHygieneScore = 60;
+    } else if (ratio <= 18) {
+        outwardHygieneScore = 50;
+    } else if (ratio <= 23) {
+        outwardHygieneScore = 40;
+    } else if (ratio <= 29) {
+        outwardHygieneScore = 30;
+    } else if (ratio <= 37) {
+        outwardHygieneScore = 20;
+    } else if (ratio <= 52) {
+        outwardHygieneScore = 10;
+    } else {
+        outwardHygieneScore = 0;
+    }
+        return outwardHygieneScore;
+    }
     // 혹서기 - 그늘, 환기팬, 안개분무 시설 점수 계산
     public int getSummerRestScore(int shade,int summerVentilating, int mistSpary)
     {

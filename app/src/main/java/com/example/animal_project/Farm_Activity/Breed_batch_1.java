@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,6 +32,9 @@ public class Breed_batch_1 extends AppCompatActivity {
     private EditText ed_1_poorRate;
     Integer water_Tank_Num = 0, water_Tank_Clean = 0, water_Tank_Time = 0;
     public String total_cow_count = ((Input_userinfo) Input_userinfo.context_userinfo).total_cow_count;
+
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -109,10 +113,13 @@ public class Breed_batch_1 extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 }else{
                     int dong_size = Integer.parseInt(dong_count);
+
                     Intent intent = new Intent(Breed_batch_1.this, Breed_q4.class);
                     intent.putExtra("dong_count",dong_size); /*송신*/
 
-                    startActivity(intent);
+                    startActivityForResult(intent, 0);
+
+
                 }
 
             }
@@ -164,6 +171,20 @@ public class Breed_batch_1 extends AppCompatActivity {
                     breed_poor_Rate_score.setText(breedPoorRateScore(total_cow));
                 }
             }});
+
+
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        TextView breed_Drink_Water_Score = findViewById(R.id.breed_Drink_Water_Score);
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case 0:
+                int key = data.getExtras().getInt("key");
+                breed_Drink_Water_Score.setText(String.valueOf(key));
+                break;
+            default:
+                break;
+        }
     }
 
     public String breedPoorRateRatio(String total, String rate){

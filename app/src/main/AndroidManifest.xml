@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BreedBatchQuestion.Breed_q5"></activity>
+        <activity android:name=".BreedBatchQuestion.Breed_q5" />
         <activity android:name=".BreedBatchQuestion.Breed_q4" />
         <activity android:name=".MilkCow_Question.Freestall_q4" />
         <activity android:name=".getStrawScore" />

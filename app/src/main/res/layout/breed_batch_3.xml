@@ -86,7 +86,7 @@
                     android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/breed_batch_Limp_a17"
+                        android:id="@+id/breed_batch_Limp_ed"
                         android:imeOptions="actionNext"
                         android:background="@drawable/edittext"
                         android:layout_width="match_parent"
@@ -126,6 +126,7 @@
                     android:textSize="16dp" />
             </LinearLayout>//여기까지 하나
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -137,7 +138,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
+                    android:layout_height="60dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -155,9 +156,9 @@
                     <TextView
                         android:id="@+id/q18"
                         android:layout_width="wrap_content"
-                        android:layout_height="90dp"
-                        android:text="전체 표본에서 경미한 외피 변형이 있는 가축의 비율은 얼마나 되는가?(한 개 이상의 탈모부위, 병변/부종은 없음)"
-                        android:textSize="18dp"
+                        android:layout_height="40dp"
+                        android:text="@string/hairloss_title"
+                        android:textSize="16dp"
                         android:textStyle="bold"
                         android:layout_marginRight="10dp"
                         android:paddingTop="0dp"
@@ -166,87 +167,110 @@
                         />
 
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:id="@+id/breed_batch_slight_Hairloss_a18"
-                        android:imeOptions="actionNext"
-                        android:background="@drawable/edittext"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="숫자 입력"
-                        android:layout_margin="10dp"
-                        android:inputType="number">
-                    </EditText>
-
-
-                </LinearLayout>
-
-            </LinearLayout>//여기까지 하나
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/button_circle_line"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">//여기부터
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/nb19"
-                        android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  19"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
-                        android:background="@drawable/survey_number"
-                        />
-                    <TextView
-                        android:id="@+id/q19"
-                        android:layout_width="wrap_content"
-                        android:layout_height="90dp"
-                        android:text="전체 표본에서 심각한 외피 변형이 있는 가축의 비율은 얼마나 되는가?(한 개 이상의 탈모부위, 병변/부종은 없음)"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
-                        android:gravity="top"
-                        />
-
-                </LinearLayout>
+                        android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGray"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/slight_hairloss_exp"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16dp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/critical_hairloss_exp"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16dp" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorGray"/>
+                    </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
-
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/pen_location_hint"
+                        android:textSize="16dp"/>
                     <EditText
-                        android:id="@+id/breed_batch_critical_Hairloss_a19"
+                        android:id="@+id/breed_hairloss_pen"
                         android:imeOptions="actionNext"
                         android:background="@drawable/edittext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="숫자 입력"
+                        android:hint="표본펜 위치 입력"
+                        android:textSize="10dp"
                         android:layout_margin="10dp"
-                        android:inputType="number">
-                    </EditText>
+                        android:inputType="number"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/slight_hairloss"
+                        android:textSize="16dp"/>
+                    <EditText
+                        android:id="@+id/breed_slight_hairloss_ed"
+                        android:imeOptions="actionNext"
+                        android:background="@drawable/edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="두수 입력"
+                        android:textSize="10dp"
+                        android:layout_margin="10dp"
+                        android:inputType="number"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/critical_hairloss"
+                        android:textSize="16dp"/>
+                    <EditText
+                        android:id="@+id/breed_critical_hairloss_ed"
+                        android:imeOptions="actionNext"
+                        android:background="@drawable/edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="두수 입력"
+                        android:textSize="10dp"
+                        android:layout_margin="10dp"
+                        android:inputType="number"/>
                 </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/hairloss_ratio"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/breed_hairloss_ratio"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="세부기준점수"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/breed_hairloss_score"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
 
             </LinearLayout>//여기까지 하나
 
@@ -352,22 +376,68 @@
                         />
 
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGray"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/runnynose_justice"/>
 
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/pen_location_hint"/>
                     <EditText
-                        android:id="@+id/breed_batch_runny_Nose_a21"
+                        android:id="@+id/runny_nose_pen_ed"
                         android:imeOptions="actionNext"
                         android:background="@drawable/edittext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="숫자 입력"
+                        android:hint="표본 펜 위치 입력"
                         android:layout_margin="10dp"
-                        android:inputType="number">
-                    </EditText>
+                        android:textSize="10dp"
+                        android:inputType="number"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/runnynose"/>
+                    <EditText
+                        android:id="@+id/breed_runny_nose_ed"
+                        android:imeOptions="actionNext"
+                        android:background="@drawable/edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="두수 입력"
+                        android:layout_margin="10dp"
+                        android:textSize="10dp"
+                        android:inputType="number"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/runnynose_ratio"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/breed_runny_nose_ratio"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16dp" />
 
 
                 </LinearLayout>
@@ -1209,6 +1279,7 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="16dp" />
             </LinearLayout>//여기까지 하나
+
         </LinearLayout>
     </ScrollView>
     <LinearLayout
@@ -1240,4 +1311,5 @@
             android:textColor="@color/colorWhite"
             android:layout_weight="0.5"/>
     </LinearLayout>
+
 </LinearLayout>

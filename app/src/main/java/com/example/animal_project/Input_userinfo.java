@@ -94,24 +94,7 @@ public class Input_userinfo extends AppCompatActivity {
             }
         });
 
-        total_cow.addTextChangedListener(new TextWatcher(){
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-            @Override
-            public void afterTextChanged(Editable arg0) {
-                if(TextUtils.isEmpty(total_cow.getText().toString())) {
-                    sample_size.setText("값을 입력해주세요");
-                } else {
-                    result = getSampleSizeScore(total_cow.getText().toString());
-                    sample_size.setText(result);
-                    total_cow_count = total_cow.getText().toString();
-                }
-            }
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-        });
+
 
         total_cow.addTextChangedListener(new TextWatcher(){
             @Override
