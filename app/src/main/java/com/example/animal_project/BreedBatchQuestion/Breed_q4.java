@@ -354,7 +354,7 @@ public class Breed_q4 extends AppCompatActivity {
                 setDrinkTimeTv(waitingCowEt, drinkTimeEt, totalCowEt,drinkScoreTv);
             }});
     }
-    public static boolean isNumeric(String s) {
+    private static boolean isNumeric(String s) {
         try {
             Double.parseDouble(s);
             return true;

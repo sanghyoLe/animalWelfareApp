@@ -285,54 +285,91 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="50dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/nb20"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  20"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
                         android:background="@drawable/survey_number"
-                        />
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:text="  20"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/q20"
                         android:layout_width="wrap_content"
                         android:layout_height="120dp"
-                        android:text="전체 표본에서 1마리당 15분 동안 기침하는 평균 수는 얼마나 되는가?(펜이나 축사동당 평균 25마리 이하를 120분간 관찰)"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
                         android:gravity="top"
-                        />
+                        android:paddingTop="0dp"
+                        android:text="기침 평가"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="140dp"
                     android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/breed_batch_cough_a20"
-                        android:imeOptions="actionNext"
-                        android:background="@drawable/edittext"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="숫자 입력"
-                        android:layout_margin="10dp"
-                        android:inputType="number">
-                    </EditText>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="41dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="top"
+                        android:paddingTop="0dp"
+                        android:text="축사동 수를 선택하세요"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Spinner
+                            android:id="@+id/spinner_breed_cough"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="선택"
+                            android:id="@+id/breed_btn_cough"/>
+                    </LinearLayout>
 
                 </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/cough_average_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/breed_cough_ratio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
 
             </LinearLayout>//여기까지 하나
 
@@ -486,20 +523,69 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGray"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/ophthalmic_justice"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/pen_location_hint"/>
 
                     <EditText
-                        android:id="@+id/breed_batch_ophthalmic_Secretion_a22"
+                        android:id="@+id/breed_ophthalmic_pen_ed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/edittext"
+                        android:hint="표본 펜 위치 입력"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/ophthalmic"/>
+                    <EditText
+                        android:id="@+id/breed_ophthalmic_ed"
                         android:imeOptions="actionNext"
                         android:background="@drawable/edittext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="숫자 입력"
+                        android:hint="두수 입력"
                         android:layout_margin="10dp"
-                        android:inputType="number">
-                    </EditText>
+                        android:textSize="10dp"
+                        android:inputType="number"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/ophthalmic_ratio"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/breed_ophthalmic_ratio"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16dp" />
 
 
                 </LinearLayout>
@@ -548,23 +634,71 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGray"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/breath_justice"/>
 
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/pen_location_hint"/>
                     <EditText
-                        android:id="@+id/breed_batch_respiratory_Failure_a23"
+                        android:id="@+id/breath_pen_ed"
                         android:imeOptions="actionNext"
                         android:background="@drawable/edittext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="숫자 입력"
+                        android:hint="표본 펜 위치 입력"
                         android:layout_margin="10dp"
-                        android:inputType="number">
-                    </EditText>
+                        android:textSize="10dp"
+                        android:inputType="number"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/breath"/>
+                    <EditText
+                        android:id="@+id/breed_breath_ed"
+                        android:imeOptions="actionNext"
+                        android:background="@drawable/edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="두수 입력"
+                        android:layout_margin="10dp"
+                        android:textSize="10dp"
+                        android:inputType="number"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/breath_ratio"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/breed_breath_ratio"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16dp" />
 
 
                 </LinearLayout>
+
 
             </LinearLayout>//여기까지 하나
 
@@ -610,20 +744,67 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGray"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/diarrhea_justice"/>
 
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/pen_location_hint"/>
                     <EditText
-                        android:id="@+id/breed_batch_diarrhea_a24"
+                        android:id="@+id/breed_diarrhea_pen_ed"
                         android:imeOptions="actionNext"
                         android:background="@drawable/edittext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="숫자 입력"
+                        android:hint="표본 펜 위치 입력"
                         android:layout_margin="10dp"
-                        android:inputType="number">
-                    </EditText>
+                        android:textSize="10dp"
+                        android:inputType="number"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/diarrhea"/>
+                    <EditText
+                        android:id="@+id/breed_diarrhea_ed"
+                        android:imeOptions="actionNext"
+                        android:background="@drawable/edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="두수 입력"
+                        android:layout_margin="10dp"
+                        android:textSize="10dp"
+                        android:inputType="number"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/diarrhea_ratio"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/breed_diarrhea_ratio"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16dp" />
 
 
                 </LinearLayout>
@@ -672,20 +853,67 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGray"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/ruminant_justice"/>
 
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/pen_location_hint"/>
                     <EditText
-                        android:id="@+id/breed_batch_ruminant_a25"
+                        android:id="@+id/breed_ruminant_pen_ed"
                         android:imeOptions="actionNext"
                         android:background="@drawable/edittext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="숫자 입력"
+                        android:hint="표본 펜 위치 입력"
                         android:layout_margin="10dp"
-                        android:inputType="number">
-                    </EditText>
+                        android:textSize="10dp"
+                        android:inputType="number"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/ruminant"/>
+                    <EditText
+                        android:id="@+id/breed_ruminant_ed"
+                        android:imeOptions="actionNext"
+                        android:background="@drawable/edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="두수 입력"
+                        android:layout_margin="10dp"
+                        android:textSize="10dp"
+                        android:inputType="number"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/ruminant_ratio"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/breed_ruminant_ratio"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16dp" />
 
 
                 </LinearLayout>
@@ -732,52 +960,73 @@
                     android:gravity="top"
                     />
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:orientation="horizontal">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGray"/>
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="60dp"
-                        android:text="※ 폐사율 : 안락사, 긴급도축, 폐사 등 통제되지 않은 죽음"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="40dp"
-                        android:textColor="@color/colorBlack"
-                        android:gravity="center_vertical"
-                        />
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/falldead_justice"/>
+
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/pen_location_hint"/>
                     <EditText
-                        android:id="@+id/breed_batch_fall_Dead_a26"
-                        android:imeOptions="actionDone"
+                        android:id="@+id/breed_falldead_pen_ed"
+                        android:imeOptions="actionNext"
                         android:background="@drawable/edittext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="숫자 입력"
+                        android:hint="표본 펜 위치 입력"
                         android:layout_margin="10dp"
-                        android:inputType="number">
-                    </EditText>
+                        android:textSize="10dp"
+                        android:inputType="number"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="@string/falldead"/>
+                    <EditText
+                        android:id="@+id/breed_falldead_ed"
+                        android:imeOptions="actionNext"
+                        android:background="@drawable/edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="두수 입력"
+                        android:layout_margin="10dp"
+                        android:textSize="10dp"
+                        android:inputType="number"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/falldead_ratio"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/breed_falldead_ratio"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16dp" />
 
 
                 </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    android:text="전체우군 중 폐사 가축 비율 "
-                    android:textColor="@color/colorWhite"
-                    android:textSize="16dp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/breed_fall_Dead_ratio"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="16dp" />
+
             </LinearLayout>//여기까지 하나
 
             <LinearLayout
@@ -1095,14 +1344,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="15dp"
-                            android:text="고무링을 사용한 거세"
+                            android:text="외과적 수술을 통한 거세"
                             android:layout_weight="1">
                         </RadioButton>
                         <RadioButton
                             android:id="@+id/breed_batch_castration_a30_3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Burdizzo를 사용한 거세"
+                            android:text="고무링을 사용한 거세"
                             android:textSize="15dp"
                             android:layout_weight="1">
                         </RadioButton>
@@ -1110,7 +1359,7 @@
                             android:id="@+id/breed_batch_castration_a30_4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="외과적 수술을 통한 거세"
+                            android:text="Burdizzo를 사용한 거세"
                             android:textSize="15dp"
                             android:layout_weight="1">
                         </RadioButton>

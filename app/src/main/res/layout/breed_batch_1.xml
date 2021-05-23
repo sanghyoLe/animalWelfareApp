@@ -321,46 +321,46 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="41dp"
-                        android:layout_marginRight="10dp"
-                        android:gravity="top"
-                        android:paddingTop="0dp"
-                        android:text="축사동 수를 선택하세요"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:id="@+id/divider"
                         android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="?android:attr/listDivider" />
+                        android:layout_height="140dp"
+                        android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="41dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="top"
+                            android:paddingTop="0dp"
+                            android:text="축사동 수를 선택하세요"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
 
-                        <Spinner
-                            android:id="@+id/spinner_breed_q4"
+                        <View
+                            android:id="@+id/divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="3"
-                            />
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="선택"
-                            android:id="@+id/breed_btn_q4"/>
-                    </LinearLayout>
+                            <Spinner
+                                android:id="@+id/spinner_breed_q4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3"
+                                />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="선택"
+                                android:id="@+id/breed_btn_q4"/>
+                        </LinearLayout>
 
                 </LinearLayout>
                 <TextView

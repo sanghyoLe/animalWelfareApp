@@ -63,39 +63,88 @@
                         android:textColor="@color/colorWhite"
                         android:background="@drawable/survey_number"
                         />
-                    <TextView
-                        android:id="@+id/q33"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:text="전체 표본무리 내 소 한 마리가 한 시간 안에 발현한 평균 투쟁행동의 빈도가 어떻게 되는가?"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
-                        android:gravity="top"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:id="@+id/breed_batch_struggle_a33"
-                        android:imeOptions="actionNext"
-                        android:background="@drawable/edittext"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="숫자 입력"
-                        android:layout_margin="10dp"
-                        android:inputType="number">
-                    </EditText>
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/q33"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/struggle_title"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="10dp"
+                            android:paddingTop="0dp"
+                            android:textColor="@color/colorBlack"
+                            android:gravity="top"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:text="@string/struggle_justice"/>
+                    </LinearLayout>
 
 
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:gravity="top"
+                        android:paddingTop="0dp"
+                        android:text="축사동 수를 선택하세요"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Spinner
+                            android:id="@+id/spinner_breed_struggle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="선택"
+                            android:id="@+id/breed_btn_struggle"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/struggle_ratio_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/breed_struggle_ratio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
 
             </LinearLayout>//여기까지 하나
 
@@ -125,39 +174,88 @@
                         android:textColor="@color/colorWhite"
                         android:background="@drawable/survey_number"
                         />
-                    <TextView
-                        android:id="@+id/q34"
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:text="전체 표본무리 내 소 한 마리가 한 시간 안에 발현한 평균 화합행동의 빈도가 어떻게 되는가?"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
-                        android:gravity="top"
-                        />
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/q34"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="화합 행동 평가"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="10dp"
+                            android:paddingTop="0dp"
+                            android:textColor="@color/colorBlack"
+                            android:gravity="top"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/harmony_justice"
+                            android:textSize="16dp"/>
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="140dp"
                     android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/breed_batch_harmony_a34"
-                        android:imeOptions="actionNext"
-                        android:background="@drawable/edittext"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="숫자 입력"
-                        android:layout_margin="10dp"
-                        android:inputType="number">
-                    </EditText>
+                        android:layout_marginRight="10dp"
+                        android:gravity="top"
+                        android:paddingTop="0dp"
+                        android:text="축사동 수를 선택하세요"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Spinner
+                            android:id="@+id/spinner_breed_harmony"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="선택"
+                            android:id="@+id/breed_btn_harmony"/>
+                    </LinearLayout>
 
                 </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/harmony_ratio_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/breed_harmony_ratio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
 
             </LinearLayout>//여기까지 하나
 

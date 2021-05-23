@@ -2,157 +2,89 @@
     <string name="app_name">animal_project</string>
 
 
-    <string name="pen_location_1">
-        1동 표본 펜 위치
-    </string>
-    <string name="pen_location_2">
-        2동 표본 펜 위치
-    </string>
-    <string name="pen_location_3">
-        3동 표본 펜 위치
-    </string>
-    <string name="pen_location_4">
-        4동 표본 펜 위치
-    </string>
-    <string name="pen_location_5">
-        5동 표본 펜 위치
-    </string>
-    <string name="pen_location_6">
-        6동 표본 펜 위치
-    </string>
-    <string name="pen_location_7">
-        7동 표본 펜 위치
-    </string>
-    <string name="pen_location_8">
-        8동 표본 펜 위치
-    </string>
-    <string name="pen_location_9">
-        9동 표본 펜 위치
-    </string>
-    <string name="pen_location_10">
-        10동 표본 펜 위치
-    </string>
-    <string name="pen_location_11">
-        11동 표본 펜 위치
-    </string>
-    <string name="pen_location_12">
-        12동 표본 펜 위치
-    </string>
-    <string name="pen_location_13">
-        13동 표본 펜 위치
-    </string>
-    <string name="pen_location_14">
-        14동 표본 펜 위치
-    </string>
-    <string name="pen_location_15">
-        15동 표본 펜 위치
-    </string>
-    <string name="pen_location_16">
-        16동 표본 펜 위치
-    </string>
-    <string name="pen_location_17">
-        17동 표본 펜 위치
-    </string>
-    <string name="pen_location_18">
-        18동 표본 펜 위치
-    </string>
-    <string name="pen_location_19">
-        19동 표본 펜 위치
-    </string>
-    <string name="pen_location_20">
-        20동 표본 펜 위치
-    </string>
-
-
-    <string name="pen_location_hint">
-        표본 펜 위치를 입력해주세요 ex ) 1 , 2 , 3
-    </string>
-    <string name="water_tank_time_pen_1">
-        표본 펜 음수 행동 간이측정 점수
-    </string>
-    <string name="pen_total_cow">
-        펜에 있는 소는 총 몇 두입니까?
-    </string>
-    <string name="pen_total_cow_hint">
-        펜에 있는 소의 총 두 수를 입력해주세요
-    </string>
-    <string name="wating_drink_cow">
-        펜의 음수 대기 우 수는 몇 두 입니까?
-    </string>
-    <string name="wating_drink_cow_hint">
-        펜의 음수 대기 우 수를 입력해주세요
-    </string>
-    <string name="drinking_water_time">
-        음수 우의 음수 시간은 몇 분입니까?
-    </string>s
-    <string name="drinking_water_time_hint">
-        음수 우의 음수 시간을 입력해주세요 (분 단위)
-    </string>
-    <string name="wating_ratio_cow">
-        음수를 대기하고 있는 대기 우 비율 (%)
-    </string>
-    <string name="water_tank_time">
-        음수 행동 간이 측정 점수
-    </string>
-    <string name="title_q4">
-        동별 음수 행동 간이 점수 측정
-    </string>
-    <string name="title_q5">
-        동별 깔짚 수분 간이 점수 측정
-    </string>
-    <string name="straw_score">
-        표본 펜 깔짚 수분 간이측정 점수
-    </string>
-    <string name="breed_straw_1_title">
-        사료조 근처의 "즉시 깔짚교체 시기"의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)
-    </string>
-    <string name="breed_straw_2_title">
-        사료조와 주 휴식장소사이의 "즉시 깔짚교체 시기"의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)
-    </string>
-    <string name="breed_straw_3_title">
-        주 휴식장소사이의 "즉시 깔짚교체 시기"의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)
-    </string>
-    <string name ="slight_hairloss_exp">
-        경미 외피변형 - 1개 이상 탈모,병변 및 부종은 없음
-    </string>
-    <string name="critical_hairloss_exp">
-        심한 외피변형 - 1개 이상의 병변 및 부종
-    </string>
-    <string name="water_tank_form">
-        음수조는 어떤 형태입니까?
-    </string>
-    <string name="outward_Hygiene">
-        표본우군 중 미흡 수준의 두수를 입력해주세요
-    </string>
-    <string name="outward_hygiene_score">
-        가축외형 위생 점수
-    </string>
-    <string name="outward_hygiene_ratio">
-        표본우군 중 미흡 수준의 비율
-    </string>
-    <string name = "hairloss_title">
-        외피 변형 점수
-    </string>
-    <string name="slight_hairloss">
-        경미한 외피변형 두수를 입력해주세요
-    </string>
-    <string name="critical_hairloss">
-        심각한 외피변형 두수를 입력해주세요
-    </string>
-    <string name="hairloss_ratio">
-        외피변형 개체 비율
-    </string>
-    <string name="runnynose_justice">
-        비강분비물 : 콧구멍에서 분명하게 보이는 흐름 또는 배출
-    </string>
-    <string name="runnynose">
-        비강 분비물 발현 개체 두수를 입력해주세요
-    </string>
-    <string name="runnynose_ratio">
-        비강 분비 가축 비율
-    </string>
-    //프리스톨
-
-
+    <string name="pen_location_1">1동 표본 펜 위치</string>
+    <string name="pen_location_2">2동 표본 펜 위치</string>
+    <string name="pen_location_3">3동 표본 펜 위치</string>
+    <string name="pen_location_4">4동 표본 펜 위치</string>
+    <string name="pen_location_5">5동 표본 펜 위치</string>
+    <string name="pen_location_6">6동 표본 펜 위치</string>
+    <string name="pen_location_7">7동 표본 펜 위치</string>
+    <string name="pen_location_8">8동 표본 펜 위치</string>
+    <string name="pen_location_9">9동 표본 펜 위치</string>
+    <string name="pen_location_10">10동 표본 펜 위치</string>
+    <string name="pen_location_11">11동 표본 펜 위치</string>
+    <string name="pen_location_12">12동 표본 펜 위치</string>
+    <string name="pen_location_13">13동 표본 펜 위치</string>
+    <string name="pen_location_14">14동 표본 펜 위치</string>
+    <string name="pen_location_15">15동 표본 펜 위치</string>
+    <string name="pen_location_16">16동 표본 펜 위치</string>
+    <string name="pen_location_17">17동 표본 펜 위치</string>
+    <string name="pen_location_18">18동 표본 펜 위치</string>
+    <string name="pen_location_19">19동 표본 펜 위치</string>
+    <string name="pen_location_20">20동 표본 펜 위치</string>
+    <string name="pen_location_hint">표본 펜 위치를 입력하세요 ex ) 1 , 2 , 3</string>
+    <string name="water_tank_time_pen_1">표본 펜 음수 행동 간이측정 점수</string>
+    <string name="pen_total_cow">펜에 있는 소는 총 몇 두입니까?</string>
+    <string name="pen_total_cow_hint">펜에 있는 소의 총 두 수를 입력하세요</string>
+    <string name="wating_drink_cow">펜의 음수 대기 우 수는 몇 두 입니까?</string>
+    <string name="wating_drink_cow_hint">펜의 음수 대기 우 수를 입력하세요</string>
+    <string name="drinking_water_time">음수 우의 음수 시간은 몇 분입니까?</string>
+    <string name="drinking_water_time_hint">음수 우의 음수 시간을 입력해주세요 (분 단위)</string>
+    <string name="wating_ratio_cow">음수를 대기하고 있는 대기 우 비율 (%)</string>
+    <string name="water_tank_time">음수 행동 간이 측정 점수</string>
+    <string name="title_q4">동별 음수 행동 간이 점수 측정</string>
+    <string name="title_q5">동별 깔짚 수분 간이 점수 측정</string>
+    <string name="straw_score">표본 펜 깔짚 수분 간이측정 점수</string>
+    <string name="breed_straw_1_title">사료조 근처의 "즉시 깔짚교체 시기"의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)</string>
+    <string name="breed_straw_2_title">사료조와 주 휴식장소사이의 "즉시 깔짚교체 시기"의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)</string>
+    <string name="breed_straw_3_title">주 휴식장소사이의 "즉시 깔짚교체 시기"의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)</string>
+    <string name="slight_hairloss_exp">경미 외피변형 - 1개 이상 탈모,병변 및 부종은 없음</string>
+    <string name="critical_hairloss_exp">심한 외피변형 - 1개 이상의 병변 및 부종</string>
+    <string name="water_tank_form">음수조는 어떤 형태입니까?</string>
+    <string name="outward_Hygiene">표본우군 중 미흡 수준의 두수를 입력하세요</string>
+    <string name="outward_hygiene_score">가축외형 위생 점수</string>
+    <string name="outward_hygiene_ratio">표본우군 중 미흡 수준의 비율</string>
+    <string name="hairloss_title">외피 변형 점수</string>
+    <string name="slight_hairloss">경미한 외피변형 두수를 입력해주세요</string>
+    <string name="critical_hairloss">심각한 외피변형 두수를 입력하세요</string>
+    <string name="hairloss_ratio">외피변형 개체 비율</string>
+    <string name="runnynose_justice">비강분비물 : 콧구멍에서 분명하게 보이는 흐름 또는 배출</string>
+    <string name="runnynose">비강 분비물 발현 개체 두수를 입력하세요</string>
+    <string name="runnynose_ratio">비강 분비 가축 비율</string>
+    <string name="cough_sub_title">표본 펜별 기침 평가</string>
+    <string name="cough_title">동별 기침 평가</string>
+    <string name="cough_question">펜에서 15분동안 관찰한 기침 수</string>
+    <string name="cough_question_hint">15분동안 관찰한 기침 수를 입력하세요</string>
+    <string name="cough_average_title">1마리당 15분 동안 기침하는 평균 수</string>
+    <string name="empty_value">값을 입력하세요</string>
+    <string name="cough_caution">주의! 펜 또는 동 당 평균 25두 이하 관찰 요망</string>
+    <string name="ophthalmic_justice">안구분비물 : 눈에서 명확하게 보이는 최소 3cm 길이의 흐름 또는 배출</string>
+    <string name="ophthalmic">안구 분비물 발현 개체 두수를 입력하세요</string>
+    <string name="ophthalmic_ratio">안구 분비 가축 비율</string>
+    <string name="breath_justice">호흡 장애 : 깊고 과도하게 어렵거나 곤란한 호흡</string>
+    <string name="breath">호흡장애 발현 개체 두수를 입력하세요</string>
+    <string name="breath_ratio">호흡장애 가축 비율</string>
+    <string name="diarrhea_justice">설사 : 미근부 아래 꼬리의 양 옆으로 묻은 풀어진 묽은 분</string>
+    <string name="diarrhea">설사를 하는 개체 두수를 입력하세요</string>
+    <string name="diarrhea_ratio">설사 가축 비율</string>
+    <string name="ruminant_justice">반추위 팽창 : 엉덩이뼈와 왼쪽갈비뼈 사시의 특징적인 부풀어오름</string>
+    <string name="ruminant">반추위 팽창 개체 두수를 입력하세요</string>
+    <string name="ruminant_ratio">반추위 팽창 가축 비율</string>
+    <string name="falldead_justice">폐사율 : 안락사, 긴급도축, 폐사 등 통제되지 않은 죽음</string>
+    <string name="falldead">폐사율 개체 두수를 입력하세요</string>
+    <string name="falldead_ratio">폐사 가축 비율</string>
+    <string name="struggle_justice">투쟁행동 : 머리박치기, 추방, 추격, 경합, 일으킴</string>
+    <string name="struggle_title">투쟁(서열) 행동 평가</string>
+    <string name="struggle_caution">주의! 펜 당 관찰시간 10분</string>
+    <string name="struggle_sub_title">표본 펜별 투쟁(서열) 행동 평가</string>
+    <string name="struggle_question">펜에서 10분동안 관찰한 투쟁(서열) 행동 빈도</string>
+    <string name="struggle_question_hint">10분동안 관찰한 투쟁(서열) 행동 수를 입력하세요</string>
+    <string name="struggle_ratio_title">평균 투쟁행동 빈도(1마리/1시간)</string>
+    <string name="harmony_ratio_title">평균 화합행동 빈도(1마리/1시간)</string>
+    <string name="harmony_title">화합 행동 평가</string>
+    <string name="harmony_sub_title">표본 펜별 화합 행동 평가</string>
+    <string name="harmony_question">펜에서 10분동안 관찰한 화합 행동 빈도</string>
+    <string name="harmony_question_hint">10분동안 관찰한 화합 행동 수를 입력하세요</string>
+    <string name="harmony_justice">화합행동 : 사회적 핥기, 뿔놀이</string>
 
 </resources>
