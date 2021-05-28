@@ -32,7 +32,7 @@ public class Breed_batch_1 extends AppCompatActivity {
     private EditText ed_1_poorRate;
     Integer water_Tank_Num = 0, water_Tank_Clean = 0, water_Tank_Time = 0;
     public String total_cow_count = ((Input_userinfo) Input_userinfo.context_userinfo).total_cow_count;
-
+    int breed_poor_rate_score = 0;
 
 
 
@@ -52,6 +52,7 @@ public class Breed_batch_1 extends AppCompatActivity {
         TextView freestall_water_Tank_Num_q2 = (TextView) findViewById(R.id.freestall_water_Tank_Num_q2);
         TextView freestall_water_Tank_Clean_q3 = (TextView) findViewById(R.id.freestall_water_Tank_Clean_q3);
         TextView freestall_water_Tank_Time_q4 = (TextView) findViewById(R.id.freestall_water_Tank_Time_q4);
+
 
         rdiog_2_water_tank_num.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -167,8 +168,8 @@ public class Breed_batch_1 extends AppCompatActivity {
                 } else {
                     String total_cow = breedPoorRateRatio(total_cow_count, ed_1_poorRate.getText().toString());
                     breed_poor_Rate_ratio.setText(total_cow + "%");
-
                     breed_poor_Rate_score.setText(breedPoorRateScore(total_cow));
+                    breed_poor_rate_score = Integer.parseInt(breedPoorRateScore(total_cow));
                 }
             }});
 
@@ -176,11 +177,16 @@ public class Breed_batch_1 extends AppCompatActivity {
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         TextView breed_Drink_Water_Score = findViewById(R.id.breed_Drink_Water_Score);
+        TextView breed_total_water_score = findViewById(R.id.breed_total_water_score);
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 0:
                 int key = data.getExtras().getInt("key");
                 breed_Drink_Water_Score.setText(String.valueOf(key));
+                // 프로토콜 1 점수
+                breed_total_water_score.setText(String.valueOf(getWaterScore(water_Tank_Num,water_Tank_Clean,key)));
+                double score = getProtocolOneResult(breed_poor_rate_score,getWaterScore(water_Tank_Num,water_Tank_Clean,key));
+
                 break;
             default:
                 break;
@@ -220,5 +226,53 @@ public class Breed_batch_1 extends AppCompatActivity {
         } else  poorScore = 0;
 
         return Integer.toString(poorScore);
+    }
+    public int getWaterScore(int waterTankNum, int waterTankClean, int waterTankTime)
+    {
+        int waterScore = 0;
+        // 음수조 수 기준 합격
+        if (waterTankNum == 1) {
+            // 음수조 위생 청결 or 보통
+            if (waterTankClean <= 2) {
+                // 음수 행동 매우 양호 or 보통 
+                if (waterTankTime < 2) {
+                    waterScore = 100;
+                } else {
+                    waterScore = 80;
+                }
+            }
+            // 음수조 위생 더러움
+            else {
+                if (waterTankTime < 2) {
+                    waterScore = 60;
+                } else {
+                    waterScore = 45;
+                }
+            }
+        }
+        // 음수조 수 기준 초과
+        else {
+            // 음수조 위생 청결 or 보통
+            if (waterTankClean <= 2) {
+                if (waterTankTime < 2) {
+                    waterScore = 55;
+                } else {
+                    waterScore = 40;
+                }
+            }
+            // 음수조 위생 더러움
+            else {
+                if (waterTankTime < 2) {
+                    waterScore = 35;
+                } else {
+                    waterScore = 20;
+                }
+            }
+        }
+        return waterScore;
+    }
+    public double getProtocolOneResult(int PoorScore, int WaterScore){
+
+        return (PoorScore * 0.7) + (WaterScore * 0.3);
     }
 }

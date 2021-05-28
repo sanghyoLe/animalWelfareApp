@@ -24,6 +24,9 @@ import com.example.animal_project.BreedBatchQuestion.Breed_q4;
 import com.example.animal_project.Input_userinfo;
 import com.example.animal_project.R;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Breed_batch_3 extends AppCompatActivity {
     private View view;
     private String result;
@@ -32,8 +35,11 @@ public class Breed_batch_3 extends AppCompatActivity {
             ed_20_cough, ed_21_runny_Nose, ed_22_ophthalmic_Secretion, ed_23_respiratory_Failure, ed_24_diarrhea,
             ed_25_ruminant, ed_26_fall_Dead;
     Integer horn = 0, horn_Anesthesia = 0, horn_Painkiller = 0, castration = 0, castration_Anesthesia = 0,
-            castration_Painkiller = 0, limp_score =0;
+            castration_Painkiller = 0, limp_score =0, dong_size = 0;
     int sample_size_count = Integer.parseInt(((Input_userinfo)Input_userinfo.context_userinfo).sample_size_count);
+    private TextView breed_cough_ratio_tv,breed_runnynose_ratio_tv,breed_ophthalmic_ratio_tv,
+            breed_breath_ratio_tv,breed_diarrhea_tv,breed_ruminant_tv,breed_falldead_tv,breed_disease_score_tv,
+            breed_horn_removal_score_tv,breed_castration_score_tv, breed_min_pain_score;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,24 +58,28 @@ public class Breed_batch_3 extends AppCompatActivity {
         EditText breed_falldead_ed = findViewById(R.id.breed_falldead_ed);
 
 
-        RadioGroup rdiog_27_horn = (RadioGroup) findViewById(R.id.breed_batch_horn_rdogrp27);
-        RadioGroup rdiog_28_horn_anesthesia = (RadioGroup) findViewById(R.id.breed_batch_horn_Anesthesia_rdogrp28);
-        RadioGroup rdiog_29_horn_painkiller = (RadioGroup) findViewById(R.id.breed_batch_horn_Painkiller_rdogrp29);
-        RadioGroup rdiog_30_castration = (RadioGroup) findViewById(R.id.breed_batch_castration_rdogrp30);
-        RadioGroup rdiog_31_castration_anesthesia = (RadioGroup) findViewById(R.id.breed_batch_castration_Anesthesia_rdogrp31);
-        RadioGroup rdiog_32_castration_painkiller = (RadioGroup) findViewById(R.id.breed_batch_castration_Painkiller_rdogrp32);
+        RadioGroup breed_horn = (RadioGroup) findViewById(R.id.breed_batch_horn_rdogrp27);
+        RadioGroup breed_horn_anesthesia = (RadioGroup) findViewById(R.id.breed_batch_horn_Anesthesia_rdogrp28);
+        RadioGroup breed_horn_painkiller = (RadioGroup) findViewById(R.id.breed_batch_horn_Painkiller_rdogrp29);
+        RadioGroup breed_castration = (RadioGroup) findViewById(R.id.breed_batch_castration_rdogrp30);
+        RadioGroup breed_castration_anesthesia = (RadioGroup) findViewById(R.id.breed_batch_castration_Anesthesia_rdogrp31);
+        RadioGroup breed_castration_painkiller = (RadioGroup) findViewById(R.id.breed_batch_castration_Painkiller_rdogrp32);
         TextView breed_limp_score = findViewById(R.id.breed_limp_score);
         TextView breed_limp_ratio = findViewById(R.id.breed_limp_ratio);
         TextView breed_hairloss_ratio_tv = findViewById(R.id.breed_hairloss_ratio);
         TextView breed_hairloss_score_tv = findViewById(R.id.breed_hairloss_score);
-        TextView breed_runnynose_ratio_tv = findViewById(R.id.breed_runny_nose_ratio);
-        TextView breed_ophthalmic_ratio_tv = findViewById(R.id.breed_ophthalmic_ratio);
-        TextView breed_breath_ratio_tv = findViewById(R.id.breed_breath_ratio);
-        TextView breed_diarrhea_tv = findViewById(R.id.breed_diarrhea_ratio);
-        TextView breed_ruminant_tv = findViewById(R.id.breed_ruminant_ratio);
-        TextView breed_falldead_tv = findViewById(R.id.breed_falldead_ratio);
-        TextView breed_horn_removal_score_tv = findViewById(R.id.breed_horn_removal_score);
-        TextView breed_castration_score_tv = findViewById(R.id.breed_castration_score);
+        TextView breed_min_injury_score = findViewById(R.id.breed_min_injury_score);
+        breed_runnynose_ratio_tv = findViewById(R.id.breed_runny_nose_ratio);
+        breed_ophthalmic_ratio_tv = findViewById(R.id.breed_ophthalmic_ratio);
+        breed_breath_ratio_tv = findViewById(R.id.breed_breath_ratio);
+        breed_diarrhea_tv = findViewById(R.id.breed_diarrhea_ratio);
+        breed_ruminant_tv = findViewById(R.id.breed_ruminant_ratio);
+        breed_falldead_tv = findViewById(R.id.breed_falldead_ratio);
+        breed_disease_score_tv = findViewById(R.id.breed_disease_score);
+        breed_cough_ratio_tv = findViewById(R.id.breed_cough_ratio);
+        breed_horn_removal_score_tv = findViewById(R.id.breed_horn_removal_score);
+        breed_castration_score_tv = findViewById(R.id.breed_castration_score);
+        breed_min_pain_score = findViewById(R.id.breed_min_pain_score);
 
         breed_batch_Limp_ed.addTextChangedListener(new TextWatcher() {
             @Override
@@ -85,8 +95,8 @@ public class Breed_batch_3 extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if(TextUtils.isEmpty(breed_batch_Limp_ed.getText().toString())){
-                    breed_limp_ratio.setText("값을 입력해주세요");
-                    breed_limp_score.setText("값을 입력해주세요");
+                    breed_limp_ratio.setText("값을 입력하세요");
+                    breed_limp_score.setText("값을 입력하세요");
                 }else {
                     float ratio = Float.parseFloat(breed_batch_Limp_ed.getText().toString()) / sample_size_count  ;
                     ratio = ratio * 100;
@@ -94,6 +104,7 @@ public class Breed_batch_3 extends AppCompatActivity {
                     breed_limp_ratio.setText(String.valueOf(ratio));
                     limp_score = getLimpScore(ratio);
                     breed_limp_score.setText(String.valueOf(limp_score));
+                    setMinimiztionOfInjury(breed_limp_score, breed_hairloss_score_tv, breed_min_injury_score);
                 }
             }
         });
@@ -111,6 +122,7 @@ public class Breed_batch_3 extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 setHairRatioScore(breed_slight_hairloss_ed,breed_critical_hairloss_ed,breed_hairloss_ratio_tv,breed_hairloss_score_tv);
+                setMinimiztionOfInjury(breed_limp_score, breed_hairloss_score_tv, breed_min_injury_score);
             }
         });
         breed_critical_hairloss_ed.addTextChangedListener(new TextWatcher() {
@@ -127,6 +139,7 @@ public class Breed_batch_3 extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 setHairRatioScore(breed_slight_hairloss_ed,breed_critical_hairloss_ed,breed_hairloss_ratio_tv,breed_hairloss_score_tv);
+                setMinimiztionOfInjury(breed_limp_score, breed_hairloss_score_tv, breed_min_injury_score);
             }
         });
 
@@ -164,7 +177,7 @@ public class Breed_batch_3 extends AppCompatActivity {
                     String msg = "축사 동 수를 선택해주세요";
                     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 }else{
-                    int dong_size = Integer.parseInt(dong_count);
+                    dong_size = Integer.parseInt(dong_count);
                     Intent intent = new Intent(Breed_batch_3.this, Breed_cough.class);
                     intent.putExtra("dong_count",dong_size); /*송신*/
                     startActivityForResult(intent, 0);
@@ -179,86 +192,8 @@ public class Breed_batch_3 extends AppCompatActivity {
         setRatioTextView(breed_ruminant_ed,breed_ruminant_tv);
         setRatioTextView(breed_falldead_ed,breed_falldead_tv);
 
-
-        rdiog_27_horn.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_horn_a27_1) {
-                    horn = 1;
-                } else if (checkedId == R.id.breed_batch_horn_a27_2) {
-                    horn = 2;
-                } else if (checkedId == R.id.breed_batch_horn_a27_3) {
-                    horn = 3;
-                } else if (checkedId == R.id.breed_batch_horn_a27_4) {
-                    horn = 4;
-                }
-                breed_horn_removal_score_tv.setText(Integer.toString(getHornRemovalScore(horn,horn_Anesthesia,horn_Painkiller)));
-            }
-        });
-
-        rdiog_28_horn_anesthesia.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_horn_Anesthesia_a28_1) {
-                    horn_Anesthesia = 1;
-                } else if (checkedId == R.id.breed_batch_horn_Anesthesia_a28_2) {
-                    horn_Anesthesia = 2;
-                }
-                breed_horn_removal_score_tv.setText(Integer.toString(getHornRemovalScore(horn,horn_Anesthesia,horn_Painkiller)));
-            }
-        });
-
-        rdiog_29_horn_painkiller.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_horn_Painkiller_a29_1) {
-                    horn_Painkiller = 1;
-                } else if (checkedId == R.id.breed_batch_horn_Painkiller_a29_2) {
-                    horn_Painkiller = 2;
-                }
-                breed_horn_removal_score_tv.setText(Integer.toString(getHornRemovalScore(horn,horn_Anesthesia,horn_Painkiller)));
-            }
-        });
-
-        rdiog_30_castration.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_castration_a30_1) {
-                    castration = 1;
-                } else if (checkedId == R.id.breed_batch_castration_a30_2) {
-                    castration = 2;
-                } else if (checkedId == R.id.breed_batch_castration_a30_3) {
-                    castration = 3;
-                } else if (checkedId == R.id.breed_batch_castration_a30_4) {
-                    castration = 4;
-                }
-                breed_castration_score_tv.setText(Integer.toString(getCastrationScore(castration,castration_Anesthesia,castration_Painkiller)));
-            }
-        });
-
-        rdiog_31_castration_anesthesia.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_castration_Anesthesia_a31_1) {
-                    castration_Anesthesia = 1;
-                } else if (checkedId == R.id.breed_batch_castration_Anesthesia_a31_2) {
-                    castration_Anesthesia = 2;
-                }
-                breed_castration_score_tv.setText(Integer.toString(getCastrationScore(castration,castration_Anesthesia,castration_Painkiller)));
-            }
-        });
-
-        rdiog_32_castration_painkiller.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_castration_Painkiller_a32_1) {
-                    castration_Painkiller = 1;
-                } else if (checkedId == R.id.breed_batch_castration_Painkiller_a32_2) {
-                    castration_Painkiller = 2;
-                }
-                breed_castration_score_tv.setText(Integer.toString(getCastrationScore(castration,castration_Anesthesia,castration_Painkiller)));
-            }
-        });
+        setRemovalScore(breed_horn,breed_horn_anesthesia,breed_horn_painkiller,breed_horn_removal_score_tv);
+        setCastrationScore(breed_castration,breed_castration_anesthesia,breed_castration_painkiller,breed_castration_score_tv);
 
         Button breed_batch_pre_3_btn = (Button) findViewById(R.id.breed_batch_pre_3_btn);
         Button breed_batch_next_3_btn = (Button) findViewById(R.id.breed_batch_next_3_btn);
@@ -305,7 +240,9 @@ public class Breed_batch_3 extends AppCompatActivity {
         switch (resultCode) {
             case 0:
                 int key = data.getExtras().getInt("key");
+                key = key / dong_size;
                 breed_cough_ratio.setText(String.valueOf(key));
+
                 break;
             default:
                 break;
@@ -372,8 +309,8 @@ public class Breed_batch_3 extends AppCompatActivity {
         float critical_ratio = 0;
         float ratio_total = 0;
         if(TextUtils.isEmpty(slight_hairloss_ed.getText().toString()) || TextUtils.isEmpty(critical_hairloss_ed.getText().toString())){
-            hairloss_ratio_tv.setText("값을 입력해주세요");
-            hairloss_score_tv.setText("값을 입력해주세요");
+            hairloss_ratio_tv.setText("값을 입력하세요");
+            hairloss_score_tv.setText("값을 입력하세요");
         }else {
             slight_ratio = Float.parseFloat(slight_hairloss_ed.getText().toString()) / sample_size_count  ;
             slight_ratio = slight_ratio * 100;
@@ -409,14 +346,30 @@ public class Breed_batch_3 extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if(TextUtils.isEmpty(editText.getText().toString())){
-                    textView.setText("값을 입력해주세요");
+                    textView.setText("값을 입력하세요");
                 } else {
                     if(getRatio(editText) > 100){
                         textView.setText("표본 규모보다 큰 값을 입력할 수 없습니다.");
                     } else {
                         textView.setText(String.valueOf(getRatio(editText)));
+                    } if(!isNumeric((String)breed_cough_ratio_tv.getText())
+                            || !isNumeric((String)breed_runnynose_ratio_tv.getText())
+                            || !isNumeric((String)breed_ophthalmic_ratio_tv.getText())
+                            || !isNumeric((String)breed_breath_ratio_tv.getText())
+                            || !isNumeric((String)breed_diarrhea_tv.getText())
+                            || !isNumeric((String)breed_ruminant_tv.getText())
+                            || !isNumeric((String)breed_falldead_tv.getText())) {
+                        breed_disease_score_tv.setText("질병 영역에 대한 설문을 모두 완료하세요");
+                    } else {
+                        setDiseaseScore(breed_cough_ratio_tv
+                                , breed_cough_ratio_tv
+                                , breed_ophthalmic_ratio_tv
+                                , breed_breath_ratio_tv
+                                , breed_diarrhea_tv
+                                , breed_ruminant_tv
+                                , breed_falldead_tv
+                                , breed_disease_score_tv);
                     }
-
                 }
             }
         });
@@ -500,56 +453,405 @@ public class Breed_batch_3 extends AppCompatActivity {
         }
         // 외과적 수술
         else if (castration == 2) {
-        if (castrationAnesthesia == 1) {
-            if (castrationPainkiller == 1) {
-                castrationScore = 34;
+            if (castrationAnesthesia == 1) {
+                if (castrationPainkiller == 1) {
+                    castrationScore = 34;
+                } else {
+                    castrationScore = 21;
+                }
             } else {
-                castrationScore = 21;
-            }
-        } else {
-            //"사후진통제"만 사용했을 경우 (누락 부분)
-            if (castrationPainkiller == 1) {
-                castrationScore = 20;
-            } else {
-                castrationScore = 0;
+                //"사후진통제"만 사용했을 경우 (누락 부분)
+                if (castrationPainkiller == 1) {
+                    castrationScore = 20;
+                } else {
+                    castrationScore = 0;
+                }
             }
         }
-    }
         // 고무링
         else if (castration == 3) {
-        if (castrationAnesthesia == 1) {
-            if (castrationPainkiller == 1) {
-                castrationScore = 21;
+            if (castrationAnesthesia == 1) {
+                if (castrationPainkiller == 1) {
+                    castrationScore = 21;
+                } else {
+                    castrationScore = 17;
+                }
             } else {
-                castrationScore = 17;
-            }
-        } else {
-            //"사후진통제"만 사용했을 경우 (누락 부분)
-            if (castrationPainkiller == 1) {
-                castrationScore = 17;
-            } else {
-                castrationScore = 2;
+                //"사후진통제"만 사용했을 경우 (누락 부분)
+                if (castrationPainkiller == 1) {
+                    castrationScore = 17;
+                } else {
+                    castrationScore = 2;
+                }
             }
         }
-    }
         // Burdizzo
         else if (castration == 4) {
-        if (castrationAnesthesia == 1) {
-            if (castrationPainkiller == 1) {
-                castrationScore = 35;
+            if (castrationAnesthesia == 1) {
+                if (castrationPainkiller == 1) {
+                    castrationScore = 35;
+                } else {
+                    castrationScore = 21;
+                }
             } else {
-                castrationScore = 21;
-            }
-        } else {
-            //"사후진통제"만 사용했을 경우 (누락 부분)
-            if (castrationPainkiller == 1) {
-                castrationScore = 19;
-            } else {
-                castrationScore = 0;
+                //"사후진통제"만 사용했을 경우 (누락 부분)
+                if (castrationPainkiller == 1) {
+                    castrationScore = 19;
+                } else {
+                    castrationScore = 0;
+                }
             }
         }
-    }
         return castrationScore;
     }
+    private void setRemovalScore(RadioGroup hornRg,RadioGroup anesthesiaRg, RadioGroup painkillerRg, TextView hornRemovalScoreTv){
+        final int[] horn = {0};
+        final int[] anesthesia = {0};
+        final int[] painkiller = {0};
+        final int[] score = {0};
+        hornRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        horn[0] = 1;
+                        score[0] = getHornRemovalScore(horn[0],anesthesia[0],painkiller[0]);
+                        hornRemovalScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        horn[0] = 2;
+                        score[0] = getHornRemovalScore(horn[0],anesthesia[0],painkiller[0]);
+                        hornRemovalScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 2:
+                        horn[0] = 3;
+                        score[0] = getHornRemovalScore(horn[0],anesthesia[0],painkiller[0]);
+                        hornRemovalScoreTv.setText(String.valueOf(score[0]));
+                    case 3:
+                        horn[0] = 4;
+                        score[0] = getHornRemovalScore(horn[0],anesthesia[0],painkiller[0]);
+                        hornRemovalScoreTv.setText(String.valueOf(score[0]));
 
+                }
+                setMinPainScore(breed_horn_removal_score_tv,breed_castration_score_tv,breed_min_pain_score);
+            }
+        });
+
+        anesthesiaRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        anesthesia[0] = 1;
+                        score[0] = getHornRemovalScore(horn[0],anesthesia[0],painkiller[0]);
+                        hornRemovalScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        anesthesia[0] = 2;
+                        score[0] = getHornRemovalScore(horn[0],anesthesia[0],painkiller[0]);
+                        hornRemovalScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                }
+                setMinPainScore(breed_horn_removal_score_tv,breed_castration_score_tv,breed_min_pain_score);
+            }
+        });
+        painkillerRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        painkiller[0] = 1;
+                        score[0] = getHornRemovalScore(horn[0],anesthesia[0],painkiller[0]);
+                        hornRemovalScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        painkiller[0] = 2;
+                        score[0] = getHornRemovalScore(horn[0],anesthesia[0],painkiller[0]);
+                        hornRemovalScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                }
+                setMinPainScore(breed_horn_removal_score_tv,breed_castration_score_tv,breed_min_pain_score);
+            }
+        });
+    }
+    private void setCastrationScore(RadioGroup castrationRg, RadioGroup anesthesiaRg, RadioGroup painkillerRg, TextView castrationScoreTv) {
+        int[] castration = {0};
+        int[] anesthesia = {0};
+        int[] painkiller = {0};
+        int[] score = {0};
+
+        castrationRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        castration[0] = 1;
+                        score[0] = getCastrationScore(castration[0],anesthesia[0],painkiller[0]);
+                        castrationScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        castration[0] = 2;
+                        score[0] = getCastrationScore(castration[0],anesthesia[0],painkiller[0]);
+                        castrationScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 2:
+                        castration[0] = 3;
+                        score[0] = getCastrationScore(castration[0],anesthesia[0],painkiller[0]);
+                        castrationScoreTv.setText(String.valueOf(score[0]));
+                    case 3:
+                        castration[0] = 4;
+                        score[0] = getCastrationScore(castration[0],anesthesia[0],painkiller[0]);
+                        castrationScoreTv.setText(String.valueOf(score[0]));
+
+                }
+                setMinPainScore(breed_horn_removal_score_tv,breed_castration_score_tv,breed_min_pain_score);
+            }
+        });
+
+        anesthesiaRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        anesthesia[0] = 1;
+                        score[0] = getCastrationScore(castration[0],anesthesia[0],painkiller[0]);
+                        castrationScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        anesthesia[0] = 2;
+                        score[0] = getCastrationScore(castration[0],anesthesia[0],painkiller[0]);
+                        castrationScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                }
+                setMinPainScore(breed_horn_removal_score_tv,breed_castration_score_tv,breed_min_pain_score);
+            }
+        });
+        painkillerRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        painkiller[0] = 1;
+                        score[0] = getCastrationScore(castration[0],anesthesia[0],painkiller[0]);
+                        castrationScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        painkiller[0] = 2;
+                        score[0] = getCastrationScore(castration[0],anesthesia[0],painkiller[0]);
+                        castrationScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                }
+                setMinPainScore(breed_horn_removal_score_tv,breed_castration_score_tv,breed_min_pain_score);
+            }
+        });
+
+    }
+
+    private void setMinimiztionOfInjury(TextView limpScoreTv, TextView hairLossScoreTv, TextView minInjuryScoreTv)
+    {
+      if(TextUtils.isEmpty(limpScoreTv.getText())
+              || TextUtils.isEmpty(hairLossScoreTv.getText()) 
+              || hairLossScoreTv.getText() == "값을 입력하세요"
+      ){
+            minInjuryScoreTv.setText("상해의 최소화 설문을 모두 완료해주세요");
+      } else {
+          int LimpScore = Integer.parseInt(String.valueOf(limpScoreTv.getText()));
+          int hairLossScore = Integer.parseInt(String.valueOf(hairLossScoreTv.getText()));
+          double score = (LimpScore * 0.6) + (hairLossScore *0.4);
+          score = Math.round(score);
+          minInjuryScoreTv.setText(String.valueOf(score));
+      }
+    }
+    private void setMinPainScore(TextView removalScoreTv, TextView castrationScoreTv, TextView minPainScoreTv)
+    {
+        if(TextUtils.isEmpty(removalScoreTv.getText())
+                || TextUtils.isEmpty(castrationScoreTv.getText())
+        ){
+            minPainScoreTv.setText("고통의 최소화 설문을 모두 완료해주세요");
+        } else {
+            int removalScore = Integer.parseInt(String.valueOf(removalScoreTv.getText()));
+            int castrationScore = Integer.parseInt(String.valueOf(castrationScoreTv.getText()));
+            double score = (removalScore * 0.7) + (castrationScore * 0.3);
+            score = Math.round(score);
+            minPainScoreTv.setText(String.valueOf(score));
+        }
+    }
+    private Map getDiseaseSectionOne(TextView runnyNoseTv,TextView ophthalmicTv)
+    {
+         Map <String, Integer> sectionScores = new HashMap<String, Integer>();
+         sectionScores.put("care",0);
+         sectionScores.put("warning",0);
+
+        Float runnyNose = Float.valueOf(String.valueOf(runnyNoseTv.getText()));
+        Float ophthalmic = Float.valueOf(String.valueOf(ophthalmicTv.getText()));
+        // 비강분비물 상태 좋음, 안구분비물 상태 좋음 => "0"
+        if (runnyNose < 5 && ophthalmic < 3) {
+            return sectionScores;
+        }
+        // 비강분비물 상태 좋음, 안구분비물(주의) => "주의"
+        else if (runnyNose < 5 && 3 <= ophthalmic && ophthalmic < 6) {
+            sectionScores.put("care",1);
+    }
+        // 비강분비물(주의), 안구분비물 상태 좋음 => "주의"
+        else if (5 <= runnyNose && runnyNose < 10 && ophthalmic < 3) {
+            sectionScores.put("care",1);
+    }
+        // 비강분비물(주의), 안구분비물(주의) => "주의"
+        else if (5 <= runnyNose && runnyNose < 10 && 3 <= ophthalmic && ophthalmic < 6) {
+            sectionScores.put("care",1);
+    }
+        // 비강, 안구분비물 중 1개라도 "경보" => "경보"
+        else if (10 <= runnyNose || 6 <= ophthalmic) {
+            sectionScores.put("warning",1);
+    }
+        return sectionScores;
+    }
+    private Map getDiseaseSectionTwo(TextView coughTv,TextView breathTv)
+    {
+        Map <String, Integer> sectionScores = new HashMap<String, Integer>();
+        sectionScores.put("care",0);
+        sectionScores.put("warning",0);
+
+        float cough = Float.valueOf(String.valueOf(coughTv.getText()));
+        float breath = Float.valueOf(String.valueOf(breathTv.getText()));
+
+        // 비강분비물 상태 좋음, 안구분비물 상태 좋음 => "0"
+        if (cough < 4 && breath < 5) {
+            return sectionScores;
+        }
+        // 기침 상태 좋음, 호흡장애(주의) => "주의"
+        else if (cough < 4 && 5 <= breath && breath < 10) {
+            sectionScores.put("care",1);
+        }
+        // 기침(주의), 호흡장애 상태 좋음 => "주의"
+        else if (4 <= cough && cough < 8 && breath < 4) {
+            sectionScores.put("care",1);
+        }
+        // 기침(주의), 호흡장애(주의) => "주의"
+        else if (4 <= cough && cough < 8 && 5 <= breath && breath < 10) {
+            sectionScores.put("care",1);
+        }
+        // 기침, 호흡장애 중 1개라도 "경보" => "경보"
+        else if (8 <= cough || 10 <= breath) {
+            sectionScores.put("warning",1);
+        }
+        return sectionScores;
+    }
+
+    private Map getDiseaseSectionThree(TextView ruminantTv,TextView diarrheaTv)
+    {
+        Map <String, Integer> sectionScores = new HashMap<String, Integer>();
+        sectionScores.put("care",0);
+        sectionScores.put("warning",0);
+
+        float ruminant = Float.valueOf(String.valueOf(ruminantTv.getText()));
+        float diarrhea = Float.valueOf(String.valueOf(diarrheaTv.getText()));
+
+        // 비강분비물 상태 좋음, 안구분비물 상태 좋음 => "0"
+        if (ruminant < 5 && diarrhea < 3) {
+            return sectionScores;
+        }
+        // 반추위 팽창 상태 좋음, 설사(주의) => "주의"
+        else if (ruminant < 5 && 3 <= diarrhea && diarrhea < 6) {
+            sectionScores.put("care",1);
+    }
+        // 반추위 팽창(주의), 설사 좋음 => "주의"
+        else if (5 <= ruminant && ruminant < 10 && diarrhea < 3) {
+            sectionScores.put("care",1);
+    }
+        // 반추위 팽창(주의), 설사(주의) => "주의"
+        else if (5 <= ruminant && ruminant < 10 && 3 <= diarrhea && diarrhea < 6) {
+            sectionScores.put("care",1);
+    }
+        // 반추위 팽창 ,설사 중 1개라도 "경보" => "경보"
+        else if (10 <= ruminant || 6 <= diarrhea) {
+            sectionScores.put("warning",1);
+    }
+        return sectionScores;
+    }
+    private Map getDiseaseSectionFour(TextView fallDeadTv)
+    {
+        Map <String, Integer> sectionScores = new HashMap<String, Integer>();
+        sectionScores.put("care",0);
+        sectionScores.put("warning",0);
+        float fallDead = 0;
+        if(!isNumeric((String)fallDeadTv.getText())){
+            fallDead = 0;
+        } else {
+            fallDead = Float.valueOf(String.valueOf(fallDeadTv.getText()));
+        }
+
+        if (fallDead < 2)
+            return sectionScores;
+        // 폐사율 상태 주의
+        if (2 <= fallDead && fallDead < 4) {
+            sectionScores.put("care",1);
+            // 폐사율 상태 경보  
+        } else if (4 <= fallDead) {
+            sectionScores.put("warning",1);
+    }
+        return sectionScores;
+    }
+    private Map getCareWarningScore(Map sectionOneScore, Map sectionTwoScore, Map sectionThreeScore, Map sectionFourScore)
+    {
+        Map <String, Integer> careWarningScore = new HashMap<String, Integer>();
+        int totalCareScore = (int) sectionOneScore.get("care")
+                + (int) sectionTwoScore.get("care")
+                + (int) sectionThreeScore.get("care")
+                + (int) sectionFourScore.get("care");
+        careWarningScore.put("care",totalCareScore);
+        int totalWarningScore = (int) sectionOneScore.get("warning")
+                + (int) sectionTwoScore.get("warning")
+                + (int) sectionThreeScore.get("warning")
+                + (int) sectionFourScore.get("warning");
+        careWarningScore.put("warning",totalWarningScore);
+
+        return careWarningScore;
+    }
+    private int getDiseaseScore(Map careWarningScore)
+    {
+        int careScore = (int)careWarningScore.get("care");
+        int warningScore = (int)careWarningScore.get("warning");
+        int diseaseScore = (100 / 4) * (4 - ((careScore) + 3 * (warningScore)) / 3);
+
+        return Math.round(diseaseScore);
+    }
+
+    private void setDiseaseScore(TextView coughTv, TextView runnyNoseTv, TextView ophthalmicTv, TextView breathTv,
+                                 TextView diarrheaTv, TextView ruminantTv, TextView fallDeadTv, TextView diseaseScoreTv){
+            Map <String,Integer>CareWarningScore = new HashMap <String,Integer>();
+            CareWarningScore = getCareWarningScore
+                (
+                    getDiseaseSectionOne(runnyNoseTv,ophthalmicTv),
+                    getDiseaseSectionTwo(coughTv,breathTv),
+                    getDiseaseSectionThree(ruminantTv,diarrheaTv),
+                    getDiseaseSectionFour(fallDeadTv)
+                );
+
+            diseaseScoreTv.setText(String.valueOf(getDiseaseScore(CareWarningScore)));
+
+
+
+    }
+
+    private static boolean isNumeric(String s) {
+        try {
+            Double.parseDouble(s);
+            return true;
+        } catch(NumberFormatException e) {
+            return false;
+        }
+    }
 }

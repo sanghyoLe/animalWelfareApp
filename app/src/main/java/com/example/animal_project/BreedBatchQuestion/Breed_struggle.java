@@ -139,6 +139,7 @@ public class Breed_struggle extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG ).show();
                 } else {
                     int sum = Arrays.stream(struggleRatioArr).sum();
+                    sum = sum / dong_size;
                     Intent intent = new Intent();
                     intent.putExtra("sum", sum);
                     setResult(0, intent);
@@ -178,7 +179,8 @@ public class Breed_struggle extends AppCompatActivity {
                 } else{
                     pen_total_cow[0]  = Float.parseFloat(breed_struggle_total_ed.getText().toString());
                     struggle_count[0] = Float.parseFloat(breed_struggle_ed.getText().toString());
-                    breed_struggle_ratio_tv.setText(String.valueOf(Math.round(struggle_count[0]/pen_total_cow[0])*6));
+                    float struggleRatio = Math.round(((struggle_count[0]/pen_total_cow[0]) * 100 )/100)*6;
+                    breed_struggle_ratio_tv.setText(String.valueOf(struggleRatio));
                 }
             }
         });
@@ -201,7 +203,8 @@ public class Breed_struggle extends AppCompatActivity {
                 } else{
                     pen_total_cow[0]  = Float.parseFloat(breed_struggle_total_ed.getText().toString());
                     struggle_count[0] = Float.parseFloat(breed_struggle_ed.getText().toString());
-                    breed_struggle_ratio_tv.setText(String.valueOf(Math.round(struggle_count[0]/pen_total_cow[0])*6));
+                    float struggleRatio = Math.round(((struggle_count[0]/pen_total_cow[0]) * 100 )/100)*6;
+                    breed_struggle_ratio_tv.setText(String.valueOf(struggleRatio));
 
                 }
             }

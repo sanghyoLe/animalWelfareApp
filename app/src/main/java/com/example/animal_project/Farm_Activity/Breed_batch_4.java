@@ -2,6 +2,7 @@ package com.example.animal_project.Farm_Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,7 +21,8 @@ import com.example.animal_project.BreedBatchQuestion.Breed_struggle;
 import com.example.animal_project.R;
 import com.example.animal_project.Result_View;
 
-public class Breed_batch_4 extends AppCompatActivity {
+public class
+Breed_batch_4 extends AppCompatActivity {
     private View view;
     private String result;
     private Button btn_move;
@@ -135,13 +137,7 @@ public class Breed_batch_4 extends AppCompatActivity {
         breed_batch_next_4_btn.setOnClickListener(new View.OnClickListener() { //fragment1로 이동
             @Override
             public void onClick(View v) {
-                String struggle = ed_33_struggle.getText().toString();
-                String harmony = ed_34_harmony.getText().toString();
-                String touch_near = ed_35_touch_Near.getText().toString();
-                String touch_far = ed_36_touch_Far.getText().toString();
-                String touch_impossibility = ed_37_touch_Impossibility.getText().toString();
 
-                String[] protocol4 = {struggle, harmony, touch_near, touch_far, touch_impossibility};
 
                 Intent intent_Result_View = new Intent(Breed_batch_4.this, Result_View.class);
                 startActivity(intent_Result_View);
@@ -164,5 +160,14 @@ public class Breed_batch_4 extends AppCompatActivity {
                 break;
         }
     }
+    private void setSocialBehaviorScore(TextView struggleRatioTv, TextView harmonyRatioTv, TextView socialBehaviorScoreTv){
+        if(TextUtils.isEmpty(struggleRatioTv.getText())
+        || TextUtils.isEmpty(harmonyRatioTv.getText())){
+            socialBehaviorScoreTv.setText("사회적 행동 설문을 모두 완료하세요");
+        } else {
+
+        }
+    }
+
 
 }

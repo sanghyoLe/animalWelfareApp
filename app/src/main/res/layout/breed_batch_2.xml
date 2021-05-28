@@ -29,12 +29,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:gravity="center"
                 android:text="[ 편한 축사환경 ]"
-                android:textSize="20dp"
                 android:textColor="@color/colorBlack"
-                android:textStyle="bold"
-                android:gravity="center">
-            </TextView>
+                android:textSize="20dp"
+                android:textStyle="bold"></TextView>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -57,22 +56,25 @@
                         android:background="@drawable/survey_number"
                         android:gravity="center_vertical"
                         android:paddingBottom="10dp"
-                        android:text="  4"
+
                         android:textColor="@color/colorWhite"
                         android:textSize="17dp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/q4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:layout_marginRight="10dp"
-                        android:gravity="top"
-                        android:paddingTop="0dp"
-                        android:text="깔짚 수분 점수 측정을 위해 축사동 수를 선택하세요"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/q4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:gravity="top"
+                            android:paddingTop="0dp"
+                            android:text="@string/straw_title"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+
+
 
                 </LinearLayout>
 
@@ -80,7 +82,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
                     android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16dp"
 
+                        android:text="@string/choice_dong"
+                        />
+                    <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="?android:attr/listDivider" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -92,17 +106,17 @@
                             android:id="@+id/spinner_breed_q5"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="3"
-                            />
+                            android:layout_weight="3" />
 
                         <Button
+                            android:id="@+id/breed_btn_q5"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="선택"
-                            android:id="@+id/breed_btn_q5"/>
+                            android:text="선택" />
                     </LinearLayout>
 
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -122,48 +136,57 @@
             //여기까지 하나
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_circle_line"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/button_circle_line"
                 android:orientation="vertical">//여기부터
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/nb8"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  8"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
                         android:background="@drawable/survey_number"
-                        />
-                    <TextView
-                        android:id="@+id/q8"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="120dp"
-                        android:text="전체 몸통 부위 면적 중 고상 이물질 분포 25% 초과하고 액상 이물질 분포 50% 초과하는 개체의 비율이 얼마나 되는가?"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
-                        android:gravity="top"
-                        />
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:id="@+id/q8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:gravity="top"
+                            android:paddingTop="0dp"
+                            android:text="@string/outward_hygiene_title"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/outward_hygiene_justice"
+                            android:textSize="16dp" />
+                    </LinearLayout>
                 </LinearLayout>
-
 
 
                 <LinearLayout
@@ -174,45 +197,46 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/colorGray"
-                         />
+                        android:background="@color/colorGray" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/pen_location_hint"
-                        android:textSize="16dp"/>
+                        android:textSize="16dp" />
+
                     <EditText
-                        android:imeOptions="actionDone"
-                        android:background="@drawable/edittext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="10dp"
-                        android:hint="표본 설정위치 입력"
                         android:layout_margin="10dp"
-                        android:inputType="number">
-                    </EditText>
+                        android:background="@drawable/edittext"
+                        android:hint="표본 설정위치 입력"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:textSize="10dp"></EditText>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/colorGray"
-                        />
+                        android:background="@color/colorGray" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/outward_Hygiene"
-                        android:textSize="16dp"/>
+                        android:textSize="16dp" />
+
                     <EditText
-                        android:imeOptions="actionDone"
-                        android:background="@drawable/edittext"
+                        android:id="@+id/breed_outward_hygiene_ed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/breed_outward_hygiene_ed"
-                        android:hint="미흡 수준의 두수를 입력"
                         android:layout_margin="10dp"
-                        android:textSize="10dp"
-                        android:inputType="number">
-                    </EditText>
+                        android:background="@drawable/edittext"
+                        android:hint="미흡 수준의 두수를 입력"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:textSize="10dp"></EditText>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -227,6 +251,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorBlack"
                         android:textSize="16dp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -243,15 +268,41 @@
                         android:textSize="16dp" />
                 </LinearLayout>
 
-            </LinearLayout>//여기까지 하나
+            </LinearLayout>
+            //여기까지 하나
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/rest_score_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/breed_rest_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_circle_line"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/button_circle_line"
                 android:orientation="vertical">//여기부터
 
                 <LinearLayout
@@ -263,26 +314,24 @@
                         android:id="@+id/nb9"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  9"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
                         android:background="@drawable/survey_number"
-                        />
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
                     <TextView
-                        android:id="@+id/q9"
                         android:layout_width="wrap_content"
                         android:layout_height="90dp"
-                        android:text="더울 때 주사육시설에 모든 가축이 직사광선을 피해 쉴 수 있는 충분한 그늘이 제공되는가?"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
                         android:gravity="top"
-                        />
+                        android:paddingTop="0dp"
+                        android:text="@string/breed_shade_title"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -290,42 +339,42 @@
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:orientation="vertical">
+
                     <RadioGroup
-                        android:id="@+id/breed_batch_shade_rdogrp9"
+                        android:id="@+id/breed_shade_rg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_margin="10dp"
+                        android:orientation="vertical"
                         android:paddingLeft="20dp">
+
                         <RadioButton
-                            android:id="@+id/breed_batch_shade_a9_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="예"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
+                            android:textSize="15dp"></RadioButton>
+
                         <RadioButton
-                            android:id="@+id/breed_batch_shade_a9_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp"
+                            android:layout_weight="1"
                             android:text="아니오"
-                            android:layout_weight="1">
-                        </RadioButton>
+                            android:textSize="15dp"></RadioButton>
                     </RadioGroup>
 
                 </LinearLayout>
 
-            </LinearLayout>//여기까지 하나
+            </LinearLayout>
+            //여기까지 하나
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_circle_line"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/button_circle_line"
                 android:orientation="vertical">//여기부터
 
                 <LinearLayout
@@ -337,26 +386,24 @@
                         android:id="@+id/nb10"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  10"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
                         android:background="@drawable/survey_number"
-                        />
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
                     <TextView
-                        android:id="@+id/q10"
                         android:layout_width="wrap_content"
                         android:layout_height="90dp"
-                        android:text="주사육시설에 환기팬이 갖춰져 있고 더위를 대비한 충분한 풍속을 제공하는가?"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
                         android:gravity="top"
-                        />
+                        android:paddingTop="0dp"
+                        android:text="@string/breed_summer_ventilating_title"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -364,42 +411,42 @@
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:orientation="vertical">
+
                     <RadioGroup
-                        android:id="@+id/breed_batch_summer_Ventilating_rdogrp10"
+                        android:id="@+id/breed_summer_ventilating_rg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_margin="10dp"
+                        android:orientation="vertical"
                         android:paddingLeft="20dp">
+
                         <RadioButton
-                            android:id="@+id/breed_batch_summer_Ventilating_a10_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="예"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
+                            android:textSize="15dp"></RadioButton>
+
                         <RadioButton
-                            android:id="@+id/breed_batch_summer_Ventilating_a10_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp"
+                            android:layout_weight="1"
                             android:text="아니오"
-                            android:layout_weight="1">
-                        </RadioButton>
+                            android:textSize="15dp"></RadioButton>
                     </RadioGroup>
 
                 </LinearLayout>
 
-            </LinearLayout>//여기까지 하나
+            </LinearLayout>
+            //여기까지 하나
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_circle_line"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/button_circle_line"
                 android:orientation="vertical">//여기부터
 
                 <LinearLayout
@@ -411,26 +458,24 @@
                         android:id="@+id/nb11"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  11"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
                         android:background="@drawable/survey_number"
-                        />
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
                     <TextView
-                        android:id="@+id/q11"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
-                        android:text="주사육시설에 더위를 대비한 안개분무시설이 갖춰져 있는가?"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
                         android:gravity="top"
-                        />
+                        android:paddingTop="0dp"
+                        android:text="@string/breed_mist_spray_title"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -438,32 +483,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:orientation="vertical">
+
                     <RadioGroup
-                        android:id="@+id/breed_batch_mist_Spary_rdogrp11"
+                        android:id="@+id/breed_mist_spary_rg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_margin="10dp"
+                        android:orientation="vertical"
                         android:paddingLeft="20dp">
+
                         <RadioButton
-                            android:id="@+id/breed_batch_mist_Spary_a11_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="예"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
+                            android:textSize="15dp"></RadioButton>
+
                         <RadioButton
-                            android:id="@+id/breed_batch_mist_Spary_a11_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp"
+                            android:layout_weight="1"
                             android:text="아니오"
-                            android:layout_weight="1">
-                        </RadioButton>
+                            android:textSize="15dp"></RadioButton>
                     </RadioGroup>
 
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -471,21 +516,23 @@
                     android:text="세부기준점수"
                     android:textColor="@color/colorWhite"
                     android:textSize="16dp" />
+
                 <TextView
+                    android:id="@+id/breed_summer_rest_score"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/breed_summer_rest_score"
                     android:textColor="@color/colorBlack"
                     android:textSize="16dp" />
-            </LinearLayout>//여기까지 하나
+            </LinearLayout>
+            //여기까지 하나
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_circle_line"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/button_circle_line"
                 android:orientation="vertical">//여기부터
 
                 <LinearLayout
@@ -494,29 +541,25 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/nb12"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  12"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
                         android:background="@drawable/survey_number"
-                        />
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
                     <TextView
-                        android:id="@+id/q12"
                         android:layout_width="wrap_content"
                         android:layout_height="80dp"
-                        android:text="주사육시설에 모든 가축이 춥고 매서운 바람(북서풍 등)을 피할 수 있는 충분한 바람차단시설이 갖춰져 있는가?"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
                         android:gravity="top"
-                        />
+                        android:paddingTop="0dp"
+                        android:text="@string/breed_wind_block_title"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -524,42 +567,42 @@
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:orientation="vertical">
+
                     <RadioGroup
-                        android:id="@+id/breed_batch_wind_Block_rdogrp12"
+                        android:id="@+id/breed_wind_block_rg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_margin="10dp"
+                        android:orientation="vertical"
                         android:paddingLeft="20dp">
+
                         <RadioButton
-                            android:id="@+id/breed_batch_wind_Block_a12_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="예"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
+                            android:textSize="15dp"></RadioButton>
+
                         <RadioButton
-                            android:id="@+id/breed_batch_wind_Block_a12_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp"
+                            android:layout_weight="1"
                             android:text="아니오"
-                            android:layout_weight="1">
-                        </RadioButton>
+                            android:textSize="15dp"></RadioButton>
                     </RadioGroup>
 
                 </LinearLayout>
 
-            </LinearLayout>//여기까지 하나
+            </LinearLayout>
+            //여기까지 하나
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_circle_line"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/button_circle_line"
                 android:orientation="vertical">//여기부터
 
                 <LinearLayout
@@ -568,29 +611,26 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/nb13"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  13"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
                         android:background="@drawable/survey_number"
-                        />
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/q13"
                         android:layout_width="wrap_content"
                         android:layout_height="80dp"
-                        android:text="주사육시설에 환기팬이 갖춰져 있고 추운 계절에도 환기를 위한 최소한의 풍속 시스템 운영방안을 갖추고 있는가?"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
                         android:gravity="top"
-                        />
+                        android:paddingTop="0dp"
+                        android:text="@string/breed_winter_ventilating_title"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -598,32 +638,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:orientation="vertical">
+
                     <RadioGroup
-                        android:id="@+id/breed_batch_winter_Ventilating_rdogrp13"
+                        android:id="@+id/breed_winter_ventilating_rg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_margin="10dp"
+                        android:orientation="vertical"
                         android:paddingLeft="20dp">
+
                         <RadioButton
-                            android:id="@+id/breed_batch_winter_Ventilating_a13_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="예"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
+                            android:textSize="15dp"></RadioButton>
+
                         <RadioButton
-                            android:id="@+id/breed_batch_winter_Ventilating_a13_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp"
+                            android:layout_weight="1"
                             android:text="아니오"
-                            android:layout_weight="1">
-                        </RadioButton>
+                            android:textSize="15dp"></RadioButton>
                     </RadioGroup>
 
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -631,21 +671,23 @@
                     android:text="세부기준점수"
                     android:textColor="@color/colorWhite"
                     android:textSize="16dp" />
+
                 <TextView
+                    android:id="@+id/breed_winter_rest_score"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/breed_winter_rest_score"
                     android:textColor="@color/colorBlack"
                     android:textSize="16dp" />
-            </LinearLayout>//여기까지 하나
+            </LinearLayout>
+            //여기까지 하나
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_circle_line"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/button_circle_line"
                 android:orientation="vertical">//여기부터
 
                 <LinearLayout
@@ -654,29 +696,26 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/nb14"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  14"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
                         android:background="@drawable/survey_number"
-                        />
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
                     <TextView
-                        android:id="@+id/q14"
                         android:layout_width="wrap_content"
                         android:layout_height="90dp"
-                        android:text="포유송아지 사육시설에 추위로부터 체온을 보호할 수 있는 마른 깔짚을 충분히 갖추었는가?"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
                         android:gravity="top"
-                        />
+                        android:paddingTop="0dp"
+                        android:text="@string/calf_shade_title"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -684,42 +723,276 @@
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:orientation="vertical">
+
                     <RadioGroup
-                        android:id="@+id/breed_batch_straw_rdogrp14"
+                        android:id="@+id/calf_shade_rg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_margin="10dp"
+                        android:orientation="vertical"
                         android:paddingLeft="20dp">
+
                         <RadioButton
-                            android:id="@+id/breed_batch_straw_a14_1"
+                            android:id="@+id/calf_shade_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="예-송아지 다리가 마른 깔짚에 반 이상 묻혀있음"
-                            android:textSize="15dp"
-                            android:layout_weight="1">
-                        </RadioButton>
+                            android:layout_weight="1"
+                            android:text="예"
+                            android:textSize="15dp"></RadioButton>
+
                         <RadioButton
-                            android:id="@+id/breed_batch_straw_a14_2"
+                            android:id="@+id/calf_shade_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp"
-                            android:text="아니오-깔짚위로 송아지 다리가 많이 보임"
-                            android:layout_weight="1">
-                        </RadioButton>
+                            android:layout_weight="1"
+                            android:text="아니오"
+                            android:textSize="15dp"></RadioButton>
                     </RadioGroup>
 
                 </LinearLayout>
 
-            </LinearLayout>//여기까지 하나
+            </LinearLayout>
+            //여기까지 하나
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_circle_line"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/button_circle_line"
+                android:orientation="vertical">//여기부터
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/survey_number"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="90dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="top"
+                        android:paddingTop="0dp"
+                        android:text="@string/calf_summer_ventilating_title"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <RadioGroup
+                        android:id="@+id/calf_summer_ventilating_rg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical"
+                        android:paddingLeft="20dp">
+
+                        <RadioButton
+                            android:id="@+id/calf_summer_Ventilating_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="예"
+                            android:textSize="15dp"></RadioButton>
+
+                        <RadioButton
+                            android:id="@+id/calf_summer_Ventilating_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="아니오"
+                            android:textSize="15dp"></RadioButton>
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            //여기까지 하나
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_circle_line"
+                android:orientation="vertical">//여기부터
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/survey_number"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="top"
+                        android:paddingTop="0dp"
+                        android:text="@string/calf_mist_spray_title"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <RadioGroup
+                        android:id="@+id/calf_mist_spary_rg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical"
+                        android:paddingLeft="20dp">
+
+                        <RadioButton
+                            android:id="@+id/calf_mist_Spary_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="예"
+                            android:textSize="15dp"></RadioButton>
+
+                        <RadioButton
+                            android:id="@+id/calf_mist_Spary_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="아니오"
+                            android:textSize="15dp"></RadioButton>
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="세부기준점수"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/calf_summer_rest_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+            </LinearLayout>
+            //여기까지 하나
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_circle_line"
+                android:orientation="vertical">//여기부터
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/survey_number"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/q14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="90dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="top"
+                        android:paddingTop="0dp"
+                        android:text="@string/calf_straw_title"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <RadioGroup
+                        android:id="@+id/calf_straw_rg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical"
+                        android:paddingLeft="20dp">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="예-송아지 다리가 마른 깔짚에 반 이상 묻혀있음"
+                            android:textSize="15dp"></RadioButton>
+
+                        <RadioButton
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="아니오-깔짚위로 송아지 다리가 많이 보임"
+                            android:textSize="15dp"></RadioButton>
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            //여기까지 하나
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_circle_line"
                 android:orientation="vertical">//여기부터
 
                 <LinearLayout
@@ -731,26 +1004,25 @@
                         android:id="@+id/nb15"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  15"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
                         android:background="@drawable/survey_number"
-                        />
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/q15"
                         android:layout_width="wrap_content"
                         android:layout_height="80dp"
-                        android:text="포유송아지 사육시설에 추위로부터 체온을 보호할 수 있는 보온등을 갖추었고 모든 송아지가 이용 가능한가?"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
                         android:gravity="top"
-                        />
+                        android:paddingTop="0dp"
+                        android:text="@string/calf_warm_title"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -760,14 +1032,13 @@
                     android:orientation="vertical">
 
                     <RadioGroup
-                        android:id="@+id/breed_batch_warm_rdogrp15"
+                        android:id="@+id/calf_warm_rg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:paddingLeft="20dp">
 
                         <RadioButton
-                            android:id="@+id/breed_batch_warm_a15_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -775,7 +1046,6 @@
                             android:textSize="15dp"></RadioButton>
 
                         <RadioButton
-                            android:id="@+id/breed_batch_warm_a15_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -785,15 +1055,16 @@
 
                 </LinearLayout>
 
-            </LinearLayout>//여기까지 하나
+            </LinearLayout>
+            //여기까지 하나
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_circle_line"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/button_circle_line"
                 android:orientation="vertical">//여기부터
 
                 <LinearLayout
@@ -805,26 +1076,25 @@
                         android:id="@+id/nb16"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  16"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:paddingBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorWhite"
                         android:background="@drawable/survey_number"
-                        />
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/q16"
                         android:layout_width="wrap_content"
                         android:layout_height="80dp"
-                        android:text="포유송아지 사육시설에 춥고 매서운 바람(북서풍 등)을 피할 수 있는 바람차단시설이 갖춰져 있는가?"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         android:layout_marginRight="10dp"
-                        android:paddingTop="0dp"
-                        android:textColor="@color/colorBlack"
                         android:gravity="top"
-                        />
+                        android:paddingTop="0dp"
+                        android:text="@string/calf_wind_block_title"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -834,14 +1104,13 @@
                     android:orientation="vertical">
 
                     <RadioGroup
-                        android:id="@+id/breed_batch_wind_Block_rdogrp16"
+                        android:id="@+id/calf_wind_block_rg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:paddingLeft="20dp">
 
                         <RadioButton
-                            android:id="@+id/breed_batch_wind_Block_a16_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -849,7 +1118,6 @@
                             android:textSize="15dp"></RadioButton>
 
                         <RadioButton
-                            android:id="@+id/breed_batch_wind_Block_a16_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -858,6 +1126,7 @@
                     </RadioGroup>
 
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -865,15 +1134,41 @@
                     android:text="세부기준점수"
                     android:textColor="@color/colorWhite"
                     android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/calf_winter_rest_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+            </LinearLayout>
+            //여기까지 하나
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/breed_calf_winter_rest_score"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/warm_ventilation_score_title"/>
+                <TextView
+                    android:id="@+id/warm_ventilation_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16dp" />
-            </LinearLayout>//여기까지 하나
+                    />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

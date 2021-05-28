@@ -23,6 +23,8 @@ import com.example.animal_project.BreedBatchQuestion.Breed_q5;
 import com.example.animal_project.Input_userinfo;
 import com.example.animal_project.R;
 
+import org.w3c.dom.Text;
+
 public class Breed_batch_2 extends AppCompatActivity {
     private View view;
     private String result;
@@ -30,6 +32,11 @@ public class Breed_batch_2 extends AppCompatActivity {
     Integer straw_Feed_Tank = 0, straw_Normal = 0, straw_Resting_Place = 0, outward_Hygiene = 0, shade = 0, summer_Ventilating = 0, mist_Spary = 0,
     wind_Block_Adult = 0, winter_Ventilating = 0, straw = 0, warm = 0, wind_Block_Child = 0;
 
+    TextView breed_summer_rest_score;
+    TextView breed_winter_rest_score;
+    TextView calf_summer_rest_score;
+    TextView calf_winter_rest_score;
+    TextView warm_ventilation_score;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,18 +45,30 @@ public class Breed_batch_2 extends AppCompatActivity {
 
 
         EditText breed_outward_hygiene_ed = findViewById(R.id.breed_outward_hygiene_ed);
-        RadioGroup rdiog_9_shade = (RadioGroup) findViewById(R.id.breed_batch_shade_rdogrp9); //9번 문항
-        RadioGroup rdiog_10_summer_ventilating = (RadioGroup) findViewById(R.id.breed_batch_summer_Ventilating_rdogrp10); //10번 문항
-        RadioGroup rdiog_11_mist_spary = (RadioGroup) findViewById(R.id.breed_batch_mist_Spary_rdogrp11); //11번 문항
-        RadioGroup rdiog_12_wind_block = (RadioGroup) findViewById(R.id.breed_batch_wind_Block_rdogrp12); //11번 문항
-        RadioGroup rdiog_13_winter_ventilating = (RadioGroup) findViewById(R.id.breed_batch_winter_Ventilating_rdogrp13);
-        RadioGroup rdiog_14_straw = (RadioGroup) findViewById(R.id.breed_batch_straw_rdogrp14);
-        RadioGroup rdiog_15_warm = (RadioGroup) findViewById(R.id.breed_batch_warm_rdogrp15);
-        RadioGroup rdiog_16_wind_block = (RadioGroup) findViewById(R.id.breed_batch_wind_Block_rdogrp16);
 
-        TextView breed_summer_rest_score = (TextView) findViewById(R.id.breed_summer_rest_score);
-        TextView breed_winter_rest_score = (TextView) findViewById(R.id.breed_winter_rest_score);
-        TextView breed_calf_winter_rest_score = (TextView) findViewById(R.id.breed_calf_winter_rest_score);
+
+        breed_summer_rest_score = (TextView) findViewById(R.id.breed_summer_rest_score);
+        breed_winter_rest_score = (TextView) findViewById(R.id.breed_winter_rest_score);
+        calf_summer_rest_score = findViewById(R.id.calf_summer_rest_score);
+        calf_winter_rest_score = (TextView) findViewById(R.id.calf_winter_rest_score);
+        warm_ventilation_score = findViewById(R.id.warm_ventilation_score);
+
+
+        RadioGroup breed_shade_rg = (RadioGroup) findViewById(R.id.breed_shade_rg); //9번 문항
+        RadioGroup breed_summer_Ventilating_rg = (RadioGroup) findViewById(R.id.breed_summer_ventilating_rg); //10번 문항
+        RadioGroup breed_mist_spary_rg = (RadioGroup) findViewById(R.id.breed_mist_spary_rg); //11번 문항
+        RadioGroup breed_wind_block_rg = (RadioGroup) findViewById(R.id.breed_wind_block_rg); //11번 문항
+        RadioGroup breed_winter_ventilating_rg = (RadioGroup) findViewById(R.id.breed_winter_ventilating_rg);
+
+        RadioGroup calf_shade_rg = findViewById(R.id.calf_shade_rg);
+        RadioGroup calf_summer_ventilating_rg = findViewById(R.id.calf_summer_ventilating_rg);
+        RadioGroup calf_mist_spary_rg = findViewById(R.id.calf_mist_spary_rg);
+
+        RadioGroup calf_straw_rg = (RadioGroup) findViewById(R.id.calf_straw_rg);
+        RadioGroup calf_warm_rg = (RadioGroup) findViewById(R.id.calf_warm_rg);
+        RadioGroup calf_wind_block_rg = (RadioGroup) findViewById(R.id.calf_wind_block_rg);
+
+
         TextView breed_outward_hygiene_ratio = findViewById(R.id.breed_outward_Hygiene_ratio);
         TextView breed_outward_hygiene_score = findViewById(R.id.breed_outward_Hygiene_score);
 
@@ -110,114 +129,27 @@ public class Breed_batch_2 extends AppCompatActivity {
                     breed_outward_hygiene_ratio.setText("값을 입력해주세요");
                     breed_outward_hygiene_score.setText("값을 입력해주세요");
                 } else {
+                    TextView breed_rest_score = findViewById(R.id.breed_rest_score);
                     float ratio = Float.parseFloat(breed_outward_hygiene_ed.getText().toString()) / sample_size_count  ;
                     ratio = ratio * 100;
                     ratio = Math.round(ratio);
                     breed_outward_hygiene_ratio.setText(String.valueOf(ratio));
                     outward_Hygiene = getOutwardHygieneScore(ratio);
                     breed_outward_hygiene_score.setText(String.valueOf(outward_Hygiene));
+                    // 편안한 휴식 종합 점수
+                    breed_rest_score.setText(String.valueOf(getRestScore(0, outward_Hygiene)));
                 }
-            }
-        });
-        rdiog_9_shade.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_shade_a9_1) {
-                    shade = 1;
-                } else if (checkedId == R.id.breed_batch_shade_a9_2) {
-                    shade = 2;
-                }
-                breed_summer_rest_score.setText(Integer.toString(getSummerRestScore(shade,summer_Ventilating,mist_Spary)));
             }
         });
 
-        rdiog_10_summer_ventilating.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_summer_Ventilating_a10_1) {
-                    summer_Ventilating = 1;
-                } else if (checkedId == R.id.breed_batch_summer_Ventilating_a10_2) {
-                    summer_Ventilating = 2;
-                }
-                breed_summer_rest_score.setText(Integer.toString(getSummerRestScore(shade,summer_Ventilating,mist_Spary)));
-            }
-        });
 
-        rdiog_11_mist_spary.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_mist_Spary_a11_1) {
-                    mist_Spary = 1;
-                } else if (checkedId == R.id.breed_batch_mist_Spary_a11_2) {
-                    mist_Spary = 2;
-                }
-                breed_summer_rest_score.setText(Integer.toString(getSummerRestScore(shade,summer_Ventilating,mist_Spary)));
-            }
-        });
+        setSummerScore(breed_shade_rg,breed_summer_Ventilating_rg,breed_mist_spary_rg,breed_summer_rest_score);
+        setBreedWinterScore(breed_wind_block_rg,breed_winter_ventilating_rg,breed_winter_rest_score);
 
-        rdiog_12_wind_block.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_wind_Block_a12_1) {
-                    wind_Block_Adult = 1;
-                } else if (checkedId == R.id.breed_batch_wind_Block_a12_2) {
-                    wind_Block_Adult = 2;
-                }
-                breed_winter_rest_score.setText(Integer.toString(getWinterRestScore(wind_Block_Adult,winter_Ventilating)));
-            }
-        });
+        setSummerScore(calf_shade_rg,calf_summer_ventilating_rg,calf_mist_spary_rg,calf_summer_rest_score);
+        setCalfWinterScore(calf_straw_rg,calf_warm_rg,calf_wind_block_rg,calf_winter_rest_score);
 
-        rdiog_13_winter_ventilating.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_winter_Ventilating_a13_1) {
-                    winter_Ventilating = 1;
-                } else if (checkedId == R.id.breed_batch_winter_Ventilating_a13_2) {
-                    winter_Ventilating = 2;
-                }
-                breed_winter_rest_score.setText(Integer.toString(getWinterRestScore(wind_Block_Adult,winter_Ventilating)));
-            }
-        });
 
-        rdiog_14_straw.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_straw_a14_1) {
-                    straw = 1;
-                } else if (checkedId == R.id.breed_batch_straw_a14_2) {
-                    straw = 2;
-                }
-                breed_calf_winter_rest_score.setText(Integer.toString(getWinterCalfRestScore(
-                        straw,warm,wind_Block_Child)));
-            }
-        });
-
-        rdiog_15_warm.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_warm_a15_1) {
-                    warm = 1;
-                } else if (checkedId == R.id.breed_batch_warm_a15_2) {
-                    warm = 2;
-                }
-
-                breed_calf_winter_rest_score.setText(Integer.toString(getWinterCalfRestScore(
-                        straw,warm,wind_Block_Child)));
-            }
-        });
-
-        rdiog_16_wind_block.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.breed_batch_wind_Block_a16_1) {
-                    wind_Block_Child = 1;
-                } else if (checkedId == R.id.breed_batch_wind_Block_a16_2) {
-                    wind_Block_Child = 2;
-                }
-                breed_calf_winter_rest_score.setText(Integer.toString(getWinterCalfRestScore(
-                        straw,warm,wind_Block_Child)));
-            }
-        });
 
         Button breed_batch_pre_2_btn = (Button) findViewById(R.id.breed_batch_pre_2_btn);
         Button breed_batch_next_2_btn = (Button) findViewById(R.id.breed_batch_next_2_btn);
@@ -252,6 +184,10 @@ public class Breed_batch_2 extends AppCompatActivity {
                 startActivity(intent_Breed_batch_3);
             }
         });
+    }
+    private double getRestScore(int strawScore, int outwardScore)
+    {
+        return (strawScore * 0.5) + (outwardScore * 0.5);
     }
     private int getOutwardHygieneScore(float ratio)
     {
@@ -381,5 +317,218 @@ public class Breed_batch_2 extends AppCompatActivity {
         }
         return winterCalfRestScore;
     }
+
+
+    private void setSummerScore(RadioGroup shadeRg, RadioGroup ventilatingRg, RadioGroup mistSparyRg, TextView SummerScoreTv){
+        final int[] shade = {0};
+        final int[] ventilating = {0};
+        final int[] mistSpray = {0};
+        final int[] score = {0};
+
+        shadeRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        shade[0] = 1;
+                        score[0] = getSummerRestScore(shade[0],ventilating[0],mistSpray[0]);
+                        SummerScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        shade[0] = 2;
+                        score[0] = getSummerRestScore(shade[0],ventilating[0],mistSpray[0]);
+                        SummerScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                }
+                setWarmVentilationScore(breed_summer_rest_score,breed_winter_rest_score,calf_summer_rest_score,calf_winter_rest_score,warm_ventilation_score);
+            }
+        });
+        ventilatingRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        ventilating[0] = 1;
+                        score[0] = getSummerRestScore(shade[0],ventilating[0],mistSpray[0]);
+                        SummerScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        ventilating[0] = 2;
+                        score[0] = getSummerRestScore(shade[0],ventilating[0],mistSpray[0]);
+                        SummerScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                }
+                setWarmVentilationScore(breed_summer_rest_score,breed_winter_rest_score,calf_summer_rest_score,calf_winter_rest_score,warm_ventilation_score);
+            }
+        });
+        mistSparyRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        mistSpray[0] = 1;
+                        score[0] = getSummerRestScore(shade[0],ventilating[0],mistSpray[0]);
+                        SummerScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        mistSpray[0] = 2;
+                        score[0] = getSummerRestScore(shade[0],ventilating[0],mistSpray[0]);
+                        SummerScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                }
+                setWarmVentilationScore(breed_summer_rest_score,breed_winter_rest_score,calf_summer_rest_score,calf_winter_rest_score,warm_ventilation_score);
+            }
+        });
+
+
+
+    }
+    private void setBreedWinterScore(RadioGroup windBlockRg, RadioGroup WinterVentilatingRg, TextView WinterScoreTv){
+        final int[] windBlock = {0};
+        final int[] ventilating = {0};
+        final int[] score = {0};
+        windBlockRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        windBlock[0] = 1;
+                        score[0] = getWinterRestScore(windBlock[0],ventilating[0]);
+                        WinterScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        windBlock[0] = 2;
+                        score[0] = getWinterRestScore(windBlock[0],ventilating[0]);
+                        WinterScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                }
+                setWarmVentilationScore(breed_summer_rest_score,breed_winter_rest_score,calf_summer_rest_score,calf_winter_rest_score,warm_ventilation_score);
+            }
+        });
+        WinterVentilatingRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        ventilating[0] = 1;
+                        score[0] = getWinterRestScore(windBlock[0],ventilating[0]);
+                        WinterScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        ventilating[0] = 2;
+                        score[0] = getWinterRestScore(windBlock[0],ventilating[0]);
+                        WinterScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                }
+                setWarmVentilationScore(breed_summer_rest_score,breed_winter_rest_score,calf_summer_rest_score,calf_winter_rest_score,warm_ventilation_score);
+            }
+        });
+
+    }
+    private void setCalfWinterScore(RadioGroup strawRg, RadioGroup warmRg, RadioGroup windBlockRg, TextView CalfWinterScoreTv){
+        final int[] straw = {0};
+        final int[] warm = {0};
+        final int[] windBlock = {0};
+        final int[] score = {0};
+
+        strawRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        straw[0] = 1;
+                        score[0] = getWinterCalfRestScore(straw[0],warm[0],windBlock[0]);
+                        CalfWinterScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        straw[0] = 2;
+                        score[0] = getSummerRestScore(straw[0],warm[0],windBlock[0]);
+                        CalfWinterScoreTv.setText(String.valueOf(score[0]));
+
+                        break;
+                }
+                setWarmVentilationScore(breed_summer_rest_score,breed_winter_rest_score,calf_summer_rest_score,calf_winter_rest_score,warm_ventilation_score);
+            }
+        });
+        warmRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        warm[0] = 1;
+                        score[0] = getSummerRestScore(straw[0],warm[0],windBlock[0]);
+                        CalfWinterScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        warm[0] = 2;
+                        score[0] = getSummerRestScore(straw[0],warm[0],windBlock[0]);
+                        CalfWinterScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                }
+                setWarmVentilationScore(breed_summer_rest_score,breed_winter_rest_score,calf_summer_rest_score,calf_winter_rest_score,warm_ventilation_score);
+            }
+        });
+        windBlockRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = group.findViewById(checkedId);
+                int index = group.indexOfChild(radioButton);
+                switch (index) {
+                    case 0:
+                        windBlock[0] = 1;
+                        score[0] = getSummerRestScore(straw[0],warm[0],windBlock[0]);
+                        CalfWinterScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                    case 1:
+                        windBlock[0] = 2;
+                        score[0] = getSummerRestScore(straw[0],warm[0],windBlock[0]);
+                        CalfWinterScoreTv.setText(String.valueOf(score[0]));
+                        break;
+                }
+                setWarmVentilationScore(breed_summer_rest_score,breed_winter_rest_score,calf_summer_rest_score,calf_winter_rest_score,warm_ventilation_score);
+            }
+        });
+
+
+    }
+    private void setWarmVentilationScore(TextView breedSummerScoreTv, TextView breedWinterScoreTv, TextView calfSummerScoreTv, TextView calfWinterScoreTv, TextView warmVentilationScore) {
+        if(TextUtils.isEmpty(breedSummerScoreTv.getText())
+                || TextUtils.isEmpty(breedWinterScoreTv.getText())
+                || TextUtils.isEmpty(calfSummerScoreTv.getText())
+                || TextUtils.isEmpty(calfWinterScoreTv.getText())) {
+                warmVentilationScore.setText("편안한 열환경과 환기에 대한 설문을 모두 완료해주세요.");
+        } else {
+            int breedSummerScore = Integer.parseInt(String.valueOf(breedSummerScoreTv.getText()));
+            int breedWinterScore = Integer.parseInt(String.valueOf(breedWinterScoreTv.getText()));
+            int calfSummerScore = Integer.parseInt(String.valueOf(calfSummerScoreTv.getText()));
+            int calfWinterScore = Integer.parseInt(String.valueOf(calfWinterScoreTv.getText()));
+            double score = (breedSummerScore * 0.35) + (breedWinterScore * 0.15) + (calfSummerScore * 0.25) + (calfWinterScore * 0.25);
+
+            warmVentilationScore.setText(String.valueOf(score));
+        }
+    }
+
 }
 

@@ -22,6 +22,7 @@
     <string name="pen_location_18">18동 표본 펜 위치</string>
     <string name="pen_location_19">19동 표본 펜 위치</string>
     <string name="pen_location_20">20동 표본 펜 위치</string>
+    <string name="choice_dong">축사동 수를 선택하세요</string>
     <string name="pen_location_hint">표본 펜 위치를 입력하세요 ex ) 1 , 2 , 3</string>
     <string name="water_tank_time_pen_1">표본 펜 음수 행동 간이측정 점수</string>
     <string name="pen_total_cow">펜에 있는 소는 총 몇 두입니까?</string>
@@ -32,9 +33,11 @@
     <string name="drinking_water_time_hint">음수 우의 음수 시간을 입력해주세요 (분 단위)</string>
     <string name="wating_ratio_cow">음수를 대기하고 있는 대기 우 비율 (%)</string>
     <string name="water_tank_time">음수 행동 간이 측정 점수</string>
+    <string name="water_score_title">충분한 물섭취 종합 점수</string>
     <string name="title_q4">동별 음수 행동 간이 점수 측정</string>
     <string name="title_q5">동별 깔짚 수분 간이 점수 측정</string>
     <string name="straw_score">표본 펜 깔짚 수분 간이측정 점수</string>
+    <string name="straw_title">깔짚 수분 평가</string>
     <string name="breed_straw_1_title">사료조 근처의 "즉시 깔짚교체 시기"의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)</string>
     <string name="breed_straw_2_title">사료조와 주 휴식장소사이의 "즉시 깔짚교체 시기"의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)</string>
     <string name="breed_straw_3_title">주 휴식장소사이의 "즉시 깔짚교체 시기"의 비율이 얼마나 되는가? (즉시 깔짚교체 시기-깔집을 쥐었을때 수분방울이 맺히거나 흘러내림)</string>
@@ -43,7 +46,10 @@
     <string name="water_tank_form">음수조는 어떤 형태입니까?</string>
     <string name="outward_Hygiene">표본우군 중 미흡 수준의 두수를 입력하세요</string>
     <string name="outward_hygiene_score">가축외형 위생 점수</string>
+    <string name="outward_hygiene_justice">미흡 : 전체 몸통부위 중 고상 이물질 면적 25%, 액상 이물질 면적 50% 초과</string>
     <string name="outward_hygiene_ratio">표본우군 중 미흡 수준의 비율</string>
+    <string name="outward_hygiene_title">전체 몸통 부위 면적 중 고상 이물질 분포 25% 초과하고 액상 이물질 분포 50% 초과하는 개체의 비율이 얼마나 되는가?</string>
+    <string name="rest_score_title">편안한 휴식 종합 점수</string>
     <string name="hairloss_title">외피 변형 점수</string>
     <string name="slight_hairloss">경미한 외피변형 두수를 입력해주세요</string>
     <string name="critical_hairloss">심각한 외피변형 두수를 입력하세요</string>
@@ -86,5 +92,20 @@
     <string name="harmony_question">펜에서 10분동안 관찰한 화합 행동 빈도</string>
     <string name="harmony_question_hint">10분동안 관찰한 화합 행동 수를 입력하세요</string>
     <string name="harmony_justice">화합행동 : 사회적 핥기, 뿔놀이</string>
-
+    <string name="breed_shade_title">더울 때 주 사육시설에 모든 가축이 직사광선을 피해 쉴 수 있는 충분한 그늘이 제공되는가?</string>
+    <string name="breed_summer_ventilating_title">주 사육시설에 환기팬이 갖춰져 있고 더위를 대비한 충분한 풍속을 제공하는가</string>
+    <string name="breed_mist_spray_title">주 사육시설에 더위를 대비한 안개분무시설이 갖춰져 있는가?</string>
+    <string name="breed_wind_block_title">주 사육시설에 모든 가축이 춥고 매서운 바람(북서풍 등)을 피할 수 있는 충분한 바람차단시설이 갖춰져 있는가?</string>
+    <string name="breed_winter_ventilating_title">주 사육시설에 환기팬이 갖춰져 있고 추운 계절에도 환기를 위한 최소한의 풍속 시스템 운영방안을 갖추고 있는가?</string>
+    <string name="calf_shade_title">더울 때 포유송아지 사육시설에 모든 가축이 직사광선을 피해 쉴 수 있는 충분한 그늘이 제공되는가?</string>
+    <string name="calf_summer_ventilating_title">포유송아지 사육시설에 환기팬이 갖춰져 있고 더위를 대비한 충분한 풍속을 제공하는가?</string>
+    <string name="calf_mist_spray_title">포유송아지 사육시설에 더위를 대비한 안개분무시설이 갖춰져 있는가?</string>
+    <string name="calf_straw_title">포유송아지 사육시설에 추위로부터 체온을 보호할 수 있는 마른 깔짚을 충분히 갖추었는가?</string>
+    <string name="calf_warm_title">포유송아지 사육시설에 추위로부터 체온을 보호할 수 있는 보온등을 갖추었고 모든 송아지가 이용 가능한가?</string>
+    <string name="calf_wind_block_title">포유송아지 사육시설에 춥고 매서운 바람(북서풍 등)을 피할 수 있는 바람차단시설이 갖춰져 있는가?</string>
+    <string name="warm_ventilation_score_title">편안한 열환경과 환기 종합 점수</string>
+    <string name="min_injury_score_title">상해의 최소화 종합 점수</string>
+    <string name="disease_score_title">질병의 최소화 종합 점수</string>
+    <string name="min_pain_score_title">고통의 최소화 종합 점수</string>
+    <string name="social_behavior_score_title">사회적 행동의 표현 종합 점수</string>
 </resources>

@@ -57,7 +57,6 @@
                         android:id="@+id/nb17"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  17"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -145,7 +144,6 @@
                         android:id="@+id/nb18"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  18"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -273,7 +271,28 @@
                     android:textSize="16dp" />
 
             </LinearLayout>//여기까지 하나
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/min_injury_score_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/breed_min_injury_score"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -295,7 +314,6 @@
                         android:background="@drawable/survey_number"
                         android:gravity="center_vertical"
                         android:paddingBottom="10dp"
-                        android:text="  20"
                         android:textColor="@color/colorWhite"
                         android:textSize="17dp"
                         android:textStyle="bold" />
@@ -391,7 +409,6 @@
                         android:id="@+id/nb21"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  21"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -499,7 +516,6 @@
                         android:id="@+id/nb22"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  22"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -610,7 +626,6 @@
                         android:id="@+id/nb23"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  23"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -720,7 +735,6 @@
                         android:id="@+id/nb24"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  24"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -829,7 +843,6 @@
                         android:id="@+id/nb25"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  25"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -938,7 +951,6 @@
                         android:id="@+id/nb26"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  26"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -1028,7 +1040,28 @@
                 </LinearLayout>
 
             </LinearLayout>//여기까지 하나
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/disease_score_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:id="@+id/breed_disease_score"
+                    android:textSize="16dp" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -1047,7 +1080,6 @@
                         android:id="@+id/nb27"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  27"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -1137,7 +1169,6 @@
                         android:id="@+id/nb28"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  28"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -1211,7 +1242,6 @@
                         android:id="@+id/nb29"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  29"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -1297,7 +1327,6 @@
                         android:id="@+id/nb30"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  30"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -1387,7 +1416,6 @@
                         android:id="@+id/nb31"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  31"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -1461,7 +1489,6 @@
                         android:id="@+id/nb32"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  32"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -1528,6 +1555,28 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="16dp" />
             </LinearLayout>//여기까지 하나
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/min_pain_score_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/breed_min_pain_score"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

@@ -55,7 +55,6 @@
                         android:id="@+id/nb33"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  33"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -166,7 +165,6 @@
                         android:id="@+id/nb34"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  34"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -258,7 +256,28 @@
                     android:textSize="16dp" />
 
             </LinearLayout>//여기까지 하나
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/social_behavior_score_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/breed_social_behavior_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -277,7 +296,6 @@
                         android:id="@+id/nb35"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  35"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -339,7 +357,6 @@
                         android:id="@+id/nb36"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  36"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
@@ -401,7 +418,6 @@
                         android:id="@+id/nb37"
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:text="  37"
                         android:textSize="17dp"
                         android:textStyle="bold"
                         android:paddingBottom="10dp"
