@@ -3,5 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="프로토콜 3"
+        android:textSize="16dp"
+        android:textColor="@color/colorWhite"
+        />
+    <TextView
+        android:id="@+id/total_result_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="16dp" />
 </LinearLayout>

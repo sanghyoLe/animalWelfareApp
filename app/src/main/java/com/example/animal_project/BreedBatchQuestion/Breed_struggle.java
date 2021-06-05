@@ -118,7 +118,7 @@ public class Breed_struggle extends AppCompatActivity {
                 breed_struggle_ratio_tv_7,breed_struggle_ratio_tv_8,breed_struggle_ratio_tv_9,breed_struggle_ratio_tv_10,
                 breed_struggle_ratio_tv_11,breed_struggle_ratio_tv_12};
         Button breed_struggle_button = findViewById(R.id.breed_struggle_button);
-        int [] struggleRatioArr = new int[12];
+        double [] struggleRatioArr = new double[12];
         breed_struggle_button.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -130,7 +130,7 @@ public class Breed_struggle extends AppCompatActivity {
                         checkEmpty = true;
                         emptyDong = idx + 1;
                     }  else {
-                        struggleRatioArr[idx] = Integer.parseInt((String) struggleRatioTvArr[idx].getText());
+                        struggleRatioArr[idx] = Double.parseDouble((String) struggleRatioTvArr[idx].getText());
                     }
                 }
                 // 이전 화면으로 돌아가기 ( 빈 값 있는지 체크 )
@@ -138,11 +138,12 @@ public class Breed_struggle extends AppCompatActivity {
                     String msg = emptyDong + "동의 빈 값을 입력해주세요";
                     Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG ).show();
                 } else {
-                    int sum = Arrays.stream(struggleRatioArr).sum();
-                    sum = sum / dong_size;
+                    double sum = Arrays.stream(struggleRatioArr).sum();
+                    sum = sum / (double)dong_size;
+                    sum = Math.round(sum*100)/ 100.0;
                     Intent intent = new Intent();
                     intent.putExtra("sum", sum);
-                    setResult(0, intent);
+                    setResult(1, intent);
                     finish();
                 }
 
@@ -159,8 +160,8 @@ public class Breed_struggle extends AppCompatActivity {
         }
     }
     private void setStruggleRatio(EditText breed_struggle_total_ed, EditText breed_struggle_ed, TextView breed_struggle_ratio_tv){
-        float pen_total_cow[] = new float[1];
-        float struggle_count[] = new float[1];
+        double pen_total_cow[] = new double[1];
+        double struggle_count[] = new double[1];
         breed_struggle_total_ed.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -177,9 +178,10 @@ public class Breed_struggle extends AppCompatActivity {
                 if(TextUtils.isEmpty(breed_struggle_total_ed.getText()) || TextUtils.isEmpty(breed_struggle_ed.getText())){
                     breed_struggle_ratio_tv.setText("값을 입력하세요");
                 } else{
-                    pen_total_cow[0]  = Float.parseFloat(breed_struggle_total_ed.getText().toString());
-                    struggle_count[0] = Float.parseFloat(breed_struggle_ed.getText().toString());
-                    float struggleRatio = Math.round(((struggle_count[0]/pen_total_cow[0]) * 100 )/100)*6;
+                    pen_total_cow[0]  = Double.parseDouble(breed_struggle_total_ed.getText().toString());
+                    struggle_count[0] = Double.parseDouble(breed_struggle_ed.getText().toString());
+                    double struggleRatio = Math.round((struggle_count[0]/pen_total_cow[0])*100)/ 100.0;
+                    struggleRatio = struggleRatio * 6;
                     breed_struggle_ratio_tv.setText(String.valueOf(struggleRatio));
                 }
             }
@@ -201,9 +203,10 @@ public class Breed_struggle extends AppCompatActivity {
                 if(TextUtils.isEmpty(breed_struggle_total_ed.getText()) || TextUtils.isEmpty(breed_struggle_ed.getText())){
                     breed_struggle_ratio_tv.setText("값을 입력하세요");
                 } else{
-                    pen_total_cow[0]  = Float.parseFloat(breed_struggle_total_ed.getText().toString());
-                    struggle_count[0] = Float.parseFloat(breed_struggle_ed.getText().toString());
-                    float struggleRatio = Math.round(((struggle_count[0]/pen_total_cow[0]) * 100 )/100)*6;
+                    pen_total_cow[0]  = Double.parseDouble(breed_struggle_total_ed.getText().toString());
+                    struggle_count[0] = Double.parseDouble(breed_struggle_ed.getText().toString());
+                    double struggleRatio = Math.round((struggle_count[0]/pen_total_cow[0])*100)/ 100.0;
+                    struggleRatio = struggleRatio * 6;
                     breed_struggle_ratio_tv.setText(String.valueOf(struggleRatio));
 
                 }

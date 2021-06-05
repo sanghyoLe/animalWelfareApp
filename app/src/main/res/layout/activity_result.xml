@@ -17,9 +17,12 @@
         app:tabSelectedTextColor="#000000"
         app:tabTextColor="#3F51B5" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_below="@id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+
+    </FrameLayout>
 
 </LinearLayout>

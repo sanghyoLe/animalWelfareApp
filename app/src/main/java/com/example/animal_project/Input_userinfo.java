@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 
+import android.util.Log;
 import android.view.MotionEvent;
 
 import android.view.View;
@@ -26,18 +27,14 @@ import com.example.animal_project.Farm_Activity.MilkCow_1;
 
 
 public class Input_userinfo extends AppCompatActivity {
-    private static EditText editText;
-    private static TextView textView;
     public static Context context_userinfo;
     public String result;
     public String total_cow_count;
     public String sample_size_count;
     private static final int SEARCH_ADDRESS_ACTIVITY = 10000;
     private EditText et_address;
+    private int input_checked = 0;
 
-    Integer input_checked = null;
-    String farm_name;
-    String farm_location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,13 +67,14 @@ public class Input_userinfo extends AppCompatActivity {
         farm_selector.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(input_checked != null) {
+                if(input_checked != 0) {
                     if (input_checked == 1) {
                         Intent intent_Fatten = new Intent(Input_userinfo.this, Fatten_1.class);
                         startActivity(intent_Fatten);
                     }
                     else if (input_checked == 2 || input_checked == 3) {
                         Intent intent_Breed_Batch = new Intent(Input_userinfo.this, Breed_batch_1.class);
+                        sendInputChecked(intent_Breed_Batch,input_checked);
                         startActivity(intent_Breed_Batch);
                     }
                     else if (input_checked == 4) {
@@ -213,4 +211,11 @@ public class Input_userinfo extends AppCompatActivity {
             return "73";
         }
     }
+   private void sendInputChecked(Intent intent, int inputChecked){
+        Bundle bundle = new Bundle();
+        bundle.putInt("inputChecked",inputChecked);
+        intent.putExtras(bundle);
+
+   }
+
 }

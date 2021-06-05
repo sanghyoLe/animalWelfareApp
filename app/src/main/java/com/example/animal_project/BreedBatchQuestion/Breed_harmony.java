@@ -115,7 +115,7 @@ public class Breed_harmony extends AppCompatActivity {
                 breed_harmony_ratio_tv_7,breed_harmony_ratio_tv_8,breed_harmony_ratio_tv_9,breed_harmony_ratio_tv_10,
                 breed_harmony_ratio_tv_11,breed_harmony_ratio_tv_12};
         Button breed_harmony_button = findViewById(R.id.breed_harmony_button);
-        int [] harmonyRatioArr = new int[12];
+        double [] harmonyRatioArr = new double[12];
         breed_harmony_button.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -127,7 +127,7 @@ public class Breed_harmony extends AppCompatActivity {
                         checkEmpty = true;
                         emptyDong = idx + 1;
                     }  else {
-                        harmonyRatioArr[idx] = Integer.parseInt((String) harmonyRatioTvArr[idx].getText());
+                        harmonyRatioArr[idx] = Double.parseDouble((String) harmonyRatioTvArr[idx].getText());
                     }
                 }
                 // 이전 화면으로 돌아가기 ( 빈 값 있는지 체크 )
@@ -135,10 +135,12 @@ public class Breed_harmony extends AppCompatActivity {
                     String msg = emptyDong + "동의 빈 값을 입력해주세요";
                     Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG ).show();
                 } else {
-                    int sum = Arrays.stream(harmonyRatioArr).sum();
+                    double sum = Arrays.stream(harmonyRatioArr).sum();
+                    sum = sum / (double) dong_size;
+                    sum = Math.round(sum*100) / 100.0;
                     Intent intent = new Intent();
                     intent.putExtra("sum", sum);
-                    setResult(1, intent);
+                    setResult(2, intent);
                     finish();
                 }
 
@@ -155,8 +157,8 @@ public class Breed_harmony extends AppCompatActivity {
         }
     }
     private void setHarmonyRatio(EditText harmony_total_ed, EditText harmony_ed, TextView harmony_ratio_tv){
-        float pen_total_cow[] = new float[1];
-        float harmony_count[] = new float[1];
+        double pen_total_cow[] = new double[1];
+        double harmony_count[] = new double[1];
         harmony_total_ed.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -173,9 +175,11 @@ public class Breed_harmony extends AppCompatActivity {
                 if(TextUtils.isEmpty(harmony_total_ed.getText()) || TextUtils.isEmpty(harmony_ed.getText())){
                     harmony_ratio_tv.setText("값을 입력하세요");
                 } else{
-                    pen_total_cow[0]  = Float.parseFloat(harmony_total_ed.getText().toString());
-                    harmony_count[0] = Float.parseFloat(harmony_ed.getText().toString());
-                    harmony_ratio_tv.setText(String.valueOf(Math.round(harmony_count[0]/pen_total_cow[0])*6));
+                    pen_total_cow[0]  = Double.parseDouble(harmony_total_ed.getText().toString());
+                    harmony_count[0] = Double.parseDouble(harmony_ed.getText().toString());
+                    double harmonyRatio = Math.round((harmony_count[0]/pen_total_cow[0])*100)/100.0;
+                    harmonyRatio = harmonyRatio * 6;
+                    harmony_ratio_tv.setText(String.valueOf(harmonyRatio));
                 }
             }
         });
@@ -196,9 +200,11 @@ public class Breed_harmony extends AppCompatActivity {
                 if(TextUtils.isEmpty(harmony_total_ed.getText()) || TextUtils.isEmpty(harmony_ed.getText())){
                     harmony_ratio_tv.setText("값을 입력하세요");
                 } else{
-                    pen_total_cow[0]  = Float.parseFloat(harmony_total_ed.getText().toString());
-                    harmony_count[0] = Float.parseFloat(harmony_ed.getText().toString());
-                    harmony_ratio_tv.setText(String.valueOf(Math.round(harmony_count[0]/pen_total_cow[0])*6));
+                    pen_total_cow[0]  = Double.parseDouble(harmony_total_ed.getText().toString());
+                    harmony_count[0] = Double.parseDouble(harmony_ed.getText().toString());
+                    double harmonyRatio = Math.round((harmony_count[0]/pen_total_cow[0])*100)/100.0;
+                    harmonyRatio = harmonyRatio * 6;
+                    harmony_ratio_tv.setText(String.valueOf(harmonyRatio));
 
                 }
             }

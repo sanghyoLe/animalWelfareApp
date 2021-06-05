@@ -190,7 +190,7 @@ public class Breed_cough extends AppCompatActivity {
                     int sum = Arrays.stream(coughRatioArr).sum();
                     Intent intent = new Intent();
                     intent.putExtra("key", sum);
-                    setResult(0, intent);
+                    setResult(1, intent);
                     finish();
                 }
 

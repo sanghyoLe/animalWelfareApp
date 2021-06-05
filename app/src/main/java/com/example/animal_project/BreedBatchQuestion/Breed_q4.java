@@ -247,7 +247,7 @@ public class Breed_q4 extends AppCompatActivity {
                     int max = drinkScoreArr[drinkScoreArr.length-1];
                     Intent intent = new Intent();
                     intent.putExtra("key", max);
-                    setResult(0, intent);
+                    setResult(1, intent);
                     finish();
                 }
 

@@ -33,6 +33,7 @@ public class Breed_batch_1 extends AppCompatActivity {
     Integer water_Tank_Num = 0, water_Tank_Clean = 0, water_Tank_Time = 0;
     public String total_cow_count = ((Input_userinfo) Input_userinfo.context_userinfo).total_cow_count;
     int breed_poor_rate_score = 0;
+    private double protocolOneScore;
 
 
 
@@ -40,6 +41,11 @@ public class Breed_batch_1 extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.breed_batch_1);
+
+        Intent intent = getIntent();
+        Bundle BeforeBundle = intent.getExtras();
+        int inputCheck = BeforeBundle.getInt("inputChecked");
+
 
         ScrollView scrollview_freestall_1 = findViewById(R.id.scrollview_freestall_1); //fatten으로
         ed_1_poorRate = (EditText) findViewById(R.id.breed_batch_poor_Rate_a1); //1번 문항
@@ -138,14 +144,12 @@ public class Breed_batch_1 extends AppCompatActivity {
         breed_batch_next_1_btn.setOnClickListener(new View.OnClickListener() { //fragment1로 이동
             @Override
             public void onClick(View v) {
-                String poorRate = ed_1_poorRate.getText().toString();
-                String water_tank_num = Integer.toString(water_Tank_Num);
-                String water_tank_clean = Integer.toString(water_Tank_Clean);
-                String water_tank_time = Integer.toString(water_Tank_Time);
-
-                String[] protocol1 = {poorRate, water_tank_num, water_tank_clean, water_tank_time};
 
                 Intent intent_Breed_batch_2 = new Intent(Breed_batch_1.this, Breed_batch_2.class);
+                Bundle AfterBundle = new Bundle();
+                AfterBundle.putDouble("protocolOneScore",protocolOneScore);
+                AfterBundle.putInt("inputChecked",inputCheck);
+                intent_Breed_batch_2.putExtras(AfterBundle);
                 startActivity(intent_Breed_batch_2);
             }
         });
@@ -180,13 +184,13 @@ public class Breed_batch_1 extends AppCompatActivity {
         TextView breed_total_water_score = findViewById(R.id.breed_total_water_score);
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
-            case 0:
+            case 1:
                 int key = data.getExtras().getInt("key");
                 breed_Drink_Water_Score.setText(String.valueOf(key));
                 // 프로토콜 1 점수
                 breed_total_water_score.setText(String.valueOf(getWaterScore(water_Tank_Num,water_Tank_Clean,key)));
-                double score = getProtocolOneResult(breed_poor_rate_score,getWaterScore(water_Tank_Num,water_Tank_Clean,key));
-
+                protocolOneScore = setProtocolOneResult(breed_poor_rate_score,getWaterScore(water_Tank_Num,water_Tank_Clean,key));
+                Log.d("1",String.valueOf(protocolOneScore));
                 break;
             default:
                 break;
@@ -271,8 +275,8 @@ public class Breed_batch_1 extends AppCompatActivity {
         }
         return waterScore;
     }
-    public double getProtocolOneResult(int PoorScore, int WaterScore){
-
+    private double setProtocolOneResult(int PoorScore, int WaterScore){
         return (PoorScore * 0.7) + (WaterScore * 0.3);
     }
+
 }

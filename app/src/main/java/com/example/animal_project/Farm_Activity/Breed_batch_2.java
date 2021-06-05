@@ -29,6 +29,8 @@ public class Breed_batch_2 extends AppCompatActivity {
     private View view;
     private String result;
     private Button btn_move;
+    private double restScore;
+    private double warmVenScore;
     Integer straw_Feed_Tank = 0, straw_Normal = 0, straw_Resting_Place = 0, outward_Hygiene = 0, shade = 0, summer_Ventilating = 0, mist_Spary = 0,
     wind_Block_Adult = 0, winter_Ventilating = 0, straw = 0, warm = 0, wind_Block_Child = 0;
 
@@ -41,6 +43,10 @@ public class Breed_batch_2 extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.breed_batch_2);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+
 
 
 
@@ -137,7 +143,8 @@ public class Breed_batch_2 extends AppCompatActivity {
                     outward_Hygiene = getOutwardHygieneScore(ratio);
                     breed_outward_hygiene_score.setText(String.valueOf(outward_Hygiene));
                     // 편안한 휴식 종합 점수
-                    breed_rest_score.setText(String.valueOf(getRestScore(0, outward_Hygiene)));
+                    restScore = getRestScore(0, outward_Hygiene);
+                    breed_rest_score.setText(String.valueOf(restScore));
                 }
             }
         });
@@ -179,8 +186,10 @@ public class Breed_batch_2 extends AppCompatActivity {
 
                 String[] protocol2 = {straw_feed_tank, straw_normal, straw_resting_place, outward_hygiene, shade_1, summer_ventilating,
                         mist_spary, wind_block_adult, winter_ventilating, straw_1, warm_1, wind_block_child};
-
+                double protocolTwoScore = setProtocolTwoResult(restScore,warmVenScore);
+                bundle.putDouble("protocolTwoScore",protocolTwoScore);
                 Intent intent_Breed_batch_3 = new Intent(Breed_batch_2.this, Breed_batch_3.class);
+                intent_Breed_batch_3.putExtras(bundle);
                 startActivity(intent_Breed_batch_3);
             }
         });
@@ -524,11 +533,13 @@ public class Breed_batch_2 extends AppCompatActivity {
             int breedWinterScore = Integer.parseInt(String.valueOf(breedWinterScoreTv.getText()));
             int calfSummerScore = Integer.parseInt(String.valueOf(calfSummerScoreTv.getText()));
             int calfWinterScore = Integer.parseInt(String.valueOf(calfWinterScoreTv.getText()));
-            double score = (breedSummerScore * 0.35) + (breedWinterScore * 0.15) + (calfSummerScore * 0.25) + (calfWinterScore * 0.25);
+            warmVenScore = (breedSummerScore * 0.35) + (breedWinterScore * 0.15) + (calfSummerScore * 0.25) + (calfWinterScore * 0.25);
 
-            warmVentilationScore.setText(String.valueOf(score));
+            warmVentilationScore.setText(String.valueOf(warmVenScore));
         }
     }
-
+    private double setProtocolTwoResult(double restScore, double warmVenScore) {
+        return (restScore * 0.6) + (warmVenScore * 0.4);
+    }
 }
 

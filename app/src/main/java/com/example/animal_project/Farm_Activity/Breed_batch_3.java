@@ -31,19 +31,20 @@ public class Breed_batch_3 extends AppCompatActivity {
     private View view;
     private String result;
     private Button btn_move;
-    private EditText breed_batch_Limp_ed, ed_18_slight_Hairloss, ed_19_critical_Hairloss,
-            ed_20_cough, ed_21_runny_Nose, ed_22_ophthalmic_Secretion, ed_23_respiratory_Failure, ed_24_diarrhea,
-            ed_25_ruminant, ed_26_fall_Dead;
-    Integer horn = 0, horn_Anesthesia = 0, horn_Painkiller = 0, castration = 0, castration_Anesthesia = 0,
-            castration_Painkiller = 0, limp_score =0, dong_size = 0;
+    private EditText breed_batch_Limp_ed;
+    Integer limp_score =0, dong_size = 0;
     int sample_size_count = Integer.parseInt(((Input_userinfo)Input_userinfo.context_userinfo).sample_size_count);
     private TextView breed_cough_ratio_tv,breed_runnynose_ratio_tv,breed_ophthalmic_ratio_tv,
             breed_breath_ratio_tv,breed_diarrhea_tv,breed_ruminant_tv,breed_falldead_tv,breed_disease_score_tv,
             breed_horn_removal_score_tv,breed_castration_score_tv, breed_min_pain_score;
+    private double diseaseScore, minPainScore, minInjuryScore;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.breed_batch_3);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
 
         breed_batch_Limp_ed = (EditText) findViewById(R.id.breed_batch_Limp_ed);
 
@@ -228,8 +229,10 @@ public class Breed_batch_3 extends AppCompatActivity {
 
                 String[] protocol3 = { limp, slight_hairloss, critical_hairloss, cought, runny_nose,
                         ophthalmic_secretion, respiratory_failure, diarrhea, ruminant, fall_dead };*/
-
+                double protocolThreeScore = setProtocolThreeResult(minInjuryScore,minPainScore,diseaseScore);
+                bundle.putDouble("protocolThreeScore",protocolThreeScore);
                 Intent intent_Breed_batch_4 = new Intent(Breed_batch_3.this, Breed_batch_4.class);
+                intent_Breed_batch_4.putExtras(bundle);
                 startActivity(intent_Breed_batch_4);
             }
         });
@@ -238,7 +241,7 @@ public class Breed_batch_3 extends AppCompatActivity {
         TextView breed_cough_ratio = findViewById(R.id.breed_cough_ratio);
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
-            case 0:
+            case 1:
                 int key = data.getExtras().getInt("key");
                 key = key / dong_size;
                 breed_cough_ratio.setText(String.valueOf(key));
@@ -669,9 +672,9 @@ public class Breed_batch_3 extends AppCompatActivity {
       } else {
           int LimpScore = Integer.parseInt(String.valueOf(limpScoreTv.getText()));
           int hairLossScore = Integer.parseInt(String.valueOf(hairLossScoreTv.getText()));
-          double score = (LimpScore * 0.6) + (hairLossScore *0.4);
-          score = Math.round(score);
-          minInjuryScoreTv.setText(String.valueOf(score));
+          minInjuryScore = (LimpScore * 0.6) + (hairLossScore *0.4);
+          minInjuryScore = Math.round(minInjuryScore);
+          minInjuryScoreTv.setText(String.valueOf(minInjuryScore));
       }
     }
     private void setMinPainScore(TextView removalScoreTv, TextView castrationScoreTv, TextView minPainScoreTv)
@@ -683,9 +686,9 @@ public class Breed_batch_3 extends AppCompatActivity {
         } else {
             int removalScore = Integer.parseInt(String.valueOf(removalScoreTv.getText()));
             int castrationScore = Integer.parseInt(String.valueOf(castrationScoreTv.getText()));
-            double score = (removalScore * 0.7) + (castrationScore * 0.3);
-            score = Math.round(score);
-            minPainScoreTv.setText(String.valueOf(score));
+            minPainScore = (removalScore * 0.7) + (castrationScore * 0.3);
+            minPainScore = Math.round(minPainScore);
+            minPainScoreTv.setText(String.valueOf(minPainScore));
         }
     }
     private Map getDiseaseSectionOne(TextView runnyNoseTv,TextView ophthalmicTv)
@@ -820,11 +823,11 @@ public class Breed_batch_3 extends AppCompatActivity {
 
         return careWarningScore;
     }
-    private int getDiseaseScore(Map careWarningScore)
+    private double getDiseaseScore(Map careWarningScore)
     {
         int careScore = (int)careWarningScore.get("care");
         int warningScore = (int)careWarningScore.get("warning");
-        int diseaseScore = (100 / 4) * (4 - ((careScore) + 3 * (warningScore)) / 3);
+        diseaseScore = (100 / 4) * (4 - ((careScore) + 3 * (warningScore)) / 3);
 
         return Math.round(diseaseScore);
     }
@@ -853,5 +856,8 @@ public class Breed_batch_3 extends AppCompatActivity {
         } catch(NumberFormatException e) {
             return false;
         }
+    }
+    private double setProtocolThreeResult(double minInjuryScore, double minPainScore, double diseaseScore){
+        return (minInjuryScore * 0.35) + (diseaseScore * 0.4) + (minPainScore * 0.25);
     }
 }
