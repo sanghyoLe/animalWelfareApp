@@ -12,11 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BreedBatchQuestion.Breed_harmony"></activity>
+        <activity android:name=".BreedBatch.BreedWaterDongQ3"></activity>
+        <activity android:name=".QuestionTemplate" />
+        <activity android:name=".BreedBatchQuestion.Breed_harmony" />
         <activity android:name=".BreedBatchQuestion.Breed_struggle" />
         <activity android:name=".BreedBatchQuestion.Breed_cough" />
         <activity android:name=".BreedBatchQuestion.Breed_q5" />
-        <activity android:name=".BreedBatchQuestion.Breed_q4" />
         <activity android:name=".MilkCow_Question.Freestall_q4" />
         <activity android:name=".getStrawScore" />
         <activity android:name=".WebViewActivity" />

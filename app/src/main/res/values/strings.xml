@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">animal_project</string>
+    <string name="wating_drink_cow">1</string>
+    <string name="wating_drink_cow_hint">2</string>
+    <string name="wating_ratio_cow">3</string>
 
 
     <string name="pen_location_1">1동 표본 펜 위치</string>
@@ -25,13 +28,18 @@
     <string name="choice_dong">축사동 수를 선택하세요</string>
     <string name="pen_location_hint">표본 펜 위치를 입력하세요 ex ) 1 , 2 , 3</string>
     <string name="water_tank_time_pen_1">표본 펜 음수 행동 간이측정 점수</string>
+    <string name="water_tank_clean_title">음수조의 위생상태가 어떻습니까?</string>
+    <string name="water_tank_clean_sub_1">검사시 음수조 내부 이물질 없이 맑은 물 확인가능</string>
+    <string name="water_tank_clean_sub_2">부분적 사료와 같은 이물질 보이나 신선한 물 확인가능</string>
+    <string name="water_tank_clean_sub_3">이끼, 분변, 다량의 사료, 벌레 등 다수의 이물질로 인한 탁한 물 확인가능</string>
+    <string name="water_drink_title">음수 대기 우의 여부와 음수 시간은 어떠합니까?</string>
     <string name="pen_total_cow">펜에 있는 소는 총 몇 두입니까?</string>
     <string name="pen_total_cow_hint">펜에 있는 소의 총 두 수를 입력하세요</string>
-    <string name="wating_drink_cow">펜의 음수 대기 우 수는 몇 두 입니까?</string>
-    <string name="wating_drink_cow_hint">펜의 음수 대기 우 수를 입력하세요</string>
+    <string name="waiting_drink_cow">펜의 음수 대기 우 수는 몇 두 입니까?</string>
+    <string name="waiting_drink_cow_hint">펜의 음수 대기 우 수를 입력하세요</string>
     <string name="drinking_water_time">음수 우의 음수 시간은 몇 분입니까?</string>
     <string name="drinking_water_time_hint">음수 우의 음수 시간을 입력해주세요 (분 단위)</string>
-    <string name="wating_ratio_cow">음수를 대기하고 있는 대기 우 비율 (%)</string>
+    <string name="waiting_ratio_cow">음수를 대기하고 있는 대기 우 비율 (%)</string>
     <string name="water_tank_time">음수 행동 간이 측정 점수</string>
     <string name="water_score_title">충분한 물섭취 종합 점수</string>
     <string name="title_q4">동별 음수 행동 간이 점수 측정</string>
@@ -108,4 +116,6 @@
     <string name="disease_score_title">질병의 최소화 종합 점수</string>
     <string name="min_pain_score_title">고통의 최소화 종합 점수</string>
     <string name="social_behavior_score_title">사회적 행동의 표현 종합 점수</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

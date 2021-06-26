@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,7 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.animal_project.BreedBatchQuestion.Breed_cough;
-import com.example.animal_project.BreedBatchQuestion.Breed_q4;
 import com.example.animal_project.Input_userinfo;
 import com.example.animal_project.R;
 

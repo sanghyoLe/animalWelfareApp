@@ -2,27 +2,17 @@ package com.example.animal_project.Farm_Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.animal_project.BreedBatchQuestion.Breed_q4;
 import com.example.animal_project.Input_userinfo;
-import com.example.animal_project.MainActivity;
 import com.example.animal_project.R;
 
 public class Breed_batch_1 extends AppCompatActivity {
@@ -30,7 +20,7 @@ public class Breed_batch_1 extends AppCompatActivity {
     private String result;
     private Button btn_move;
     private EditText ed_1_poorRate;
-    Integer water_Tank_Num = 0, water_Tank_Clean = 0, water_Tank_Time = 0;
+    Integer water_Tank_Clean = 0, water_Tank_Time = 0;
     public String total_cow_count = ((Input_userinfo) Input_userinfo.context_userinfo).total_cow_count;
     int breed_poor_rate_score = 0;
     private double protocolOneScore;
@@ -50,7 +40,7 @@ public class Breed_batch_1 extends AppCompatActivity {
         ScrollView scrollview_freestall_1 = findViewById(R.id.scrollview_freestall_1); //fatten으로
         ed_1_poorRate = (EditText) findViewById(R.id.breed_batch_poor_Rate_a1); //1번 문항
         RadioGroup rdiog_2_water_tank_num = (RadioGroup) findViewById(R.id.breed_batch_water_Tank_Num_rdogrp2);//2번 문항
-        RadioGroup rdiog_3_water_tank_clean = (RadioGroup) findViewById(R.id.breed_batch_water_Tank_Clean_rdogrp3); //3번 문항
+
 
 
         TextView breed_poor_Rate_ratio = (TextView) findViewById(R.id.breed_poor_Rate_ratio);
@@ -60,77 +50,10 @@ public class Breed_batch_1 extends AppCompatActivity {
         TextView freestall_water_Tank_Time_q4 = (TextView) findViewById(R.id.freestall_water_Tank_Time_q4);
 
 
-        rdiog_2_water_tank_num.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                ((MainActivity) MainActivity.mContext).scrollToView(freestall_water_Tank_Clean_q3, scrollview_freestall_1, 0);
-                if (checkedId == R.id.breed_batch_water_Tank_Num_a2_1) {
-                    water_Tank_Num = 1;
-                } else if (checkedId == R.id.breed_batch_water_Tank_Num_a2_2) {
-                    water_Tank_Num = 2;
-                }
-            }
-        });
-
-        rdiog_3_water_tank_clean.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                ((MainActivity) MainActivity.mContext).scrollToView(freestall_water_Tank_Time_q4, scrollview_freestall_1, 0);
-                if (checkedId == R.id.breed_batch_water_Tank_Clean_a3_1) {
-                    water_Tank_Clean = 1;
-                } else if (checkedId == R.id.breed_batch_water_Tank_Clean_a3_2) {
-                    water_Tank_Clean = 2;
-                } else if (checkedId == R.id.breed_batch_water_Tank_Clean_a3_3) {
-                    water_Tank_Clean = 3;
-                }
-            }
-        });
-
-        ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(getApplicationContext(),
-                R.array.dong_size,
-                android.R.layout.simple_spinner_item);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        Spinner mSpinner = findViewById(R.id.spinner_breed_q4);
-        mSpinner.setAdapter( spinnerAdapter );
-        final int[] selectedItemIndex = new int[1];
-        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // 선택된 데이터 값
-                String selectedItem = parent.getSelectedItem().toString();
-
-                // 선택된 데이터 위치( 0 부터 )
-                selectedItemIndex[0] = position;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        Button breed_btn_q4 = findViewById(R.id.breed_btn_q4);
 
 
-        breed_btn_q4.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                String dong_count = Integer.toString(selectedItemIndex[0]);
-                if(Integer.parseInt(dong_count) == 0){
-                    String msg = "축사 동 수를 선택해주세요";
-                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                }else{
-                    int dong_size = Integer.parseInt(dong_count);
-
-                    Intent intent = new Intent(Breed_batch_1.this, Breed_q4.class);
-                    intent.putExtra("dong_count",dong_size); /*송신*/
-
-                    startActivityForResult(intent, 0);
 
 
-                }
-
-            }
-        });
         Button breed_batch_pre_1_btn = (Button) findViewById(R.id.breed_batch_pre_1_btn);
         Button breed_batch_next_1_btn = (Button) findViewById(R.id.breed_batch_next_1_btn);
 
@@ -153,33 +76,11 @@ public class Breed_batch_1 extends AppCompatActivity {
                 startActivity(intent_Breed_batch_2);
             }
         });
-        ed_1_poorRate.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable arg0) {
-                if (TextUtils.isEmpty(ed_1_poorRate.getText().toString())) {
-                    breed_poor_Rate_ratio.setText("값을 입력해주세요");
-                    // 총 두수 보다 입력한 값이 클 때
-                } else if (Integer.parseInt(total_cow_count) < Integer.parseInt(ed_1_poorRate.getText().toString())) {
-                    breed_poor_Rate_ratio.setText("총 두수보다 큰 값을 입력할 수 없습니다.");
-                } else {
-                    String total_cow = breedPoorRateRatio(total_cow_count, ed_1_poorRate.getText().toString());
-                    breed_poor_Rate_ratio.setText(total_cow + "%");
-                    breed_poor_Rate_score.setText(breedPoorRateScore(total_cow));
-                    breed_poor_rate_score = Integer.parseInt(breedPoorRateScore(total_cow));
-                }
-            }});
 
 
     }
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         TextView breed_Drink_Water_Score = findViewById(R.id.breed_Drink_Water_Score);
         TextView breed_total_water_score = findViewById(R.id.breed_total_water_score);
         super.onActivityResult(requestCode, resultCode, data);
@@ -195,7 +96,7 @@ public class Breed_batch_1 extends AppCompatActivity {
             default:
                 break;
         }
-    }
+*/    //}
 
     public String breedPoorRateRatio(String total, String rate){
         Float totalFloat = Float.parseFloat(total);

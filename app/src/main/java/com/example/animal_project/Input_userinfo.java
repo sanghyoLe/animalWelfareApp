@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -34,7 +35,10 @@ public class Input_userinfo extends AppCompatActivity {
     private static final int SEARCH_ADDRESS_ACTIVITY = 10000;
     private EditText et_address;
     private int input_checked = 0;
-
+    private Button beef_btn;
+    private Button milk_cow_btn;
+    private LinearLayout beef_group;
+    private LinearLayout milk_cow_group;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +46,20 @@ public class Input_userinfo extends AppCompatActivity {
         setContentView(R.layout.activity_input_userinfo);
 
         context_userinfo = this;
+
+        beef_btn = findViewById(R.id.beef_btn);
+        milk_cow_btn = findViewById(R.id.milk_cow_btn);
+
+        beef_group = findViewById(R.id.beef_group);
+        milk_cow_group = findViewById(R.id.milk_cow_group);
+
         Button farm_selector = (Button) findViewById(R.id.farm_selector); //농장 선택
-        RadioGroup input_farm = (RadioGroup) findViewById(R.id.input_farm);
+        RadioGroup input_farm_beef = (RadioGroup) findViewById(R.id.input_farm_beef);
+        RadioGroup input_farm_milk_cow = (RadioGroup) findViewById(R.id.input_farm_milk_cow);
         EditText total_cow = (EditText)findViewById(R.id.total_cow); //전체 두수
         TextView sample_size = (TextView)findViewById(R.id.sample_size); //표본 규모
 
-        input_farm.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        input_farm_beef.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.input_1) { // 비육 농장
@@ -56,7 +68,13 @@ public class Input_userinfo extends AppCompatActivity {
                     input_checked = 2;
                 } else if (checkedId == R.id.input_3) { // 일괄 사육 농장
                     input_checked = 3;
-                } else if (checkedId == R.id.input_4) { // 젖소 일반 우사
+                }
+            }
+        });
+        input_farm_milk_cow.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.input_4) { // 젖소 일반 우사
                     input_checked = 4;
                 } else if (checkedId == R.id.input_5) { // 젖소 프리스톨 우사
                     input_checked = 5;
@@ -73,7 +91,7 @@ public class Input_userinfo extends AppCompatActivity {
                         startActivity(intent_Fatten);
                     }
                     else if (input_checked == 2 || input_checked == 3) {
-                        Intent intent_Breed_Batch = new Intent(Input_userinfo.this, Breed_batch_1.class);
+                        Intent intent_Breed_Batch = new Intent(Input_userinfo.this, QuestionTemplate.class);
                         sendInputChecked(intent_Breed_Batch,input_checked);
                         startActivity(intent_Breed_Batch);
                     }
@@ -214,8 +232,23 @@ public class Input_userinfo extends AppCompatActivity {
    private void sendInputChecked(Intent intent, int inputChecked){
         Bundle bundle = new Bundle();
         bundle.putInt("inputChecked",inputChecked);
+        bundle.putInt("totalCow",Integer.parseInt(total_cow_count));
         intent.putExtras(bundle);
 
    }
+    public void CowHandler(View view)
+    {
+        switch(view.getId())
+        {
+            case R.id.beef_btn:
+                beef_group.setVisibility(View.VISIBLE);
+                milk_cow_group.setVisibility(View.GONE);
+                break;
+            case R.id.milk_cow_btn:
+                milk_cow_group.setVisibility(View.VISIBLE);
+                beef_group.setVisibility(View.GONE);
+                break;
+        }
+    }
 
 }
