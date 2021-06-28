@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,9 +16,10 @@ import com.example.animal_project.BreedBatch.BreedPoor;
 import com.example.animal_project.BreedBatch.BreedWaterQ1;
 import com.example.animal_project.BreedBatch.BreedWaterQ2;
 import com.example.animal_project.BreedBatch.BreedWaterQ3;
-import com.example.animal_project.R;
+
 
 public class QuestionTemplate extends AppCompatActivity {
+
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
     private BreedPoor breed_poor;
@@ -29,10 +31,13 @@ public class QuestionTemplate extends AppCompatActivity {
     public int total_cow;
     private Fragment[] breed_frag_arr = new Fragment[10];
     int count = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_template);
+        QuestionTemplateViewModel viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
 
         fragmentManager = getSupportFragmentManager();
 

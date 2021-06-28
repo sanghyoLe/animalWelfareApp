@@ -5,6 +5,7 @@ package com.example.animal_project.BreedBatch;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.text.Editable;
 import android.text.TextUtils;
@@ -18,30 +19,33 @@ import android.widget.TextView;
 
 import com.example.animal_project.Input_userinfo;
 import com.example.animal_project.MainActivity;
+import com.example.animal_project.QuestionTemplate;
+import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 import com.example.animal_project.Result_View;
 
 public class BreedWaterQ2 extends Fragment {
     private View view;
-    Integer water_Tank_Clean = 0;
+    Integer waterTankClean = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
+        QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         view = inflater.inflate(R.layout.fragment_breed_water_q2, container, false);
         RadioGroup breed_water_tank_clean = (RadioGroup) view.findViewById(R.id.breed_water_tank_clean);
         breed_water_tank_clean.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.breed_water_tank_clean_1) {
-                    water_Tank_Clean = 1;
+                    waterTankClean = 1;
                 } else if (checkedId == R.id.breed_water_tank_clean_2) {
-                    water_Tank_Clean = 2;
+                    waterTankClean = 2;
                 } else if (checkedId == R.id.breed_water_tank_clean_3) {
-                    water_Tank_Clean = 3;
+                    waterTankClean = 3;
                 }
+                viewModel.setWaterTankClean(waterTankClean);
             }
         });
 

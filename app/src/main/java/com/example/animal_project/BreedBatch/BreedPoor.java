@@ -4,6 +4,7 @@ package com.example.animal_project.BreedBatch;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.text.Editable;
 import android.text.TextUtils;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.animal_project.Input_userinfo;
 import com.example.animal_project.QuestionTemplate;
+import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 import com.example.animal_project.Result_View;
 
@@ -28,12 +30,13 @@ public class BreedPoor extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
+        QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         view = inflater.inflate(R.layout.fragment_breed_poor, container, false);
 
         ed_1_poorRate = (EditText) view.findViewById(R.id.breed_batch_poor_Rate_a1); //1번 문항
         TextView breed_poor_Rate_ratio = (TextView) view.findViewById(R.id.breed_poor_Rate_ratio);
         TextView breed_poor_Rate_score = (TextView) view.findViewById(R.id.breed_poor_Rate_score);
+
 
 
         QuestionTemplate activity = (QuestionTemplate) getActivity();
@@ -58,8 +61,9 @@ public class BreedPoor extends Fragment {
                 } else {
                     String total_cow = breedPoorRateRatio(String.valueOf(total_cow_count), ed_1_poorRate.getText().toString());
                     breed_poor_Rate_ratio.setText(total_cow + "%");
-                    breed_poor_Rate_score.setText(breedPoorRateScore(total_cow));
                     breed_poor_rate_score = Integer.parseInt(breedPoorRateScore(total_cow));
+                    breed_poor_Rate_score.setText(String.valueOf(breed_poor_rate_score));
+                    viewModel.setPoorScore(breed_poor_rate_score);
                 }
             }});
         // Inflate the layout for this fragment

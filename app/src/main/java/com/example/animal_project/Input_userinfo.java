@@ -9,7 +9,6 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 
-import android.util.Log;
 import android.view.MotionEvent;
 
 import android.view.View;
@@ -21,7 +20,6 @@ import android.widget.TextView;
 
 import android.widget.Toast;
 
-import com.example.animal_project.Farm_Activity.Breed_batch_1;
 import com.example.animal_project.Farm_Activity.Fatten_1;
 import com.example.animal_project.Farm_Activity.Freestall_1;
 import com.example.animal_project.Farm_Activity.MilkCow_1;

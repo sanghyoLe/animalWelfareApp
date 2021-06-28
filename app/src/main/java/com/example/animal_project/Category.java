@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.animal_project.Farm_Activity.Breed_batch_1;
 import com.example.animal_project.Farm_Activity.Fatten_1;
 import com.example.animal_project.Farm_Activity.Freestall_1;
 import com.example.animal_project.Farm_Activity.MilkCow_1;
@@ -29,8 +28,8 @@ public class Category extends AppCompatActivity {
             startActivity(intent_Fatten);
         }
         else if (input_checked == 2 || input_checked == 3) {
-            Intent intent_Breed_Batch = new Intent(Category.this, Breed_batch_1.class);
-            startActivity(intent_Breed_Batch);
+            /*Intent intent_Breed_Batch = new Intent(Category.this, Breed_batch_1.class);
+            startActivity(intent_Breed_Batch);*/
         }
         else if (input_checked == 4) {
             Intent intent_Freestall = new Intent(Category.this, Freestall_1.class);

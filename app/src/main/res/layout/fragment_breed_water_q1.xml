@@ -38,6 +38,7 @@
                 android:layout_margin="10dp"
                 android:paddingLeft="20dp">
                 <RadioButton
+                    android:id="@+id/breed_water_tank_num_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="음수조 1개당 10두 이하 사용"
@@ -45,6 +46,7 @@
                     android:layout_weight="1">
                 </RadioButton>
                 <RadioButton
+                    android:id="@+id/breed_water_tank_num_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"

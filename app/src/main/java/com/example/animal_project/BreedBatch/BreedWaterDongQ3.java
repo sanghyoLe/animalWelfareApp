@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,7 +48,7 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
         breed_water_dong_current = findViewById(R.id.breed_water_dong_current);
         breed_water_dong_total = findViewById(R.id.breed_water_dong_total);
 
-        Button breed_q4_button = findViewById(R.id.breed_q4_button);
+
         LinearLayout dong_1 = findViewById(R.id.breed_dong_q3_1);
         LinearLayout dong_2 = findViewById(R.id.breed_dong_q3_2);
         LinearLayout dong_3 = findViewById(R.id.breed_dong_q3_3);
@@ -192,7 +193,9 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
 
         dong = new LinearLayout[]{dong_1,dong_2,dong_3,dong_4,dong_5,dong_6,dong_7,dong_8,dong_9,dong_10,dong_11
                 ,dong_12,dong_13,dong_14,dong_15,dong_16,dong_17,dong_18,dong_19,dong_20};
-
+        EditText[] totalCowEtArr = {totalCowEt_1,totalCowEt_2,totalCowEt_3,totalCowEt_4,totalCowEt_5,totalCowEt_6,totalCowEt_7
+        ,totalCowEt_8,totalCowEt_9,totalCowEt_10,totalCowEt_11,totalCowEt_12,totalCowEt_13,totalCowEt_14,totalCowEt_15,totalCowEt_16,
+                totalCowEt_17,totalCowEt_18,totalCowEt_19,totalCowEt_20};
         TextView[] drinkScoreTvArr = { drinkScoreTv_1, drinkScoreTv_2, drinkScoreTv_3, drinkScoreTv_4, drinkScoreTv_5, drinkScoreTv_6, drinkScoreTv_7, drinkScoreTv_8, drinkScoreTv_9
                 ,drinkScoreTv_10,drinkScoreTv_11,drinkScoreTv_12,drinkScoreTv_13,drinkScoreTv_14,drinkScoreTv_15,drinkScoreTv_16,drinkScoreTv_17,drinkScoreTv_18,drinkScoreTv_19,drinkScoreTv_20};
 
@@ -218,17 +221,23 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
         setTextView(totalCowEt_20,drinkTimeEt_20,waitingCowEt_20,waitingRatioTv_20,drinkScoreTv_20);
 
         breed_water_dong_total.setText(String.valueOf(dong_size));
-
+        if(dong_size == 1){
+            next_dong_btn.setVisibility(View.INVISIBLE);
+            prev_dong_btn.setVisibility(View.INVISIBLE);
+            breed_dong_q3_btn.setVisibility(View.VISIBLE);
+        }
 
         // 완료 버튼
-        /*int [] drinkScoreArr = new int[20];
-        breed_q4_button.setOnClickListener(new View.OnClickListener() {
+
+        int [] drinkScoreArr = new int[20];
+        breed_dong_q3_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("click", "on");
                 Boolean checkEmpty = false;
                 int emptyDong = 0;
                 for(int idx = 0; idx < dong_size ; idx++){
-                    if(!isNumeric((String)drinkScoreTvArr[idx].getText())){
+                    if(totalCowEtArr[idx].getText().toString().equals("")){
                         checkEmpty = true;
                         emptyDong = idx + 1;
                     }  else {
@@ -249,7 +258,7 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
                 }
 
             }
-        });*/
+        });
     }
     public void clickDongHandler(View view)
     {
@@ -276,16 +285,20 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
                 }
                 break;
             case R.id.prev_dong_btn:
+                Log.d("currentDong",String.valueOf(currentDong));
                 // 마지막 페이지에서 이전 버튼 눌렀을 때
                 if(currentDong + 1 == dong_size){
                     next_dong_btn.setVisibility(View.VISIBLE);
                     breed_dong_q3_btn.setVisibility(View.INVISIBLE);
-                } else if(currentDong == 1){
-                    prev_dong_btn.setVisibility(View.INVISIBLE);
                 }
                 dong[currentDong].setVisibility(View.GONE);
                 dong[--currentDong].setVisibility(View.VISIBLE);
                 breed_water_dong_current.setText(String.valueOf(currentDong+1));
+
+                if(currentDong == 1 || currentDong == 0){
+                    prev_dong_btn.setVisibility(View.INVISIBLE);
+                }
+                Log.d("currentDong",String.valueOf(currentDong));
                 break;
 
             case R.id.breed_water_dong_home_btn:
