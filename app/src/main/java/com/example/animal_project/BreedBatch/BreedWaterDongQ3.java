@@ -2,6 +2,7 @@ package com.example.animal_project.BreedBatch;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.media.Image;
@@ -18,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
 import org.w3c.dom.Text;
@@ -28,6 +30,7 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
     private int dong_size;
     private ImageButton prev_dong_btn;
     private ImageButton next_dong_btn;
+    private ImageButton home_btn;
     private LinearLayout[] dong = new LinearLayout[20];
     private TextView breed_water_dong_current;
     private TextView breed_water_dong_total;
@@ -38,15 +41,17 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breed_water_dong_q3);
-
+        QuestionTemplateViewModel viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
         Intent intent = getIntent();
         dong_size = intent.getExtras().getInt("dong_count");
-        prev_dong_btn = findViewById(R.id.prev_dong_btn);
-        next_dong_btn = findViewById(R.id.next_dong_btn);
-        breed_dong_q3_btn = findViewById(R.id.breed_dong_q3_btn);
 
-        breed_water_dong_current = findViewById(R.id.breed_water_dong_current);
-        breed_water_dong_total = findViewById(R.id.breed_water_dong_total);
+        prev_dong_btn = findViewById(R.id.prev_dong_q3_btn);
+        next_dong_btn = findViewById(R.id.next_dong_q3_btn_);
+        breed_dong_q3_btn = findViewById(R.id.breed_dong_q3_btn);
+        home_btn = findViewById(R.id.dong_home_q3_btn);
+
+        breed_water_dong_current = findViewById(R.id.current_dong_q3);
+        breed_water_dong_total = findViewById(R.id.total_dong_q3);
 
 
         LinearLayout dong_1 = findViewById(R.id.breed_dong_q3_1);
@@ -226,7 +231,13 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
             prev_dong_btn.setVisibility(View.INVISIBLE);
             breed_dong_q3_btn.setVisibility(View.VISIBLE);
         }
-
+        viewModel.clickDongHandler(next_dong_btn,prev_dong_btn,breed_dong_q3_btn,dong,breed_water_dong_current,dong_size);
+        home_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         // 완료 버튼
 
         int [] drinkScoreArr = new int[20];
@@ -260,55 +271,7 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
             }
         });
     }
-    public void clickDongHandler(View view)
-    {
 
-        switch(view.getId())
-        {
-
-            case R.id.next_dong_btn:
-                if(currentDong == 0) {
-                    prev_dong_btn.setVisibility(View.VISIBLE);
-                }
-                // 마지막 전 페이지
-                if(currentDong + 2 == dong_size){
-                    breed_dong_q3_btn.setVisibility(View.VISIBLE);
-                    dong[currentDong].setVisibility(View.GONE);
-                    dong[++currentDong].setVisibility(View.VISIBLE);
-                    breed_water_dong_current.setText(String.valueOf(currentDong+1));
-                    next_dong_btn.setVisibility(View.INVISIBLE);
-                }
-                else {
-                    dong[currentDong].setVisibility(View.GONE);
-                    dong[++currentDong].setVisibility(View.VISIBLE);
-                    breed_water_dong_current.setText(String.valueOf(currentDong+1));
-                }
-                break;
-            case R.id.prev_dong_btn:
-                Log.d("currentDong",String.valueOf(currentDong));
-                // 마지막 페이지에서 이전 버튼 눌렀을 때
-                if(currentDong + 1 == dong_size){
-                    next_dong_btn.setVisibility(View.VISIBLE);
-                    breed_dong_q3_btn.setVisibility(View.INVISIBLE);
-                }
-                dong[currentDong].setVisibility(View.GONE);
-                dong[--currentDong].setVisibility(View.VISIBLE);
-                breed_water_dong_current.setText(String.valueOf(currentDong+1));
-
-                if(currentDong == 1 || currentDong == 0){
-                    prev_dong_btn.setVisibility(View.INVISIBLE);
-                }
-                Log.d("currentDong",String.valueOf(currentDong));
-                break;
-
-            case R.id.breed_water_dong_home_btn:
-                super.onBackPressed();
-        }
-
-
-
-
-    }
     private int getWaitingRatio(float total_cow, float waiting_cow){
         float waiting_ratio = (waiting_cow / total_cow) * 100;
         return Math.round((waiting_ratio));

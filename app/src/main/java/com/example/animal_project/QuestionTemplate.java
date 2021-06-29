@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.animal_project.BreedBatch.BreedPoor;
+import com.example.animal_project.BreedBatch.BreedStraw;
 import com.example.animal_project.BreedBatch.BreedWaterQ1;
 import com.example.animal_project.BreedBatch.BreedWaterQ2;
 import com.example.animal_project.BreedBatch.BreedWaterQ3;
@@ -30,10 +31,12 @@ public class QuestionTemplate extends AppCompatActivity {
     private BreedWaterQ1 breed_water_q1;
     private BreedWaterQ2 breed_water_q2;
     private BreedWaterQ3 breed_water_q3;
+    private BreedStraw breed_straw;
     private TextView current_page;
     private TextView total_page;
     private int inputCheck = 0;
     private ImageButton prev_btn;
+    private ImageButton next_btn;
     public int total_cow;
     private Fragment[] breed_frag_arr = new Fragment[10];
     int count = 0;
@@ -48,6 +51,7 @@ public class QuestionTemplate extends AppCompatActivity {
 
         fragmentManager = getSupportFragmentManager();
 
+        next_btn = findViewById(R.id.next_btn);
         prev_btn = findViewById(R.id.previous_btn);
         current_page = findViewById(R.id.current_page);
         total_page = findViewById(R.id.total_page);
@@ -56,6 +60,7 @@ public class QuestionTemplate extends AppCompatActivity {
         breed_water_q1 = new BreedWaterQ1();
         breed_water_q2 = new BreedWaterQ2();
         breed_water_q3 = new BreedWaterQ3();
+        breed_straw = new BreedStraw();
 
         Intent intent = getIntent();
         Bundle BeforeBundle = intent.getExtras();
@@ -63,7 +68,8 @@ public class QuestionTemplate extends AppCompatActivity {
 
         total_cow = BeforeBundle.getInt("totalCow");
 
-        breed_frag_arr = new Fragment[]{breed_poor, breed_water_q1,breed_water_q2,breed_water_q3};
+        breed_frag_arr = new Fragment[]{breed_poor, breed_water_q1,breed_water_q2,breed_water_q3,
+                                        breed_straw};
 
 
 
@@ -94,15 +100,14 @@ public class QuestionTemplate extends AppCompatActivity {
         {
             // 다음 버튼 누를 시 이어질 페이지 지정
             case R.id.next_btn:
-                if(count == 0){
-                    prev_btn.setVisibility(View.VISIBLE);
-                }
-
                 if (inputCheck == 1) {
 
                 }
                 else if (inputCheck == 2 || inputCheck == 3) {
                     transaction.replace(R.id.fragment_paper,breed_frag_arr[++count]).commitAllowingStateLoss();
+
+
+
                 }
                 else if (inputCheck == 4) {
 

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,11 +18,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.animal_project.BreedBatchQuestion.Breed_q5;
 import com.example.animal_project.Input_userinfo;
 import com.example.animal_project.R;
-
-import org.w3c.dom.Text;
 
 public class Breed_batch_2 extends AppCompatActivity {
     private View view;
@@ -78,48 +74,7 @@ public class Breed_batch_2 extends AppCompatActivity {
         TextView breed_outward_hygiene_ratio = findViewById(R.id.breed_outward_Hygiene_ratio);
         TextView breed_outward_hygiene_score = findViewById(R.id.breed_outward_Hygiene_score);
 
-        ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(getApplicationContext(),
-                R.array.dong_size,
-                android.R.layout.simple_spinner_item);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        Spinner mSpinner = findViewById(R.id.spinner_breed_q5);
-        mSpinner.setAdapter( spinnerAdapter );
-        final int[] selectedItemIndex = new int[1];
-        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // 선택된 데이터 값
-                String selectedItem = parent.getSelectedItem().toString();
-
-                // 선택된 데이터 위치( 0 부터 )
-                selectedItemIndex[0] = position;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        Button breed_btn_q5 = findViewById(R.id.breed_btn_q5);
-
-
-        breed_btn_q5.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                String dong_count = Integer.toString(selectedItemIndex[0]);
-                if(Integer.parseInt(dong_count) == 0){
-                    String msg = "축사 동 수를 선택해주세요";
-                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                }else{
-                    int dong_size = Integer.parseInt(dong_count);
-                    Intent intent = new Intent(Breed_batch_2.this, Breed_q5.class);
-                    intent.putExtra("dong_count",dong_size); /*송신*/
-
-                    startActivity(intent);
-                }
-
-            }
-        });
         int sample_size_count = Integer.parseInt(((Input_userinfo)Input_userinfo.context_userinfo).sample_size_count);
 
         breed_outward_hygiene_ed.addTextChangedListener(new TextWatcher() {
