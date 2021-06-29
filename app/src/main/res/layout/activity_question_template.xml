@@ -57,13 +57,14 @@
                 android:layout_height="match_parent"
                 android:gravity="center">
                 <TextView
-                    android:id="@+id/breed_current_count_tv"
+                    android:id="@+id/current_page"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1"
                     android:textSize="25dp"
                     android:textColor="@color/black"/>
                 <TextView
+                    android:id="@+id/total_page"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text=" / 10"

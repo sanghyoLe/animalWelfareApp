@@ -10,11 +10,14 @@ public class QuestionTemplateViewModel extends ViewModel {
     private int poorScore = 0;
     private int waterTankNum = 0;
     private int waterTankClean = 0;
+    private int waterDrink = 0;
     private int waterScore = 0;
+
+
+
     public void setPoorScore(int poorScore){
         this.poorScore = poorScore;
     }
-
     public int getPoorScore(){
         return this.poorScore;
     }
@@ -29,6 +32,12 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public int getWaterTankClean(){
         return this.waterTankClean;
+    }
+    public void setWaterDrink(int waterDrink){
+        this.waterDrink = waterDrink;
+    }
+    public int getWaterDrink(){
+        return this.waterDrink;
     }
     public void setWaterScore(int waterScore){
         this.waterScore = waterScore;

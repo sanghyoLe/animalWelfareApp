@@ -36,8 +36,11 @@ public class BreedWaterQ3 extends Fragment {
         Log.d("WaterTankNum",String.valueOf(viewModel.getWaterTankNum()));
         Log.d("WaterTankClean",String.valueOf(viewModel.getWaterTankClean()));
         Log.d("WaterScore",String.valueOf(viewModel.getWaterScore()));
+        TextView breed_drink_water_score = view.findViewById(R.id.breed_drink_water_score);
+        TextView breed_total_water_score = view.findViewById(R.id.breed_total_water_score);
 
-
+        breed_drink_water_score.setText(String.valueOf(viewModel.getWaterDrink()));
+        breed_total_water_score.setText(String.valueOf(viewModel.getWaterScore()));
 
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
                 R.array.dong_size,
@@ -89,7 +92,7 @@ public class BreedWaterQ3 extends Fragment {
         return view;
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        TextView breed_Drink_Water_Score = view.findViewById(R.id.breed_drink_water_score);
+        TextView breed_drink_water_score = view.findViewById(R.id.breed_drink_water_score);
         TextView breed_total_water_score = view.findViewById(R.id.breed_total_water_score);
         int waterTankNum = viewModel.getWaterTankNum();
         int waterTankClean = viewModel.getWaterTankClean();
@@ -97,7 +100,8 @@ public class BreedWaterQ3 extends Fragment {
         switch (resultCode) {
             case 1:
                 int key = data.getExtras().getInt("key");
-                breed_Drink_Water_Score.setText(String.valueOf(key));
+                breed_drink_water_score.setText(String.valueOf(key));
+                viewModel.setWaterDrink(key);
                 // 프로토콜 1 점수
                 int waterScore = getWaterScore(waterTankNum,waterTankClean,key);
                 breed_total_water_score.setText(String.valueOf(waterScore));

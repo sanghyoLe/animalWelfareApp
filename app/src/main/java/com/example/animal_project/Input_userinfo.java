@@ -84,23 +84,9 @@ public class Input_userinfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(input_checked != 0) {
-                    if (input_checked == 1) {
-                        Intent intent_Fatten = new Intent(Input_userinfo.this, Fatten_1.class);
-                        startActivity(intent_Fatten);
-                    }
-                    else if (input_checked == 2 || input_checked == 3) {
-                        Intent intent_Breed_Batch = new Intent(Input_userinfo.this, QuestionTemplate.class);
-                        sendInputChecked(intent_Breed_Batch,input_checked);
-                        startActivity(intent_Breed_Batch);
-                    }
-                    else if (input_checked == 4) {
-                        Intent intent_MilkCow = new Intent(Input_userinfo.this, MilkCow_1.class);
-                        startActivity(intent_MilkCow);
-                    }
-                    else if (input_checked == 5) {
-                        Intent intent_Freestall = new Intent(Input_userinfo.this, Freestall_1.class);
-                        startActivity(intent_Freestall);
-                    }
+                    Intent intentQuestionTemplate = new Intent(Input_userinfo.this, QuestionTemplate.class);
+                    sendInputChecked(intentQuestionTemplate,input_checked);
+                    startActivity(intentQuestionTemplate);
                 } else {
                     String msg = "농장 종류를 선택해주세요";
                     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
