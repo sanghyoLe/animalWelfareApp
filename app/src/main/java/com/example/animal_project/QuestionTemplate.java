@@ -1,23 +1,38 @@
 package com.example.animal_project;
 
+import android.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.animal_project.BreedBatch.BreedMistSpray;
+import com.example.animal_project.BreedBatch.BreedOutward;
 import com.example.animal_project.BreedBatch.BreedPoor;
+import com.example.animal_project.BreedBatch.BreedShade;
 import com.example.animal_project.BreedBatch.BreedStraw;
+import com.example.animal_project.BreedBatch.BreedSummerVentilating;
 import com.example.animal_project.BreedBatch.BreedWaterQ1;
 import com.example.animal_project.BreedBatch.BreedWaterQ2;
 import com.example.animal_project.BreedBatch.BreedWaterQ3;
+import com.example.animal_project.BreedBatch.BreedWindBlock;
+import com.example.animal_project.BreedBatch.BreedWinterVentilating;
+import com.example.animal_project.BreedBatch.CalfMistSpray;
+import com.example.animal_project.BreedBatch.CalfShade;
+import com.example.animal_project.BreedBatch.CalfStraw;
+import com.example.animal_project.BreedBatch.CalfSummerVentilating;
+import com.example.animal_project.BreedBatch.CalfWarm;
+import com.example.animal_project.BreedBatch.CalfWindBlock;
 import com.example.animal_project.Farm_Activity.Fatten_1;
 import com.example.animal_project.Farm_Activity.Freestall_1;
 import com.example.animal_project.Farm_Activity.MilkCow_1;
@@ -32,13 +47,26 @@ public class QuestionTemplate extends AppCompatActivity {
     private BreedWaterQ2 breed_water_q2;
     private BreedWaterQ3 breed_water_q3;
     private BreedStraw breed_straw;
+    private BreedOutward breed_outward;
+    private BreedShade breed_shade;
+    private BreedSummerVentilating breed_summer_ventilating;
+    private BreedMistSpray breed_mist_spray;
+    private BreedWindBlock breed_wind_block;
+    private BreedWinterVentilating breed_winter_ventilating;
+    private CalfShade calf_shade;
+    private CalfSummerVentilating calf_summer_ventilating;
+    private CalfMistSpray calf_mist_spray;
+    private CalfStraw calf_straw;
+    private CalfWarm calf_warm;
+    private CalfWindBlock calf_wind_block;
     private TextView current_page;
     private TextView total_page;
     private int inputCheck = 0;
     private ImageButton prev_btn;
     private ImageButton next_btn;
-    public int total_cow;
-    private Fragment[] breed_frag_arr = new Fragment[10];
+    private int totalCowSize;
+    private int sampleCowSize;
+    private Fragment[] breed_frag_arr = new Fragment[20];
     int count = 0;
 
 
@@ -61,22 +89,38 @@ public class QuestionTemplate extends AppCompatActivity {
         breed_water_q2 = new BreedWaterQ2();
         breed_water_q3 = new BreedWaterQ3();
         breed_straw = new BreedStraw();
+        breed_outward = new BreedOutward();
+        breed_shade = new BreedShade();
+        breed_summer_ventilating = new BreedSummerVentilating();
+        breed_mist_spray = new BreedMistSpray();
+        breed_wind_block = new BreedWindBlock();
+        breed_winter_ventilating = new BreedWinterVentilating();
+        calf_shade = new CalfShade();
+        calf_summer_ventilating = new CalfSummerVentilating();
+        calf_mist_spray = new CalfMistSpray();
+        calf_straw = new CalfStraw();
+        calf_warm = new CalfWarm();
+        calf_wind_block = new CalfWindBlock();
 
+
+        // 마지막 페이지 개수 지정
         Intent intent = getIntent();
         Bundle BeforeBundle = intent.getExtras();
         inputCheck = BeforeBundle.getInt("inputChecked");
+        totalCowSize = BeforeBundle.getInt("totalCow");
+        sampleCowSize = BeforeBundle.getInt("sampleCowSize");
 
-        total_cow = BeforeBundle.getInt("totalCow");
+        viewModel.setSampleCowSize(sampleCowSize);
 
-        breed_frag_arr = new Fragment[]{breed_poor, breed_water_q1,breed_water_q2,breed_water_q3,
-                                        breed_straw};
+        breed_frag_arr = new Fragment[]{ breed_poor,breed_water_q1,breed_water_q2,breed_water_q3,
+                breed_straw,breed_outward,breed_shade,breed_summer_ventilating,breed_mist_spray,
+                breed_wind_block,breed_winter_ventilating,calf_shade,calf_summer_ventilating,calf_mist_spray,
+        calf_straw,calf_warm,calf_wind_block};
 
 
 
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
-
-        // 마지막 페이지 개수 지정
         if (inputCheck == 1) {
 
         }
@@ -95,6 +139,9 @@ public class QuestionTemplate extends AppCompatActivity {
     public void clickHandler(View view)
     {
         transaction = fragmentManager.beginTransaction();
+        if(count == 0){
+            prev_btn.setVisibility(View.INVISIBLE);
+        }
 
         switch(view.getId())
         {
@@ -104,9 +151,8 @@ public class QuestionTemplate extends AppCompatActivity {
 
                 }
                 else if (inputCheck == 2 || inputCheck == 3) {
+                    nextBtnHandler(count,breed_frag_arr.length);
                     transaction.replace(R.id.fragment_paper,breed_frag_arr[++count]).commitAllowingStateLoss();
-
-
 
                 }
                 else if (inputCheck == 4) {
@@ -124,6 +170,7 @@ public class QuestionTemplate extends AppCompatActivity {
 
                 }
                 else if (inputCheck == 2 || inputCheck == 3) {
+                    prevBtnHandler(count,breed_frag_arr.length);
                     transaction.replace(R.id.fragment_paper, breed_frag_arr[--count]).commitAllowingStateLoss();
                 }
                 else if (inputCheck == 4) {
@@ -133,8 +180,45 @@ public class QuestionTemplate extends AppCompatActivity {
                 }
                 current_page.setText(String.valueOf(count+1));
                 break;
+            case R.id.back_btn:
+                AlertDialog.Builder myAlertBuilder =
+                        new AlertDialog.Builder(QuestionTemplate.this);
+                myAlertBuilder.setTitle("이전");
+                myAlertBuilder.setMessage("정보 입력화면으로 돌아가시겠습니까?");
+                // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
+                myAlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog,int which){
+                        // OK 버튼을 눌렸을 경우
+
+                    }
+                });
+                myAlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        onBackPressed();
+                    }
+                });
+                myAlertBuilder.show();
+                break;
+
+
         }
     }
 
-    public int getTotalCow() { return total_cow; }
+
+    private void nextBtnHandler(int count, int totalPageLength){
+        if(count + 2 == totalPageLength){
+            next_btn.setVisibility(View.INVISIBLE);
+        }
+        prev_btn.setVisibility(View.VISIBLE);
+    }
+    private void prevBtnHandler(int count, int totalPageLength){
+        if(count + 1 == totalPageLength){
+            next_btn.setVisibility(View.VISIBLE);
+        }
+        if(count == 1){
+            prev_btn.setVisibility(View.INVISIBLE);
+        }
+    }
+
 }

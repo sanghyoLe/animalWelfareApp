@@ -1,5 +1,6 @@
 package com.example.animal_project;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,15 +18,46 @@ import androidx.lifecycle.ViewModel;
 
 public class QuestionTemplateViewModel extends ViewModel {
 
+    private int sampleCowSize = 0;
+    private int totalCowSize = 0;
     private int poorScore = 0;
     private int waterTankNum = 0;
     private int waterTankClean = 0;
     private int waterDrink = 0;
     private int waterScore = 0;
     private int strawScore = 0;
+    private int outwardScore = 0;
+    private double restScore = 0;
+    private int shadeScore = 0;
+    private int summerVentilatingScore = 0;
+    private int mistSprayScore =0;
+    private int summerRestScore = 0;
+    private int windBlockScore =0;
+    private int winterVentilatingScore = 0;
+    private int winterRestScore = 0;
+    private int calfShadeScore = 0;
+    private int calfSummerVentilatingScore = 0;
+    private int calfMistSprayScore = 0;
+    private int calfSummerRestScore =0;
+    private int calfStrawScore =0;
+    private int calfWarmScore =0;
+    private int calfWindBlockScore = 0;
+    private int calfWinterRestScore =0;
+    private double totalWarmVentilatingScore = 0;
 
 
-
+    public void setTotalCowSize(int totalCowSize){
+        this.totalCowSize = totalCowSize;
+    }
+    public int getTotalCowSize(){
+        return this.totalCowSize;
+    }
+    public void setSampleCowSize(int sampleCowSize) {
+        this.sampleCowSize = sampleCowSize;
+    }
+    public int getSampleCowSize() {
+        return this.sampleCowSize;
+    }
     public void setPoorScore(int poorScore){
         this.poorScore = poorScore;
     }
@@ -60,6 +92,119 @@ public class QuestionTemplateViewModel extends ViewModel {
         this.strawScore = strawScore;
     }
     public int getStrawScore() { return this.strawScore; };
+    public void setOutwardScore(int outWardScore){
+        this.outwardScore = outWardScore;
+    }
+    public int getOutWardScore(){
+        return this.outwardScore;
+    }
+    public void setRestScore(double restScore){
+        this.restScore = restScore;
+    }
+    public double getRestScore(){
+        return this.restScore;
+    }
+    public void setShadeScore(int shadeScore){
+        this.shadeScore = shadeScore;
+    }
+    public int getShadeScore(){
+        return this.shadeScore;
+    }
+    public void setSummerVentilatingScore(int summerVentilatingScore) {
+        this.summerVentilatingScore = summerVentilatingScore;
+    }
+    public int getSummerVentilatingScore(){
+        return this.summerVentilatingScore;
+    }
+    public void setMistSprayScore(int mistSprayScore)
+    {
+        this.mistSprayScore = mistSprayScore;
+    }
+    public int getMistSprayScore(){
+        return this.mistSprayScore;
+    }
+    public void setSummerRestScore(int summerRestScore){
+        this.summerRestScore = summerRestScore;
+    }
+    public int getSummerRestScore(){
+        return this.summerRestScore;
+    }
+    public void setWindBlockScore(int windBlockScore){
+        this.windBlockScore = windBlockScore;
+    }
+    public int getWindBlockScore(){
+        return this.windBlockScore;
+    }
+    public void setWinterVentilatingScore(int winterVentilatingScore){
+        this.winterVentilatingScore = winterVentilatingScore;
+    }
+    public int getWinterVentilatingScore(){
+        return this.winterVentilatingScore;
+    }
+    public void setWinterRestScore(int winterRestScore){
+        this.winterRestScore = winterRestScore;
+    }
+    public int getWinterRestScore(){
+        return this.winterRestScore;
+    }
+    public void setCalfShadeScore(int calfShadeScore){
+        this.calfShadeScore = calfShadeScore;
+    }
+    public int getCalfShadeScore(){
+        return this.calfShadeScore;
+    }
+    public void setCalfSummerVentilatingScore(int calfSummerVentilatingScore) {
+        this.calfSummerVentilatingScore = calfSummerVentilatingScore;
+    }
+    public int getCalfSummerVentilatingScore(){
+        return this.calfSummerVentilatingScore;
+    }
+    public void setCalfMistSprayScore(int calfMistSprayScore)
+    {
+        this.calfMistSprayScore = calfMistSprayScore;
+    }
+    public int getCalfMistSprayScore(){
+        return this.calfMistSprayScore;
+    }
+    public void setCalfSummerRestScore(int calfSummerRestScore){
+        this.calfSummerRestScore = calfSummerRestScore;
+    }
+    public int getCalfSummerRestScore(){
+        return this.calfSummerRestScore;
+    }
+    public void setCalfStrawScore(int calfStrawScore){
+        this.calfStrawScore = calfStrawScore;
+    }
+    public int getCalfStrawScore(){
+        return this.calfStrawScore;
+    }
+    public void setCalfWarmScore(int calfWarmScore){
+        this.calfWarmScore = calfWarmScore;
+    }
+    public int getCalfWarmScore(){
+        return this.calfWarmScore;
+    }
+    public void setCalfWindBlockScore(int calfWindBlockScore){
+        this.calfWindBlockScore = calfWindBlockScore;
+    }
+    public int getCalfWindBlockScore(){
+        return this.calfWindBlockScore;
+    }
+    public void setCalfWinterRestScore(int calfWinterRestScore){
+        this.calfWinterRestScore = calfWinterRestScore;
+    }
+    public int getCalfWinterRestScore(){
+        return this.calfWinterRestScore;
+    }
+    public void setTotalWarmVentilatingScore(double totalWarmVentilatingScore){
+        this.totalWarmVentilatingScore = totalWarmVentilatingScore;
+    }
+    public double getTotalWarmVentilatingScore()
+    {
+        return this.totalWarmVentilatingScore;
+    }
+
+
 
 
     public void clickDongHandler(ImageButton nextBtn, ImageButton prevBtn, Button endButton, LinearLayout[] dongArr, TextView currentDongTv, int dong_size){
@@ -111,8 +256,6 @@ public class QuestionTemplateViewModel extends ViewModel {
 
 
     }
-
-
     public void setDongStrawScore(RadioGroup group1, RadioGroup group2, RadioGroup group3, TextView view){
         final int[] straw_feed_tank = {0};
         final int[] straw_normal = {0};
@@ -127,22 +270,22 @@ public class QuestionTemplateViewModel extends ViewModel {
                 switch (index) {
                     case 0:
                         straw_feed_tank[0] = 1;
-                        totalScore[0] = getTotalStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
+                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
                         view.setText(String.valueOf(totalScore[0]));
                         break;
                     case 1:
                         straw_feed_tank[0] = 2;
-                        totalScore[0] = getTotalStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
+                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
                         view.setText(String.valueOf(totalScore[0]));
                         break;
                     case 2:
                         straw_feed_tank[0] = 3;
-                        totalScore[0] = getTotalStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
+                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
                         view.setText(String.valueOf(totalScore[0]));
                         break;
                     case 3:
                         straw_feed_tank[0] = 4;
-                        totalScore[0] = getTotalStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
+                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
                         view.setText(String.valueOf(totalScore[0]));
                         break;
                 }
@@ -156,22 +299,22 @@ public class QuestionTemplateViewModel extends ViewModel {
                 switch (index) {
                     case 0:
                         straw_normal[0] = 1;
-                        totalScore[0] = getTotalStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
+                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
                         view.setText(String.valueOf(totalScore[0]));
                         break;
                     case 1:
                         straw_normal[0] = 2;
-                        totalScore[0] = getTotalStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
+                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
                         view.setText(String.valueOf(totalScore[0]));
                         break;
                     case 2:
                         straw_normal[0] = 3;
-                        totalScore[0] = getTotalStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
+                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
                         view.setText(String.valueOf(totalScore[0]));
                         break;
                     case 3:
                         straw_normal[0] = 4;
-                        totalScore[0] = getTotalStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
+                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
                         view.setText(String.valueOf(totalScore[0]));
                         break;
                 }
@@ -185,22 +328,22 @@ public class QuestionTemplateViewModel extends ViewModel {
                 switch (index) {
                     case 0:
                         straw_resting_place[0] = 1;
-                        totalScore[0] = getTotalStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
+                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
                         view.setText(String.valueOf(totalScore[0]));
                         break;
                     case 1:
                         straw_resting_place[0] = 2;
-                        totalScore[0] = getTotalStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
+                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
                         view.setText(String.valueOf(totalScore[0]));
                         break;
                     case 2:
                         straw_resting_place[0] = 3;
-                        totalScore[0] = getTotalStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
+                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
                         view.setText(String.valueOf(totalScore[0]));
                         break;
                     case 3:
                         straw_resting_place[0] = 4;
-                        totalScore[0] = getTotalStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
+                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
                         view.setText(String.valueOf(totalScore[0]));
                         break;
                 }
@@ -208,7 +351,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         });
 
     }
-    public int getTotalStrawScore(int feedTank, int normal, int restingPlace){
+    public int calculatorBreedStrawScore(int feedTank, int normal, int restingPlace){
         int StrawScore = 0;
         if(feedTank <= 2  && normal < 2 && restingPlace <  2) {
             StrawScore = 100;
@@ -222,6 +365,144 @@ public class QuestionTemplateViewModel extends ViewModel {
             StrawScore = 20;
         }
         return StrawScore;
+    }
+    public int calculatorBreedOutwardScore(float ratio)
+    {
+        int outwardHygieneScore = 0;
+        if (ratio == 0) {
+            outwardHygieneScore = 100;
+        } else if (ratio <= 3) {
+            outwardHygieneScore = 90;
+        } else if (ratio <= 6) {
+            outwardHygieneScore = 80;
+        } else if (ratio <= 9) {
+            outwardHygieneScore = 70;
+        } else if (ratio <= 13) {
+            outwardHygieneScore = 60;
+        } else if (ratio <= 18) {
+            outwardHygieneScore = 50;
+        } else if (ratio <= 23) {
+            outwardHygieneScore = 40;
+        } else if (ratio <= 29) {
+            outwardHygieneScore = 30;
+        } else if (ratio <= 37) {
+            outwardHygieneScore = 20;
+        } else if (ratio <= 52) {
+            outwardHygieneScore = 10;
+        } else {
+            outwardHygieneScore = 0;
+        }
+        return outwardHygieneScore;
+    }
+    public double calculatorBreedRestScore(int strawScore, int outwardScore)
+    {
+        return (strawScore * 0.5) + (outwardScore * 0.5);
+    }
+    public int calculatorBreedSummerRestScore(int shade,int summerVentilating, int mistSpary)
+    {
+        int summerRestScore = 0;
+        // 충분한 그늘 항목 "예"인 경우
+        if (shade == 1) {
+            // 충분한 풍속 항목 "예"인 경우
+            if (summerVentilating  == 1) {
+                //안개분무 풍속 "예"인 경우
+                if (mistSpary == 1) {
+                    summerRestScore = 100;
+                } else {
+                    summerRestScore = 80;
+                }
+            } else {
+                if (mistSpary == 1) {
+                    summerRestScore = 60;
+                } else {
+                    summerRestScore = 45;
+                }
+            }
+        } else {
+            if (summerVentilating == 1) {
+                if (mistSpary == 1) {
+                    summerRestScore = 55;
+                } else {
+                    summerRestScore = 40;
+                }
+            } else {
+                if (mistSpary == 1) {
+                    summerRestScore = 20;
+                } else {
+                    summerRestScore = 0;
+                }
+            }
+        }
+        return summerRestScore;
+    }
+    public int calculatorBreedWinterRestScore(int windBlock, int winterVentilating)
+    {
+        int windRestScore = 0;
+        // 바람차단시설 항목 "예"인 경우
+        if (windBlock == 1) {
+            // 최소 풍속시설 항목 "예"인 경우
+            if (winterVentilating == 1) {
+                windRestScore = 100;
+            } else {
+                windRestScore = 70;
+            }
+            // 바람차단시설 항목 "아니오 "인 경우
+        } else {
+            if (winterVentilating == 1) {
+                windRestScore = 40;
+            } else {
+                windRestScore = 20;
+            }
+        }
+        return windRestScore;
+    }
+    public int calculatorCalfWinterRestScore(int straw, int warm, int windBlock)
+    {
+        int winterCalfRestScore = 0;
+        // 충분한 깔짚 항목 "예"
+        if (straw == 1) {
+            // 충분한 보온 항목 "예"
+            if (warm == 1) {
+                // 바람 차단 시설 "예"
+                if (windBlock == 1) {
+                    winterCalfRestScore = 100;
+                } else {
+                    winterCalfRestScore = 80;
+                }
+            }
+            // 충분한 보온 항목 "아니오"
+            else {
+                if (windBlock == 1) {
+                    winterCalfRestScore = 60;
+                } else {
+                    winterCalfRestScore = 45;
+                }
+            }
+        }
+        // 충분한 깔짚 항목 "아니오"
+        else {
+            if (warm == 1) {
+                if (windBlock == 1) {
+                    winterCalfRestScore = 55;
+                } else {
+                    winterCalfRestScore = 40;
+                }
+            } else {
+                if (windBlock == 1) {
+                    winterCalfRestScore = 20;
+                } else {
+                    winterCalfRestScore = 0;
+                }
+            }
+        }
+        return winterCalfRestScore;
+    }
+
+    public double calculatorTotalWarmVentilationScore(int breedSummerScore, int breedWinterScore, int calfSummerScore, int calfWinterScore) {
+
+        double warmVenScore = (breedSummerScore * 0.35) + (breedWinterScore * 0.15) + (calfSummerScore * 0.25) + (calfWinterScore * 0.25);
+
+        return warmVenScore;
     }
 }
 

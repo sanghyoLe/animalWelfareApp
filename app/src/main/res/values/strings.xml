@@ -42,6 +42,11 @@
     <string name="waiting_ratio_cow">음수를 대기하고 있는 대기 우 비율 (%)</string>
     <string name="water_tank_time">음수 행동 간이 측정 점수</string>
     <string name="water_score_title">충분한 물섭취 종합 점수</string>
+    <string name="summer_rest_score_title">성우 혹서기 열환경과 환기 점수</string>
+    <string name="calf_summer_rest_score_title">혹서기(포유송아지) 열환경과 환기 점수</string>
+    <string name="winter_rest_score_title">성우 혹한기 열환경과 환기 점수</string>
+    <string name="calf_winter_rest_score_title">혹한기(포유송아지) 열환경과 환기 점수</string>
+    <string name="summer_and_winter_rest_score">편안한 열환경과 환기(혹서기 + 혹한기) 종합 점수</string>
     <string name="title_q4">동별 음수 행동 간이 점수 측정</string>
     <string name="title_q5">동별 깔짚 수분 간이 점수 측정</string>
     <string name="straw_score">표본 펜 깔짚 수분 간이측정 점수</string>
@@ -54,6 +59,7 @@
     <string name="critical_hairloss_exp">심한 외피변형 - 1개 이상의 병변 및 부종</string>
     <string name="water_tank_form">음수조는 어떤 형태입니까?</string>
     <string name="outward_Hygiene">표본우군 중 미흡 수준의 두수를 입력하세요</string>
+    <string name="outward_hint">미흡 수준의 두수를 입력</string>
     <string name="outward_hygiene_score">가축외형 위생 점수</string>
     <string name="outward_hygiene_justice">미흡 : 전체 몸통부위 중 고상 이물질 면적 25%, 액상 이물질 면적 50% 초과</string>
     <string name="outward_hygiene_ratio">표본우군 중 미흡 수준의 비율</string>
@@ -102,7 +108,7 @@
     <string name="harmony_question_hint">10분동안 관찰한 화합 행동 수를 입력하세요</string>
     <string name="harmony_justice">화합행동 : 사회적 핥기, 뿔놀이</string>
     <string name="breed_shade_title">더울 때 주 사육시설에 모든 가축이 직사광선을 피해 쉴 수 있는 충분한 그늘이 제공되는가?</string>
-    <string name="breed_summer_ventilating_title">주 사육시설에 환기팬이 갖춰져 있고 더위를 대비한 충분한 풍속을 제공하는가</string>
+    <string name="breed_summer_ventilating_title">주 사육시설에 환기팬이 갖춰져 있고 더위를 대비한 충분한 풍속을 제공하는가?</string>
     <string name="breed_mist_spray_title">주 사육시설에 더위를 대비한 안개분무시설이 갖춰져 있는가?</string>
     <string name="breed_wind_block_title">주 사육시설에 모든 가축이 춥고 매서운 바람(북서풍 등)을 피할 수 있는 충분한 바람차단시설이 갖춰져 있는가?</string>
     <string name="breed_winter_ventilating_title">주 사육시설에 환기팬이 갖춰져 있고 추운 계절에도 환기를 위한 최소한의 풍속 시스템 운영방안을 갖추고 있는가?</string>

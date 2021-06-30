@@ -217,7 +217,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
-                        android:text=" / 300 마리"/>
+                        android:text=" / 73 마리"/>
                 </LinearLayout>
                 <EditText
                     android:id="@+id/eva_name"

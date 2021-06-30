@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,8 @@ public class BreedPoor extends Fragment {
 
 
         QuestionTemplate activity = (QuestionTemplate) getActivity();
-        int total_cow_count = activity.getTotalCow();
+        int total_cow_count = viewModel.getTotalCowSize();
+        Log.d("total_cow_Count",String.valueOf(total_cow_count));
 
         ed_1_poorRate.addTextChangedListener(new TextWatcher() {
             @Override

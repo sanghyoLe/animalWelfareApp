@@ -21,9 +21,11 @@
             tools:ignore="MissingConstraints"
             >
             <ImageButton
+                android:id="@+id/back_btn"
+                android:onClick="clickHandler"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/outline_home_24"
+                android:src="@drawable/outline_arrow_back_24"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"

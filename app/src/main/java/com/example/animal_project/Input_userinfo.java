@@ -1,7 +1,9 @@
 package com.example.animal_project;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 
+import android.util.Log;
 import android.view.MotionEvent;
 
 import android.view.View;
@@ -37,7 +40,7 @@ public class Input_userinfo extends AppCompatActivity {
     private Button milk_cow_btn;
     private LinearLayout beef_group;
     private LinearLayout milk_cow_group;
-
+    private QuestionTemplate Qt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +112,10 @@ public class Input_userinfo extends AppCompatActivity {
                     sample_size.setText(result);
                     total_cow_count = total_cow.getText().toString();
                     sample_size_count = result;
+
+
+
+
                 }
             }
             @Override
@@ -217,6 +224,7 @@ public class Input_userinfo extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putInt("inputChecked",inputChecked);
         bundle.putInt("totalCow",Integer.parseInt(total_cow_count));
+        bundle.putInt("sampleCowSize",Integer.parseInt(sample_size_count));
         intent.putExtras(bundle);
 
    }

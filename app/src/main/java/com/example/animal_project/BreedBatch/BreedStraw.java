@@ -44,7 +44,7 @@ public class BreedStraw extends Fragment {
         straw_score_tv = view.findViewById(R.id.breed_straw_score);
 
         QuestionTemplate activity = (QuestionTemplate) getActivity();
-        int total_cow_count = activity.getTotalCow();
+        int total_cow_count = viewModel.getTotalCowSize();
 
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
                 R.array.dong_size,
