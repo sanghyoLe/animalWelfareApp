@@ -1,6 +1,8 @@
 package com.example.animal_project;
 
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -49,6 +51,10 @@ public class QuestionTemplateViewModel extends ViewModel {
     private float criticalHairLoss = 0;
     private int hairLossScore = 0;
     private long minInjuryScore = 0;
+    private int cough = 0;
+    private float runnyNoseRatio = 0;
+    private float ophthalmicRatio = 0;
+    private float breathRatio = 0;
 
 
 
@@ -238,6 +244,30 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public long getMinInjuryScore(){
         return this.minInjuryScore;
+    }
+    public void setCough(int cough){
+        this.cough = cough;
+    }
+    public int getCough(){
+        return this.cough;
+    }
+    public void setRunnyNoseRatio(float runnyNoseRatio){
+        this.runnyNoseRatio = runnyNoseRatio;
+    }
+    public float getRunnyNoseRatio(){
+        return this.runnyNoseRatio;
+    }
+    public void setOphthalmicRatio(float ophthalmicRatio){
+        this.ophthalmicRatio = ophthalmicRatio;
+    }
+    public float getOphthalmicRatio(){
+        return this.ophthalmicRatio;
+    }
+    public void setBreathRatio(float breathRatio){
+        this.breathRatio = breathRatio;
+    }
+    public float getBreathRatio(){
+        return this.breathRatio;
     }
 
 
@@ -603,6 +633,48 @@ public class QuestionTemplateViewModel extends ViewModel {
 
         return minInjuryScore;
     }
+    public float getRatio(EditText editText){
+        float ratio = (Float.parseFloat(editText.getText().toString()) / getSampleCowSize()) * 100;
+        ratio = Math.round(ratio);
+        return ratio;
+    }
+    public float setDiseaseSectionRatio(EditText ed, TextView RatioTv, TextView sampleSizeTv){
+        final float[] ratio = new float[1];
+        ratio[0] = -1;
+        ed.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(TextUtils.isEmpty(ed.getText().toString())){
+                    ratio[0] = -1;
+                    RatioTv.setText("값을 입력하세요");
+                } else if(getRatio(ed) > 100){
+                    ratio[0] = -1;
+                    RatioTv.setText("표본 규모보다 큰 값 입력 불가");
+                    sampleSizeTv.setVisibility(View.VISIBLE);
+                    sampleSizeTv.setText("표본 규모 : " + String.valueOf(getSampleCowSize()));
+                } else {
+                    RatioTv.setText(String.valueOf(getRatio(ed)));
+                    ratio[0] = getRatio(ed);
+                }
+            }
+        });
+        if(ratio[0] == -1){
+            return -1;
+        } else {
+            return ratio[0];
+        }
+    }
+
 
 }
 

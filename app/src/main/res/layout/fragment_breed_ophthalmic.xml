@@ -12,79 +12,67 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="기침 평가"
+                android:text="@string/ophthalmic_title"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="50dp"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ophthalmic_justice"
+                android:padding="20dp"
+                android:layout_marginTop="50dp"
+                android:textSize="15dp" />
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="60dp">
-            <LinearLayout
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/breed_ophthalmic_pen_ed"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_margin="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:gravity="top"
-                    android:paddingTop="0dp"
-                    android:text="@string/choice_dong"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:id="@+id/divider"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="?android:attr/listDivider" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <Spinner
-                        android:id="@+id/spinner_breed_cough"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="선택"
-                        android:id="@+id/breed_cough_btn"/>
-                </LinearLayout>
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:hint="@string/pen_location_hint"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:inputType="number">
+            </EditText>
+            <EditText
+                android:id="@+id/breed_ophthalmic_ed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/ophthalmic"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:inputType="number">
+            </EditText>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cough_average_title"
+                android:text="@string/ophthalmic_ratio"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="20dp"
@@ -96,7 +84,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="10dp">
                 <TextView
-                    android:id="@+id/breed_cough_ratio"
+                    android:id="@+id/breed_ophthalmic_ratio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
@@ -105,9 +93,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" 번 "/>
+                    android:text=" / 100 %"/>
+
 
             </LinearLayout>
+            <TextView
+                android:id="@+id/sample_size_tv"
+                android:text=""
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_margin="20dp"/>
         </LinearLayout>
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,10 +32,7 @@ public class BreedWaterQ3 extends Fragment {
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
 
         view = inflater.inflate(R.layout.fragment_breed_water_q3, container, false);
-        Log.d("poorScore",String.valueOf(viewModel.getPoorScore()));
-        Log.d("WaterTankNum",String.valueOf(viewModel.getWaterTankNum()));
-        Log.d("WaterTankClean",String.valueOf(viewModel.getWaterTankClean()));
-        Log.d("WaterScore",String.valueOf(viewModel.getWaterScore()));
+
         TextView breed_drink_water_score = view.findViewById(R.id.breed_drink_water_score);
         TextView breed_total_water_score = view.findViewById(R.id.breed_total_water_score);
 

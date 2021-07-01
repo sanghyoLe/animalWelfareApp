@@ -14,7 +14,11 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.animal_project.BreedBatch.BreedBreath;
+import com.example.animal_project.BreedBatch.BreedCough;
 import com.example.animal_project.BreedBatch.BreedCriticalHairLoss;
+import com.example.animal_project.BreedBatch.BreedOphthalmic;
+import com.example.animal_project.BreedBatch.BreedRunnyNose;
 import com.example.animal_project.BreedBatch.BreedSlightHairLoss;
 import com.example.animal_project.BreedBatch.BreedLimp;
 import com.example.animal_project.BreedBatch.BreedMistSpray;
@@ -60,6 +64,10 @@ public class QuestionTemplate extends AppCompatActivity {
     private BreedLimp breed_limp;
     private BreedSlightHairLoss breed_slight_hair_loss;
     private BreedCriticalHairLoss breed_critical_hair_loss;
+    private BreedCough breed_cough;
+    private BreedRunnyNose breed_runny_nose;
+    private BreedOphthalmic breed_ophthalmic;
+    private BreedBreath breed_breath;
     private TextView current_page;
     private TextView total_page;
     private int inputCheck = 0;
@@ -105,8 +113,10 @@ public class QuestionTemplate extends AppCompatActivity {
         breed_limp = new BreedLimp();
         breed_slight_hair_loss = new BreedSlightHairLoss();
         breed_critical_hair_loss = new BreedCriticalHairLoss();
-
-
+        breed_cough = new BreedCough();
+        breed_runny_nose = new BreedRunnyNose();
+        breed_ophthalmic = new BreedOphthalmic();
+        breed_breath = new BreedBreath();
 
         // 마지막 페이지 개수 지정
         Intent intent = getIntent();
@@ -120,7 +130,8 @@ public class QuestionTemplate extends AppCompatActivity {
         breed_frag_arr = new Fragment[]{ breed_poor,breed_water_q1,breed_water_q2,breed_water_q3,
                 breed_straw,breed_outward,breed_shade,breed_summer_ventilating,breed_mist_spray,
                 breed_wind_block,breed_winter_ventilating,calf_shade,calf_summer_ventilating,calf_mist_spray,
-                calf_straw,calf_warm,calf_wind_block,breed_limp,breed_slight_hair_loss,breed_critical_hair_loss};
+                calf_straw,calf_warm,calf_wind_block,breed_limp,breed_slight_hair_loss,breed_critical_hair_loss,
+                breed_cough,breed_runny_nose,breed_ophthalmic,breed_breath};
 
 
 

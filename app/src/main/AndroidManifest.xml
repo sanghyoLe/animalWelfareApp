@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BreedBatch.BreedStrawDong"></activity>
+        <activity android:name=".BreedBatch.BreedCoughDong"></activity>
+        <activity android:name=".BreedBatch.BreedStrawDong" />
         <activity android:name=".BreedBatch.BreedWaterDongQ3" />
         <activity android:name=".QuestionTemplate" />
         <activity android:name=".BreedBatchQuestion.Breed_harmony" />

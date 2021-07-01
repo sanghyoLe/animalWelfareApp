@@ -44,10 +44,6 @@ public class Breed_batch_3 extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
 
-        breed_batch_Limp_ed = (EditText) findViewById(R.id.breed_batch_Limp_ed);
-
-        EditText breed_slight_hairloss_ed = findViewById(R.id.breed_slight_hairloss_ed);
-        EditText breed_critical_hairloss_ed = findViewById(R.id.breed_critical_hairloss_ed);
 
         EditText breed_runny_nose_ed = findViewById(R.id.breed_runny_nose_ed);
         EditText breed_ophthalmic_ed = findViewById(R.id.breed_ophthalmic_ed);
@@ -65,9 +61,7 @@ public class Breed_batch_3 extends AppCompatActivity {
         RadioGroup breed_castration_painkiller = (RadioGroup) findViewById(R.id.breed_batch_castration_Painkiller_rdogrp32);
         TextView breed_limp_score = findViewById(R.id.breed_limp_score);
         TextView breed_limp_ratio = findViewById(R.id.breed_limp_ratio);
-        TextView breed_hairloss_ratio_tv = findViewById(R.id.breed_hairloss_ratio);
-        TextView breed_hairloss_score_tv = findViewById(R.id.breed_hairloss_score);
-        TextView breed_min_injury_score = findViewById(R.id.breed_min_injury_score);
+
         breed_runnynose_ratio_tv = findViewById(R.id.breed_runny_nose_ratio);
         breed_ophthalmic_ratio_tv = findViewById(R.id.breed_ophthalmic_ratio);
         breed_breath_ratio_tv = findViewById(R.id.breed_breath_ratio);
@@ -168,7 +162,7 @@ public class Breed_batch_3 extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        Button breed_btn_cough = findViewById(R.id.breed_btn_cough);
+        /*Button breed_btn_cough = findViewById(R.id.breed_btn_cough);
 
 
         breed_btn_cough.setOnClickListener(new View.OnClickListener(){
@@ -181,12 +175,12 @@ public class Breed_batch_3 extends AppCompatActivity {
                 }else{
                     dong_size = Integer.parseInt(dong_count);
                     Intent intent = new Intent(Breed_batch_3.this, Breed_cough.class);
-                    intent.putExtra("dong_count",dong_size); /*송신*/
+                    intent.putExtra("dong_count",dong_size); *//*송신*//*
                     startActivityForResult(intent, 0);
                 }
             }
         });
-
+*/
         setRatioTextView(breed_runny_nose_ed,breed_runnynose_ratio_tv);
         setRatioTextView(breed_ophthalmic_ed,breed_ophthalmic_ratio_tv);
         setRatioTextView(breed_breath_ed,breed_breath_ratio_tv);
@@ -636,19 +630,7 @@ public class Breed_batch_3 extends AppCompatActivity {
 
     }
 
-    private void setMinimiztionOfInjury(TextView limpScoreTv, TextView hairLossScoreTv, TextView minInjuryScoreTv)
-    {
-      if(TextUtils.isEmpty(limpScoreTv.getText())
-              || TextUtils.isEmpty(hairLossScoreTv.getText()) 
-              || hairLossScoreTv.getText() == "값을 입력하세요"
-      ){
-            minInjuryScoreTv.setText("상해의 최소화 설문을 모두 완료해주세요");
-      } else {
-          int LimpScore = Integer.parseInt(String.valueOf(limpScoreTv.getText()));
-          int hairLossScore = Integer.parseInt(String.valueOf(hairLossScoreTv.getText()));
 
-      }
-    }
     private void setMinPainScore(TextView removalScoreTv, TextView castrationScoreTv, TextView minPainScoreTv)
     {
         if(TextUtils.isEmpty(removalScoreTv.getText())

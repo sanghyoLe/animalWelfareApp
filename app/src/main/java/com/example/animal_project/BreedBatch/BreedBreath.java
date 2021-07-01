@@ -3,64 +3,37 @@ package com.example.animal_project.BreedBatch;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BreedBreath#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class BreedBreath extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public BreedBreath() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BreedBreath.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static BreedBreath newInstance(String param1, String param2) {
-        BreedBreath fragment = new BreedBreath();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    private View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_breed_breath, container, false);
+        EditText breed_breath_ed = view.findViewById(R.id.breed_breath_ed);
+        TextView breed_breath_tv = view.findViewById(R.id.breed_breath_ratio);
+        TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
+        QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
+
+        float ratio = viewModel.setDiseaseSectionRatio(breed_breath_ed,breed_breath_tv,sample_size_tv);
+        if(ratio == -1){
+
+        }else {
+            viewModel.setBreathRatio(ratio);
+        }
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_breed_breath, container, false);
+        return view;
     }
 }
