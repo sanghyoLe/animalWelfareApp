@@ -44,6 +44,12 @@ public class QuestionTemplateViewModel extends ViewModel {
     private int calfWindBlockScore = 0;
     private int calfWinterRestScore =0;
     private double totalWarmVentilatingScore = 0;
+    private int limpScore = -1;
+    private float slightHairLoss = -1;
+    private float criticalHairLoss = 0;
+    private int hairLossScore = 0;
+    private long minInjuryScore = 0;
+
 
 
     public void setTotalCowSize(int totalCowSize){
@@ -202,6 +208,36 @@ public class QuestionTemplateViewModel extends ViewModel {
     public double getTotalWarmVentilatingScore()
     {
         return this.totalWarmVentilatingScore;
+    }
+    public void setLimpScore(int limpScore){
+        this.limpScore = limpScore;
+    }
+    public int getLimpScore(){
+        return this.limpScore;
+    }
+    public void setSlightHairLoss(float slightHairLoss){
+        this.slightHairLoss = slightHairLoss;
+    }
+    public float getSlightHairLoss(){
+        return this.slightHairLoss;
+    }
+    public void setCriticalHairLoss(float criticalHairLoss){
+        this.criticalHairLoss = criticalHairLoss;
+    }
+    public float getCriticalHairLoss(){
+        return this.criticalHairLoss;
+    }
+    public void setHairLossScore(int hairLossScore){
+        this.hairLossScore = hairLossScore;
+    }
+    public int getHairLossScore(){
+        return this.hairLossScore;
+    }
+    public void setMinInjuryScore(long minInjuryScore){
+        this.minInjuryScore = minInjuryScore;
+    }
+    public long getMinInjuryScore(){
+        return this.minInjuryScore;
     }
 
 
@@ -504,5 +540,69 @@ public class QuestionTemplateViewModel extends ViewModel {
 
         return warmVenScore;
     }
+    public int calculatorLimpScore(float limp)
+    {
+        int limpScore = 0;
+        if (limp == 0) {
+            limpScore = 100;
+        } else if (limp <= 1.5) {
+            limpScore = 90;
+        } else if (limp <= 3) {
+            limpScore = 80;
+        } else if (limp <= 5) {
+            limpScore = 70;
+        } else if (limp <= 7) {
+            limpScore = 60;
+        } else if (limp <= 10) {
+            limpScore = 50;
+        } else if (limp <= 13) {
+            limpScore = 40;
+        } else if (limp <= 20) {
+            limpScore = 30;
+        } else if (limp <= 31) {
+            limpScore = 20;
+        } else if (limp <= 49) {
+            limpScore = 10;
+        } else {
+            limpScore = 0;
+        }
+        return limpScore;
+    }
+    public int calculatorHairLossScore(float hairLoss)
+    {
+        int hairLossScore = 0;
+        if (hairLoss == 0) {
+            hairLossScore = 100;
+        } else if (hairLoss <= 4) {
+            hairLossScore = 90;
+        } else if (hairLoss <= 8) {
+            hairLossScore = 80;
+        } else if (hairLoss <= 13) {
+            hairLossScore = 70;
+        } else if (hairLoss <= 18) {
+            hairLossScore = 60;
+        } else if (hairLoss <= 24) {
+            hairLossScore = 50;
+        } else if (hairLoss <= 31) {
+            hairLossScore = 40;
+        } else if (hairLoss <= 40) {
+            hairLossScore = 30;
+        } else if (hairLoss <= 52) {
+            hairLossScore = 20;
+        } else if (hairLoss <= 72) {
+            hairLossScore = 10;
+        } else {
+            hairLossScore = 0;
+        }
+        return hairLossScore;
+    }
+    public long calculatorMinInjuryScore(int limpScore, int hairLossScore){
+        long minInjuryScore = 0;
+        minInjuryScore = Math.round((limpScore * 0.6) + (hairLossScore *0.4));
+        minInjuryScore = Math.round(minInjuryScore);
+
+        return minInjuryScore;
+    }
+
 }
 

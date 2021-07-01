@@ -80,6 +80,7 @@ public class Breed_batch_3 extends AppCompatActivity {
         breed_castration_score_tv = findViewById(R.id.breed_castration_score);
         breed_min_pain_score = findViewById(R.id.breed_min_pain_score);
 
+/*
         breed_batch_Limp_ed.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -107,6 +108,7 @@ public class Breed_batch_3 extends AppCompatActivity {
                 }
             }
         });
+
         breed_slight_hairloss_ed.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -141,6 +143,7 @@ public class Breed_batch_3 extends AppCompatActivity {
                 setMinimiztionOfInjury(breed_limp_score, breed_hairloss_score_tv, breed_min_injury_score);
             }
         });
+*/
 
 
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(getApplicationContext(),
@@ -277,35 +280,8 @@ public class Breed_batch_3 extends AppCompatActivity {
     }
         return limpScore;
     }
-    private int getHairLossScore(float hairLoss)
-    {
-        int hairLossScore = 0;
-        if (hairLoss == 0) {
-            hairLossScore = 100;
-        } else if (hairLoss <= 4) {
-        hairLossScore = 90;
-    } else if (hairLoss <= 8) {
-        hairLossScore = 80;
-    } else if (hairLoss <= 13) {
-        hairLossScore = 70;
-    } else if (hairLoss <= 18) {
-        hairLossScore = 60;
-    } else if (hairLoss <= 24) {
-        hairLossScore = 50;
-    } else if (hairLoss <= 31) {
-        hairLossScore = 40;
-    } else if (hairLoss <= 40) {
-        hairLossScore = 30;
-    } else if (hairLoss <= 52) {
-        hairLossScore = 20;
-    } else if (hairLoss <= 72) {
-        hairLossScore = 10;
-    } else {
-        hairLossScore = 0;
-    }
-        return hairLossScore;
-    }
-    private void setHairRatioScore(EditText slight_hairloss_ed, EditText critical_hairloss_ed, TextView hairloss_ratio_tv, TextView hairloss_score_tv){
+
+    /*private void setHairRatioScore(EditText slight_hairloss_ed, EditText critical_hairloss_ed, TextView hairloss_ratio_tv, TextView hairloss_score_tv){
         float slight_ratio = 0;
         float critical_ratio = 0;
         float ratio_total = 0;
@@ -320,12 +296,12 @@ public class Breed_batch_3 extends AppCompatActivity {
             ratio_total = (slight_ratio + 5 * critical_ratio) / 5;
             ratio_total =  Math.round(ratio_total);
             hairloss_ratio_tv.setText(String.valueOf(ratio_total));
-            int hairloss_score = getHairLossScore(ratio_total);
+
 
             hairloss_score_tv.setText(String.valueOf(hairloss_score));
         }
     }
-
+*/
     private float getRatio(EditText editText){
             float ratio = (Float.parseFloat(editText.getText().toString()) / sample_size_count) * 100;
             ratio = Math.round(ratio);
@@ -670,9 +646,7 @@ public class Breed_batch_3 extends AppCompatActivity {
       } else {
           int LimpScore = Integer.parseInt(String.valueOf(limpScoreTv.getText()));
           int hairLossScore = Integer.parseInt(String.valueOf(hairLossScoreTv.getText()));
-          minInjuryScore = (LimpScore * 0.6) + (hairLossScore *0.4);
-          minInjuryScore = Math.round(minInjuryScore);
-          minInjuryScoreTv.setText(String.valueOf(minInjuryScore));
+
       }
     }
     private void setMinPainScore(TextView removalScoreTv, TextView castrationScoreTv, TextView minPainScoreTv)

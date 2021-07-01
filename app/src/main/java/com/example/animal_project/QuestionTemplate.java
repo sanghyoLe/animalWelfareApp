@@ -10,12 +10,13 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.animal_project.BreedBatch.BreedCriticalHairLoss;
+import com.example.animal_project.BreedBatch.BreedSlightHairLoss;
+import com.example.animal_project.BreedBatch.BreedLimp;
 import com.example.animal_project.BreedBatch.BreedMistSpray;
 import com.example.animal_project.BreedBatch.BreedOutward;
 import com.example.animal_project.BreedBatch.BreedPoor;
@@ -33,9 +34,6 @@ import com.example.animal_project.BreedBatch.CalfStraw;
 import com.example.animal_project.BreedBatch.CalfSummerVentilating;
 import com.example.animal_project.BreedBatch.CalfWarm;
 import com.example.animal_project.BreedBatch.CalfWindBlock;
-import com.example.animal_project.Farm_Activity.Fatten_1;
-import com.example.animal_project.Farm_Activity.Freestall_1;
-import com.example.animal_project.Farm_Activity.MilkCow_1;
 
 
 public class QuestionTemplate extends AppCompatActivity {
@@ -59,6 +57,9 @@ public class QuestionTemplate extends AppCompatActivity {
     private CalfStraw calf_straw;
     private CalfWarm calf_warm;
     private CalfWindBlock calf_wind_block;
+    private BreedLimp breed_limp;
+    private BreedSlightHairLoss breed_slight_hair_loss;
+    private BreedCriticalHairLoss breed_critical_hair_loss;
     private TextView current_page;
     private TextView total_page;
     private int inputCheck = 0;
@@ -101,6 +102,10 @@ public class QuestionTemplate extends AppCompatActivity {
         calf_straw = new CalfStraw();
         calf_warm = new CalfWarm();
         calf_wind_block = new CalfWindBlock();
+        breed_limp = new BreedLimp();
+        breed_slight_hair_loss = new BreedSlightHairLoss();
+        breed_critical_hair_loss = new BreedCriticalHairLoss();
+
 
 
         // 마지막 페이지 개수 지정
@@ -111,11 +116,11 @@ public class QuestionTemplate extends AppCompatActivity {
         sampleCowSize = BeforeBundle.getInt("sampleCowSize");
 
         viewModel.setSampleCowSize(sampleCowSize);
-
+        viewModel.setTotalCowSize(totalCowSize);
         breed_frag_arr = new Fragment[]{ breed_poor,breed_water_q1,breed_water_q2,breed_water_q3,
                 breed_straw,breed_outward,breed_shade,breed_summer_ventilating,breed_mist_spray,
                 breed_wind_block,breed_winter_ventilating,calf_shade,calf_summer_ventilating,calf_mist_spray,
-        calf_straw,calf_warm,calf_wind_block};
+                calf_straw,calf_warm,calf_wind_block,breed_limp,breed_slight_hair_loss,breed_critical_hair_loss};
 
 
 
