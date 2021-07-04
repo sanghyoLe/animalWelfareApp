@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
@@ -22,6 +23,7 @@ import com.example.animal_project.Result.Result_5;
 import com.google.android.material.tabs.TabLayout;
 
 public class Result_View extends AppCompatActivity {
+
     private double protocolFourScore;
     private double[] protocolScores;
 
@@ -53,7 +55,7 @@ public class Result_View extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        bundle = intent.getExtras();
+
 
 
 

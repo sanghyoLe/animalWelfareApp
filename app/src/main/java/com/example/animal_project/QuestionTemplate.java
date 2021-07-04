@@ -11,37 +11,68 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.animal_project.BreedBatch.BreedBreath;
-import com.example.animal_project.BreedBatch.BreedCough;
-import com.example.animal_project.BreedBatch.BreedCriticalHairLoss;
-import com.example.animal_project.BreedBatch.BreedOphthalmic;
-import com.example.animal_project.BreedBatch.BreedRunnyNose;
-import com.example.animal_project.BreedBatch.BreedSlightHairLoss;
-import com.example.animal_project.BreedBatch.BreedLimp;
-import com.example.animal_project.BreedBatch.BreedMistSpray;
-import com.example.animal_project.BreedBatch.BreedOutward;
-import com.example.animal_project.BreedBatch.BreedPoor;
-import com.example.animal_project.BreedBatch.BreedShade;
-import com.example.animal_project.BreedBatch.BreedStraw;
-import com.example.animal_project.BreedBatch.BreedSummerVentilating;
-import com.example.animal_project.BreedBatch.BreedWaterQ1;
-import com.example.animal_project.BreedBatch.BreedWaterQ2;
-import com.example.animal_project.BreedBatch.BreedWaterQ3;
-import com.example.animal_project.BreedBatch.BreedWindBlock;
-import com.example.animal_project.BreedBatch.BreedWinterVentilating;
-import com.example.animal_project.BreedBatch.CalfMistSpray;
-import com.example.animal_project.BreedBatch.CalfShade;
-import com.example.animal_project.BreedBatch.CalfStraw;
-import com.example.animal_project.BreedBatch.CalfSummerVentilating;
-import com.example.animal_project.BreedBatch.CalfWarm;
-import com.example.animal_project.BreedBatch.CalfWindBlock;
+import com.example.animal_project.BreedBatch.ProtocolFour.BreedAvoidDistance;
+import com.example.animal_project.BreedBatch.ProtocolFour.BreedHarmony;
+import com.example.animal_project.BreedBatch.ProtocolFour.BreedStruggle;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedBreath;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedCastrationQ1;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedCastrationQ2;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedCastrationQ3;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedCough;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedCriticalHairLoss;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedDiarrhea;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedFallDead;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedHornQ1;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedHornQ2;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedHornQ3;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedOphthalmic;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedRuminant;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedRunnyNose;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedSlightHairLoss;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedLimp;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedMistSpray;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedOutward;
+import com.example.animal_project.BreedBatch.ProtocolOne.BreedPoor;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedShade;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedStraw;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedSummerVentilating;
+import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ1;
+import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ2;
+import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ3;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedWindBlock;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedWinterVentilating;
+import com.example.animal_project.BreedBatch.ProtocolTwo.CalfMistSpray;
+import com.example.animal_project.BreedBatch.ProtocolTwo.CalfShade;
+import com.example.animal_project.BreedBatch.ProtocolTwo.CalfStraw;
+import com.example.animal_project.BreedBatch.ProtocolTwo.CalfSummerVentilating;
+import com.example.animal_project.BreedBatch.ProtocolTwo.CalfWarm;
+import com.example.animal_project.BreedBatch.ProtocolTwo.CalfWindBlock;
+import com.example.animal_project.Result.Result_1;
+import com.example.animal_project.Result.Result_2;
+import com.example.animal_project.Result.Result_3;
+import com.example.animal_project.Result.Result_4;
+import com.example.animal_project.Result.Result_5;
+import com.google.android.material.tabs.TabLayout;
 
 
 public class QuestionTemplate extends AppCompatActivity {
 
+// --- 결과 창 ---
+    Result_1 result1;
+    Result_2 result2;
+    Result_3 result3;
+    Result_4 result4;
+    Result_5 result5;
+    TabLayout tabs;
+    Bundle bundle;
+    // --------------------------------------------------------
+    private LinearLayout fragment_paper;
+    private LinearLayout question_top_nav;
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
     private BreedPoor breed_poor;
@@ -68,11 +99,24 @@ public class QuestionTemplate extends AppCompatActivity {
     private BreedRunnyNose breed_runny_nose;
     private BreedOphthalmic breed_ophthalmic;
     private BreedBreath breed_breath;
+    private BreedDiarrhea breed_diarrhea;
+    private BreedRuminant breed_ruminant;
+    private BreedFallDead breed_fall_dead;
+    private BreedHornQ1 breed_horn_q1;
+    private BreedHornQ2 breed_horn_q2;
+    private BreedHornQ3 breed_horn_q3;
+    private BreedCastrationQ1 breed_castration_q1;
+    private BreedCastrationQ2 breed_castration_q2;
+    private BreedCastrationQ3 breed_castration_q3;
+    private BreedStruggle breed_struggle;
+    private BreedHarmony breed_harmony;
+    private BreedAvoidDistance breed_avoid_distance;
     private TextView current_page;
     private TextView total_page;
     private int inputCheck = 0;
     private ImageButton prev_btn;
     private ImageButton next_btn;
+    private Button end_btn;
     private int totalCowSize;
     private int sampleCowSize;
     private Fragment[] breed_frag_arr = new Fragment[20];
@@ -84,6 +128,13 @@ public class QuestionTemplate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_template);
 
+
+        result1 = new Result_1();
+        result2 = new Result_2();
+        result3 = new Result_3();
+        result4 = new Result_4();
+        result5 = new Result_5();
+
         QuestionTemplateViewModel viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
 
         fragmentManager = getSupportFragmentManager();
@@ -92,7 +143,11 @@ public class QuestionTemplate extends AppCompatActivity {
         prev_btn = findViewById(R.id.previous_btn);
         current_page = findViewById(R.id.current_page);
         total_page = findViewById(R.id.total_page);
+        end_btn = findViewById(R.id.end_btn);
+        fragment_paper = findViewById(R.id.fragment_paper);
+        question_top_nav = findViewById(R.id.question_top_nav);
 
+        // 평가를 위한 프래그먼트들
         breed_poor = new BreedPoor();
         breed_water_q1 = new BreedWaterQ1();
         breed_water_q2 = new BreedWaterQ2();
@@ -117,6 +172,18 @@ public class QuestionTemplate extends AppCompatActivity {
         breed_runny_nose = new BreedRunnyNose();
         breed_ophthalmic = new BreedOphthalmic();
         breed_breath = new BreedBreath();
+        breed_diarrhea = new BreedDiarrhea();
+        breed_ruminant = new BreedRuminant();
+        breed_fall_dead = new BreedFallDead();
+        breed_horn_q1 = new BreedHornQ1();
+        breed_horn_q2 = new BreedHornQ2();
+        breed_horn_q3 = new BreedHornQ3();
+        breed_castration_q1 = new BreedCastrationQ1();
+        breed_castration_q2 = new BreedCastrationQ2();
+        breed_castration_q3 = new BreedCastrationQ3();
+        breed_struggle = new BreedStruggle();
+        breed_harmony = new BreedHarmony();
+        breed_avoid_distance = new BreedAvoidDistance();
 
         // 마지막 페이지 개수 지정
         Intent intent = getIntent();
@@ -131,7 +198,9 @@ public class QuestionTemplate extends AppCompatActivity {
                 breed_straw,breed_outward,breed_shade,breed_summer_ventilating,breed_mist_spray,
                 breed_wind_block,breed_winter_ventilating,calf_shade,calf_summer_ventilating,calf_mist_spray,
                 calf_straw,calf_warm,calf_wind_block,breed_limp,breed_slight_hair_loss,breed_critical_hair_loss,
-                breed_cough,breed_runny_nose,breed_ophthalmic,breed_breath};
+                breed_cough,breed_runny_nose,breed_ophthalmic,breed_breath,breed_diarrhea,breed_ruminant,breed_fall_dead,
+                breed_horn_q1,breed_horn_q2,breed_horn_q3,breed_castration_q1,breed_castration_q2,breed_castration_q3,
+        breed_struggle,breed_harmony,breed_avoid_distance};
 
 
 
@@ -215,7 +284,47 @@ public class QuestionTemplate extends AppCompatActivity {
                     }
                 });
                 myAlertBuilder.show();
-                break;
+            case R.id.end_btn:
+                fragment_paper.setVisibility(View.GONE);
+                end_btn.setVisibility(View.GONE);
+                question_top_nav.setVisibility(View.GONE);
+                getSupportFragmentManager().beginTransaction().add(R.id.container, result1).commit();
+                tabs = findViewById(R.id.tab_layout);
+                tabs.addTab(tabs.newTab().setText("종합"));
+                tabs.addTab(tabs.newTab().setText("사료"));
+                tabs.addTab(tabs.newTab().setText("환경"));
+                tabs.addTab(tabs.newTab().setText("건강"));
+                tabs.addTab(tabs.newTab().setText("행동"));
+
+                tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+                        int position = tab.getPosition();
+                        Fragment selected = null;
+                        if(position == 0)
+                            selected = result1;
+                        else if(position == 1)
+                            selected = result2;
+                        else if(position == 2)
+                            selected = result3;
+                        else if(position == 3)
+                            selected = result4;
+                        else if(position == 4)
+                            selected = result5;
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, selected).commit();
+                    }
+
+                    @Override
+                    public void onTabUnselected(TabLayout.Tab tab) {
+
+                    }
+
+                    @Override
+                    public void onTabReselected(TabLayout.Tab tab) {
+
+                    }
+                });
+
 
 
         }
@@ -225,6 +334,7 @@ public class QuestionTemplate extends AppCompatActivity {
     private void nextBtnHandler(int count, int totalPageLength){
         if(count + 2 == totalPageLength){
             next_btn.setVisibility(View.INVISIBLE);
+            end_btn.setVisibility(View.VISIBLE);
         }
         prev_btn.setVisibility(View.VISIBLE);
     }
@@ -235,6 +345,7 @@ public class QuestionTemplate extends AppCompatActivity {
         if(count == 1){
             prev_btn.setVisibility(View.INVISIBLE);
         }
+        end_btn.setVisibility(View.GONE);
     }
 
 }

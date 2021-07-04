@@ -1,0 +1,79 @@
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/horn_title_q1"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="60dp">
+        <RadioGroup
+            android:id="@+id/breed_horn_q1_rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:paddingLeft="10dp">
+            <RadioButton
+                android:id="@+id/breed_horn_q1_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/horn_sub_q1_1"
+                android:textSize="15dp"
+                android:layout_weight="1">
+            </RadioButton>
+            <RadioButton
+                android:id="@+id/breed_horn_q1_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="@string/horn_sub_q1_2"
+                android:layout_weight="1">
+            </RadioButton>
+            <RadioButton
+                android:id="@+id/breed_horn_q1_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="@string/horn_sub_q1_3"
+                android:layout_weight="1">
+            </RadioButton>
+            <RadioButton
+                android:id="@+id/breed_horn_q1_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="@string/horn_sub_q1_4"
+                android:layout_weight="1">
+            </RadioButton>
+
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

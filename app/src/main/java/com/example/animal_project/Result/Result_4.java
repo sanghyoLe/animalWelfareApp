@@ -20,12 +20,7 @@ public class Result_4 extends Fragment {
         View view = inflater.inflate(R.layout.result_4, container, false);
 
 
-        TextView total_result_3 = view.findViewById(R.id.total_result_3);
-        Result_View activity = (Result_View) getActivity();
-        Bundle bundle = activity.getProtocolScoreBundle();
-        double protocolThreeScore = bundle.getDouble("protocolThreeScore");
-        total_result_3.setText(String.valueOf(protocolThreeScore));
-        
+
         return view;
     }
 }

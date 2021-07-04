@@ -111,7 +111,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cough_caution"
+                android:text="@string/struggle_caution"
                 android:textColor="@color/colorCrison"
 
                 >
@@ -120,7 +120,7 @@
         // 1동
 
         <LinearLayout
-            android:id="@+id/breed_dong_cough_1"
+            android:id="@+id/breed_dong_struggle_1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -167,7 +167,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
+                    android:text="@string/struggle_sub_title"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -184,13 +184,13 @@
                 android:inputType="number"></EditText>
 
             <EditText
-                android:id="@+id/breed_cough_1"
+                android:id="@+id/breed_struggle_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
+                android:hint="@string/struggle_question_hint"
                 android:inputType="number"></EditText>
 
 
@@ -205,7 +205,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
+                    android:text="@string/struggle_average_title"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -218,7 +218,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/breed_cough_ratio_1"
+                        android:id="@+id/breed_struggle_ratio_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -245,7 +245,7 @@
         // 1동 끝
 
         <LinearLayout
-            android:id="@+id/breed_dong_cough_2"
+            android:id="@+id/breed_dong_struggle_2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -294,7 +294,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
+                    android:text="@string/struggle_sub_title"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -311,13 +311,13 @@
                 android:inputType="number"></EditText>
 
             <EditText
-                android:id="@+id/breed_cough_2"
+                android:id="@+id/breed_struggle_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
+                android:hint="@string/struggle_question_hint"
                 android:inputType="number"></EditText>
 
 
@@ -332,7 +332,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
+                    android:text="@string/struggle_average_title"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -345,7 +345,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/breed_cough_ratio_2"
+                        android:id="@+id/breed_struggle_ratio_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -364,7 +364,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/breed_dong_cough_3"
+            android:id="@+id/breed_dong_struggle_3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -413,7 +413,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
+                    android:text="@string/struggle_sub_title"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -430,13 +430,13 @@
                 android:inputType="number"></EditText>
 
             <EditText
-                android:id="@+id/breed_cough_3"
+                android:id="@+id/breed_struggle_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
+                android:hint="@string/struggle_question_hint"
                 android:inputType="number"></EditText>
 
 
@@ -450,7 +450,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
+                    android:text="@string/struggle_average_title"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -463,7 +463,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/breed_cough_ratio_3"
+                        android:id="@+id/breed_struggle_ratio_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -482,7 +482,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/breed_dong_cough_4"
+            android:id="@+id/breed_dong_struggle_4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -531,7 +531,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
+                    android:text="@string/struggle_sub_title"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -548,13 +548,13 @@
                 android:inputType="number"></EditText>
 
             <EditText
-                android:id="@+id/breed_cough_4"
+                android:id="@+id/breed_struggle_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
+                android:hint="@string/struggle_question_hint"
                 android:inputType="number"></EditText>
 
 
@@ -568,7 +568,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
+                    android:text="@string/struggle_average_title"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -581,7 +581,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/breed_cough_ratio_4"
+                        android:id="@+id/breed_struggle_ratio_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -600,7 +600,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/breed_dong_cough_5"
+            android:id="@+id/breed_dong_struggle_5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -649,7 +649,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
+                    android:text="@string/struggle_sub_title"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -666,13 +666,13 @@
                 android:inputType="number"></EditText>
 
             <EditText
-                android:id="@+id/breed_cough_5"
+                android:id="@+id/breed_struggle_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
+                android:hint="@string/struggle_question_hint"
                 android:inputType="number"></EditText>
 
 
@@ -686,7 +686,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
+                    android:text="@string/struggle_average_title"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -699,7 +699,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/breed_cough_ratio_5"
+                        android:id="@+id/breed_struggle_ratio_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -718,7 +718,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/breed_dong_cough_6"
+            android:id="@+id/breed_dong_struggle_6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -767,7 +767,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
+                    android:text="@string/struggle_sub_title"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -784,13 +784,13 @@
                 android:inputType="number"></EditText>
 
             <EditText
-                android:id="@+id/breed_cough_6"
+                android:id="@+id/breed_struggle_6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
+                android:hint="@string/struggle_question_hint"
                 android:inputType="number"></EditText>
 
 
@@ -805,7 +805,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
+                    android:text="@string/struggle_average_title"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -818,7 +818,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/breed_cough_ratio_6"
+                        android:id="@+id/breed_struggle_ratio_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -837,7 +837,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/breed_dong_cough_7"
+            android:id="@+id/breed_dong_struggle_7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -886,7 +886,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
+                    android:text="@string/struggle_sub_title"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -903,13 +903,13 @@
                 android:inputType="number"></EditText>
 
             <EditText
-                android:id="@+id/breed_cough_7"
+                android:id="@+id/breed_struggle_7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
+                android:hint="@string/struggle_question_hint"
                 android:inputType="number"></EditText>
 
 
@@ -924,7 +924,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
+                    android:text="@string/struggle_average_title"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -937,7 +937,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/breed_cough_ratio_7"
+                        android:id="@+id/breed_struggle_ratio_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -956,7 +956,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/breed_dong_cough_8"
+            android:id="@+id/breed_dong_struggle_8"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -1005,7 +1005,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
+                    android:text="@string/struggle_sub_title"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -1022,13 +1022,13 @@
                 android:inputType="number"></EditText>
 
             <EditText
-                android:id="@+id/breed_cough_8"
+                android:id="@+id/breed_struggle_8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
+                android:hint="@string/struggle_question_hint"
                 android:inputType="number"></EditText>
 
 
@@ -1042,7 +1042,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
+                    android:text="@string/struggle_average_title"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -1055,7 +1055,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/breed_cough_ratio_8"
+                        android:id="@+id/breed_struggle_ratio_8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -1074,7 +1074,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/breed_dong_cough_9"
+            android:id="@+id/breed_dong_struggle_9"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -1123,7 +1123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
+                    android:text="@string/struggle_sub_title"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -1140,13 +1140,13 @@
                 android:inputType="number"></EditText>
 
             <EditText
-                android:id="@+id/breed_cough_9"
+                android:id="@+id/breed_struggle_9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
+                android:hint="@string/struggle_question_hint"
                 android:inputType="number"></EditText>
 
 
@@ -1161,7 +1161,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
+                    android:text="@string/struggle_average_title"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -1174,7 +1174,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/breed_cough_ratio_9"
+                        android:id="@+id/breed_struggle_ratio_9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -1193,7 +1193,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/breed_dong_cough_10"
+            android:id="@+id/breed_dong_struggle_10"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -1242,7 +1242,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
+                    android:text="@string/struggle_sub_title"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -1259,13 +1259,13 @@
                 android:inputType="number"></EditText>
 
             <EditText
-                android:id="@+id/breed_cough_10"
+                android:id="@+id/breed_struggle_10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
+                android:hint="@string/struggle_question_hint"
                 android:inputType="number"></EditText>
 
 
@@ -1280,7 +1280,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
+                    android:text="@string/struggle_average_title"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -1293,7 +1293,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/breed_cough_ratio_10"
+                        android:id="@+id/breed_struggle_ratio_10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -1312,7 +1312,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/breed_dong_cough_11"
+            android:id="@+id/breed_dong_struggle_11"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -1361,7 +1361,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
+                    android:text="@string/struggle_sub_title"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -1378,13 +1378,13 @@
                 android:inputType="number"></EditText>
 
             <EditText
-                android:id="@+id/breed_cough_11"
+                android:id="@+id/breed_struggle_11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
+                android:hint="@string/struggle_question_hint"
                 android:inputType="number"></EditText>
 
 
@@ -1399,7 +1399,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
+                    android:text="@string/struggle_average_title"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -1412,7 +1412,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/breed_cough_ratio_11"
+                        android:id="@+id/breed_struggle_ratio_11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -1431,7 +1431,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/breed_dong_cough_12"
+            android:id="@+id/breed_dong_struggle_12"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -1480,7 +1480,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
+                    android:text="@string/struggle_sub_title"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -1497,13 +1497,13 @@
                 android:inputType="number"></EditText>
 
             <EditText
-                android:id="@+id/breed_cough_12"
+                android:id="@+id/breed_struggle_12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
+                android:hint="@string/struggle_question_hint"
                 android:inputType="number"></EditText>
 
 
@@ -1518,7 +1518,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
+                    android:text="@string/struggle_average_title"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -1531,7 +1531,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/breed_cough_ratio_12"
+                        android:id="@+id/breed_struggle_ratio_12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -1549,955 +1549,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/breed_dong_cough_13"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/pen_location_13"
-
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="숫자 입력"
-                    android:inputType="number"></EditText>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/breed_total_cow_13"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/pen_total_cow_hint"
-                android:inputType="number"></EditText>
-
-            <EditText
-                android:id="@+id/breed_cough_13"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
-                android:inputType="number"></EditText>
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/breed_cough_ratio_13"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="  번" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/breed_dong_cough_14"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/pen_location_14"
-
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="숫자 입력"
-                    android:inputType="number"></EditText>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/breed_total_cow_14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/pen_total_cow_hint"
-                android:inputType="number"></EditText>
-
-            <EditText
-                android:id="@+id/breed_cough_14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
-                android:inputType="number"></EditText>
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/breed_cough_ratio_14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="  번" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/breed_dong_cough_15"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/pen_location_15"
-
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="숫자 입력"
-                    android:inputType="number"></EditText>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/breed_total_cow_15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/pen_total_cow_hint"
-                android:inputType="number"></EditText>
-
-            <EditText
-                android:id="@+id/breed_cough_15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
-                android:inputType="number"></EditText>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/breed_cough_ratio_15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="  번" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/breed_dong_cough_16"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/pen_location_16"
-
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="숫자 입력"
-                    android:inputType="number"></EditText>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/breed_total_cow_16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/pen_total_cow_hint"
-                android:inputType="number"></EditText>
-
-            <EditText
-                android:id="@+id/breed_cough_16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
-                android:inputType="number"></EditText>
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/breed_cough_ratio_16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="  번" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/breed_dong_cough_17"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/pen_location_17"
-
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="숫자 입력"
-                    android:inputType="number"></EditText>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/breed_total_cow_17"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/pen_total_cow_hint"
-                android:inputType="number"></EditText>
-
-            <EditText
-                android:id="@+id/breed_cough_17"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
-                android:inputType="number"></EditText>
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/breed_cough_ratio_17"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="  번" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/breed_dong_cough_18"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/pen_location_18"
-
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="숫자 입력"
-                    android:inputType="number"></EditText>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/breed_total_cow_18"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/pen_total_cow_hint"
-                android:inputType="number"></EditText>
-
-            <EditText
-                android:id="@+id/breed_cough_18"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
-                android:inputType="number"></EditText>
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/breed_cough_ratio_18"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="  번" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/breed_dong_cough_19"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/pen_location_19"
-
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="숫자 입력"
-                    android:inputType="number"></EditText>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/breed_total_cow_19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/pen_total_cow_hint"
-                android:inputType="number"></EditText>
-
-            <EditText
-                android:id="@+id/breed_cough_19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
-                android:inputType="number"></EditText>
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/breed_cough_ratio_19"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="  번" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/breed_dong_cough_20"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/pen_location_20"
-
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="숫자 입력"
-                    android:inputType="number"></EditText>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/cough_sub_title"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/breed_total_cow_20"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/pen_total_cow_hint"
-                android:inputType="number"></EditText>
-
-            <EditText
-                android:id="@+id/breed_cough_20"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:hint="@string/cough_question_hint"
-                android:inputType="number"></EditText>
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:text="@string/cough_average_title"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/breed_cough_ratio_20"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="  번" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -2507,7 +1559,7 @@
             >
 
             <Button
-                android:id="@+id/breed_dong_cough_btn"
+                android:id="@+id/breed_dong_struggle_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="완료"

@@ -12,9 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BreedBatch.BreedCoughDong"></activity>
-        <activity android:name=".BreedBatch.BreedStrawDong" />
-        <activity android:name=".BreedBatch.BreedWaterDongQ3" />
+        <activity android:name=".BreedBatch.ProtocolFour.BreedHarmonyDong"></activity>
+        <activity android:name=".BreedBatch.ProtocolFour.BreedStruggleDong" />
+        <activity android:name=".BreedBatch.ProtocolThree.BreedCoughDong" />
+        <activity android:name=".BreedBatch.ProtocolTwo.BreedStrawDong" />
+        <activity android:name=".BreedBatch.ProtocolOne.BreedWaterDongQ3" />
         <activity android:name=".QuestionTemplate" />
         <activity android:name=".BreedBatchQuestion.Breed_harmony" />
         <activity android:name=".BreedBatchQuestion.Breed_struggle" />
@@ -32,8 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Farm_Activity.Breed_batch_3" />
-        <activity android:name=".Farm_Activity.Breed_batch_4" />
         <activity android:name=".Farm_Activity.Fatten_1" />
         <activity android:name=".Farm_Activity.Fatten_2" />
         <activity android:name=".Farm_Activity.Fatten_3" />

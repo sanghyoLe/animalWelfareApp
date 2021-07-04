@@ -19,11 +19,6 @@ public class Result_5 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.result_5, container, false);
 
-        TextView total_result_4 = view.findViewById(R.id.total_result_4);
-        Result_View activity = (Result_View) getActivity();
-        Bundle bundle = activity.getProtocolScoreBundle();
-        double protocolFourScore = bundle.getDouble("protocolFourScore");
-        total_result_4.setText(String.valueOf(protocolFourScore));
 
         return view;
     }
