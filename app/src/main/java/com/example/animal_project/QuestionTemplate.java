@@ -1,7 +1,12 @@
 package com.example.animal_project;
 
 import android.app.AlertDialog;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -9,10 +14,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -57,10 +66,12 @@ import com.example.animal_project.Result.Result_1;
 import com.example.animal_project.Result.Result_2;
 import com.example.animal_project.Result.Result_3;
 import com.example.animal_project.Result.Result_4;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 
-public class QuestionTemplate extends AppCompatActivity {
+public class QuestionTemplate extends AppCompatActivity
+ {
 
 // --- 결과 창 ---
     ResultTotal result_total;
@@ -114,19 +125,31 @@ public class QuestionTemplate extends AppCompatActivity {
     private TextView current_page;
     private TextView total_page;
     private int inputCheck = 0;
-    private ImageButton prev_btn;
+
+     private ImageButton prev_btn;
     private ImageButton next_btn;
     private Button end_btn;
+    private ImageButton list_btn;
+    private ImageButton list_menu_btn_1;
+    private ImageButton list_menu_btn_2;
+    private ImageButton list_menu_btn_3;
+    private ImageButton list_menu_btn_4;
     private int totalCowSize;
     private int sampleCowSize;
     private Fragment[] breed_frag_arr = new Fragment[20];
     int count = 0;
+     QuestionTemplateViewModel viewModel;
 
 
+     @Override
+     public void onBackPressed(){
+         myOnBackPressed();
+     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_template);
+
 
         result_total = new ResultTotal();
         result1 = new Result_1();
@@ -135,7 +158,7 @@ public class QuestionTemplate extends AppCompatActivity {
         result4 = new Result_4();
 
 
-        QuestionTemplateViewModel viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
+        viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
 
         fragmentManager = getSupportFragmentManager();
 
@@ -144,6 +167,11 @@ public class QuestionTemplate extends AppCompatActivity {
         current_page = findViewById(R.id.current_page);
         total_page = findViewById(R.id.total_page);
         end_btn = findViewById(R.id.end_btn);
+        list_btn = findViewById(R.id.list_btn);
+        list_menu_btn_1 = findViewById(R.id.list_menu_btn_1);
+        list_menu_btn_2 = findViewById(R.id.list_menu_btn_2);
+        list_menu_btn_3 = findViewById(R.id.list_menu_btn_3);
+        list_menu_btn_4 = findViewById(R.id.list_menu_btn_4);
         fragment_paper = findViewById(R.id.fragment_paper);
         question_top_nav = findViewById(R.id.question_top_nav);
 
@@ -202,6 +230,43 @@ public class QuestionTemplate extends AppCompatActivity {
                 breed_horn_q1,breed_horn_q2,breed_horn_q3,breed_castration_q1,breed_castration_q2,breed_castration_q3,
         breed_struggle,breed_harmony,breed_avoid_distance};
 
+        // 목록 버튼 누르면 왼쪽에서 나오는 드로우 나타내기 및 없애기 & 체크 이미지 바꾸기
+        list_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerHandler();
+                changeCheckImageFunc();
+            }
+        });
+        list_menu_btn_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View view = findViewById(R.id.list_sub_menu_1);
+                listMenuBtnHandler(list_menu_btn_1,view);
+            }
+        });
+
+        list_menu_btn_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View view = findViewById(R.id.list_sub_menu_2);
+                listMenuBtnHandler(list_menu_btn_2,view);
+            }
+        });
+        list_menu_btn_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View view = findViewById(R.id.list_sub_menu_3);
+                listMenuBtnHandler(list_menu_btn_3,view);
+            }
+        });
+        list_menu_btn_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View view = findViewById(R.id.list_sub_menu_4);
+                listMenuBtnHandler(list_menu_btn_4,view);
+            }
+        });
 
 
         transaction = fragmentManager.beginTransaction();
@@ -220,6 +285,125 @@ public class QuestionTemplate extends AppCompatActivity {
         }
 
 
+    }
+    public void listBtnHandler(View view){
+        transaction = fragmentManager.beginTransaction();
+        switch(view.getId()){
+          case  R.id.question_list_btn_1:
+
+              count = listBtnHandlerFunc(0);
+            break;
+            case  R.id.question_list_btn_2:
+                count = listBtnHandlerFunc(1);
+                break;
+            case  R.id.question_list_btn_3:
+                count = listBtnHandlerFunc(2);
+                break;
+            case  R.id.question_list_btn_4:
+                count = listBtnHandlerFunc(3);
+                break;
+            case  R.id.question_list_btn_5:
+                count = listBtnHandlerFunc(4);
+                break;
+            case  R.id.question_list_btn_6:
+                count = listBtnHandlerFunc(5);
+                break;
+            case  R.id.question_list_btn_7:
+                count = listBtnHandlerFunc(6);
+                break;
+            case  R.id.question_list_btn_8:
+                count = listBtnHandlerFunc(7);
+                break;
+            case  R.id.question_list_btn_9:
+                count = listBtnHandlerFunc(8);
+                break;
+            case  R.id.question_list_btn_10:
+                count = listBtnHandlerFunc(9);
+                break;
+            case  R.id.question_list_btn_11:
+                count = listBtnHandlerFunc(10);
+                break;
+            case  R.id.question_list_btn_12:
+                count = listBtnHandlerFunc(11);
+                break;
+            case  R.id.question_list_btn_13:
+                count = listBtnHandlerFunc(12);
+                break;
+            case  R.id.question_list_btn_14:
+                count = listBtnHandlerFunc(13);
+                break;
+            case  R.id.question_list_btn_15:
+                count = listBtnHandlerFunc(14);
+                break;
+            case  R.id.question_list_btn_16:
+                count = listBtnHandlerFunc(15);
+                break;
+            case  R.id.question_list_btn_17:
+                count = listBtnHandlerFunc(16);
+                break;
+            case  R.id.question_list_btn_18:
+                count = listBtnHandlerFunc(17);
+                break;
+            case  R.id.question_list_btn_19:
+                count = listBtnHandlerFunc(18);
+                break;
+            case  R.id.question_list_btn_20:
+                count = listBtnHandlerFunc(19);
+                break;
+            case  R.id.question_list_btn_21:
+                count = listBtnHandlerFunc(20);
+                break;
+            case  R.id.question_list_btn_22:
+                count = listBtnHandlerFunc(21);
+                break;
+            case  R.id.question_list_btn_23:
+                count = listBtnHandlerFunc(22);
+                break;
+            case  R.id.question_list_btn_24:
+                count = listBtnHandlerFunc(23);
+                break;
+            case  R.id.question_list_btn_25:
+                count = listBtnHandlerFunc(24);
+                break;
+            case  R.id.question_list_btn_26:
+                count = listBtnHandlerFunc(25);
+                break;
+            case  R.id.question_list_btn_27:
+                count = listBtnHandlerFunc(26);
+                break;
+            case  R.id.question_list_btn_28:
+                count = listBtnHandlerFunc(27);
+                break;
+            case  R.id.question_list_btn_29:
+                count = listBtnHandlerFunc(28);
+                break;
+            case  R.id.question_list_btn_30:
+                count = listBtnHandlerFunc(29);
+                break;
+            case  R.id.question_list_btn_31:
+                count = listBtnHandlerFunc(30);
+                break;
+            case  R.id.question_list_btn_32:
+                count = listBtnHandlerFunc(31);
+                break;
+            case  R.id.question_list_btn_33:
+                count = listBtnHandlerFunc(32);
+                break;
+            case  R.id.question_list_btn_34:
+                count = listBtnHandlerFunc(33);
+                break;
+            case  R.id.question_list_btn_35:
+                count = listBtnHandlerFunc(34);
+                break;
+            case  R.id.question_list_btn_36:
+                count = listBtnHandlerFunc(35);
+                next_btn.setVisibility(View.INVISIBLE);
+                end_btn.setVisibility(View.VISIBLE);
+                break;
+            default:
+            break;
+
+        }
     }
     public void clickHandler(View view)
     {
@@ -266,24 +450,8 @@ public class QuestionTemplate extends AppCompatActivity {
                 current_page.setText(String.valueOf(count+1));
                 break;
             case R.id.back_btn:
-                AlertDialog.Builder myAlertBuilder =
-                        new AlertDialog.Builder(QuestionTemplate.this);
-                myAlertBuilder.setTitle("이전");
-                myAlertBuilder.setMessage("정보 입력화면으로 돌아가시겠습니까?");
-                // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
-                myAlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog,int which){
-                        // OK 버튼을 눌렸을 경우
-
-                    }
-                });
-                myAlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        onBackPressed();
-                    }
-                });
-                myAlertBuilder.show();
+                myOnBackPressed();
+                break;
             case R.id.end_btn:
                 fragment_paper.setVisibility(View.GONE);
                 end_btn.setVisibility(View.GONE);
@@ -324,8 +492,7 @@ public class QuestionTemplate extends AppCompatActivity {
 
                     }
                 });
-
-
+                break;
 
         }
     }
@@ -337,6 +504,7 @@ public class QuestionTemplate extends AppCompatActivity {
             end_btn.setVisibility(View.VISIBLE);
         }
         prev_btn.setVisibility(View.VISIBLE);
+        closeDrawer();
     }
     private void prevBtnHandler(int count, int totalPageLength){
         if(count + 1 == totalPageLength){
@@ -346,6 +514,163 @@ public class QuestionTemplate extends AppCompatActivity {
             prev_btn.setVisibility(View.INVISIBLE);
         }
         end_btn.setVisibility(View.GONE);
+        closeDrawer();
     }
+    private void drawerHandler(){
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        if(!drawer.isDrawerOpen(Gravity.LEFT)){
+            drawer.openDrawer(Gravity.LEFT);
+            list_btn.setImageResource(R.drawable.outline_menu_open_24);
+        } else if(drawer.isDrawerOpen(Gravity.LEFT)){
+            drawer.closeDrawer(Gravity.LEFT);
+            list_btn.setImageResource(R.drawable.outline_reorder_24);
+        }
+    }
+    private void closeDrawer(){
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        drawer.closeDrawer(Gravity.LEFT);
+    }
+    private int listBtnHandlerFunc(int listCount){
+        int count = listCount;
+        if(count == 0){
+            prev_btn.setVisibility(View.INVISIBLE);
+        } else {
+            next_btn.setVisibility(View.VISIBLE);
+            prev_btn.setVisibility(View.VISIBLE);
+        }
+        end_btn.setVisibility(View.GONE);
+        current_page.setText(String.valueOf(count+1));
+        closeDrawer();
+        transaction.replace(R.id.fragment_paper,breed_frag_arr[count]).commitAllowingStateLoss();
+        return count;
+    }
+    private void changeCheckImageFunc (){
+        ImageView check_total_1 = findViewById(R.id.check_total_1);
+        ImageView check_total_2 = findViewById(R.id.check_total_2);
+        ImageView check_total_3 = findViewById(R.id.check_total_3);
+        ImageView check_total_4 = findViewById(R.id.check_total_4);
+        ImageView check_sub_1 = findViewById(R.id.check_sub_1);
+        ImageView check_sub_2 = findViewById(R.id.check_sub_2);
+        ImageView check_sub_3 = findViewById(R.id.check_sub_3);
+        ImageView check_sub_4 = findViewById(R.id.check_sub_4);
+        ImageView check_sub_5 = findViewById(R.id.check_sub_5);
+        ImageView check_sub_6 = findViewById(R.id.check_sub_6);
+        ImageView check_sub_7 = findViewById(R.id.check_sub_7);
+        ImageView check_sub_8 = findViewById(R.id.check_sub_8);
+        ImageView check_sub_9 = findViewById(R.id.check_sub_9);
+        ImageView check_sub_10 = findViewById(R.id.check_sub_10);
+        ImageView check_sub_11 = findViewById(R.id.check_sub_11);
+        ImageView check_sub_12 = findViewById(R.id.check_sub_12);
+        ImageView check_sub_13 = findViewById(R.id.check_sub_13);
+        ImageView check_sub_14 = findViewById(R.id.check_sub_14);
+        ImageView check_sub_15 = findViewById(R.id.check_sub_15);
+        ImageView check_sub_16 = findViewById(R.id.check_sub_16);
+        ImageView check_sub_17 = findViewById(R.id.check_sub_17);
+        ImageView check_sub_18 = findViewById(R.id.check_sub_18);
+        ImageView check_sub_19 = findViewById(R.id.check_sub_19);
+        ImageView check_sub_20 = findViewById(R.id.check_sub_20);
+        ImageView check_sub_21 = findViewById(R.id.check_sub_21);
+        ImageView check_sub_22 = findViewById(R.id.check_sub_22);
+        ImageView check_sub_23 = findViewById(R.id.check_sub_23);
+        ImageView check_sub_24 = findViewById(R.id.check_sub_24);
+        ImageView check_sub_25 = findViewById(R.id.check_sub_25);
+        ImageView check_sub_26 = findViewById(R.id.check_sub_26);
+        ImageView check_sub_27 = findViewById(R.id.check_sub_27);
+        ImageView check_sub_28 = findViewById(R.id.check_sub_28);
+        ImageView check_sub_29 = findViewById(R.id.check_sub_29);
+        ImageView check_sub_30 = findViewById(R.id.check_sub_30);
+        ImageView check_sub_31 = findViewById(R.id.check_sub_31);
+        ImageView check_sub_32 = findViewById(R.id.check_sub_32);
+        ImageView check_sub_33 = findViewById(R.id.check_sub_33);
+        ImageView check_sub_34 = findViewById(R.id.check_sub_34);
+        ImageView check_sub_35 = findViewById(R.id.check_sub_35);
+        ImageView check_sub_36 = findViewById(R.id.check_sub_36);
+
+
+        // 프로토콜 1
+        if(viewModel.getPoorScore() != -1)changeCheckImage(check_sub_1);
+        if(viewModel.getWaterTankNum() != -1) changeCheckImage(check_sub_2);
+        if(viewModel.getWaterTankClean() != -1) changeCheckImage(check_sub_3);
+        if(viewModel.getWaterDrink() != -1) changeCheckImage(check_sub_4);
+        if(viewModel.getProtocolOneScore() != -1)changeCheckImage(check_total_1);
+
+        // 프로토콜 2
+        if(viewModel.getStrawScore() != -1) changeCheckImage(check_sub_5);
+        if(viewModel.getOutWardScore() != -1) changeCheckImage(check_sub_6);
+        if(viewModel.getShadeScore() != -1) changeCheckImage(check_sub_7);
+        if(viewModel.getSummerVentilatingScore() != -1) changeCheckImage(check_sub_8);
+        if(viewModel.getMistSprayScore() != -1) changeCheckImage(check_sub_9);
+        if(viewModel.getWindBlockScore() != -1) changeCheckImage(check_sub_10);
+        if(viewModel.getWinterVentilatingScore() != -1) changeCheckImage(check_sub_11);
+        if(viewModel.getCalfShadeScore() != -1) changeCheckImage(check_sub_12);
+        if(viewModel.getCalfSummerVentilatingScore() != -1) changeCheckImage(check_sub_13);
+        if(viewModel.getCalfMistSprayScore() != -1) changeCheckImage(check_sub_14);
+        if(viewModel.getCalfStrawScore() != -1) changeCheckImage(check_sub_15);
+        if(viewModel.getCalfWarmScore() != -1) changeCheckImage(check_sub_16);
+        if(viewModel.getCalfWindBlockScore() != -1) changeCheckImage(check_sub_17);
+        if(viewModel.getProtocolTwoScore() != -1) changeCheckImage(check_total_2);
+
+        //프로토콜 3
+        if(viewModel.getLimpScore() != -1) changeCheckImage(check_sub_18);
+        if(viewModel.getSlightHairLoss() != -1) changeCheckImage(check_sub_19);
+        if(viewModel.getCriticalHairLoss() != -1) changeCheckImage(check_sub_20);
+        if(viewModel.getCough() != -1) changeCheckImage(check_sub_21);
+        if(viewModel.getRunnyNoseRatio() != -1) changeCheckImage(check_sub_22);
+        if(viewModel.getOphthalmicRatio() != -1) changeCheckImage(check_sub_23);
+        if(viewModel.getBreathRatio() != -1) changeCheckImage(check_sub_24);
+        if(viewModel.getDiarrheaRatio() != -1) changeCheckImage(check_sub_25);
+        if(viewModel.getRuminantRatio() != -1) changeCheckImage(check_sub_26);
+        if(viewModel.getFallDeadRatio() != -1) changeCheckImage(check_sub_27);
+        if(viewModel.getHornRemoval() != -1) changeCheckImage(check_sub_28);
+        if(viewModel.getAnesthesia() != -1) changeCheckImage(check_sub_29);
+        if(viewModel.getPainkiller() != -1) changeCheckImage(check_sub_30);
+        if(viewModel.getCastration() != -1) changeCheckImage(check_sub_31);
+        if(viewModel.getCastrationAnesthesia() != -1) changeCheckImage(check_sub_32);
+        if(viewModel.getCastrationPainkiller() != -1) changeCheckImage(check_sub_33);
+        if(viewModel.getProtocolThreeScore() != -1) changeCheckImage(check_total_3);
+
+
+        //프로토콜 4
+        if(viewModel.getStruggle() != -1) changeCheckImage(check_sub_34);
+        if(viewModel.getHarmony() != -1) changeCheckImage(check_sub_35);
+        if(viewModel.getAvoidDistanceScore() != -1) changeCheckImage(check_sub_36);
+        if(viewModel.getProtocolFourScore() != -1) changeCheckImage(check_total_4);
+    }
+
+    private void changeCheckImage(ImageView checkImageView){
+        checkImageView.setImageResource(R.drawable.ic_baseline_check_circle_24);
+    }
+    private void listMenuBtnHandler(ImageButton btn,View view)
+    {
+        if(view.getVisibility() == View.GONE){
+            view.setVisibility(View.VISIBLE);
+            btn.setImageResource(R.drawable.outline_menu_open_24);
+        }else if(view.getVisibility() == View.VISIBLE){
+            view.setVisibility(View.GONE);
+            btn.setImageResource(R.drawable.outline_reorder_24);
+        }
+    }
+    private void myOnBackPressed(){
+        AlertDialog.Builder myAlertBuilder =
+                new AlertDialog.Builder(QuestionTemplate.this);
+        myAlertBuilder.setTitle("이전");
+        myAlertBuilder.setMessage("지금까지 평가한 항목이 사라집니다.\n" +
+                "정보 입력 화면으로 돌아가시겠습니까?");
+        // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
+        myAlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog,int which){
+                // OK 버튼을 눌렸을 경우
+
+            }
+        });
+        myAlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        myAlertBuilder.show();
+    }
+
 
 }

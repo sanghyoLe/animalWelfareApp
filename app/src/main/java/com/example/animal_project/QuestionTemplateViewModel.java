@@ -48,10 +48,11 @@ public class QuestionTemplateViewModel extends ViewModel {
     private int calfWindBlockScore = -1;
     private int calfWinterRestScore =-1;
     private double totalWarmVentilatingScore = -1;
+
     private int limpScore = -1;
     private float slightHairLoss = -1;
     private float criticalHairLoss = -1;
-    private int hairLossScore = 0;
+    private int hairLossScore = -1;
     private long minInjuryScore = -1;
     private double cough = -1;
     private float coughRatio = -1;

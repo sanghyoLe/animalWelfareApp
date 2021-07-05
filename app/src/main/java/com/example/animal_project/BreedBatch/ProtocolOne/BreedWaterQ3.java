@@ -92,6 +92,7 @@ public class BreedWaterQ3 extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         TextView breed_drink_water_score = view.findViewById(R.id.breed_drink_water_score);
         TextView breed_total_water_score = view.findViewById(R.id.breed_total_water_score);
+        TextView protocolOneTv = view.findViewById(R.id.breed_protocol_score_1);
         int waterTankNum = viewModel.getWaterTankNum();
         int waterTankClean = viewModel.getWaterTankClean();
         super.onActivityResult(requestCode, resultCode, data);
@@ -105,8 +106,18 @@ public class BreedWaterQ3 extends Fragment {
                 int waterScore = getWaterScore(waterTankNum,waterTankClean,key);
                 breed_total_water_score.setText(String.valueOf(waterScore));
                 viewModel.setWaterScore(waterScore);
+                if(viewModel.getPoorScore() == -1){
+                    protocolOneTv.setText("여윈 개체 평가를 완료하세요");
+                } else {
+                    viewModel.setProtocolOneScore(
+                            viewModel.calculatorProtocolOneResult(
+                                    viewModel.getPoorScore(),
+                                    viewModel.getWaterScore()
+                            )
+                    );
+                    protocolOneTv.setText(String.valueOf(viewModel.getProtocolOneScore()));
+                }
 
-                String.valueOf(viewModel.calculatorProtocolOneResult(viewModel.getPoorScore(),viewModel.getWaterScore()));
                 break;
             default:
                 break;

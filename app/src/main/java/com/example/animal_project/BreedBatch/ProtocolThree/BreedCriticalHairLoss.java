@@ -61,15 +61,14 @@ public class BreedCriticalHairLoss extends Fragment {
                 else {
                     float criticalHairLoss = 0;
                     criticalHairLoss = Float.parseFloat(breedCriticalHairLossEd.getText().toString());
+
                     if((int)(viewModel.getSlightHairLoss() + criticalHairLoss) > viewModel.getSampleCowSize()) {
                         breedHairLossRatioTv.setText("표본 두수보다 큰 값을 입력하셨습니다");
                         hairLossSampleSizeTv.setVisibility(View.VISIBLE);
                         hairLossSampleSizeTv.setText("표본 두수 : " + viewModel.getSampleCowSize());
                     } else {
+                        viewModel.setCriticalHairLoss(criticalHairLoss);
                         hairLossSampleSizeTv.setVisibility(View.GONE);
-                        Log.d("sample",String.valueOf(viewModel.getSampleCowSize()));
-                        Log.d("slight",String.valueOf(viewModel.getSlightHairLoss()));
-                        Log.d("critical",String.valueOf(criticalHairLoss));
                         float slight_ratio;
                         float critical_ratio;
                         float ratio_total;

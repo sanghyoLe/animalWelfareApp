@@ -25,6 +25,7 @@ public class Result_1 extends Fragment {
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
 
         View progressBarView = view.findViewById(R.id.result_progressbar_1);
+
         TextView progressBarTv = progressBarView.findViewById(R.id.progress_tv);
         ProgressBar progressBar = progressBarView.findViewById(R.id.circular_determinative_pb);
 

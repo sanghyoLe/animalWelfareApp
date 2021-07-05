@@ -68,8 +68,9 @@ public class BreedFallDead extends Fragment {
                     sample_size_tv.setVisibility(View.VISIBLE);
                     sample_size_tv.setText("표본 규모 : " + String.valueOf(viewModel.getSampleCowSize()));
                 } else {
-                  viewModel.setDiarrheaRatio(viewModel.getRatio(breed_fall_dead_ed));
-                  breed_fall_dead_tv.setText(String.valueOf(viewModel.getRatio(breed_fall_dead_ed)));
+
+                  viewModel.setFallDeadRatio(viewModel.getRatio(breed_fall_dead_ed));
+                  breed_fall_dead_tv.setText(String.valueOf(viewModel.getFallDeadRatio()));
 
                     double diseaseScore =
                     viewModel.calculatorDiseaseScore(
