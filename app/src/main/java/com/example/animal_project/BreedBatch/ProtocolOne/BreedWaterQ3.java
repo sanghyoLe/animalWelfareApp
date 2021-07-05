@@ -101,13 +101,12 @@ public class BreedWaterQ3 extends Fragment {
                 breed_drink_water_score.setText(String.valueOf(key));
                 viewModel.setWaterDrink(key);
                 // 프로토콜 1 점수
+
                 int waterScore = getWaterScore(waterTankNum,waterTankClean,key);
                 breed_total_water_score.setText(String.valueOf(waterScore));
                 viewModel.setWaterScore(waterScore);
-                Log.d("protocolOneScore",String.valueOf(viewModel.calculatorProtocolOneResult(viewModel.getPoorScore(),viewModel.getWaterScore())));
 
-                /*protocolOneScore = setProtocolOneResult(breed_poor_rate_score,getWaterScore(water_Tank_Num,water_Tank_Clean,key));
-                Log.d("1",String.valueOf(protocolOneScore));*/
+                String.valueOf(viewModel.calculatorProtocolOneResult(viewModel.getPoorScore(),viewModel.getWaterScore()));
                 break;
             default:
                 break;

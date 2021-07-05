@@ -148,7 +148,9 @@
     <string name="disease_score_title">질병의 최소화 종합 점수</string>
     <string name="min_pain_score_title">고통의 최소화 종합 점수</string>
     <string name="social_behavior_score_title">사회적 행동의 표현 종합 점수</string>
-    <string name="protocol_title_3">양호한 건강상태 (물리.생리적 건강) 점수</string>
+    <string name="protocol_title_1">좋은 사료와 물 종합 점수</string>
+    <string name="protocol_title_3">양호한 건강상태 종합 점수</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

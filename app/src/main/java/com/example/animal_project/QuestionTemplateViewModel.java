@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -23,33 +24,33 @@ public class QuestionTemplateViewModel extends ViewModel {
 
     private int sampleCowSize = 0;
     private int totalCowSize = 0;
-    private int poorScore = 0;
-    private int waterTankNum = 0;
-    private int waterTankClean = 0;
-    private int waterDrink = 0;
-    private int waterScore = 0;
-    private int strawScore = 0;
-    private int outwardScore = 0;
-    private double restScore = 0;
-    private int shadeScore = 0;
-    private int summerVentilatingScore = 0;
-    private int mistSprayScore =0;
-    private int summerRestScore = 0;
-    private int windBlockScore =0;
-    private int winterVentilatingScore = 0;
-    private int winterRestScore = 0;
-    private int calfShadeScore = 0;
-    private int calfSummerVentilatingScore = 0;
-    private int calfMistSprayScore = 0;
-    private int calfSummerRestScore =0;
-    private int calfStrawScore =0;
-    private int calfWarmScore =0;
-    private int calfWindBlockScore = 0;
-    private int calfWinterRestScore =0;
-    private double totalWarmVentilatingScore = 0;
+    private int poorScore = -1;
+    private int waterTankNum = -1;
+    private int waterTankClean = -1;
+    private int waterDrink = -1;
+    private int waterScore = -1;
+    private int strawScore = -1;
+    private int outwardScore = -1;
+    private double restScore = -1;
+    private int shadeScore = -1;
+    private int summerVentilatingScore = -1;
+    private int mistSprayScore =-1;
+    private int summerRestScore = -1;
+    private int windBlockScore =-1;
+    private int winterVentilatingScore = -1;
+    private int winterRestScore = -1;
+    private int calfShadeScore = -1;
+    private int calfSummerVentilatingScore = -1;
+    private int calfMistSprayScore = -1;
+    private int calfSummerRestScore =-1;
+    private int calfStrawScore =-1;
+    private int calfWarmScore =-1;
+    private int calfWindBlockScore = -1;
+    private int calfWinterRestScore =-1;
+    private double totalWarmVentilatingScore = -1;
     private int limpScore = -1;
     private float slightHairLoss = -1;
-    private float criticalHairLoss = 0;
+    private float criticalHairLoss = -1;
     private int hairLossScore = 0;
     private long minInjuryScore = -1;
     private double cough = -1;
@@ -421,7 +422,7 @@ public class QuestionTemplateViewModel extends ViewModel {
             nextBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(currentDong[0] == 0) {
+                    if(currentDong[-1] == 0) {
                         prevBtn.setVisibility(View.VISIBLE);
                     }
                     // 마지막 전 페이지
@@ -605,6 +606,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     public double calculatorProtocolOneResult(int PoorScore, int WaterScore){
         return (PoorScore * 0.7) + (WaterScore * 0.3);
     }
+
     public double calculatorBreedRestScore(int strawScore, int outwardScore)
     {
         return (strawScore * 0.5) + (outwardScore * 0.5);
@@ -783,8 +785,6 @@ public class QuestionTemplateViewModel extends ViewModel {
         ratio = Math.round(ratio);
         return ratio;
     }
-
-
     public Map calculatorDiseaseSectionOne(float runnyNose,float ophthalmic)
     {
         Map <String, Integer> sectionScores = new HashMap<String, Integer>();
@@ -1204,6 +1204,14 @@ public class QuestionTemplateViewModel extends ViewModel {
     public double calculatorProtocolFourScore(double socialBehaviorScore, double avoidDistanceScore){
         return (socialBehaviorScore * 0.65) + (avoidDistanceScore * 0.35);
     }
+
+
+    // Progressbar 점수 설정
+    public void setProgressBar(double protocolScore, ProgressBar progressBar, TextView progressBarTv){
+        progressBar.setProgress(Math.round((float)protocolScore));
+        progressBarTv.setText(String.valueOf(protocolScore));
+    }
+
 
 }
 

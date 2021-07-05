@@ -52,22 +52,22 @@ import com.example.animal_project.BreedBatch.ProtocolTwo.CalfStraw;
 import com.example.animal_project.BreedBatch.ProtocolTwo.CalfSummerVentilating;
 import com.example.animal_project.BreedBatch.ProtocolTwo.CalfWarm;
 import com.example.animal_project.BreedBatch.ProtocolTwo.CalfWindBlock;
+import com.example.animal_project.Result.ResultTotal;
 import com.example.animal_project.Result.Result_1;
 import com.example.animal_project.Result.Result_2;
 import com.example.animal_project.Result.Result_3;
 import com.example.animal_project.Result.Result_4;
-import com.example.animal_project.Result.Result_5;
 import com.google.android.material.tabs.TabLayout;
 
 
 public class QuestionTemplate extends AppCompatActivity {
 
 // --- 결과 창 ---
+    ResultTotal result_total;
     Result_1 result1;
     Result_2 result2;
     Result_3 result3;
     Result_4 result4;
-    Result_5 result5;
     TabLayout tabs;
     Bundle bundle;
     // --------------------------------------------------------
@@ -128,12 +128,12 @@ public class QuestionTemplate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_template);
 
-
+        result_total = new ResultTotal();
         result1 = new Result_1();
         result2 = new Result_2();
         result3 = new Result_3();
         result4 = new Result_4();
-        result5 = new Result_5();
+
 
         QuestionTemplateViewModel viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
 
@@ -288,7 +288,7 @@ public class QuestionTemplate extends AppCompatActivity {
                 fragment_paper.setVisibility(View.GONE);
                 end_btn.setVisibility(View.GONE);
                 question_top_nav.setVisibility(View.GONE);
-                getSupportFragmentManager().beginTransaction().add(R.id.container, result1).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.container, result_total).commit();
                 tabs = findViewById(R.id.tab_layout);
                 tabs.addTab(tabs.newTab().setText("종합"));
                 tabs.addTab(tabs.newTab().setText("사료"));
@@ -302,15 +302,15 @@ public class QuestionTemplate extends AppCompatActivity {
                         int position = tab.getPosition();
                         Fragment selected = null;
                         if(position == 0)
-                            selected = result1;
+                            selected = result_total;
                         else if(position == 1)
-                            selected = result2;
+                            selected = result1;
                         else if(position == 2)
-                            selected = result3;
+                            selected = result2;
                         else if(position == 3)
-                            selected = result4;
+                            selected = result3;
                         else if(position == 4)
-                            selected = result5;
+                            selected = result4;
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, selected).commit();
                     }
 
