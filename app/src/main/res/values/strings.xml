@@ -150,13 +150,12 @@
     <string name="social_behavior_score_title">사회적 행동의 표현 종합 점수</string>
     <string name="protocol_title_1">좋은 사료와 물 종합 점수</string>
     <string name="protocol_title_3">양호한 건강상태 종합 점수</string>
-
+    <string name="choice_pen">표본펜 수를 선택하세요</string>
     <!-- list menu string -->
     <string name="list_sub_menu_title_1">1. 여윈 개체 평가</string>
     <string name="list_sub_menu_title_2">2. 음수조 수 평가</string>
     <string name="list_sub_menu_title_3">3. 음수조 위생 평가</string>
     <string name="list_sub_menu_title_4">4. 음수 대기우와 음수 시간 평가</string>
-
     <string name="list_sub_menu_title_5">5. 깔짚 수분 평가</string>
     <string name="list_sub_menu_title_6">6. 가축외형 위생 평가</string>
     <string name="list_sub_menu_title_7">7. 혹서기 그늘 평가</string>
@@ -170,7 +169,6 @@
     <string name="list_sub_menu_title_15">15. 포유송아지 깔짚 평가</string>
     <string name="list_sub_menu_title_16">16. 포유송아지 보온 평가</string>
     <string name="list_sub_menu_title_17">17. 포유송아지 바람차단시설 평가</string>
-
     <string name="list_sub_menu_title_18">18. 다리절음 평가</string>
     <string name="list_sub_menu_title_19">19. 경미한 외피 변형 평가</string>
     <string name="list_sub_menu_title_20">20. 심각한 외피 변형 평가</string>

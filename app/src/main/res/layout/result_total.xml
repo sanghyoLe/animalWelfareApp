@@ -18,6 +18,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
         layout="@layout/circle_progressbar"/>
+        
     </LinearLayout>
 
 </LinearLayout>

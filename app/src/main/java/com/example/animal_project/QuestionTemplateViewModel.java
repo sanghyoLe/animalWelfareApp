@@ -16,11 +16,71 @@ import android.widget.TextView;
 
 import androidx.lifecycle.ViewModel;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class QuestionTemplateViewModel extends ViewModel {
+
+    public static class avoidDistance implements Serializable {
+        int penNumber;
+        String penLocation;
+        int cowSize;
+
+        int[] cowCount;
+        int[] cowNumber;
+        int[] avoidDistance;
+
+
+        public avoidDistance(int penNumber, String penLocation, int cowSize){
+            this.penNumber = penNumber;
+            this.penLocation = penLocation;
+            this.cowSize = cowSize;
+        }
+        public int getPenNumber(){
+            return this.penNumber;
+        }
+        public String getPenLocation(){
+            return this.penLocation;
+        }
+        public int getCowSize(){
+            return this.cowSize;
+        }
+        public void setCowFieldSize(int cowSize){
+            this.cowCount = new int[cowSize];
+            this.cowNumber = new int[cowSize];
+            this.avoidDistance = new int[cowSize];
+        }
+        public void setCowCount(int cowSize){
+            for(int i = 0 ;i < cowSize ;i ++){
+                this.cowCount[i] = i;
+            }
+        }
+        public void setCowNumber(int[] cowNumber){
+            this.cowNumber = cowNumber;
+        }
+        public void setAvoidDistance(int[] avoidDistance){
+            this.avoidDistance = avoidDistance;
+        }
+        public int[] getCowNumber(){
+            return this.cowNumber;
+        }
+        public int[] getAvoidDistance(){
+            return this.avoidDistance;
+        }
+
+    }
+
+    private avoidDistance[] avoidDistances = new avoidDistance[50];
+
+
+    public void setAvoidDistance(int penNumber, avoidDistance avoidDistance) {
+        this.avoidDistances[penNumber] = avoidDistance;
+    }
+    public avoidDistance getAvoidDistance(int penNumber){
+        return this.avoidDistances[penNumber];
+    }
 
     private int sampleCowSize = 0;
     private int totalCowSize = 0;
@@ -423,7 +483,7 @@ public class QuestionTemplateViewModel extends ViewModel {
             nextBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(currentDong[-1] == 0) {
+                    if(currentDong[0] == 0) {
                         prevBtn.setVisibility(View.VISIBLE);
                     }
                     // 마지막 전 페이지

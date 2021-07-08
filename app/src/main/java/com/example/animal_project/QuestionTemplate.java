@@ -515,6 +515,7 @@ public class QuestionTemplate extends AppCompatActivity
         }
         end_btn.setVisibility(View.GONE);
         closeDrawer();
+
     }
     private void drawerHandler(){
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
@@ -529,6 +530,7 @@ public class QuestionTemplate extends AppCompatActivity
     private void closeDrawer(){
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         drawer.closeDrawer(Gravity.LEFT);
+        list_btn.setImageResource(R.drawable.outline_reorder_24);
     }
     private int listBtnHandlerFunc(int listCount){
         int count = listCount;
