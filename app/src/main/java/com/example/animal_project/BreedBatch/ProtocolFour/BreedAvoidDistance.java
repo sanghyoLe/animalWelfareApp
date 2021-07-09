@@ -1,5 +1,7 @@
 package com.example.animal_project.BreedBatch.ProtocolFour;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -31,17 +33,24 @@ public class BreedAvoidDistance extends Fragment {
     private QuestionTemplateViewModel viewModel;
     private View view;
     private int pen_size;
-
+    private Button btnArr[];
+    private TextView avoid_distance_score_tv;
+    private QuestionTemplateViewModel.avoidDistance[] avoidDistances;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         view = inflater.inflate(R.layout.fragment_breed_avoid_distance, container, false);
-        viewModel.setAvoidDistanceScore(50);
 
-        QuestionTemplateViewModel.avoidDistance[] avoidDistances = new QuestionTemplateViewModel.avoidDistance[50];
+        // 뷰모델에 있는 avoidDistance 배열 초기화
 
 
+        avoid_distance_score_tv = view.findViewById(R.id.breed_avoid_distance_score_tv);
+        if(viewModel.getAvoidDistanceScore() == -1){
+            avoid_distance_score_tv.setText("회피 거리 평가를 모두 완료하세요");
+        } else {
+            avoid_distance_score_tv.setText(String.valueOf(viewModel.getAvoidDistanceScore()));
+        }
 
         View question_1 = view.findViewById(R.id.breed_avoid_distance_question_1);
         View question_2 = view.findViewById(R.id.breed_avoid_distance_question_2);
@@ -133,11 +142,12 @@ public class BreedAvoidDistance extends Fragment {
                 pen_size = selectedItemIndex[0];
                 Spinner spinnerArr[] = makeSpinner(questionViewArr,spinnerAdapterCowSize);
                 showQuestionView(questionViewArr, selectedItemIndex[0]);
-                Button btnArr[] = makeBtnArr(questionViewArr);
+                btnArr = makeBtnArr(questionViewArr);
                 EditText edArr[] = makeEditTextArr(questionViewArr);
 
                 btnHandler(btnArr,edArr,spinnerArr,pen_size);
                 Log.d("1",String.valueOf(pen_size));
+
             }
 
             @Override
@@ -221,23 +231,7 @@ public class BreedAvoidDistance extends Fragment {
                 btnArr[FinalI].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(TextUtils.isEmpty(edArr[FinalI].getText())){
-                            String msg = FinalI+1 + "번 펜 위치를 입력하세요";
-                            Toast.makeText(getActivity(),msg,Toast.LENGTH_LONG).show();
-                        } else if(selectedItemIndex[FinalI] == 0){
-                            String msg = FinalI+1 + "번 펜 개체 두수를 선택하세요";
-                            Toast.makeText(getActivity(),msg,Toast.LENGTH_LONG).show();
-                        }
-                        else{
-                            Intent intent = new Intent(getActivity(), BreedAvoidDistanceCowQuestions.class);
-                            intent.putExtra("pen_number",FinalI+1);
-                            intent.putExtra("pen_location",String.valueOf(edArr[FinalI].getText()));
-                            intent.putExtra("cow_count",selectedItemIndex[FinalI]);
-
-
-                            startActivityForResult(intent, 0);
-                        }
-
+                            execCowQuestion(edArr,FinalI,selectedItemIndex);
                     }
                 });
             }
@@ -250,10 +244,10 @@ public class BreedAvoidDistance extends Fragment {
                 int pen_number = data.getExtras().getInt("pen_number");
                 QuestionTemplateViewModel.avoidDistance avoidDistance =
                         (QuestionTemplateViewModel.avoidDistance) data.getExtras().getSerializable("avoidDistance");
+
+
                 viewModel.setAvoidDistance(pen_number,avoidDistance);
-
                 QuestionTemplateViewModel.avoidDistance avoid = viewModel.getAvoidDistance(pen_number);
-
                 Log.d("penNumber",String.valueOf(avoid.getPenNumber()));
                 Log.d("penLocation",String.valueOf(avoid.getPenLocation()));
                 Log.d("cowSize",String.valueOf(avoid.getCowSize()));
@@ -265,10 +259,100 @@ public class BreedAvoidDistance extends Fragment {
                     Log.d("avoid",String.valueOf(exAvoid[i]));
                 }
 
+                btnArr[pen_number-1].setVisibility(View.INVISIBLE);
+                avoidDistances = viewModel.getAvoidDistances();
+                boolean flagPenQuestion = true;
+
+                for(int i = 1 ; i <= pen_size ;i++){
+                    if(avoidDistances[i].getCowSize() == -1){
+                        flagPenQuestion = true;
+                        avoid_distance_score_tv.setText(String.valueOf(i) + "번 표본펜 설문을 완료하세요");
+                    } else {
+                        flagPenQuestion = false;
+                    }
+                }
+
+                if(flagPenQuestion == false){
+                    for(int i =1 ; i <=pen_size ;i++){
+                            int[] avoidDistanceLevel = avoidDistances[i].getAvoidDistance();
+                            for(int j = 0 ; j < avoidDistances[i].getCowSize() ; j++){
+                                if(avoidDistanceLevel[j] == 1){
+                                    viewModel.setAvoidDistanceLevelOneTotal(avoidDistanceLevel[j]);
+                                }else if(avoidDistanceLevel[j] == 2){
+                                    viewModel.setAvoidDistanceLevelTwoTotal(avoidDistanceLevel[j]);
+                                }else if(avoidDistanceLevel[j] == 3){
+                                    viewModel.setAvoidDistanceLevelThreeTotal(avoidDistanceLevel[j]);
+                                }else if(avoidDistanceLevel[j] == 4){
+                                    viewModel.setAvoidDistanceLevelFourTotal(avoidDistanceLevel[j]);
+                                }
+                            }
+                        }
+
+                    viewModel.setAvoidDistanceScore(
+                            viewModel.calculatorAvoidDistanceScore(
+                                viewModel.calculatorAvoidDistanceRatio(
+                                    viewModel.getAvoidDistanceLevelOneTotal(),
+                                    viewModel.getAvoidDistanceLevelTwoTotal(),
+                                    viewModel.getAvoidDistanceLevelThreeTotal(),
+                                    viewModel.getAvoidDistanceLevelFourTotal()
+                                )
+                            )
+                        );
+                    Log.d("avoid_level_one",String.valueOf(viewModel.getAvoidDistanceLevelOneTotal()));
+                    Log.d("avoid_level_two",String.valueOf(viewModel.getAvoidDistanceLevelTwoTotal()));
+                    Log.d("avoid_level_three",String.valueOf(viewModel.getAvoidDistanceLevelThreeTotal()));
+                    Log.d("avoid_level_four",String.valueOf(viewModel.getAvoidDistanceLevelFourTotal()));
+                    Log.d("avoid_Ratio",String.valueOf(viewModel.calculatorAvoidDistanceRatio(
+                            viewModel.getAvoidDistanceLevelOneTotal(),
+                            viewModel.getAvoidDistanceLevelTwoTotal(),
+                            viewModel.getAvoidDistanceLevelThreeTotal(),
+                            viewModel.getAvoidDistanceLevelFourTotal()
+                    )));
+                    avoid_distance_score_tv.setText(String.valueOf(viewModel.getAvoidDistanceScore()));
+                    }
                 break;
             default:
                 break;
         }
     }
 
+    // 재 입력받는 메소드인데, 재 입력받으면 모든 데이터 처리해줘야 하는 문제 있어서 보류
+    /*private void onBtnClickReEnter(EditText[] edArr, int FinalI, int[] selectedItemIndex){
+        AlertDialog.Builder myAlertBuilder =
+                new AlertDialog.Builder(getActivity());
+        myAlertBuilder.setTitle("이전");
+        myAlertBuilder.setMessage("평가한 항목이 사라집니다.\n" +
+                "재입력 하시겠습니까?");
+        // 버튼 추가 (네 버튼과 취소 버튼 )
+        myAlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog,int which){
+                // 취소 버튼
+            }
+        });
+        myAlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                execCowQuestion(edArr,FinalI,selectedItemIndex);
+            }
+        });
+        myAlertBuilder.show();
+    }*/
+
+    // BreedAvoidDistanceCowQuestion Activity 실행
+    private void execCowQuestion(EditText edArr[], int FinalI, int[] selectedItemIndex){
+        if(TextUtils.isEmpty(edArr[FinalI].getText())){
+            String msg = FinalI+1 + "번 펜 위치를 입력하세요";
+            Toast.makeText(getActivity(),msg,Toast.LENGTH_LONG).show();
+        } else if(selectedItemIndex[FinalI] == 0){
+            String msg = FinalI+1 + "번 펜 개체 두수를 선택하세요";
+            Toast.makeText(getActivity(),msg,Toast.LENGTH_LONG).show();
+        }
+        else{
+            Intent intent = new Intent(getActivity(), BreedAvoidDistanceCowQuestions.class);
+            intent.putExtra("pen_number",FinalI+1);
+            intent.putExtra("pen_location",String.valueOf(edArr[FinalI].getText()));
+            intent.putExtra("cow_count",selectedItemIndex[FinalI]);
+            startActivityForResult(intent, 0);
+            }
+        }
     }

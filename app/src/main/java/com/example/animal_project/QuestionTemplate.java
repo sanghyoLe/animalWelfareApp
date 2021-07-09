@@ -159,7 +159,8 @@ public class QuestionTemplate extends AppCompatActivity
 
 
         viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
-
+        // 회피거리 배열 초기화
+        viewModel.setAvoidDistances();
         fragmentManager = getSupportFragmentManager();
 
         next_btn = findViewById(R.id.next_btn);

@@ -26,7 +26,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     public static class avoidDistance implements Serializable {
         int penNumber;
         String penLocation;
-        int cowSize;
+        int cowSize = -1;
 
         int[] cowCount;
         int[] cowNumber;
@@ -72,15 +72,23 @@ public class QuestionTemplateViewModel extends ViewModel {
 
     }
 
-    private avoidDistance[] avoidDistances = new avoidDistance[50];
+    private avoidDistance[] avoidDistances = new avoidDistance[51];
 
 
+
+    public void setAvoidDistances(){
+        for(int i = 1 ; i < 51 ; i++){
+            this.avoidDistances[i] = new avoidDistance(i,"1",-1);
+        }
+    }
+    public avoidDistance[] getAvoidDistances(){ return this.avoidDistances; }
     public void setAvoidDistance(int penNumber, avoidDistance avoidDistance) {
         this.avoidDistances[penNumber] = avoidDistance;
     }
     public avoidDistance getAvoidDistance(int penNumber){
         return this.avoidDistances[penNumber];
     }
+
 
     private int sampleCowSize = 0;
     private int totalCowSize = 0;
@@ -136,6 +144,10 @@ public class QuestionTemplateViewModel extends ViewModel {
     private double harmony = -1;
     private int socialBehaviorScore = -1;
     private int avoidDistanceScore = -1;
+    private int avoidDistanceLevelOneTotal = 0;
+    private int avoidDistanceLevelTwoTotal = 0;
+    private int avoidDistanceLevelThreeTotal = 0;
+    private int avoidDistanceLevelFourTotal = 0;
     private double protocolOneScore = -1;
     private double protocolTwoScore = -1;
     private double protocolThreeScore = -1;
@@ -470,9 +482,36 @@ public class QuestionTemplateViewModel extends ViewModel {
     public int getSocialBehaviorScore(){
         return this.socialBehaviorScore;
     }
+    public void setAvoidDistanceLevelOneTotal(int avoidDistanceLevelOne) {
+        this.avoidDistanceLevelOneTotal += 1;
+    }
+    public void setAvoidDistanceLevelTwoTotal(int avoidDistanceLevelTwo) {
+        this.avoidDistanceLevelTwoTotal += 1;
+    }
+    public void setAvoidDistanceLevelThreeTotal(int avoidDistanceLevelThree){
+        this.avoidDistanceLevelThreeTotal += 1;
+    }
+    public void setAvoidDistanceLevelFourTotal(int avoidDistanceLevelFour){
+        this.avoidDistanceLevelFourTotal += 1;
+    }
+    public int getAvoidDistanceLevelOneTotal(){
+        return this.avoidDistanceLevelOneTotal;
+    }
+    public int getAvoidDistanceLevelTwoTotal(){
+        return this.avoidDistanceLevelTwoTotal;
+    }
+    public int getAvoidDistanceLevelThreeTotal(){
+        return this.avoidDistanceLevelThreeTotal;
+    }
+    public int getAvoidDistanceLevelFourTotal(){
+        return this.avoidDistanceLevelFourTotal;
+    }
+
+
     public void setAvoidDistanceScore(int avoidDistanceScore){
         this.avoidDistanceScore = avoidDistanceScore;
     }
+
     public int getAvoidDistanceScore(){
         return this.avoidDistanceScore;
     }
@@ -1265,8 +1304,71 @@ public class QuestionTemplateViewModel extends ViewModel {
     public double calculatorProtocolFourScore(double socialBehaviorScore, double avoidDistanceScore){
         return (socialBehaviorScore * 0.65) + (avoidDistanceScore * 0.35);
     }
+    public int calculatorAvoidDistanceScore(double avoidDistanceRatio){
+        int avoidDistanceScore = 0;
+        if(avoidDistanceRatio == 0){
+            avoidDistanceScore = 100;
+        } else if(avoidDistanceRatio <= 7){
+           avoidDistanceScore = 95;
+        }else if(avoidDistanceRatio <= 13){
+            avoidDistanceScore = 90;
+        }else if(avoidDistanceRatio <= 18){
+            avoidDistanceScore = 85;
+        }else if(avoidDistanceRatio <= 22){
+            avoidDistanceScore = 80;
+        }else if(avoidDistanceRatio <= 26){
+            avoidDistanceScore = 75;
+        }else if(avoidDistanceRatio <= 29){
+            avoidDistanceScore = 70;
+        }else if(avoidDistanceRatio <= 32){
+            avoidDistanceScore = 65;
+        }else if(avoidDistanceRatio <= 35){
+            avoidDistanceScore = 60;
+        }else if(avoidDistanceRatio <= 38){
+            avoidDistanceScore = 55;
+        }else if(avoidDistanceRatio <= 41){
+            avoidDistanceScore = 50;
+        }else if(avoidDistanceRatio <= 45){
+            avoidDistanceScore = 45;
+        }else if(avoidDistanceRatio <= 49){
+            avoidDistanceScore = 40;
+        }else if(avoidDistanceRatio <= 54){
+            avoidDistanceScore = 35;
+        } else if(avoidDistanceRatio <= 59){
+            avoidDistanceScore = 30;
+        }else if(avoidDistanceRatio <= 66){
+            avoidDistanceScore = 25;
+        }else if(avoidDistanceRatio <= 73){
+            avoidDistanceScore = 20;
+        }else if(avoidDistanceRatio <= 80){
+            avoidDistanceScore = 15;
+        }else if(avoidDistanceRatio <= 86){
+            avoidDistanceScore = 10;
+        }else if(avoidDistanceRatio <= 93){
+            avoidDistanceScore = 5;
+        }else if(avoidDistanceRatio <= 100){
+            avoidDistanceScore = 0;
+        }
+        return avoidDistanceScore;
+    }
+    public double calculatorAvoidDistanceRatio(int levelOne, int levelTwo, int levelThree,int levelFour){
+        double avoidDistanceRatio;
+        double total = levelOne + levelTwo + levelThree + levelFour;
+        double levelTwoRatio = Math.round((levelTwo / total) * 100);
+        Log.d("level_tow_ratio",String.valueOf(levelTwoRatio));
+        double levelThreeRatio = Math.round((levelThree / total) * 100);
+        Log.d("level_three_ratio",String.valueOf(levelThreeRatio));
+        double levelFourRatio = Math.round((levelFour / total ) * 100);
+        Log.d("level_four_ratio",String.valueOf(levelFourRatio));
 
-
+        avoidDistanceRatio = (levelTwoRatio + (3 * levelThreeRatio)  + (5 * levelFourRatio));
+        Log.d("avoid_distance_ratio_1",String.valueOf(avoidDistanceRatio));
+        avoidDistanceRatio = avoidDistanceRatio / 5;
+        Log.d("avoid_distance_ratio_2",String.valueOf(avoidDistanceRatio));
+        avoidDistanceRatio = Math.round(avoidDistanceRatio);
+        Log.d("avoid_distance_ratio_3",String.valueOf(avoidDistanceRatio));
+        return avoidDistanceRatio;
+    }
     // Progressbar 점수 설정
     public void setProgressBar(double protocolScore, ProgressBar progressBar, TextView progressBarTv){
         progressBar.setProgress(Math.round((float)protocolScore));

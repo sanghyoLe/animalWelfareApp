@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -163,15 +165,33 @@ public class BreedAvoidDistanceCowQuestions extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkEmptyEditText(cowNumberEd,cow_size) == false
                         && checkEmptySpinner(avoidDistanceAnswer,cow_size) == false){
-                    makeCowNumbers(cowNumberEd,cow_size,cowNumbers);
-                    avoidDistance.setCowCount(cow_size);
-                    avoidDistance.setCowNumber(cowNumbers);
-                    avoidDistance.setAvoidDistance(avoidDistanceAnswer);
-                    Intent intent = new Intent();
-                    intent.putExtra("pen_number", pen_number);
-                    intent.putExtra("avoidDistance",  avoidDistance);
-                    setResult(1,intent);
-                    finish();
+                    AlertDialog.Builder myAlertBuilder =
+                            new AlertDialog.Builder(BreedAvoidDistanceCowQuestions.this);
+                    myAlertBuilder.setTitle("이전");
+                    myAlertBuilder.setMessage("평가를 완료한 문항은\n" +
+                            "다시 입력하실 수 없습니다. \n" +
+                            "완료하시겠습니까? ");
+                    // 버튼 추가 (네 버튼과 취소 버튼 )
+                    myAlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
+                        public void onClick(DialogInterface dialog,int which){
+                            // 취소 버튼
+                        }
+                    });
+                    myAlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            makeCowNumbers(cowNumberEd,cow_size,cowNumbers);
+                            avoidDistance.setCowCount(cow_size);
+                            avoidDistance.setCowNumber(cowNumbers);
+                            avoidDistance.setAvoidDistance(avoidDistanceAnswer);
+                            Intent intent = new Intent();
+                            intent.putExtra("pen_number", pen_number);
+                            intent.putExtra("avoidDistance",  avoidDistance);
+                            setResult(1,intent);
+                            finish();
+                        }
+                    });
+                    myAlertBuilder.show();
                 }
 
 
@@ -261,6 +281,7 @@ public class BreedAvoidDistanceCowQuestions extends AppCompatActivity {
             cowNumbers[i] = Integer.parseInt(String.valueOf(edArr[i].getText()));
         }
     }
+
 
 
 
