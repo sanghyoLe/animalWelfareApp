@@ -1,0 +1,65 @@
+package com.example.animal_project.BreedBatch.ProtocolThree;
+
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.example.animal_project.QuestionTemplateViewModel;
+import com.example.animal_project.R;
+
+
+public class BreedLimp extends Fragment {
+  private View view;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        view = inflater.inflate(R.layout.fragment_breed_limp, container, false);
+        QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
+        EditText breedLimpEd = view.findViewById(R.id.breed_limp_ed);
+        TextView breedLimpScoreTV = view.findViewById(R.id.breed_limp_score);
+        TextView breedLimpRatioTv = view.findViewById(R.id.breed_limp_ratio);
+        breedLimpEd.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (TextUtils.isEmpty(breedLimpEd.getText().toString())) {
+                    breedLimpRatioTv.setText("값을 입력해주세요");
+                    viewModel.setLimpScore(-1);
+                    // 총 두수 보다 입력한 값이 클 때
+                } else if (viewModel.getTotalCowSize() < Integer.parseInt(breedLimpEd.getText().toString())) {
+                    breedLimpRatioTv.setText("총 두수보다 큰 값을 입력할 수 없습니다.");
+                } else {
+                    int limpScore = 0;
+                    float ratio = Float.parseFloat(breedLimpEd.getText().toString()) / viewModel.getTotalCowSize();
+                    ratio = ratio * 100;
+                    ratio = Math.round(ratio);
+                    breedLimpRatioTv.setText(String.valueOf(ratio));
+                    limpScore = viewModel.calculatorLimpScore(ratio);
+                    breedLimpScoreTV.setText(String.valueOf(limpScore));
+                    viewModel.setLimpScore(limpScore);
+                }
+            }
+        });
+        return view;
+    }
+}
