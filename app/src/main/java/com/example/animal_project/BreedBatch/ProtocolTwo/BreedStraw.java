@@ -90,9 +90,6 @@ public class BreedStraw extends Fragment {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-
-
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 1:
@@ -107,4 +104,5 @@ public class BreedStraw extends Fragment {
                 break;
         }
     }
+
 }

@@ -4,6 +4,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -175,6 +177,13 @@ public class BreedStruggleDong extends AppCompatActivity {
 
             }
         });
+        AlertDialog.Builder myAlterDialog = new AlertDialog.Builder(BreedStruggleDong.this);
+        home_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myOnBackPressed(myAlterDialog);
+            }
+        });
     }
     private static boolean isNumeric(String s) {
         try {
@@ -207,6 +216,7 @@ public class BreedStruggleDong extends AppCompatActivity {
                     struggle_count[0] = Double.parseDouble(breed_struggle_ed.getText().toString());
                     double struggleRatio = Math.round((struggle_count[0]/pen_total_cow[0])*100)/ 100.0;
                     struggleRatio = struggleRatio * 6;
+                    struggleRatio = Math.round(struggleRatio);
                     breed_struggle_ratio.setText(String.valueOf(struggleRatio));
                 }
             }
@@ -232,10 +242,31 @@ public class BreedStruggleDong extends AppCompatActivity {
                     struggle_count[0] = Double.parseDouble(breed_struggle_ed.getText().toString());
                     double struggleRatio = Math.round((struggle_count[0]/pen_total_cow[0])*100)/ 100.0;
                     struggleRatio = struggleRatio * 6;
+                    struggleRatio = Math.round(struggleRatio);
                     breed_struggle_ratio.setText(String.valueOf(struggleRatio));
 
                 }
             }
         });
+    }
+    public void myOnBackPressed(AlertDialog.Builder AlertBuilder){
+
+        AlertBuilder.setTitle("이전");
+        AlertBuilder.setMessage("지금까지 평가한 항목이 사라집니다.\n" +
+                "평가 화면으로 돌아가시겠습니까?");
+        // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
+        AlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog,int which){
+                // OK 버튼을 눌렸을 경우
+
+            }
+        });
+        AlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        AlertBuilder.show();
     }
 }

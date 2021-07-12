@@ -4,6 +4,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -65,10 +67,11 @@ public class BreedHarmonyDong extends AppCompatActivity {
             dong_btn.setVisibility(View.VISIBLE);
         }
         viewModel.clickDongHandler(next_dong_btn,prev_dong_btn,dong_btn,dong,dong_current,dong_size);
+        AlertDialog.Builder myAlterDialog = new AlertDialog.Builder(BreedHarmonyDong.this);
         home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                myOnBackPressed(myAlterDialog);
             }
         });
         // 완료 버튼
@@ -207,6 +210,7 @@ public class BreedHarmonyDong extends AppCompatActivity {
                     harmony_count[0] = Double.parseDouble(breed_harmony_ed.getText().toString());
                     double harmonyRatio = Math.round((harmony_count[0]/pen_total_cow[0])*100)/ 100.0;
                     harmonyRatio = harmonyRatio * 6;
+                    harmonyRatio = Math.round(harmonyRatio);
                     breed_harmony_ratio.setText(String.valueOf(harmonyRatio));
                 }
             }
@@ -232,10 +236,31 @@ public class BreedHarmonyDong extends AppCompatActivity {
                     harmony_count[0] = Double.parseDouble(breed_harmony_ed.getText().toString());
                     double harmonyRatio = Math.round((harmony_count[0]/pen_total_cow[0])*100)/ 100.0;
                     harmonyRatio = harmonyRatio * 6;
+                    harmonyRatio = Math.round(harmonyRatio);
                     breed_harmony_ratio.setText(String.valueOf(harmonyRatio));
 
                 }
             }
         });
+    }
+    public void myOnBackPressed(AlertDialog.Builder AlertBuilder){
+
+        AlertBuilder.setTitle("이전");
+        AlertBuilder.setMessage("지금까지 평가한 항목이 사라집니다.\n" +
+                "평가 화면으로 돌아가시겠습니까?");
+        // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
+        AlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog,int which){
+                // OK 버튼을 눌렸을 경우
+
+            }
+        });
+        AlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        AlertBuilder.show();
     }
 }

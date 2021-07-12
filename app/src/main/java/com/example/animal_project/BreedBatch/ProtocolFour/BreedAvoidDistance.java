@@ -157,20 +157,7 @@ public class BreedAvoidDistance extends Fragment {
 
 
 
-        TextView protocol_4 = view.findViewById(R.id.breed_protocol_4);
-        if (viewModel.getSocialBehaviorScore() == -1) {
-            protocol_4.setText("사회적 행동의 표현 평가를 완료하세요");
-        } else {
-            viewModel.setProtocolFourScore(
-                    viewModel.calculatorProtocolFourScore
-                            (
-                                    viewModel.getSocialBehaviorScore(),
-                                    viewModel.getAvoidDistanceScore()
-                            )
-            );
-            protocol_4.setText(String.valueOf(viewModel.getProtocolFourScore()));
 
-        }
         // Inflate the layout for this fragment
         return view;
     }
@@ -310,6 +297,24 @@ public class BreedAvoidDistance extends Fragment {
                     )));
                     avoid_distance_score_tv.setText(String.valueOf(viewModel.getAvoidDistanceScore()));
                     }
+                TextView protocol_4 = view.findViewById(R.id.breed_protocol_4);
+                if (viewModel.getSocialBehaviorScore() == -1) {
+                    protocol_4.setText("사회적 행동의 표현 평가를 완료하세요");
+                } else if(viewModel.getAvoidDistanceScore()== -1 ) {
+                    protocol_4.setText("회피 거리 평가를 완료하세요");
+                }
+                else
+                {
+                    viewModel.setProtocolFourScore(
+                            viewModel.calculatorProtocolFourScore
+                                    (
+                                            viewModel.getSocialBehaviorScore(),
+                                            viewModel.getAvoidDistanceScore()
+                                    )
+                    );
+                    protocol_4.setText(String.valueOf(viewModel.getProtocolFourScore()));
+
+                }
                 break;
             default:
                 break;
