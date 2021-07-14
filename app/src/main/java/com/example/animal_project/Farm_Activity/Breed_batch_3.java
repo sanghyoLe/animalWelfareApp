@@ -69,7 +69,7 @@ public class Breed_batch_3 extends AppCompatActivity {
         breed_ruminant_tv = findViewById(R.id.breed_ruminant_ratio);
         breed_falldead_tv = findViewById(R.id.breed_falldead_ratio);
         breed_disease_score_tv = findViewById(R.id.breed_disease_score);
-        breed_cough_ratio_tv = findViewById(R.id.breed_cough_ratio);
+//        breed_cough_ratio_tv = findViewById(R.id.breed_cough_ratio);
         breed_horn_removal_score_tv = findViewById(R.id.breed_horn_removal_score);
         breed_castration_score_tv = findViewById(R.id.breed_castration_score);
         breed_min_pain_score = findViewById(R.id.breed_min_pain_score);
@@ -233,13 +233,13 @@ public class Breed_batch_3 extends AppCompatActivity {
         });
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        TextView breed_cough_ratio = findViewById(R.id.breed_cough_ratio);
+//        TextView breed_cough_ratio = findViewById(R.id.breed_cough_ratio);
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 1:
                 int key = data.getExtras().getInt("key");
                 key = key / dong_size;
-                breed_cough_ratio.setText(String.valueOf(key));
+//                breed_cough_ratio.setText(String.valueOf(key));
 
                 break;
             default:

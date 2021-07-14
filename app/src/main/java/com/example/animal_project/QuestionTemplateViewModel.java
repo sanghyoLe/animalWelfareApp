@@ -22,39 +22,40 @@ public class QuestionTemplateViewModel extends ViewModel {
 
     private int sampleCowSize = 0;
     private int totalCowSize = 0;
-    private int poorScore = 0;
-    private int waterTankNum = 0;
-    private int waterTankClean = 0;
-    private int waterDrink = 0;
-    private int waterScore = 0;
-    private int strawScore = 0;
-    private int outwardScore = 0;
-    private double restScore = 0;
-    private int shadeScore = 0;
-    private int summerVentilatingScore = 0;
-    private int mistSprayScore =0;
-    private int summerRestScore = 0;
-    private int windBlockScore =0;
-    private int winterVentilatingScore = 0;
-    private int winterRestScore = 0;
-    private int calfShadeScore = 0;
-    private int calfSummerVentilatingScore = 0;
-    private int calfMistSprayScore = 0;
-    private int calfSummerRestScore =0;
-    private int calfStrawScore =0;
-    private int calfWarmScore =0;
-    private int calfWindBlockScore = 0;
-    private int calfWinterRestScore =0;
-    private double totalWarmVentilatingScore = 0;
+    private int poorScore = -1;
+    private int waterTankNum = -1;
+    private int waterTankClean = -1;
+    private int waterDrink = -1;
+    private int waterScore = -1;
+    private int strawScore = -1;
+    private int outwardScore = -1;
+    private double restScore = -1;
+    private int shadeScore = -1;
+    private int summerVentilatingScore = -1;
+    private int mistSprayScore =-1;
+    private int summerRestScore = -1;
+    private int windBlockScore =-1;
+    private int winterVentilatingScore = -1;
+    private int winterRestScore = -1;
+    private int calfShadeScore = -1;
+    private int calfSummerVentilatingScore = -1;
+    private int calfMistSprayScore = -1;
+    private int calfSummerRestScore = -1;
+    private int calfStrawScore = -1;
+    private int calfWarmScore = -1;
+    private int calfWindBlockScore = -1;
+    private int calfWinterRestScore = -1;
+    private double totalWarmVentilatingScore = -1;
     private int limpScore = -1;
     private float slightHairLoss = -1;
-    private float criticalHairLoss = 0;
-    private int hairLossScore = 0;
-    private long minInjuryScore = 0;
-    private int cough = 0;
-    private float runnyNoseRatio = 0;
-    private float ophthalmicRatio = 0;
-    private float breathRatio = 0;
+    private float criticalHairLoss = -1;
+    private int hairLossScore = -1;
+    private long minInjuryScore = -1;
+    private double cough = -1;
+    private float coughRatio = -1;
+    private float runnyNoseRatio = -1;
+    private float ophthalmicRatio = -1;
+    private float breathRatio = -1;
 
 
 
@@ -245,11 +246,17 @@ public class QuestionTemplateViewModel extends ViewModel {
     public long getMinInjuryScore(){
         return this.minInjuryScore;
     }
-    public void setCough(int cough){
+    public void setCough(double cough){
         this.cough = cough;
     }
-    public int getCough(){
+    public double getCough(){
         return this.cough;
+    }
+    public void setCoughRatio(float coughRatio){
+        this.coughRatio = coughRatio;
+    }
+    public float getCoughRatio(){
+        return this.coughRatio;
     }
     public void setRunnyNoseRatio(float runnyNoseRatio){
         this.runnyNoseRatio = runnyNoseRatio;
@@ -635,6 +642,11 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public float getRatio(EditText editText){
         float ratio = (Float.parseFloat(editText.getText().toString()) / getSampleCowSize()) * 100;
+        ratio = Math.round(ratio);
+        return ratio;
+    }
+    public float getTotalRatio(EditText editText){
+        float ratio = (Float.parseFloat(editText.getText().toString()) / getTotalCowSize()) * 100;
         ratio = Math.round(ratio);
         return ratio;
     }

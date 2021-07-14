@@ -1,4 +1,4 @@
-package com.example.animal_project.BreedBatch;
+package com.example.animal_project.Freestall;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +17,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.animal_project.BreedBatch.BreedWaterDongQ3;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
+public class FreestallCount extends Fragment {
 
-public class BreedCough extends Fragment {
     private View view;
     private int dong_size;
     private double cough;
@@ -82,7 +84,7 @@ public class BreedCough extends Fragment {
                     Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
                 }else{
                     dong_size = Integer.parseInt(dong_count);
-                    Intent intent = new Intent(getActivity(), BreedCoughDong.class);
+                    Intent intent = new Intent(getActivity(), FreestallCountDong.class);
                     intent.putExtra("dong_count",dong_size); /*송신*/
                     startActivityForResult(intent, 0);
                 }

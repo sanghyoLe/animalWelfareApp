@@ -186,8 +186,14 @@ public class BreedCoughDong extends AppCompatActivity {
                 breed_cough_ratio_10_tv,breed_cough_ratio_11_tv,breed_cough_ratio_12_tv,breed_cough_ratio_13_tv,breed_cough_ratio_14_tv,
                 breed_cough_ratio_15_tv,breed_cough_ratio_16_tv,breed_cough_ratio_17_tv,breed_cough_ratio_18_tv,breed_cough_ratio_19_tv,
                 breed_cough_ratio_20_tv,};
+        EditText[] totalCowEtArr = {breed_total_cow_1_ed,breed_total_cow_2_ed,breed_total_cow_3_ed
+                ,breed_total_cow_4_ed,breed_total_cow_5_ed,breed_total_cow_6_ed,breed_total_cow_7_ed
+                ,breed_total_cow_8_ed,breed_total_cow_9_ed,breed_total_cow_10_ed
+                ,breed_total_cow_11_ed,breed_total_cow_12_ed,breed_total_cow_13_ed,breed_total_cow_14_ed
+                ,breed_total_cow_15_ed,breed_total_cow_16_ed,breed_total_cow_17_ed,breed_total_cow_18_ed,breed_total_cow_19_ed,
+                breed_total_cow_20_ed};
         Button breed_cough_button = findViewById(R.id.breed_dong_cough_btn);
-        int [] coughRatioArr = new int[20];
+        double [] coughRatioArr = new double[20];
         breed_cough_button.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -195,11 +201,11 @@ public class BreedCoughDong extends AppCompatActivity {
                 Boolean checkEmpty = false;
                 int emptyDong = 0;
                 for(int idx = 0; idx < dong_size ; idx++){
-                    if(!isNumeric((String)coughRatioTvArr[idx].getText())){
+                    if(totalCowEtArr[idx].getText().toString().equals("")){
                         checkEmpty = true;
                         emptyDong = idx + 1;
                     }  else {
-                        coughRatioArr[idx] = Integer.parseInt((String) coughRatioTvArr[idx].getText());
+                        coughRatioArr[idx] = Double.parseDouble((String) coughRatioTvArr[idx].getText());
                     }
                 }
                 // 이전 화면으로 돌아가기 ( 빈 값 있는지 체크 )
@@ -207,7 +213,7 @@ public class BreedCoughDong extends AppCompatActivity {
                     String msg = emptyDong + "동의 빈 값을 입력해주세요";
                     Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG ).show();
                 } else {
-                    int sum = Arrays.stream(coughRatioArr).sum();
+                    double sum = Arrays.stream(coughRatioArr).sum();
                     Intent intent = new Intent();
                     intent.putExtra("key", sum);
                     setResult(1, intent);
