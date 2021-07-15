@@ -374,7 +374,7 @@ public class QuestionTemplate extends AppCompatActivity
         Bundle BeforeBundle = intent.getExtras();
 
         // ----- 실제 서비스에서 저장되어야 하는 정보 ----
-        farmName = BeforeBundle.getString("farmName");
+/*        farmName = BeforeBundle.getString("farmName");
         address = BeforeBundle.getString("address");
         addressDetail = BeforeBundle.getString("addressDetail");
         repName = BeforeBundle.getString("repName");
@@ -396,15 +396,15 @@ public class QuestionTemplate extends AppCompatActivity
         Log.d("evaName",String.valueOf(evaName));
         Log.d("evaDate",String.valueOf(evaDate));
         Log.d("farmType",String.valueOf(farmType));
-        Log.d("sampleCowSize",String.valueOf(sampleCowSize));
+        Log.d("sampleCowSize",String.valueOf(sampleCowSize));*/
         // -----------------------------------------------
 
         // ------------------------------------------------
 
         // ---- 테스트를 위한 최소 정보 ---------
-/*        farmType = BeforeBundle.getInt("farmType");
+        farmType = BeforeBundle.getInt("farmType");
         totalCowSize = BeforeBundle.getInt("totalCow");
-        sampleCowSize = BeforeBundle.getInt("sampleCowSize");*/
+        sampleCowSize = BeforeBundle.getInt("sampleCowSize");
         // ------------------------------------
         viewModel.setSampleCowSize(sampleCowSize);
         viewModel.setTotalCowSize(totalCowSize);
@@ -482,127 +482,54 @@ public class QuestionTemplate extends AppCompatActivity
                 transaction.replace(R.id.fragment_paper, freestall_poor).commitAllowingStateLoss();
                 total_page.setText(String.valueOf(" / " + freestall_frag_arr.length));
         }
+        ImageButton breed_list_btn_1 = findViewById(R.id.question_list_btn_1);
+        ImageButton breed_list_btn_2 = findViewById(R.id.question_list_btn_2);
+        ImageButton breed_list_btn_3 = findViewById(R.id.question_list_btn_3);
+        ImageButton breed_list_btn_4 = findViewById(R.id.question_list_btn_4);
+        ImageButton breed_list_btn_5 = findViewById(R.id.question_list_btn_5);
+        ImageButton breed_list_btn_6 = findViewById(R.id.question_list_btn_6);
+        ImageButton breed_list_btn_7 = findViewById(R.id.question_list_btn_7);
+        ImageButton breed_list_btn_8 = findViewById(R.id.question_list_btn_8);
+        ImageButton breed_list_btn_9 = findViewById(R.id.question_list_btn_9);
+        ImageButton breed_list_btn_10 = findViewById(R.id.question_list_btn_10);
+        ImageButton breed_list_btn_11 = findViewById(R.id.question_list_btn_11);
+        ImageButton breed_list_btn_12 = findViewById(R.id.question_list_btn_12);
+        ImageButton breed_list_btn_13 = findViewById(R.id.question_list_btn_13);
+        ImageButton breed_list_btn_14 = findViewById(R.id.question_list_btn_14);
+        ImageButton breed_list_btn_15 = findViewById(R.id.question_list_btn_15);
+        ImageButton breed_list_btn_16 = findViewById(R.id.question_list_btn_16);
+        ImageButton breed_list_btn_17 = findViewById(R.id.question_list_btn_17);
+        ImageButton breed_list_btn_18 = findViewById(R.id.question_list_btn_18);
+        ImageButton breed_list_btn_19 = findViewById(R.id.question_list_btn_19);
+        ImageButton breed_list_btn_20 = findViewById(R.id.question_list_btn_20);
+        ImageButton breed_list_btn_21 = findViewById(R.id.question_list_btn_21);
+        ImageButton breed_list_btn_22 = findViewById(R.id.question_list_btn_22);
+        ImageButton breed_list_btn_23 = findViewById(R.id.question_list_btn_23);
+        ImageButton breed_list_btn_24 = findViewById(R.id.question_list_btn_24);
+        ImageButton breed_list_btn_25 = findViewById(R.id.question_list_btn_25);
+        ImageButton breed_list_btn_26 = findViewById(R.id.question_list_btn_26);
+        ImageButton breed_list_btn_27 = findViewById(R.id.question_list_btn_27);
+        ImageButton breed_list_btn_28 = findViewById(R.id.question_list_btn_28);
+        ImageButton breed_list_btn_29 = findViewById(R.id.question_list_btn_29);
+        ImageButton breed_list_btn_30 = findViewById(R.id.question_list_btn_30);
+        ImageButton breed_list_btn_31 = findViewById(R.id.question_list_btn_31);
+        ImageButton breed_list_btn_32 = findViewById(R.id.question_list_btn_32);
+        ImageButton breed_list_btn_33 = findViewById(R.id.question_list_btn_33);
+        ImageButton breed_list_btn_34 = findViewById(R.id.question_list_btn_34);
+        ImageButton breed_list_btn_35 = findViewById(R.id.question_list_btn_35);
+        ImageButton breed_list_btn_36 = findViewById(R.id.question_list_btn_36);
 
+        ImageButton[] breed_list_btn_arr = {
+                breed_list_btn_1,breed_list_btn_2,breed_list_btn_3,breed_list_btn_4,breed_list_btn_5,
+                breed_list_btn_6,breed_list_btn_7,breed_list_btn_8,breed_list_btn_9,breed_list_btn_10,
+                breed_list_btn_11,breed_list_btn_12,breed_list_btn_13,breed_list_btn_14,breed_list_btn_15,
+                breed_list_btn_16,breed_list_btn_17,breed_list_btn_18,breed_list_btn_19,breed_list_btn_20,
+                breed_list_btn_21,breed_list_btn_22,breed_list_btn_23,breed_list_btn_24,breed_list_btn_25,
+                breed_list_btn_26,breed_list_btn_27,breed_list_btn_28,breed_list_btn_29,breed_list_btn_30,
+                breed_list_btn_31,breed_list_btn_32,breed_list_btn_33,breed_list_btn_34,breed_list_btn_35,
+                breed_list_btn_36};
+        count = listBtnHandler(breed_list_btn_arr,breed_frag_arr);
 
-    }
-    public void listBtnHandler(View view){
-        transaction = fragmentManager.beginTransaction();
-        switch(view.getId()){
-          case  R.id.question_list_btn_1:
-
-              count = listBtnHandlerFunc(0);
-            break;
-            case  R.id.question_list_btn_2:
-                count = listBtnHandlerFunc(1);
-                break;
-            case  R.id.question_list_btn_3:
-                count = listBtnHandlerFunc(2);
-                break;
-            case  R.id.question_list_btn_4:
-                count = listBtnHandlerFunc(3);
-                break;
-            case  R.id.question_list_btn_5:
-                count = listBtnHandlerFunc(4);
-                break;
-            case  R.id.question_list_btn_6:
-                count = listBtnHandlerFunc(5);
-                break;
-            case  R.id.question_list_btn_7:
-                count = listBtnHandlerFunc(6);
-                break;
-            case  R.id.question_list_btn_8:
-                count = listBtnHandlerFunc(7);
-                break;
-            case  R.id.question_list_btn_9:
-                count = listBtnHandlerFunc(8);
-                break;
-            case  R.id.question_list_btn_10:
-                count = listBtnHandlerFunc(9);
-                break;
-            case  R.id.question_list_btn_11:
-                count = listBtnHandlerFunc(10);
-                break;
-            case  R.id.question_list_btn_12:
-                count = listBtnHandlerFunc(11);
-                break;
-            case  R.id.question_list_btn_13:
-                count = listBtnHandlerFunc(12);
-                break;
-            case  R.id.question_list_btn_14:
-                count = listBtnHandlerFunc(13);
-                break;
-            case  R.id.question_list_btn_15:
-                count = listBtnHandlerFunc(14);
-                break;
-            case  R.id.question_list_btn_16:
-                count = listBtnHandlerFunc(15);
-                break;
-            case  R.id.question_list_btn_17:
-                count = listBtnHandlerFunc(16);
-                break;
-            case  R.id.question_list_btn_18:
-                count = listBtnHandlerFunc(17);
-                break;
-            case  R.id.question_list_btn_19:
-                count = listBtnHandlerFunc(18);
-                break;
-            case  R.id.question_list_btn_20:
-                count = listBtnHandlerFunc(19);
-                break;
-            case  R.id.question_list_btn_21:
-                count = listBtnHandlerFunc(20);
-                break;
-            case  R.id.question_list_btn_22:
-                count = listBtnHandlerFunc(21);
-                break;
-            case  R.id.question_list_btn_23:
-                count = listBtnHandlerFunc(22);
-                break;
-            case  R.id.question_list_btn_24:
-                count = listBtnHandlerFunc(23);
-                break;
-            case  R.id.question_list_btn_25:
-                count = listBtnHandlerFunc(24);
-                break;
-            case  R.id.question_list_btn_26:
-                count = listBtnHandlerFunc(25);
-                break;
-            case  R.id.question_list_btn_27:
-                count = listBtnHandlerFunc(26);
-                break;
-            case  R.id.question_list_btn_28:
-                count = listBtnHandlerFunc(27);
-                break;
-            case  R.id.question_list_btn_29:
-                count = listBtnHandlerFunc(28);
-                break;
-            case  R.id.question_list_btn_30:
-                count = listBtnHandlerFunc(29);
-                break;
-            case  R.id.question_list_btn_31:
-                count = listBtnHandlerFunc(30);
-                break;
-            case  R.id.question_list_btn_32:
-                count = listBtnHandlerFunc(31);
-                break;
-            case  R.id.question_list_btn_33:
-                count = listBtnHandlerFunc(32);
-                break;
-            case  R.id.question_list_btn_34:
-                count = listBtnHandlerFunc(33);
-                break;
-            case  R.id.question_list_btn_35:
-                count = listBtnHandlerFunc(34);
-                break;
-            case  R.id.question_list_btn_36:
-                count = listBtnHandlerFunc(35);
-                next_btn.setVisibility(View.INVISIBLE);
-                end_btn.setVisibility(View.VISIBLE);
-                break;
-            default:
-            break;
-
-        }
     }
     public void clickHandler(View view)
     {
@@ -699,7 +626,35 @@ public class QuestionTemplate extends AppCompatActivity
         }
     }
 
-
+    private int listBtnHandler(ImageButton[] btnArr,Fragment[] fragments){
+         for(int i = 0 ; i < btnArr.length ; i++){
+             int finalI = i;
+             btnArr[i].setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+                     FragmentTransaction transaction = fragmentManager.beginTransaction();
+                     count = finalI;
+                     if(count == 0){
+                         prev_btn.setVisibility(View.INVISIBLE);
+                         next_btn.setVisibility(View.VISIBLE);
+                         end_btn.setVisibility(View.GONE);
+                     } else if(count == btnArr.length-1) {
+                         end_btn.setVisibility(View.VISIBLE);
+                         next_btn.setVisibility(View.INVISIBLE);
+                         prev_btn.setVisibility(View.VISIBLE);
+                     } else{
+                         next_btn.setVisibility(View.VISIBLE);
+                         prev_btn.setVisibility(View.VISIBLE);
+                         end_btn.setVisibility(View.GONE);
+                     }
+                     current_page.setText(String.valueOf(count+1));
+                     closeDrawer();
+                     transaction.replace(R.id.fragment_paper,fragments[count]).commitAllowingStateLoss();
+                 }
+             });
+         }
+         return count;
+    }
     private void nextBtnHandler(int count, int totalPageLength){
         if(count + 2 == totalPageLength){
             next_btn.setVisibility(View.INVISIBLE);
@@ -734,20 +689,7 @@ public class QuestionTemplate extends AppCompatActivity
         drawer.closeDrawer(Gravity.LEFT);
         list_btn.setImageResource(R.drawable.outline_reorder_24);
     }
-    private int listBtnHandlerFunc(int listCount){
-        int count = listCount;
-        if(count == 0){
-            prev_btn.setVisibility(View.INVISIBLE);
-        } else {
-            next_btn.setVisibility(View.VISIBLE);
-            prev_btn.setVisibility(View.VISIBLE);
-        }
-        end_btn.setVisibility(View.GONE);
-        current_page.setText(String.valueOf(count+1));
-        closeDrawer();
-        transaction.replace(R.id.fragment_paper,breed_frag_arr[count]).commitAllowingStateLoss();
-        return count;
-    }
+
     private void changeCheckImageFunc (){
         ImageView check_total_1 = findViewById(R.id.check_total_1);
         ImageView check_total_2 = findViewById(R.id.check_total_2);

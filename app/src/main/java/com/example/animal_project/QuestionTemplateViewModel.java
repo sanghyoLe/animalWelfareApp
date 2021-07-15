@@ -25,16 +25,15 @@ import java.util.Map;
 
 public class QuestionTemplateViewModel extends ViewModel {
 
+
+
     public static class avoidDistance implements Serializable {
         int penNumber;
         String penLocation;
         int cowSize = -1;
-
         int[] cowCount;
         int[] cowNumber;
         int[] avoidDistance;
-
-
         public avoidDistance(int penNumber, String penLocation, int cowSize){
             this.penNumber = penNumber;
             this.penLocation = penLocation;
@@ -76,8 +75,6 @@ public class QuestionTemplateViewModel extends ViewModel {
 
     private avoidDistance[] avoidDistances = new avoidDistance[51];
 
-
-
     public void setAvoidDistances(){
         for(int i = 1 ; i < 51 ; i++){
             this.avoidDistances[i] = new avoidDistance(i,"1",-1);
@@ -90,6 +87,61 @@ public class QuestionTemplateViewModel extends ViewModel {
     public avoidDistance getAvoidDistance(int penNumber){
         return this.avoidDistances[penNumber];
     }
+    public static class WaterQuestion implements Serializable {
+        String[] penLocation;
+        int[] cowSize;
+        int[] waitingCowSize;
+        int[] drinkTime;
+        int[] waterTimeScore;
+        float[] waitingRatio;
+        int maxWaterTimeScore;
+        public WaterQuestion(int dong_size){
+            this.penLocation = new String[dong_size];
+            this.cowSize = new int[dong_size];
+            this.waitingCowSize = new int[dong_size];
+            this.drinkTime = new int[dong_size];
+            this.waterTimeScore = new int[dong_size];
+            this.waitingRatio = new float[dong_size];
+        }
+        public void setPenLocation(String[] penLocation){
+            this.penLocation = penLocation;
+        }
+        public String[] getPenLocation(){
+            return this.penLocation;
+        }
+        public void setCowSize(int[] cowSize){
+            this.cowSize = cowSize;
+        }
+        public void setWaitingCowSize(int[] waitingCowSize){
+            this.waitingCowSize = waitingCowSize;
+        }
+        public void setDrinkTime(int[] drinkTime){
+            this.drinkTime = drinkTime;
+        }
+        public int[] getDrinkTime(){
+            return this.drinkTime;
+        }
+        public void setWaitingRatio(float[] waitingRatio){
+            this.waitingRatio = waitingRatio;
+        }
+        public float[] getWaitingRatio(){
+            return this.waitingRatio;
+        }
+        public void setWaterTimeScore(int[] waterTimeScore){
+            this.waterTimeScore = waterTimeScore;
+        }
+        public int[] getWaterTimeScore(){
+            return this.waterTimeScore;
+        }
+        public void setMaxWaterTimeScore(int maxWaterTimeScore){
+            this.maxWaterTimeScore = maxWaterTimeScore;
+        }
+        public int getMaxWaterTimeScore(){
+            return this.maxWaterTimeScore;
+        }
+
+    }
+
 
 
     private int sampleCowSize = 0;
