@@ -46,6 +46,18 @@ public class BreedFallDead extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 // 질병의 최소화 프로토콜 점수 표시하는 로직
+                if(TextUtils.isEmpty(breed_fall_dead_ed.getText().toString())){
+                    breed_fall_dead_tv.setText("값을 입력하세요");
+                    viewModel.setFallDeadRatio(-1);
+                } else if(viewModel.getRatio(breed_fall_dead_ed) > 100) {
+                    viewModel.setFallDeadRatio(-1);
+                    breed_fall_dead_tv.setText("표본 규모보다 큰 값 입력 불가");
+                    sample_size_tv.setVisibility(View.VISIBLE);
+                    sample_size_tv.setText("표본 규모 : " + String.valueOf(viewModel.getSampleCowSize()));
+                } else {
+                    viewModel.setFallDeadRatio(viewModel.getRatio(breed_fall_dead_ed));
+                    breed_fall_dead_tv.setText(String.valueOf(viewModel.getFallDeadRatio()));
+                }
                 if(viewModel.getCough() == -1){
                     breed_disease_score_tv.setText("기침 평가를 완료하세요");
                 }else if(viewModel.getRunnyNoseRatio() == -1){
@@ -59,19 +71,9 @@ public class BreedFallDead extends Fragment {
                     breed_disease_score_tv.setText("설사 평가를 완료하세요");
                 }else if(viewModel.getRuminantRatio() == -1){
                     breed_disease_score_tv.setText("반추위 팽창 평가를 완료하세요");
-                } else if(TextUtils.isEmpty(breed_fall_dead_ed.getText().toString())){
-                    breed_fall_dead_tv.setText("값을 입력하세요");
-                    viewModel.setFallDeadRatio(-1);
-                } else if(viewModel.getRatio(breed_fall_dead_ed) > 100) {
-                    viewModel.setFallDeadRatio(-1);
-                    breed_fall_dead_tv.setText("표본 규모보다 큰 값 입력 불가");
-                    sample_size_tv.setVisibility(View.VISIBLE);
-                    sample_size_tv.setText("표본 규모 : " + String.valueOf(viewModel.getSampleCowSize()));
+                } else if(viewModel.getFallDeadRatio() == -1){
+                  breed_disease_score_tv.setText("폐사율 평가를 완료하세요");
                 } else {
-
-                  viewModel.setFallDeadRatio(viewModel.getRatio(breed_fall_dead_ed));
-                  breed_fall_dead_tv.setText(String.valueOf(viewModel.getFallDeadRatio()));
-
                     double diseaseScore =
                     viewModel.calculatorDiseaseScore(
                             viewModel.calculatorCareWarningScore(

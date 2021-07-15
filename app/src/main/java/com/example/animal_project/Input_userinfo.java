@@ -119,7 +119,7 @@ public class Input_userinfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 사용자가 모든 정보를 입력하였는지 확인
-               /* if(TextUtils.isEmpty(farm_name_et.getText())){
+                if(TextUtils.isEmpty(farm_name_et.getText())){
                     msg = "농장명을 입력하세요";
                     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 } else if(TextUtils.isEmpty(address_et.getText())){
@@ -164,9 +164,9 @@ public class Input_userinfo extends AppCompatActivity {
                             eva_data_picker.getMonth(),
                             eva_data_picker.getDayOfMonth(), input_checked
                             );
-                }*/
+                }
                 // 테스트 용 코드 위에 조건문 주석 걸고 실행
-                if(input_checked == 0) {
+                /*if(input_checked == 0) {
                     String msg = "농장 종류 선택";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                 }else {
@@ -177,7 +177,7 @@ public class Input_userinfo extends AppCompatActivity {
                     bundle.putInt("farmType",input_checked);
                     intentQuestionTemplate.putExtras(bundle);
                     startActivity(intentQuestionTemplate);
-                }
+                }*/
                 // --------------------------------------------------
             }
         });
@@ -211,7 +211,7 @@ public class Input_userinfo extends AppCompatActivity {
         // 주소 입력을 위한 창
         address_et = (EditText) findViewById(R.id.et_address);
 
-        if (address_et != null) {
+/*        if (address_et != null) {
             address_et.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event)
@@ -224,7 +224,7 @@ public class Input_userinfo extends AppCompatActivity {
                     return false;
                 }
             });
-        }
+        }*/
     }
 
     // 주소지 결과 창
@@ -382,11 +382,11 @@ public class Input_userinfo extends AppCompatActivity {
         AlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-/*                Intent intentQuestionTemplate = new Intent(Input_userinfo.this, QuestionTemplate.class);
+                Intent intentQuestionTemplate = new Intent(Input_userinfo.this, QuestionTemplate.class);
                 sendInformation(intentQuestionTemplate,farmName,address,addressDetail,
                         repName,totalCow,totalAdultCow,totalChildCow,evaName,
                         year,month,day,farmType);
-                startActivity(intentQuestionTemplate);*/
+                startActivity(intentQuestionTemplate);
             }
         });
         AlertBuilder.show();
