@@ -17,7 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.animal_project.BreedBatch.BreedWaterDongQ3;
+
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 

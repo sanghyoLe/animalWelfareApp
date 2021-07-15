@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="right"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:text="음수행동\n측정기준"
+
+            android:textSize="16sp"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:gravity="center_horizontal|center_vertical"/>
+        <TableLayout
+            android:layout_width="0dp"
+            android:layout_weight="7"
+            android:layout_height="wrap_content"
+
+            android:stretchColumns="*"
+            android:shrinkColumns="*"
+            >
+            <TableRow
+                android:background="@color/colorPrimary"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center_horizontal"
+                    android:text="점수"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_weight="2.5"
+                    android:gravity="center_horizontal"
+                    android:layout_margin="1dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:text="음수행동 점수 기준"
+                    />
+            </TableRow>
+            <TableRow
+                android:background="@color/colorPrimary"
+
+                >
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="0(양호)"
+                    android:background="@drawable/button_circle_line_green"
+                    android:layout_margin="1dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal" />
+                <TextView
+                    android:layout_weight="2.5"
+                    android:gravity="center_horizontal"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/button_circle_line_green"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:text="대기 우 없고, 음수시간 5분 이하"
+                    />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/colorPrimary">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="1(보통) \n"
+                    android:paddingBottom="4dp"
+                    android:background="@drawable/button_circle_line_green"
+                    android:layout_margin="1dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal" />
+                <TextView
+                    android:layout_weight="2.5"
+                    android:gravity="center_horizontal"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/button_circle_line_green"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:text="대기 우 20% 이하, \n음수 시간 10분 이하"
+                    />
+            </TableRow>
+            <TableRow
+                android:background="@color/colorPrimary">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="2(미흡) \n"
+                    android:paddingBottom="4dp"
+                    android:background="@drawable/button_circle_line_green"
+                    android:layout_margin="1dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal" />
+                <TextView
+                    android:layout_weight="2.5"
+                    android:gravity="center_horizontal"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/button_circle_line_green"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:text="대기 우 20% 이상, \n음수 시간 10분 이상"
+                    />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</LinearLayout>

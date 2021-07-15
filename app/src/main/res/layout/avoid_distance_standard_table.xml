@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="right"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="회피거리 \n측정기준"
+
+                android:textSize="16sp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:gravity="center_horizontal|center_vertical"/>
+            <TableLayout
+                android:layout_width="0dp"
+                android:layout_weight="7"
+                android:layout_height="wrap_content"
+
+                android:stretchColumns="*"
+                android:shrinkColumns="*"
+                >
+                <TableRow
+                    android:background="@color/colorPrimary"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center_horizontal"
+                        android:text="회피 수준"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_weight="2.5"
+                        android:gravity="center_horizontal"
+                        android:layout_margin="1dp"
+                        android:background="@color/colorPrimary"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:text="회피수준 및 상세설명"
+                        />
+                </TableRow>
+                <TableRow
+                    android:background="@color/colorPrimary"
+
+                    >
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:background="@drawable/button_circle_line_green"
+                        android:layout_margin="1dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:gravity="center_horizontal" />
+                    <TextView
+                        android:layout_weight="2.5"
+                        android:gravity="center_horizontal"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_circle_line_green"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:text="만질 수 있음"
+                        />
+                </TableRow>
+                <TableRow
+                    android:background="@color/colorPrimary"
+                    >
+                    <TextView
+
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="2 \n"
+                        android:background="@drawable/button_circle_line_green"
+                        android:layout_margin="1dp"
+                        android:paddingBottom="4dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:gravity="center_horizontal|center_vertical" />
+                    <TextView
+                        android:layout_weight="2.5"
+                        android:gravity="center_horizontal"
+                        android:layout_margin="1dp"
+                        android:layout_width="0dp"
+                        android:background="@drawable/button_circle_line_green"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:text="50cm 이내 접근 가능하나 \n 만질 수 없음"
+                        />
+                </TableRow>
+                <TableRow
+                    android:background="@color/colorPrimary">
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:background="@drawable/button_circle_line_green"
+                        android:layout_margin="1dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:gravity="center_horizontal" />
+                    <TextView
+                        android:layout_weight="2.5"
+                        android:gravity="center_horizontal"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_circle_line_green"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:text="50~100cm이내 접근 가능"
+                        />
+                </TableRow>
+                <TableRow
+                    android:background="@color/colorPrimary">
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="4"
+                        android:background="@drawable/button_circle_line_green"
+                        android:layout_margin="1dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:gravity="center_horizontal" />
+                    <TextView
+                        android:layout_weight="2.5"
+                        android:gravity="center_horizontal"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_circle_line_green"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:text="100cm이내 접근 불가"
+                        />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </LinearLayout>

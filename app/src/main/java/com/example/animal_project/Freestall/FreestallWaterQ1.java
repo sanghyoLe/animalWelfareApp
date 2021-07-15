@@ -19,7 +19,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.animal_project.BreedBatch.BreedWaterQ1;
+
 import com.example.animal_project.Input_userinfo;
 import com.example.animal_project.MainActivity;
 import com.example.animal_project.QuestionTemplate;

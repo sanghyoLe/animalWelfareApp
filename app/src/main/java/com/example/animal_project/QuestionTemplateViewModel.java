@@ -1,5 +1,8 @@
 package com.example.animal_project;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.icu.text.CaseMap;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -9,16 +12,85 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class QuestionTemplateViewModel extends ViewModel {
+
+    public static class avoidDistance implements Serializable {
+        int penNumber;
+        String penLocation;
+        int cowSize = -1;
+
+        int[] cowCount;
+        int[] cowNumber;
+        int[] avoidDistance;
+
+
+        public avoidDistance(int penNumber, String penLocation, int cowSize){
+            this.penNumber = penNumber;
+            this.penLocation = penLocation;
+            this.cowSize = cowSize;
+        }
+        public int getPenNumber(){
+            return this.penNumber;
+        }
+        public String getPenLocation(){
+            return this.penLocation;
+        }
+        public int getCowSize(){
+            return this.cowSize;
+        }
+        public void setCowFieldSize(int cowSize){
+            this.cowCount = new int[cowSize];
+            this.cowNumber = new int[cowSize];
+            this.avoidDistance = new int[cowSize];
+        }
+        public void setCowCount(int cowSize){
+            for(int i = 0 ;i < cowSize ;i ++){
+                this.cowCount[i] = i;
+            }
+        }
+        public void setCowNumber(int[] cowNumber){
+            this.cowNumber = cowNumber;
+        }
+        public void setAvoidDistance(int[] avoidDistance){
+            this.avoidDistance = avoidDistance;
+        }
+        public int[] getCowNumber(){
+            return this.cowNumber;
+        }
+        public int[] getAvoidDistance(){
+            return this.avoidDistance;
+        }
+
+    }
+
+    private avoidDistance[] avoidDistances = new avoidDistance[51];
+
+
+
+    public void setAvoidDistances(){
+        for(int i = 1 ; i < 51 ; i++){
+            this.avoidDistances[i] = new avoidDistance(i,"1",-1);
+        }
+    }
+    public avoidDistance[] getAvoidDistances(){ return this.avoidDistances; }
+    public void setAvoidDistance(int penNumber, avoidDistance avoidDistance) {
+        this.avoidDistances[penNumber] = avoidDistance;
+    }
+    public avoidDistance getAvoidDistance(int penNumber){
+        return this.avoidDistances[penNumber];
+    }
+
 
     private int sampleCowSize = 0;
     private int totalCowSize = 0;
@@ -40,12 +112,16 @@ public class QuestionTemplateViewModel extends ViewModel {
     private int calfShadeScore = -1;
     private int calfSummerVentilatingScore = -1;
     private int calfMistSprayScore = -1;
+
     private int calfSummerRestScore = -1;
     private int calfStrawScore = -1;
     private int calfWarmScore = -1;
     private int calfWindBlockScore = -1;
     private int calfWinterRestScore = -1;
     private double totalWarmVentilatingScore = -1;
+
+
+
     private int limpScore = -1;
     private float slightHairLoss = -1;
     private float criticalHairLoss = -1;
@@ -56,8 +132,59 @@ public class QuestionTemplateViewModel extends ViewModel {
     private float runnyNoseRatio = -1;
     private float ophthalmicRatio = -1;
     private float breathRatio = -1;
+    private float diarrheaRatio = -1;
+    private float ruminantRatio = -1;
+    private float fallDeadRatio = -1;
+    private double diseaseScore = -1;
+    private int hornRemoval = -1;
+    private int anesthesia = -1;
+    private int painkiller = -1;
+    private int hornRemovalScore = -1;
+    private int castration = -1;
+    private int castrationAnesthesia = -1;
+    private int castrationPainkiller = -1;
+    private int castrationScore = -1;
+    private double minPainScore = -1;
+    private double struggle = -1;
+    private double harmony = -1;
+    private int socialBehaviorScore = -1;
+    private int avoidDistanceScore = -1;
+    private int avoidDistanceLevelOneTotal = 0;
+    private int avoidDistanceLevelTwoTotal = 0;
+    private int avoidDistanceLevelThreeTotal = 0;
+    private int avoidDistanceLevelFourTotal = 0;
+    private double protocolOneScore = -1;
+    private double protocolTwoScore = -1;
+    private double protocolThreeScore = -1;
+    private double protocolFourScore = -1;
 
 
+    public void setProtocolOneScore(double protocolOneScore){
+        this.protocolOneScore = protocolOneScore;
+    }
+    public double getProtocolOneScore(){
+        return this.protocolOneScore;
+    }
+    public void setProtocolTwoScore(double protocolTwoScore){
+        this.protocolTwoScore = protocolTwoScore;
+    }
+
+    public double getProtocolTwoScore() {
+        return protocolTwoScore;
+    }
+
+    public void setProtocolThreeScore(double protocolThreeScore){
+        this.protocolThreeScore = protocolThreeScore;
+    }
+    public double getProtocolThreeScore(){
+        return protocolThreeScore;
+    }
+    public void setProtocolFourScore(double protocolFourScore){
+        this.protocolFourScore = protocolFourScore;
+    }
+    public double getProtocolFourScore(){
+        return protocolFourScore;
+    }
 
     public void setTotalCowSize(int totalCowSize){
         this.totalCowSize = totalCowSize;
@@ -276,9 +403,123 @@ public class QuestionTemplateViewModel extends ViewModel {
     public float getBreathRatio(){
         return this.breathRatio;
     }
+    public void setDiarrheaRatio(float diarrheaRatio){ this.diarrheaRatio = diarrheaRatio;}
+    public float getDiarrheaRatio(){return this.diarrheaRatio;}
+    public void setRuminantRatio(float ruminantRatio) { this.ruminantRatio = ruminantRatio;}
+    public float getRuminantRatio(){return this.ruminantRatio;}
+    public void setFallDeadRatio(float fallDeadRatio){
+        this.fallDeadRatio = fallDeadRatio;
+    }
+    public float getFallDeadRatio(){
+        return this.fallDeadRatio;
+    }
+    public void setDiseaseScore(double diseaseScore){
+        this.diseaseScore = diseaseScore;
+    }
+    public double getDiseaseScore(){
+        return this.diseaseScore;
+    }
+    public void setHornRemoval(int hornRemoval){
+        this.hornRemoval = hornRemoval;
+    }
+    public int getHornRemoval(){
+        return this.hornRemoval;
+    }
+    public void setAnesthesia(int anesthesia){
+        this.anesthesia = anesthesia;
+    }
+    public int getAnesthesia(){
+        return this.anesthesia;
+    }
+    public void setPainkiller(int painkiller){
+        this.painkiller = painkiller;
+    }
+    public int getPainkiller(){
+        return  this.painkiller;
+    }
+    public void setHornRemovalScore(int hornRemovalScore){
+        this.hornRemovalScore = hornRemovalScore;
+    }
+    public int getHornRemovalScore(){
+        return this.hornRemovalScore;
+    }
+    public void setCastration(int castration){
+        this.castration = castration;
+    }
+    public int getCastration(){
+        return this.castration;
+    }
+    public void setCastrationAnesthesia(int castrationAnesthesia){
+        this.castrationAnesthesia = castrationAnesthesia;
+    }
+    public int getCastrationAnesthesia(){
+        return this.castrationAnesthesia;
+    }
+    public void setCastrationPainkiller(int castrationPainkiller){
+        this.castrationPainkiller = castrationPainkiller;
+    }
+    public int getCastrationPainkiller(){
+        return this.castrationPainkiller;
+    }
+    public void setCastrationScore(int castrationScore){
+        this. castrationScore = castrationScore;
+    }
+    public int getCastrationScore(){
+        return this.castrationScore;
+    }
+    public void setMinPainScore(double minPainScore){this.minPainScore = minPainScore;}
+    public double getMinPainScore() { return this.minPainScore; }
+    public void setStruggle(double struggle){
+        this.struggle = struggle;
+    }
+    public double getStruggle(){
+        return this.struggle;
+    }
+    public void setHarmony(double harmony){
+        this.harmony = harmony;
+    }
+    public double getHarmony(){
+        return this.harmony;
+    }
+    public void setSocialBehaviorScore(int socialBehaviorScore){
+        this.socialBehaviorScore = socialBehaviorScore;
+    }
+    public int getSocialBehaviorScore(){
+        return this.socialBehaviorScore;
+    }
+    public void setAvoidDistanceLevelOneTotal(int avoidDistanceLevelOne) {
+        this.avoidDistanceLevelOneTotal += 1;
+    }
+    public void setAvoidDistanceLevelTwoTotal(int avoidDistanceLevelTwo) {
+        this.avoidDistanceLevelTwoTotal += 1;
+    }
+    public void setAvoidDistanceLevelThreeTotal(int avoidDistanceLevelThree){
+        this.avoidDistanceLevelThreeTotal += 1;
+    }
+    public void setAvoidDistanceLevelFourTotal(int avoidDistanceLevelFour){
+        this.avoidDistanceLevelFourTotal += 1;
+    }
+    public int getAvoidDistanceLevelOneTotal(){
+        return this.avoidDistanceLevelOneTotal;
+    }
+    public int getAvoidDistanceLevelTwoTotal(){
+        return this.avoidDistanceLevelTwoTotal;
+    }
+    public int getAvoidDistanceLevelThreeTotal(){
+        return this.avoidDistanceLevelThreeTotal;
+    }
+    public int getAvoidDistanceLevelFourTotal(){
+        return this.avoidDistanceLevelFourTotal;
+    }
 
 
+    public void setAvoidDistanceScore(int avoidDistanceScore){
+        this.avoidDistanceScore = avoidDistanceScore;
+    }
 
+    public int getAvoidDistanceScore(){
+        return this.avoidDistanceScore;
+    }
 
     public void clickDongHandler(ImageButton nextBtn, ImageButton prevBtn, Button endButton, LinearLayout[] dongArr, TextView currentDongTv, int dong_size){
 
@@ -467,6 +708,10 @@ public class QuestionTemplateViewModel extends ViewModel {
         }
         return outwardHygieneScore;
     }
+    public double calculatorProtocolOneResult(int PoorScore, int WaterScore){
+        return (PoorScore * 0.7) + (WaterScore * 0.3);
+    }
+
     public double calculatorBreedRestScore(int strawScore, int outwardScore)
     {
         return (strawScore * 0.5) + (outwardScore * 0.5);
@@ -577,6 +822,12 @@ public class QuestionTemplateViewModel extends ViewModel {
 
         return warmVenScore;
     }
+    public double calculatorProtocolTwoScore(double restScore, double totalWarmVentilatingScore){
+
+        double protocolTwoScore = (restScore * 0.6) + (totalWarmVentilatingScore * 0.4);
+
+        return Math.round(protocolTwoScore);
+    }
     public int calculatorLimpScore(float limp)
     {
         int limpScore = 0;
@@ -645,48 +896,505 @@ public class QuestionTemplateViewModel extends ViewModel {
         ratio = Math.round(ratio);
         return ratio;
     }
+
+    public Map calculatorDiseaseSectionOne(float runnyNose,float ophthalmic)
+    {
+        Map <String, Integer> sectionScores = new HashMap<String, Integer>();
+        sectionScores.put("care",0);
+        sectionScores.put("warning",0);
+        // 비강분비물 상태 좋음, 안구분비물 상태 좋음 => "0"
+        if (runnyNose < 5 && ophthalmic < 3) {
+            return sectionScores;
+        }
+        // 비강분비물 상태 좋음, 안구분비물(주의) => "주의"
+        else if (runnyNose < 5 && 3 <= ophthalmic && ophthalmic < 6) {
+            sectionScores.put("care",1);
+        }
+        // 비강분비물(주의), 안구분비물 상태 좋음 => "주의"
+        else if (5 <= runnyNose && runnyNose < 10 && ophthalmic < 3) {
+            sectionScores.put("care",1);
+        }
+        // 비강분비물(주의), 안구분비물(주의) => "주의"
+        else if (5 <= runnyNose && runnyNose < 10 && 3 <= ophthalmic && ophthalmic < 6) {
+            sectionScores.put("care",1);
+        }
+        // 비강, 안구분비물 중 1개라도 "경보" => "경보"
+        else if (10 <= runnyNose || 6 <= ophthalmic) {
+            sectionScores.put("warning",1);
+        }
+        return sectionScores;
+    }
+    public Map calculatorDiseaseSectionTwo(double cough,float breath)
+    {
+        Map <String, Integer> sectionScores = new HashMap<String, Integer>();
+        sectionScores.put("care",0);
+        sectionScores.put("warning",0);
+
+        // 비강분비물 상태 좋음, 안구분비물 상태 좋음 => "0"
+        if (cough < 4 && breath < 5) {
+            return sectionScores;
+        }
+        // 기침 상태 좋음, 호흡장애(주의) => "주의"
+        else if (cough < 4 && 5 <= breath && breath < 10) {
+            sectionScores.put("care",1);
+        }
+        // 기침(주의), 호흡장애 상태 좋음 => "주의"
+        else if (4 <= cough && cough < 8 && breath < 4) {
+            sectionScores.put("care",1);
+        }
+        // 기침(주의), 호흡장애(주의) => "주의"
+        else if (4 <= cough && cough < 8 && 5 <= breath && breath < 10) {
+            sectionScores.put("care",1);
+        }
+        // 기침, 호흡장애 중 1개라도 "경보" => "경보"
+        else if (8 <= cough || 10 <= breath) {
+            sectionScores.put("warning",1);
+        }
+        return sectionScores;
+    }
+    public Map calculatorDiseaseSectionThree(float ruminant,float diarrhea)
+    {
+        Map <String, Integer> sectionScores = new HashMap<String, Integer>();
+        sectionScores.put("care",0);
+        sectionScores.put("warning",0);
+        // 비강분비물 상태 좋음, 안구분비물 상태 좋음 => "0"
+        if (ruminant < 5 && diarrhea < 3) {
+            return sectionScores;
+        }
+        // 반추위 팽창 상태 좋음, 설사(주의) => "주의"
+        else if (ruminant < 5 && 3 <= diarrhea && diarrhea < 6) {
+            sectionScores.put("care",1);
+        }
+        // 반추위 팽창(주의), 설사 좋음 => "주의"
+        else if (5 <= ruminant && ruminant < 10 && diarrhea < 3) {
+            sectionScores.put("care",1);
+        }
+        // 반추위 팽창(주의), 설사(주의) => "주의"
+        else if (5 <= ruminant && ruminant < 10 && 3 <= diarrhea && diarrhea < 6) {
+            sectionScores.put("care",1);
+        }
+        // 반추위 팽창 ,설사 중 1개라도 "경보" => "경보"
+        else if (10 <= ruminant || 6 <= diarrhea) {
+            sectionScores.put("warning",1);
+        }
+        return sectionScores;
+    }
+
+    public Map calculatorDiseaseSectionFour(float fallDead)
+    {
+        Map <String, Integer> sectionScores = new HashMap<String, Integer>();
+        sectionScores.put("care",0);
+        sectionScores.put("warning",0);
+
+        if (fallDead < 2)
+            return sectionScores;
+        // 폐사율 상태 주의
+        if (2 <= fallDead && fallDead < 4) {
+            sectionScores.put("care",1);
+            // 폐사율 상태 경보
+        } else if (4 <= fallDead) {
+            sectionScores.put("warning",1);
+        }
+        return sectionScores;
+    }
+
+    public Map calculatorCareWarningScore(Map sectionOneScore, Map sectionTwoScore, Map sectionThreeScore, Map sectionFourScore)
+    {
+        Map <String, Integer> careWarningScore = new HashMap<String, Integer>();
+        int totalCareScore = (int) sectionOneScore.get("care")
+                + (int) sectionTwoScore.get("care")
+                + (int) sectionThreeScore.get("care")
+                + (int) sectionFourScore.get("care");
+        careWarningScore.put("care",totalCareScore);
+        int totalWarningScore = (int) sectionOneScore.get("warning")
+                + (int) sectionTwoScore.get("warning")
+                + (int) sectionThreeScore.get("warning")
+                + (int) sectionFourScore.get("warning");
+        careWarningScore.put("warning",totalWarningScore);
+
+        return careWarningScore;
+    }
+
     public float getTotalRatio(EditText editText){
         float ratio = (Float.parseFloat(editText.getText().toString()) / getTotalCowSize()) * 100;
         ratio = Math.round(ratio);
         return ratio;
     }
-    public float setDiseaseSectionRatio(EditText ed, TextView RatioTv, TextView sampleSizeTv){
-        final float[] ratio = new float[1];
-        ratio[0] = -1;
-        ed.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
+    public double calculatorDiseaseScore(Map careWarningScore)
+    {
+        float diseaseScore = 0;
+        int careScore = (int)careWarningScore.get("care");
+        int warningScore = (int)careWarningScore.get("warning");
+        diseaseScore = (100 / 4) * (4 - ((careScore) + 3 * (warningScore)) / 3);
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+        return Math.round(diseaseScore);
+    }
 
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(TextUtils.isEmpty(ed.getText().toString())){
-                    ratio[0] = -1;
-                    RatioTv.setText("값을 입력하세요");
-                } else if(getRatio(ed) > 100){
-                    ratio[0] = -1;
-                    RatioTv.setText("표본 규모보다 큰 값 입력 불가");
-                    sampleSizeTv.setVisibility(View.VISIBLE);
-                    sampleSizeTv.setText("표본 규모 : " + String.valueOf(getSampleCowSize()));
+    public int calculatorHornRemovalScore(int horn, int hornAnesthesia, int hornPainkiller)
+    {
+        int hornRemovalScore = 0;
+        // 제각안함
+        if (horn == 1) {
+            hornRemovalScore = 100;
+        } // 송아지 제각 가열 방식
+        else if (horn == 2) {
+            // 마취제 사용
+            if (hornAnesthesia == 1) {
+                // 사후진통제 사용
+                if (hornPainkiller == 1) {
+                    hornRemovalScore = 75;
                 } else {
-                    RatioTv.setText(String.valueOf(getRatio(ed)));
-                    ratio[0] = getRatio(ed);
+                    hornRemovalScore = 52;
                 }
             }
-        });
-        if(ratio[0] == -1){
-            return -1;
-        } else {
-            return ratio[0];
+            // 마취제 미사용
+            else {
+                if (hornPainkiller == 1) {
+                    // 사후 진통제만 사용했을 경우 (누락 부분)
+                    hornRemovalScore = 49;
+                }
+                // 처치 없음
+                else {
+                    hornRemovalScore = 28;
+                }
+            }
         }
+        // 송아지 제각 화학적 방식
+        else if (horn == 3) {
+            // 마취제 사용
+            if (hornAnesthesia == 1) {
+                // 사후진통제 사용
+                if (hornPainkiller == 1) {
+                    hornRemovalScore = 58;
+                } else {
+                    hornRemovalScore = 39;
+                }
+            }
+            // 마취제 미사용
+            else {
+                // 사후 진통제만 사용했을 경우 (누락 부분)
+                if (hornPainkiller == 1) {
+                    hornRemovalScore = 41;
+                } else {
+                    hornRemovalScore = 20;
+                }
+            }
+        }
+        // 성우 제각
+        // 송아지는 사후진통제만 했을 때 점수가 마취제 점수보다 높은데 왜 성우는 더 높지 마취제가
+        else {
+            if (hornAnesthesia == 1) {
+                if (hornPainkiller == 1) {
+                    hornRemovalScore = 27;
+                } else {
+                    hornRemovalScore = 17;
+                }
+            } else {
+                if (hornPainkiller == 1) {
+                    hornRemovalScore = 16;
+                } else {
+                    hornRemovalScore = 2;
+                }
+            }
+        }
+        return hornRemovalScore;
+    }
+    public int calculatorCastrationScore(int castration, int castrationAnesthesia, int castrationPainkiller)
+    {
+        int castrationScore = 0;
+        // 거세 안함
+        if (castration == 1) {
+            castrationScore  = 100;
+        }
+        // 외과적 수술
+        else if (castration == 2) {
+            if (castrationAnesthesia == 1) {
+                if (castrationPainkiller == 1) {
+                    castrationScore = 34;
+                } else {
+                    castrationScore = 21;
+                }
+            } else {
+                //"사후진통제"만 사용했을 경우 (누락 부분)
+                if (castrationPainkiller == 1) {
+                    castrationScore = 20;
+                } else {
+                    castrationScore = 0;
+                }
+            }
+        }
+        // 고무링
+        else if (castration == 3) {
+            if (castrationAnesthesia == 1) {
+                if (castrationPainkiller == 1) {
+                    castrationScore = 21;
+                } else {
+                    castrationScore = 17;
+                }
+            } else {
+                //"사후진통제"만 사용했을 경우 (누락 부분)
+                if (castrationPainkiller == 1) {
+                    castrationScore = 17;
+                } else {
+                    castrationScore = 2;
+                }
+            }
+        }
+        // Burdizzo
+        else if (castration == 4) {
+            if (castrationAnesthesia == 1) {
+                if (castrationPainkiller == 1) {
+                    castrationScore = 35;
+                } else {
+                    castrationScore = 21;
+                }
+            } else {
+                //"사후진통제"만 사용했을 경우 (누락 부분)
+                if (castrationPainkiller == 1) {
+                    castrationScore = 19;
+                } else {
+                    castrationScore = 0;
+                }
+            }
+        }
+        return castrationScore;
+    }
+    public double calculatorMinPainScore(int hornRemovalScore, int castrationScore){
+        return (hornRemovalScore  * 0.7) + (castrationScore * 0.3);
+    }
+    public double calculatorProtocolThreeResult(double minInjuryScore, double minPainScore, double diseaseScore){
+        return Math.round((minInjuryScore * 0.35) + (diseaseScore * 0.4) + (minPainScore * 0.25));
+    }
+    // 사회적 행동의 표현(투쟁행동, 화합행동)" 종합 기준점수
+    public int calculatorSocialBehaviorScore(double struggle, double harmony)
+    {
+        // 투쟁행동 비율 계산
+        double struggleRatio = struggle / (struggle + harmony) * 100;
+
+        int socialBehaviorScore = 0;
+        // 투쟁행동빈도 0.5 이하일때
+        if (struggle <= 0.5) {
+            if (struggleRatio > 100) {
+                return socialBehaviorScore = -1;
+            }
+            if (struggleRatio == 100) {
+                socialBehaviorScore = 58;
+            } else if (struggleRatio >= 90) {
+                socialBehaviorScore = 62;
+            } else if (struggleRatio >= 80) {
+                socialBehaviorScore = 67;
+            } else if (struggleRatio >= 70) {
+                socialBehaviorScore = 73;
+            } else if (struggleRatio >= 60) {
+                socialBehaviorScore = 78;
+            } else if (struggleRatio >= 50) {
+                socialBehaviorScore = 83;
+            } else if (struggleRatio >= 40) {
+                socialBehaviorScore = 87;
+            } else if (struggleRatio >= 30) {
+                socialBehaviorScore = 91;
+            } else if (struggleRatio >= 20) {
+                socialBehaviorScore = 93;
+            } else if (struggleRatio >= 10) {
+                socialBehaviorScore = 95;
+            } else {
+                socialBehaviorScore = 100;
+            }
+            return socialBehaviorScore;
+        } // 투쟁행동빈도 0.5 초과, 1.5 이하일때
+        else if (0.5 < struggle && struggle <= 1.5) {
+            if (struggleRatio > 100) {
+                return socialBehaviorScore = -1;
+            }
+            if (struggleRatio == 100) {
+                socialBehaviorScore = 34;
+            } else if (struggleRatio >= 90) {
+                socialBehaviorScore = 41;
+            } else if (struggleRatio >= 80) {
+                socialBehaviorScore = 47;
+            } else if (struggleRatio >= 70) {
+                socialBehaviorScore = 52;
+            } else if (struggleRatio >= 60) {
+                socialBehaviorScore = 57;
+            } else if (struggleRatio >= 50) {
+                socialBehaviorScore = 61;
+            } else if (struggleRatio >= 40) {
+                socialBehaviorScore = 65;
+            } else if (struggleRatio >= 30) {
+                socialBehaviorScore = 67;
+            } else if (struggleRatio >= 20) {
+                socialBehaviorScore = 69;
+            } else if (struggleRatio >= 10) {
+                socialBehaviorScore = 72;
+            } else {
+                socialBehaviorScore = 100;
+            }
+        } // 투쟁행동빈도 1.5 초과, 3 이하일때
+        else if (1.5 < struggle && struggle <= 3) {
+            if (struggleRatio > 100) {
+                return socialBehaviorScore = -1;
+            }
+            if (struggleRatio == 100) {
+                socialBehaviorScore = 25;
+            } else if (struggleRatio >= 90) {
+                socialBehaviorScore = 30;
+            } else if (struggleRatio >= 80) {
+                socialBehaviorScore = 35;
+            } else if (struggleRatio >= 70) {
+                socialBehaviorScore = 39;
+            } else if (struggleRatio >= 60) {
+                socialBehaviorScore = 42;
+            } else if (struggleRatio >= 50) {
+                socialBehaviorScore = 45;
+            } else if (struggleRatio >= 40) {
+                socialBehaviorScore = 47;
+            } else if (struggleRatio >= 30) {
+                socialBehaviorScore = 48;
+            } else if (struggleRatio >= 20) {
+                socialBehaviorScore = 49;
+            } else if (struggleRatio >= 10) {
+                socialBehaviorScore = 52;
+            } else {
+                socialBehaviorScore = 100;
+            }
+            // 40 % 점수에서 왜 내려가는 지?
+        } // 투쟁행동빈도 3 초과, 8 이하일때
+        else if (3 < struggle && struggle <= 8) {
+            if (struggleRatio > 100) {
+                return socialBehaviorScore = -1;
+            }
+            if (struggleRatio == 100) {
+                socialBehaviorScore = 8;
+            } else if (struggleRatio >= 90) {
+                socialBehaviorScore = 13;
+            } else if (struggleRatio >= 80) {
+                socialBehaviorScore = 16;
+            } else if (struggleRatio >= 70) {
+                socialBehaviorScore = 19;
+            } else if (struggleRatio >= 60) {
+                socialBehaviorScore = 22;
+            } else if (struggleRatio >= 50) {
+                socialBehaviorScore = 24;
+            } else if (struggleRatio >= 40) {
+                // 왜 여기서 점수가 내려가는지?
+                socialBehaviorScore = 20;
+            } else if (struggleRatio >= 30) {
+                socialBehaviorScore = 27;
+            } else if (struggleRatio >= 20) {
+                socialBehaviorScore = 28;
+            } else if (struggleRatio >= 10) {
+                socialBehaviorScore = 30;
+            } else {
+                socialBehaviorScore = 100;
+            }
+        } // 투쟁행동빈도 8 초과일때
+        else if (8 < struggle) {
+            if (struggleRatio > 100) {
+                return socialBehaviorScore = -1;
+            }
+            if (struggleRatio == 100) {
+                socialBehaviorScore = 0;
+            } else if (struggleRatio >= 90) {
+                socialBehaviorScore = 3;
+            } else if (struggleRatio >= 80) {
+                socialBehaviorScore = 3;
+            } else if (struggleRatio >= 70) {
+                socialBehaviorScore = 4;
+            } else if (struggleRatio >= 60) {
+                socialBehaviorScore = 5;
+            } else if (struggleRatio >= 50) {
+                socialBehaviorScore = 6;
+            } else if (struggleRatio >= 40) {
+                socialBehaviorScore = 6;
+            } else if (struggleRatio >= 30) {
+                socialBehaviorScore = 6;
+            } else if (struggleRatio >= 20) {
+                socialBehaviorScore = 7;
+            } else if (struggleRatio >= 10) {
+                socialBehaviorScore = 8;
+            } else {
+                socialBehaviorScore = 100;
+            }
+        }
+
+        return socialBehaviorScore;
+    }
+    public double calculatorProtocolFourScore(double socialBehaviorScore, double avoidDistanceScore){
+        return Math.round((socialBehaviorScore * 0.65) + (avoidDistanceScore * 0.35));
+    }
+    public int calculatorAvoidDistanceScore(double avoidDistanceRatio){
+        int avoidDistanceScore = 0;
+        if(avoidDistanceRatio == 0){
+            avoidDistanceScore = 100;
+        } else if(avoidDistanceRatio <= 7){
+           avoidDistanceScore = 95;
+        }else if(avoidDistanceRatio <= 13){
+            avoidDistanceScore = 90;
+        }else if(avoidDistanceRatio <= 18){
+            avoidDistanceScore = 85;
+        }else if(avoidDistanceRatio <= 22){
+            avoidDistanceScore = 80;
+        }else if(avoidDistanceRatio <= 26){
+            avoidDistanceScore = 75;
+        }else if(avoidDistanceRatio <= 29){
+            avoidDistanceScore = 70;
+        }else if(avoidDistanceRatio <= 32){
+            avoidDistanceScore = 65;
+        }else if(avoidDistanceRatio <= 35){
+            avoidDistanceScore = 60;
+        }else if(avoidDistanceRatio <= 38){
+            avoidDistanceScore = 55;
+        }else if(avoidDistanceRatio <= 41){
+            avoidDistanceScore = 50;
+        }else if(avoidDistanceRatio <= 45){
+            avoidDistanceScore = 45;
+        }else if(avoidDistanceRatio <= 49){
+            avoidDistanceScore = 40;
+        }else if(avoidDistanceRatio <= 54){
+            avoidDistanceScore = 35;
+        } else if(avoidDistanceRatio <= 59){
+            avoidDistanceScore = 30;
+        }else if(avoidDistanceRatio <= 66){
+            avoidDistanceScore = 25;
+        }else if(avoidDistanceRatio <= 73){
+            avoidDistanceScore = 20;
+        }else if(avoidDistanceRatio <= 80){
+            avoidDistanceScore = 15;
+        }else if(avoidDistanceRatio <= 86){
+            avoidDistanceScore = 10;
+        }else if(avoidDistanceRatio <= 93){
+            avoidDistanceScore = 5;
+        }else if(avoidDistanceRatio <= 100){
+            avoidDistanceScore = 0;
+        }
+        return avoidDistanceScore;
+    }
+    public double calculatorAvoidDistanceRatio(int levelOne, int levelTwo, int levelThree,int levelFour){
+        double avoidDistanceRatio;
+        double total = levelOne + levelTwo + levelThree + levelFour;
+        double levelTwoRatio = Math.round((levelTwo / total) * 100);
+        Log.d("level_tow_ratio",String.valueOf(levelTwoRatio));
+        double levelThreeRatio = Math.round((levelThree / total) * 100);
+        Log.d("level_three_ratio",String.valueOf(levelThreeRatio));
+        double levelFourRatio = Math.round((levelFour / total ) * 100);
+        Log.d("level_four_ratio",String.valueOf(levelFourRatio));
+
+        avoidDistanceRatio = (levelTwoRatio + (3 * levelThreeRatio)  + (5 * levelFourRatio));
+        Log.d("avoid_distance_ratio_1",String.valueOf(avoidDistanceRatio));
+        avoidDistanceRatio = avoidDistanceRatio / 5;
+        Log.d("avoid_distance_ratio_2",String.valueOf(avoidDistanceRatio));
+        avoidDistanceRatio = Math.round(avoidDistanceRatio);
+        Log.d("avoid_distance_ratio_3",String.valueOf(avoidDistanceRatio));
+        return avoidDistanceRatio;
+    }
+    // Progressbar 점수 설정
+    public void setProgressBar(double protocolScore, ProgressBar progressBar, TextView progressBarTv){
+        progressBar.setProgress(Math.round((float)protocolScore));
+        progressBarTv.setText(String.valueOf(protocolScore));
     }
 
 
 }
+
 
