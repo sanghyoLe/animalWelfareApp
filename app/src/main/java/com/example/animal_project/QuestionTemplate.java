@@ -248,7 +248,7 @@ public class QuestionTemplate extends AppCompatActivity
         Bundle BeforeBundle = intent.getExtras();
 
         // ----- 실제 서비스에서 저장되어야 하는 정보 ----
-/*        farmName = BeforeBundle.getString("farmName");
+        farmName = BeforeBundle.getString("farmName");
         address = BeforeBundle.getString("address");
         addressDetail = BeforeBundle.getString("addressDetail");
         repName = BeforeBundle.getString("repName");
@@ -258,9 +258,9 @@ public class QuestionTemplate extends AppCompatActivity
         evaName = BeforeBundle.getString("evaName");
         evaDate = BeforeBundle.getString("evaDate");
         farmType = BeforeBundle.getInt("farmType");
-        sampleCowSize = BeforeBundle.getInt("sampleCowSize");*/
+        sampleCowSize = BeforeBundle.getInt("sampleCowSize");
         // 정보 잘 넘어 오는지 로그  -------------------------------------
-/*        Log.d("farmName",String.valueOf(farmName));
+        Log.d("farmName",String.valueOf(farmName));
         Log.d("address",String.valueOf(address));
         Log.d("detail",String.valueOf(addressDetail));
         Log.d("repName",String.valueOf(repName));
@@ -270,15 +270,15 @@ public class QuestionTemplate extends AppCompatActivity
         Log.d("evaName",String.valueOf(evaName));
         Log.d("evaDate",String.valueOf(evaDate));
         Log.d("farmType",String.valueOf(farmType));
-        Log.d("sampleCowSize",String.valueOf(sampleCowSize));*/
+        Log.d("sampleCowSize",String.valueOf(sampleCowSize));
         // -----------------------------------------------
 
         // ------------------------------------------------
 
         // ---- 테스트를 위한 최소 정보 ---------
-        farmType = BeforeBundle.getInt("farmType");
+/*        farmType = BeforeBundle.getInt("farmType");
         totalCowSize = BeforeBundle.getInt("totalCow");
-        sampleCowSize = BeforeBundle.getInt("sampleCowSize");
+        sampleCowSize = BeforeBundle.getInt("sampleCowSize");*/
         // ------------------------------------
         viewModel.setSampleCowSize(sampleCowSize);
         viewModel.setTotalCowSize(totalCowSize);

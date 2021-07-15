@@ -46,7 +46,7 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.water_q3_dong);
+        setContentView(R.layout.activity_breed_water_dong_q3);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
         Intent intent = getIntent();
         dong_size = intent.getExtras().getInt("dong_count");
@@ -54,7 +54,7 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
         View view = findViewById(R.id.breed_water_q3_dong_question_layout);
 
         ImageButton home_btn = view.findViewById(R.id.home_btn);
-        Button standard_table_btn = findViewById(R.id.standard_table_btn);
+      /*  Button standard_table_btn = findViewById(R.id.standard_table_btn);
         View question_1 = findViewById(R.id.breed_water_q3_dong_question_1);
         View question_2 = findViewById(R.id.breed_water_q3_dong_question_2);
         View question_3 = findViewById(R.id.breed_water_q3_dong_question_3);
@@ -90,8 +90,9 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
         });
 
         showQuestionView(questionViewArr,dong_size);
-
-/*        prev_dong_btn = findViewById(R.id.prev_dong_q3_btn);
+*/
+        // 예전 동 Code
+        prev_dong_btn = findViewById(R.id.prev_dong_q3_btn);
         next_dong_btn = findViewById(R.id.next_dong_q3_btn_);
         breed_dong_q3_btn = findViewById(R.id.breed_dong_q3_btn);
         home_btn = findViewById(R.id.dong_home_q3_btn);
@@ -126,7 +127,7 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
         EditText drinkTimeEt_1 = findViewById(R.id.breed_drink_time_1);
         TextView waitingRatioTv_1 = findViewById(R.id.breed_waiting_ratio_1);
         TextView drinkScoreTv_1 = findViewById(R.id.breed_drink_water_score_1);
-        // 
+        //
         EditText totalCowEt_2 = findViewById(R.id.breed_total_cow_2);
         EditText waitingCowEt_2 = findViewById(R.id.breed_waiting_cow_2);
         EditText drinkTimeEt_2 = findViewById(R.id.breed_drink_time_2);
@@ -445,9 +446,9 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
             }
         });
         AlertBuilder.show();
-    }*/
+        }
     }
-    public void showQuestionView(View[] QuestionViewArr, int dong_size) {
+  /*  public void showQuestionView(View[] QuestionViewArr, int dong_size) {
         TextView[] tvArr = new TextView[20];
         for (int i = 0; i < 20; i++) {
             tvArr[i] = QuestionViewArr[i].findViewById(R.id.dong_count_tv);
@@ -467,5 +468,5 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
         } else if(drawer.isDrawerOpen(Gravity.RIGHT)){
             drawer.closeDrawer(Gravity.RIGHT);
         }
-    }
-}
+    }*/
+
