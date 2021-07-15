@@ -27,6 +27,42 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
+import com.example.animal_project.Freestall.FreestallAppearanceQ1;
+import com.example.animal_project.Freestall.FreestallAppearanceQ2;
+import com.example.animal_project.Freestall.FreestallAppearanceQ3;
+import com.example.animal_project.Freestall.FreestallAreaOutCollision;
+import com.example.animal_project.Freestall.FreestallAstasia;
+import com.example.animal_project.Freestall.FreestallBreast;
+import com.example.animal_project.Freestall.FreestallCalfMistSpray;
+import com.example.animal_project.Freestall.FreestallCalfShade;
+import com.example.animal_project.Freestall.FreestallCalfStraw;
+import com.example.animal_project.Freestall.FreestallCalfSummerVentilating;
+import com.example.animal_project.Freestall.FreestallCalfWarm;
+import com.example.animal_project.Freestall.FreestallCalfWindBlock;
+import com.example.animal_project.Freestall.FreestallCount;
+import com.example.animal_project.Freestall.FreestallCriticalHairloss;
+import com.example.animal_project.Freestall.FreestallCriticalLimp;
+import com.example.animal_project.Freestall.FreestallDiarrhea;
+import com.example.animal_project.Freestall.FreestallDystocia;
+import com.example.animal_project.Freestall.FreestallFallDead;
+import com.example.animal_project.Freestall.FreestallSlightHairloss;
+import com.example.animal_project.Freestall.FreestallSlightLimp;
+import com.example.animal_project.Freestall.FreestallMistSpray;
+import com.example.animal_project.Freestall.FreestallOphthalmic;
+import com.example.animal_project.Freestall.FreestallOutGenitals;
+import com.example.animal_project.Freestall.FreestallPoor;
+import com.example.animal_project.Freestall.FreestallRespiratory;
+import com.example.animal_project.Freestall.FreestallRunnyNose;
+import com.example.animal_project.Freestall.FreestallShade;
+import com.example.animal_project.Freestall.FreestallSummerVentilating;
+import com.example.animal_project.Freestall.FreestallWaterQ1;
+import com.example.animal_project.Freestall.FreestallWaterQ1_1;
+import com.example.animal_project.Freestall.FreestallWaterQ1_2;
+import com.example.animal_project.Freestall.FreestallWaterQ2;
+import com.example.animal_project.Freestall.FreestallWaterQ3;
+import com.example.animal_project.Freestall.FreestallWindBlock;
+import com.example.animal_project.Freestall.FreestallWinterVentilating;
 import com.example.animal_project.BreedBatch.ProtocolFour.BreedAvoidDistance;
 import com.example.animal_project.BreedBatch.ProtocolFour.BreedHarmony;
 import com.example.animal_project.BreedBatch.ProtocolFour.BreedStruggle;
@@ -159,10 +195,57 @@ public class QuestionTemplate extends AppCompatActivity
 
      // 한 육우 프로토콜 질문 항목 fragments 를 담는 배열
     private Fragment[] breed_frag_arr = new Fragment[20];
+    // freestall
+    private FreestallPoor freestall_poor;
+    private FreestallWaterQ1 freestall_water_q1;
+    private FreestallWaterQ1_1 freestall_water_q1_1;
+    private FreestallWaterQ1_2 freestall_water_q1_2;
+    private FreestallWaterQ2 freestall_water_q2;
+    private FreestallWaterQ3 freestall_water_q3;
+    private FreestallCount freestall_count;
+
+    private FreestallAreaOutCollision freestall_area_out_collision;
+    private FreestallAppearanceQ1 freestall_appearance_q1;
+    private FreestallAppearanceQ2 freestall_appearance_q2;
+    private FreestallAppearanceQ3 freestall_appearance_q3;
+
+    //6,7,8,9,10,11
+    private FreestallShade freestall_shade;
+    private FreestallSummerVentilating freestall_summer_ventilating;
+    private FreestallMistSpray freestall_mist_spray;
+    private FreestallWindBlock freestall_wind_block;
+    private FreestallWinterVentilating freestall_winter_ventilating;
+    private FreestallCalfShade freestall_calf_shade;
+    private FreestallCalfSummerVentilating freestall_calf_summer_ventilating;
+    private FreestallCalfMistSpray freestall_calf_mist_spray;
+    private FreestallCalfStraw freestall_calf_straw;
+    private FreestallCalfWarm freestall_calf_warm;
+    private FreestallCalfWindBlock freestall_calf_wind_block;
+
+    private FreestallSlightLimp freestall_slight_limp;
+    private FreestallCriticalLimp freestall_critical_limp;
+    private FreestallSlightHairloss freestall_slight_hairloss;
+    private FreestallCriticalHairloss freestall_critical_hairloss;
+
+    private FreestallRunnyNose freestall_runnynose;
+    private FreestallOphthalmic freestall_ophthalmic;
+    private FreestallRespiratory freestall_respiratory;
+    private FreestallDiarrhea freestall_diarrhea;
+    private FreestallOutGenitals freestall_outgenitals;
+    private FreestallBreast freestall_breast;
+    private FreestallFallDead freestall_falldead;
+    private FreestallDystocia freestall_dystocia;
+    private FreestallAstasia freestall_astasia;
+
+
+
+    private Fragment[] freestall_frag_arr = new Fragment[20];
 
     int count = 0;
      QuestionTemplateViewModel viewModel;
      AlertDialog.Builder myAlertBuilder;
+
+
 
 
      // 사용자가 이전 안드로이드 이전 버튼 눌렀을 때 처리를 위한 Override
@@ -244,6 +327,49 @@ public class QuestionTemplate extends AppCompatActivity
         breed_avoid_distance = new BreedAvoidDistance();
 
 
+
+        // 프리스톨
+        freestall_poor = new FreestallPoor();
+        freestall_water_q1 = new FreestallWaterQ1();
+        freestall_water_q1_1 = new FreestallWaterQ1_1();
+        freestall_water_q1_2 = new FreestallWaterQ1_2();
+        freestall_water_q2 = new FreestallWaterQ2();
+        freestall_water_q3 = new FreestallWaterQ3();
+        freestall_count = new FreestallCount();
+
+        freestall_area_out_collision = new FreestallAreaOutCollision();
+
+        freestall_appearance_q1 = new FreestallAppearanceQ1();
+        freestall_appearance_q2 = new FreestallAppearanceQ2();
+        freestall_appearance_q3 = new FreestallAppearanceQ3();
+
+        freestall_shade = new FreestallShade();
+        freestall_summer_ventilating = new FreestallSummerVentilating();
+        freestall_mist_spray = new FreestallMistSpray();
+        freestall_wind_block = new FreestallWindBlock();
+        freestall_winter_ventilating = new FreestallWinterVentilating();
+        freestall_calf_shade = new FreestallCalfShade();
+        freestall_calf_summer_ventilating = new FreestallCalfSummerVentilating();
+        freestall_calf_mist_spray = new FreestallCalfMistSpray();
+        freestall_calf_straw = new FreestallCalfStraw();
+        freestall_calf_warm = new FreestallCalfWarm();
+        freestall_calf_wind_block = new FreestallCalfWindBlock();
+        freestall_slight_limp = new FreestallSlightLimp();
+        freestall_critical_limp = new FreestallCriticalLimp();
+        freestall_slight_hairloss = new FreestallSlightHairloss();
+        freestall_critical_hairloss = new FreestallCriticalHairloss();
+        freestall_runnynose = new FreestallRunnyNose();
+        freestall_ophthalmic = new FreestallOphthalmic();
+        freestall_respiratory = new FreestallRespiratory();
+        freestall_diarrhea = new FreestallDiarrhea();
+        freestall_outgenitals = new FreestallOutGenitals();
+        freestall_breast = new FreestallBreast();
+        freestall_falldead = new FreestallFallDead();
+        freestall_dystocia = new FreestallDystocia();
+        freestall_astasia = new FreestallAstasia();
+
+        // 마지막 페이지 개수 지정
+
         Intent intent = getIntent();
         Bundle BeforeBundle = intent.getExtras();
 
@@ -288,7 +414,18 @@ public class QuestionTemplate extends AppCompatActivity
                 calf_straw,calf_warm,calf_wind_block,breed_limp,breed_slight_hair_loss,breed_critical_hair_loss,
                 breed_cough,breed_runny_nose,breed_ophthalmic,breed_breath,breed_diarrhea,breed_ruminant,breed_fall_dead,
                 breed_horn_q1,breed_horn_q2,breed_horn_q3,breed_castration_q1,breed_castration_q2,breed_castration_q3,
-        breed_struggle,breed_harmony,breed_avoid_distance};
+                breed_struggle,breed_harmony,breed_avoid_distance};
+
+        freestall_frag_arr = new Fragment[]{ freestall_poor,freestall_water_q1,freestall_water_q2,freestall_water_q3,
+                freestall_count,freestall_area_out_collision,freestall_appearance_q1,freestall_appearance_q2,freestall_appearance_q3,freestall_shade,freestall_summer_ventilating,freestall_mist_spray,
+                freestall_wind_block,freestall_winter_ventilating,freestall_calf_shade,freestall_calf_summer_ventilating,freestall_calf_mist_spray,
+                freestall_calf_straw,freestall_calf_warm,freestall_calf_wind_block,freestall_slight_limp,freestall_critical_limp,freestall_slight_hairloss,freestall_critical_hairloss,
+                breed_cough,freestall_runnynose,freestall_ophthalmic,
+                freestall_respiratory,freestall_diarrhea,freestall_outgenitals,freestall_breast,freestall_falldead,freestall_dystocia,freestall_astasia}; // 6,7,8,9,10,11 추가하기
+
+
+
+        transaction = fragmentManager.beginTransaction();
 
         // 목록 버튼 누르면 왼쪽에서 나오는 드로우 나타내기 및 없애기 & 체크 이미지 바꾸기
         list_btn.setOnClickListener(new View.OnClickListener() {
@@ -330,18 +467,20 @@ public class QuestionTemplate extends AppCompatActivity
 
 
         transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
+
         if (farmType == 1) {
 
         }
         else if (farmType == 2 || farmType == 3) {
+            transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
             total_page.setText(String.valueOf(" / " + breed_frag_arr.length));
         }
         else if (farmType == 4) {
 
         }
         else if (farmType == 5) {
-
+                transaction.replace(R.id.fragment_paper, freestall_poor).commitAllowingStateLoss();
+                total_page.setText(String.valueOf(" / " + freestall_frag_arr.length));
         }
 
 
@@ -488,7 +627,8 @@ public class QuestionTemplate extends AppCompatActivity
 
                 }
                 else if (farmType == 5) {
-
+                        nextBtnHandler(count,freestall_frag_arr.length);
+                        transaction.replace(R.id.fragment_paper,freestall_frag_arr[++count]).commitAllowingStateLoss();
                 }
                 current_page.setText(String.valueOf(count+1));
 
@@ -504,8 +644,10 @@ public class QuestionTemplate extends AppCompatActivity
                 }
                 else if (farmType == 4) {
                 }
-                else if (farmType == 5) {
 
+                else if (farmType == 5) {
+                        prevBtnHandler(count,freestall_frag_arr.length);
+                        transaction.replace(R.id.fragment_paper, freestall_frag_arr[--count]).commitAllowingStateLoss();
                 }
                 current_page.setText(String.valueOf(count+1));
                 break;
@@ -719,6 +861,17 @@ public class QuestionTemplate extends AppCompatActivity
         }
     }
 
+
+    public void fragmentChange(int index) {
+        if(index == 1) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_paper, freestall_water_q1_1).commit();
+        }
+        else if(index == 2) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_paper, freestall_water_q1_2).commit();
+        }
+    }
+
+
     private void myOnBackPressed(AlertDialog.Builder AlertBuilder){
 
         AlertBuilder.setTitle("이전");
@@ -742,3 +895,4 @@ public class QuestionTemplate extends AppCompatActivity
 
 
 }
+

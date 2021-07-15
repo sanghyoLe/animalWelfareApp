@@ -190,4 +190,18 @@
     <string name="list_sub_menu_title_36">36. 회피 거리 평가</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    //프리스톨
+    <string name="freestall_count_title">사육두수 대비 프리스톨 수의 비율이 얼마나 됩니까?</string>
+    <string name="freestall_count_dong">동별 프리스톨 수 점수 측정</string>
+    <string name="freestall_count_dong_hint">동별 사육두수를 입력하세요</string>
+    <string name="freestall_count_dong_available_hint">동별 사용가능 프리스톨 수를 입력하세요</string>
+    <string name="freestall_count_ratio">동별 사육두수 대비 프리스톨 비율(%)</string>
+    <string name="freestall_count_score">프리스톨 수 간이 측정 점수</string>
+    <string name="freestall_area_out_collision_title">앉은 소 중 프리스톨 영역을 벗어난 비율은 얼마나 됩니까?</string>
+    <string name="freestall_appearance_title1">가축외형 아랫다리 위생</string>
+    <string name="freestall_appearance_title2">가축외형 뒷부분 위생</string>
+    <string name="freestall_appearance_title3">가축외형 유방 위생</string>
+
 </resources>

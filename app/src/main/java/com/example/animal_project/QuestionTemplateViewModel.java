@@ -112,12 +112,15 @@ public class QuestionTemplateViewModel extends ViewModel {
     private int calfShadeScore = -1;
     private int calfSummerVentilatingScore = -1;
     private int calfMistSprayScore = -1;
-    private int calfSummerRestScore =-1;
-    private int calfStrawScore =-1;
-    private int calfWarmScore =-1;
+
+    private int calfSummerRestScore = -1;
+    private int calfStrawScore = -1;
+    private int calfWarmScore = -1;
     private int calfWindBlockScore = -1;
-    private int calfWinterRestScore =-1;
+    private int calfWinterRestScore = -1;
     private double totalWarmVentilatingScore = -1;
+
+
 
     private int limpScore = -1;
     private float slightHairLoss = -1;
@@ -893,6 +896,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         ratio = Math.round(ratio);
         return ratio;
     }
+
     public Map calculatorDiseaseSectionOne(float runnyNose,float ophthalmic)
     {
         Map <String, Integer> sectionScores = new HashMap<String, Integer>();
@@ -1010,6 +1014,13 @@ public class QuestionTemplateViewModel extends ViewModel {
 
         return careWarningScore;
     }
+
+    public float getTotalRatio(EditText editText){
+        float ratio = (Float.parseFloat(editText.getText().toString()) / getTotalCowSize()) * 100;
+        ratio = Math.round(ratio);
+        return ratio;
+    }
+
     public double calculatorDiseaseScore(Map careWarningScore)
     {
         float diseaseScore = 0;

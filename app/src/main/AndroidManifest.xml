@@ -12,16 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".BreedBatch.ProtocolFour.BreedAvoidDistanceCowQuestions"></activity>
         <activity android:name=".BreedBatch.ProtocolFour.BreedHarmonyDong" />
         <activity android:name=".BreedBatch.ProtocolFour.BreedStruggleDong" />
         <activity android:name=".BreedBatch.ProtocolThree.BreedCoughDong" />
         <activity android:name=".BreedBatch.ProtocolTwo.BreedStrawDong" />
         <activity android:name=".BreedBatch.ProtocolOne.BreedWaterDongQ3" />
+
         <activity android:name=".QuestionTemplate" />
-        <activity android:name=".BreedBatchQuestion.Breed_harmony" />
-        <activity android:name=".BreedBatchQuestion.Breed_struggle" />
-        <activity android:name=".BreedBatchQuestion.Breed_cough" />
         <activity android:name=".MilkCow_Question.Freestall_q4" />
         <activity android:name=".getStrawScore" />
         <activity android:name=".WebViewActivity" />
@@ -47,6 +46,8 @@
         <activity android:name=".Farm_Activity.MilkCow_2" />
         <activity android:name=".Farm_Activity.MilkCow_3" />
         <activity android:name=".Farm_Activity.MilkCow_4" />
+        <activity android:name=".Freestall.FreestallWaterDongQ3" />
+        <activity android:name=".Freestall.FreestallCountDong" />
     </application>
 
 </manifest>

@@ -22,7 +22,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="기침 평가"
+                android:text="@string/freestall_count_title"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -63,7 +63,7 @@
                     android:orientation="horizontal">
 
                     <Spinner
-                        android:id="@+id/spinner_breed_cough"
+                        android:id="@+id/spinner_freestall_count"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
@@ -73,7 +73,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="선택"
-                        android:id="@+id/breed_cough_btn"/>
+                        android:id="@+id/freestall_count_btn"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -82,12 +82,12 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cough_average_title"
+                android:text="프리스톨 수 점수"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="20dp"
@@ -99,7 +99,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="10dp">
                 <TextView
-                    android:id="@+id/breed_cough_tv"
+                    android:id="@+id/freestall_count_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
@@ -108,35 +108,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" 번 "/>
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="기침 가축 비율"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_margin="20dp"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="10dp">
-                <TextView
-                    android:id="@+id/breed_cough_ratio_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" / 100 %"/>
-
-
+                    android:text=" / 2 점"/>
 
             </LinearLayout>
         </LinearLayout>
