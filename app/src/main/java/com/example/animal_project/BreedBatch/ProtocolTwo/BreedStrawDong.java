@@ -3,6 +3,8 @@ package com.example.animal_project.BreedBatch.ProtocolTwo;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -180,12 +182,12 @@ public class BreedStrawDong extends AppCompatActivity {
             breed_dong_straw_btn.setVisibility(View.VISIBLE);
         }
 
-
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(BreedStrawDong.this);
     viewModel.clickDongHandler(next_dong_btn,prev_dong_btn,breed_dong_straw_btn,dong,current_dong,dong_size);
         home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                myOnBackPressed(alertDialog);
             }
         });
         viewModel.setDongStrawScore(rdiog_straw_feed_tank_1,rdiog_straw_normal_1,rdiog_straw_resting_place_1,breed_straw_score_1);
@@ -235,4 +237,24 @@ public class BreedStrawDong extends AppCompatActivity {
                 }
             });
         }
+    public void myOnBackPressed(AlertDialog.Builder AlertBuilder){
+
+        AlertBuilder.setTitle("이전");
+        AlertBuilder.setMessage("지금까지 평가한 항목이 사라집니다.\n" +
+                "평가 화면으로 돌아가시겠습니까?");
+        // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
+        AlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog,int which){
+                // OK 버튼을 눌렸을 경우
+
+            }
+        });
+        AlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        AlertBuilder.show();
+    }
     }

@@ -1,5 +1,7 @@
 package com.example.animal_project;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.icu.text.CaseMap;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -817,6 +819,12 @@ public class QuestionTemplateViewModel extends ViewModel {
 
         return warmVenScore;
     }
+    public double calculatorProtocolTwoScore(double restScore, double totalWarmVentilatingScore){
+
+        double protocolTwoScore = (restScore * 0.6) + (totalWarmVentilatingScore * 0.4);
+
+        return Math.round(protocolTwoScore);
+    }
     public int calculatorLimpScore(float limp)
     {
         int limpScore = 0;
@@ -1302,7 +1310,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         return socialBehaviorScore;
     }
     public double calculatorProtocolFourScore(double socialBehaviorScore, double avoidDistanceScore){
-        return (socialBehaviorScore * 0.65) + (avoidDistanceScore * 0.35);
+        return Math.round((socialBehaviorScore * 0.65) + (avoidDistanceScore * 0.35));
     }
     public int calculatorAvoidDistanceScore(double avoidDistanceRatio){
         int avoidDistanceScore = 0;

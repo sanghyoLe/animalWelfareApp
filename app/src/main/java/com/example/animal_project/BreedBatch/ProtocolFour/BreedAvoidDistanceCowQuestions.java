@@ -42,7 +42,6 @@ public class BreedAvoidDistanceCowQuestions extends AppCompatActivity {
         int cow_size = intent.getExtras().getInt("cow_count");
 
         QuestionTemplateViewModel.avoidDistance avoidDistance = new QuestionTemplateViewModel.avoidDistance(pen_number, pen_location, cow_size);
-
         Log.d("pen_number",String.valueOf(avoidDistance.getPenNumber()));
         Log.d("pen_location",String.valueOf(avoidDistance.getPenLocation()));
         Log.d("cow_size",String.valueOf(avoidDistance.getCowSize()));
@@ -58,7 +57,7 @@ public class BreedAvoidDistanceCowQuestions extends AppCompatActivity {
         pen_cow_count_tv.setText("개체수 " + String.valueOf(cow_size)+"마리");
         View view = findViewById(R.id.breed_avoid_distance_cow_question_layout);
 
-
+        ImageButton home_btn = view.findViewById(R.id.home_btn);
         Button standard_table_btn = findViewById(R.id.standard_table_btn);
         View question_1 = findViewById(R.id.breed_avoid_distance_cow_question_1);
         View question_2 = findViewById(R.id.breed_avoid_distance_cow_question_2);
@@ -207,6 +206,13 @@ public class BreedAvoidDistanceCowQuestions extends AppCompatActivity {
                 drawerHandler();
             }
         });
+        AlertDialog.Builder alterDialog = new AlertDialog.Builder(BreedAvoidDistanceCowQuestions.this);
+        home_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myOnBackPressed(alterDialog);
+            }
+        });
     }
 
     // Spinner cow_size에 맞춰 반환
@@ -280,6 +286,26 @@ public class BreedAvoidDistanceCowQuestions extends AppCompatActivity {
         for(int i = 0 ; i < cow_size ; i++) {
             cowNumbers[i] = Integer.parseInt(String.valueOf(edArr[i].getText()));
         }
+    }
+    public void myOnBackPressed(AlertDialog.Builder AlertBuilder){
+
+        AlertBuilder.setTitle("이전");
+        AlertBuilder.setMessage("지금까지 평가한 항목이 사라집니다.\n" +
+                "평가 화면으로 돌아가시겠습니까?");
+        // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
+        AlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog,int which){
+                // OK 버튼을 눌렸을 경우
+
+            }
+        });
+        AlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        AlertBuilder.show();
     }
 
 

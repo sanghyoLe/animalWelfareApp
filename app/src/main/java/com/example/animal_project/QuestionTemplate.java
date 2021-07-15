@@ -12,10 +12,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -72,8 +74,23 @@ import com.google.android.material.tabs.TabLayout;
 
 public class QuestionTemplate extends AppCompatActivity
  {
+     public static Context context_question_template;
 
-// --- 결과 창 ---
+
+     // 정보 입력 창에서 넘어온 정보들
+     private String farmName;
+     private String address;
+     private String addressDetail;
+     private String repName;
+     private int totalCowSize;
+     private int totalAdultCow;
+     private int totalChildCow;
+     private String evaName;
+     private String evaDate;
+     private int farmType = 0;
+     private int sampleCowSize;
+     // ------------------------------
+    // --- 결과 창 ---
     ResultTotal result_total;
     Result_1 result1;
     Result_2 result2;
@@ -86,6 +103,7 @@ public class QuestionTemplate extends AppCompatActivity
     private LinearLayout question_top_nav;
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
+    // 한 육우 프로토콜 질문 항목 Fragments
     private BreedPoor breed_poor;
     private BreedWaterQ1 breed_water_q1;
     private BreedWaterQ2 breed_water_q2;
@@ -122,11 +140,13 @@ public class QuestionTemplate extends AppCompatActivity
     private BreedStruggle breed_struggle;
     private BreedHarmony breed_harmony;
     private BreedAvoidDistance breed_avoid_distance;
+    // ---------------------------------------
+
+
+    // --- UI에 사용되는 버튼들 ---------------------------
     private TextView current_page;
     private TextView total_page;
-    private int inputCheck = 0;
-
-     private ImageButton prev_btn;
+    private ImageButton prev_btn;
     private ImageButton next_btn;
     private Button end_btn;
     private ImageButton list_btn;
@@ -134,34 +154,43 @@ public class QuestionTemplate extends AppCompatActivity
     private ImageButton list_menu_btn_2;
     private ImageButton list_menu_btn_3;
     private ImageButton list_menu_btn_4;
-    private int totalCowSize;
-    private int sampleCowSize;
+    // --------------------------------------------------------
+
+
+     // 한 육우 프로토콜 질문 항목 fragments 를 담는 배열
     private Fragment[] breed_frag_arr = new Fragment[20];
+
     int count = 0;
      QuestionTemplateViewModel viewModel;
+     AlertDialog.Builder myAlertBuilder;
 
 
+     // 사용자가 이전 안드로이드 이전 버튼 눌렀을 때 처리를 위한 Override
      @Override
      public void onBackPressed(){
-         myOnBackPressed();
+         myOnBackPressed(myAlertBuilder);
      }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_template);
+        myAlertBuilder = new AlertDialog.Builder(QuestionTemplate.this);
 
-
+        // 결과 창 fragments  ?Activity 로 변경할 지 고민중(변경 시 모든 정보 Bundle 로 결과창에 넘겨주어야 함) ----------------------
         result_total = new ResultTotal();
         result1 = new Result_1();
         result2 = new Result_2();
         result3 = new Result_3();
         result4 = new Result_4();
-
+        // ------------------------------------------
 
         viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
         // 회피거리 배열 초기화
         viewModel.setAvoidDistances();
         fragmentManager = getSupportFragmentManager();
+
+
 
         next_btn = findViewById(R.id.next_btn);
         prev_btn = findViewById(R.id.previous_btn);
@@ -214,13 +243,43 @@ public class QuestionTemplate extends AppCompatActivity
         breed_harmony = new BreedHarmony();
         breed_avoid_distance = new BreedAvoidDistance();
 
-        // 마지막 페이지 개수 지정
+
         Intent intent = getIntent();
         Bundle BeforeBundle = intent.getExtras();
-        inputCheck = BeforeBundle.getInt("inputChecked");
+
+        // ----- 실제 서비스에서 저장되어야 하는 정보 ----
+/*        farmName = BeforeBundle.getString("farmName");
+        address = BeforeBundle.getString("address");
+        addressDetail = BeforeBundle.getString("addressDetail");
+        repName = BeforeBundle.getString("repName");
+        totalCowSize = BeforeBundle.getInt("totalCow");
+        totalAdultCow = BeforeBundle.getInt("totalAdultCow");
+        totalChildCow = BeforeBundle.getInt("totalChildCow");
+        evaName = BeforeBundle.getString("evaName");
+        evaDate = BeforeBundle.getString("evaDate");
+        farmType = BeforeBundle.getInt("farmType");
+        sampleCowSize = BeforeBundle.getInt("sampleCowSize");*/
+        // 정보 잘 넘어 오는지 로그  -------------------------------------
+/*        Log.d("farmName",String.valueOf(farmName));
+        Log.d("address",String.valueOf(address));
+        Log.d("detail",String.valueOf(addressDetail));
+        Log.d("repName",String.valueOf(repName));
+        Log.d("totalCowSize",String.valueOf(totalCowSize));
+        Log.d("totalAdultCow",String.valueOf(totalAdultCow));
+        Log.d("totalChildCow",String.valueOf(totalChildCow));
+        Log.d("evaName",String.valueOf(evaName));
+        Log.d("evaDate",String.valueOf(evaDate));
+        Log.d("farmType",String.valueOf(farmType));
+        Log.d("sampleCowSize",String.valueOf(sampleCowSize));*/
+        // -----------------------------------------------
+
+        // ------------------------------------------------
+
+        // ---- 테스트를 위한 최소 정보 ---------
+        farmType = BeforeBundle.getInt("farmType");
         totalCowSize = BeforeBundle.getInt("totalCow");
         sampleCowSize = BeforeBundle.getInt("sampleCowSize");
-
+        // ------------------------------------
         viewModel.setSampleCowSize(sampleCowSize);
         viewModel.setTotalCowSize(totalCowSize);
         breed_frag_arr = new Fragment[]{ breed_poor,breed_water_q1,breed_water_q2,breed_water_q3,
@@ -272,16 +331,16 @@ public class QuestionTemplate extends AppCompatActivity
 
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
-        if (inputCheck == 1) {
+        if (farmType == 1) {
 
         }
-        else if (inputCheck == 2 || inputCheck == 3) {
+        else if (farmType == 2 || farmType == 3) {
             total_page.setText(String.valueOf(" / " + breed_frag_arr.length));
         }
-        else if (inputCheck == 4) {
+        else if (farmType == 4) {
 
         }
-        else if (inputCheck == 5) {
+        else if (farmType == 5) {
 
         }
 
@@ -417,18 +476,18 @@ public class QuestionTemplate extends AppCompatActivity
         {
             // 다음 버튼 누를 시 이어질 페이지 지정
             case R.id.next_btn:
-                if (inputCheck == 1) {
+                if (farmType == 1) {
 
                 }
-                else if (inputCheck == 2 || inputCheck == 3) {
+                else if (farmType == 2 || farmType == 3) {
                     nextBtnHandler(count,breed_frag_arr.length);
                     transaction.replace(R.id.fragment_paper,breed_frag_arr[++count]).commitAllowingStateLoss();
 
                 }
-                else if (inputCheck == 4) {
+                else if (farmType == 4) {
 
                 }
-                else if (inputCheck == 5) {
+                else if (farmType == 5) {
 
                 }
                 current_page.setText(String.valueOf(count+1));
@@ -436,22 +495,22 @@ public class QuestionTemplate extends AppCompatActivity
                 break;
                 // 이전 버튼 누를 시 이어질 페이지 지정
             case R.id.previous_btn:
-                if (inputCheck == 1) {
+                if (farmType == 1) {
 
                 }
-                else if (inputCheck == 2 || inputCheck == 3) {
+                else if (farmType == 2 || farmType == 3) {
                     prevBtnHandler(count,breed_frag_arr.length);
                     transaction.replace(R.id.fragment_paper, breed_frag_arr[--count]).commitAllowingStateLoss();
                 }
-                else if (inputCheck == 4) {
+                else if (farmType == 4) {
                 }
-                else if (inputCheck == 5) {
+                else if (farmType == 5) {
 
                 }
                 current_page.setText(String.valueOf(count+1));
                 break;
             case R.id.back_btn:
-                myOnBackPressed();
+                myOnBackPressed(myAlertBuilder);
                 break;
             case R.id.end_btn:
                 fragment_paper.setVisibility(View.GONE);
@@ -591,7 +650,7 @@ public class QuestionTemplate extends AppCompatActivity
 
 
         // 프로토콜 1
-        if(viewModel.getPoorScore() != -1)changeCheckImage(check_sub_1);
+        changeEditTextCheckImage(check_sub_1,viewModel.getPoorScore());
         if(viewModel.getWaterTankNum() != -1) changeCheckImage(check_sub_2);
         if(viewModel.getWaterTankClean() != -1) changeCheckImage(check_sub_3);
         if(viewModel.getWaterDrink() != -1) changeCheckImage(check_sub_4);
@@ -615,15 +674,15 @@ public class QuestionTemplate extends AppCompatActivity
 
         //프로토콜 3
         if(viewModel.getLimpScore() != -1) changeCheckImage(check_sub_18);
-        if(viewModel.getSlightHairLoss() != -1) changeCheckImage(check_sub_19);
-        if(viewModel.getCriticalHairLoss() != -1) changeCheckImage(check_sub_20);
+        changeEditTextCheckImage(check_sub_19,(int)viewModel.getSlightHairLoss());
+        changeEditTextCheckImage(check_sub_20,(int)viewModel.getCriticalHairLoss());
         if(viewModel.getCough() != -1) changeCheckImage(check_sub_21);
-        if(viewModel.getRunnyNoseRatio() != -1) changeCheckImage(check_sub_22);
-        if(viewModel.getOphthalmicRatio() != -1) changeCheckImage(check_sub_23);
-        if(viewModel.getBreathRatio() != -1) changeCheckImage(check_sub_24);
-        if(viewModel.getDiarrheaRatio() != -1) changeCheckImage(check_sub_25);
-        if(viewModel.getRuminantRatio() != -1) changeCheckImage(check_sub_26);
-        if(viewModel.getFallDeadRatio() != -1) changeCheckImage(check_sub_27);
+        changeEditTextCheckImage(check_sub_22,(int)viewModel.getRunnyNoseRatio());
+        changeEditTextCheckImage(check_sub_23,(int)viewModel.getOphthalmicRatio());
+        changeEditTextCheckImage(check_sub_24,(int)viewModel.getBreathRatio());
+        changeEditTextCheckImage(check_sub_25,(int)viewModel.getDiarrheaRatio());
+        changeEditTextCheckImage(check_sub_26,(int)viewModel.getRuminantRatio());
+        changeEditTextCheckImage(check_sub_27,(int)viewModel.getFallDeadRatio());
         if(viewModel.getHornRemoval() != -1) changeCheckImage(check_sub_28);
         if(viewModel.getAnesthesia() != -1) changeCheckImage(check_sub_29);
         if(viewModel.getPainkiller() != -1) changeCheckImage(check_sub_30);
@@ -635,14 +694,20 @@ public class QuestionTemplate extends AppCompatActivity
 
         //프로토콜 4
         if(viewModel.getStruggle() != -1) changeCheckImage(check_sub_34);
-        if(viewModel.getHarmony() != -1) changeCheckImage(check_sub_35);
+        if(viewModel.getHarmony() != -1)changeCheckImage(check_sub_35);
         if(viewModel.getAvoidDistanceScore() != -1) changeCheckImage(check_sub_36);
-        if(viewModel.getProtocolFourScore() != -1) changeCheckImage(check_total_4);
+        if(viewModel.getProtocolFourScore() != -1)changeCheckImage(check_total_4);
     }
 
-    private void changeCheckImage(ImageView checkImageView){
-        checkImageView.setImageResource(R.drawable.ic_baseline_check_circle_24);
+    private void changeEditTextCheckImage(ImageView checkImageView,int questionScore){
+         if(questionScore == -1)
+             checkImageView.setImageResource(R.drawable.ic_baseline_not_check_circle_24);
+         else
+            checkImageView.setImageResource(R.drawable.ic_baseline_check_circle_24);
     }
+     private void changeCheckImage(ImageView checkImageView){
+             checkImageView.setImageResource(R.drawable.ic_baseline_check_circle_24);
+     }
     private void listMenuBtnHandler(ImageButton btn,View view)
     {
         if(view.getVisibility() == View.GONE){
@@ -653,26 +718,26 @@ public class QuestionTemplate extends AppCompatActivity
             btn.setImageResource(R.drawable.outline_reorder_24);
         }
     }
-    private void myOnBackPressed(){
-        AlertDialog.Builder myAlertBuilder =
-                new AlertDialog.Builder(QuestionTemplate.this);
-        myAlertBuilder.setTitle("이전");
-        myAlertBuilder.setMessage("지금까지 평가한 항목이 사라집니다.\n" +
+
+    private void myOnBackPressed(AlertDialog.Builder AlertBuilder){
+
+        AlertBuilder.setTitle("이전");
+        AlertBuilder.setMessage("지금까지 평가한 항목이 사라집니다.\n" +
                 "정보 입력 화면으로 돌아가시겠습니까?");
         // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
-        myAlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
+        AlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog,int which){
                 // OK 버튼을 눌렸을 경우
 
             }
         });
-        myAlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+        AlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
             }
         });
-        myAlertBuilder.show();
+        AlertBuilder.show();
     }
 
 

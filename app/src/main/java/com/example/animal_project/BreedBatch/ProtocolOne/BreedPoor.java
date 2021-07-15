@@ -57,6 +57,7 @@ public class BreedPoor extends Fragment {
             public void afterTextChanged(Editable arg0) {
                 if (TextUtils.isEmpty(ed_1_poorRate.getText().toString())) {
                     breed_poor_Rate_ratio.setText("값을 입력해주세요");
+                    viewModel.setPoorScore(-1);
                     // 총 두수 보다 입력한 값이 클 때
                 } else if (total_cow_count < Integer.parseInt(ed_1_poorRate.getText().toString())) {
                     breed_poor_Rate_ratio.setText("총 두수보다 큰 값을 입력할 수 없습니다.");

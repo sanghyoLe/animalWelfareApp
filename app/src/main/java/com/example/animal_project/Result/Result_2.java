@@ -26,7 +26,7 @@ public class Result_2 extends Fragment {
         TextView progressBarTv = progressBarView.findViewById(R.id.progress_tv);
         ProgressBar progressBar = progressBarView.findViewById(R.id.circular_determinative_pb);
 
-        viewModel.setProgressBar(viewModel.getProtocolTwoScore(),progressBar,progressBarTv);
+         viewModel.setProgressBar(viewModel.getProtocolTwoScore(),progressBar,progressBarTv);
 
         return view;
     }

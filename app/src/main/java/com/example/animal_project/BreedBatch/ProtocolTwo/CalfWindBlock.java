@@ -27,6 +27,7 @@ public class CalfWindBlock extends Fragment {
         RadioGroup calfWindBlockRg = view.findViewById(R.id.calf_wind_block_rg);
         TextView calfWinterRestScoreTv = view.findViewById(R.id.calf_winter_rest_score);
         TextView totalWarmVenTv = view.findViewById(R.id.warm_ventilation_score);
+        TextView protocolTwoTv = view.findViewById(R.id.breed_protocol_2);
         calfWindBlockRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -67,7 +68,19 @@ public class CalfWindBlock extends Fragment {
                             );
                     viewModel.setTotalWarmVentilatingScore(totalWarmVen);
                     totalWarmVenTv.setText(String.valueOf(totalWarmVen));
-
+                    if(viewModel.getRestScore() == -1){
+                        protocolTwoTv.setText("편안한 휴식 평가를 완료해주세요.");
+                    }else if(viewModel.getTotalWarmVentilatingScore() == -1){
+                        protocolTwoTv.setText("편안한 열환경과 환기 평가를 완료해주세요");
+                    }else {
+                        viewModel.setProtocolTwoScore(
+                                viewModel.calculatorProtocolTwoScore(
+                                    viewModel.getRestScore(),
+                                    viewModel.getTotalWarmVentilatingScore()
+                                )
+                        );
+                        protocolTwoTv.setText(String.valueOf(viewModel.getProtocolTwoScore()));
+                    }
                 }
             }
         });

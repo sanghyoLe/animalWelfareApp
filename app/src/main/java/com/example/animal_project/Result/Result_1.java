@@ -32,6 +32,7 @@ public class Result_1 extends Fragment {
         viewModel.setProgressBar(viewModel.getProtocolOneScore(),progressBar,progressBarTv);
 
 
+
         return view;
     }
 }
