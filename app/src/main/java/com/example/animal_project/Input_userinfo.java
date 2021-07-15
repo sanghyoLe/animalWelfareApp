@@ -26,11 +26,7 @@ import android.widget.TextView;
 
 import android.widget.Toast;
 
-import com.example.animal_project.Farm_Activity.Fatten_1;
-import com.example.animal_project.Farm_Activity.Freestall_1;
-import com.example.animal_project.Farm_Activity.MilkCow_1;
 
-import org.w3c.dom.Text;
 
 
 public class Input_userinfo extends AppCompatActivity {

@@ -22,11 +22,9 @@
 
         <activity android:name=".QuestionTemplate" />
         <activity android:name=".MilkCow_Question.Freestall_q4" />
-        <activity android:name=".getStrawScore" />
         <activity android:name=".WebViewActivity" />
         <activity android:name=".Result_View" />
         <activity android:name=".Input_userinfo" />
-        <activity android:name=".Category" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
