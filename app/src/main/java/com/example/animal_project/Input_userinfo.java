@@ -115,7 +115,7 @@ public class Input_userinfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 사용자가 모든 정보를 입력하였는지 확인
-                if(TextUtils.isEmpty(farm_name_et.getText())){
+           /*     if(TextUtils.isEmpty(farm_name_et.getText())){
                     msg = "농장명을 입력하세요";
                     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 } else if(TextUtils.isEmpty(address_et.getText())){
@@ -160,9 +160,9 @@ public class Input_userinfo extends AppCompatActivity {
                             eva_data_picker.getMonth(),
                             eva_data_picker.getDayOfMonth(), input_checked
                             );
-                }
+                }*/
                 // 테스트 용 코드 위에 조건문 주석 걸고 실행
-                /*if(input_checked == 0) {
+                if(input_checked == 0) {
                     String msg = "농장 종류 선택";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                 }else {
@@ -173,7 +173,7 @@ public class Input_userinfo extends AppCompatActivity {
                     bundle.putInt("farmType",input_checked);
                     intentQuestionTemplate.putExtras(bundle);
                     startActivity(intentQuestionTemplate);
-                }*/
+                }
                 // --------------------------------------------------
             }
         });
