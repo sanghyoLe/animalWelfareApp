@@ -33,12 +33,12 @@ import java.util.Arrays;
 
 public class BreedWaterDongQ3 extends AppCompatActivity {
     private int dong_size;
-
+    private QuestionTemplateViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.water_q3_dong);
-        QuestionTemplateViewModel viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
+        viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
         Intent intent = getIntent();
         dong_size = intent.getExtras().getInt("dong_count");
 
@@ -80,63 +80,63 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
             }
         });
 
-        showQuestionView(questionViewArr, dong_size);
-        EditText[] penLocationOneEd = makeEditText(questionViewArr,dong_size,R.id.pen_location_1_ed);
-        EditText[] penLocationTwoEd = makeEditText(questionViewArr,dong_size,R.id.pen_location_2_ed);
-        EditText[] cowSizeEd = makeEditText(questionViewArr,dong_size,R.id.cow_size_ed);
-        EditText[] waitingCowSizeEd = makeEditText(questionViewArr,dong_size,R.id.waiting_cow_size_ed);
-        EditText[] drinkTimeEd = makeEditText(questionViewArr,dong_size,R.id.drink_time_ed);
-        QuestionTemplateViewModel.WaterQuestion waterQuestion = new QuestionTemplateViewModel.WaterQuestion(dong_size);
+        viewModel.showQuestionView(questionViewArr, dong_size);
+        EditText[] penLocationOneEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.pen_location_1_ed);
+        EditText[] penLocationTwoEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.pen_location_2_ed);
+        EditText[] cowSizeEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.cow_size_ed);
+        EditText[] waitingCowSizeEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.waiting_cow_size_ed);
+        EditText[] drinkTimeEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.drink_time_ed);
+        QuestionTemplateViewModel.WaterTimeQuestion WaterTimeQuestion = new QuestionTemplateViewModel.WaterTimeQuestion(dong_size);
         Button endBtn = view.findViewById(R.id.end_btn);
 
         endBtn.setOnClickListener(new View.OnClickListener() {
             String msg;
             @Override
             public void onClick(View v) {
-                if(checkEmptyEditText(penLocationOneEd,dong_size) != -1){
-                    msg = checkEmptyEditText(penLocationOneEd,dong_size) + "동 펜 위치를 입력하세요";
+                if(viewModel.checkEmptyEditText(penLocationOneEd,dong_size) != -1){
+                    msg = viewModel.checkEmptyEditText(penLocationOneEd,dong_size) + "동 펜 위치를 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                }else if(checkEmptyEditText(penLocationTwoEd,dong_size) != -1){
-                    msg = checkEmptyEditText(penLocationTwoEd,dong_size) + "동 펜 위치를 입력하세요";
+                }else if(viewModel.checkEmptyEditText(penLocationTwoEd,dong_size) != -1){
+                    msg = viewModel.checkEmptyEditText(penLocationTwoEd,dong_size) + "동 펜 위치를 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                } else if(checkEmptyEditText(cowSizeEd,dong_size) != -1){
-                    msg = checkEmptyEditText(cowSizeEd,dong_size) + "동 사육 두수를 입력하세요";
+                } else if(viewModel.checkEmptyEditText(cowSizeEd,dong_size) != -1){
+                    msg = viewModel.checkEmptyEditText(cowSizeEd,dong_size) + "동 사육 두수를 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                } else if(checkEmptyEditText(waitingCowSizeEd,dong_size) != -1){
-                    msg = checkEmptyEditText(waitingCowSizeEd,dong_size) + "동 대기우 수를 입력하세요";
+                } else if(viewModel.checkEmptyEditText(waitingCowSizeEd,dong_size) != -1){
+                    msg = viewModel.checkEmptyEditText(waitingCowSizeEd,dong_size) + "동 대기우 수를 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                }else if(checkEmptyEditText(drinkTimeEd,dong_size) != -1){
-                    msg = checkEmptyEditText(drinkTimeEd,dong_size) + "동 음수 우 음수시간을 입력하세요";
+                }else if(viewModel.checkEmptyEditText(drinkTimeEd,dong_size) != -1){
+                    msg = viewModel.checkEmptyEditText(drinkTimeEd,dong_size) + "동 음수 우 음수시간을 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                 }else if(checkGreaterThanCowSize(cowSizeEd,waitingCowSizeEd,dong_size) != -1) {
                     msg = checkGreaterThanCowSize(cowSizeEd,waitingCowSizeEd,dong_size) + "동의 대기우 수가 사육두수 보다 큽니다";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                 } else {
-                    waterQuestion.setPenLocation(setPenLocation(penLocationOneEd,penLocationTwoEd,dong_size));
-                    String[] penLocationEx = waterQuestion.getPenLocation();
-                    waterQuestion.setCowSize(getIntEditTextValues(cowSizeEd,dong_size));
-                    waterQuestion.setWaitingCowSize(getIntEditTextValues(waitingCowSizeEd,dong_size));
-                    waterQuestion.setDrinkTime(getIntEditTextValues(drinkTimeEd,dong_size));
-                    waterQuestion.setWaitingRatio(getWaitingRatio(cowSizeEd,waitingCowSizeEd,dong_size));
-                    waterQuestion.setWaterTimeScore(getWaterTimeScore(
-                            waterQuestion.getWaitingRatio(),
-                            waterQuestion.getDrinkTime(),
+                    WaterTimeQuestion.setPenLocation(viewModel.makePenLocationArr(penLocationOneEd,penLocationTwoEd,dong_size));
+
+                    WaterTimeQuestion.setCowSize(viewModel.getIntEditTextValues(cowSizeEd,dong_size));
+                    WaterTimeQuestion.setWaitingCowSize(viewModel.getIntEditTextValues(waitingCowSizeEd,dong_size));
+                    WaterTimeQuestion.setDrinkTime(viewModel.getIntEditTextValues(drinkTimeEd,dong_size));
+                    WaterTimeQuestion.setWaitingRatio(getWaitingRatio(cowSizeEd,waitingCowSizeEd,dong_size));
+                    WaterTimeQuestion.setWaterTimeScore(getWaterTimeScore(
+                            WaterTimeQuestion.getWaitingRatio(),
+                            WaterTimeQuestion.getDrinkTime(),
                             dong_size
                     ));
-                    waterQuestion.setMaxWaterTimeScore(
+                    WaterTimeQuestion.setMaxWaterTimeScore(
                             getMaxWaterTimeScore(
-                                    waterQuestion.getWaterTimeScore(),
+                                    WaterTimeQuestion.getWaterTimeScore(),
                                     dong_size)
                     );
                     String msg = makeInputString(
-                            waterQuestion.getWaitingRatio(),
-                            waterQuestion.getWaterTimeScore(),
+                            WaterTimeQuestion.getWaitingRatio(),
+                            WaterTimeQuestion.getWaterTimeScore(),
                             dong_size
                     );
 
                     AlertDialog.Builder AlertBuilder = new AlertDialog.Builder(BreedWaterDongQ3.this);
                     AlertBuilder.setTitle("평가 결과");
-                    AlertBuilder.setMessage(msg + "\n 대표 점수 : " + waterQuestion.getMaxWaterTimeScore() + "점 \n" +
+                    AlertBuilder.setMessage(msg + "\n 대표 점수 : " + WaterTimeQuestion.getMaxWaterTimeScore() + "점 \n" +
                     "평가를 완료하시겠습니까 ? ");
                     // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
                     AlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
@@ -148,6 +148,9 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
                     AlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent();
+                            intent.putExtra("waterTimeQuestion",WaterTimeQuestion);
+                            setResult(1,intent);
                             finish();
                         }
                     });
@@ -163,7 +166,8 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
         for(int i = 0 ; i< dong_size ; i++){
             waitingRatio[i] = (Float.parseFloat(String.valueOf(waitingCowEd[i].getText())) /
                     Float.parseFloat(String.valueOf(cowSizeEd[i].getText()))) * 100;
-            waitingRatio[i] = Math.round(waitingRatio[i]);
+            waitingRatio[i] = (float) viewModel.cutDecimal((double)waitingRatio[i]);
+
         }
         return waitingRatio;
     }
@@ -192,76 +196,17 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
         return max;
     }
 
-    private void myOnBackPressed(AlertDialog.Builder AlertBuilder) {
-        AlertBuilder.setTitle("이전");
-        AlertBuilder.setMessage("지금까지 평가한 항목이 사라집니다.\n" +
-                "평가 화면으로 돌아가시겠습니까?");
-        // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
-        AlertBuilder.setPositiveButton("취소", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // OK 버튼을 눌렸을 경우
-
-            }
-        });
-        AlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-        });
-        AlertBuilder.show();
-    }
-
-    public EditText[] makeEditText(View[] QuestionViewArr, int dong_size, int id){
-        EditText[] newEditText = new EditText[dong_size];
-        for(int i = 0 ; i < dong_size ; i++){
-            newEditText[i] = QuestionViewArr[i].findViewById(id);
-        }
-        return newEditText;
-    }
-
-    public void showQuestionView(View[] QuestionViewArr, int dong_size) {
-        TextView[] tvArr = new TextView[dong_size];
-        for (int i = 0; i < dong_size; i++) {
-            tvArr[i] = QuestionViewArr[i].findViewById(R.id.dong_count_tv);
-            QuestionViewArr[i].setVisibility(View.GONE);
-            tvArr[i].setText(String.valueOf(i + 1) + "동");
-        }
-        for (int i = 0; i < dong_size; i++) {
-            QuestionViewArr[i].setVisibility(View.VISIBLE);
-        }
-    }
-    public String[] setPenLocation(EditText[] penLocationOne, EditText[] penLocationTwo, int dong_size){
-        String[] penLocation = new String[dong_size];
-        for(int i = 0 ; i < dong_size ; i++){
-            penLocation[i] = penLocationOne[i].getText() + "-" + penLocationTwo[i].getText();
-        }
-        return penLocation;
-    }
-    public int checkEmptyEditText(EditText[] editTexts, int dong_size){
-        for(int i = 0 ; i < dong_size ; i++){
-            if(TextUtils.isEmpty(editTexts[i].getText())){
-                return i+1;
-            }
-        }
-        return -1;
-    }
     public int checkGreaterThanCowSize(EditText[] cowSizes, EditText[] waitingCowSizes,int dong_size){
         for(int i = 0 ; i < dong_size ; i++){
             if(Integer.parseInt(String.valueOf(cowSizes[i].getText()))
-            < Integer.parseInt(String.valueOf(waitingCowSizes[i].getText()))){
+                    < Integer.parseInt(String.valueOf(waitingCowSizes[i].getText()))){
                 return i+1;
             }
         }
         return -1;
     }
-    public int[] getIntEditTextValues(EditText[] editTexts, int dong_size){
-        int[] newIntArr = new int[dong_size];
-        for(int i = 0 ; i < dong_size ; i++){
-            newIntArr[i] = Integer.parseInt(String.valueOf(editTexts[i].getText()));
-        }
-        return newIntArr;
-    }
+
+
     // 드로우 핸들러 ( 음수 행동 기준 표 )
     private void drawerHandler() {
         View view = findViewById(R.id.breed_water_q3_dong_question_layout);

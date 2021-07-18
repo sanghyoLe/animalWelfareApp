@@ -58,7 +58,7 @@ public class BreedFallDead extends Fragment {
                     viewModel.setFallDeadRatio(viewModel.getRatio(breed_fall_dead_ed));
                     breed_fall_dead_tv.setText(String.valueOf(viewModel.getFallDeadRatio()));
                 }
-                if(viewModel.getCough() == -1){
+                if(viewModel.getCoughQuestion().getTotalCoughPerOne() == -1){
                     breed_disease_score_tv.setText("기침 평가를 완료하세요");
                 }else if(viewModel.getRunnyNoseRatio() == -1){
                     breed_disease_score_tv.setText("비강분비물 평가를 완료하세요");
@@ -78,7 +78,7 @@ public class BreedFallDead extends Fragment {
                     viewModel.calculatorDiseaseScore(
                             viewModel.calculatorCareWarningScore(
                             viewModel.calculatorDiseaseSectionOne(viewModel.getRunnyNoseRatio(),viewModel.getOphthalmicRatio()),
-                            viewModel.calculatorDiseaseSectionTwo(viewModel.getCoughRatio(),viewModel.getBreathRatio()),
+                            viewModel.calculatorDiseaseSectionTwo(viewModel.getCoughQuestion().getCoughRatio(),viewModel.getBreathRatio()),
                             viewModel.calculatorDiseaseSectionThree(viewModel.getRuminantRatio(),viewModel.getDiarrheaRatio()),
                             viewModel.calculatorDiseaseSectionFour(viewModel.getFallDeadRatio())
                             )

@@ -81,8 +81,8 @@
                 android:hint="사육 두수"
                 />
             <EditText
-                android:id="@+id/waiting_cow_size_ed"
-                android:layout_weight="1"
+                android:id="@+id/cough_ed"
+                android:layout_weight="2"
                 android:gravity="center_horizontal"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
@@ -92,21 +92,7 @@
                 android:textSize="16sp"
                 android:maxLength="4"
                 android:inputType="number"
-                android:hint="대기우 수"
-                />
-            <EditText
-                android:id="@+id/drink_time_ed"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:layout_margin="1dp"
-                android:background="#FFFFFF"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:maxLength="4"
-                android:inputType="number"
-                android:hint="분 단위"
+                android:hint="관찰한 기침 수"
                 />
         </TableRow>
     </TableLayout>

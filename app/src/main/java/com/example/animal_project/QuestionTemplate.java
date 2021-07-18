@@ -737,7 +737,7 @@ public class QuestionTemplate extends AppCompatActivity
         changeEditTextCheckImage(check_sub_1,viewModel.getPoorScore());
         if(viewModel.getWaterTankNum() != -1) changeCheckImage(check_sub_2);
         if(viewModel.getWaterTankClean() != -1) changeCheckImage(check_sub_3);
-        if(viewModel.getWaterDrink() != -1) changeCheckImage(check_sub_4);
+        if(viewModel.getWaterTimeQuestion().getMaxWaterTimeScore() != -1) changeCheckImage(check_sub_4);
         if(viewModel.getProtocolOneScore() != -1)changeCheckImage(check_total_1);
 
         // 프로토콜 2
@@ -760,7 +760,7 @@ public class QuestionTemplate extends AppCompatActivity
         if(viewModel.getLimpScore() != -1) changeCheckImage(check_sub_18);
         changeEditTextCheckImage(check_sub_19,(int)viewModel.getSlightHairLoss());
         changeEditTextCheckImage(check_sub_20,(int)viewModel.getCriticalHairLoss());
-        if(viewModel.getCough() != -1) changeCheckImage(check_sub_21);
+        if(viewModel.getCoughQuestion().getTotalCoughPerOne() != -1) changeCheckImage(check_sub_21);
         changeEditTextCheckImage(check_sub_22,(int)viewModel.getRunnyNoseRatio());
         changeEditTextCheckImage(check_sub_23,(int)viewModel.getOphthalmicRatio());
         changeEditTextCheckImage(check_sub_24,(int)viewModel.getBreathRatio());

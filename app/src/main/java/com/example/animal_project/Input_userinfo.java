@@ -114,8 +114,8 @@ public class Input_userinfo extends AppCompatActivity {
             String msg;
             @Override
             public void onClick(View v) {
-                // 사용자가 모든 정보를 입력하였는지 확인
-           /*     if(TextUtils.isEmpty(farm_name_et.getText())){
+/*                // 사용자가 모든 정보를 입력하였는지 확인
+                if(TextUtils.isEmpty(farm_name_et.getText())){
                     msg = "농장명을 입력하세요";
                     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 } else if(TextUtils.isEmpty(address_et.getText())){

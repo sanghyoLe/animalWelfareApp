@@ -36,15 +36,13 @@ public class BreedCough extends Fragment {
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
 
 
-
-
         breed_cough_tv = view.findViewById(R.id.breed_cough_tv);
         breed_cough_ratio_tv = view.findViewById(R.id.breed_cough_ratio_tv);
-        if(viewModel.getCoughRatio() == -1){
+        if(viewModel.getCoughQuestion().getTotalCoughPerOne() == -1){
             breed_cough_tv.setText("평가를 완료하세요");
         } else {
-            breed_cough_tv.setText(String.valueOf(viewModel.getCough()));
-            breed_cough_ratio_tv.setText(String.valueOf(viewModel.getCoughRatio()));
+            breed_cough_tv.setText(String.valueOf(viewModel.getCoughQuestion().getTotalCoughPerOne()));
+            breed_cough_ratio_tv.setText(String.valueOf(viewModel.getCoughQuestion().getCoughRatio()));
         }
 
 
@@ -97,14 +95,21 @@ public class BreedCough extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 1:
-                cough = data.getExtras().getDouble("key");
-                cough = cough / dong_size;
-                breed_cough_tv.setText(String.valueOf(cough));
-                viewModel.setCough(cough);
+                QuestionTemplateViewModel.CoughQuestion coughQuestion = (QuestionTemplateViewModel.CoughQuestion)
+                        data.getExtras().getSerializable("coughQuestion");
+                viewModel.setCoughQuestion(coughQuestion);
+
+                float totalCoughPerOne = 0;
+                float coughPerOne[]  = viewModel.getCoughQuestion().getCoughPerOne();
+                for(int i = 0 ; i < dong_size ; i++){
+                    totalCoughPerOne += coughPerOne[i];
+                }
+                breed_cough_tv.setText(String.valueOf(totalCoughPerOne));
+                viewModel.getCoughQuestion().setTotalCoughPerOne(totalCoughPerOne);
                 float coughRatio;
-                coughRatio = ((float)cough / viewModel.getSampleCowSize()) * 100;
-                coughRatio = Math.round(coughRatio);
-                viewModel.setCoughRatio(coughRatio);
+                coughRatio = (viewModel.getCoughQuestion().getTotalCoughPerOne() / (float)viewModel.getSampleCowSize()) * 100;
+                coughRatio = (float)viewModel.cutDecimal(coughRatio);
+                viewModel.getCoughQuestion().setCoughRatio(coughRatio);
                 breed_cough_ratio_tv.setText(String.valueOf(coughRatio));
                 break;
             default:

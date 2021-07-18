@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/breed_outward_layout"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,16 +38,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <EditText
-                android:id="@+id/breed_outward_pen"
+            <TextView
+                android:paddingLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="표본펜 위치"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/pen_location_hint"
-                android:layout_marginTop="30dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:inputType="number">
-            </EditText>
+
+                android:orientation="horizontal">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pen_location_ed_1"
+                    android:hint="1"
+                    android:padding="10dp"
+                    android:maxLength="2"
+                    android:inputType="number"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pen_location_ed_2"
+                    android:hint="3"
+                    android:padding="10dp"
+                    android:maxLength="2"
+                    android:inputType="number"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Ex) 1-4, 2-5, 3-6"/>
+            </LinearLayout>
+
             <EditText
                 android:id="@+id/breed_outward_ed"
                 android:layout_width="match_parent"

@@ -44,7 +44,7 @@ public class BreedLimp extends Fragment {
             public void afterTextChanged(Editable editable) {
                 if (TextUtils.isEmpty(breedLimpEd.getText().toString())) {
                     breedLimpRatioTv.setText("값을 입력해주세요");
-                    viewModel.setLimpScore(-1);
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedLimp).setScore(-1);
                     // 총 두수 보다 입력한 값이 클 때
                 } else if (viewModel.getTotalCowSize() < Integer.parseInt(breedLimpEd.getText().toString())) {
                     breedLimpRatioTv.setText("총 두수보다 큰 값을 입력할 수 없습니다.");
@@ -52,11 +52,13 @@ public class BreedLimp extends Fragment {
                     int limpScore = 0;
                     float ratio = Float.parseFloat(breedLimpEd.getText().toString()) / viewModel.getTotalCowSize();
                     ratio = ratio * 100;
-                    ratio = Math.round(ratio);
+                    ratio = (float)viewModel.cutDecimal(ratio);
                     breedLimpRatioTv.setText(String.valueOf(ratio));
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedLimp).setNumberOfCow(viewModel.makeNumberOfCow(breedLimpEd));
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedLimp).setRatio(ratio);
                     limpScore = viewModel.calculatorLimpScore(ratio);
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedLimp).setScore(limpScore);
                     breedLimpScoreTV.setText(String.valueOf(limpScore));
-                    viewModel.setLimpScore(limpScore);
                 }
             }
         });

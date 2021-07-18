@@ -58,7 +58,7 @@ public class BreedRunnyNose extends Fragment {
                     sample_size_tv.setVisibility(View.VISIBLE);
                     sample_size_tv.setText("표본 규모 : " + String.valueOf(viewModel.getSampleCowSize()));
                 } else {
-                    viewModel.setRunnyNoseRatio(viewModel.getRatio(breed_runny_nose_ed));
+                    viewModel.setRunnyNoseRatio((float)viewModel.getRatio(breed_runny_nose_ed));
                     breed_runny_nose_ratio_tv.setText(String.valueOf(viewModel.getRatio(breed_runny_nose_ed)));
                 }
             }

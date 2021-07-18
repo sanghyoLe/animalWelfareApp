@@ -43,14 +43,19 @@ public class BreedSlightHairLoss extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 if(TextUtils.isEmpty(breedSlightHairLossEd.getText().toString())){
+                    ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).setNumberOfCow(-1);
                     viewModel.setSlightHairLoss(-1);
                 } else {
                     float slightHairLoss = 0;
                     slightHairLoss = Float.parseFloat(breedSlightHairLossEd.getText().toString());
-                    viewModel.setSlightHairLoss(slightHairLoss);
+                    ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).setNumberOfCow((int)slightHairLoss);
+                    ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).setPenLocation(
+                            viewModel.makePenLocation(
+                                    view.findViewById(R.id.pen_location_ed_1),
+                                    view.findViewById(R.id.pen_location_ed_2)
+                            )
+                    );
                 }
-
-
             }
         });
      return view;
