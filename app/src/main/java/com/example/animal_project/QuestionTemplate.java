@@ -26,6 +26,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+// DataBase 처리를 위한 Import
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+// ---------------------------------
 
 
 import com.example.animal_project.Freestall.FreestallAppearanceQ1;
@@ -107,9 +119,13 @@ import com.example.animal_project.Result.Result_4;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import org.w3c.dom.Text;
+
 
 public class QuestionTemplate extends AppCompatActivity
  {
+/*     private static String IP_ADDRESS = "10.0.2.2";
+     private static String TAG = "phptest";*/
      public static Context context_question_template;
 
 
@@ -240,7 +256,7 @@ public class QuestionTemplate extends AppCompatActivity
 
 
     private Fragment[] freestall_frag_arr = new Fragment[20];
-
+    private TextView mTextViewResult;
     int count = 0;
      QuestionTemplateViewModel viewModel;
      AlertDialog.Builder myAlertBuilder;
@@ -384,21 +400,7 @@ public class QuestionTemplate extends AppCompatActivity
         evaName = BeforeBundle.getString("evaName");
         evaDate = BeforeBundle.getString("evaDate");
         farmType = BeforeBundle.getInt("farmType");
-        sampleCowSize = BeforeBundle.getInt("sampleCowSize");
-        // 정보 잘 넘어 오는지 로그  -------------------------------------
-        Log.d("farmName",String.valueOf(farmName));
-        Log.d("address",String.valueOf(address));
-        Log.d("detail",String.valueOf(addressDetail));
-        Log.d("repName",String.valueOf(repName));
-        Log.d("totalCowSize",String.valueOf(totalCowSize));
-        Log.d("totalAdultCow",String.valueOf(totalAdultCow));
-        Log.d("totalChildCow",String.valueOf(totalChildCow));
-        Log.d("evaName",String.valueOf(evaName));
-        Log.d("evaDate",String.valueOf(evaDate));
-        Log.d("farmType",String.valueOf(farmType));
-        Log.d("sampleCowSize",String.valueOf(sampleCowSize));*/
-        // -----------------------------------------------
-
+        sampleCowSize = BeforeBundle.getInt("sampleCowSize");*/
         // ------------------------------------------------
 
         // ---- 테스트를 위한 최소 정보 ---------
@@ -582,6 +584,21 @@ public class QuestionTemplate extends AppCompatActivity
                 myOnBackPressed(myAlertBuilder);
                 break;
             case R.id.end_btn:
+                // database 연동
+/*                InsertData task = new InsertData();
+                task.execute("http://" + IP_ADDRESS + "/insert.php",
+                        farmName,
+                        address,
+                        addressDetail,
+                        repName,
+                        String.valueOf(farmType),
+                        String.valueOf(totalCowSize),
+                        String.valueOf(totalAdultCow),
+                        String.valueOf(totalChildCow),
+                        String.valueOf(sampleCowSize),
+                        String.valueOf(evaName),
+                        String.valueOf(evaDate));*/
+
                 fragment_paper.setVisibility(View.GONE);
                 end_btn.setVisibility(View.GONE);
                 question_top_nav.setVisibility(View.GONE);
@@ -836,5 +853,111 @@ public class QuestionTemplate extends AppCompatActivity
     }
 
 
+
+
+
+    /* // database 연동
+     class InsertData extends AsyncTask<String, Void, String>{
+         ProgressDialog progressDialog;
+         @Override
+         protected void onPreExecute() {
+             super.onPreExecute();
+             progressDialog = ProgressDialog.show(QuestionTemplate.this,
+                     "Please Wait", null, true, true);
+         }
+         @Override
+         protected void onPostExecute(String result) {
+             super.onPostExecute(result);
+             progressDialog.dismiss();
+
+             Log.d(TAG, "POST response  - " + result);
+         }
+         @Override
+         protected String doInBackground(String... params) {
+             String farmName = (String)params[1];
+             String address = (String)params[2];
+             String addressDetail = (String)params[3];
+             String repName = (String)params[4];
+             String farmType = (String)params[5];
+             String totalCow = (String)params[6];
+             String adultCow = (String)params[7];
+             String childCow = (String)params[8];
+             String sampleCow = (String)params[9];
+             String evaName = (String)params[10];
+             String evaDate = (String)params[11];
+
+             String serverURL = (String)params[0];
+             String postParameters =
+                     "farmName=" + farmName +
+                             "&address=" + address +
+                             "&addressDetail=" + addressDetail +
+                             "&repName=" + repName +
+                             "&farmType=" + farmType +
+                             "&totalCow=" + totalCow +
+                             "&adultCow=" + adultCow +
+                             "&childCow=" + childCow +
+                             "&sampleCow=" + sampleCow +
+                             "&evaName=" + evaName +
+                             "&evaDate=" + evaDate;
+
+*//*             String name = (String)params[1];
+             String country = (String)params[2];
+
+             String serverURL = (String)params[0];
+             String postParameters = "name=" + name + "&country=" + country;*//*
+             try {
+
+                 URL url = new URL(serverURL);
+                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+
+                 httpURLConnection.setReadTimeout(5000);
+                 httpURLConnection.setConnectTimeout(5000);
+                 httpURLConnection.setRequestMethod("POST");
+                 httpURLConnection.connect();
+
+
+                 OutputStream outputStream = httpURLConnection.getOutputStream();
+                 outputStream.write(postParameters.getBytes("UTF-8"));
+                 outputStream.flush();
+                 outputStream.close();
+
+
+                 int responseStatusCode = httpURLConnection.getResponseCode();
+                 Log.d(TAG, "POST response code - " + responseStatusCode);
+
+                 InputStream inputStream;
+                 if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                     inputStream = httpURLConnection.getInputStream();
+                 }
+                 else{
+                     inputStream = httpURLConnection.getErrorStream();
+                 }
+
+
+                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                 StringBuilder sb = new StringBuilder();
+                 String line = null;
+
+                 while((line = bufferedReader.readLine()) != null){
+                     sb.append(line);
+                 }
+
+
+                 bufferedReader.close();
+
+
+                 return sb.toString();
+
+
+             } catch (Exception e) {
+                 Log.d(TAG, "InsertData: Error ", e);
+                 return new String("Error: " + e.getMessage());
+             }
+
+         }
+     }*/
 }
 

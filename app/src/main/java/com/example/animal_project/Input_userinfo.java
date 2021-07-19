@@ -114,8 +114,8 @@ public class Input_userinfo extends AppCompatActivity {
             String msg;
             @Override
             public void onClick(View v) {
-/*                // 사용자가 모든 정보를 입력하였는지 확인
-                if(TextUtils.isEmpty(farm_name_et.getText())){
+                // 사용자가 모든 정보를 입력하였는지 확인
+/*                if(TextUtils.isEmpty(farm_name_et.getText())){
                     msg = "농장명을 입력하세요";
                     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 } else if(TextUtils.isEmpty(address_et.getText())){
@@ -155,6 +155,7 @@ public class Input_userinfo extends AppCompatActivity {
                             Integer.parseInt(String.valueOf(total_cow_et.getText())),
                             Integer.parseInt(String.valueOf(total_adult_cow_et.getText())),
                             Integer.parseInt(String.valueOf(total_child_cow_et.getText())),
+                            Integer.parseInt(String.valueOf(sample_size_count)),
                             String.valueOf(eva_name_et.getText()),
                             eva_data_picker.getYear(),
                             eva_data_picker.getMonth(),
@@ -193,10 +194,6 @@ public class Input_userinfo extends AppCompatActivity {
                     sample_size.setText(result);
                     total_cow_count = total_cow_et.getText().toString();
                     sample_size_count = result;
-
-
-
-
                 }
             }
             @Override
@@ -304,7 +301,7 @@ public class Input_userinfo extends AppCompatActivity {
    private void sendInformation(Intent intent, String farmName,
                                 String address, String addressDetail,
                                 String repName, int totalCow, int totalAdultCow,
-                                int totalChildCow, String evaName, int year,
+                                int totalChildCow,int sampleCow, String evaName, int year,
                                 int month, int day,int farmType){
 
 
@@ -317,6 +314,7 @@ public class Input_userinfo extends AppCompatActivity {
         bundle.putInt("totalCow",totalCow);
         bundle.putInt("totalAdultCow",totalAdultCow);
         bundle.putInt("totalChildCow",totalChildCow);
+        bundle.putInt("sampleCowSize",sampleCow);
         bundle.putString("evaName",evaName);
         bundle.putString("evaDate",evaDate);
         bundle.putInt("farmType",farmType);
@@ -340,7 +338,7 @@ public class Input_userinfo extends AppCompatActivity {
     private void CheckInputInformation( AlertDialog.Builder AlertBuilder, String farmName,
                                         String address, String addressDetail,
                                        String repName, int totalCow, int totalAdultCow,
-                                       int totalChildCow, String evaName, int year,
+                                       int totalChildCow,int sampleCow, String evaName, int year,
                                        int month, int day,int farmType){
         String farmTypeMsg;
         if(farmType == 1){
@@ -364,6 +362,7 @@ public class Input_userinfo extends AppCompatActivity {
                 + "총 두수 : " + totalCow + "두 \n"
                 + "성우 두수 : " + totalAdultCow + "두 \n"
                 + "송아지 두수 : " + totalChildCow + "두 \n"
+                + "표본 두수 : " + sampleCow +"두 \n"
                 + "평가자명 : " + evaName + " \n"
                 + "평가일 :" + year + "년 " + (month+1) + "월 " + day + "일 \n\n"
                 + "입력 하신 정보로 평가를 진행하시겠습니까? ";
@@ -380,7 +379,7 @@ public class Input_userinfo extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 Intent intentQuestionTemplate = new Intent(Input_userinfo.this, QuestionTemplate.class);
                 sendInformation(intentQuestionTemplate,farmName,address,addressDetail,
-                        repName,totalCow,totalAdultCow,totalChildCow,evaName,
+                        repName,totalCow,totalAdultCow,totalChildCow,sampleCow,evaName,
                         year,month,day,farmType);
                 startActivity(intentQuestionTemplate);
             }
