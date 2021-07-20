@@ -44,18 +44,9 @@ public class BreedRuminant extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(TextUtils.isEmpty(breed_ruminant_ed.getText().toString())){
-                    breed_ruminant_tv.setText("값을 입력하세요");
-                    viewModel.setRuminantRatio(-1);
-                } else if(viewModel.getRatio(breed_ruminant_ed) > 100) {
-                    viewModel.setRuminantRatio(-1);
-                    breed_ruminant_tv.setText("표본 규모보다 큰 값 입력 불가");
-                    sample_size_tv.setVisibility(View.VISIBLE);
-                    sample_size_tv.setText("표본 규모 : " + String.valueOf(viewModel.getSampleCowSize()));
-                } else {
-                    viewModel.setRuminantRatio(viewModel.getRatio(breed_ruminant_ed));
-                    breed_ruminant_tv.setText(String.valueOf(viewModel.getRatio(breed_ruminant_ed)));
-                }
+                viewModel.penQuestionAfterTextChanged(breed_ruminant_ed,breed_ruminant_tv,
+                        sample_size_tv,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedRuminant);
+
             }
 
         });

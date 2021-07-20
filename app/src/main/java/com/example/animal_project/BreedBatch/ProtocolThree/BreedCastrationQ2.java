@@ -31,7 +31,7 @@ public class BreedCastrationQ2 extends Fragment {
                 } else if (checkedId == R.id.breed_castration_q2_2) {
                     anesthesia = 2;
                 }
-                viewModel.setCastrationAnesthesia(anesthesia);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationAnesthesia).setSelectedItem(anesthesia);
             }
         });
 

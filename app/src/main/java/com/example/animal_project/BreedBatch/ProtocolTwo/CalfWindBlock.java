@@ -36,17 +36,17 @@ public class CalfWindBlock extends Fragment {
                 }else if(checkedId == R.id.calf_wind_block_2){
                     calfWindBlock = 2;
                 }
-                viewModel.setCalfWindBlockScore(calfWindBlock);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWindBlock).setSelectedItem(calfWindBlock);
 
-                if(viewModel.getCalfStrawScore() == 0){
+                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfStraw).getSelectedItem() == -1){
                     calfWinterRestScoreTv.setText("14번 문항을 완료해주세요");
-                }else if(viewModel.getCalfWarmScore() == 0){
+                }else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWarm).getSelectedItem() == 0){
                     calfWinterRestScoreTv.setText("15번 문항을 완료해주세요");
                 }else {
                     int calfWinterRestScore = viewModel.calculatorCalfWinterRestScore(
-                            viewModel.getCalfStrawScore(),
-                            viewModel.getCalfWarmScore(),
-                            viewModel.getCalfWindBlockScore()
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfStraw).getSelectedItem(),
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWarm).getSelectedItem(),
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWindBlock).getSelectedItem()
                     );
                     viewModel.setCalfWinterRestScore(calfWinterRestScore);
                     calfWinterRestScoreTv.setText(String.valueOf(calfWinterRestScore));

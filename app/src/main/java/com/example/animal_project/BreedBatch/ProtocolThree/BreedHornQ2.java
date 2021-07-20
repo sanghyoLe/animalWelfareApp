@@ -31,7 +31,7 @@ private int anesthesia;
                 } else if (checkedId == R.id.breed_horn_q2_2) {
                     anesthesia = 2;
                 }
-                viewModel.setAnesthesia(anesthesia);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornAnesthesia).setSelectedItem(anesthesia);
             }
         });
         // Inflate the layout for this fragment

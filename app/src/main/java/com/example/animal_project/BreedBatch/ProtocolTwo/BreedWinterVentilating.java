@@ -33,14 +33,17 @@ public class BreedWinterVentilating extends Fragment {
                 }else if(checkedId == R.id.breed_winter_ventilating_2){
                     winterVentilating = 2;
                 }
-                viewModel.setWinterVentilatingScore(winterVentilating);
-                if(viewModel.getWindBlockScore() == 0){
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWinterVentilating).setSelectedItem(winterVentilating);
+
+                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWindBlock).getSelectedItem() == -1){
                     winterRestScoreTv.setText("9번 문항을 완료해주세요");
                 }  else {
-                    int winterRestScore = viewModel.calculatorBreedWinterRestScore(viewModel.getWindBlockScore(),viewModel.getWinterVentilatingScore());
+                    int winterRestScore = viewModel.calculatorBreedWinterRestScore(
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWindBlock).getSelectedItem(),
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWinterVentilating).getSelectedItem()
+                    );
                     viewModel.setWinterRestScore(winterRestScore);
                     winterRestScoreTv.setText(String.valueOf(winterRestScore));
-
                 }
             }
         });

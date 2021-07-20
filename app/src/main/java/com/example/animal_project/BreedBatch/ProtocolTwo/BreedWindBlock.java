@@ -31,7 +31,7 @@ public class BreedWindBlock extends Fragment {
                 }else if(checkedId == R.id.breed_wind_block_2){
                     windBlock = 2;
                 }
-                viewModel.setWindBlockScore(windBlock);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWindBlock).setSelectedItem(windBlock);
 
             }
         });

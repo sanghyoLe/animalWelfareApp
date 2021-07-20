@@ -44,7 +44,7 @@ public class BreedWaterQ1 extends Fragment {
                 } else if (checkedId == R.id.breed_water_tank_num_2) {
                     waterTankNum = 2;
                 }
-                viewModel.setWaterTankNum(waterTankNum);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).setSelectedItem(waterTankNum);
             }
         });
 

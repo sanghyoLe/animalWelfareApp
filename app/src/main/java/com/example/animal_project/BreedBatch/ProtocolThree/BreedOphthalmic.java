@@ -42,18 +42,21 @@ public class BreedOphthalmic extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(TextUtils.isEmpty(breed_ophthalmic_ed.getText().toString())){
+                viewModel.penQuestionAfterTextChanged(breed_ophthalmic_ed,breed_ophthalmic_tv,
+                        sample_size_tv, (QuestionTemplateViewModel.PenQuestion)viewModel.BreedOphthalmic);
+
+   /*             if(TextUtils.isEmpty(breed_ophthalmic_ed.getText().toString())){
                     breed_ophthalmic_tv.setText("값을 입력하세요");
-                    viewModel.setOphthalmicRatio(-1);
+                    ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose).setRatio(-1);
                 } else if(viewModel.getRatio(breed_ophthalmic_ed) > 100) {
-                    viewModel.setOphthalmicRatio(-1);
+                    ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose).setRatio(-1);
                     breed_ophthalmic_tv.setText("표본 규모보다 큰 값 입력 불가");
                     sample_size_tv.setVisibility(View.VISIBLE);
                     sample_size_tv.setText("표본 규모 : " + String.valueOf(viewModel.getSampleCowSize()));
                 } else {
                     viewModel.setOphthalmicRatio(viewModel.getRatio(breed_ophthalmic_ed));
                     breed_ophthalmic_tv.setText(String.valueOf(viewModel.getRatio(breed_ophthalmic_ed)));
-                }
+                }*/
             }
 
         });

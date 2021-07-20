@@ -45,7 +45,7 @@ public class BreedWaterQ2 extends Fragment {
                 } else if (checkedId == R.id.breed_water_tank_clean_3) {
                     waterTankClean = 3;
                 }
-                viewModel.setWaterTankClean(waterTankClean);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).setSelectedItem(waterTankClean);
             }
         });
 

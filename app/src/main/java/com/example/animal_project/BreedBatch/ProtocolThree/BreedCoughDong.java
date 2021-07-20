@@ -80,6 +80,8 @@ public class BreedCoughDong extends AppCompatActivity {
         QuestionTemplateViewModel.CoughQuestion coughQuestion = new QuestionTemplateViewModel.CoughQuestion(dong_size);
         Button end_btn = view.findViewById(R.id.end_btn);
 
+
+
         end_btn.setOnClickListener(new View.OnClickListener() {
             String msg;
             @Override

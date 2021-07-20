@@ -39,17 +39,17 @@ public class CalfMistSpray extends Fragment {
                 {
                     mistSpray = 2;
                 }
-                viewModel.setCalfMistSprayScore(mistSpray);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfMistSpray).setSelectedItem(mistSpray);
 
-                if(viewModel.getCalfShadeScore() == 0){
+                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfShade).getSelectedItem() == -1){
                     calfRestScoreTv.setText("11번 문항을 완료해주세요");
-                } else if(viewModel.getCalfSummerVentilatingScore() == 0){
+                } else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfSummerVentilating).getSelectedItem() == -1){
                     calfRestScoreTv.setText("12번 문항을 완료해주세요");
                 } else {
                     int summerRestScore = viewModel.calculatorBreedSummerRestScore(
-                            viewModel.getCalfShadeScore(),
-                            viewModel.getCalfSummerVentilatingScore(),
-                            viewModel.getCalfMistSprayScore()
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfShade).getSelectedItem(),
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfSummerVentilating).getSelectedItem(),
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfMistSpray).getSelectedItem()
                     );
                     viewModel.setCalfSummerRestScore(summerRestScore);
                     calfRestScoreTv.setText(String.valueOf(summerRestScore));
@@ -57,12 +57,6 @@ public class CalfMistSpray extends Fragment {
 
             }
         });
-
-
-
-
-
-
         return view;
     }
 }

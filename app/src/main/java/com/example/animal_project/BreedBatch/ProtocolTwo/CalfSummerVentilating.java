@@ -33,7 +33,7 @@ public class CalfSummerVentilating extends Fragment {
                 }else if(checkedId == R.id.calf_summer_ventilating_2){
                     summerVentilating = 2;
                 }
-                viewModel.setCalfSummerVentilatingScore(summerVentilating);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfSummerVentilating).setSelectedItem(summerVentilating);
             }
         });
 

@@ -33,7 +33,7 @@ public class CalfStraw extends Fragment {
                 }else if(checkedId == R.id.calf_straw_2){
                     calfStraw = 2;
                 }
-                viewModel.setCalfStrawScore(calfStraw);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfStraw).setSelectedItem(calfStraw);
             }
         });
         // Inflate the layout for this fragment

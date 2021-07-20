@@ -29,9 +29,8 @@ public class BreedRunnyNose extends Fragment {
         TextView breed_runny_nose_ratio_tv = view.findViewById(R.id.breed_runny_nose_ratio);
         TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
-
-
-
+        EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
+        EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
 
 
 
@@ -49,18 +48,9 @@ public class BreedRunnyNose extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(TextUtils.isEmpty(breed_runny_nose_ed.getText().toString())){
-                    breed_runny_nose_ratio_tv.setText("값을 입력하세요");
-                    viewModel.setRunnyNoseRatio(-1);
-                } else if(viewModel.getRatio(breed_runny_nose_ed) > 100) {
-                    viewModel.setRunnyNoseRatio(-1);
-                    breed_runny_nose_ratio_tv.setText("표본 규모보다 큰 값 입력 불가");
-                    sample_size_tv.setVisibility(View.VISIBLE);
-                    sample_size_tv.setText("표본 규모 : " + String.valueOf(viewModel.getSampleCowSize()));
-                } else {
-                    viewModel.setRunnyNoseRatio((float)viewModel.getRatio(breed_runny_nose_ed));
-                    breed_runny_nose_ratio_tv.setText(String.valueOf(viewModel.getRatio(breed_runny_nose_ed)));
-                }
+                viewModel.penQuestionAfterTextChanged(breed_runny_nose_ed,breed_runny_nose_ratio_tv
+                        ,sample_size_tv,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose);
+                Log.d("ratio",String.valueOf(((QuestionTemplateViewModel.PenQuestion) viewModel.BreedRunnyNose).getRatio()));
             }
 
         });

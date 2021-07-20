@@ -91,10 +91,12 @@ public class BreedCriticalHairLoss extends Fragment {
                         int hair_loss_score = viewModel.calculatorHairLossScore(ratio_total);
                         viewModel.setHairLossScore(hair_loss_score);
                         breedHairLossScoreTv.setText(String.valueOf(hair_loss_score));
-                        if(viewModel.getLimpScore() == -1){
+                        if(((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getScore() == -1){
                             breedMinInjuryScoreTv.setText("다리 절음 평가를 완료해주세요");
                         } else{
-                            long minInjuryScore = viewModel.calculatorMinInjuryScore(viewModel.getLimpScore(),viewModel.getHairLossScore());
+                            long minInjuryScore = viewModel.calculatorMinInjuryScore(
+                                    (int)((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getScore(),
+                                    viewModel.getHairLossScore());
                             breedMinInjuryScoreTv.setText(String.valueOf(minInjuryScore));
                             viewModel.setMinInjuryScore(minInjuryScore);
                         }

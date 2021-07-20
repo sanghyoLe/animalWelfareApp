@@ -36,7 +36,7 @@ public class CalfShade extends Fragment {
                 {
                     shade = 2;
                 }
-                viewModel.setCalfShadeScore(shade);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfShade).setSelectedItem(shade);
             }
         });
 

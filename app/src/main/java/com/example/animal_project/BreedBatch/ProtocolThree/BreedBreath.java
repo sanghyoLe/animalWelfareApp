@@ -43,18 +43,9 @@ public class BreedBreath extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(TextUtils.isEmpty(breed_breath_ed.getText().toString())){
-                    breed_breath_tv.setText("값을 입력하세요");
-                    viewModel.setBreathRatio(-1);
-                } else if(viewModel.getRatio(breed_breath_ed) > 100) {
-                    viewModel.setBreathRatio(-1);
-                    breed_breath_tv.setText("표본 규모보다 큰 값 입력 불가");
-                    sample_size_tv.setVisibility(View.VISIBLE);
-                    sample_size_tv.setText("표본 규모 : " + String.valueOf(viewModel.getSampleCowSize()));
-                } else {
-                    viewModel.setBreathRatio(viewModel.getRatio(breed_breath_ed));
-                    breed_breath_tv.setText(String.valueOf(viewModel.getRatio(breed_breath_ed)));
-                }
+                viewModel.penQuestionAfterTextChanged(breed_breath_ed,breed_breath_tv,
+                        sample_size_tv, (QuestionTemplateViewModel.PenQuestion)viewModel.BreedBreath);
+
             }
 
         });

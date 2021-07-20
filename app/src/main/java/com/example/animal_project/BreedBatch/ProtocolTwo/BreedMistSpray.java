@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.example.animal_project.QuestionTemplate;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
@@ -39,14 +40,18 @@ public class BreedMistSpray extends Fragment {
                 {
                     mistSpray = 2;
                 }
-                    viewModel.setMistSprayScore(mistSpray);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).setSelectedItem(mistSpray);
                 
-                if(viewModel.getShadeScore() == 0){
+                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem() == -1){
                     breedRestScoreTv.setText("7번 문항을 완료해주세요");
-                } else if(viewModel.getSummerVentilatingScore() == 0){
+                } else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getSelectedItem() == -1){
                     breedRestScoreTv.setText("8번 문항을 완료해주세요");
                 } else {
-                    int summerRestScore = viewModel.calculatorBreedSummerRestScore(viewModel.getShadeScore(),viewModel.getSummerVentilatingScore(),viewModel.getMistSprayScore());
+                    int summerRestScore = viewModel.calculatorBreedSummerRestScore(
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem(),
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getSelectedItem(),
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem()
+                );
                     viewModel.setSummerRestScore(summerRestScore);
                     breedRestScoreTv.setText(String.valueOf(summerRestScore));
                 }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
+import com.example.animal_project.QuestionTemplate;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
@@ -36,7 +37,7 @@ public class BreedCastrationQ1 extends Fragment {
                 } else if (checkedId == R.id.breed_castration_q1_4) {
                     castration = 4;
                 }
-                viewModel.setCastration(castration);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastration).setSelectedItem(castration);
             }
         });
 

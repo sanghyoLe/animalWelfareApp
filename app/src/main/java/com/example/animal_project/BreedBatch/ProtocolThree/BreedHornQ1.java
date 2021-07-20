@@ -35,7 +35,8 @@ public class BreedHornQ1 extends Fragment {
                 } else if (checkedId == R.id.breed_horn_q1_4) {
                     hornRemoval = 4;
                 }
-                viewModel.setHornRemoval(hornRemoval);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornRemoval).setSelectedItem(hornRemoval);
+
             }
         });
 

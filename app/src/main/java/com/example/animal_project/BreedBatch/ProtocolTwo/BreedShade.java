@@ -36,7 +36,7 @@ public class BreedShade extends Fragment {
                     {
                         shade = 2;
                     }
-                    viewModel.setShadeScore(shade);
+                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).setSelectedItem(shade);
                 }
             });
 
