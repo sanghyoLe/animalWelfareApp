@@ -49,8 +49,8 @@ public class BreedRunnyNose extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 viewModel.penQuestionAfterTextChanged(breed_runny_nose_ed,breed_runny_nose_ratio_tv
-                        ,sample_size_tv,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose);
-                Log.d("ratio",String.valueOf(((QuestionTemplateViewModel.PenQuestion) viewModel.BreedRunnyNose).getRatio()));
+                        ,sample_size_tv,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose);
+
             }
 
         });

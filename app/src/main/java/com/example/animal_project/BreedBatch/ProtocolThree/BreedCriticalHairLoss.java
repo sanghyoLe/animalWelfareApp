@@ -65,7 +65,8 @@ public class BreedCriticalHairLoss extends Fragment {
                             + criticalHairLoss) > viewModel.getSampleCowSize()) {
                         breedHairLossRatioTv.setText("표본 두수보다 큰 값을 입력하셨습니다");
                         hairLossSampleSizeTv.setVisibility(View.VISIBLE);
-                        hairLossSampleSizeTv.setText("표본 두수 : " + viewModel.getSampleCowSize());
+                        hairLossSampleSizeTv.setText("표본 두수 : " + viewModel.getSampleCowSize()
+                                + "\n" + "경미한 외피 변형 두수 : " + ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getNumberOfCow());
                     } else {
                         ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).setNumberOfCow((int)criticalHairLoss);
                         ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).setPenLocation(

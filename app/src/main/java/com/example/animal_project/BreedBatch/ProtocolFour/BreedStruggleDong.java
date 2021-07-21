@@ -27,227 +27,163 @@ import java.util.Arrays;
 
 public class BreedStruggleDong extends AppCompatActivity {
     private int dong_size;
+    private QuestionTemplateViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_breed_struggle_dong);
-        QuestionTemplateViewModel viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
+        setContentView(R.layout.struggle_dong);
+        viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
 
         Intent intent = getIntent();
         dong_size = intent.getExtras().getInt("dong_count");
 
-        ImageButton prev_dong_btn = findViewById(R.id.prev_dong_q3_btn);
-        ImageButton next_dong_btn = findViewById(R.id.next_dong_q3_btn_);
-        TextView dong_current = findViewById(R.id.current_dong_q3);
-        TextView dong_total = findViewById(R.id.total_dong_q3);
-        Button dong_btn = findViewById(R.id.breed_dong_struggle_btn);
-        ImageButton home_btn = findViewById(R.id.dong_home_q3_btn);
+        View view = findViewById(R.id.breed_struggle_dong_layout);
 
 
-        LinearLayout dong_1 = findViewById(R.id.breed_dong_struggle_1);
-        LinearLayout dong_2 = findViewById(R.id.breed_dong_struggle_2);
-        LinearLayout dong_3 = findViewById(R.id.breed_dong_struggle_3);
-        LinearLayout dong_4 = findViewById(R.id.breed_dong_struggle_4);
-        LinearLayout dong_5 = findViewById(R.id.breed_dong_struggle_5);
-        LinearLayout dong_6 = findViewById(R.id.breed_dong_struggle_6);
-        LinearLayout dong_7 = findViewById(R.id.breed_dong_struggle_7);
-        LinearLayout dong_8 = findViewById(R.id.breed_dong_struggle_8);
-        LinearLayout dong_9 = findViewById(R.id.breed_dong_struggle_9);
-        LinearLayout dong_10 = findViewById(R.id.breed_dong_struggle_10);
-        LinearLayout dong_11 = findViewById(R.id.breed_dong_struggle_11);
-        LinearLayout dong_12 = findViewById(R.id.breed_dong_struggle_12);
 
-        LinearLayout[] dong = {dong_1,dong_2,dong_3,dong_4,dong_5,dong_6,dong_7,dong_8,dong_9,dong_10,dong_11
-                ,dong_12};
+        View question_1 = findViewById(R.id.breed_struggle_dong_question_1);
+        View question_2 = findViewById(R.id.breed_struggle_dong_question_2);
+        View question_3 = findViewById(R.id.breed_struggle_dong_question_3);
+        View question_4 = findViewById(R.id.breed_struggle_dong_question_4);
+        View question_5 = findViewById(R.id.breed_struggle_dong_question_5);
+        View question_6 = findViewById(R.id.breed_struggle_dong_question_6);
+        View question_7 = findViewById(R.id.breed_struggle_dong_question_7);
+        View question_8 = findViewById(R.id.breed_struggle_dong_question_8);
+        View question_9 = findViewById(R.id.breed_struggle_dong_question_9);
+        View question_10 = findViewById(R.id.breed_struggle_dong_question_10);
+        View question_11 = findViewById(R.id.breed_struggle_dong_question_11);
+        View question_12 = findViewById(R.id.breed_struggle_dong_question_12);
+        View question_13 = findViewById(R.id.breed_struggle_dong_question_13);
+        View question_14 = findViewById(R.id.breed_struggle_dong_question_14);
+        View question_15 = findViewById(R.id.breed_struggle_dong_question_15);
+        View question_16 = findViewById(R.id.breed_struggle_dong_question_16);
+        View question_17 = findViewById(R.id.breed_struggle_dong_question_17);
+        View question_18 = findViewById(R.id.breed_struggle_dong_question_18);
+        View question_19 = findViewById(R.id.breed_struggle_dong_question_19);
+        View question_20 = findViewById(R.id.breed_struggle_dong_question_20);
 
-        dong_total.setText(String.valueOf(dong_size));
-        if(dong_size == 1){
-            next_dong_btn.setVisibility(View.INVISIBLE);
-            prev_dong_btn.setVisibility(View.INVISIBLE);
-            dong_btn.setVisibility(View.VISIBLE);
-        }
-        viewModel.clickDongHandler(next_dong_btn,prev_dong_btn,dong_btn,dong,dong_current,dong_size);
-        home_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        ImageButton home_btn = view.findViewById(R.id.home_btn);
+        View[] questionViewArr = {
+                question_1, question_2, question_3, question_4, question_5
+                , question_6, question_7, question_8, question_9, question_10
+                , question_11, question_12, question_13, question_14, question_15
+                , question_16, question_17, question_18, question_19, question_20};
+        viewModel.showQuestionView(questionViewArr,dong_size);
+        EditText[] penLocationOneEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.pen_location_1_ed);
+        EditText[] penLocationTwoEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.pen_location_2_ed);
+        EditText[] cowSizeEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.cow_size_ed);
+        EditText[] struggleEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.struggle_ed);
+        Button end_btn = view.findViewById(R.id.end_btn);
+
+
+
         // 완료 버튼
-        EditText breed_total_cow_1_ed = findViewById(R.id.breed_total_cow_1);
-        EditText breed_struggle_1_ed = findViewById(R.id.breed_struggle_1);
-        TextView breed_struggle_ratio_1_tv = findViewById(R.id.breed_struggle_ratio_1);
-
-        EditText breed_total_cow_2_ed = findViewById(R.id.breed_total_cow_2);
-        EditText breed_struggle_2_ed = findViewById(R.id.breed_struggle_2);
-        TextView breed_struggle_ratio_2_tv = findViewById(R.id.breed_struggle_ratio_2);
-
-        EditText breed_total_cow_3_ed = findViewById(R.id.breed_total_cow_3);
-        EditText breed_struggle_3_ed = findViewById(R.id.breed_struggle_3);
-        TextView breed_struggle_ratio_3_tv = findViewById(R.id.breed_struggle_ratio_3);
-
-        EditText breed_total_cow_4_ed = findViewById(R.id.breed_total_cow_4);
-        EditText breed_struggle_4_ed = findViewById(R.id.breed_struggle_4);
-        TextView breed_struggle_ratio_4_tv = findViewById(R.id.breed_struggle_ratio_4);
-
-        EditText breed_total_cow_5_ed = findViewById(R.id.breed_total_cow_5);
-        EditText breed_struggle_5_ed = findViewById(R.id.breed_struggle_5);
-        TextView breed_struggle_ratio_5_tv = findViewById(R.id.breed_struggle_ratio_5);
-
-        EditText breed_total_cow_6_ed = findViewById(R.id.breed_total_cow_6);
-        EditText breed_struggle_6_ed = findViewById(R.id.breed_struggle_6);
-        TextView breed_struggle_ratio_6_tv = findViewById(R.id.breed_struggle_ratio_6);
-
-        EditText breed_total_cow_7_ed = findViewById(R.id.breed_total_cow_7);
-        EditText breed_struggle_7_ed = findViewById(R.id.breed_struggle_7);
-        TextView breed_struggle_ratio_7_tv = findViewById(R.id.breed_struggle_ratio_7);
-
-        EditText breed_total_cow_8_ed = findViewById(R.id.breed_total_cow_8);
-        EditText breed_struggle_8_ed = findViewById(R.id.breed_struggle_8);
-        TextView breed_struggle_ratio_8_tv = findViewById(R.id.breed_struggle_ratio_8);
-
-        EditText breed_total_cow_9_ed = findViewById(R.id.breed_total_cow_9);
-        EditText breed_struggle_9_ed = findViewById(R.id.breed_struggle_9);
-        TextView breed_struggle_ratio_9_tv = findViewById(R.id.breed_struggle_ratio_9);
-
-        EditText breed_total_cow_10_ed = findViewById(R.id.breed_total_cow_10);
-        EditText breed_struggle_10_ed = findViewById(R.id.breed_struggle_10);
-        TextView breed_struggle_ratio_10_tv = findViewById(R.id.breed_struggle_ratio_10);
-
-        EditText breed_total_cow_11_ed = findViewById(R.id.breed_total_cow_11);
-        EditText breed_struggle_11_ed = findViewById(R.id.breed_struggle_11);
-        TextView breed_struggle_ratio_11_tv = findViewById(R.id.breed_struggle_ratio_11);
-
-        EditText breed_total_cow_12_ed = findViewById(R.id.breed_total_cow_12);
-        EditText breed_struggle_12_ed = findViewById(R.id.breed_struggle_12);
-        TextView breed_struggle_ratio_12_tv = findViewById(R.id.breed_struggle_ratio_12);
+        QuestionTemplateViewModel.BehaviorQuestion struggleQuestion = new QuestionTemplateViewModel.BehaviorQuestion(dong_size);
 
 
-        setStruggleRatio(breed_total_cow_1_ed,breed_struggle_1_ed,breed_struggle_ratio_1_tv);
-        setStruggleRatio(breed_total_cow_2_ed,breed_struggle_2_ed,breed_struggle_ratio_2_tv);
-        setStruggleRatio(breed_total_cow_3_ed,breed_struggle_3_ed,breed_struggle_ratio_3_tv);
-        setStruggleRatio(breed_total_cow_4_ed,breed_struggle_4_ed,breed_struggle_ratio_4_tv);
-        setStruggleRatio(breed_total_cow_5_ed,breed_struggle_5_ed,breed_struggle_ratio_5_tv);
-        setStruggleRatio(breed_total_cow_6_ed,breed_struggle_6_ed,breed_struggle_ratio_6_tv);
-        setStruggleRatio(breed_total_cow_7_ed,breed_struggle_7_ed,breed_struggle_ratio_7_tv);
-        setStruggleRatio(breed_total_cow_8_ed,breed_struggle_8_ed,breed_struggle_ratio_8_tv);
-        setStruggleRatio(breed_total_cow_9_ed,breed_struggle_9_ed,breed_struggle_ratio_9_tv);
-        setStruggleRatio(breed_total_cow_10_ed,breed_struggle_10_ed,breed_struggle_ratio_10_tv);
-        setStruggleRatio(breed_total_cow_11_ed,breed_struggle_11_ed,breed_struggle_ratio_11_tv);
-        setStruggleRatio(breed_total_cow_12_ed,breed_struggle_12_ed,breed_struggle_ratio_12_tv);
-        EditText[] totalCowEtArr = {breed_total_cow_1_ed,breed_total_cow_2_ed,breed_total_cow_3_ed
-                ,breed_total_cow_4_ed,breed_total_cow_5_ed,breed_total_cow_6_ed,breed_total_cow_7_ed
-                ,breed_total_cow_8_ed,breed_total_cow_9_ed,breed_total_cow_10_ed
-                ,breed_total_cow_11_ed,breed_total_cow_12_ed};
-
-        TextView[] struggleRatioTvArr = {breed_struggle_ratio_1_tv,breed_struggle_ratio_2_tv
-                ,breed_struggle_ratio_3_tv, breed_struggle_ratio_4_tv,
-                breed_struggle_ratio_5_tv,breed_struggle_ratio_6_tv,
-                breed_struggle_ratio_7_tv,breed_struggle_ratio_8_tv,breed_struggle_ratio_9_tv,
-                breed_struggle_ratio_10_tv, breed_struggle_ratio_11_tv,breed_struggle_ratio_12_tv};
-        Button breed_struggle_button = findViewById(R.id.breed_dong_struggle_btn);
-        double [] struggleRatioArr = new double[12];
-        breed_struggle_button.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View view) {
-                Boolean checkEmpty = false;
-                int emptyDong = 0;
-                for(int idx = 0; idx < dong_size ; idx++){
-                    if(totalCowEtArr[idx].getText().toString().equals("")){
-                        checkEmpty = true;
-                        emptyDong = idx + 1;
-                    }  else {
-                        struggleRatioArr[idx] = Double.parseDouble((String) struggleRatioTvArr[idx].getText());
-                    }
-                }
-                // 이전 화면으로 돌아가기 ( 빈 값 있는지 체크 )
-                if(checkEmpty == true){
-                    String msg = emptyDong + "동의 빈 값을 입력해주세요";
-                    Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG ).show();
-                } else {
-                    double sum = Arrays.stream(struggleRatioArr).sum();
-                    sum = sum / (double)dong_size;
-                    sum = Math.round(sum*100)/ 100.0;
-                    Intent intent = new Intent();
-                    intent.putExtra("sum", sum);
-                    setResult(1, intent);
-                    finish();
-                }
-
-            }
-        });
-        AlertDialog.Builder myAlterDialog = new AlertDialog.Builder(BreedStruggleDong.this);
+                AlertDialog.Builder myAlterDialog = new AlertDialog.Builder(BreedStruggleDong.this);
         home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myOnBackPressed(myAlterDialog);
             }
         });
+        end_btn.setOnClickListener(new View.OnClickListener() {
+            String msg;
+            @Override
+            public void onClick(View v) {
+                if (viewModel.checkEmptyEditText(penLocationOneEd, dong_size) != -1) {
+                    msg = viewModel.checkEmptyEditText(penLocationOneEd, dong_size) + "동 펜 위치를 입력하세요";
+                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                } else if (viewModel.checkEmptyEditText(penLocationTwoEd, dong_size) != -1) {
+                    msg = viewModel.checkEmptyEditText(penLocationTwoEd, dong_size) + "동 펜 위치를 입력하세요";
+                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                } else if (viewModel.checkEmptyEditText(cowSizeEd, dong_size) != -1) {
+                    msg = viewModel.checkEmptyEditText(cowSizeEd, dong_size) + "동 사육 두수를 입력하세요";
+                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                } else if (viewModel.checkEmptyEditText(struggleEd, dong_size) != -1) {
+                    msg = viewModel.checkEmptyEditText(struggleEd, dong_size) + "동 투쟁 행동 수를 입력하세요";
+                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                } else {
+                    struggleQuestion.setPenLocation(viewModel.makePenLocationArr(penLocationOneEd,penLocationTwoEd,dong_size));
+                    struggleQuestion.setCowSize(viewModel.getIntEditTextValues(cowSizeEd,dong_size));
+                    struggleQuestion.setBehaviorCount(viewModel.getIntEditTextValues(struggleEd,dong_size));
+                    struggleQuestion.setBehaviorPerOne(
+                            calStrugglePerOne(
+                                    struggleQuestion.getCowSize(),
+                                    struggleQuestion.getBehaviorCount(),
+                                    dong_size
+                            )
+                    );
+                    float[] strugglePerOne = struggleQuestion.getBehaviorPerOne();
+                    struggleQuestion.setBehaviorPerOneAvg(
+                            calStrugglePerOneAvg(
+                                    struggleQuestion.getCowSize(),
+                                    struggleQuestion.getBehaviorCount(),
+                                    dong_size
+                            )
+                    );
+
+                    String msg = makeInputString(strugglePerOne, dong_size);
+                    AlertDialog.Builder AlterBuilder = new AlertDialog.Builder(BreedStruggleDong.this);
+                    AlterBuilder.setTitle("평과 결과");
+                    AlterBuilder.setMessage(msg + "\n"
+                    +"투쟁 행동 평균 : " + struggleQuestion.getBehaviorPerOneAvg() +"번"+" \n\n" +"평가를 완료하시겠습니까?");
+                    // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
+                    AlterBuilder.setPositiveButton("취소", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    AlterBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent();
+                            intent.putExtra("struggleQuestion", struggleQuestion);
+                            setResult(1, intent);
+                            finish();
+                        }
+                    });
+                    AlterBuilder.show();
+
+
+                }
+
+            }
+        });
     }
-    private static boolean isNumeric(String s) {
-        try {
-            Double.parseDouble(s);
-            return true;
-        } catch(NumberFormatException e) {
-            return false;
+
+    private float[] calStrugglePerOne(int[] cowSize, int[] struggleEd,int dong_size){
+        float[] strugglePerOne = new float[dong_size];
+        for(int i = 0 ; i< dong_size ; i++){
+            strugglePerOne[i] = (float)struggleEd[i] / (float)cowSize[i];
+            strugglePerOne[i] = (float) viewModel.cutDecimal(strugglePerOne[i]);
+            strugglePerOne[i] = strugglePerOne[i] * 6;
+            strugglePerOne[i] = (float) viewModel.cutDecimal(strugglePerOne[i]);
         }
+        return strugglePerOne;
     }
-    private void setStruggleRatio(EditText breed_total_cow, EditText breed_struggle_ed, TextView breed_struggle_ratio){
-        double pen_total_cow[] = new double[1];
-        double struggle_count[] = new double[1];
-        breed_total_cow.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(TextUtils.isEmpty(breed_total_cow.getText()) || TextUtils.isEmpty(breed_struggle_ed.getText())){
-                    breed_struggle_ratio.setText("값을 입력하세요");
-                } else{
-                    pen_total_cow[0]  = Double.parseDouble(breed_total_cow.getText().toString());
-                    struggle_count[0] = Double.parseDouble(breed_struggle_ed.getText().toString());
-                    double struggleRatio = Math.round((struggle_count[0]/pen_total_cow[0])*100)/ 100.0;
-                    struggleRatio = struggleRatio * 6;
-                    struggleRatio = Math.round(struggleRatio);
-                    breed_struggle_ratio.setText(String.valueOf(struggleRatio));
-                }
-            }
-        });
-
-        breed_struggle_ed.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(TextUtils.isEmpty(breed_total_cow.getText()) || TextUtils.isEmpty(breed_struggle_ed.getText())){
-                    breed_struggle_ratio.setText("값을 입력하세요");
-                } else{
-                    pen_total_cow[0]  = Double.parseDouble(breed_total_cow.getText().toString());
-                    struggle_count[0] = Double.parseDouble(breed_struggle_ed.getText().toString());
-                    double struggleRatio = Math.round((struggle_count[0]/pen_total_cow[0])*100)/ 100.0;
-                    struggleRatio = struggleRatio * 6;
-                    struggleRatio = Math.round(struggleRatio);
-                    breed_struggle_ratio.setText(String.valueOf(struggleRatio));
-
-                }
-            }
-        });
+    private float calStrugglePerOneAvg(int[] cowSize, int[] struggleEd, int dong_size){
+        float strugglePerOneAvg;
+        int totalCowSize = 0;
+        float totalStruggle = 0;
+        for(int i = 0 ; i< dong_size ; i++){
+            totalCowSize += cowSize[i];
+            totalStruggle += struggleEd[i];
+        }
+        strugglePerOneAvg = totalStruggle / (float)totalCowSize;
+        strugglePerOneAvg = (float) viewModel.cutDecimal(strugglePerOneAvg);
+        strugglePerOneAvg = strugglePerOneAvg * 6;
+        return strugglePerOneAvg;
+    }
+    private String makeInputString(float[] strugglePerOne,int dong_size){
+        String[] inputStrings = new String[dong_size];
+        String msg = "";
+        for(int i = 0 ; i < dong_size ; i++){
+            inputStrings[i] = (i+1) + "동 \n1마리당 1시간 동안 투쟁 행동 수 : " + strugglePerOne[i] + "번\n";
+            msg += inputStrings[i];
+        }
+        return msg;
     }
     public void myOnBackPressed(AlertDialog.Builder AlertBuilder){
 

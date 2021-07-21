@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/breed_struggle_dong_layout"
+    android:id="@+id/breed_harmony_dong_layout"
     >
 
     <LinearLayout
@@ -49,7 +49,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="동별 투쟁(서열) 행동 평가"
+                android:text="동별 화합 행동 평가"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:layout_marginBottom="30dp"
@@ -124,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:text="10분 동안 \n관찰한 투쟁(서열) \n행동 수"
+                        android:text="10분 동안 \n관찰한 화합 행동 수"
                         />
 
                 </TableRow>
@@ -148,103 +148,103 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <include
-                            android:id="@+id/breed_struggle_dong_question_1"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_1"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="visible"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_2"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_2"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_3"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_3"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_4"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_4"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_5"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_5"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_6"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_6"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_7"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_7"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_8"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_8"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_9"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_9"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_10"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_10"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_11"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_11"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_12"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_12"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_13"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_13"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_14"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_14"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_15"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_15"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_16"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_16"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_17"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_17"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_18"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_18"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_19"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_19"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
                         <include
-                            android:id="@+id/breed_struggle_dong_question_20"
-                            layout="@layout/struggle_dong_template"
+                            android:id="@+id/breed_harmony_dong_question_20"
+                            layout="@layout/harmony_dong_template"
                             android:visibility="gone"
                             />
 

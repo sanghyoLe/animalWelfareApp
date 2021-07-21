@@ -749,50 +749,39 @@ public class QuestionTemplate extends AppCompatActivity
         ImageView check_sub_35 = findViewById(R.id.check_sub_35);
         ImageView check_sub_36 = findViewById(R.id.check_sub_36);
 
+        // 라디오 그룹들
+        ImageView[] radioImageViewArr = {
+                check_sub_2,check_sub_3,check_sub_7,check_sub_8,check_sub_9,
+                check_sub_10,check_sub_11,check_sub_12,check_sub_13,check_sub_14,
+                check_sub_15,check_sub_16,check_sub_17, check_sub_28,check_sub_29,
+                check_sub_30,check_sub_31,check_sub_32,check_sub_33};
 
+        ImageView[] penImageViewArr = {
+                check_sub_6,check_sub_19,check_sub_20,check_sub_22,check_sub_23,
+                check_sub_24, check_sub_25,check_sub_26,check_sub_27
+        };
+        for(int i = 0 ; i < radioImageViewArr.length ; i ++){
+            if(((QuestionTemplateViewModel.RadioQuestion)viewModel.radioQuestionArr[i]).getSelectedItem() != -1){
+                changeCheckImage(radioImageViewArr[i]);
+            }
+        }
+        for(int i = 0 ;i < penImageViewArr.length ; i++){
+            if(((QuestionTemplateViewModel.PenQuestion)viewModel.penQuestionArr[i]).getNumberOfCow() != -1){
+                changeCheckImage(penImageViewArr[i]);
+            }
+        }
+        
         // 프로토콜 1
         changeEditTextCheckImage(check_sub_1,viewModel.getPoorScore());
-        if(viewModel.getWaterTankNum() != -1) changeCheckImage(check_sub_2);
-        if(viewModel.getWaterTankClean() != -1) changeCheckImage(check_sub_3);
         if(viewModel.getWaterTimeQuestion().getMaxWaterTimeScore() != -1) changeCheckImage(check_sub_4);
         if(viewModel.getProtocolOneScore() != -1)changeCheckImage(check_total_1);
-
         // 프로토콜 2
         if(viewModel.getStrawScore() != -1) changeCheckImage(check_sub_5);
-        if(viewModel.getOutWardScore() != -1) changeCheckImage(check_sub_6);
-        if(viewModel.getShadeScore() != -1) changeCheckImage(check_sub_7);
-        if(viewModel.getSummerVentilatingScore() != -1) changeCheckImage(check_sub_8);
-        if(viewModel.getMistSprayScore() != -1) changeCheckImage(check_sub_9);
-        if(viewModel.getWindBlockScore() != -1) changeCheckImage(check_sub_10);
-        if(viewModel.getWinterVentilatingScore() != -1) changeCheckImage(check_sub_11);
-        if(viewModel.getCalfShadeScore() != -1) changeCheckImage(check_sub_12);
-        if(viewModel.getCalfSummerVentilatingScore() != -1) changeCheckImage(check_sub_13);
-        if(viewModel.getCalfMistSprayScore() != -1) changeCheckImage(check_sub_14);
-        if(viewModel.getCalfStrawScore() != -1) changeCheckImage(check_sub_15);
-        if(viewModel.getCalfWarmScore() != -1) changeCheckImage(check_sub_16);
-        if(viewModel.getCalfWindBlockScore() != -1) changeCheckImage(check_sub_17);
         if(viewModel.getProtocolTwoScore() != -1) changeCheckImage(check_total_2);
-
         //프로토콜 3
         if(viewModel.getLimpScore() != -1) changeCheckImage(check_sub_18);
-        changeEditTextCheckImage(check_sub_19,(int)viewModel.getSlightHairLoss());
-        changeEditTextCheckImage(check_sub_20,(int)viewModel.getCriticalHairLoss());
-        if(viewModel.getCoughQuestion().getTotalCoughPerOne() != -1) changeCheckImage(check_sub_21);
-        changeEditTextCheckImage(check_sub_22,(int)viewModel.getRunnyNoseRatio());
-        changeEditTextCheckImage(check_sub_23,(int)viewModel.getOphthalmicRatio());
-        changeEditTextCheckImage(check_sub_24,(int)viewModel.getBreathRatio());
-        changeEditTextCheckImage(check_sub_25,(int)viewModel.getDiarrheaRatio());
-        changeEditTextCheckImage(check_sub_26,(int)viewModel.getRuminantRatio());
-        changeEditTextCheckImage(check_sub_27,(int)viewModel.getFallDeadRatio());
-        if(viewModel.getHornRemoval() != -1) changeCheckImage(check_sub_28);
-        if(viewModel.getAnesthesia() != -1) changeCheckImage(check_sub_29);
-        if(viewModel.getPainkiller() != -1) changeCheckImage(check_sub_30);
-        if(viewModel.getCastration() != -1) changeCheckImage(check_sub_31);
-        if(viewModel.getCastrationAnesthesia() != -1) changeCheckImage(check_sub_32);
-        if(viewModel.getCastrationPainkiller() != -1) changeCheckImage(check_sub_33);
+        if(viewModel.getCoughQuestion().getCoughPerOneAvg() != -1) changeCheckImage(check_sub_21);
         if(viewModel.getProtocolThreeScore() != -1) changeCheckImage(check_total_3);
-
-
         //프로토콜 4
         if(viewModel.getStruggle() != -1) changeCheckImage(check_sub_34);
         if(viewModel.getHarmony() != -1)changeCheckImage(check_sub_35);

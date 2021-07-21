@@ -27,6 +27,8 @@ public class BreedBreath extends Fragment {
         EditText breed_breath_ed = view.findViewById(R.id.breed_breath_ed);
         TextView breed_breath_tv = view.findViewById(R.id.breed_breath_ratio);
         TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
+        EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
+        EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
 
 
@@ -44,7 +46,7 @@ public class BreedBreath extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 viewModel.penQuestionAfterTextChanged(breed_breath_ed,breed_breath_tv,
-                        sample_size_tv, (QuestionTemplateViewModel.PenQuestion)viewModel.BreedBreath);
+                        sample_size_tv, penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedBreath);
 
             }
 

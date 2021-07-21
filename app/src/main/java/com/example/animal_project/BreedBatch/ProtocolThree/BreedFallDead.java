@@ -30,7 +30,8 @@ public class BreedFallDead extends Fragment {
         TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         TextView breed_disease_score_tv = view.findViewById(R.id.breed_disease_score);
-
+        EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
+        EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
 
         breed_fall_dead_ed.addTextChangedListener(new TextWatcher() {
             @Override
@@ -47,9 +48,9 @@ public class BreedFallDead extends Fragment {
             public void afterTextChanged(Editable s) {
                 // 질병의 최소화 프로토콜 점수 표시하는 로직
                 viewModel.penQuestionAfterTextChanged(breed_fall_dead_ed,breed_fall_dead_tv,
-                        sample_size_tv,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead);
+                        sample_size_tv,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead);
 
-                if(viewModel.getCoughQuestion().getTotalCoughPerOne() == -1){
+                if(viewModel.getCoughQuestion().getCoughPerOneAvg() == -1){
                     breed_disease_score_tv.setText("기침 평가를 완료하세요");
                 }else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose).getRatio() == -1){
                     breed_disease_score_tv.setText("비강분비물 평가를 완료하세요");

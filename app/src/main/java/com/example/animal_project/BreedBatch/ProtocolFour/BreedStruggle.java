@@ -97,9 +97,13 @@ public class BreedStruggle extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 1:
-                struggle = data.getExtras().getDouble("sum");
-                breed_struggle_tv.setText(String.valueOf(struggle));
-                viewModel.setStruggle(struggle);
+                QuestionTemplateViewModel.BehaviorQuestion struggleQuestion = (QuestionTemplateViewModel.BehaviorQuestion)
+                    data.getExtras().getSerializable("struggleQuestion");
+                viewModel.setStruggleQuestion(struggleQuestion);
+                breed_struggle_tv.setText(String.valueOf(
+                        ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg()
+                ));
+
                 break;
             default:
                 break;

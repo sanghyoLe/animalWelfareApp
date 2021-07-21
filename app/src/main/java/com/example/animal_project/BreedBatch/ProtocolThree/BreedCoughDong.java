@@ -109,11 +109,20 @@ public class BreedCoughDong extends AppCompatActivity {
                                     dong_size
                             )
                     );
+                    coughQuestion.setCoughPerOneAvg(
+                            calCoughPerOneAvg(
+                                    coughQuestion.getCowSize(),
+                                    coughQuestion.getCoughCount(),
+                                    dong_size
+                            )
+                    );
+
                     float[] coughPer = coughQuestion.getCoughPerOne();
                     String msg = makeInputString(coughPer, dong_size);
                     AlertDialog.Builder AlertBuilder = new AlertDialog.Builder(BreedCoughDong.this);
                     AlertBuilder.setTitle("평가 결과");
-                    AlertBuilder.setMessage(msg + "\n\n평가를 완료하시겠습니까 ? ");
+                    AlertBuilder.setMessage(msg + "\n평균 기침 수 : " + coughQuestion.getCoughPerOneAvg() +"번"
+                            + "\n\n평가를 완료하시겠습니까 ? ");
                     // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
                     AlertBuilder.setPositiveButton("취소", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
@@ -147,13 +156,25 @@ public class BreedCoughDong extends AppCompatActivity {
 
 
     }
-    private float[] calCoughPerOne(int[] cowSize, int[] coughCough,int dong_size){
+    private float[] calCoughPerOne(int[] cowSize, int[] coughEd,int dong_size){
         float[] coughPerOne = new float[dong_size];
         for(int i = 0 ; i< dong_size ; i++){
-            coughPerOne[i] = (float)coughCough[i] / (float)cowSize[i];
+            coughPerOne[i] = (float)coughEd[i] / (float)cowSize[i];
             coughPerOne[i] = (float) viewModel.cutDecimal(coughPerOne[i]);
         }
         return coughPerOne;
+    }
+    private float calCoughPerOneAvg(int[] cowSize, int[] coughEd, int dong_size){
+        float coughPerOneAvg;
+        int totalCowSize = 0;
+        int totalCough = 0;
+        for(int i = 0; i< dong_size; i++){
+            totalCowSize += cowSize[i];
+            totalCough += coughEd[i];
+        }
+        coughPerOneAvg = (float)totalCough / (float)totalCowSize;
+        coughPerOneAvg = (float)viewModel.cutDecimal(coughPerOneAvg);
+        return coughPerOneAvg;
     }
 
     public void myOnBackPressed(AlertDialog.Builder AlertBuilder){

@@ -28,6 +28,8 @@ public class BreedRuminant extends Fragment {
         view = inflater.inflate(R.layout.fragment_breed_ruminant, container, false);
         EditText breed_ruminant_ed = view.findViewById(R.id.breed_ruminant_ed);
         TextView breed_ruminant_tv = view.findViewById(R.id.breed_ruminant_ratio);
+        EditText pen_location_one_ed = view.findViewById(R.id.pen_location_ed_1);
+        EditText pen_location_two_ed = view.findViewById(R.id.pen_location_ed_2);
         TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
 
@@ -45,7 +47,7 @@ public class BreedRuminant extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 viewModel.penQuestionAfterTextChanged(breed_ruminant_ed,breed_ruminant_tv,
-                        sample_size_tv,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedRuminant);
+                        sample_size_tv,pen_location_one_ed,pen_location_two_ed,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedRuminant);
 
             }
 

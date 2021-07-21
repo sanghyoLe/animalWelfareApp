@@ -235,7 +235,7 @@ public class QuestionTemplateViewModel extends ViewModel {
 
         int[] coughCount;
         float[] coughPerOne;
-        float totalCoughPerOne = -1;
+        float CoughPerOneAvg = -1;
         float coughRatio = -1;
         public CoughQuestion(int dong_size){
             this.penLocation = new String[dong_size];
@@ -247,45 +247,85 @@ public class QuestionTemplateViewModel extends ViewModel {
         public int[] getCoughCount() {return this.coughCount; }
         public void setCoughPerOne(float[] coughPerOne){ this.coughPerOne = coughPerOne;}
         public float[] getCoughPerOne(){return this.coughPerOne;}
-        public void setTotalCoughPerOne(float totalCoughPerOne){this.totalCoughPerOne = totalCoughPerOne;}
-        public float getTotalCoughPerOne(){ return this.totalCoughPerOne;}
+        public void setCoughPerOneAvg(float CoughPerOneAvg){this.CoughPerOneAvg = CoughPerOneAvg;}
+        public float getCoughPerOneAvg(){ return this.CoughPerOneAvg;}
         public void setCoughRatio(float coughRatio){this.coughRatio = coughRatio;}
         public float getCoughRatio(){return this.coughRatio;}
     }
     public void setCoughQuestion(CoughQuestion coughQuestion){this.CoughQuestion = coughQuestion;}
     public CoughQuestion getCoughQuestion(){return (QuestionTemplateViewModel.CoughQuestion) this.CoughQuestion;}
-    public static class StruggleQuestion extends DongQuestion implements Serializable{
-        int[] struggleCount;
-        float[] strugglePerOne;
-        float totalStrugglePerOne = -1;
-        public StruggleQuestion(int dong_size){
+
+    public static class BehaviorQuestion extends DongQuestion implements Serializable{
+        int[] behaviorCount;
+        float[] behaviorPerOne;
+        float behaviorPerOneAvg;
+        public BehaviorQuestion(int dong_size){
             this.penLocation = new String[dong_size];
             this.cowSize = new int[dong_size];
-            this.struggleCount = new int[dong_size];
-            this.strugglePerOne = new float[dong_size];
+            this.behaviorCount = new int[dong_size];
+            this.behaviorPerOne = new float[dong_size];
+            this.behaviorPerOneAvg = -1;
         }
+
+        public void setBehaviorCount(int[] behaviorCount) {
+            this.behaviorCount = behaviorCount;
+        }
+
+        public int[] getBehaviorCount() {
+            return behaviorCount;
+        }
+
+        public void setBehaviorPerOne(float[] behaviorPerOne) {
+            this.behaviorPerOne = behaviorPerOne;
+        }
+
+        public float[] getBehaviorPerOne() {
+            return behaviorPerOne;
+        }
+
+        public void setBehaviorPerOneAvg(float BehaviorPerOneAvg) {
+            this.behaviorPerOneAvg = BehaviorPerOneAvg;
+        }
+
+        public float getBehaviorPerOneAvg() {
+            return behaviorPerOneAvg;
+        }
+    }
+    public void setStruggleQuestion(Object StruggleQuestion){
+        this.StruggleQuestion = StruggleQuestion;
+    }
+    public void setHarmonyQuestion(Object harmonyQuestion){
+        this.HarmonyQuestion = harmonyQuestion;
     }
 
 
 
-    private Object WaterTimeQuestion = new WaterTimeQuestion(20);
-    private Object CoughQuestion = new CoughQuestion(20);
-    private Object StrawQuestion = new StrawQuestion(20);
-    private Object StruggleQuestion = new StruggleQuestion(20);
-    private avoidDistance[] avoidDistances = new avoidDistance[51];
+    public Object WaterTimeQuestion = new WaterTimeQuestion(20);
+    public Object CoughQuestion = new CoughQuestion(20);
+    public Object StrawQuestion = new StrawQuestion(20);
+    public Object StruggleQuestion = new BehaviorQuestion(20);
+    public Object HarmonyQuestion = new BehaviorQuestion(20);
+    public avoidDistance[] avoidDistances = new avoidDistance[51];
 
 
-
+    public Object BreedPoor = new Question();
     public Object BreedLimp = new Question();
-    public Object BreedOutward = new PenQuestion("",0,-1);
-    public Object BreedSlightHairLoss = new PenQuestion("",0,-1);
-    public Object BreedCriticalHairLoss = new PenQuestion("",0,-1);
-    public Object BreedRunnyNose = new PenQuestion("",0,-1);
-    public Object BreedOphthalmic = new PenQuestion("",0,-1);
-    public Object BreedBreath = new PenQuestion("",0,-1);
-    public Object BreedDiarrhea = new PenQuestion("",0,-1);
-    public Object BreedRuminant = new PenQuestion("",0,-1);
-    public Object BreedFallDead = new PenQuestion("",0,-1);
+
+    // PenQuestions
+
+    public Object BreedOutward = new PenQuestion("",-1,-1);
+    public Object BreedSlightHairLoss = new PenQuestion("",-1,-1);
+    public Object BreedCriticalHairLoss = new PenQuestion("",-1,-1);
+    public Object BreedRunnyNose = new PenQuestion("",-1,-1);
+    public Object BreedOphthalmic = new PenQuestion("",-1,-1);
+    public Object BreedBreath = new PenQuestion("",-1,-1);
+    public Object BreedDiarrhea = new PenQuestion("",-1,-1);
+    public Object BreedRuminant = new PenQuestion("",-1,-1);
+    public Object BreedFallDead = new PenQuestion("",-1,-1);
+
+    public Object[] penQuestionArr = {
+            BreedOutward,BreedSlightHairLoss,BreedCriticalHairLoss,BreedRunnyNose,BreedOphthalmic,
+            BreedBreath,BreedDiarrhea,BreedRuminant,BreedFallDead};
 
     // RadioQuestions
     public Object BreedWaterTankNum = new RadioQuestion(-1);
@@ -307,6 +347,11 @@ public class QuestionTemplateViewModel extends ViewModel {
     public Object BreedCastration = new RadioQuestion(-1);
     public Object BreedCastrationAnesthesia = new RadioQuestion(-1);
     public Object BreedCastrationPainkiller = new RadioQuestion(-1);
+    public Object[] radioQuestionArr = {
+                BreedWaterTankNum,BreedWaterTankClean,BreedShade,BreedSummerVentilating, BreedMistSpray,
+                BreedWindBlock,BreedWinterVentilating,CalfShade, CalfSummerVentilating,CalfMistSpray,
+                CalfStraw,CalfWarm,CalfWindBlock, BreedHornRemoval,BreedHornAnesthesia,
+                BreedHornPainkiller, BreedCastration,BreedCastrationAnesthesia,BreedCastrationPainkiller};
 
     private int sampleCowSize = 0;
     private int totalCowSize = 0;
@@ -1588,22 +1633,27 @@ public class QuestionTemplateViewModel extends ViewModel {
         return -1;
     }
     public void penQuestionAfterTextChanged(EditText questionEd, TextView questionTv,
-                                            TextView sampleSizeTv, PenQuestion penQuestion){
+                                            TextView sampleSizeTv,EditText locationOneEd, EditText locationTwoEd,
+                                            PenQuestion penQuestion){
         if(TextUtils.isEmpty(questionEd.getText().toString())){
             questionTv.setText("값을 입력하세요");
             penQuestion.setRatio(-1);
+            penQuestion.setNumberOfCow(-1);
         } else if(getRatio(questionEd) > 100) {
             penQuestion.setRatio(-1);
             questionTv.setText("표본 규모보다 큰 값 입력 불가");
+            penQuestion.setNumberOfCow(-1);
             sampleSizeTv.setVisibility(View.VISIBLE);
             sampleSizeTv.setText("표본 규모 : " + String.valueOf(getSampleCowSize()));
         } else {
+            penQuestion.setPenLocation(
+                    makePenLocation(locationOneEd,locationTwoEd)
+            );
             penQuestion.setRatio(getRatio(questionEd));
+            penQuestion.setNumberOfCow(Integer.parseInt(String.valueOf(questionEd.getText())));
             questionTv.setText(String.valueOf(getRatio(questionEd)));
         }
     }
-
-
 }
 
 

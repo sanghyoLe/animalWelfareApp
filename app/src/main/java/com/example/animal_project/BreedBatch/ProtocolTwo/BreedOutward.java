@@ -41,7 +41,7 @@ public class BreedOutward extends Fragment {
             public void afterTextChanged(Editable editable) {
                 TextView breed_rest_score = view.findViewById(R.id.breed_rest_score);
                 viewModel.penQuestionAfterTextChanged(breed_outward_ed,breed_outward_ratio,
-                        sample_size_tv,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward);
+                        sample_size_tv,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward);
                 if(((QuestionTemplateViewModel.PenQuestion) viewModel.BreedOutward).getRatio() == -1){
                     breed_outward_score.setText("값을 입력해주세요");
                 } else {

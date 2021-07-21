@@ -38,10 +38,10 @@ public class BreedCough extends Fragment {
 
         breed_cough_tv = view.findViewById(R.id.breed_cough_tv);
         breed_cough_ratio_tv = view.findViewById(R.id.breed_cough_ratio_tv);
-        if(viewModel.getCoughQuestion().getTotalCoughPerOne() == -1){
+        if(viewModel.getCoughQuestion().getCoughPerOneAvg() == -1){
             breed_cough_tv.setText("평가를 완료하세요");
         } else {
-            breed_cough_tv.setText(String.valueOf(viewModel.getCoughQuestion().getTotalCoughPerOne()));
+            breed_cough_tv.setText(String.valueOf(viewModel.getCoughQuestion().getCoughPerOneAvg()));
             breed_cough_ratio_tv.setText(String.valueOf(viewModel.getCoughQuestion().getCoughRatio()));
         }
 
@@ -99,15 +99,13 @@ public class BreedCough extends Fragment {
                         data.getExtras().getSerializable("coughQuestion");
                 viewModel.setCoughQuestion(coughQuestion);
 
-                float totalCoughPerOne = 0;
-                float coughPerOne[]  = viewModel.getCoughQuestion().getCoughPerOne();
-                for(int i = 0 ; i < dong_size ; i++){
-                    totalCoughPerOne += coughPerOne[i];
-                }
-                breed_cough_tv.setText(String.valueOf(totalCoughPerOne));
-                viewModel.getCoughQuestion().setTotalCoughPerOne(totalCoughPerOne);
+
+                breed_cough_tv.setText(String.valueOf(
+                        ((QuestionTemplateViewModel.CoughQuestion)viewModel.CoughQuestion).getCoughPerOneAvg()
+                ));
+
                 float coughRatio;
-                coughRatio = (viewModel.getCoughQuestion().getTotalCoughPerOne() / (float)viewModel.getSampleCowSize()) * 100;
+                coughRatio = (viewModel.getCoughQuestion().getCoughPerOneAvg() / (float)viewModel.getSampleCowSize()) * 100;
                 coughRatio = (float)viewModel.cutDecimal(coughRatio);
                 viewModel.getCoughQuestion().setCoughRatio(coughRatio);
                 breed_cough_ratio_tv.setText(String.valueOf(coughRatio));
