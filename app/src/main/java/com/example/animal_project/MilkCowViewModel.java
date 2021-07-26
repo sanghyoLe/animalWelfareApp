@@ -10,10 +10,17 @@ import java.util.Map;
 
 public class MilkCowViewModel extends ViewModel {
     private int totalCowSize = 0;
+    private int sitCollision = -1;
+    private int sitCollisionScore = -1;
     private int areaOutCollision = -1;
+    private int sitTimeScore = -1;
+    private double countRatio = -1;
+    private int countScore = -1;
     private int appearance_Q1 = -1;
     private int appearance_Q2 = -1;
     private int appearance_Q3 = -1;
+    private double freestallRestScore = -1;
+    private double restScore = -1;
     private float slightLimp = -1;
     private float criticalLimp = -1;
     private int LimpScore = -1;
@@ -31,6 +38,9 @@ public class MilkCowViewModel extends ViewModel {
     private float dystociaRatio = -1;
     private float astasiaRatio = -1;
     private double diseaseScore = -1;
+    private double minPainScore = -1;
+    private double struggle = -1;
+    private int socialBehaviorScore = -1;
     private double protocolOneScore = -1;
     private double protocolTwoScore = -1;
     private double protocolThreeScore = -1;
@@ -69,13 +79,47 @@ public class MilkCowViewModel extends ViewModel {
     public int getTotalCowSize() {
         return this.totalCowSize;
     }
+    public void setCountRatio(double countRatio) {
+        this.countRatio = countRatio;
+    }
 
+    public double getCountRatio() {
+        return this.countRatio;
+    }
+    public void setCountScore(int countScore) {
+        this.countScore = countScore;
+    }
+
+    public int getCountScore() {
+        return this.countScore;
+    }
+    public void setSitCollision(int sitCollision) {
+        this.sitCollision = sitCollision;
+    }
+
+    public int getSitCollision() {
+        return this.sitCollision;
+    }
+    public void setSitCollisionScore(int sitCollisionScore) {
+        this.sitCollisionScore = sitCollisionScore;
+    }
+
+    public int getSitCollisionScore() {
+        return this.sitCollisionScore;
+    }
     public void setAreaOutCollision(int areaOutCollision) {
         this.areaOutCollision = areaOutCollision;
     }
 
-    public int getareaOutCollision() {
+    public int getAreaOutCollision() {
         return this.areaOutCollision;
+    }
+    public void setSitTimeScore(int sitTimeScore) {
+        this.sitTimeScore = sitTimeScore;
+    }
+
+    public int getSitTimeScore() {
+        return this.sitTimeScore;
     }
 
     public void setAppearanceQ1Score(int appearance_Q1) {
@@ -100,6 +144,20 @@ public class MilkCowViewModel extends ViewModel {
 
     public int getAppearanceQ3Score() {
         return this.appearance_Q3;
+    }
+    public void setFreestallRestScore(double freestallRestScore) {
+        this.freestallRestScore = freestallRestScore;
+    }
+
+    public double getFreestallRestScore() {
+        return this.freestallRestScore;
+    }
+    public void setRestScore(double restScore) {
+        this.restScore = restScore;
+    }
+
+    public double getRestScore() {
+        return this.restScore;
     }
 
     public void setSlightLimp(float slightLimp) {
@@ -234,6 +292,31 @@ public class MilkCowViewModel extends ViewModel {
     public double getDiseaseScore(){
         return this.diseaseScore;
     }
+    public void setMinPainScore(double minPainScore){this.minPainScore = minPainScore;}
+    public double getMinPainScore() { return this.minPainScore; }
+    public void setStruggle(double struggle){
+        this.struggle = struggle;
+    }
+    public double getStruggle(){
+        return this.struggle;
+    }
+    public void setSocialBehaviorScore(int socialBehaviorScore){
+        this.socialBehaviorScore = socialBehaviorScore;
+    }
+    public int getSocialBehaviorScore(){
+        return this.socialBehaviorScore;
+    }
+
+    public int calculatorSitCollisionScore(float sitCollisionRatio) {
+        int sitCollisionScore = 0;
+        if (sitCollisionRatio >= 31) {
+            sitCollisionScore = 40;
+        } else if (sitCollisionRatio >= 21) {
+            sitCollisionScore = 70;
+        } else
+            sitCollisionScore = 100;
+        return sitCollisionScore;
+    }
 
     public int calculatorAreaOutCollisionScore(float areaOutCollisionRatio) {
         int outAreaSittingScore = 0;
@@ -244,6 +327,18 @@ public class MilkCowViewModel extends ViewModel {
         } else
             outAreaSittingScore = 100;
         return outAreaSittingScore;
+    }
+
+    public int calculatorSitTimeScore(float sitTimeAvg) {
+        int sitTimeScore = 0;
+        if(sitTimeAvg < 5.2) {
+            sitTimeScore = 100;
+        } else if(sitTimeAvg <= 6.3) {
+            sitTimeScore = 70;
+        } else {
+            sitTimeScore = 40;
+        }
+        return sitTimeScore;
     }
 
     public int calculatorAppearanceQ1Score(float appearanceQ1Ratio) {
@@ -545,6 +640,105 @@ public class MilkCowViewModel extends ViewModel {
         diseaseScore = (100 / 8) * (8 - ((careScore) + 3 * (warningScore)) / 3);
 
         return Math.round(diseaseScore);
+    }
+    public double calculatorMinPainScore(int hornRemovalScore){
+        return hornRemovalScore;
+    }
+    public int calculatorSocialBehaviorScore(double struggle)
+    {
+        int socialBehaviorScore = 0;
+        if (struggle > 100) {
+            return socialBehaviorScore = -1;
+        }
+        if(struggle == 0) {
+            socialBehaviorScore = 100;
+        } else if(struggle <= 4 ) {
+            socialBehaviorScore = 90;
+        } else if(struggle <= 9 ) {
+            socialBehaviorScore = 80;
+        } else if(struggle <= 14 ) {
+            socialBehaviorScore = 70;
+        } else if(struggle <= 19 ) {
+            socialBehaviorScore = 60;
+        } else if(struggle <= 25 ) {
+            socialBehaviorScore = 50;
+        } else if(struggle <= 32 ) {
+            socialBehaviorScore = 40;
+        } else if(struggle <= 41 ) {
+            socialBehaviorScore = 30;
+        } else if(struggle <= 53 ) {
+            socialBehaviorScore = 20;
+        } else if(struggle <= 71 ) {
+            socialBehaviorScore = 10;
+        } else if(struggle <= 100 ) {
+            socialBehaviorScore = 0;
+        }
+        return socialBehaviorScore;
+    }
+    public int calculatorAvoidDistanceScore(double avoidDistanceRatio){
+        int avoidDistanceScore = 0;
+        if(avoidDistanceRatio == 0){
+            avoidDistanceScore = 100;
+        } else if(avoidDistanceRatio <= 2){
+            avoidDistanceScore = 95;
+        }else if(avoidDistanceRatio <= 5){
+            avoidDistanceScore = 90;
+        }else if(avoidDistanceRatio <= 7){
+            avoidDistanceScore = 85;
+        }else if(avoidDistanceRatio <= 9){
+            avoidDistanceScore = 80;
+        }else if(avoidDistanceRatio <= 11){
+            avoidDistanceScore = 75;
+        }else if(avoidDistanceRatio <= 14){
+            avoidDistanceScore = 70;
+        }else if(avoidDistanceRatio <= 17){
+            avoidDistanceScore = 65;
+        }else if(avoidDistanceRatio <= 19){
+            avoidDistanceScore = 60;
+        }else if(avoidDistanceRatio <= 22){
+            avoidDistanceScore = 55;
+        }else if(avoidDistanceRatio <= 25){
+            avoidDistanceScore = 50;
+        }else if(avoidDistanceRatio <= 28){
+            avoidDistanceScore = 45;
+        }else if(avoidDistanceRatio <= 32){
+            avoidDistanceScore = 40;
+        }else if(avoidDistanceRatio <= 36){
+            avoidDistanceScore = 35;
+        } else if(avoidDistanceRatio <= 41){
+            avoidDistanceScore = 30;
+        }else if(avoidDistanceRatio <= 46){
+            avoidDistanceScore = 25;
+        }else if(avoidDistanceRatio <= 52){
+            avoidDistanceScore = 20;
+        }else if(avoidDistanceRatio <= 60){
+            avoidDistanceScore = 15;
+        }else if(avoidDistanceRatio <= 71){
+            avoidDistanceScore = 10;
+        }else if(avoidDistanceRatio <= 86){
+            avoidDistanceScore = 5;
+        }else if(avoidDistanceRatio <= 100){
+            avoidDistanceScore = 0;
+        }
+        return avoidDistanceScore;
+    }
+    public double calculatorAvoidDistanceRatio(int levelOne, int levelTwo, int levelThree,int levelFour){
+        double avoidDistanceRatio;
+        double total = levelOne + levelTwo + levelThree + levelFour;
+        double levelTwoRatio = Math.round((levelTwo / total) * 100);
+        Log.d("level_tow_ratio",String.valueOf(levelTwoRatio));
+        double levelThreeRatio = Math.round((levelThree / total) * 100);
+        Log.d("level_three_ratio",String.valueOf(levelThreeRatio));
+        double levelFourRatio = Math.round((levelFour / total ) * 100);
+        Log.d("level_four_ratio",String.valueOf(levelFourRatio));
+
+        avoidDistanceRatio = (3 * levelTwoRatio + (11 * levelThreeRatio)  + (26 * levelFourRatio));
+        Log.d("avoid_distance_ratio_1",String.valueOf(avoidDistanceRatio));
+        avoidDistanceRatio = avoidDistanceRatio / 26;
+        Log.d("avoid_distance_ratio_2",String.valueOf(avoidDistanceRatio));
+        avoidDistanceRatio = Math.round(avoidDistanceRatio);
+        Log.d("avoid_distance_ratio_3",String.valueOf(avoidDistanceRatio));
+        return avoidDistanceRatio;
     }
     public double calculatorProtocolOneScore(double PoorScore, double WaterScore){
         return Math.round((PoorScore * 0.65) + (WaterScore * 0.35));

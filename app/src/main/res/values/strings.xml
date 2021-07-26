@@ -188,20 +188,64 @@
     <string name="list_sub_menu_title_34">34. 투쟁(서열) 행동 평가</string>
     <string name="list_sub_menu_title_35">35. 화합 행동 평가</string>
     <string name="list_sub_menu_title_36">36. 회피 거리 평가</string>
+    <!-- freestall list menu string -->
+    <string name="freestall_list_sub_menu_title_5">5. 프리스톨 수 평가</string>
+    <string name="freestall_list_sub_menu_title_6">6. 앉기 시 충돌 평가</string>
+    <string name="freestall_list_sub_menu_title_7">7. 프리스톨 영역 외 앉기 평가</string>
+    <string name="freestall_list_sub_menu_title_8">8. 앉기 동작 소요시간 평가</string>
+    <string name="freestall_list_sub_menu_title_9">9. 가축외형 평가 - 아랫다리</string>
+    <string name="freestall_list_sub_menu_title_10">10. 가축외형 평가 - 뒷부분</string>
+    <string name="freestall_list_sub_menu_title_11">11. 가축외형 평가 - 유방</string>
+    <string name="freestall_list_sub_menu_title_12">12. 혹서기 그늘 평가</string>
+    <string name="freestall_list_sub_menu_title_13">13. 혹서기 환기팬 평가</string>
+    <string name="freestall_list_sub_menu_title_14">14. 혹서기 안개분무시설 평가</string>
+    <string name="freestall_list_sub_menu_title_15">15. 혹한기 바람차단시설 평가</string>
+    <string name="freestall_list_sub_menu_title_16">16. 혹한기 환기시설 평가</string>
+    <string name="freestall_list_sub_menu_title_17">17. 포유송아지 그늘 평가</string>
+    <string name="freestall_list_sub_menu_title_18">18. 포유송아지 환기팬 평가</string>
+    <string name="freestall_list_sub_menu_title_19">19. 포유송아지 안개분무시설 평가</string>
+    <string name="freestall_list_sub_menu_title_20">20. 포유송아지 깔짚 평가</string>
+    <string name="freestall_list_sub_menu_title_21">21. 포유송아지 보온 평가</string>
+    <string name="freestall_list_sub_menu_title_22">22. 포유송아지 바람차단시설 평가</string>
+    <string name="freestall_list_sub_menu_title_23">23. 경미한 다리절음 평가</string>
+    <string name="freestall_list_sub_menu_title_24">24. 심각한 다리절음 평가</string>
+    <string name="freestall_list_sub_menu_title_25">25. 경미한 외피 변형 평가</string>
+    <string name="freestall_list_sub_menu_title_26">26. 심각한 외피 변형 평가</string>
+    <string name="freestall_list_sub_menu_title_27">27. 기침 평가</string>
+    <string name="freestall_list_sub_menu_title_28">28. 비강 분비물 평가</string>
+    <string name="freestall_list_sub_menu_title_29">29. 안구 분비물 평가</string>
+    <string name="freestall_list_sub_menu_title_30">30. 호흡 장애 평가</string>
+    <string name="freestall_list_sub_menu_title_31">31. 설사 평가</string>
+    <string name="freestall_list_sub_menu_title_32">32. 외음부 분비물 평가</string>
+    <string name="freestall_list_sub_menu_title_33">33. 유방염 평가</string>
+    <string name="freestall_list_sub_menu_title_34">34. 폐사율 평가</string>
+    <string name="freestall_list_sub_menu_title_35">35. 난산 평가</string>
+    <string name="freestall_list_sub_menu_title_36">36. 기립불능 평가</string>
+    <string name="freestall_list_sub_menu_title_37">37. 제각/탈각 평가 - 1</string>
+    <string name="freestall_list_sub_menu_title_38">38. 제각/탈각 평가 - 2</string>
+    <string name="freestall_list_sub_menu_title_39">39. 제각/탈각 평가 - 3</string>
+    <string name="freestall_list_sub_menu_title_40">40. 투쟁(서열) 행동 평가</string>
+    <string name="freestall_list_sub_menu_title_41">41. 회피 거리 평가</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
     //프리스톨
-    <string name="freestall_count_title">사육두수 대비 프리스톨 수의 비율이 얼마나 됩니까?</string>
+    <string name="freestall_count_title">프리스톨 수 평가</string>
     <string name="freestall_count_dong">동별 프리스톨 수 점수 측정</string>
     <string name="freestall_count_dong_hint">동별 사육두수를 입력하세요</string>
     <string name="freestall_count_dong_available_hint">동별 사용가능 프리스톨 수를 입력하세요</string>
     <string name="freestall_count_ratio">동별 사육두수 대비 프리스톨 비율(%)</string>
     <string name="freestall_count_score">프리스톨 수 간이 측정 점수</string>
+    <string name="choice_sit_num">앉기 동작 개수 선택</string>
     <string name="freestall_area_out_collision_title">앉은 소 중 프리스톨 영역을 벗어난 비율은 얼마나 됩니까?</string>
     <string name="freestall_appearance_title1">가축외형 아랫다리 위생</string>
     <string name="freestall_appearance_title2">가축외형 뒷부분 위생</string>
     <string name="freestall_appearance_title3">가축외형 유방 위생</string>
+    <string name="struggle_question_hint_1">10분동안 관찰한 머리박치기 빈도</string>
+    <string name="struggle_question_hint_2">10분동안 관찰한 머리박치기 제외 투쟁행동빈도</string>
+    <string name="struggle_ratio_1">평균 머리박치기 빈도(1마리/1시간)</string>
+    <string name="struggle_ratio_2">평균 머리박치기 제외 투쟁행동빈도(1마리/1시간)</string>
+
 
 </resources>

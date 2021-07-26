@@ -28,41 +28,34 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.example.animal_project.Freestall.FreestallAppearanceQ1;
-import com.example.animal_project.Freestall.FreestallAppearanceQ2;
-import com.example.animal_project.Freestall.FreestallAppearanceQ3;
-import com.example.animal_project.Freestall.FreestallAreaOutCollision;
-import com.example.animal_project.Freestall.FreestallAstasia;
-import com.example.animal_project.Freestall.FreestallBreast;
-import com.example.animal_project.Freestall.FreestallCalfMistSpray;
-import com.example.animal_project.Freestall.FreestallCalfShade;
-import com.example.animal_project.Freestall.FreestallCalfStraw;
-import com.example.animal_project.Freestall.FreestallCalfSummerVentilating;
-import com.example.animal_project.Freestall.FreestallCalfWarm;
-import com.example.animal_project.Freestall.FreestallCalfWindBlock;
-import com.example.animal_project.Freestall.FreestallCount;
-import com.example.animal_project.Freestall.FreestallCriticalHairloss;
-import com.example.animal_project.Freestall.FreestallCriticalLimp;
-import com.example.animal_project.Freestall.FreestallDiarrhea;
-import com.example.animal_project.Freestall.FreestallDystocia;
-import com.example.animal_project.Freestall.FreestallFallDead;
-import com.example.animal_project.Freestall.FreestallSlightHairloss;
-import com.example.animal_project.Freestall.FreestallSlightLimp;
-import com.example.animal_project.Freestall.FreestallMistSpray;
-import com.example.animal_project.Freestall.FreestallOphthalmic;
-import com.example.animal_project.Freestall.FreestallOutGenitals;
-import com.example.animal_project.Freestall.FreestallPoor;
-import com.example.animal_project.Freestall.FreestallRespiratory;
-import com.example.animal_project.Freestall.FreestallRunnyNose;
-import com.example.animal_project.Freestall.FreestallShade;
-import com.example.animal_project.Freestall.FreestallSummerVentilating;
-import com.example.animal_project.Freestall.FreestallWaterQ1;
-import com.example.animal_project.Freestall.FreestallWaterQ1_1;
-import com.example.animal_project.Freestall.FreestallWaterQ1_2;
-import com.example.animal_project.Freestall.FreestallWaterQ2;
-import com.example.animal_project.Freestall.FreestallWaterQ3;
-import com.example.animal_project.Freestall.FreestallWindBlock;
-import com.example.animal_project.Freestall.FreestallWinterVentilating;
+import com.example.animal_project.Freestall.ProtocolFour.FreestallAvoidDistance;
+import com.example.animal_project.Freestall.ProtocolFour.FreestallStruggle;
+import com.example.animal_project.Freestall.ProtocolOne.FreestallPoor;
+import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ1;
+import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ1_1;
+import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ1_2;
+import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ2;
+import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ3;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallAstasia;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallBreast;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallCriticalHairloss;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallCriticalLimp;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallDiarrhea;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallDystocia;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallFallDead;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallHornQ1;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallHornQ2;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallHornQ3;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallOphthalmic;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallOutGenitals;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallRespiratory;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallRunnyNose;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallSlightHairloss;
+import com.example.animal_project.Freestall.ProtocolThree.FreestallSlightLimp;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallAppearanceQ1;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallAppearanceQ2;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallAppearanceQ3;
+
 import com.example.animal_project.BreedBatch.ProtocolFour.BreedAvoidDistance;
 import com.example.animal_project.BreedBatch.ProtocolFour.BreedHarmony;
 import com.example.animal_project.BreedBatch.ProtocolFour.BreedStruggle;
@@ -99,6 +92,21 @@ import com.example.animal_project.BreedBatch.ProtocolTwo.CalfStraw;
 import com.example.animal_project.BreedBatch.ProtocolTwo.CalfSummerVentilating;
 import com.example.animal_project.BreedBatch.ProtocolTwo.CalfWarm;
 import com.example.animal_project.BreedBatch.ProtocolTwo.CalfWindBlock;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallAreaOutCollision;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfMistSpray;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfShade;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfStraw;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfSummerVentilating;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfWarm;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfWindBlock;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallCount;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallMistSpray;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallShade;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallSitCollision;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallSitTime;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallSummerVentilating;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallWindBlock;
+import com.example.animal_project.Freestall.ProtocolTwo.FreestallWinterVentilating;
 import com.example.animal_project.Result.ResultTotal;
 import com.example.animal_project.Result.Result_1;
 import com.example.animal_project.Result.Result_2;
@@ -109,23 +117,23 @@ import com.google.android.material.tabs.TabLayout;
 
 
 public class QuestionTemplate extends AppCompatActivity
- {
-     public static Context context_question_template;
+{
+    public static Context context_question_template;
 
 
-     // 정보 입력 창에서 넘어온 정보들
-     private String farmName;
-     private String address;
-     private String addressDetail;
-     private String repName;
-     private int totalCowSize;
-     private int totalAdultCow;
-     private int totalChildCow;
-     private String evaName;
-     private String evaDate;
-     private int farmType = 0;
-     private int sampleCowSize;
-     // ------------------------------
+    // 정보 입력 창에서 넘어온 정보들
+    private String farmName;
+    private String address;
+    private String addressDetail;
+    private String repName;
+    private int totalCowSize;
+    private int totalAdultCow;
+    private int totalChildCow;
+    private String evaName;
+    private String evaDate;
+    private int farmType = 0;
+    private int sampleCowSize;
+    // ------------------------------
     // --- 결과 창 ---
     ResultTotal result_total;
     Result_1 result1;
@@ -193,7 +201,7 @@ public class QuestionTemplate extends AppCompatActivity
     // --------------------------------------------------------
 
 
-     // 한 육우 프로토콜 질문 항목 fragments 를 담는 배열
+    // 한 육우 프로토콜 질문 항목 fragments 를 담는 배열
     private Fragment[] breed_frag_arr = new Fragment[20];
     // freestall
     private FreestallPoor freestall_poor;
@@ -203,13 +211,12 @@ public class QuestionTemplate extends AppCompatActivity
     private FreestallWaterQ2 freestall_water_q2;
     private FreestallWaterQ3 freestall_water_q3;
     private FreestallCount freestall_count;
-
+    private FreestallSitCollision freestall_sit_collision;
     private FreestallAreaOutCollision freestall_area_out_collision;
+    private FreestallSitTime freestall_sit_time;
     private FreestallAppearanceQ1 freestall_appearance_q1;
     private FreestallAppearanceQ2 freestall_appearance_q2;
     private FreestallAppearanceQ3 freestall_appearance_q3;
-
-    //6,7,8,9,10,11
     private FreestallShade freestall_shade;
     private FreestallSummerVentilating freestall_summer_ventilating;
     private FreestallMistSpray freestall_mist_spray;
@@ -221,12 +228,10 @@ public class QuestionTemplate extends AppCompatActivity
     private FreestallCalfStraw freestall_calf_straw;
     private FreestallCalfWarm freestall_calf_warm;
     private FreestallCalfWindBlock freestall_calf_wind_block;
-
     private FreestallSlightLimp freestall_slight_limp;
     private FreestallCriticalLimp freestall_critical_limp;
     private FreestallSlightHairloss freestall_slight_hairloss;
     private FreestallCriticalHairloss freestall_critical_hairloss;
-
     private FreestallRunnyNose freestall_runnynose;
     private FreestallOphthalmic freestall_ophthalmic;
     private FreestallRespiratory freestall_respiratory;
@@ -236,23 +241,29 @@ public class QuestionTemplate extends AppCompatActivity
     private FreestallFallDead freestall_falldead;
     private FreestallDystocia freestall_dystocia;
     private FreestallAstasia freestall_astasia;
+    private FreestallHornQ1 freestall_horn_q1;
+    private FreestallHornQ2 freestall_horn_q2;
+    private FreestallHornQ3 freestall_horn_q3;
+    private FreestallStruggle freestall_struggle;
+    private FreestallAvoidDistance freestall_avoid_distance;
 
 
 
     private Fragment[] freestall_frag_arr = new Fragment[20];
 
     int count = 0;
-     QuestionTemplateViewModel viewModel;
-     AlertDialog.Builder myAlertBuilder;
+    QuestionTemplateViewModel viewModel;
+    MilkCowViewModel viewModelMilk;
+    AlertDialog.Builder myAlertBuilder;
 
 
 
 
-     // 사용자가 이전 안드로이드 이전 버튼 눌렀을 때 처리를 위한 Override
-     @Override
-     public void onBackPressed(){
-         myOnBackPressed(myAlertBuilder);
-     }
+    // 사용자가 이전 안드로이드 이전 버튼 눌렀을 때 처리를 위한 Override
+    @Override
+    public void onBackPressed(){
+        myOnBackPressed(myAlertBuilder);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -269,6 +280,7 @@ public class QuestionTemplate extends AppCompatActivity
         // ------------------------------------------
 
         viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
+        viewModelMilk = new ViewModelProvider(this).get(MilkCowViewModel.class);
         // 회피거리 배열 초기화
         viewModel.setAvoidDistances();
         fragmentManager = getSupportFragmentManager();
@@ -336,9 +348,9 @@ public class QuestionTemplate extends AppCompatActivity
         freestall_water_q2 = new FreestallWaterQ2();
         freestall_water_q3 = new FreestallWaterQ3();
         freestall_count = new FreestallCount();
-
+        freestall_sit_collision = new FreestallSitCollision();
         freestall_area_out_collision = new FreestallAreaOutCollision();
-
+        freestall_sit_time = new FreestallSitTime();
         freestall_appearance_q1 = new FreestallAppearanceQ1();
         freestall_appearance_q2 = new FreestallAppearanceQ2();
         freestall_appearance_q3 = new FreestallAppearanceQ3();
@@ -367,6 +379,11 @@ public class QuestionTemplate extends AppCompatActivity
         freestall_falldead = new FreestallFallDead();
         freestall_dystocia = new FreestallDystocia();
         freestall_astasia = new FreestallAstasia();
+        freestall_horn_q1 = new FreestallHornQ1();
+        freestall_horn_q2 = new FreestallHornQ2();
+        freestall_horn_q3 = new FreestallHornQ3();
+        freestall_struggle = new FreestallStruggle();
+        freestall_avoid_distance = new FreestallAvoidDistance();
 
         // 마지막 페이지 개수 지정
 
@@ -417,11 +434,12 @@ public class QuestionTemplate extends AppCompatActivity
                 breed_struggle,breed_harmony,breed_avoid_distance};
 
         freestall_frag_arr = new Fragment[]{ freestall_poor,freestall_water_q1,freestall_water_q2,freestall_water_q3,
-                freestall_count,freestall_area_out_collision,freestall_appearance_q1,freestall_appearance_q2,freestall_appearance_q3,freestall_shade,freestall_summer_ventilating,freestall_mist_spray,
+                freestall_count,freestall_sit_collision,freestall_area_out_collision,freestall_sit_time,freestall_appearance_q1,freestall_appearance_q2,freestall_appearance_q3,freestall_shade,freestall_summer_ventilating,freestall_mist_spray,
                 freestall_wind_block,freestall_winter_ventilating,freestall_calf_shade,freestall_calf_summer_ventilating,freestall_calf_mist_spray,
                 freestall_calf_straw,freestall_calf_warm,freestall_calf_wind_block,freestall_slight_limp,freestall_critical_limp,freestall_slight_hairloss,freestall_critical_hairloss,
                 breed_cough,freestall_runnynose,freestall_ophthalmic,
-                freestall_respiratory,freestall_diarrhea,freestall_outgenitals,freestall_breast,freestall_falldead,freestall_dystocia,freestall_astasia}; // 6,7,8,9,10,11 추가하기
+                freestall_respiratory,freestall_diarrhea,freestall_outgenitals,freestall_breast,freestall_falldead,freestall_dystocia,freestall_astasia,freestall_horn_q1,freestall_horn_q2,freestall_horn_q3,freestall_struggle,
+                freestall_avoid_distance}; // 6,7,8,9,10,11 추가하기
 
 
 
@@ -431,40 +449,68 @@ public class QuestionTemplate extends AppCompatActivity
         list_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawerHandler();
-                changeCheckImageFunc();
+                if(farmType == 2) {
+                    drawerHandler();
+                    changeCheckImageFunc();
+                }
+                else if(farmType == 5) {
+                    drawerHandler();
+                    changeCheckImageFuncFreestall();
+                }
             }
         });
         list_menu_btn_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View view = findViewById(R.id.list_sub_menu_1);
-                listMenuBtnHandler(list_menu_btn_1,view);
+                if(farmType == 2) {
+                    View view = findViewById(R.id.list_sub_menu_1);
+                    listMenuBtnHandler(list_menu_btn_1,view);
+                }
+                else if(farmType == 5) {
+                    View view = findViewById(R.id.freestall_list_sub_menu_1);
+                    listMenuBtnHandler(list_menu_btn_1,view);
+                }
             }
         });
-
         list_menu_btn_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View view = findViewById(R.id.list_sub_menu_2);
-                listMenuBtnHandler(list_menu_btn_2,view);
+                if(farmType == 2) {
+                    View view = findViewById(R.id.list_sub_menu_2);
+                    listMenuBtnHandler(list_menu_btn_2,view);
+                }
+                else if(farmType == 5) {
+                    View view = findViewById(R.id.freestall_list_sub_menu_2);
+                    listMenuBtnHandler(list_menu_btn_2,view);
+                }
             }
         });
         list_menu_btn_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View view = findViewById(R.id.list_sub_menu_3);
-                listMenuBtnHandler(list_menu_btn_3,view);
+                if(farmType == 2) {
+                    View view = findViewById(R.id.list_sub_menu_3);
+                    listMenuBtnHandler(list_menu_btn_3,view);
+                }
+                else if(farmType == 5) {
+                    View view = findViewById(R.id.freestall_list_sub_menu_3);
+                    listMenuBtnHandler(list_menu_btn_3,view);
+                }
             }
         });
         list_menu_btn_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View view = findViewById(R.id.list_sub_menu_4);
-                listMenuBtnHandler(list_menu_btn_4,view);
+                if(farmType == 2) {
+                    View view = findViewById(R.id.list_sub_menu_4);
+                    listMenuBtnHandler(list_menu_btn_4,view);
+                }
+                else if(farmType == 5) {
+                    View view = findViewById(R.id.freestall_list_sub_menu_4);
+                    listMenuBtnHandler(list_menu_btn_4,view);
+                }
             }
         });
-
 
         transaction = fragmentManager.beginTransaction();
 
@@ -474,134 +520,111 @@ public class QuestionTemplate extends AppCompatActivity
         else if (farmType == 2 || farmType == 3) {
             transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
             total_page.setText(String.valueOf(" / " + breed_frag_arr.length));
+            ImageButton breed_list_btn_1 = findViewById(R.id.question_list_btn_1);
+            ImageButton breed_list_btn_2 = findViewById(R.id.question_list_btn_2);
+            ImageButton breed_list_btn_3 = findViewById(R.id.question_list_btn_3);
+            ImageButton breed_list_btn_4 = findViewById(R.id.question_list_btn_4);
+            ImageButton breed_list_btn_5 = findViewById(R.id.question_list_btn_5);
+            ImageButton breed_list_btn_6 = findViewById(R.id.question_list_btn_6);
+            ImageButton breed_list_btn_7 = findViewById(R.id.question_list_btn_7);
+            ImageButton breed_list_btn_8 = findViewById(R.id.question_list_btn_8);
+            ImageButton breed_list_btn_9 = findViewById(R.id.question_list_btn_9);
+            ImageButton breed_list_btn_10 = findViewById(R.id.question_list_btn_10);
+            ImageButton breed_list_btn_11 = findViewById(R.id.question_list_btn_11);
+            ImageButton breed_list_btn_12 = findViewById(R.id.question_list_btn_12);
+            ImageButton breed_list_btn_13 = findViewById(R.id.question_list_btn_13);
+            ImageButton breed_list_btn_14 = findViewById(R.id.question_list_btn_14);
+            ImageButton breed_list_btn_15 = findViewById(R.id.question_list_btn_15);
+            ImageButton breed_list_btn_16 = findViewById(R.id.question_list_btn_16);
+            ImageButton breed_list_btn_17 = findViewById(R.id.question_list_btn_17);
+            ImageButton breed_list_btn_18 = findViewById(R.id.question_list_btn_18);
+            ImageButton breed_list_btn_19 = findViewById(R.id.question_list_btn_19);
+            ImageButton breed_list_btn_20 = findViewById(R.id.question_list_btn_20);
+            ImageButton breed_list_btn_21 = findViewById(R.id.question_list_btn_21);
+            ImageButton breed_list_btn_22 = findViewById(R.id.question_list_btn_22);
+            ImageButton breed_list_btn_23 = findViewById(R.id.question_list_btn_23);
+            ImageButton breed_list_btn_24 = findViewById(R.id.question_list_btn_24);
+            ImageButton breed_list_btn_25 = findViewById(R.id.question_list_btn_25);
+            ImageButton breed_list_btn_26 = findViewById(R.id.question_list_btn_26);
+            ImageButton breed_list_btn_27 = findViewById(R.id.question_list_btn_27);
+            ImageButton breed_list_btn_28 = findViewById(R.id.question_list_btn_28);
+            ImageButton breed_list_btn_29 = findViewById(R.id.question_list_btn_29);
+            ImageButton breed_list_btn_30 = findViewById(R.id.question_list_btn_30);
+            ImageButton breed_list_btn_31 = findViewById(R.id.question_list_btn_31);
+            ImageButton breed_list_btn_32 = findViewById(R.id.question_list_btn_32);
+            ImageButton breed_list_btn_33 = findViewById(R.id.question_list_btn_33);
+            ImageButton breed_list_btn_34 = findViewById(R.id.question_list_btn_34);
+            ImageButton breed_list_btn_35 = findViewById(R.id.question_list_btn_35);
+            ImageButton breed_list_btn_36 = findViewById(R.id.question_list_btn_36);
+
+            ImageButton[] breed_list_btn_arr = {
+                    breed_list_btn_1,breed_list_btn_2,breed_list_btn_3,breed_list_btn_4,breed_list_btn_5,
+                    breed_list_btn_6,breed_list_btn_7,breed_list_btn_8,breed_list_btn_9,breed_list_btn_10,
+                    breed_list_btn_11,breed_list_btn_12,breed_list_btn_13,breed_list_btn_14,breed_list_btn_15,
+                    breed_list_btn_16,breed_list_btn_17,breed_list_btn_18,breed_list_btn_19,breed_list_btn_20,
+                    breed_list_btn_21,breed_list_btn_22,breed_list_btn_23,breed_list_btn_24,breed_list_btn_25,
+                    breed_list_btn_26,breed_list_btn_27,breed_list_btn_28,breed_list_btn_29,breed_list_btn_30,
+                    breed_list_btn_31,breed_list_btn_32,breed_list_btn_33,breed_list_btn_34,breed_list_btn_35,
+                    breed_list_btn_36};
+            count = listBtnHandler(breed_list_btn_arr,breed_frag_arr);
         }
         else if (farmType == 4) {
 
         }
         else if (farmType == 5) {
-                transaction.replace(R.id.fragment_paper, freestall_poor).commitAllowingStateLoss();
-                total_page.setText(String.valueOf(" / " + freestall_frag_arr.length));
-        }
-
-
-    }
-    public void listBtnHandler(View view){
-        transaction = fragmentManager.beginTransaction();
-        switch(view.getId()){
-          case  R.id.question_list_btn_1:
-
-              count = listBtnHandlerFunc(0);
-            break;
-            case  R.id.question_list_btn_2:
-                count = listBtnHandlerFunc(1);
-                break;
-            case  R.id.question_list_btn_3:
-                count = listBtnHandlerFunc(2);
-                break;
-            case  R.id.question_list_btn_4:
-                count = listBtnHandlerFunc(3);
-                break;
-            case  R.id.question_list_btn_5:
-                count = listBtnHandlerFunc(4);
-                break;
-            case  R.id.question_list_btn_6:
-                count = listBtnHandlerFunc(5);
-                break;
-            case  R.id.question_list_btn_7:
-                count = listBtnHandlerFunc(6);
-                break;
-            case  R.id.question_list_btn_8:
-                count = listBtnHandlerFunc(7);
-                break;
-            case  R.id.question_list_btn_9:
-                count = listBtnHandlerFunc(8);
-                break;
-            case  R.id.question_list_btn_10:
-                count = listBtnHandlerFunc(9);
-                break;
-            case  R.id.question_list_btn_11:
-                count = listBtnHandlerFunc(10);
-                break;
-            case  R.id.question_list_btn_12:
-                count = listBtnHandlerFunc(11);
-                break;
-            case  R.id.question_list_btn_13:
-                count = listBtnHandlerFunc(12);
-                break;
-            case  R.id.question_list_btn_14:
-                count = listBtnHandlerFunc(13);
-                break;
-            case  R.id.question_list_btn_15:
-                count = listBtnHandlerFunc(14);
-                break;
-            case  R.id.question_list_btn_16:
-                count = listBtnHandlerFunc(15);
-                break;
-            case  R.id.question_list_btn_17:
-                count = listBtnHandlerFunc(16);
-                break;
-            case  R.id.question_list_btn_18:
-                count = listBtnHandlerFunc(17);
-                break;
-            case  R.id.question_list_btn_19:
-                count = listBtnHandlerFunc(18);
-                break;
-            case  R.id.question_list_btn_20:
-                count = listBtnHandlerFunc(19);
-                break;
-            case  R.id.question_list_btn_21:
-                count = listBtnHandlerFunc(20);
-                break;
-            case  R.id.question_list_btn_22:
-                count = listBtnHandlerFunc(21);
-                break;
-            case  R.id.question_list_btn_23:
-                count = listBtnHandlerFunc(22);
-                break;
-            case  R.id.question_list_btn_24:
-                count = listBtnHandlerFunc(23);
-                break;
-            case  R.id.question_list_btn_25:
-                count = listBtnHandlerFunc(24);
-                break;
-            case  R.id.question_list_btn_26:
-                count = listBtnHandlerFunc(25);
-                break;
-            case  R.id.question_list_btn_27:
-                count = listBtnHandlerFunc(26);
-                break;
-            case  R.id.question_list_btn_28:
-                count = listBtnHandlerFunc(27);
-                break;
-            case  R.id.question_list_btn_29:
-                count = listBtnHandlerFunc(28);
-                break;
-            case  R.id.question_list_btn_30:
-                count = listBtnHandlerFunc(29);
-                break;
-            case  R.id.question_list_btn_31:
-                count = listBtnHandlerFunc(30);
-                break;
-            case  R.id.question_list_btn_32:
-                count = listBtnHandlerFunc(31);
-                break;
-            case  R.id.question_list_btn_33:
-                count = listBtnHandlerFunc(32);
-                break;
-            case  R.id.question_list_btn_34:
-                count = listBtnHandlerFunc(33);
-                break;
-            case  R.id.question_list_btn_35:
-                count = listBtnHandlerFunc(34);
-                break;
-            case  R.id.question_list_btn_36:
-                count = listBtnHandlerFunc(35);
-                next_btn.setVisibility(View.INVISIBLE);
-                end_btn.setVisibility(View.VISIBLE);
-                break;
-            default:
-            break;
-
+            transaction.replace(R.id.fragment_paper, freestall_poor).commitAllowingStateLoss();
+            total_page.setText(String.valueOf(" / " + freestall_frag_arr.length));
+//            ImageButton freestall_list_btn_1 = findViewById(R.id.freestall_question_list_btn_1);
+//            ImageButton freestall_list_btn_2 = findViewById(R.id.freestall_question_list_btn_2);
+//            ImageButton freestall_list_btn_3 = findViewById(R.id.freestall_question_list_btn_3);
+//            ImageButton freestall_list_btn_4 = findViewById(R.id.freestall_question_list_btn_4);
+//            ImageButton freestall_list_btn_5 = findViewById(R.id.freestall_question_list_btn_5);
+//            ImageButton freestall_list_btn_6 = findViewById(R.id.freestall_question_list_btn_6);
+//            ImageButton freestall_list_btn_7 = findViewById(R.id.freestall_question_list_btn_7);
+//            ImageButton freestall_list_btn_8 = findViewById(R.id.freestall_question_list_btn_8);
+//            ImageButton freestall_list_btn_9 = findViewById(R.id.freestall_question_list_btn_9);
+//            ImageButton freestall_list_btn_10 = findViewById(R.id.freestall_question_list_btn_10);
+//            ImageButton freestall_list_btn_11 = findViewById(R.id.freestall_question_list_btn_11);
+//            ImageButton freestall_list_btn_12 = findViewById(R.id.freestall_question_list_btn_12);
+//            ImageButton freestall_list_btn_13 = findViewById(R.id.freestall_question_list_btn_13);
+//            ImageButton freestall_list_btn_14 = findViewById(R.id.freestall_question_list_btn_14);
+//            ImageButton freestall_list_btn_15 = findViewById(R.id.freestall_question_list_btn_15);
+//            ImageButton freestall_list_btn_16 = findViewById(R.id.freestall_question_list_btn_16);
+//            ImageButton freestall_list_btn_17 = findViewById(R.id.freestall_question_list_btn_17);
+//            ImageButton freestall_list_btn_18 = findViewById(R.id.freestall_question_list_btn_18);
+//            ImageButton freestall_list_btn_19 = findViewById(R.id.freestall_question_list_btn_19);
+//            ImageButton freestall_list_btn_20 = findViewById(R.id.freestall_question_list_btn_20);
+//            ImageButton freestall_list_btn_21 = findViewById(R.id.freestall_question_list_btn_21);
+//            ImageButton freestall_list_btn_22 = findViewById(R.id.freestall_question_list_btn_22);
+//            ImageButton freestall_list_btn_23 = findViewById(R.id.freestall_question_list_btn_23);
+//            ImageButton freestall_list_btn_24 = findViewById(R.id.freestall_question_list_btn_24);
+//            ImageButton freestall_list_btn_25 = findViewById(R.id.freestall_question_list_btn_25);
+//            ImageButton freestall_list_btn_26 = findViewById(R.id.freestall_question_list_btn_26);
+//            ImageButton freestall_list_btn_27 = findViewById(R.id.freestall_question_list_btn_27);
+//            ImageButton freestall_list_btn_28 = findViewById(R.id.freestall_question_list_btn_28);
+//            ImageButton freestall_list_btn_29 = findViewById(R.id.freestall_question_list_btn_29);
+//            ImageButton freestall_list_btn_30 = findViewById(R.id.freestall_question_list_btn_30);
+//            ImageButton freestall_list_btn_31 = findViewById(R.id.freestall_question_list_btn_31);
+//            ImageButton freestall_list_btn_32 = findViewById(R.id.freestall_question_list_btn_32);
+//            ImageButton freestall_list_btn_33 = findViewById(R.id.freestall_question_list_btn_33);
+//            ImageButton freestall_list_btn_34 = findViewById(R.id.freestall_question_list_btn_34);
+//            ImageButton freestall_list_btn_35 = findViewById(R.id.freestall_question_list_btn_35);
+//            ImageButton freestall_list_btn_36 = findViewById(R.id.freestall_question_list_btn_36);
+//            ImageButton freestall_list_btn_37 = findViewById(R.id.freestall_question_list_btn_37);
+//            ImageButton freestall_list_btn_38 = findViewById(R.id.freestall_question_list_btn_38);
+//            ImageButton freestall_list_btn_39 = findViewById(R.id.freestall_question_list_btn_39);
+//            ImageButton freestall_list_btn_40 = findViewById(R.id.freestall_question_list_btn_40);
+//            ImageButton freestall_list_btn_41 = findViewById(R.id.freestall_question_list_btn_41);
+//            ImageButton[] freestall_list_btn_arr = {
+//                    freestall_list_btn_1,freestall_list_btn_2,freestall_list_btn_3,freestall_list_btn_4,freestall_list_btn_5,
+//                    freestall_list_btn_6,freestall_list_btn_7,freestall_list_btn_8,freestall_list_btn_9,freestall_list_btn_10,
+//                    freestall_list_btn_11,freestall_list_btn_12,freestall_list_btn_13,freestall_list_btn_14,freestall_list_btn_15,
+//                    freestall_list_btn_16,freestall_list_btn_17,freestall_list_btn_18,freestall_list_btn_19,freestall_list_btn_20,
+//                    freestall_list_btn_21,freestall_list_btn_22,freestall_list_btn_23,freestall_list_btn_24,freestall_list_btn_25,
+//                    freestall_list_btn_26,freestall_list_btn_27,freestall_list_btn_28,freestall_list_btn_29,freestall_list_btn_30,
+//                    freestall_list_btn_31,freestall_list_btn_32,freestall_list_btn_33,freestall_list_btn_34,freestall_list_btn_35,
+//                    freestall_list_btn_36,freestall_list_btn_37,freestall_list_btn_38,freestall_list_btn_39,freestall_list_btn_40,freestall_list_btn_41};
+//            count = listBtnHandler(freestall_list_btn_arr,freestall_frag_arr);
         }
     }
     public void clickHandler(View view)
@@ -627,13 +650,13 @@ public class QuestionTemplate extends AppCompatActivity
 
                 }
                 else if (farmType == 5) {
-                        nextBtnHandler(count,freestall_frag_arr.length);
-                        transaction.replace(R.id.fragment_paper,freestall_frag_arr[++count]).commitAllowingStateLoss();
+                    nextBtnHandler(count,freestall_frag_arr.length);
+                    transaction.replace(R.id.fragment_paper,freestall_frag_arr[++count]).commitAllowingStateLoss();
                 }
                 current_page.setText(String.valueOf(count+1));
 
                 break;
-                // 이전 버튼 누를 시 이어질 페이지 지정
+            // 이전 버튼 누를 시 이어질 페이지 지정
             case R.id.previous_btn:
                 if (farmType == 1) {
 
@@ -646,8 +669,8 @@ public class QuestionTemplate extends AppCompatActivity
                 }
 
                 else if (farmType == 5) {
-                        prevBtnHandler(count,freestall_frag_arr.length);
-                        transaction.replace(R.id.fragment_paper, freestall_frag_arr[--count]).commitAllowingStateLoss();
+                    prevBtnHandler(count,freestall_frag_arr.length);
+                    transaction.replace(R.id.fragment_paper, freestall_frag_arr[--count]).commitAllowingStateLoss();
                 }
                 current_page.setText(String.valueOf(count+1));
                 break;
@@ -699,7 +722,35 @@ public class QuestionTemplate extends AppCompatActivity
         }
     }
 
-
+    private int listBtnHandler(ImageButton[] btnArr,Fragment[] fragments){
+        for(int i = 0 ; i < btnArr.length ; i++){
+            int finalI = i;
+            btnArr[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    count = finalI;
+                    if(count == 0){
+                        prev_btn.setVisibility(View.INVISIBLE);
+                        next_btn.setVisibility(View.VISIBLE);
+                        end_btn.setVisibility(View.GONE);
+                    } else if(count == btnArr.length-1) {
+                        end_btn.setVisibility(View.VISIBLE);
+                        next_btn.setVisibility(View.INVISIBLE);
+                        prev_btn.setVisibility(View.VISIBLE);
+                    } else{
+                        next_btn.setVisibility(View.VISIBLE);
+                        prev_btn.setVisibility(View.VISIBLE);
+                        end_btn.setVisibility(View.GONE);
+                    }
+                    current_page.setText(String.valueOf(count+1));
+                    closeDrawer();
+                    transaction.replace(R.id.fragment_paper,fragments[count]).commitAllowingStateLoss();
+                }
+            });
+        }
+        return count;
+    }
     private void nextBtnHandler(int count, int totalPageLength){
         if(count + 2 == totalPageLength){
             next_btn.setVisibility(View.INVISIBLE);
@@ -734,20 +785,7 @@ public class QuestionTemplate extends AppCompatActivity
         drawer.closeDrawer(Gravity.LEFT);
         list_btn.setImageResource(R.drawable.outline_reorder_24);
     }
-    private int listBtnHandlerFunc(int listCount){
-        int count = listCount;
-        if(count == 0){
-            prev_btn.setVisibility(View.INVISIBLE);
-        } else {
-            next_btn.setVisibility(View.VISIBLE);
-            prev_btn.setVisibility(View.VISIBLE);
-        }
-        end_btn.setVisibility(View.GONE);
-        current_page.setText(String.valueOf(count+1));
-        closeDrawer();
-        transaction.replace(R.id.fragment_paper,breed_frag_arr[count]).commitAllowingStateLoss();
-        return count;
-    }
+
     private void changeCheckImageFunc (){
         ImageView check_total_1 = findViewById(R.id.check_total_1);
         ImageView check_total_2 = findViewById(R.id.check_total_2);
@@ -840,16 +878,115 @@ public class QuestionTemplate extends AppCompatActivity
         if(viewModel.getAvoidDistanceScore() != -1) changeCheckImage(check_sub_36);
         if(viewModel.getProtocolFourScore() != -1)changeCheckImage(check_total_4);
     }
+    private void changeCheckImageFuncFreestall (){
+        ImageView check_total_1 = findViewById(R.id.check_total_1);
+        ImageView check_total_2 = findViewById(R.id.check_total_2);
+        ImageView check_total_3 = findViewById(R.id.check_total_3);
+        ImageView check_total_4 = findViewById(R.id.check_total_4);
+        ImageView check_sub_1 = findViewById(R.id.freestall_check_sub_1);
+        ImageView check_sub_2 = findViewById(R.id.freestall_check_sub_2);
+        ImageView check_sub_3 = findViewById(R.id.freestall_check_sub_3);
+        ImageView check_sub_4 = findViewById(R.id.freestall_check_sub_4);
+        ImageView check_sub_5 = findViewById(R.id.freestall_check_sub_5);
+        ImageView check_sub_6 = findViewById(R.id.freestall_check_sub_6);
+        ImageView check_sub_7 = findViewById(R.id.freestall_check_sub_7);
+        ImageView check_sub_8 = findViewById(R.id.freestall_check_sub_8);
+        ImageView check_sub_9 = findViewById(R.id.freestall_check_sub_9);
+        ImageView check_sub_10 = findViewById(R.id.freestall_check_sub_10);
+        ImageView check_sub_11 = findViewById(R.id.freestall_check_sub_11);
+        ImageView check_sub_12 = findViewById(R.id.freestall_check_sub_12);
+        ImageView check_sub_13 = findViewById(R.id.freestall_check_sub_13);
+        ImageView check_sub_14 = findViewById(R.id.freestall_check_sub_14);
+        ImageView check_sub_15 = findViewById(R.id.freestall_check_sub_15);
+        ImageView check_sub_16 = findViewById(R.id.freestall_check_sub_16);
+        ImageView check_sub_17 = findViewById(R.id.freestall_check_sub_17);
+        ImageView check_sub_18 = findViewById(R.id.freestall_check_sub_18);
+        ImageView check_sub_19 = findViewById(R.id.freestall_check_sub_19);
+        ImageView check_sub_20 = findViewById(R.id.freestall_check_sub_20);
+        ImageView check_sub_21 = findViewById(R.id.freestall_check_sub_21);
+        ImageView check_sub_22 = findViewById(R.id.freestall_check_sub_22);
+        ImageView check_sub_23 = findViewById(R.id.freestall_check_sub_23);
+        ImageView check_sub_24 = findViewById(R.id.freestall_check_sub_24);
+        ImageView check_sub_25 = findViewById(R.id.freestall_check_sub_25);
+        ImageView check_sub_26 = findViewById(R.id.freestall_check_sub_26);
+        ImageView check_sub_27 = findViewById(R.id.freestall_check_sub_27);
+        ImageView check_sub_28 = findViewById(R.id.freestall_check_sub_28);
+        ImageView check_sub_29 = findViewById(R.id.freestall_check_sub_29);
+        ImageView check_sub_30 = findViewById(R.id.freestall_check_sub_30);
+        ImageView check_sub_31 = findViewById(R.id.freestall_check_sub_31);
+        ImageView check_sub_32 = findViewById(R.id.freestall_check_sub_32);
+        ImageView check_sub_33 = findViewById(R.id.freestall_check_sub_33);
+        ImageView check_sub_34 = findViewById(R.id.freestall_check_sub_34);
+        ImageView check_sub_35 = findViewById(R.id.freestall_check_sub_35);
+        ImageView check_sub_36 = findViewById(R.id.freestall_check_sub_36);
+        ImageView check_sub_37 = findViewById(R.id.freestall_check_sub_37);
+        ImageView check_sub_38 = findViewById(R.id.freestall_check_sub_38);
+        ImageView check_sub_39 = findViewById(R.id.freestall_check_sub_39);
+        ImageView check_sub_40 = findViewById(R.id.freestall_check_sub_40);
+        ImageView check_sub_41 = findViewById(R.id.freestall_check_sub_41);
+
+
+        // 프로토콜 1
+        changeEditTextCheckImage(check_sub_1,viewModel.getPoorScore());
+        if(viewModel.getWaterTankNum() != -1) changeCheckImage(check_sub_2);
+        if(viewModel.getWaterTankClean() != -1) changeCheckImage(check_sub_3);
+        if(viewModel.getWaterDrink() != -1) changeCheckImage(check_sub_4);
+        if(viewModel.getProtocolOneScore() != -1)changeCheckImage(check_total_1);
+
+        // 프로토콜 2
+        //5프리스톨 수
+        if(viewModelMilk.getAreaOutCollision() != -1) changeCheckImage(check_sub_7);
+        if(viewModelMilk.getAppearanceQ1Score() != -1) changeCheckImage(check_sub_9);
+        if(viewModelMilk.getAppearanceQ2Score() != -1) changeCheckImage(check_sub_10);
+        if(viewModelMilk.getAppearanceQ3Score() != -1) changeCheckImage(check_sub_11);
+        if(viewModel.getShadeScore() != -1) changeCheckImage(check_sub_12);
+        if(viewModel.getSummerVentilatingScore() != -1) changeCheckImage(check_sub_13);
+        if(viewModel.getMistSprayScore() != -1) changeCheckImage(check_sub_14);
+        if(viewModel.getWindBlockScore() != -1) changeCheckImage(check_sub_15);
+        if(viewModel.getWinterVentilatingScore() != -1) changeCheckImage(check_sub_16);
+        if(viewModel.getCalfShadeScore() != -1) changeCheckImage(check_sub_17);
+        if(viewModel.getCalfSummerVentilatingScore() != -1) changeCheckImage(check_sub_18);
+        if(viewModel.getCalfMistSprayScore() != -1) changeCheckImage(check_sub_19);
+        if(viewModel.getCalfStrawScore() != -1) changeCheckImage(check_sub_20);
+        if(viewModel.getCalfWarmScore() != -1) changeCheckImage(check_sub_21);
+        if(viewModel.getCalfWindBlockScore() != -1) changeCheckImage(check_sub_22);
+        if(viewModel.getProtocolTwoScore() != -1) changeCheckImage(check_total_2);
+
+        //프로토콜 3
+        changeEditTextCheckImage(check_sub_23,(int)viewModelMilk.getSlightHairLoss());
+        changeEditTextCheckImage(check_sub_24,(int)viewModelMilk.getCriticalHairLoss());
+        changeEditTextCheckImage(check_sub_25,(int)viewModelMilk.getSlightHairLoss());
+        changeEditTextCheckImage(check_sub_26,(int)viewModelMilk.getCriticalHairLoss());
+        if(viewModel.getCough() != -1) changeCheckImage(check_sub_27);
+        changeEditTextCheckImage(check_sub_28,(int)viewModelMilk.getRunnyNoseRatio());
+        changeEditTextCheckImage(check_sub_29,(int)viewModelMilk.getOphthalmicRatio());
+        changeEditTextCheckImage(check_sub_30,(int)viewModelMilk.getRespiratoryRatio());
+        changeEditTextCheckImage(check_sub_31,(int)viewModelMilk.getDiarrheaRatio());
+        changeEditTextCheckImage(check_sub_32,(int)viewModelMilk.getOutGenitalsRatio());
+        changeEditTextCheckImage(check_sub_33,(int)viewModelMilk.getBreastRatio());
+        changeEditTextCheckImage(check_sub_34,(int)viewModelMilk.getFallDeadRatio());
+        changeEditTextCheckImage(check_sub_35,(int)viewModelMilk.getDystociaRatio());
+        changeEditTextCheckImage(check_sub_36,(int)viewModelMilk.getAstasiaRatio());
+        if(viewModel.getHornRemoval() != -1) changeCheckImage(check_sub_28);
+        if(viewModel.getAnesthesia() != -1) changeCheckImage(check_sub_29);
+        if(viewModel.getPainkiller() != -1) changeCheckImage(check_sub_30);
+        if(viewModel.getProtocolThreeScore() != -1) changeCheckImage(check_total_3);
+
+        //프로토콜 4
+        if(viewModel.getStruggle() != -1) changeCheckImage(check_sub_34);
+        if(viewModel.getAvoidDistanceScore() != -1) changeCheckImage(check_sub_36);
+        if(viewModel.getProtocolFourScore() != -1)changeCheckImage(check_total_4);
+    }
 
     private void changeEditTextCheckImage(ImageView checkImageView,int questionScore){
-         if(questionScore == -1)
-             checkImageView.setImageResource(R.drawable.ic_baseline_not_check_circle_24);
-         else
+        if(questionScore == -1)
+            checkImageView.setImageResource(R.drawable.ic_baseline_not_check_circle_24);
+        else
             checkImageView.setImageResource(R.drawable.ic_baseline_check_circle_24);
     }
-     private void changeCheckImage(ImageView checkImageView){
-             checkImageView.setImageResource(R.drawable.ic_baseline_check_circle_24);
-     }
+    private void changeCheckImage(ImageView checkImageView){
+        checkImageView.setImageResource(R.drawable.ic_baseline_check_circle_24);
+    }
     private void listMenuBtnHandler(ImageButton btn,View view)
     {
         if(view.getVisibility() == View.GONE){
@@ -895,4 +1032,3 @@ public class QuestionTemplate extends AppCompatActivity
 
 
 }
-

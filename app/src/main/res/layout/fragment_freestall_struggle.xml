@@ -5,9 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,12 +18,18 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/freestall_count_title"
-                android:textSize="18dp"
-                android:textStyle="bold"
+                android:layout_height="match_parent"
+                android:text="@string/struggle_title"
                 android:textColor="@color/black"
-                />
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/struggle_justice"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,7 +66,7 @@
                     android:orientation="horizontal">
 
                     <Spinner
-                        android:id="@+id/spinner_freestall_count"
+                        android:id="@+id/spinner_breed_struggle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
@@ -73,7 +76,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="선택"
-                        android:id="@+id/freestall_count_btn"/>
+                        android:id="@+id/breed_struggle_btn"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -82,16 +85,18 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="50dp"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="프리스톨 수 점수"
+                android:layout_margin="20dp"
+                android:text="투쟁행동 점수"
                 android:textColor="@color/black"
-                android:textStyle="bold"
                 android:textSize="20dp"
-                android:layout_margin="20dp"/>
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,19 +104,18 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="10dp">
                 <TextView
-                    android:id="@+id/freestall_count_score"
+                    android:id="@+id/breed_struggle_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text=" 0 "
                     android:textSize="20dp"
                     android:textColor="@color/black"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" / 100 점"/>
-
+                    android:text="/ 100점 "/>
             </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

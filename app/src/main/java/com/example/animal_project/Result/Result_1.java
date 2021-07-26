@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.animal_project.MilkCowViewModel;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
@@ -30,8 +31,6 @@ public class Result_1 extends Fragment {
         ProgressBar progressBar = progressBarView.findViewById(R.id.circular_determinative_pb);
 
         viewModel.setProgressBar(viewModel.getProtocolOneScore(),progressBar,progressBarTv);
-
-
 
         return view;
     }
