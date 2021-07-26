@@ -124,8 +124,8 @@ import org.w3c.dom.Text;
 
 public class QuestionTemplate extends AppCompatActivity
  {
-/*     private static String IP_ADDRESS = "10.0.2.2";
-     private static String TAG = "phptest";*/
+     private static String IP_ADDRESS = "218.151.112.65";
+     private static String TAG = "phptest";
      public static Context context_question_template;
 
 
@@ -390,7 +390,7 @@ public class QuestionTemplate extends AppCompatActivity
         Bundle BeforeBundle = intent.getExtras();
 
         // ----- 실제 서비스에서 저장되어야 하는 정보 ----
-/*        farmName = BeforeBundle.getString("farmName");
+        farmName = BeforeBundle.getString("farmName");
         address = BeforeBundle.getString("address");
         addressDetail = BeforeBundle.getString("addressDetail");
         repName = BeforeBundle.getString("repName");
@@ -400,7 +400,7 @@ public class QuestionTemplate extends AppCompatActivity
         evaName = BeforeBundle.getString("evaName");
         evaDate = BeforeBundle.getString("evaDate");
         farmType = BeforeBundle.getInt("farmType");
-        sampleCowSize = BeforeBundle.getInt("sampleCowSize");*/
+        sampleCowSize = BeforeBundle.getInt("sampleCowSize");
         // ------------------------------------------------
 
         // ---- 테스트를 위한 최소 정보 ---------
@@ -585,7 +585,7 @@ public class QuestionTemplate extends AppCompatActivity
                 break;
             case R.id.end_btn:
                 // database 연동
-/*                InsertData task = new InsertData();
+                InsertData task = new InsertData();
                 task.execute("http://" + IP_ADDRESS + "/insert.php",
                         farmName,
                         address,
@@ -597,7 +597,7 @@ public class QuestionTemplate extends AppCompatActivity
                         String.valueOf(totalChildCow),
                         String.valueOf(sampleCowSize),
                         String.valueOf(evaName),
-                        String.valueOf(evaDate));*/
+                        String.valueOf(evaDate));
 
                 fragment_paper.setVisibility(View.GONE);
                 end_btn.setVisibility(View.GONE);
@@ -845,7 +845,7 @@ public class QuestionTemplate extends AppCompatActivity
 
 
 
-    /* // database 연동
+     // database 연동
      class InsertData extends AsyncTask<String, Void, String>{
          ProgressDialog progressDialog;
          @Override
@@ -889,11 +889,9 @@ public class QuestionTemplate extends AppCompatActivity
                              "&evaName=" + evaName +
                              "&evaDate=" + evaDate;
 
-*//*             String name = (String)params[1];
+             String name = (String)params[1];
              String country = (String)params[2];
 
-             String serverURL = (String)params[0];
-             String postParameters = "name=" + name + "&country=" + country;*//*
              try {
 
                  URL url = new URL(serverURL);
@@ -947,6 +945,6 @@ public class QuestionTemplate extends AppCompatActivity
              }
 
          }
-     }*/
+     }
 }
 
