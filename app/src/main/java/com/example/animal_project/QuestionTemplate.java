@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -887,6 +888,20 @@ public class QuestionTemplate extends AppCompatActivity
 
      // database 연동
      private void InsertAnswerFunc(){
+        InsertAnswer task = new InsertAnswer(QuestionTemplate.this);
+        InsertDongAnswer dongTask = new InsertDongAnswer(QuestionTemplate.this);
+        /*InsertQuestion(task);*/
+        insertDongQuestion(dongTask);
+     }
+     public void insertDongQuestion(InsertDongAnswer task){
+
+         Object waterTimeQuestion = viewModel.WaterTimeQuestion;
+
+         String[] waterTimePenLocation = ((QuestionTemplateViewModel.DongQuestion)viewModel.WaterTimeQuestion).getPenLocation();
+             task.execute(waterTimeQuestion);
+
+     }
+     public void InsertQuestion(InsertAnswer task){
          int breedPoorNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.BreedPoor).getNumberOfCow();
          float breedPoorScore = ((QuestionTemplateViewModel.Question)viewModel.BreedPoor).getScore();
          float breedPoorRatio = ((QuestionTemplateViewModel.Question)viewModel.BreedPoor).getRatio();
@@ -956,75 +971,73 @@ public class QuestionTemplate extends AppCompatActivity
          String breedCastrationAnesthesiaAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedCastrationAnesthesia).getAnswer();
          String breedCastrationPainkillerAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedCastrationPainkiller).getAnswer();
          int breedCastrationScore = viewModel.getCastrationScore();
+         Object waterTimeQuestion = viewModel.WaterTimeQuestion;
+         int waterTimeDongSize = ((QuestionTemplateViewModel.DongQuestion)viewModel.WaterTimeQuestion).getDongSize();
 
-        InsertAnswer task = new InsertAnswer(QuestionTemplate.this);
-        task.execute("http://" + IP_ADDRESS + "/insertBeefAnswer.php",
-                farmId,
-                String.valueOf(breedPoorNumberOfCow),
-                String.valueOf(breedPoorScore),
-                String.valueOf(breedPoorRatio),
-                breedWaterTankNum,
-                breedWaterTankClean,
-                breedOutwardPenLocation,
-                String.valueOf(breedOutwardNumberOfCow),
-                String.valueOf(breedOutwardScore),
-                String.valueOf(breedOutWardRatio),
-                breedShadeAnswer,
-                breedSummerVentilatingAnswer,
-                breedMistSpray,
-                String.valueOf(breedSummerRestScore),
-                breedWindBlockAnswer,
-                breedWinterVentilatingAnswer,
-                String.valueOf(breedWinterRestScore),
-                calfShadeAnswer,
-                calfSummerVentilatingAnswer,
-                calfMistSprayAnswer,
-                String.valueOf(calfSummerRestScore),
-                calfStrawAnswer,
-                calfWarmAnswer,
-                calfWindBlock,
-                String.valueOf(calfWinterRestScore),
-                String.valueOf(breedLimpNumberOfCow),
-                String.valueOf(breedLimpScore),
-                String.valueOf(breedLimpRatio),
-                String.valueOf(breedSlightHairLossNumberOfCow),
-                breedSlightHairPenLocation,
-                String.valueOf(breedSlightHairLossRatio),
-                String.valueOf(breedCriticalHairLossNumberOfCow),
-                String.valueOf(breedCriticalHairLossScore),
-                String.valueOf(breedCriticalHairLossRatio),
-                breedRunnyNosePenLocation,
-                String.valueOf(breedRunnyNoseNumberOfCow),
-                String.valueOf(breedRunnyNoseRatio),
-                breedOphthalmicPenLocation,
-                String.valueOf(breedOphthalmicNumberOfCow),
-                String.valueOf(breedOphthalmicRatio),
-                breedBreathPenLocation,
-                String.valueOf(breedBreathNumberOfCow),
-                String.valueOf(breedBreathRatio),
-                breedDiarrheaPenLocation,
-                String.valueOf(breedDiarrheaNumberOfCow),
-                String.valueOf(breedDiarrheaRatio),
-                breedRuminantPenLocation,
-                String.valueOf(breedRuminantNumberOfCow),
-                String.valueOf(breedRuminantRatio),
-                breedFallDeadPenLocation,
-                String.valueOf(breedFallDeadNumberOfCow),
-                String.valueOf(breedFallDeadRatio),
-
-                breedHornAnswer,
-                breedHornAnesthesiaAnswer,
-                breedHornPainkillerAnswer,
-                String.valueOf(breedHornRemovalScore),
-                breedCastrationAnswer,
-                breedCastrationAnesthesiaAnswer,
-                breedCastrationPainkillerAnswer,
-                String.valueOf(breedCastrationScore)
-
-
-                );
+         task.execute("http://" + IP_ADDRESS + "/insertBeefAnswer.php",
+                 farmId,
+                 String.valueOf(breedPoorNumberOfCow),
+                 String.valueOf(breedPoorScore),
+                 String.valueOf(breedPoorRatio),
+                 breedWaterTankNum,
+                 breedWaterTankClean,
+                 breedOutwardPenLocation,
+                 String.valueOf(breedOutwardNumberOfCow),
+                 String.valueOf(breedOutwardScore),
+                 String.valueOf(breedOutWardRatio),
+                 breedShadeAnswer,
+                 breedSummerVentilatingAnswer,
+                 breedMistSpray,
+                 String.valueOf(breedSummerRestScore),
+                 breedWindBlockAnswer,
+                 breedWinterVentilatingAnswer,
+                 String.valueOf(breedWinterRestScore),
+                 calfShadeAnswer,
+                 calfSummerVentilatingAnswer,
+                 calfMistSprayAnswer,
+                 String.valueOf(calfSummerRestScore),
+                 calfStrawAnswer,
+                 calfWarmAnswer,
+                 calfWindBlock,
+                 String.valueOf(calfWinterRestScore),
+                 String.valueOf(breedLimpNumberOfCow),
+                 String.valueOf(breedLimpScore),
+                 String.valueOf(breedLimpRatio),
+                 String.valueOf(breedSlightHairLossNumberOfCow),
+                 breedSlightHairPenLocation,
+                 String.valueOf(breedSlightHairLossRatio),
+                 String.valueOf(breedCriticalHairLossNumberOfCow),
+                 String.valueOf(breedCriticalHairLossScore),
+                 String.valueOf(breedCriticalHairLossRatio),
+                 breedRunnyNosePenLocation,
+                 String.valueOf(breedRunnyNoseNumberOfCow),
+                 String.valueOf(breedRunnyNoseRatio),
+                 breedOphthalmicPenLocation,
+                 String.valueOf(breedOphthalmicNumberOfCow),
+                 String.valueOf(breedOphthalmicRatio),
+                 breedBreathPenLocation,
+                 String.valueOf(breedBreathNumberOfCow),
+                 String.valueOf(breedBreathRatio),
+                 breedDiarrheaPenLocation,
+                 String.valueOf(breedDiarrheaNumberOfCow),
+                 String.valueOf(breedDiarrheaRatio),
+                 breedRuminantPenLocation,
+                 String.valueOf(breedRuminantNumberOfCow),
+                 String.valueOf(breedRuminantRatio),
+                 breedFallDeadPenLocation,
+                 String.valueOf(breedFallDeadNumberOfCow),
+                 String.valueOf(breedFallDeadRatio),
+                 breedHornAnswer,
+                 breedHornAnesthesiaAnswer,
+                 breedHornPainkillerAnswer,
+                 String.valueOf(breedHornRemovalScore),
+                 breedCastrationAnswer,
+                 breedCastrationAnesthesiaAnswer,
+                 breedCastrationPainkillerAnswer,
+                 String.valueOf(breedCastrationScore),
+                 String.valueOf(waterTimeDongSize)
+         );
 
      }
-
 }
 

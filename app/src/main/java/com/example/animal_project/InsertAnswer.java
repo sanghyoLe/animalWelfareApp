@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import androidx.lifecycle.ViewModelProvider;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -45,67 +47,68 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
     }
     @Override
     protected String doInBackground(String... params) {
-        String serverURL = (String)params[0];
-        String farmId = (String)params[1];
-        String breedPoorNumberOfCow = (String)params[2];
-        String breedPoorScore = (String)params[3];
-        String breedPoorRatio = (String)params[4];
-        String breedWaterTankNum = (String)params[5];
-        String breedWaterTankClean = (String)params[6];
-        String breedOutwardPenLocation = (String)params[7];
-        String breedOutwardNumberOfCow = (String)params[8];
-        String breedOutwardScore  = (String)params[9];
-        String breedOutwardRatio = (String)params[10];
-        String breedShadeAnswer = (String)params[11];
-        String breedSummerVentilatingAnswer = (String)params[12];
-        String breedMistSprayAnswer = (String)params[13];
-        String breedSummerRestScore = (String)params[14];
-        String breedWindBlockAnswer = (String)params[15];
-        String breedWinterVentilatingAnswer = (String)params[16];
-        String breedWinterRestScore = (String)params[17];
-        String calfShadeAnswer = (String)params[18];
-        String calfSummerVentilatingAnswer = (String)params[19];
-        String calfMistSprayAnswer = (String)params[20];
-        String calfSummerRestScore = (String)params[21];
-        String calfStrawAnswer = (String)params[22];
-        String calfWarmAnswer = (String)params[23];
-        String calfWindBlock = (String)params[24];
-        String calfWinterRestScore = (String)params[25];
-        String breedLimpNumberOfCow = (String)params[26];
-        String breedLimpScore = (String)params[27];
-        String breedLimpRatio = (String)params[28];
-        String breedSlightHairLossNumberOfCow = (String)params[29];
-        String breedSlightHairPenLocation = (String)params[30];
-        String breedSlightHairLossRatio = (String)params[31];
-        String breedCriticalHairLossNumberOfCow = (String)params[32];
-        String breedCriticalHairLossScore = (String)params[33];
-        String breedCriticalHairLossRatio = (String)params[34];
-        String breedRunnyNosePenLocation = (String)params[35];
-        String breedRunnyNoseNumberOfCow = (String)params[36];
-        String breedRunnyNoseRatio = (String)params[37];
-        String breedOphthalmicPenLocation = (String)params[38];
-        String breedOphthalmicNumberOfCow = (String)params[39];
-        String breedOphthalmicRatio = (String)params[40];
-        String breedBreathPenLocation = (String)params[41];
-        String breedBreathNumberOfCow = (String)params[42];
-        String breedBreathRatio = (String)params[43];
-        String breedDiarrheaPenLocation = (String)params[44];
-        String breedDiarrheaNumberOfCow = (String)params[45];
-        String breedDiarrheaRatio = (String)params[46];
-        String breedRuminantPenLocation = (String)params[47];
-        String breedRuminantNumberOfCow = (String)params[48];
-        String breedRuminantRatio = (String)params[49];
-        String breedFallDeadPenLocation = (String)params[50];
-        String breedFallDeadNumberOfCow = (String)params[51];
-        String breedFallDeadRatio = (String)params[52];
-        String breedHornAnswer = (String)params[53];
-        String breedHornAnesthesiaAnswer = (String)params[54];
-        String breedHornPainkillerAnswer = (String)params[55];
-        String breedHornRemovalScore = (String)params[56];
-        String breedCastrationAnswer = (String)params[57];
-        String breedCastrationAnesthesiaAnswer = (String)params[58];
-        String breedCastrationPainkillerAnswer = (String)params[59];
-        String breedCastrationScore = (String)params[60];
+        int index = 0;
+        String serverURL = (String)params[index++];
+        String farmId = (String)params[index++];
+        String breedPoorNumberOfCow = (String)params[index++];
+        String breedPoorScore = (String)params[index++];
+        String breedPoorRatio = (String)params[index++];
+        String breedWaterTankNum = (String)params[index++];
+        String breedWaterTankClean = (String)params[index++];
+        String breedOutwardPenLocation = (String)params[index++];
+        String breedOutwardNumberOfCow = (String)params[index++];
+        String breedOutwardScore  = (String)params[index++];
+        String breedOutwardRatio = (String)params[index++];
+        String breedShadeAnswer = (String)params[index++];
+        String breedSummerVentilatingAnswer = (String)params[index++];
+        String breedMistSprayAnswer = (String)params[index++];
+        String breedSummerRestScore = (String)params[index++];
+        String breedWindBlockAnswer = (String)params[index++];
+        String breedWinterVentilatingAnswer = (String)params[index++];
+        String breedWinterRestScore = (String)params[index++];
+        String calfShadeAnswer = (String)params[index++];
+        String calfSummerVentilatingAnswer = (String)params[index++];
+        String calfMistSprayAnswer = (String)params[index++];
+        String calfSummerRestScore = (String)params[index++];
+        String calfStrawAnswer = (String)params[index++];
+        String calfWarmAnswer = (String)params[index++];
+        String calfWindBlock = (String)params[index++];
+        String calfWinterRestScore = (String)params[index++];
+        String breedLimpNumberOfCow = (String)params[index++];
+        String breedLimpScore = (String)params[index++];
+        String breedLimpRatio = (String)params[index++];
+        String breedSlightHairLossNumberOfCow = (String)params[index++];
+        String breedSlightHairPenLocation = (String)params[index++];
+        String breedSlightHairLossRatio = (String)params[index++];
+        String breedCriticalHairLossNumberOfCow = (String)params[index++];
+        String breedCriticalHairLossScore = (String)params[index++];
+        String breedCriticalHairLossRatio = (String)params[index++];
+        String breedRunnyNosePenLocation = (String)params[index++];
+        String breedRunnyNoseNumberOfCow = (String)params[index++];
+        String breedRunnyNoseRatio = (String)params[index++];
+        String breedOphthalmicPenLocation = (String)params[index++];
+        String breedOphthalmicNumberOfCow = (String)params[index++];
+        String breedOphthalmicRatio = (String)params[index++];
+        String breedBreathPenLocation = (String)params[index++];
+        String breedBreathNumberOfCow = (String)params[index++];
+        String breedBreathRatio = (String)params[index++];
+        String breedDiarrheaPenLocation = (String)params[index++];
+        String breedDiarrheaNumberOfCow = (String)params[index++];
+        String breedDiarrheaRatio = (String)params[index++];
+        String breedRuminantPenLocation = (String)params[index++];
+        String breedRuminantNumberOfCow = (String)params[index++];
+        String breedRuminantRatio = (String)params[index++];
+        String breedFallDeadPenLocation = (String)params[index++];
+        String breedFallDeadNumberOfCow = (String)params[index++];
+        String breedFallDeadRatio = (String)params[index++];
+        String breedHornAnswer = (String)params[index++];
+        String breedHornAnesthesiaAnswer = (String)params[index++];
+        String breedHornPainkillerAnswer = (String)params[index++];
+        String breedHornRemovalScore = (String)params[index++];
+        String breedCastrationAnswer = (String)params[index++];
+        String breedCastrationAnesthesiaAnswer = (String)params[index++];
+        String breedCastrationPainkillerAnswer = (String)params[index++];
+        String breedCastrationScore = (String)params[index];
 
         String postParameters =
                 "farmId=" + farmId +
@@ -166,12 +169,10 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
                         +"&breedCastrationAnswer=" + breedCastrationAnswer
                         +"&breedCastrationAnesthesiaAnswer=" + breedCastrationAnesthesiaAnswer
                         +"&breedCastrationPainkillerAnswer=" + breedCastrationPainkillerAnswer
-                        +"&breedCastrationScore=" + breedCastrationScore
-
-
-
-
+                        +"&breedCastrationScore=" + breedCastrationScore +
+                        ""
                 ;
+
 
             Log.d("farmId",String.valueOf(farmId));
 

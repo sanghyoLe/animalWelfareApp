@@ -130,6 +130,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         return this.avoidDistances[penNumber];
     }
     public static class WaterTimeQuestion extends DongQuestion implements Serializable {
+
         int[] waitingCowSize;
         int[] drinkTime;
         int[] waterTimeScore;

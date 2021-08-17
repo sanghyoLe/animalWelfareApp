@@ -110,6 +110,7 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
                             WaterTimeQuestion.getDrinkTime(),
                             dong_size
                     ));
+
                     WaterTimeQuestion.setMaxWaterTimeScore(
                             getMaxWaterTimeScore(
                                     WaterTimeQuestion.getWaterTimeScore(),
