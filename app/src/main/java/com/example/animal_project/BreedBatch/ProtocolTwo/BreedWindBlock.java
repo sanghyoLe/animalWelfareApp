@@ -1,14 +1,13 @@
 package com.example.animal_project.BreedBatch.ProtocolTwo;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
@@ -32,6 +31,9 @@ public class BreedWindBlock extends Fragment {
                     windBlock = 2;
                 }
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWindBlock).setSelectedItem(windBlock);
+                int selectedItem =  ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWindBlock).getSelectedItem();
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWindBlock).setAnswer(windBlockRg,selectedItem);
+
 
             }
         });

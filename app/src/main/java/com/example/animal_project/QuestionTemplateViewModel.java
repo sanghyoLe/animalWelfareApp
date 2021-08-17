@@ -1,27 +1,17 @@
 package com.example.animal_project;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.icu.text.CaseMap;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.lifecycle.ViewModel;
-
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedOutward;
-
-import org.w3c.dom.Text;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -29,8 +19,6 @@ import java.util.Map;
 
 
 public class QuestionTemplateViewModel extends ViewModel {
-
-
 
 
     public static class Question{
@@ -56,22 +44,29 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public static class RadioQuestion {
         int selectedItem = -1;
+        String answer;
         public RadioQuestion(int selectedItem){
             this.selectedItem = selectedItem;
         }
-
         public void setSelectedItem(int selectedItem) {
             this.selectedItem = selectedItem;
         }
-
         public int getSelectedItem() {
             return selectedItem;
         }
+        public void setAnswer(RadioGroup radioGroup, int selectedItem){
+            this.answer = (String)((RadioButton) radioGroup.getChildAt(selectedItem-1)).getText();;
+        }
+        public String getAnswer() { return answer; }
+
+
     }
     public static class DongQuestion implements Serializable {
         String[] penLocation;
         int[] cowSize;
-
+        int dongSize;
+        public void setDongSize(int dongSize){this.dongSize = dongSize;}
+        public int getDongSize(){ return dongSize;}
         public void setPenLocation(String[] penLocation){ this.penLocation = penLocation;}
         public String[] getPenLocation() { return this.penLocation;}
         public void setCowSize(int[] cowSize) {this.cowSize = cowSize;}
@@ -254,7 +249,6 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public void setCoughQuestion(CoughQuestion coughQuestion){this.CoughQuestion = coughQuestion;}
     public CoughQuestion getCoughQuestion(){return (QuestionTemplateViewModel.CoughQuestion) this.CoughQuestion;}
-
     public static class BehaviorQuestion extends DongQuestion implements Serializable{
         int[] behaviorCount;
         float[] behaviorPerOne;
@@ -294,9 +288,18 @@ public class QuestionTemplateViewModel extends ViewModel {
     public void setStruggleQuestion(Object StruggleQuestion){
         this.StruggleQuestion = StruggleQuestion;
     }
+    public Object getStruggleQuestion(){
+        return this.StruggleQuestion;
+    }
     public void setHarmonyQuestion(Object harmonyQuestion){
         this.HarmonyQuestion = harmonyQuestion;
     }
+    public Object getHarmonyQuestion(){
+        return this.HarmonyQuestion;
+    }
+
+
+
 
 
 
@@ -1639,10 +1642,12 @@ public class QuestionTemplateViewModel extends ViewModel {
             questionTv.setText("값을 입력하세요");
             penQuestion.setRatio(-1);
             penQuestion.setNumberOfCow(-1);
+            penQuestion.setScore(-1);
         } else if(getRatio(questionEd) > 100) {
             penQuestion.setRatio(-1);
             questionTv.setText("표본 규모보다 큰 값 입력 불가");
             penQuestion.setNumberOfCow(-1);
+            penQuestion.setScore(-1);
             sampleSizeTv.setVisibility(View.VISIBLE);
             sampleSizeTv.setText("표본 규모 : " + String.valueOf(getSampleCowSize()));
         } else {
@@ -1650,6 +1655,7 @@ public class QuestionTemplateViewModel extends ViewModel {
                     makePenLocation(locationOneEd,locationTwoEd)
             );
             penQuestion.setRatio(getRatio(questionEd));
+
             penQuestion.setNumberOfCow(Integer.parseInt(String.valueOf(questionEd.getText())));
             questionTv.setText(String.valueOf(getRatio(questionEd)));
         }

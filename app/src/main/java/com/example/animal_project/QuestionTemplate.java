@@ -1,45 +1,60 @@
 package com.example.animal_project;
 
 import android.app.AlertDialog;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
-
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-// DataBase 처리를 위한 Import
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
-// ---------------------------------
-
-
+import com.example.animal_project.BreedBatch.ProtocolFour.BreedAvoidDistance;
+import com.example.animal_project.BreedBatch.ProtocolFour.BreedHarmony;
+import com.example.animal_project.BreedBatch.ProtocolFour.BreedStruggle;
+import com.example.animal_project.BreedBatch.ProtocolOne.BreedPoor;
+import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ1;
+import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ2;
+import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ3;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedBreath;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedCastrationQ1;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedCastrationQ2;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedCastrationQ3;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedCough;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedCriticalHairLoss;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedDiarrhea;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedFallDead;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedHornQ1;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedHornQ2;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedHornQ3;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedLimp;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedOphthalmic;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedRuminant;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedRunnyNose;
+import com.example.animal_project.BreedBatch.ProtocolThree.BreedSlightHairLoss;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedMistSpray;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedOutward;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedShade;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedStraw;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedSummerVentilating;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedWindBlock;
+import com.example.animal_project.BreedBatch.ProtocolTwo.BreedWinterVentilating;
+import com.example.animal_project.BreedBatch.ProtocolTwo.CalfMistSpray;
+import com.example.animal_project.BreedBatch.ProtocolTwo.CalfShade;
+import com.example.animal_project.BreedBatch.ProtocolTwo.CalfStraw;
+import com.example.animal_project.BreedBatch.ProtocolTwo.CalfSummerVentilating;
+import com.example.animal_project.BreedBatch.ProtocolTwo.CalfWarm;
+import com.example.animal_project.BreedBatch.ProtocolTwo.CalfWindBlock;
 import com.example.animal_project.Freestall.FreestallAppearanceQ1;
 import com.example.animal_project.Freestall.FreestallAppearanceQ2;
 import com.example.animal_project.Freestall.FreestallAppearanceQ3;
@@ -58,8 +73,6 @@ import com.example.animal_project.Freestall.FreestallCriticalLimp;
 import com.example.animal_project.Freestall.FreestallDiarrhea;
 import com.example.animal_project.Freestall.FreestallDystocia;
 import com.example.animal_project.Freestall.FreestallFallDead;
-import com.example.animal_project.Freestall.FreestallSlightHairloss;
-import com.example.animal_project.Freestall.FreestallSlightLimp;
 import com.example.animal_project.Freestall.FreestallMistSpray;
 import com.example.animal_project.Freestall.FreestallOphthalmic;
 import com.example.animal_project.Freestall.FreestallOutGenitals;
@@ -67,6 +80,8 @@ import com.example.animal_project.Freestall.FreestallPoor;
 import com.example.animal_project.Freestall.FreestallRespiratory;
 import com.example.animal_project.Freestall.FreestallRunnyNose;
 import com.example.animal_project.Freestall.FreestallShade;
+import com.example.animal_project.Freestall.FreestallSlightHairloss;
+import com.example.animal_project.Freestall.FreestallSlightLimp;
 import com.example.animal_project.Freestall.FreestallSummerVentilating;
 import com.example.animal_project.Freestall.FreestallWaterQ1;
 import com.example.animal_project.Freestall.FreestallWaterQ1_1;
@@ -75,58 +90,21 @@ import com.example.animal_project.Freestall.FreestallWaterQ2;
 import com.example.animal_project.Freestall.FreestallWaterQ3;
 import com.example.animal_project.Freestall.FreestallWindBlock;
 import com.example.animal_project.Freestall.FreestallWinterVentilating;
-import com.example.animal_project.BreedBatch.ProtocolFour.BreedAvoidDistance;
-import com.example.animal_project.BreedBatch.ProtocolFour.BreedHarmony;
-import com.example.animal_project.BreedBatch.ProtocolFour.BreedStruggle;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedBreath;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedCastrationQ1;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedCastrationQ2;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedCastrationQ3;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedCough;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedCriticalHairLoss;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedDiarrhea;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedFallDead;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedHornQ1;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedHornQ2;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedHornQ3;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedOphthalmic;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedRuminant;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedRunnyNose;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedSlightHairLoss;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedLimp;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedMistSpray;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedOutward;
-import com.example.animal_project.BreedBatch.ProtocolOne.BreedPoor;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedShade;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedStraw;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedSummerVentilating;
-import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ1;
-import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ2;
-import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ3;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedWindBlock;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedWinterVentilating;
-import com.example.animal_project.BreedBatch.ProtocolTwo.CalfMistSpray;
-import com.example.animal_project.BreedBatch.ProtocolTwo.CalfShade;
-import com.example.animal_project.BreedBatch.ProtocolTwo.CalfStraw;
-import com.example.animal_project.BreedBatch.ProtocolTwo.CalfSummerVentilating;
-import com.example.animal_project.BreedBatch.ProtocolTwo.CalfWarm;
-import com.example.animal_project.BreedBatch.ProtocolTwo.CalfWindBlock;
 import com.example.animal_project.Result.ResultTotal;
 import com.example.animal_project.Result.Result_1;
 import com.example.animal_project.Result.Result_2;
 import com.example.animal_project.Result.Result_3;
 import com.example.animal_project.Result.Result_4;
-import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
-import org.w3c.dom.Text;
+// DataBase 처리를 위한 Import
+// ---------------------------------
 
 
 public class QuestionTemplate extends AppCompatActivity
  {
-     private static String IP_ADDRESS = "218.151.112.65";
-     private static String TAG = "phptest";
-     public static Context context_question_template;
+        private String IP_ADDRESS = "218.151.112.65";
+
 
 
      // 정보 입력 창에서 넘어온 정보들
@@ -139,7 +117,8 @@ public class QuestionTemplate extends AppCompatActivity
      private int totalChildCow;
      private String evaName;
      private String evaDate;
-     private int farmType = 0;
+     public int farmType = 0;
+     private String farmId;
      private int sampleCowSize;
      // ------------------------------
     // --- 결과 창 ---
@@ -211,6 +190,8 @@ public class QuestionTemplate extends AppCompatActivity
 
      // 한 육우 프로토콜 질문 항목 fragments 를 담는 배열
     private Fragment[] breed_frag_arr = new Fragment[20];
+    private Fragment[] fatten_frag_arr = new Fragment[20];
+
     // freestall
     private FreestallPoor freestall_poor;
     private FreestallWaterQ1 freestall_water_q1;
@@ -256,7 +237,7 @@ public class QuestionTemplate extends AppCompatActivity
 
 
     private Fragment[] freestall_frag_arr = new Fragment[20];
-    private TextView mTextViewResult;
+
     int count = 0;
      QuestionTemplateViewModel viewModel;
      AlertDialog.Builder myAlertBuilder;
@@ -316,6 +297,8 @@ public class QuestionTemplate extends AppCompatActivity
         breed_mist_spray = new BreedMistSpray();
         breed_wind_block = new BreedWindBlock();
         breed_winter_ventilating = new BreedWinterVentilating();
+
+
         calf_shade = new CalfShade();
         calf_summer_ventilating = new CalfSummerVentilating();
         calf_mist_spray = new CalfMistSpray();
@@ -401,8 +384,12 @@ public class QuestionTemplate extends AppCompatActivity
         evaDate = BeforeBundle.getString("evaDate");
         farmType = BeforeBundle.getInt("farmType");
         sampleCowSize = BeforeBundle.getInt("sampleCowSize");
-        // ------------------------------------------------
+        farmId = BeforeBundle.getString("farmId");
 
+        // ------------------------------------------------
+        Bundle bundle = new Bundle(1);
+        bundle.putInt("farmType",farmType);
+        breed_winter_ventilating.setArguments(bundle);
         // ---- 테스트를 위한 최소 정보 ---------
         farmType = BeforeBundle.getInt("farmType");
         totalCowSize = BeforeBundle.getInt("totalCow");
@@ -417,6 +404,14 @@ public class QuestionTemplate extends AppCompatActivity
                 breed_cough,breed_runny_nose,breed_ophthalmic,breed_breath,breed_diarrhea,breed_ruminant,breed_fall_dead,
                 breed_horn_q1,breed_horn_q2,breed_horn_q3,breed_castration_q1,breed_castration_q2,breed_castration_q3,
                 breed_struggle,breed_harmony,breed_avoid_distance};
+
+        fatten_frag_arr = new Fragment[]{breed_poor,breed_water_q1,breed_water_q2,breed_water_q3,
+                breed_straw,breed_outward,breed_shade,breed_summer_ventilating,breed_mist_spray,
+                breed_wind_block,breed_winter_ventilating,breed_limp,breed_slight_hair_loss,breed_critical_hair_loss,
+                breed_cough,breed_runny_nose,breed_ophthalmic,breed_breath,breed_diarrhea,breed_ruminant,breed_fall_dead,
+                breed_horn_q1,breed_horn_q2,breed_horn_q3,breed_castration_q1,breed_castration_q2,breed_castration_q3,
+                breed_struggle,breed_harmony,breed_avoid_distance
+        };
 
         freestall_frag_arr = new Fragment[]{ freestall_poor,freestall_water_q1,freestall_water_q2,freestall_water_q3,
                 freestall_count,freestall_area_out_collision,freestall_appearance_q1,freestall_appearance_q2,freestall_appearance_q3,freestall_shade,freestall_summer_ventilating,freestall_mist_spray,
@@ -449,7 +444,12 @@ public class QuestionTemplate extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 View view = findViewById(R.id.list_sub_menu_2);
-                listMenuBtnHandler(list_menu_btn_2,view);
+                View fattenView = findViewById(R.id.fatten_list_sub_menu_2);
+                if(farmType == 1){
+                    listMenuBtnHandler(list_menu_btn_2,fattenView);
+                }else if(farmType == 2 || farmType == 3){
+                    listMenuBtnHandler(list_menu_btn_2,view);
+                }
             }
         });
         list_menu_btn_3.setOnClickListener(new View.OnClickListener() {
@@ -471,7 +471,8 @@ public class QuestionTemplate extends AppCompatActivity
         transaction = fragmentManager.beginTransaction();
 
         if (farmType == 1) {
-
+            transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
+            total_page.setText(String.valueOf(" / " + fatten_frag_arr.length));
         }
         else if (farmType == 2 || farmType == 3) {
             transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
@@ -530,7 +531,28 @@ public class QuestionTemplate extends AppCompatActivity
                 breed_list_btn_26,breed_list_btn_27,breed_list_btn_28,breed_list_btn_29,breed_list_btn_30,
                 breed_list_btn_31,breed_list_btn_32,breed_list_btn_33,breed_list_btn_34,breed_list_btn_35,
                 breed_list_btn_36};
-        count = listBtnHandler(breed_list_btn_arr,breed_frag_arr);
+        View fattenListSubMenuView = findViewById(R.id.fatten_list_sub_menu_2);
+        ImageButton fatten_list_btn_5 = fattenListSubMenuView.findViewById(R.id.question_list_btn_5);
+        ImageButton fatten_list_btn_6 = fattenListSubMenuView.findViewById(R.id.question_list_btn_6);
+        ImageButton fatten_list_btn_7 = fattenListSubMenuView.findViewById(R.id.question_list_btn_7);
+        ImageButton fatten_list_btn_8 = fattenListSubMenuView.findViewById(R.id.question_list_btn_8);
+        ImageButton fatten_list_btn_9 = fattenListSubMenuView.findViewById(R.id.question_list_btn_9);
+        ImageButton fatten_list_btn_10 = fattenListSubMenuView.findViewById(R.id.question_list_btn_10);
+        ImageButton fatten_list_btn_11 = fattenListSubMenuView.findViewById(R.id.question_list_btn_11);
+        ImageButton[] fatten_list_btn_arr=  {
+                breed_list_btn_1,breed_list_btn_2,breed_list_btn_3,breed_list_btn_4,fatten_list_btn_5,
+                fatten_list_btn_6,fatten_list_btn_7,fatten_list_btn_8,fatten_list_btn_9,fatten_list_btn_10, fatten_list_btn_11,
+                breed_list_btn_18,breed_list_btn_19,breed_list_btn_20, breed_list_btn_21,breed_list_btn_22,breed_list_btn_23,
+                breed_list_btn_24,breed_list_btn_25, breed_list_btn_26,breed_list_btn_27,breed_list_btn_28,breed_list_btn_29,
+                breed_list_btn_30, breed_list_btn_31,breed_list_btn_32,breed_list_btn_33,breed_list_btn_34,breed_list_btn_35,
+                breed_list_btn_36
+        };
+        if( farmType == 1){
+            count = listBtnHandler(fatten_list_btn_arr,fatten_frag_arr);
+        }
+        else if( farmType ==2 || farmType ==3 ){
+            count = listBtnHandler(breed_list_btn_arr,breed_frag_arr);
+        }
 
     }
     public void clickHandler(View view)
@@ -545,7 +567,8 @@ public class QuestionTemplate extends AppCompatActivity
             // 다음 버튼 누를 시 이어질 페이지 지정
             case R.id.next_btn:
                 if (farmType == 1) {
-
+                    nextBtnHandler(count,fatten_frag_arr.length);
+                    transaction.replace(R.id.fragment_paper,fatten_frag_arr[++count]).commitAllowingStateLoss();
                 }
                 else if (farmType == 2 || farmType == 3) {
                     nextBtnHandler(count,breed_frag_arr.length);
@@ -565,7 +588,8 @@ public class QuestionTemplate extends AppCompatActivity
                 // 이전 버튼 누를 시 이어질 페이지 지정
             case R.id.previous_btn:
                 if (farmType == 1) {
-
+                    prevBtnHandler(count,fatten_frag_arr.length);
+                    transaction.replace(R.id.fragment_paper, fatten_frag_arr[--count]).commitAllowingStateLoss();
                 }
                 else if (farmType == 2 || farmType == 3) {
                     prevBtnHandler(count,breed_frag_arr.length);
@@ -585,20 +609,7 @@ public class QuestionTemplate extends AppCompatActivity
                 break;
             case R.id.end_btn:
                 // database 연동
-                InsertData task = new InsertData();
-                task.execute("http://" + IP_ADDRESS + "/insert.php",
-                        farmName,
-                        address,
-                        addressDetail,
-                        repName,
-                        String.valueOf(farmType),
-                        String.valueOf(totalCowSize),
-                        String.valueOf(totalAdultCow),
-                        String.valueOf(totalChildCow),
-                        String.valueOf(sampleCowSize),
-                        String.valueOf(evaName),
-                        String.valueOf(evaDate));
-
+                InsertAnswerFunc();
                 fragment_paper.setVisibility(View.GONE);
                 end_btn.setVisibility(View.GONE);
                 question_top_nav.setVisibility(View.GONE);
@@ -708,6 +719,7 @@ public class QuestionTemplate extends AppCompatActivity
     }
 
     private void changeCheckImageFunc (){
+
         ImageView check_total_1 = findViewById(R.id.check_total_1);
         ImageView check_total_2 = findViewById(R.id.check_total_2);
         ImageView check_total_3 = findViewById(R.id.check_total_3);
@@ -748,7 +760,34 @@ public class QuestionTemplate extends AppCompatActivity
         ImageView check_sub_34 = findViewById(R.id.check_sub_34);
         ImageView check_sub_35 = findViewById(R.id.check_sub_35);
         ImageView check_sub_36 = findViewById(R.id.check_sub_36);
+        if(farmType == 1){
+            View fattenListMenuTwo = findViewById(R.id.fatten_list_sub_menu_2);
+            ImageView fatten_check_sub_6 = fattenListMenuTwo.findViewById(R.id.check_sub_6);
+            if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward).getNumberOfCow() != -1) {
+                changeCheckImage(fatten_check_sub_6);
+            }
+            ImageView fatten_check_sub_7 = fattenListMenuTwo.findViewById(R.id.check_sub_7);
+            ImageView fatten_check_sub_8 = fattenListMenuTwo.findViewById(R.id.check_sub_8);
+            ImageView fatten_check_sub_9 = fattenListMenuTwo.findViewById(R.id.check_sub_9);
+            ImageView fatten_check_sub_10 = fattenListMenuTwo.findViewById(R.id.check_sub_10);
+            ImageView fatten_check_sub_11 = fattenListMenuTwo.findViewById(R.id.check_sub_11);
+            if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem() != -1){
+                changeCheckImage(fatten_check_sub_7);
+            }
+            if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getSelectedItem() != -1){
+                changeCheckImage(fatten_check_sub_8);
+            }
+            if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).getSelectedItem() != -1){
+                changeCheckImage(fatten_check_sub_9);
+            }
+            if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWindBlock).getSelectedItem() != -1){
+                changeCheckImage(fatten_check_sub_10);
+            }
+            if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWinterVentilating).getSelectedItem() != -1){
+                changeCheckImage(fatten_check_sub_11);
+            }
 
+        }
         // 라디오 그룹들
         ImageView[] radioImageViewArr = {
                 check_sub_2,check_sub_3,check_sub_7,check_sub_8,check_sub_9,
@@ -779,12 +818,12 @@ public class QuestionTemplate extends AppCompatActivity
         if(viewModel.getStrawScore() != -1) changeCheckImage(check_sub_5);
         if(viewModel.getProtocolTwoScore() != -1) changeCheckImage(check_total_2);
         //프로토콜 3
-        if(viewModel.getLimpScore() != -1) changeCheckImage(check_sub_18);
+        if(((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getNumberOfCow() != -1) changeCheckImage(check_sub_18);
         if(viewModel.getCoughQuestion().getCoughPerOneAvg() != -1) changeCheckImage(check_sub_21);
         if(viewModel.getProtocolThreeScore() != -1) changeCheckImage(check_total_3);
         //프로토콜 4
-        if(viewModel.getStruggle() != -1) changeCheckImage(check_sub_34);
-        if(viewModel.getHarmony() != -1)changeCheckImage(check_sub_35);
+        if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg() != -1) changeCheckImage(check_sub_34);
+        if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg() != -1)changeCheckImage(check_sub_35);
         if(viewModel.getAvoidDistanceScore() != -1) changeCheckImage(check_sub_36);
         if(viewModel.getProtocolFourScore() != -1)changeCheckImage(check_total_4);
     }
@@ -845,106 +884,147 @@ public class QuestionTemplate extends AppCompatActivity
 
 
 
+
      // database 연동
-     class InsertData extends AsyncTask<String, Void, String>{
-         ProgressDialog progressDialog;
-         @Override
-         protected void onPreExecute() {
-             super.onPreExecute();
-             progressDialog = ProgressDialog.show(QuestionTemplate.this,
-                     "Please Wait", null, true, true);
-         }
-         @Override
-         protected void onPostExecute(String result) {
-             super.onPostExecute(result);
-             progressDialog.dismiss();
+     private void InsertAnswerFunc(){
+         int breedPoorNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.BreedPoor).getNumberOfCow();
+         float breedPoorScore = ((QuestionTemplateViewModel.Question)viewModel.BreedPoor).getScore();
+         float breedPoorRatio = ((QuestionTemplateViewModel.Question)viewModel.BreedPoor).getRatio();
+         String breedWaterTankNum = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getAnswer();
+         String breedWaterTankClean = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getAnswer();
+         String breedOutwardPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward).getPenLocation();
+         int breedOutwardNumberOfCow = ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedOutward).getNumberOfCow();
+         int breedOutwardScore = viewModel.getOutWardScore();
+         float breedOutWardRatio = ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedOutward).getRatio();
+         String breedShadeAnswer = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getAnswer();
+         String breedSummerVentilatingAnswer = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getAnswer();
+         String breedMistSpray = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).getAnswer();
+         int breedSummerRestScore = viewModel.getSummerRestScore();
+         String breedWindBlockAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedWindBlock).getAnswer();
+         String breedWinterVentilatingAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedWinterVentilating).getAnswer();
+         int breedWinterRestScore = viewModel.getWinterRestScore();
+         String calfShadeAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.CalfShade).getAnswer();
+         String calfSummerVentilatingAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.CalfSummerVentilating).getAnswer();
+         String calfMistSprayAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.CalfMistSpray).getAnswer();
+         int calfSummerRestScore = viewModel.getCalfSummerRestScore();
+         String calfStrawAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.CalfStraw).getAnswer();
+         String calfWarmAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.CalfWarm).getAnswer();
+         String calfWindBlock = ((QuestionTemplateViewModel.RadioQuestion) viewModel.CalfWindBlock).getAnswer();
+         int calfWinterRestScore = viewModel.getCalfWinterRestScore();
+         int breedLimpNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getNumberOfCow();
+         float breedLimpScore = ((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getScore();
+         float breedLimpRatio = ((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getRatio();
 
-             Log.d(TAG, "POST response  - " + result);
-         }
-         @Override
-         protected String doInBackground(String... params) {
-             String farmName = (String)params[1];
-             String address = (String)params[2];
-             String addressDetail = (String)params[3];
-             String repName = (String)params[4];
-             String farmType = (String)params[5];
-             String totalCow = (String)params[6];
-             String adultCow = (String)params[7];
-             String childCow = (String)params[8];
-             String sampleCow = (String)params[9];
-             String evaName = (String)params[10];
-             String evaDate = (String)params[11];
+         int breedSlightHairLossNumberOfCow = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getNumberOfCow();
+         String breedSlightHairPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getPenLocation();
+         float breedSlightHairLossRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getRatio();
 
-             String serverURL = (String)params[0];
-             String postParameters =
-                     "farmName=" + farmName +
-                             "&address=" + address +
-                             "&addressDetail=" + addressDetail +
-                             "&repName=" + repName +
-                             "&farmType=" + farmType +
-                             "&totalCow=" + totalCow +
-                             "&adultCow=" + adultCow +
-                             "&childCow=" + childCow +
-                             "&sampleCow=" + sampleCow +
-                             "&evaName=" + evaName +
-                             "&evaDate=" + evaDate;
+         int breedCriticalHairLossNumberOfCow = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).getNumberOfCow();
+         float breedCriticalHairLossScore = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).getScore();
+         float breedCriticalHairLossRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).getRatio();
 
-             String name = (String)params[1];
-             String country = (String)params[2];
+         String breedRunnyNosePenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose).getPenLocation();
+         int breedRunnyNoseNumberOfCow = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose).getNumberOfCow();
+         float breedRunnyNoseRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose).getRatio();
 
-             try {
+         String breedOphthalmicPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOphthalmic).getPenLocation();
+         int breedOphthalmicNumberOfCow = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOphthalmic).getNumberOfCow();
+         float breedOphthalmicRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOphthalmic).getRatio();
 
-                 URL url = new URL(serverURL);
-                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+         String breedBreathPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedBreath).getPenLocation();
+         int breedBreathNumberOfCow = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedBreath).getNumberOfCow();
+         float breedBreathRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedBreath).getRatio();
+
+         String breedDiarrheaPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedDiarrhea).getPenLocation();
+         int breedDiarrheaNumberOfCow = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedDiarrhea).getNumberOfCow();
+         float breedDiarrheaRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedDiarrhea).getRatio();
+
+         String breedRuminantPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRuminant).getPenLocation();
+         int breedRuminantNumberOfCow = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRuminant).getNumberOfCow();
+         float breedRuminantRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRuminant).getRatio();
+
+         String breedFallDeadPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead).getPenLocation();
+         int breedFallDeadNumberOfCow = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead).getNumberOfCow();
+         float breedFallDeadRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead).getRatio();
+
+         String breedHornAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedHornRemoval).getAnswer();
+         String breedHornAnesthesiaAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedHornAnesthesia).getAnswer();
+         String breedHornPainkillerAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedHornPainkiller).getAnswer();
+         int breedHornRemovalScore = viewModel.getHornRemovalScore();
+
+         String breedCastrationAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedCastration).getAnswer();
+         String breedCastrationAnesthesiaAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedCastrationAnesthesia).getAnswer();
+         String breedCastrationPainkillerAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedCastrationPainkiller).getAnswer();
+         int breedCastrationScore = viewModel.getCastrationScore();
+
+        InsertAnswer task = new InsertAnswer(QuestionTemplate.this);
+        task.execute("http://" + IP_ADDRESS + "/insertBeefAnswer.php",
+                farmId,
+                String.valueOf(breedPoorNumberOfCow),
+                String.valueOf(breedPoorScore),
+                String.valueOf(breedPoorRatio),
+                breedWaterTankNum,
+                breedWaterTankClean,
+                breedOutwardPenLocation,
+                String.valueOf(breedOutwardNumberOfCow),
+                String.valueOf(breedOutwardScore),
+                String.valueOf(breedOutWardRatio),
+                breedShadeAnswer,
+                breedSummerVentilatingAnswer,
+                breedMistSpray,
+                String.valueOf(breedSummerRestScore),
+                breedWindBlockAnswer,
+                breedWinterVentilatingAnswer,
+                String.valueOf(breedWinterRestScore),
+                calfShadeAnswer,
+                calfSummerVentilatingAnswer,
+                calfMistSprayAnswer,
+                String.valueOf(calfSummerRestScore),
+                calfStrawAnswer,
+                calfWarmAnswer,
+                calfWindBlock,
+                String.valueOf(calfWinterRestScore),
+                String.valueOf(breedLimpNumberOfCow),
+                String.valueOf(breedLimpScore),
+                String.valueOf(breedLimpRatio),
+                String.valueOf(breedSlightHairLossNumberOfCow),
+                breedSlightHairPenLocation,
+                String.valueOf(breedSlightHairLossRatio),
+                String.valueOf(breedCriticalHairLossNumberOfCow),
+                String.valueOf(breedCriticalHairLossScore),
+                String.valueOf(breedCriticalHairLossRatio),
+                breedRunnyNosePenLocation,
+                String.valueOf(breedRunnyNoseNumberOfCow),
+                String.valueOf(breedRunnyNoseRatio),
+                breedOphthalmicPenLocation,
+                String.valueOf(breedOphthalmicNumberOfCow),
+                String.valueOf(breedOphthalmicRatio),
+                breedBreathPenLocation,
+                String.valueOf(breedBreathNumberOfCow),
+                String.valueOf(breedBreathRatio),
+                breedDiarrheaPenLocation,
+                String.valueOf(breedDiarrheaNumberOfCow),
+                String.valueOf(breedDiarrheaRatio),
+                breedRuminantPenLocation,
+                String.valueOf(breedRuminantNumberOfCow),
+                String.valueOf(breedRuminantRatio),
+                breedFallDeadPenLocation,
+                String.valueOf(breedFallDeadNumberOfCow),
+                String.valueOf(breedFallDeadRatio),
+
+                breedHornAnswer,
+                breedHornAnesthesiaAnswer,
+                breedHornPainkillerAnswer,
+                String.valueOf(breedHornRemovalScore),
+                breedCastrationAnswer,
+                breedCastrationAnesthesiaAnswer,
+                breedCastrationPainkillerAnswer,
+                String.valueOf(breedCastrationScore)
 
 
-                 httpURLConnection.setReadTimeout(5000);
-                 httpURLConnection.setConnectTimeout(5000);
-                 httpURLConnection.setRequestMethod("POST");
-                 httpURLConnection.connect();
+                );
 
-
-                 OutputStream outputStream = httpURLConnection.getOutputStream();
-                 outputStream.write(postParameters.getBytes("UTF-8"));
-                 outputStream.flush();
-                 outputStream.close();
-
-
-                 int responseStatusCode = httpURLConnection.getResponseCode();
-                 Log.d(TAG, "POST response code - " + responseStatusCode);
-
-                 InputStream inputStream;
-                 if(responseStatusCode == HttpURLConnection.HTTP_OK) {
-                     inputStream = httpURLConnection.getInputStream();
-                 }
-                 else{
-                     inputStream = httpURLConnection.getErrorStream();
-                 }
-
-
-                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
-                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-                 StringBuilder sb = new StringBuilder();
-                 String line = null;
-
-                 while((line = bufferedReader.readLine()) != null){
-                     sb.append(line);
-                 }
-
-
-                 bufferedReader.close();
-
-
-                 return sb.toString();
-
-
-             } catch (Exception e) {
-                 Log.d(TAG, "InsertData: Error ", e);
-                 return new String("Error: " + e.getMessage());
-             }
-
-         }
      }
+
 }
 

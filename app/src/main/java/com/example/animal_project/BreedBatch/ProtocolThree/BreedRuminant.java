@@ -48,7 +48,6 @@ public class BreedRuminant extends Fragment {
             public void afterTextChanged(Editable s) {
                 viewModel.penQuestionAfterTextChanged(breed_ruminant_ed,breed_ruminant_tv,
                         sample_size_tv,pen_location_one_ed,pen_location_two_ed,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedRuminant);
-
             }
 
         });

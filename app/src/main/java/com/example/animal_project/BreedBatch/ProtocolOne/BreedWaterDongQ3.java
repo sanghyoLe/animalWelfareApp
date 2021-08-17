@@ -1,35 +1,22 @@
 package com.example.animal_project.BreedBatch.ProtocolOne;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.animal_project.QuestionTemplate;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
-
-import org.w3c.dom.Text;
-
-import java.util.Arrays;
 
 public class BreedWaterDongQ3 extends AppCompatActivity {
     private int dong_size;
@@ -112,8 +99,8 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
                     msg = checkGreaterThanCowSize(cowSizeEd,waitingCowSizeEd,dong_size) + "동의 대기우 수가 사육두수 보다 큽니다";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                 } else {
+                    WaterTimeQuestion.setDongSize(dong_size);
                     WaterTimeQuestion.setPenLocation(viewModel.makePenLocationArr(penLocationOneEd,penLocationTwoEd,dong_size));
-
                     WaterTimeQuestion.setCowSize(viewModel.getIntEditTextValues(cowSizeEd,dong_size));
                     WaterTimeQuestion.setWaitingCowSize(viewModel.getIntEditTextValues(waitingCowSizeEd,dong_size));
                     WaterTimeQuestion.setDrinkTime(viewModel.getIntEditTextValues(drinkTimeEd,dong_size));

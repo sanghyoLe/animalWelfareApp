@@ -1,15 +1,13 @@
 package com.example.animal_project.BreedBatch.ProtocolTwo;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
@@ -37,6 +35,8 @@ public class CalfShade extends Fragment {
                     shade = 2;
                 }
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfShade).setSelectedItem(shade);
+                int selectedItem = ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfShade).getSelectedItem();
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfShade).setAnswer(shadeRg,selectedItem);
             }
         });
 

@@ -120,21 +120,21 @@
                     android:id="@+id/input_farm_beef"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-          <!--              <RadioButton
+                        <RadioButton
                             android:id="@+id/input_1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="비육 농장(송아지 없음)" />-->
+                            android:text="비육 농장(송아지 없음)" />
                         <RadioButton
                             android:id="@+id/input_2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="번식 농장" />
-                  <!--      <RadioButton
+                        <RadioButton
                             android:id="@+id/input_3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="일괄 사육 농장" />-->
+                            android:text="일괄 사육 농장" />
                 </RadioGroup>
                 </LinearLayout>
                 <LinearLayout
@@ -147,12 +147,11 @@
                     android:id="@+id/input_farm_milk_cow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-<!--
                         <RadioButton
                             android:id="@+id/input_4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="일반 우사" />-->
+                            android:text="일반 우사" />
                         <RadioButton
                             android:id="@+id/input_5"
                             android:layout_width="match_parent"

@@ -1,18 +1,15 @@
 package com.example.animal_project.BreedBatch.ProtocolTwo;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.animal_project.QuestionTemplate;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
@@ -41,7 +38,11 @@ public class BreedMistSpray extends Fragment {
                     mistSpray = 2;
                 }
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).setSelectedItem(mistSpray);
-                
+                int selectedItem = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).getSelectedItem();
+
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).setAnswer(mistSprayRg,selectedItem);
+
+
                 if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem() == -1){
                     breedRestScoreTv.setText("7번 문항을 완료해주세요");
                 } else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getSelectedItem() == -1){
