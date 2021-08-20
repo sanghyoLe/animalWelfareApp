@@ -148,6 +148,9 @@ public class QuestionTemplateViewModel extends ViewModel {
         public void setWaitingCowSize(int[] waitingCowSize){
             this.waitingCowSize = waitingCowSize;
         }
+        public int[] getWaitingCowSize(){
+            return this.waitingCowSize;
+        }
         public void setDrinkTime(int[] drinkTime){
             this.drinkTime = drinkTime;
         }

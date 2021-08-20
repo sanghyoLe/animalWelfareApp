@@ -11,7 +11,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Arrays;
 
 public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
     private final Context context;
@@ -28,14 +27,23 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
         String serverURL = "http://" + IP_ADDRESS + "/insertBeefAnswer.php";
         Object waterTimeQuestion = objects[0];
         String[] waterTimePenLocation = ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).getPenLocation();
+        int[] waterTimeAnswer = ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).getDrinkTime();
+        int[] waterTimeTotalCowSize = ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).getCowSize();
+        int[] waterTimeAnswerCowSize = ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).getWaitingCowSize();
+
         int waterTimeDongSize = ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).getDongSize();
+        Log.d("penLocation",String.valueOf(waterTimePenLocation[0]));
 
+        String postParameters = "waterTimeDongSize=" + waterTimeDongSize;
 
-        String postParameters = "waterTimePenLocation_1=" + waterTimePenLocation[0];
-
-        for(int i = 1 ; i < waterTimeDongSize ; i++){
-            postParameters.concat("&waterTimePenLocation_=" + i+1 + waterTimePenLocation[i]);
+        for(int i = 0 ; i < waterTimeDongSize ; i++){
+            postParameters = postParameters.concat("&waterTimePenLocation_" + (i+1) +"="+ waterTimePenLocation[i]);
+            postParameters = postParameters.concat("&waterTimeAnswer" + (i+1) +"="+ waterTimeAnswer[i]);
+            postParameters = postParameters.concat("&waterTimeTotalCowSize" + (i+1) +"="+ waterTimeTotalCowSize[i]);
+            postParameters = postParameters.concat("&waterTimeAnswerCowSize" + (i+1) +"="+ waterTimeAnswerCowSize[i]);
         }
+
+
         Log.d("postpar",postParameters);
         try {
 
