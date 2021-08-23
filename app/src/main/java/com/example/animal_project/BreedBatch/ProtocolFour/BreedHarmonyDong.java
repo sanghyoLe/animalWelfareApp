@@ -98,6 +98,7 @@ public class BreedHarmonyDong extends AppCompatActivity {
                     msg = viewModel.checkEmptyEditText(harmonyEd, dong_size) + "동 화합 행동 수를 입력하세요";
                     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 } else {
+                    harmonyQuestion.setDongSize(dong_size);
                     harmonyQuestion.setPenLocation(viewModel.makePenLocationArr(penLocationOneEd,penLocationTwoEd,dong_size));
                     harmonyQuestion.setCowSize(viewModel.getIntEditTextValues(cowSizeEd,dong_size));
                     harmonyQuestion.setBehaviorCount(viewModel.getIntEditTextValues(harmonyEd,dong_size));
@@ -166,7 +167,8 @@ public class BreedHarmonyDong extends AppCompatActivity {
         harmonyPerOneAvg = totalharmony / (float)totalCowSize;
         harmonyPerOneAvg = (float) viewModel.cutDecimal(harmonyPerOneAvg);
         harmonyPerOneAvg = harmonyPerOneAvg * 6;
-        return harmonyPerOneAvg;
+
+        return (float)viewModel.cutDecimal(harmonyPerOneAvg);
     }
     private String makeInputString(float[] harmonyPerOne,int dong_size){
         String[] inputStrings = new String[dong_size];

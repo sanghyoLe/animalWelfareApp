@@ -3,6 +3,7 @@ package com.example.animal_project;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -890,15 +891,22 @@ public class QuestionTemplate extends AppCompatActivity
      private void InsertAnswerFunc(){
         InsertAnswer task = new InsertAnswer(QuestionTemplate.this);
         InsertDongAnswer dongTask = new InsertDongAnswer(QuestionTemplate.this);
-        /*InsertQuestion(task);*/
-        insertDongQuestion(dongTask);
+         InsertQuestion(task);
+         insertDongQuestion(dongTask);
+
+
      }
      public void insertDongQuestion(InsertDongAnswer task){
-
          Object waterTimeQuestion = viewModel.WaterTimeQuestion;
+         ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).setFarmId(Integer.parseInt(farmId));
+         Object coughQuestion = viewModel.CoughQuestion;
+         Object struggleQuestion = viewModel.StruggleQuestion;
+         Object harmonyQuestion = viewModel.HarmonyQuestion;
+             task.execute(waterTimeQuestion,
+                     coughQuestion,
+                     struggleQuestion,
+                     harmonyQuestion);
 
-         String[] waterTimePenLocation = ((QuestionTemplateViewModel.DongQuestion)viewModel.WaterTimeQuestion).getPenLocation();
-             task.execute(waterTimeQuestion);
 
      }
      public void InsertQuestion(InsertAnswer task){
@@ -973,6 +981,20 @@ public class QuestionTemplate extends AppCompatActivity
          int breedCastrationScore = viewModel.getCastrationScore();
          Object waterTimeQuestion = viewModel.WaterTimeQuestion;
          int waterTimeDongSize = ((QuestionTemplateViewModel.DongQuestion)viewModel.WaterTimeQuestion).getDongSize();
+         int waterTimeMaxScore = ((QuestionTemplateViewModel.WaterTimeQuestion)viewModel.WaterTimeQuestion).getMaxWaterTimeScore();
+         Object coughQuestion = viewModel.CoughQuestion;
+         Object struggleQuestion = viewModel.StruggleQuestion;
+         Object harmonyQuestion = viewModel.HarmonyQuestion;
+
+         int coughDongSize = ((QuestionTemplateViewModel.CoughQuestion)coughQuestion).getDongSize();
+         float coughPerOneAvg = ((QuestionTemplateViewModel.CoughQuestion)coughQuestion).getCoughPerOneAvg();
+         float coughRatio = ((QuestionTemplateViewModel.CoughQuestion)coughQuestion).getCoughRatio();
+
+         int struggleDongSize = ((QuestionTemplateViewModel.BehaviorQuestion)struggleQuestion).getDongSize();
+         float strugglePerOneAvg = ((QuestionTemplateViewModel.BehaviorQuestion)struggleQuestion).getBehaviorPerOneAvg();
+
+         int harmonyDongSize = ((QuestionTemplateViewModel.BehaviorQuestion)harmonyQuestion).getDongSize();
+         float harmonyPerOneAvg = ((QuestionTemplateViewModel.BehaviorQuestion)harmonyQuestion).getBehaviorPerOneAvg();
 
          task.execute("http://" + IP_ADDRESS + "/insertBeefAnswer.php",
                  farmId,
@@ -1035,7 +1057,15 @@ public class QuestionTemplate extends AppCompatActivity
                  breedCastrationAnesthesiaAnswer,
                  breedCastrationPainkillerAnswer,
                  String.valueOf(breedCastrationScore),
-                 String.valueOf(waterTimeDongSize)
+                 String.valueOf(waterTimeDongSize),
+                 String.valueOf(waterTimeMaxScore),
+                 String.valueOf(coughDongSize),
+                 String.valueOf(coughPerOneAvg),
+                 String.valueOf(coughRatio),
+                 String.valueOf(struggleDongSize),
+                 String.valueOf(strugglePerOneAvg),
+                 String.valueOf(harmonyDongSize),
+                 String.valueOf(harmonyPerOneAvg)
          );
 
      }

@@ -105,6 +105,7 @@ public class BreedStruggleDong extends AppCompatActivity {
                     msg = viewModel.checkEmptyEditText(struggleEd, dong_size) + "동 투쟁 행동 수를 입력하세요";
                     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 } else {
+                    struggleQuestion.setDongSize(dong_size);
                     struggleQuestion.setPenLocation(viewModel.makePenLocationArr(penLocationOneEd,penLocationTwoEd,dong_size));
                     struggleQuestion.setCowSize(viewModel.getIntEditTextValues(cowSizeEd,dong_size));
                     struggleQuestion.setBehaviorCount(viewModel.getIntEditTextValues(struggleEd,dong_size));
@@ -174,7 +175,8 @@ public class BreedStruggleDong extends AppCompatActivity {
         strugglePerOneAvg = totalStruggle / (float)totalCowSize;
         strugglePerOneAvg = (float) viewModel.cutDecimal(strugglePerOneAvg);
         strugglePerOneAvg = strugglePerOneAvg * 6;
-        return strugglePerOneAvg;
+
+        return (float)viewModel.cutDecimal(strugglePerOneAvg);
     }
     private String makeInputString(float[] strugglePerOne,int dong_size){
         String[] inputStrings = new String[dong_size];

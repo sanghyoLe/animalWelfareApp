@@ -108,8 +108,16 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
         String breedCastrationAnswer = (String)params[index++];
         String breedCastrationAnesthesiaAnswer = (String)params[index++];
         String breedCastrationPainkillerAnswer = (String)params[index++];
-        String breedCastrationScore = (String)params[index];
-
+        String breedCastrationScore = (String)params[index++];
+        String breedWaterTimeDongSize = (String)params[index++];
+        String breedWaterTimeMaxScore = (String)params[index++];
+        String coughDongSize = (String)params[index++];
+        String coughPerOneAvg = (String)params[index++];
+        String coughRatio = (String)params[index++];
+        String struggleDongSize = (String)params[index++];
+        String strugglePerOneAvg = (String)params[index++];
+        String harmonyDongSize = (String)params[index++];
+        String harmonyPerOneAvg = (String)params[index++];
         String postParameters =
                 "farmId=" + farmId +
                 "&breedPoorNumberOfCow=" + breedPoorNumberOfCow +
@@ -169,8 +177,16 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
                         +"&breedCastrationAnswer=" + breedCastrationAnswer
                         +"&breedCastrationAnesthesiaAnswer=" + breedCastrationAnesthesiaAnswer
                         +"&breedCastrationPainkillerAnswer=" + breedCastrationPainkillerAnswer
-                        +"&breedCastrationScore=" + breedCastrationScore +
-                        ""
+                        +"&breedCastrationScore=" + breedCastrationScore
+                        +"&breedWaterTimeDongSize=" + breedWaterTimeDongSize
+                        +"&breedWaterTimeMaxScore=" + breedWaterTimeMaxScore
+                        +"&coughDongSize=" + coughDongSize
+                        +"&coughPerOneAvg=" + coughPerOneAvg
+                        +"&coughRatio=" + coughRatio
+                        +"&struggleDongSize=" + struggleDongSize
+                        +"&strugglePerOneAvg=" + strugglePerOneAvg
+                        +"&harmonyDongSize=" + harmonyDongSize
+                        +"&harmonyPerOneAvg=" + harmonyPerOneAvg
                 ;
 
 

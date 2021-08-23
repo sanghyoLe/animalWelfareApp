@@ -102,6 +102,7 @@ public class BreedCoughDong extends AppCompatActivity {
                     coughQuestion.setPenLocation(viewModel.makePenLocationArr(penLocationOneEd, penLocationTwoEd, dong_size));
                     coughQuestion.setCowSize(viewModel.getIntEditTextValues(cowSizeEd, dong_size));
                     coughQuestion.setCoughCount(viewModel.getIntEditTextValues(coughEd, dong_size));
+                    coughQuestion.setDongSize(dong_size);
                     coughQuestion.setCoughPerOne(
                             calCoughPerOne(
                                     coughQuestion.getCowSize(),

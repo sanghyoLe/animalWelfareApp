@@ -19,8 +19,6 @@ import java.util.Map;
 
 
 public class QuestionTemplateViewModel extends ViewModel {
-
-
     public static class Question{
         int numberOfCow = -1;
         float ratio = -1;
@@ -119,7 +117,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public void setAvoidDistances(){
         for(int i = 1 ; i < 51 ; i++){
-            this.avoidDistances[i] = new avoidDistance(i,"1",-1);
+            this.avoidDistances[i] = new avoidDistance(i,"0",-1);
         }
     }
     public avoidDistance[] getAvoidDistances(){ return this.avoidDistances; }
@@ -135,6 +133,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         int[] drinkTime;
         int[] waterTimeScore;
         float[] waitingRatio;
+        int farmId;
         int maxWaterTimeScore = -1;
         public WaterTimeQuestion(int dong_size){
             this.penLocation = new String[dong_size];
@@ -144,7 +143,10 @@ public class QuestionTemplateViewModel extends ViewModel {
             this.waterTimeScore = new int[dong_size];
             this.waitingRatio = new float[dong_size];
         }
-
+        public void setFarmId(int farmId){
+            this.farmId = farmId;
+        }
+        public int getFarmId(){return this.farmId;}
         public void setWaitingCowSize(int[] waitingCowSize){
             this.waitingCowSize = waitingCowSize;
         }
