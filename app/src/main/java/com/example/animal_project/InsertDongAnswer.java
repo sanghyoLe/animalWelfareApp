@@ -5,8 +5,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -31,6 +29,8 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
         Object coughQuestion = objects[1];
         Object struggleQuestion = objects[2];
         Object harmonyQuestion = objects[3];
+
+
 
 
         int farmId = ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).getFarmId();

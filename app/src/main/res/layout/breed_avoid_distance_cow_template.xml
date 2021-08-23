@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:maxLength="4"
+                    android:maxLength="8"
                     android:inputType="number"
                     android:hint="숫자 입력"
                     />

@@ -1,16 +1,9 @@
 package com.example.animal_project.BreedBatch.ProtocolFour;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,17 +11,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.animal_project.QuestionTemplate;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
-import com.reginald.editspinner.EditSpinner;
-
-import org.w3c.dom.Text;
 
 
 public class BreedAvoidDistance extends Fragment {
@@ -162,7 +153,6 @@ public class BreedAvoidDistance extends Fragment {
                         penLocationAlreadyInput,alreadyCowSizeTv,btnArr,selectedItemIndex[0]);
 
 
-                Log.d("1",String.valueOf(pen_size));
             }
 
 
@@ -180,12 +170,7 @@ public class BreedAvoidDistance extends Fragment {
         return view;
     }
 
-    public void setAlreadyView(Object[] objects, Spinner[] cowSpinner, EditText[] penLocationOnes
-            , EditText[] penLocationTwos, Button[] inputBtn, int penSize){
-        for(int i = 0 ; i < penSize ; i++){
 
-        }
-    }
 
     public Spinner[] makeSpinner(View[] QuestionViewArr, ArrayAdapter spinnerAdapter) {
         Spinner[] SpinnerArr = new Spinner[50];
@@ -364,6 +349,7 @@ public class BreedAvoidDistance extends Fragment {
                 }
                 showQuestionView(questionViewArr, avoidDistanceArr,penLocationOneArr,penLocationTwoArr,cowSizeSpinnerArr,
                         penLocationAlreadyInput,alreadyCowSizeTv,btnArr,pen_size);
+                viewModel.avoidDistances[1].setPenSize(pen_size);
                 break;
             default:
                 break;

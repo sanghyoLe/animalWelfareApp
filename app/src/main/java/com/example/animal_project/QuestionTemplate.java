@@ -3,9 +3,7 @@ package com.example.animal_project;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -891,9 +889,19 @@ public class QuestionTemplate extends AppCompatActivity
      private void InsertAnswerFunc(){
         InsertAnswer task = new InsertAnswer(QuestionTemplate.this);
         InsertDongAnswer dongTask = new InsertDongAnswer(QuestionTemplate.this);
+        InsertAvoidDistance avoidDistanceTask = new InsertAvoidDistance(QuestionTemplate.this);
+
          InsertQuestion(task);
          insertDongQuestion(dongTask);
+         insertAvoidDistance(avoidDistanceTask);
 
+
+     }
+     public void insertAvoidDistance(InsertAvoidDistance task){
+         Object[] avoidDistances  = viewModel.avoidDistances;
+         ((QuestionTemplateViewModel.avoidDistance)avoidDistances[1]).setFarmId(Integer.parseInt(farmId));
+
+         task.execute(avoidDistances);
 
      }
      public void insertDongQuestion(InsertDongAnswer task){
@@ -902,10 +910,12 @@ public class QuestionTemplate extends AppCompatActivity
          Object coughQuestion = viewModel.CoughQuestion;
          Object struggleQuestion = viewModel.StruggleQuestion;
          Object harmonyQuestion = viewModel.HarmonyQuestion;
+
              task.execute(waterTimeQuestion,
                      coughQuestion,
                      struggleQuestion,
-                     harmonyQuestion);
+                     harmonyQuestion
+             );
 
 
      }
@@ -915,6 +925,7 @@ public class QuestionTemplate extends AppCompatActivity
          float breedPoorRatio = ((QuestionTemplateViewModel.Question)viewModel.BreedPoor).getRatio();
          String breedWaterTankNum = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getAnswer();
          String breedWaterTankClean = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getAnswer();
+         int waterScore = viewModel.getWaterScore();
          String breedOutwardPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward).getPenLocation();
          int breedOutwardNumberOfCow = ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedOutward).getNumberOfCow();
          int breedOutwardScore = viewModel.getOutWardScore();
@@ -934,6 +945,8 @@ public class QuestionTemplate extends AppCompatActivity
          String calfWarmAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.CalfWarm).getAnswer();
          String calfWindBlock = ((QuestionTemplateViewModel.RadioQuestion) viewModel.CalfWindBlock).getAnswer();
          int calfWinterRestScore = viewModel.getCalfWinterRestScore();
+         double TotalWarmVentilatingScore = viewModel.getTotalWarmVentilatingScore();
+
          int breedLimpNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getNumberOfCow();
          float breedLimpScore = ((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getScore();
          float breedLimpRatio = ((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getRatio();
@@ -995,6 +1008,22 @@ public class QuestionTemplate extends AppCompatActivity
 
          int harmonyDongSize = ((QuestionTemplateViewModel.BehaviorQuestion)harmonyQuestion).getDongSize();
          float harmonyPerOneAvg = ((QuestionTemplateViewModel.BehaviorQuestion)harmonyQuestion).getBehaviorPerOneAvg();
+         Object avoidDistance = viewModel.avoidDistances[1];
+
+         int avoidDistancePenSize = ((QuestionTemplateViewModel.avoidDistance)avoidDistance).getPenSize();
+         float avoidDistanceScore =  viewModel.getAvoidDistanceScore();
+
+         double protocolOneScore = viewModel.getProtocolOneScore();
+         double protocolTwoScore = viewModel.getProtocolTwoScore();
+         double protocolThreeScore = viewModel.getProtocolThreeScore();
+         double protocolFourScore = viewModel.getProtocolFourScore();
+         double restScore = viewModel.getRestScore();
+         double hairLossScore = viewModel.getHairLossScore();
+         double minPainScore = viewModel.getMinPainScore();
+         double BehaviorScore = viewModel.getSocialBehaviorScore();
+         double minInjuryScore = viewModel.getMinInjuryScore();
+         double minDiseaseScore = viewModel.getDiseaseScore();
+
 
          task.execute("http://" + IP_ADDRESS + "/insertBeefAnswer.php",
                  farmId,
@@ -1065,7 +1094,23 @@ public class QuestionTemplate extends AppCompatActivity
                  String.valueOf(struggleDongSize),
                  String.valueOf(strugglePerOneAvg),
                  String.valueOf(harmonyDongSize),
-                 String.valueOf(harmonyPerOneAvg)
+                 String.valueOf(harmonyPerOneAvg),
+                 String.valueOf(avoidDistancePenSize),
+                 String.valueOf(avoidDistanceScore),
+                 String.valueOf(waterScore),
+                 String.valueOf(protocolOneScore),
+                 String.valueOf(protocolTwoScore),
+                 String.valueOf(restScore),
+                 String.valueOf(TotalWarmVentilatingScore),
+                 String.valueOf(hairLossScore),
+                 String.valueOf(minPainScore),
+                 String.valueOf(BehaviorScore),
+                 String.valueOf(protocolFourScore),
+                 String.valueOf(protocolThreeScore),
+                 String.valueOf(minInjuryScore),
+                 String.valueOf(minDiseaseScore)
+
+
          );
 
      }

@@ -78,10 +78,24 @@ public class QuestionTemplateViewModel extends ViewModel {
         int[] cowCount;
         int[] cowNumber;
         int[] avoidDistance;
+        int penSize;
+        int farmId;
         public avoidDistance(int penNumber, String penLocation, int cowSize){
             this.penNumber = penNumber;
             this.penLocation = penLocation;
             this.cowSize = cowSize;
+        }
+        public void setPenSize(int penSize){
+            this.penSize = penSize;
+        }
+        public int getPenSize(){
+            return this.penSize;
+        }
+        public void setFarmId(int farmId){
+            this.farmId = farmId;
+        }
+        public int getFarmId(){
+            return this.farmId;
         }
         public int getPenNumber(){
             return this.penNumber;
@@ -369,7 +383,8 @@ public class QuestionTemplateViewModel extends ViewModel {
     private int waterTankClean = -1;
     private int waterDrink = -1;
     private int waterScore = -1;
-    private int strawScore = -1;
+    // 깔짚 수분 프로토콜 재 정의 필요
+    private int strawScore = 50;
     private int outwardScore = -1;
     private double restScore = -1;
     private int shadeScore = -1;

@@ -5,8 +5,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -118,6 +116,20 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
         String strugglePerOneAvg = (String)params[index++];
         String harmonyDongSize = (String)params[index++];
         String harmonyPerOneAvg = (String)params[index++];
+        String avoidDistancePenSize = (String)params[index++];
+        String avoidDistanceScore = (String)params[index++];
+        String breedWaterScore = (String)params[index++];
+        String protocolOneScore = (String)params[index++];
+        String protocolTwoScore = (String)params[index++];
+        String restScore = (String)params[index++];
+        String TotalWarmVentilatingScore = (String)params[index++];
+        String hairLossScore = (String)params[index++];
+        String minPainScore = (String)params[index++];
+        String BehaviorScore = (String)params[index++];
+        String protocolFourScore = (String)params[index++];
+        String protocolThreeScore = (String)params[index++];
+        String minInjuryScore = (String)params[index++];
+        String minDiseaseScore = (String)params[index++];
         String postParameters =
                 "farmId=" + farmId +
                 "&breedPoorNumberOfCow=" + breedPoorNumberOfCow +
@@ -187,6 +199,22 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
                         +"&strugglePerOneAvg=" + strugglePerOneAvg
                         +"&harmonyDongSize=" + harmonyDongSize
                         +"&harmonyPerOneAvg=" + harmonyPerOneAvg
+                        +"&avoidDistancePenSize=" + avoidDistancePenSize
+                        +"&avoidDistanceScore=" + avoidDistanceScore
+                        +"&breedFallDeadRatio=" + breedFallDeadRatio
+                        +"&breedWaterScore=" + breedWaterScore
+                        +"&protocolOneScore=" + protocolOneScore
+                        +"&protocolTwoScore=" + protocolTwoScore
+                        +"&restScore=" + restScore
+                        +"&TotalWarmVentilatingScore=" + TotalWarmVentilatingScore
+                        +"&hairLossScore=" +  hairLossScore
+                        +"&minPainScore=" + minPainScore
+                        +"&BehaviorScore=" + BehaviorScore
+                        +"&protocolFourScore=" + protocolFourScore
+                        +"&protocolThreeScore=" + protocolThreeScore
+                        +"&minInjuryScore=" + minInjuryScore
+                        +"&minDiseaseScore=" + minDiseaseScore
+
                 ;
 
 
