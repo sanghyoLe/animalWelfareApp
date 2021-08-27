@@ -2,10 +2,6 @@ package com.example.animal_project.BreedBatch.ProtocolFour;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +12,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.animal_project.BreedBatch.ProtocolFour.BreedStruggleDong;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
@@ -41,10 +39,10 @@ public class BreedStruggle extends Fragment {
         breed_struggle_tv = view.findViewById(R.id.breed_struggle_tv);
 
 
-        if(viewModel.getStruggle() == -1){
+        if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg() == -1){
             breed_struggle_tv.setText("평가를 완료하세요");
         } else {
-            breed_struggle_tv.setText(String.valueOf(viewModel.getStruggle()));
+            breed_struggle_tv.setText(String.valueOf(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg()));
         }
 
 
@@ -97,9 +95,13 @@ public class BreedStruggle extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 1:
-                struggle = data.getExtras().getDouble("sum");
-                breed_struggle_tv.setText(String.valueOf(struggle));
-                viewModel.setStruggle(struggle);
+                QuestionTemplateViewModel.BehaviorQuestion struggleQuestion = (QuestionTemplateViewModel.BehaviorQuestion)
+                    data.getExtras().getSerializable("struggleQuestion");
+                viewModel.setStruggleQuestion(struggleQuestion);
+                breed_struggle_tv.setText(String.valueOf(
+                        ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg()
+                ));
+
                 break;
             default:
                 break;

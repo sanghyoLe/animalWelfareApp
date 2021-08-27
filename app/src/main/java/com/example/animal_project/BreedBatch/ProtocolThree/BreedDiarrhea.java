@@ -28,7 +28,8 @@ public class BreedDiarrhea extends Fragment {
         TextView breed_diarrhea_tv = view.findViewById(R.id.breed_diarrhea_ratio);
         TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
-
+        EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
+        EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
 
         breed_diarrhea_ed.addTextChangedListener(new TextWatcher() {
             @Override
@@ -43,18 +44,8 @@ public class BreedDiarrhea extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(TextUtils.isEmpty(breed_diarrhea_ed.getText().toString())){
-                    breed_diarrhea_tv.setText("값을 입력하세요");
-                    viewModel.setDiarrheaRatio(-1);
-                } else if(viewModel.getRatio(breed_diarrhea_ed) > 100) {
-                    viewModel.setDiarrheaRatio(-1);
-                    breed_diarrhea_tv.setText("표본 규모보다 큰 값 입력 불가");
-                    sample_size_tv.setVisibility(View.VISIBLE);
-                    sample_size_tv.setText("표본 규모 : " + String.valueOf(viewModel.getSampleCowSize()));
-                } else {
-                    viewModel.setDiarrheaRatio(viewModel.getRatio(breed_diarrhea_ed));
-                    breed_diarrhea_tv.setText(String.valueOf(viewModel.getRatio(breed_diarrhea_ed)));
-                }
+                viewModel.penQuestionAfterTextChanged(breed_diarrhea_ed,breed_diarrhea_tv,
+                        sample_size_tv,penLocationOne,penLocationTwo, (QuestionTemplateViewModel.PenQuestion)viewModel.BreedDiarrhea);
             }
 
         });

@@ -1,5 +1,6 @@
 package com.example.animal_project.Result;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,9 +17,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
-import com.example.animal_project.Result_View;
 
 public class ResultTotal extends Fragment {
+
+
     private QuestionTemplateViewModel viewModel;
     @Nullable
     @Override
@@ -31,4 +34,5 @@ public class ResultTotal extends Fragment {
         viewModel.setProgressBar(viewModel.getProtocolFourScore(),progressBar,progressBarTv);
         return view;
     }
+
 }

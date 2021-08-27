@@ -1,15 +1,14 @@
 package com.example.animal_project.BreedBatch.ProtocolThree;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
@@ -36,17 +35,20 @@ public class BreedCastrationQ3 extends Fragment {
                 } else if (checkedId == R.id.breed_castration_q3_2) {
                     painkiller = 2;
                 }
-                viewModel.setCastrationPainkiller(painkiller);
-                if(viewModel.getCastration() == -1){
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationPainkiller).setSelectedItem(painkiller);
+                int selectedItem =((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationPainkiller).getSelectedItem();
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationPainkiller).setAnswer(breed_castration_q3_rg,selectedItem);
+
+                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastration).getSelectedItem()== -1){
                     breed_castration_score_tv.setText("31번 문항을 완료하세요");
-                } else if(viewModel.getCastrationAnesthesia() == -1){
+                } else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationAnesthesia).getSelectedItem() == -1){
                     breed_castration_score_tv.setText("32번 문항을 완료하세요");
                 } else {
                     viewModel.setCastrationScore(
                             viewModel.calculatorCastrationScore(
-                                    viewModel.getCastration(),
-                                    viewModel.getCastrationAnesthesia(),
-                                    viewModel.getCastrationPainkiller()
+                                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastration).getSelectedItem(),
+                                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationAnesthesia).getSelectedItem(),
+                                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationPainkiller).getSelectedItem()
                             )
                     );
                     breed_castration_score_tv.setText(String.valueOf(viewModel.getCastrationScore()));

@@ -1,14 +1,13 @@
 package com.example.animal_project.BreedBatch.ProtocolTwo;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
@@ -33,7 +32,10 @@ public class BreedSummerVentilating extends Fragment {
                 }else if(checkedId == R.id.breed_summer_ventilating_2){
                     summerVentilating = 2;
                 }
-                viewModel.setSummerVentilatingScore(summerVentilating);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).setSelectedItem(summerVentilating);
+                int selectedItem = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getSelectedItem();
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).setAnswer(summerVentilatingRg,selectedItem);
+
             }
         });
 

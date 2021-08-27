@@ -41,21 +41,24 @@ public class BreedHarmony extends Fragment {
         breed_harmony_tv = view.findViewById(R.id.breed_harmony_tv);
 
         // 화합 평가 항목 점수 설정
-        if(viewModel.getHarmony() == -1){
+        if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg() == -1){
             breed_harmony_tv.setText("평가를 완료하세요");
         } else {
-            breed_harmony_tv.setText(String.valueOf(viewModel.getHarmony()));
+            breed_harmony_tv.setText(String.valueOf(
+                    ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg()
+                    )
+            );
         }
         // 사회적 평가 항목 점수 설정
-        if(viewModel.getStruggle() == -1){
+        if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg() == -1){
             breed_social_behavior_tv.setText("투쟁(서열) 행동 평가를 완료하세요");
-        }else if(viewModel.getHarmony() == -1){
+        }else if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg() == -1){
             breed_social_behavior_tv.setText("화합 행동 평가를 완료하세요");
         }else {
             viewModel.setSocialBehaviorScore(
                     viewModel.calculatorSocialBehaviorScore(
-                            viewModel.getStruggle(),
-                            viewModel.getHarmony()
+                            ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg(),
+                            ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg()
                     )
             );
             breed_social_behavior_tv.setText(String.valueOf(viewModel.getSocialBehaviorScore()));
@@ -112,18 +115,21 @@ public class BreedHarmony extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 1:
-                harmony = data.getExtras().getDouble("sum");
-                breed_harmony_tv.setText(String.valueOf(harmony));
-                viewModel.setHarmony(harmony);
-                if(viewModel.getStruggle() == -1){
+                QuestionTemplateViewModel.BehaviorQuestion harmonyQuestion = (QuestionTemplateViewModel.BehaviorQuestion)
+                        data.getExtras().getSerializable("harmonyQuestion");
+                viewModel.setHarmonyQuestion(harmonyQuestion);
+                breed_harmony_tv.setText(String.valueOf(
+                        ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg()
+                ));
+                if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg() == -1){
                     breed_social_behavior_tv.setText("투쟁(서열) 행동 평가를 완료하세요");
-                }else if(viewModel.getHarmony() == -1){
+                }else if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg() == -1){
                     breed_social_behavior_tv.setText("화합 행동 평가를 완료하세요");
                 }else {
                     viewModel.setSocialBehaviorScore(
                             viewModel.calculatorSocialBehaviorScore(
-                                    viewModel.getStruggle(),
-                                    viewModel.getHarmony()
+                                    ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg(),
+                                    ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg()
                             )
                     );
                     breed_social_behavior_tv.setText(String.valueOf(viewModel.getSocialBehaviorScore()));

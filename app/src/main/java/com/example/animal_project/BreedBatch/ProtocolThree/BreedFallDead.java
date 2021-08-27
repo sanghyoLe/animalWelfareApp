@@ -30,7 +30,8 @@ public class BreedFallDead extends Fragment {
         TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         TextView breed_disease_score_tv = view.findViewById(R.id.breed_disease_score);
-
+        EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
+        EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
 
         breed_fall_dead_ed.addTextChangedListener(new TextWatcher() {
             @Override
@@ -46,43 +47,44 @@ public class BreedFallDead extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 // 질병의 최소화 프로토콜 점수 표시하는 로직
-                if(TextUtils.isEmpty(breed_fall_dead_ed.getText().toString())){
-                    breed_fall_dead_tv.setText("값을 입력하세요");
-                    viewModel.setFallDeadRatio(-1);
-                } else if(viewModel.getRatio(breed_fall_dead_ed) > 100) {
-                    viewModel.setFallDeadRatio(-1);
-                    breed_fall_dead_tv.setText("표본 규모보다 큰 값 입력 불가");
-                    sample_size_tv.setVisibility(View.VISIBLE);
-                    sample_size_tv.setText("표본 규모 : " + String.valueOf(viewModel.getSampleCowSize()));
-                } else {
-                    viewModel.setFallDeadRatio(viewModel.getRatio(breed_fall_dead_ed));
-                    breed_fall_dead_tv.setText(String.valueOf(viewModel.getFallDeadRatio()));
-                }
-                if(viewModel.getCough() == -1){
+                viewModel.penQuestionAfterTextChanged(breed_fall_dead_ed,breed_fall_dead_tv,
+                        sample_size_tv,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead);
+
+                if(viewModel.getCoughQuestion().getCoughPerOneAvg() == -1){
                     breed_disease_score_tv.setText("기침 평가를 완료하세요");
-                }else if(viewModel.getRunnyNoseRatio() == -1){
+                }else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose).getRatio() == -1){
                     breed_disease_score_tv.setText("비강분비물 평가를 완료하세요");
-                    Log.d("runnyNose",String.valueOf(viewModel.getRunnyNoseRatio()));
-                }else if(viewModel.getOphthalmicRatio() == -1){
+                }else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOphthalmic).getRatio() == -1){
                     breed_disease_score_tv.setText("안구분비물 평가를 완료하세요");
-                }else if(viewModel.getBreathRatio() == -1){
+                }else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedBreath).getRatio() == -1){
                     breed_disease_score_tv.setText("호흡 장애 평가를 완료하세요");
-                }else if(viewModel.getDiarrheaRatio() == -1){
+                }else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedDiarrhea).getRatio() == -1){
                     breed_disease_score_tv.setText("설사 평가를 완료하세요");
-                }else if(viewModel.getRuminantRatio() == -1){
+                }else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRuminant).getRatio() == -1){
                     breed_disease_score_tv.setText("반추위 팽창 평가를 완료하세요");
-                } else if(viewModel.getFallDeadRatio() == -1){
+                } else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead).getRatio() == -1){
                   breed_disease_score_tv.setText("폐사율 평가를 완료하세요");
                 } else {
                     double diseaseScore =
-                    viewModel.calculatorDiseaseScore(
+                        viewModel.calculatorDiseaseScore(
                             viewModel.calculatorCareWarningScore(
-                            viewModel.calculatorDiseaseSectionOne(viewModel.getRunnyNoseRatio(),viewModel.getOphthalmicRatio()),
-                            viewModel.calculatorDiseaseSectionTwo(viewModel.getCoughRatio(),viewModel.getBreathRatio()),
-                            viewModel.calculatorDiseaseSectionThree(viewModel.getRuminantRatio(),viewModel.getDiarrheaRatio()),
-                            viewModel.calculatorDiseaseSectionFour(viewModel.getFallDeadRatio())
+                            viewModel.calculatorDiseaseSectionOne(
+                                    ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedRunnyNose).getRatio(),
+                                    ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedOphthalmic).getRatio()
+                            ),
+                            viewModel.calculatorDiseaseSectionTwo(
+                                    viewModel.getCoughQuestion().getCoughRatio(),
+                                    ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedBreath).getRatio()
+                            ),
+                            viewModel.calculatorDiseaseSectionThree(
+                                    ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedRuminant).getRatio(),
+                                    ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedDiarrhea).getRatio()
+                            ),
+                            viewModel.calculatorDiseaseSectionFour(
+                                    ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedFallDead).getRatio()
+                                    )
                             )
-                    );
+                        );
                     viewModel.setDiseaseScore(diseaseScore);
                     breed_disease_score_tv.setText(String.valueOf(diseaseScore));
                 }

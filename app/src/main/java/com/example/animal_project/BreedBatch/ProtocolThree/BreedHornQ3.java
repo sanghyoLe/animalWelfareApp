@@ -2,15 +2,14 @@
 package com.example.animal_project.BreedBatch.ProtocolThree;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
@@ -34,17 +33,20 @@ public class BreedHornQ3 extends Fragment {
                 } else if (checkedId == R.id.breed_horn_q3_2) {
                     painkiller = 2;
                 }
-                viewModel.setPainkiller(painkiller);
-                if(viewModel.getHornRemoval() == -1){
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornPainkiller).setSelectedItem(painkiller);
+                int selectedItem =((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornPainkiller).getSelectedItem();
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornPainkiller).setAnswer(breed_horn_q3_rg,selectedItem);
+
+                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornRemoval).getSelectedItem()== -1){
                     breed_horn_removal_score_tv.setText("28번 문항을 완료하세요");
-                } else if(viewModel.getAnesthesia() == -1){
+                } else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornAnesthesia).getSelectedItem() == -1){
                     breed_horn_removal_score_tv.setText("29번 문항을 완료하세요");
                 } else {
                     viewModel.setHornRemovalScore(
                             viewModel.calculatorHornRemovalScore(
-                                    viewModel.getHornRemoval(),
-                                    viewModel.getAnesthesia(),
-                                    viewModel.getPainkiller()
+                                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornRemoval).getSelectedItem(),
+                                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornAnesthesia).getSelectedItem(),
+                                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornPainkiller).getSelectedItem()
                             )
                     );
                     breed_horn_removal_score_tv.setText(String.valueOf(viewModel.getHornRemovalScore()));

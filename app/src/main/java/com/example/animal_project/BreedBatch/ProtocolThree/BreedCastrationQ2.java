@@ -1,14 +1,13 @@
 package com.example.animal_project.BreedBatch.ProtocolThree;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
@@ -31,7 +30,9 @@ public class BreedCastrationQ2 extends Fragment {
                 } else if (checkedId == R.id.breed_castration_q2_2) {
                     anesthesia = 2;
                 }
-                viewModel.setCastrationAnesthesia(anesthesia);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationAnesthesia).setSelectedItem(anesthesia);
+                int selectedItem =((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationAnesthesia).getSelectedItem();
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationAnesthesia).setAnswer(breed_castration_q2_rg,selectedItem);
             }
         });
 

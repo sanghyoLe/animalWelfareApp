@@ -2,10 +2,6 @@ package com.example.animal_project.BreedBatch.ProtocolOne;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -16,11 +12,12 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.animal_project.Input_userinfo;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.animal_project.QuestionTemplate;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
-import com.example.animal_project.Result_View;
 
 
 public class BreedPoor extends Fragment {
@@ -57,16 +54,24 @@ public class BreedPoor extends Fragment {
             public void afterTextChanged(Editable arg0) {
                 if (TextUtils.isEmpty(ed_1_poorRate.getText().toString())) {
                     breed_poor_Rate_ratio.setText("값을 입력해주세요");
-                    viewModel.setPoorScore(-1);
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setNumberOfCow(-1);
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setScore(-1);
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setRatio(-1);
                     // 총 두수 보다 입력한 값이 클 때
                 } else if (total_cow_count < Integer.parseInt(ed_1_poorRate.getText().toString())) {
                     breed_poor_Rate_ratio.setText("총 두수보다 큰 값을 입력할 수 없습니다.");
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setNumberOfCow(-1);
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setScore(-1);
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setRatio(-1);
                 } else {
-                    String total_cow = breedPoorRateRatio(String.valueOf(total_cow_count), ed_1_poorRate.getText().toString());
-                    breed_poor_Rate_ratio.setText(total_cow + "%");
-                    breed_poor_rate_score = Integer.parseInt(breedPoorRateScore(total_cow));
+                    String ratio = breedPoorRateRatio(String.valueOf(total_cow_count), ed_1_poorRate.getText().toString());
+                    breed_poor_Rate_ratio.setText(ratio + "%");
+                    breed_poor_rate_score = Integer.parseInt(breedPoorRateScore(ratio));
                     breed_poor_Rate_score.setText(String.valueOf(breed_poor_rate_score));
                     viewModel.setPoorScore(breed_poor_rate_score);
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setNumberOfCow(Integer.parseInt(ed_1_poorRate.getText().toString()));
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setScore(breed_poor_rate_score);
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setRatio(Float.parseFloat(ratio));
                 }
             }});
         // Inflate the layout for this fragment

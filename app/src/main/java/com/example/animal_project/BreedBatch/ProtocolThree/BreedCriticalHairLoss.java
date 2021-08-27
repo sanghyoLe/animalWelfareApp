@@ -49,43 +49,55 @@ public class BreedCriticalHairLoss extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(viewModel.getSlightHairLoss() == -1)
+                if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getNumberOfCow() == -1)
                 {
                     breedHairLossRatioTv.setText("19번 문항을 완료하세요");
                     breedHairLossScoreTv.setText("19번 문항을 완료하세요");
-                }  else if(TextUtils.isEmpty(breedCriticalHairLossEd.getText().toString())){
+                } else if(TextUtils.isEmpty(breedCriticalHairLossEd.getText().toString())){
                     breedHairLossRatioTv.setText("문항을 완료하세요");
                     breedHairLossScoreTv.setText("문항을 완료하세요");
                 }
-
                 else {
                     float criticalHairLoss = 0;
                     criticalHairLoss = Float.parseFloat(breedCriticalHairLossEd.getText().toString());
-
-                    if((int)(viewModel.getSlightHairLoss() + criticalHairLoss) > viewModel.getSampleCowSize()) {
+                    ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).setNumberOfCow((int)criticalHairLoss);
+                    if( (((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getNumberOfCow()
+                            + criticalHairLoss) > viewModel.getSampleCowSize()) {
                         breedHairLossRatioTv.setText("표본 두수보다 큰 값을 입력하셨습니다");
                         hairLossSampleSizeTv.setVisibility(View.VISIBLE);
-                        hairLossSampleSizeTv.setText("표본 두수 : " + viewModel.getSampleCowSize());
+                        hairLossSampleSizeTv.setText("표본 두수 : " + viewModel.getSampleCowSize()
+                                + "\n" + "경미한 외피 변형 두수 : " + ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getNumberOfCow());
                     } else {
-                        viewModel.setCriticalHairLoss(criticalHairLoss);
+                        ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).setNumberOfCow((int)criticalHairLoss);
+                        ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).setPenLocation(
+                                ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedSlightHairLoss).getPenLocation()
+                        );
                         hairLossSampleSizeTv.setVisibility(View.GONE);
                         float slight_ratio;
                         float critical_ratio;
                         float ratio_total;
                         slight_ratio = viewModel.getSlightHairLoss() / viewModel.getSampleCowSize() ;
                         slight_ratio = slight_ratio * 100;
+                        slight_ratio = (float)viewModel.cutDecimal(slight_ratio);
+                        ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedSlightHairLoss).setRatio(slight_ratio);
+
                         critical_ratio = criticalHairLoss / viewModel.getSampleCowSize();
                         critical_ratio = critical_ratio * 100;
+                        critical_ratio = (float)viewModel.cutDecimal(critical_ratio);
+                        ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedCriticalHairLoss).setRatio(critical_ratio);
+
                         ratio_total = (slight_ratio + 5 * critical_ratio) / 5;
-                        ratio_total =  Math.round(ratio_total);
+                        ratio_total = (float)viewModel.cutDecimal(ratio_total);
                         breedHairLossRatioTv.setText(String.valueOf(ratio_total));
                         int hair_loss_score = viewModel.calculatorHairLossScore(ratio_total);
                         viewModel.setHairLossScore(hair_loss_score);
                         breedHairLossScoreTv.setText(String.valueOf(hair_loss_score));
-                        if(viewModel.getLimpScore() == -1){
+                        if(((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getScore() == -1){
                             breedMinInjuryScoreTv.setText("다리 절음 평가를 완료해주세요");
                         } else{
-                            long minInjuryScore = viewModel.calculatorMinInjuryScore(viewModel.getLimpScore(),viewModel.getHairLossScore());
+                            long minInjuryScore = viewModel.calculatorMinInjuryScore(
+                                    (int)((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getScore(),
+                                    viewModel.getHairLossScore());
                             breedMinInjuryScoreTv.setText(String.valueOf(minInjuryScore));
                             viewModel.setMinInjuryScore(minInjuryScore);
                         }

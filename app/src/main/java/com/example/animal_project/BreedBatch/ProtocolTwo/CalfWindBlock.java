@@ -1,15 +1,14 @@
 package com.example.animal_project.BreedBatch.ProtocolTwo;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
@@ -36,17 +35,19 @@ public class CalfWindBlock extends Fragment {
                 }else if(checkedId == R.id.calf_wind_block_2){
                     calfWindBlock = 2;
                 }
-                viewModel.setCalfWindBlockScore(calfWindBlock);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWindBlock).setSelectedItem(calfWindBlock);
+                int selectedItem = ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWindBlock).getSelectedItem();
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWindBlock).setAnswer(calfWindBlockRg,selectedItem);
 
-                if(viewModel.getCalfStrawScore() == 0){
+                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfStraw).getSelectedItem() == -1){
                     calfWinterRestScoreTv.setText("14번 문항을 완료해주세요");
-                }else if(viewModel.getCalfWarmScore() == 0){
+                }else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWarm).getSelectedItem() == 0){
                     calfWinterRestScoreTv.setText("15번 문항을 완료해주세요");
                 }else {
                     int calfWinterRestScore = viewModel.calculatorCalfWinterRestScore(
-                            viewModel.getCalfStrawScore(),
-                            viewModel.getCalfWarmScore(),
-                            viewModel.getCalfWindBlockScore()
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfStraw).getSelectedItem(),
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWarm).getSelectedItem(),
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWindBlock).getSelectedItem()
                     );
                     viewModel.setCalfWinterRestScore(calfWinterRestScore);
                     calfWinterRestScoreTv.setText(String.valueOf(calfWinterRestScore));

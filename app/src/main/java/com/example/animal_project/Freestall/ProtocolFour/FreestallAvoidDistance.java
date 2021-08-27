@@ -190,7 +190,7 @@ public class FreestallAvoidDistance extends Fragment {
     public EditText[] makeEditTextArr(View[] questionViewArr){
         EditText[] edArr = new EditText[50];
         for(int i = 0 ;i < 50 ;i++){
-            edArr[i] = questionViewArr[i].findViewById(R.id.pen_location_ed);
+//            edArr[i] = questionViewArr[i].findViewById(R.id.pen_location_ed);
         }
         return edArr;
     }

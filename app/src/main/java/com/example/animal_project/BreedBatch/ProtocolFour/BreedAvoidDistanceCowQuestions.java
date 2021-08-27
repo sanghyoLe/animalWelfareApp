@@ -273,7 +273,6 @@ public class BreedAvoidDistanceCowQuestions extends AppCompatActivity {
     // 개체 회피 수준 평가 선택 Check 해서 Toast 메시지
     private boolean checkEmptySpinner(int[] selectedItemIndex, int cow_size){
         for(int i = 0 ; i < cow_size ; i++){
-            Log.d("12",String.valueOf(selectedItemIndex[i]));
             if(selectedItemIndex[i] == 0){
                 String msg = (i+1) + "번 개체 회피 수준을 선택하세요";
                 Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();

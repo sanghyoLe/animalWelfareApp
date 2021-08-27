@@ -24,7 +24,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="개체 순번"
-                    android:background="#FFFFFF"
+
                     android:layout_margin="1dp"
                     android:textSize="16sp"
                     android:textColor="@color/black"
@@ -34,12 +34,12 @@
                     android:layout_weight="1.5"
                     android:gravity="center_horizontal"
                     android:layout_margin="1dp"
-                    android:background="#FFFFFF"
+
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:maxLength="4"
+                    android:maxLength="8"
                     android:inputType="number"
                     android:hint="숫자 입력"
                     />
@@ -48,7 +48,7 @@
                     android:layout_weight="3"
                     android:gravity="center_horizontal"
                     android:layout_margin="1dp"
-                    android:background="#FFFFFF"
+
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"

@@ -27,8 +27,10 @@ public class BreedSlightHairLoss extends Fragment {
         view = inflater.inflate(R.layout.fragment_breed_slight_hair_loss, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         EditText breedSlightHairLossEd = view.findViewById(R.id.breed_slight_hair_loss_ed);
-
-
+        TextView breed_slight_hair_loss_tv = view.findViewById(R.id.breed_slight_hair_loss_tv);
+        EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
+        EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
+        TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
         breedSlightHairLossEd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -42,15 +44,8 @@ public class BreedSlightHairLoss extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(TextUtils.isEmpty(breedSlightHairLossEd.getText().toString())){
-                    viewModel.setSlightHairLoss(-1);
-                } else {
-                    float slightHairLoss = 0;
-                    slightHairLoss = Float.parseFloat(breedSlightHairLossEd.getText().toString());
-                    viewModel.setSlightHairLoss(slightHairLoss);
-                }
-
-
+                viewModel.penQuestionAfterTextChanged(breedSlightHairLossEd,breed_slight_hair_loss_tv,sample_size_tv,
+                        penLocationOne,penLocationTwo,((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss));
             }
         });
      return view;

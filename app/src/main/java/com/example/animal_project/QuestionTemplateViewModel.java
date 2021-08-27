@@ -1,18 +1,13 @@
 package com.example.animal_project;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.icu.text.CaseMap;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -24,21 +19,83 @@ import java.util.Map;
 
 
 public class QuestionTemplateViewModel extends ViewModel {
+    public static class Question{
+        int numberOfCow = -1;
+        float ratio = -1;
+        float score = -1;
+        public void setNumberOfCow(int numberOfCow) {this.numberOfCow = numberOfCow;}
+        public int getNumberOfCow(){ return this.numberOfCow;}
+        public void setRatio(float ratio){ this.ratio = ratio;}
+        public float getRatio(){return this.ratio;}
+        public void setScore(float score) { this.score = score;}
+        public float getScore(){return this.score;}
+    }
+    public static class PenQuestion extends Question {
+        String penLocation;
+        public PenQuestion(String penLocation, int numberOfCow, float ratio){
+            this.penLocation = penLocation;
+            this.numberOfCow = numberOfCow;
+            this.ratio = ratio;
+        }
+        public void setPenLocation(String penLocation){ this.penLocation = penLocation; }
+        public String getPenLocation() {return this.penLocation;}
+    }
+    public static class RadioQuestion {
+        int selectedItem = -1;
+        String answer;
+        public RadioQuestion(int selectedItem){
+            this.selectedItem = selectedItem;
+        }
+        public void setSelectedItem(int selectedItem) {
+            this.selectedItem = selectedItem;
+        }
+        public int getSelectedItem() {
+            return selectedItem;
+        }
+        public void setAnswer(RadioGroup radioGroup, int selectedItem){
+            this.answer = (String)((RadioButton) radioGroup.getChildAt(selectedItem-1)).getText();;
+        }
+        public String getAnswer() { return answer; }
+
+
+    }
+    public static class DongQuestion implements Serializable {
+        String[] penLocation;
+        int[] cowSize;
+        int dongSize;
+        public void setDongSize(int dongSize){this.dongSize = dongSize;}
+        public int getDongSize(){ return dongSize;}
+        public void setPenLocation(String[] penLocation){ this.penLocation = penLocation;}
+        public String[] getPenLocation() { return this.penLocation;}
+        public void setCowSize(int[] cowSize) {this.cowSize = cowSize;}
+        public int[] getCowSize(){ return this.cowSize;}
+    }
 
     public static class avoidDistance implements Serializable {
         int penNumber;
         String penLocation;
         int cowSize = -1;
-
         int[] cowCount;
         int[] cowNumber;
         int[] avoidDistance;
-
-
+        int penSize;
+        int farmId;
         public avoidDistance(int penNumber, String penLocation, int cowSize){
             this.penNumber = penNumber;
             this.penLocation = penLocation;
             this.cowSize = cowSize;
+        }
+        public void setPenSize(int penSize){
+            this.penSize = penSize;
+        }
+        public int getPenSize(){
+            return this.penSize;
+        }
+        public void setFarmId(int farmId){
+            this.farmId = farmId;
+        }
+        public int getFarmId(){
+            return this.farmId;
         }
         public int getPenNumber(){
             return this.penNumber;
@@ -71,16 +128,10 @@ public class QuestionTemplateViewModel extends ViewModel {
         public int[] getAvoidDistance(){
             return this.avoidDistance;
         }
-
     }
-
-    private avoidDistance[] avoidDistances = new avoidDistance[51];
-
-
-
     public void setAvoidDistances(){
         for(int i = 1 ; i < 51 ; i++){
-            this.avoidDistances[i] = new avoidDistance(i,"1",-1);
+            this.avoidDistances[i] = new avoidDistance(i,"0",-1);
         }
     }
     public avoidDistance[] getAvoidDistances(){ return this.avoidDistances; }
@@ -90,7 +141,240 @@ public class QuestionTemplateViewModel extends ViewModel {
     public avoidDistance getAvoidDistance(int penNumber){
         return this.avoidDistances[penNumber];
     }
+    public static class WaterTimeQuestion extends DongQuestion implements Serializable {
 
+        int[] waitingCowSize;
+        int[] drinkTime;
+        int[] waterTimeScore;
+        float[] waitingRatio;
+        int farmId;
+        int maxWaterTimeScore = -1;
+        public WaterTimeQuestion(int dong_size){
+            this.penLocation = new String[dong_size];
+            this.cowSize = new int[dong_size];
+            this.waitingCowSize = new int[dong_size];
+            this.drinkTime = new int[dong_size];
+            this.waterTimeScore = new int[dong_size];
+            this.waitingRatio = new float[dong_size];
+        }
+        public void setFarmId(int farmId){
+            this.farmId = farmId;
+        }
+        public int getFarmId(){return this.farmId;}
+        public void setWaitingCowSize(int[] waitingCowSize){
+            this.waitingCowSize = waitingCowSize;
+        }
+        public int[] getWaitingCowSize(){
+            return this.waitingCowSize;
+        }
+        public void setDrinkTime(int[] drinkTime){
+            this.drinkTime = drinkTime;
+        }
+        public int[] getDrinkTime(){
+            return this.drinkTime;
+        }
+        public void setWaitingRatio(float[] waitingRatio){
+            this.waitingRatio = waitingRatio;
+        }
+        public float[] getWaitingRatio(){
+            return this.waitingRatio;
+        }
+        public void setWaterTimeScore(int[] waterTimeScore){
+            this.waterTimeScore = waterTimeScore;
+        }
+        public int[] getWaterTimeScore(){
+            return this.waterTimeScore;
+        }
+        public void setMaxWaterTimeScore(int maxWaterTimeScore){
+            this.maxWaterTimeScore = maxWaterTimeScore;
+        }
+        public int getMaxWaterTimeScore(){
+            return this.maxWaterTimeScore;
+        }
+
+    }
+    public void setWaterTimeQuestion(WaterTimeQuestion waterTimeQuestion){
+        this.WaterTimeQuestion = waterTimeQuestion;
+    }
+    public WaterTimeQuestion getWaterTimeQuestion(){
+        return (QuestionTemplateViewModel.WaterTimeQuestion) this.WaterTimeQuestion;
+    }
+    public static class StrawQuestion extends DongQuestion implements Serializable{
+        int[] strawOne;
+        int[] strawTwo;
+        int[] strawThree;
+        int[] strawScore;
+
+        public StrawQuestion(int dong_size){
+            this.penLocation = new String[dong_size];
+            this.strawOne = new int[dong_size];
+            this.strawTwo = new int[dong_size];
+            this.strawThree = new int[dong_size];
+            this.strawScore = new int[dong_size];
+        }
+
+        public void setStrawOne(int[] strawOne) {
+            this.strawOne = strawOne;
+        }
+
+        public void setStrawTwo(int[] strawTwo) {
+            this.strawTwo = strawTwo;
+        }
+
+        public void setStrawThree(int[] strawThree) {
+            this.strawThree = strawThree;
+        }
+
+        public void setStrawScore(int[] strawScore) {
+            this.strawScore = strawScore;
+        }
+
+        public int[] getStrawOne() {
+            return strawOne;
+        }
+
+        public int[] getStrawTwo() {
+            return strawTwo;
+        }
+
+        public int[] getStrawThree() {
+            return strawThree;
+        }
+
+        public int[] getStrawScore() {
+            return strawScore;
+        }
+
+    }
+    public static class CoughQuestion extends DongQuestion implements Serializable {
+
+        int[] coughCount;
+        float[] coughPerOne;
+        float CoughPerOneAvg = -1;
+        float coughRatio = -1;
+        public CoughQuestion(int dong_size){
+            this.penLocation = new String[dong_size];
+            this.cowSize = new int[dong_size];
+            this.coughCount = new int[dong_size];
+            this.coughPerOne = new float[dong_size];
+        }
+        public void setCoughCount(int[] coughCount){ this.coughCount = coughCount; }
+        public int[] getCoughCount() {return this.coughCount; }
+        public void setCoughPerOne(float[] coughPerOne){ this.coughPerOne = coughPerOne;}
+        public float[] getCoughPerOne(){return this.coughPerOne;}
+        public void setCoughPerOneAvg(float CoughPerOneAvg){this.CoughPerOneAvg = CoughPerOneAvg;}
+        public float getCoughPerOneAvg(){ return this.CoughPerOneAvg;}
+        public void setCoughRatio(float coughRatio){this.coughRatio = coughRatio;}
+        public float getCoughRatio(){return this.coughRatio;}
+    }
+    public void setCoughQuestion(CoughQuestion coughQuestion){this.CoughQuestion = coughQuestion;}
+    public CoughQuestion getCoughQuestion(){return (QuestionTemplateViewModel.CoughQuestion) this.CoughQuestion;}
+    public static class BehaviorQuestion extends DongQuestion implements Serializable{
+        int[] behaviorCount;
+        float[] behaviorPerOne;
+        float behaviorPerOneAvg;
+        public BehaviorQuestion(int dong_size){
+            this.penLocation = new String[dong_size];
+            this.cowSize = new int[dong_size];
+            this.behaviorCount = new int[dong_size];
+            this.behaviorPerOne = new float[dong_size];
+            this.behaviorPerOneAvg = -1;
+        }
+
+        public void setBehaviorCount(int[] behaviorCount) {
+            this.behaviorCount = behaviorCount;
+        }
+
+        public int[] getBehaviorCount() {
+            return behaviorCount;
+        }
+
+        public void setBehaviorPerOne(float[] behaviorPerOne) {
+            this.behaviorPerOne = behaviorPerOne;
+        }
+
+        public float[] getBehaviorPerOne() {
+            return behaviorPerOne;
+        }
+
+        public void setBehaviorPerOneAvg(float BehaviorPerOneAvg) {
+            this.behaviorPerOneAvg = BehaviorPerOneAvg;
+        }
+
+        public float getBehaviorPerOneAvg() {
+            return behaviorPerOneAvg;
+        }
+    }
+    public void setStruggleQuestion(Object StruggleQuestion){
+        this.StruggleQuestion = StruggleQuestion;
+    }
+    public Object getStruggleQuestion(){
+        return this.StruggleQuestion;
+    }
+    public void setHarmonyQuestion(Object harmonyQuestion){
+        this.HarmonyQuestion = harmonyQuestion;
+    }
+    public Object getHarmonyQuestion(){
+        return this.HarmonyQuestion;
+    }
+
+
+
+
+
+
+    public Object WaterTimeQuestion = new WaterTimeQuestion(20);
+    public Object CoughQuestion = new CoughQuestion(20);
+    public Object StrawQuestion = new StrawQuestion(20);
+    public Object StruggleQuestion = new BehaviorQuestion(20);
+    public Object HarmonyQuestion = new BehaviorQuestion(20);
+    public avoidDistance[] avoidDistances = new avoidDistance[51];
+
+
+    public Object BreedPoor = new Question();
+    public Object BreedLimp = new Question();
+
+    // PenQuestions
+
+    public Object BreedOutward = new PenQuestion("",-1,-1);
+    public Object BreedSlightHairLoss = new PenQuestion("",-1,-1);
+    public Object BreedCriticalHairLoss = new PenQuestion("",-1,-1);
+    public Object BreedRunnyNose = new PenQuestion("",-1,-1);
+    public Object BreedOphthalmic = new PenQuestion("",-1,-1);
+    public Object BreedBreath = new PenQuestion("",-1,-1);
+    public Object BreedDiarrhea = new PenQuestion("",-1,-1);
+    public Object BreedRuminant = new PenQuestion("",-1,-1);
+    public Object BreedFallDead = new PenQuestion("",-1,-1);
+
+    public Object[] penQuestionArr = {
+            BreedOutward,BreedSlightHairLoss,BreedCriticalHairLoss,BreedRunnyNose,BreedOphthalmic,
+            BreedBreath,BreedDiarrhea,BreedRuminant,BreedFallDead};
+
+    // RadioQuestions
+    public Object BreedWaterTankNum = new RadioQuestion(-1);
+    public Object BreedWaterTankClean = new RadioQuestion(-1);
+    public Object BreedShade = new RadioQuestion(-1);
+    public Object BreedSummerVentilating = new RadioQuestion(-1);
+    public Object BreedMistSpray = new RadioQuestion(-1);
+    public Object BreedWindBlock = new RadioQuestion(-1);
+    public Object BreedWinterVentilating = new RadioQuestion(-1);
+    public Object CalfShade = new RadioQuestion(-1);
+    public Object CalfSummerVentilating = new RadioQuestion(-1);
+    public Object CalfMistSpray = new RadioQuestion(-1);
+    public Object CalfStraw = new RadioQuestion(-1);
+    public Object CalfWarm = new RadioQuestion(-1);
+    public Object CalfWindBlock = new RadioQuestion(-1);
+    public Object BreedHornRemoval = new RadioQuestion(-1);
+    public Object BreedHornAnesthesia = new RadioQuestion(-1);
+    public Object BreedHornPainkiller = new RadioQuestion(-1);
+    public Object BreedCastration = new RadioQuestion(-1);
+    public Object BreedCastrationAnesthesia = new RadioQuestion(-1);
+    public Object BreedCastrationPainkiller = new RadioQuestion(-1);
+    public Object[] radioQuestionArr = {
+                BreedWaterTankNum,BreedWaterTankClean,BreedShade,BreedSummerVentilating, BreedMistSpray,
+                BreedWindBlock,BreedWinterVentilating,CalfShade, CalfSummerVentilating,CalfMistSpray,
+                CalfStraw,CalfWarm,CalfWindBlock, BreedHornRemoval,BreedHornAnesthesia,
+                BreedHornPainkiller, BreedCastration,BreedCastrationAnesthesia,BreedCastrationPainkiller};
 
     private int sampleCowSize = 0;
     private int totalCowSize = 0;
@@ -99,7 +383,8 @@ public class QuestionTemplateViewModel extends ViewModel {
     private int waterTankClean = -1;
     private int waterDrink = -1;
     private int waterScore = -1;
-    private int strawScore = -1;
+    // 깔짚 수분 프로토콜 재 정의 필요
+    private int strawScore = 50;
     private int outwardScore = -1;
     private double restScore = -1;
     private int shadeScore = -1;
@@ -126,6 +411,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     private float slightHairLoss = -1;
     private float criticalHairLoss = -1;
     private int hairLossScore = -1;
+    private float hairLossTotalRatio = -1;
     private long minInjuryScore = -1;
     private double cough = -1;
     private float coughRatio = -1;
@@ -570,101 +856,7 @@ public class QuestionTemplateViewModel extends ViewModel {
 
 
     }
-    public void setDongStrawScore(RadioGroup group1, RadioGroup group2, RadioGroup group3, TextView view){
-        final int[] straw_feed_tank = {0};
-        final int[] straw_normal = {0};
-        final int[] straw_resting_place = {0};
-        final int[] totalScore = {0};
-        group1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
 
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                View radioButton = group.findViewById(checkedId);
-                int index = group.indexOfChild(radioButton);
-                switch (index) {
-                    case 0:
-                        straw_feed_tank[0] = 1;
-                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
-                        view.setText(String.valueOf(totalScore[0]));
-                        break;
-                    case 1:
-                        straw_feed_tank[0] = 2;
-                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
-                        view.setText(String.valueOf(totalScore[0]));
-                        break;
-                    case 2:
-                        straw_feed_tank[0] = 3;
-                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
-                        view.setText(String.valueOf(totalScore[0]));
-                        break;
-                    case 3:
-                        straw_feed_tank[0] = 4;
-                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
-                        view.setText(String.valueOf(totalScore[0]));
-                        break;
-                }
-            }
-        });
-        group2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                View radioButton = group.findViewById(checkedId);
-                int index = group.indexOfChild(radioButton);
-                switch (index) {
-                    case 0:
-                        straw_normal[0] = 1;
-                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
-                        view.setText(String.valueOf(totalScore[0]));
-                        break;
-                    case 1:
-                        straw_normal[0] = 2;
-                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
-                        view.setText(String.valueOf(totalScore[0]));
-                        break;
-                    case 2:
-                        straw_normal[0] = 3;
-                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
-                        view.setText(String.valueOf(totalScore[0]));
-                        break;
-                    case 3:
-                        straw_normal[0] = 4;
-                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
-                        view.setText(String.valueOf(totalScore[0]));
-                        break;
-                }
-            }
-        });
-        group3.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                View radioButton = group.findViewById(checkedId);
-                int index = group.indexOfChild(radioButton);
-                switch (index) {
-                    case 0:
-                        straw_resting_place[0] = 1;
-                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
-                        view.setText(String.valueOf(totalScore[0]));
-                        break;
-                    case 1:
-                        straw_resting_place[0] = 2;
-                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
-                        view.setText(String.valueOf(totalScore[0]));
-                        break;
-                    case 2:
-                        straw_resting_place[0] = 3;
-                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
-                        view.setText(String.valueOf(totalScore[0]));
-                        break;
-                    case 3:
-                        straw_resting_place[0] = 4;
-                        totalScore[0] = calculatorBreedStrawScore(straw_feed_tank[0],straw_normal[0],straw_resting_place[0]);
-                        view.setText(String.valueOf(totalScore[0]));
-                        break;
-                }
-            }
-        });
-
-    }
     public int calculatorBreedStrawScore(int feedTank, int normal, int restingPlace){
         int StrawScore = 0;
         if(feedTank <= 2  && normal < 2 && restingPlace <  2) {
@@ -893,7 +1085,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public float getRatio(EditText editText){
         float ratio = (Float.parseFloat(editText.getText().toString()) / getSampleCowSize()) * 100;
-        ratio = Math.round(ratio);
+        ratio = Math.round(ratio*100)/100;
         return ratio;
     }
 
@@ -1374,18 +1566,13 @@ public class QuestionTemplateViewModel extends ViewModel {
         double avoidDistanceRatio;
         double total = levelOne + levelTwo + levelThree + levelFour;
         double levelTwoRatio = Math.round((levelTwo / total) * 100);
-        Log.d("level_tow_ratio",String.valueOf(levelTwoRatio));
         double levelThreeRatio = Math.round((levelThree / total) * 100);
-        Log.d("level_three_ratio",String.valueOf(levelThreeRatio));
         double levelFourRatio = Math.round((levelFour / total ) * 100);
-        Log.d("level_four_ratio",String.valueOf(levelFourRatio));
+
 
         avoidDistanceRatio = (levelTwoRatio + (3 * levelThreeRatio)  + (5 * levelFourRatio));
-        Log.d("avoid_distance_ratio_1",String.valueOf(avoidDistanceRatio));
         avoidDistanceRatio = avoidDistanceRatio / 5;
-        Log.d("avoid_distance_ratio_2",String.valueOf(avoidDistanceRatio));
         avoidDistanceRatio = Math.round(avoidDistanceRatio);
-        Log.d("avoid_distance_ratio_3",String.valueOf(avoidDistanceRatio));
         return avoidDistanceRatio;
     }
     // Progressbar 점수 설정
@@ -1394,7 +1581,106 @@ public class QuestionTemplateViewModel extends ViewModel {
         progressBarTv.setText(String.valueOf(protocolScore));
     }
 
+    public double cutDecimal(double value){
+        return (double)Math.round(value*100)/100;
+    }
+    public void showQuestionView(View[] QuestionViewArr, int dong_size) {
+        TextView[] tvArr = new TextView[dong_size];
+        for (int i = 0; i < dong_size; i++) {
+            tvArr[i] = QuestionViewArr[i].findViewById(R.id.dong_count_tv);
+            QuestionViewArr[i].setVisibility(View.GONE);
+            tvArr[i].setText(String.valueOf(i + 1) + "동");
+        }
+        for (int i = 0; i < dong_size; i++) {
+            QuestionViewArr[i].setVisibility(View.VISIBLE);
+        }
+    }
+    public EditText[] makeEditText(View[] QuestionViewArr, int dong_size, int id){
+        EditText[] newEditText = new EditText[dong_size];
+        for(int i = 0 ; i < dong_size ; i++){
+            newEditText[i] = QuestionViewArr[i].findViewById(id);
+        }
+        return newEditText;
+    }
+    public int checkEmptyEditText(EditText[] editTexts, int dong_size){
+        for(int i = 0 ; i < dong_size ; i++){
+            if(TextUtils.isEmpty(editTexts[i].getText())){
+                return i+1;
+            }
+        }
+        return -1;
+    }
 
+    public String makePenLocation(EditText penLocationOne, EditText penLocationTwo){
+        if(TextUtils.isEmpty(penLocationOne.getText())){
+            return "입력 값 없음";
+        }else if(TextUtils.isEmpty(penLocationTwo.getText())){
+            return "입력 값 없음";
+        } else{
+            return penLocationOne.getText() + "-" + penLocationTwo.getText();
+        }
+    }
+    public int makeNumberOfCow(EditText numberOfCow){
+        if(TextUtils.isEmpty(numberOfCow.getText())){
+            return -1;
+        } else {
+            return Integer.parseInt(String.valueOf(numberOfCow.getText()));
+        }
+    }
+    public int checkNumberOfCow(EditText numberOfCow){
+        if(TextUtils.isEmpty(numberOfCow.getText())){
+            return -1;
+        }
+        return 0;
+    }
+    public String[] makePenLocationArr(EditText[] penLocationOne, EditText[] penLocationTwo, int dong_size){
+        String[] penLocation = new String[dong_size];
+        for(int i = 0 ; i < dong_size ; i++){
+            penLocation[i] = penLocationOne[i].getText() + "-" + penLocationTwo[i].getText();
+        }
+        return penLocation;
+    }
+    public int[] getIntEditTextValues(EditText[] editTexts, int dong_size){
+        int[] newIntArr = new int[dong_size];
+        for(int i = 0 ; i < dong_size ; i++){
+            newIntArr[i] = Integer.parseInt(String.valueOf(editTexts[i].getText()));
+        }
+        return newIntArr;
+    }
+    public int checkEmptySpinner(int[] selectedItemIndex, int dong_size){
+        for(int i = 0 ; i < dong_size ; i++){
+            if(selectedItemIndex[i] == 0){
+              return i+1;
+            }
+            return -1;
+        }
+        return -1;
+    }
+    public void penQuestionAfterTextChanged(EditText questionEd, TextView questionTv,
+                                            TextView sampleSizeTv,EditText locationOneEd, EditText locationTwoEd,
+                                            PenQuestion penQuestion){
+        if(TextUtils.isEmpty(questionEd.getText().toString())){
+            questionTv.setText("값을 입력하세요");
+            penQuestion.setRatio(-1);
+            penQuestion.setNumberOfCow(-1);
+            penQuestion.setScore(-1);
+        } else if(getRatio(questionEd) > 100) {
+            penQuestion.setRatio(-1);
+            questionTv.setText("표본 규모보다 큰 값 입력 불가");
+            penQuestion.setNumberOfCow(-1);
+            penQuestion.setScore(-1);
+            sampleSizeTv.setVisibility(View.VISIBLE);
+            sampleSizeTv.setText("표본 규모 : " + String.valueOf(getSampleCowSize()));
+        } else {
+            penQuestion.setPenLocation(
+                    makePenLocation(locationOneEd,locationTwoEd)
+            );
+            penQuestion.setRatio(getRatio(questionEd));
+
+            penQuestion.setNumberOfCow(Integer.parseInt(String.valueOf(questionEd.getText())));
+            questionTv.setText(String.valueOf(getRatio(questionEd)));
+        }
+    }
 }
 
 

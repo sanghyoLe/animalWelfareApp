@@ -4,11 +4,6 @@ package com.example.animal_project.BreedBatch.ProtocolOne;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +14,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterDongQ3;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
-public class BreedWaterQ3 extends Fragment {
+public class    BreedWaterQ3 extends Fragment {
     private View view;
     private QuestionTemplateViewModel viewModel;
+    private TextView protocolOneTv;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,12 +31,24 @@ public class BreedWaterQ3 extends Fragment {
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
 
         view = inflater.inflate(R.layout.fragment_breed_water_q3, container, false);
-
+        protocolOneTv = view.findViewById(R.id.breed_protocol_score_1);
         TextView breed_drink_water_score = view.findViewById(R.id.breed_drink_water_score);
         TextView breed_total_water_score = view.findViewById(R.id.breed_total_water_score);
 
-        breed_drink_water_score.setText(String.valueOf(viewModel.getWaterDrink()));
-        breed_total_water_score.setText(String.valueOf(viewModel.getWaterScore()));
+        if(viewModel.getWaterTimeQuestion().getMaxWaterTimeScore() == -1){
+            breed_drink_water_score.setText("음수 대기 우와 음수 시간 평가를 완료하세요");
+        } else {
+            breed_drink_water_score.setText(String.valueOf(viewModel.getWaterTimeQuestion().getMaxWaterTimeScore()));
+        }
+        if(viewModel.getWaterScore() == -1){
+            breed_total_water_score.setText("충분한 물 섭취 평가를 모두 완료하세요");
+        } else{
+            breed_total_water_score.setText(String.valueOf(viewModel.getWaterScore()));
+        }
+        if(viewModel.getProtocolOneScore() != -1){
+            protocolOneTv.setText(String.valueOf(viewModel.getProtocolOneScore()));
+        }
+
 
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
                 R.array.dong_size,
@@ -92,22 +102,37 @@ public class BreedWaterQ3 extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         TextView breed_drink_water_score = view.findViewById(R.id.breed_drink_water_score);
         TextView breed_total_water_score = view.findViewById(R.id.breed_total_water_score);
-        TextView protocolOneTv = view.findViewById(R.id.breed_protocol_score_1);
-        int waterTankNum = viewModel.getWaterTankNum();
-        int waterTankClean = viewModel.getWaterTankClean();
+        protocolOneTv = view.findViewById(R.id.breed_protocol_score_1);
+
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 1:
-                int key = data.getExtras().getInt("key");
-                breed_drink_water_score.setText(String.valueOf(key));
-                viewModel.setWaterDrink(key);
-                // 프로토콜 1 점수
+                QuestionTemplateViewModel.WaterTimeQuestion waterTimeQuestion = (QuestionTemplateViewModel.WaterTimeQuestion)
+                        data.getExtras().getSerializable("waterTimeQuestion");
 
-                int waterScore = getWaterScore(waterTankNum,waterTankClean,key);
-                breed_total_water_score.setText(String.valueOf(waterScore));
-                viewModel.setWaterScore(waterScore);
+                viewModel.setWaterTimeQuestion(waterTimeQuestion);
+
+                breed_drink_water_score.setText(
+                        String.valueOf(
+                                viewModel.getWaterTimeQuestion().getMaxWaterTimeScore()
+                        ));
+                // 프로토콜 1 점수
+                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem() == -1){
+                    breed_total_water_score.setText("음수조 수 평가를 완료하세요");
+                } else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem() == -1){
+                    breed_total_water_score.setText("음수조 위생 평가를 완료하세요");
+                }else {
+                    int waterScore = getWaterScore(
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem(),
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem(),
+                            viewModel.getWaterTimeQuestion().getMaxWaterTimeScore());
+                    breed_total_water_score.setText(String.valueOf(waterScore));
+                    viewModel.setWaterScore(waterScore);
+                }
                 if(viewModel.getPoorScore() == -1){
                     protocolOneTv.setText("여윈 개체 평가를 완료하세요");
+                } else if(viewModel.getWaterScore() == -1) {
+                    protocolOneTv.setText("충분한 물 섭취 평가를 완료하세요");
                 } else {
                     viewModel.setProtocolOneScore(
                             viewModel.calculatorProtocolOneResult(
