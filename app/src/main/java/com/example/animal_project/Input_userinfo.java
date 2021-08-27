@@ -55,7 +55,6 @@ public class Input_userinfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_userinfo);
-
         context_userinfo = this;
 
         beef_btn = findViewById(R.id.beef_btn);
