@@ -84,6 +84,9 @@
             android:id="@+id/list_sub_menu_2"
             layout="@layout/list_sub_menu_2"
             android:visibility="gone"/>
+        <include android:id="@+id/fatten_list_sub_menu_2"
+            layout="@layout/fatten_list_sub_menu_2"
+            android:visibility="gone"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

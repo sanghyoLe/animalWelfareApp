@@ -28,6 +28,8 @@ public class BreedRuminant extends Fragment {
         view = inflater.inflate(R.layout.fragment_breed_ruminant, container, false);
         EditText breed_ruminant_ed = view.findViewById(R.id.breed_ruminant_ed);
         TextView breed_ruminant_tv = view.findViewById(R.id.breed_ruminant_ratio);
+        EditText pen_location_one_ed = view.findViewById(R.id.pen_location_ed_1);
+        EditText pen_location_two_ed = view.findViewById(R.id.pen_location_ed_2);
         TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
 
@@ -44,18 +46,8 @@ public class BreedRuminant extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(TextUtils.isEmpty(breed_ruminant_ed.getText().toString())){
-                    breed_ruminant_tv.setText("값을 입력하세요");
-                    viewModel.setRuminantRatio(-1);
-                } else if(viewModel.getRatio(breed_ruminant_ed) > 100) {
-                    viewModel.setRuminantRatio(-1);
-                    breed_ruminant_tv.setText("표본 규모보다 큰 값 입력 불가");
-                    sample_size_tv.setVisibility(View.VISIBLE);
-                    sample_size_tv.setText("표본 규모 : " + String.valueOf(viewModel.getSampleCowSize()));
-                } else {
-                    viewModel.setRuminantRatio(viewModel.getRatio(breed_ruminant_ed));
-                    breed_ruminant_tv.setText(String.valueOf(viewModel.getRatio(breed_ruminant_ed)));
-                }
+                viewModel.penQuestionAfterTextChanged(breed_ruminant_ed,breed_ruminant_tv,
+                        sample_size_tv,pen_location_one_ed,pen_location_two_ed,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedRuminant);
             }
 
         });

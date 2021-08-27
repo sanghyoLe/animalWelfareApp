@@ -1,9 +1,5 @@
 package com.example.animal_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,10 +8,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-
-import android.util.Log;
-import android.view.MotionEvent;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -23,24 +15,27 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 
 
 public class Input_userinfo extends AppCompatActivity {
+
     public static Context context_userinfo;
     public String result;
     public String total_cow_count;
     public String sample_size_count;
     private static final int SEARCH_ADDRESS_ACTIVITY = 10000;
+    private static String IP_ADDRESS = "218.151.112.65";
     private int input_checked = 0;
     private Button beef_btn;
     private Button milk_cow_btn;
     private LinearLayout beef_group;
     private LinearLayout milk_cow_group;
-
+    private Bundle bundle = new Bundle();
 
 
     private EditText farm_name_et;
@@ -51,6 +46,8 @@ public class Input_userinfo extends AppCompatActivity {
     private EditText total_child_cow_et;
     private EditText eva_name_et;
     private DatePicker eva_data_picker;
+    private String farmType;
+    private String farmId;
 
 
     private QuestionTemplate Qt;
@@ -85,15 +82,18 @@ public class Input_userinfo extends AppCompatActivity {
         input_farm_beef.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                /*if (checkedId == R.id.input_1) { // 비육 농장
+                if (checkedId == R.id.input_1) { // 비육 농장
                     input_checked = 1;
-                }*/
+                    farmType = "한육우, 비육 농장";
+                }
                 if (checkedId == R.id.input_2) { // 번식 농장
                     input_checked = 2;
-/*                } else if (checkedId == R.id.input_3) { // 일괄 사육 농장
+                    farmType = "한육우, 번식 농장";
+                } else if (checkedId == R.id.input_3) { // 일괄 사육 농장
                     input_checked = 3;
-                }*/
+                    farmType = "한육우, 일괄 사육 농장";
                 }
+
             }
         });
 
@@ -101,10 +101,12 @@ public class Input_userinfo extends AppCompatActivity {
         input_farm_milk_cow.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-               /* if (checkedId == R.id.input_4) { // 젖소 일반 우사
+                if (checkedId == R.id.input_4) { // 젖소 일반 우사
                     input_checked = 4;
-                }*/ if (checkedId == R.id.input_5) { // 젖소 프리스톨 우사
+                    farmType = "착유우, 일반 우사";
+                } if (checkedId == R.id.input_5) { // 젖소 프리스톨 우사
                     input_checked = 5;
+                    farmType = "착유우, 프리스톨 우사";
                 }
             }
         });
@@ -115,7 +117,7 @@ public class Input_userinfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 사용자가 모든 정보를 입력하였는지 확인
-           /*     if(TextUtils.isEmpty(farm_name_et.getText())){
+                if(TextUtils.isEmpty(farm_name_et.getText())){
                     msg = "농장명을 입력하세요";
                     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 } else if(TextUtils.isEmpty(address_et.getText())){
@@ -155,14 +157,15 @@ public class Input_userinfo extends AppCompatActivity {
                             Integer.parseInt(String.valueOf(total_cow_et.getText())),
                             Integer.parseInt(String.valueOf(total_adult_cow_et.getText())),
                             Integer.parseInt(String.valueOf(total_child_cow_et.getText())),
+                            Integer.parseInt(String.valueOf(sample_size_count)),
                             String.valueOf(eva_name_et.getText()),
                             eva_data_picker.getYear(),
                             eva_data_picker.getMonth(),
                             eva_data_picker.getDayOfMonth(), input_checked
                             );
-                }*/
+                }
                 // 테스트 용 코드 위에 조건문 주석 걸고 실행
-                if(input_checked == 0) {
+/*                if(input_checked == 0) {
                     String msg = "농장 종류 선택";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                 }else {
@@ -173,7 +176,7 @@ public class Input_userinfo extends AppCompatActivity {
                     bundle.putInt("farmType",input_checked);
                     intentQuestionTemplate.putExtras(bundle);
                     startActivity(intentQuestionTemplate);
-                }
+                }*/
                 // --------------------------------------------------
             }
         });
@@ -193,10 +196,6 @@ public class Input_userinfo extends AppCompatActivity {
                     sample_size.setText(result);
                     total_cow_count = total_cow_et.getText().toString();
                     sample_size_count = result;
-
-
-
-
                 }
             }
             @Override
@@ -301,15 +300,15 @@ public class Input_userinfo extends AppCompatActivity {
             return "73";
         }
     }
-   private void sendInformation(Intent intent, String farmName,
+   private void sendInformation(String farmName,
                                 String address, String addressDetail,
                                 String repName, int totalCow, int totalAdultCow,
-                                int totalChildCow, String evaName, int year,
+                                int totalChildCow,int sampleCow, String evaName, int year,
                                 int month, int day,int farmType){
 
 
-        String evaDate = year +"년"+ month+1 +"월" + day + "일";
-        Bundle bundle = new Bundle();
+        String evaDate = year +"년"+ (month+1) +"월" + day + "일";
+
         bundle.putString("farmName",farmName);
         bundle.putString("address",address);
         bundle.putString("addressDetail",addressDetail);
@@ -317,10 +316,12 @@ public class Input_userinfo extends AppCompatActivity {
         bundle.putInt("totalCow",totalCow);
         bundle.putInt("totalAdultCow",totalAdultCow);
         bundle.putInt("totalChildCow",totalChildCow);
+        bundle.putInt("sampleCowSize",sampleCow);
         bundle.putString("evaName",evaName);
         bundle.putString("evaDate",evaDate);
         bundle.putInt("farmType",farmType);
-        intent.putExtras(bundle);
+
+
 
    }
     public void CowHandler(View view)
@@ -340,7 +341,7 @@ public class Input_userinfo extends AppCompatActivity {
     private void CheckInputInformation( AlertDialog.Builder AlertBuilder, String farmName,
                                         String address, String addressDetail,
                                        String repName, int totalCow, int totalAdultCow,
-                                       int totalChildCow, String evaName, int year,
+                                       int totalChildCow,int sampleCow, String evaName, int year,
                                        int month, int day,int farmType){
         String farmTypeMsg;
         if(farmType == 1){
@@ -348,7 +349,7 @@ public class Input_userinfo extends AppCompatActivity {
         } else if(farmType == 2) {
             farmTypeMsg = "한육우, 번식 농장";
         } else if(farmType == 3){
-            farmTypeMsg = "한육우, 일괄 사육 농징";
+            farmTypeMsg = "한육우, 일괄 사육 농장";
         } else if(farmType == 4){
             farmTypeMsg = "착유우, 일반 우사";
         } else {
@@ -364,6 +365,7 @@ public class Input_userinfo extends AppCompatActivity {
                 + "총 두수 : " + totalCow + "두 \n"
                 + "성우 두수 : " + totalAdultCow + "두 \n"
                 + "송아지 두수 : " + totalChildCow + "두 \n"
+                + "표본 두수 : " + sampleCow +"두 \n"
                 + "평가자명 : " + evaName + " \n"
                 + "평가일 :" + year + "년 " + (month+1) + "월 " + day + "일 \n\n"
                 + "입력 하신 정보로 평가를 진행하시겠습니까? ";
@@ -379,13 +381,42 @@ public class Input_userinfo extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intentQuestionTemplate = new Intent(Input_userinfo.this, QuestionTemplate.class);
-                sendInformation(intentQuestionTemplate,farmName,address,addressDetail,
-                        repName,totalCow,totalAdultCow,totalChildCow,evaName,
+                sendInformation(farmName,address,addressDetail,
+                        repName,totalCow,totalAdultCow,totalChildCow,sampleCow,evaName,
                         year,month,day,farmType);
-                startActivity(intentQuestionTemplate);
+
+
+
+                InsertData task = (InsertData) new InsertData(Input_userinfo.this, new InsertData.AsyncResponse() {
+                    @Override
+                    public void processFinish(String output) {
+                        farmId = output;
+                        bundle.putString("farmId",farmId);
+                        intentQuestionTemplate.putExtras(bundle);
+                        startActivity(intentQuestionTemplate);
+
+                    }
+                }).execute("http://" + IP_ADDRESS + "/insertInfo.php",
+                        farmName,
+                        address,
+                        addressDetail,
+                        repName,
+                        farmTypeMsg,
+                        String.valueOf(totalCow),
+                        String.valueOf(totalAdultCow),
+                        String.valueOf(totalChildCow),
+                        String.valueOf(sampleCow),
+                        String.valueOf(evaName),
+                        String.valueOf(year),
+                        String.valueOf(month),
+                        String.valueOf(day));
+
+
+
             }
         });
         AlertBuilder.show();
     }
+
 
 }

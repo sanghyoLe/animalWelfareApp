@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
-                    android:text="아니오-보온등을 갖추지 아니하였거나 분하지 않음"
+                    android:text="아니오-보온등을 갖추지 아니하였거나 충분하지 않음"
                     android:layout_weight="1">
                 </RadioButton>
             </RadioGroup>

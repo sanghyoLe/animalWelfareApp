@@ -27,6 +27,8 @@ public class BreedOphthalmic extends Fragment {
         EditText breed_ophthalmic_ed = view.findViewById(R.id.breed_ophthalmic_ed);
         TextView breed_ophthalmic_tv = view.findViewById(R.id.breed_ophthalmic_ratio);
         TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
+        EditText pen_location_one_ed = view.findViewById(R.id.pen_location_ed_1);
+        EditText pen_location_two_ed = view.findViewById(R.id.pen_location_ed_2);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
 
         breed_ophthalmic_ed.addTextChangedListener(new TextWatcher() {
@@ -42,18 +44,10 @@ public class BreedOphthalmic extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(TextUtils.isEmpty(breed_ophthalmic_ed.getText().toString())){
-                    breed_ophthalmic_tv.setText("값을 입력하세요");
-                    viewModel.setOphthalmicRatio(-1);
-                } else if(viewModel.getRatio(breed_ophthalmic_ed) > 100) {
-                    viewModel.setOphthalmicRatio(-1);
-                    breed_ophthalmic_tv.setText("표본 규모보다 큰 값 입력 불가");
-                    sample_size_tv.setVisibility(View.VISIBLE);
-                    sample_size_tv.setText("표본 규모 : " + String.valueOf(viewModel.getSampleCowSize()));
-                } else {
-                    viewModel.setOphthalmicRatio(viewModel.getRatio(breed_ophthalmic_ed));
-                    breed_ophthalmic_tv.setText(String.valueOf(viewModel.getRatio(breed_ophthalmic_ed)));
-                }
+                viewModel.penQuestionAfterTextChanged(breed_ophthalmic_ed,breed_ophthalmic_tv,
+                        sample_size_tv, pen_location_one_ed,pen_location_two_ed,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedOphthalmic);
+
+
             }
 
         });

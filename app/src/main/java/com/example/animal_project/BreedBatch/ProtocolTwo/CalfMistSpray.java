@@ -1,16 +1,14 @@
 package com.example.animal_project.BreedBatch.ProtocolTwo;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
@@ -39,17 +37,20 @@ public class CalfMistSpray extends Fragment {
                 {
                     mistSpray = 2;
                 }
-                viewModel.setCalfMistSprayScore(mistSpray);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfMistSpray).setSelectedItem(mistSpray);
+                int selectedItem = ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfMistSpray).getSelectedItem();
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfMistSpray).setAnswer(mistSprayRg,selectedItem);
 
-                if(viewModel.getCalfShadeScore() == 0){
+
+                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfShade).getSelectedItem() == -1){
                     calfRestScoreTv.setText("11번 문항을 완료해주세요");
-                } else if(viewModel.getCalfSummerVentilatingScore() == 0){
+                } else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfSummerVentilating).getSelectedItem() == -1){
                     calfRestScoreTv.setText("12번 문항을 완료해주세요");
                 } else {
                     int summerRestScore = viewModel.calculatorBreedSummerRestScore(
-                            viewModel.getCalfShadeScore(),
-                            viewModel.getCalfSummerVentilatingScore(),
-                            viewModel.getCalfMistSprayScore()
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfShade).getSelectedItem(),
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfSummerVentilating).getSelectedItem(),
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfMistSpray).getSelectedItem()
                     );
                     viewModel.setCalfSummerRestScore(summerRestScore);
                     calfRestScoreTv.setText(String.valueOf(summerRestScore));
@@ -57,12 +58,6 @@ public class CalfMistSpray extends Fragment {
 
             }
         });
-
-
-
-
-
-
         return view;
     }
 }

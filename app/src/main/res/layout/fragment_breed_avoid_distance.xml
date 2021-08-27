@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="표본펜 순번"
-                android:background="#FFFFFF"
+
                 android:layout_margin="1dp"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -88,7 +88,7 @@
             <TextView
                 android:gravity="center_horizontal"
                 android:layout_margin="1dp"
-                android:background="#FFFFFF"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -99,7 +99,7 @@
             <TextView
                 android:gravity="center_horizontal"
                 android:layout_margin="1dp"
-                android:background="#FFFFFF"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -110,7 +110,7 @@
             <TextView
                 android:gravity="center_horizontal"
                 android:layout_margin="1dp"
-                android:background="#FFFFFF"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"

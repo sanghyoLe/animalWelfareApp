@@ -1,16 +1,9 @@
 package com.example.animal_project.BreedBatch.ProtocolFour;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,15 +11,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.animal_project.QuestionTemplate;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
-import com.reginald.editspinner.EditSpinner;
 
 
 public class BreedAvoidDistance extends Fragment {
@@ -34,17 +27,26 @@ public class BreedAvoidDistance extends Fragment {
     private View view;
     private int pen_size;
     private Button btnArr[];
+    private View questionViewArr[];
+    private Object avoidDistanceArr[];
+    private EditText penLocationOneArr[];
+    private EditText penLocationTwoArr[];
+    private Spinner cowSizeSpinnerArr[];
+    private TextView alreadyCowSizeTv[];
+    private TextView penLocationAlreadyInput[];
+
     private TextView avoid_distance_score_tv;
+    private EditText penLocationOne;
+    private EditText penLocationTwo;
     private QuestionTemplateViewModel.avoidDistance[] avoidDistances;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         view = inflater.inflate(R.layout.fragment_breed_avoid_distance, container, false);
-
+        penLocationOne = view.findViewById(R.id.pen_location_ed_1);
+        penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
         // 뷰모델에 있는 avoidDistance 배열 초기화
-
-
         avoid_distance_score_tv = view.findViewById(R.id.breed_avoid_distance_score_tv);
         if(viewModel.getAvoidDistanceScore() == -1){
             avoid_distance_score_tv.setText("회피 거리 평가를 모두 완료하세요");
@@ -104,7 +106,7 @@ public class BreedAvoidDistance extends Fragment {
         View question_50 = view.findViewById(R.id.breed_avoid_distance_question_50);
 
 
-        View[] questionViewArr = {
+        questionViewArr = new View[]{
                 question_1, question_2, question_3, question_4, question_5
                 , question_6, question_7, question_8, question_9, question_10
                 , question_11, question_12, question_13, question_14, question_15
@@ -119,7 +121,7 @@ public class BreedAvoidDistance extends Fragment {
 
 
         Spinner mSpinner = view.findViewById(R.id.avoid_distance_spinner);
-
+        avoidDistanceArr = viewModel.avoidDistances;
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
                 R.array.pen_size_50,
                 android.R.layout.simple_dropdown_item_1line);
@@ -140,15 +142,19 @@ public class BreedAvoidDistance extends Fragment {
                 // 선택된 데이터 위치( 0 부터 )
                 selectedItemIndex[0] = position;
                 pen_size = selectedItemIndex[0];
-                Spinner spinnerArr[] = makeSpinner(questionViewArr,spinnerAdapterCowSize);
-                showQuestionView(questionViewArr, selectedItemIndex[0]);
+                cowSizeSpinnerArr = makeSpinner(questionViewArr,spinnerAdapterCowSize);
                 btnArr = makeBtnArr(questionViewArr);
-                EditText edArr[] = makeEditTextArr(questionViewArr);
+                penLocationOneArr = makeEditTextArr(questionViewArr,R.id.pen_location_ed_1);
+                penLocationTwoArr = makeEditTextArr(questionViewArr,R.id.pen_location_ed_2);
+                penLocationAlreadyInput = makeTextViewArr(questionViewArr,R.id.pen_location_already_input);
+                alreadyCowSizeTv = makeTextViewArr(questionViewArr,R.id.already_cow_size);
+                btnHandler(btnArr, penLocationOneArr, penLocationTwoArr, cowSizeSpinnerArr,pen_size);
+                showQuestionView(questionViewArr, avoidDistanceArr,penLocationOneArr,penLocationTwoArr,cowSizeSpinnerArr,
+                        penLocationAlreadyInput,alreadyCowSizeTv,btnArr,selectedItemIndex[0]);
 
-                btnHandler(btnArr,edArr,spinnerArr,pen_size);
-                Log.d("1",String.valueOf(pen_size));
 
             }
+
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -157,10 +163,14 @@ public class BreedAvoidDistance extends Fragment {
 
 
 
+        showQuestionView(questionViewArr, avoidDistanceArr,penLocationOneArr,penLocationTwoArr,cowSizeSpinnerArr,
+                penLocationAlreadyInput,alreadyCowSizeTv,btnArr,pen_size);
 
         // Inflate the layout for this fragment
         return view;
     }
+
+
 
     public Spinner[] makeSpinner(View[] QuestionViewArr, ArrayAdapter spinnerAdapter) {
         Spinner[] SpinnerArr = new Spinner[50];
@@ -171,7 +181,8 @@ public class BreedAvoidDistance extends Fragment {
         return SpinnerArr;
     }
 
-    public void showQuestionView(View[] QuestionViewArr, int pen_size) {
+    public void showQuestionView(View[] QuestionViewArr,Object[] objects,EditText[] penLocationOne,EditText[] penLocationTwo,Spinner[] cowSizeSpinner,
+                                 TextView[] alreadyInputTv,TextView[] alreadyCowSizeTv,Button[] inputBtn, int pen_size) {
         TextView[] tvArr = new TextView[50];
         for (int i = 0; i < 50; i++) {
             tvArr[i] = QuestionViewArr[i].findViewById(R.id.pen_number_tv);
@@ -180,9 +191,29 @@ public class BreedAvoidDistance extends Fragment {
         }
         for (int i = 0; i < pen_size; i++) {
             QuestionViewArr[i].setVisibility(View.VISIBLE);
+            if(((QuestionTemplateViewModel.avoidDistance)objects[i+1]).getCowSize() != -1){
+                String penLocation = ((QuestionTemplateViewModel.avoidDistance)objects[i+1]).getPenLocation();
+                penLocationOne[i].setVisibility(View.GONE);
+                penLocationTwo[i].setVisibility(View.GONE);
+                alreadyInputTv[i].setVisibility(View.VISIBLE);
+                alreadyInputTv[i].setText(penLocation);
+                QuestionViewArr[i].findViewById(R.id.pen_location_hyphen).setVisibility(View.GONE);
+                cowSizeSpinner[i].setVisibility(View.GONE);
+                alreadyCowSizeTv[i].setVisibility(View.VISIBLE);
+                alreadyCowSizeTv[i].setText(
+                        String.valueOf(((QuestionTemplateViewModel.avoidDistance)objects[i+1]).getCowSize())
+                );
+                inputBtn[i].setVisibility(View.INVISIBLE);
+            }
         }
     }
-
+    public TextView[] makeTextViewArr(View[] questionViewArr,int id){
+        TextView[] tvArr = new TextView[50];
+        for(int i = 0 ; i < 50 ; i++){
+            tvArr[i] = questionViewArr[i].findViewById(id);
+        }
+        return tvArr;
+    }
     public Button[] makeBtnArr(View[] questionViewArr) {
         Button[] btnArr = new Button[50];
         for (int i = 0; i < 50; i++) {
@@ -190,15 +221,15 @@ public class BreedAvoidDistance extends Fragment {
         }
         return btnArr;
         }
-    public EditText[] makeEditTextArr(View[] questionViewArr){
+    public EditText[] makeEditTextArr(View[] questionViewArr,int id){
         EditText[] edArr = new EditText[50];
         for(int i = 0 ;i < 50 ;i++){
-            edArr[i] = questionViewArr[i].findViewById(R.id.pen_location_ed);
+            edArr[i] = questionViewArr[i].findViewById(id);
         }
         return edArr;
     }
 
-        public void btnHandler(Button[] btnArr,EditText[] edArr, Spinner[] spinnerArr, int pen_size){
+        public void btnHandler(Button[] btnArr,EditText[] penLocationOne,EditText[] penLocationTwo, Spinner[] spinnerArr, int pen_size){
             final int[] selectedItemIndex = new int[pen_size];
             for(int i = 0 ; i < pen_size ; i++){
                 final int FinalI = i;
@@ -209,7 +240,7 @@ public class BreedAvoidDistance extends Fragment {
                         String selectedItem = parent.getSelectedItem().toString();
                         // 선택된 데이터 위치( 0 부터 )
                         selectedItemIndex[FinalI] = position;
-                        Log.d("select",String.valueOf(FinalI + "번" + selectedItemIndex[FinalI]));
+
                     }
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
@@ -218,7 +249,7 @@ public class BreedAvoidDistance extends Fragment {
                 btnArr[FinalI].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                            execCowQuestion(edArr,FinalI,selectedItemIndex);
+                            execCowQuestion(penLocationOne,penLocationTwo,FinalI,selectedItemIndex);
                     }
                 });
             }
@@ -228,6 +259,7 @@ public class BreedAvoidDistance extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 1:
+
                 int pen_number = data.getExtras().getInt("pen_number");
                 QuestionTemplateViewModel.avoidDistance avoidDistance =
                         (QuestionTemplateViewModel.avoidDistance) data.getExtras().getSerializable("avoidDistance");
@@ -315,6 +347,9 @@ public class BreedAvoidDistance extends Fragment {
                     protocol_4.setText(String.valueOf(viewModel.getProtocolFourScore()));
 
                 }
+                showQuestionView(questionViewArr, avoidDistanceArr,penLocationOneArr,penLocationTwoArr,cowSizeSpinnerArr,
+                        penLocationAlreadyInput,alreadyCowSizeTv,btnArr,pen_size);
+                viewModel.avoidDistances[1].setPenSize(pen_size);
                 break;
             default:
                 break;
@@ -344,8 +379,8 @@ public class BreedAvoidDistance extends Fragment {
     }*/
 
     // BreedAvoidDistanceCowQuestion Activity 실행
-    private void execCowQuestion(EditText edArr[], int FinalI, int[] selectedItemIndex){
-        if(TextUtils.isEmpty(edArr[FinalI].getText())){
+    private void execCowQuestion(EditText penLocationOne[],EditText penLocationTwo[], int FinalI, int[] selectedItemIndex){
+        if(TextUtils.isEmpty(penLocationOne[FinalI].getText()) || TextUtils.isEmpty(penLocationTwo[FinalI].getText())){
             String msg = FinalI+1 + "번 펜 위치를 입력하세요";
             Toast.makeText(getActivity(),msg,Toast.LENGTH_LONG).show();
         } else if(selectedItemIndex[FinalI] == 0){
@@ -355,7 +390,7 @@ public class BreedAvoidDistance extends Fragment {
         else{
             Intent intent = new Intent(getActivity(), BreedAvoidDistanceCowQuestions.class);
             intent.putExtra("pen_number",FinalI+1);
-            intent.putExtra("pen_location",String.valueOf(edArr[FinalI].getText()));
+            intent.putExtra("pen_location",String.valueOf(penLocationOne[FinalI].getText() + "-" + penLocationTwo[FinalI].getText()));
             intent.putExtra("cow_count",selectedItemIndex[FinalI]);
             startActivityForResult(intent, 0);
             }

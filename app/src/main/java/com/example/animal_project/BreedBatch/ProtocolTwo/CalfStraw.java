@@ -1,14 +1,13 @@
 package com.example.animal_project.BreedBatch.ProtocolTwo;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
@@ -33,7 +32,9 @@ public class CalfStraw extends Fragment {
                 }else if(checkedId == R.id.calf_straw_2){
                     calfStraw = 2;
                 }
-                viewModel.setCalfStrawScore(calfStraw);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfStraw).setSelectedItem(calfStraw);
+                int selectedItem = ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfStraw).getSelectedItem();
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfStraw).setAnswer(calfStrawRg,selectedItem);
             }
         });
         // Inflate the layout for this fragment

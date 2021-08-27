@@ -1,28 +1,17 @@
 package com.example.animal_project.BreedBatch.ProtocolOne;
 
 
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RadioGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-
-import com.example.animal_project.Input_userinfo;
-import com.example.animal_project.MainActivity;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
-import com.example.animal_project.Result_View;
 
 public class BreedWaterQ1 extends Fragment {
     private View view;
@@ -44,7 +33,10 @@ public class BreedWaterQ1 extends Fragment {
                 } else if (checkedId == R.id.breed_water_tank_num_2) {
                     waterTankNum = 2;
                 }
-                viewModel.setWaterTankNum(waterTankNum);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).setSelectedItem(waterTankNum);
+                int selectItem = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem();
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).setAnswer(breed_water_tank_num,selectItem);
+
             }
         });
 
