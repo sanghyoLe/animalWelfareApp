@@ -129,7 +129,7 @@ public class BreedWaterDongQ3 extends AppCompatActivity {
                     // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
                     AlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
                         public void onClick(DialogInterface dialog,int which){
-                            // OK 버튼을 눌렸을 경우
+
 
                         }
                     });

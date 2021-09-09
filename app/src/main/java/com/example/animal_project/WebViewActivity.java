@@ -43,6 +43,6 @@ public class WebViewActivity extends AppCompatActivity {
             }
         });
 
-        browser.loadUrl("http://10.0.2.2/daum.html");
+        browser.loadUrl("http://218.151.112.65/daum.html");
     }
 }

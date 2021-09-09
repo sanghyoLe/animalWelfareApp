@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -39,6 +40,7 @@ public class Input_userinfo extends AppCompatActivity {
 
 
     private EditText farm_name_et;
+    private EditText zipcode_et;
     private EditText address_et;
     private EditText address_detail_et;
     private EditText farm_rep_name_et;
@@ -48,6 +50,9 @@ public class Input_userinfo extends AppCompatActivity {
     private DatePicker eva_data_picker;
     private String farmType;
     private String farmId;
+    private LinearLayout beef_cow_input_layout;
+    private LinearLayout milk_cow_input_layout;
+
 
 
     private QuestionTemplate Qt;
@@ -62,6 +67,8 @@ public class Input_userinfo extends AppCompatActivity {
 
         beef_group = findViewById(R.id.beef_group);
         milk_cow_group = findViewById(R.id.milk_cow_group);
+        beef_cow_input_layout = findViewById(R.id.beef_cow_input_layout);
+        milk_cow_input_layout = findViewById(R.id.milk_cow_input_layout);
 
         Button farm_selector = (Button) findViewById(R.id.farm_selector); //농장 선택
         RadioGroup input_farm_beef = (RadioGroup) findViewById(R.id.input_farm_beef);
@@ -150,6 +157,7 @@ public class Input_userinfo extends AppCompatActivity {
                     CheckInputInformation(
                             AlertBuilder,
                             String.valueOf(farm_name_et.getText()),
+                            String.valueOf(zipcode_et.getText()),
                             String.valueOf(address_et.getText()),
                             String.valueOf(address_detail_et.getText()),
                             String.valueOf(farm_rep_name_et.getText()),
@@ -197,15 +205,31 @@ public class Input_userinfo extends AppCompatActivity {
                     sample_size_count = result;
                 }
             }
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
         });
 
+        // 우편 번호 입력 창
+        zipcode_et = (EditText) findViewById(R.id.et_zipCode);
         // 주소 입력을 위한 창
         address_et = (EditText) findViewById(R.id.et_address);
-
-/*        if (address_et != null) {
+        if(zipcode_et != null){
+            zipcode_et.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event)
+                {
+                    if(event.getAction() == MotionEvent.ACTION_UP) {
+                        Intent i = new Intent(Input_userinfo.this, com.example.animal_project.WebViewActivity.class);
+                        startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        }
+        if (address_et != null) {
             address_et.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event)
@@ -218,7 +242,7 @@ public class Input_userinfo extends AppCompatActivity {
                     return false;
                 }
             });
-        }*/
+        }
     }
 
     // 주소지 결과 창
@@ -229,8 +253,10 @@ public class Input_userinfo extends AppCompatActivity {
             case SEARCH_ADDRESS_ACTIVITY:
                 if (resultCode == RESULT_OK) {
                     String data = intent.getExtras().getString("data");
+                    String[] dataArr = data.split(",");
                     if (data != null) {
-                        address_et.setText(data);
+                        zipcode_et.setText(dataArr[0]);
+                        address_et.setText(dataArr[1]);
                     }
                 }
                 break;
@@ -256,7 +282,7 @@ public class Input_userinfo extends AppCompatActivity {
         } else if(inputIntval <= 90){
             return "47";
         } else if(inputIntval <= 100){
-            return "59";
+            return "49";
         } else if(inputIntval <= 110){
             return "52";
         } else if(inputIntval <= 120){
@@ -330,14 +356,19 @@ public class Input_userinfo extends AppCompatActivity {
             case R.id.beef_btn:
                 beef_group.setVisibility(View.VISIBLE);
                 milk_cow_group.setVisibility(View.GONE);
+                beef_cow_input_layout.setVisibility(View.VISIBLE);
+                milk_cow_input_layout.setVisibility(View.GONE);
                 break;
             case R.id.milk_cow_btn:
                 milk_cow_group.setVisibility(View.VISIBLE);
                 beef_group.setVisibility(View.GONE);
+                milk_cow_input_layout.setVisibility(View.VISIBLE);
+                beef_cow_input_layout.setVisibility(View.GONE);
+
                 break;
         }
     }
-    private void CheckInputInformation( AlertDialog.Builder AlertBuilder, String farmName,
+    private void CheckInputInformation( AlertDialog.Builder AlertBuilder, String farmName,String zipCode,
                                         String address, String addressDetail,
                                        String repName, int totalCow, int totalAdultCow,
                                        int totalChildCow,int sampleCow, String evaName, int year,
@@ -350,42 +381,36 @@ public class Input_userinfo extends AppCompatActivity {
         } else if(farmType == 3){
             farmTypeMsg = "한육우, 일괄 사육 농장";
         } else if(farmType == 4){
-            farmTypeMsg = "착유우, 일반 우사";
+            farmTypeMsg = "착유우, 운동장형 우사";
         } else {
             farmTypeMsg ="착유우, 프리스톨 우사";
         }
-        AlertBuilder.setTitle("정보 입력 결과");
-        String msg =
-                "농장명 : " + farmName + " \n"
-                + "주소 : " + address + " \n"
-                + "상세주소 : " + addressDetail + " \n"
-                + "대표자명 : " + repName + " \n"
-                + "농장종류 : " + farmTypeMsg + " \n"
-                + "총 두수 : " + totalCow + "두 \n"
-                + "성우 두수 : " + totalAdultCow + "두 \n"
-                + "송아지 두수 : " + totalChildCow + "두 \n"
-                + "표본 두수 : " + sampleCow +"두 \n"
-                + "평가자명 : " + evaName + " \n"
-                + "평가일 :" + year + "년 " + (month+1) + "월 " + day + "일 \n\n"
-                + "입력 하신 정보로 평가를 진행하시겠습니까? ";
-        AlertBuilder.setMessage(msg);
-        // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
-        AlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface dialog,int which){
-                // OK 버튼을 눌렸을 경우
+        CustomDialog customDialog = new CustomDialog(Input_userinfo.this);
 
+        String evaDate = year + "년 " + (month+1) + " 월 " + day + " 일";
+        String[] inputMessage = {farmName,zipCode,address,addressDetail,repName,farmTypeMsg
+                ,String.valueOf(totalCow),String.valueOf(totalAdultCow),String.valueOf(totalChildCow)
+                ,String.valueOf(sampleCow),evaName,evaDate
+        };
+
+        customDialog.setInputMessage(inputMessage);
+
+        customDialog.cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Input_userinfo.this, "취소 했습니다.", Toast.LENGTH_SHORT).show();
+
+                // 커스텀 다이얼로그를 종료한다.
+                customDialog.dismiss();
             }
         });
-        AlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+        customDialog.okButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(View view) {
                 Intent intentQuestionTemplate = new Intent(Input_userinfo.this, QuestionTemplate.class);
                 sendInformation(farmName,address,addressDetail,
                         repName,totalCow,totalAdultCow,totalChildCow,sampleCow,evaName,
                         year,month,day,farmType);
-
-
-
                 InsertData task = (InsertData) new InsertData(Input_userinfo.this, new InsertData.AsyncResponse() {
                     @Override
                     public void processFinish(String output) {
@@ -408,13 +433,16 @@ public class Input_userinfo extends AppCompatActivity {
                         String.valueOf(evaName),
                         String.valueOf(year),
                         String.valueOf(month),
-                        String.valueOf(day));
+                        String.valueOf(day),
+                        String.valueOf(zipCode)
+                );
 
-
-
+                customDialog.dismiss();
             }
         });
-        AlertBuilder.show();
+
+
+
     }
 
 

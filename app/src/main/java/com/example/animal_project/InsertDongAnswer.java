@@ -29,6 +29,7 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
         Object coughQuestion = objects[1];
         Object struggleQuestion = objects[2];
         Object harmonyQuestion = objects[3];
+        Object strawQuestion = objects[4];
 
 
 
@@ -63,6 +64,13 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
         int[] harmonyCowSize = ((QuestionTemplateViewModel.BehaviorQuestion)harmonyQuestion).getCowSize();
         float[] harmonyPerOne = ((QuestionTemplateViewModel.BehaviorQuestion)harmonyQuestion).getBehaviorPerOne();
 
+        int strawDongSize = ((QuestionTemplateViewModel.StrawQuestion)strawQuestion).getDongSize();
+        String[] strawPenLocation =  ((QuestionTemplateViewModel.StrawQuestion)strawQuestion).getPenLocation();
+        int[] strawOneAnswer = ((QuestionTemplateViewModel.StrawQuestion)strawQuestion).getStrawOneArr();
+        int[] strawTwoAnswer = ((QuestionTemplateViewModel.StrawQuestion)strawQuestion).getStrawTwoArr();
+        int[] strawThreeAnswer = ((QuestionTemplateViewModel.StrawQuestion)strawQuestion).getStrawThreeArr();
+        int[] strawScore = ((QuestionTemplateViewModel.StrawQuestion)strawQuestion).getStrawScore();
+        float strawAvgScore =  ((QuestionTemplateViewModel.StrawQuestion)strawQuestion).getStrawAvgScore();
 
 
 
@@ -72,7 +80,8 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
                 +"&waterTimeDongSize=" + waterTimeDongSize
                 +"&coughDongSize=" + coughDongSize
                 +"&struggleDongSize=" + struggleDongSize
-                +"&harmonyDongSize=" +  harmonyDongSize;
+                +"&harmonyDongSize=" +  harmonyDongSize
+                +"&strawDongSize=" + strawDongSize;
 
         for(int i = 0 ; i < waterTimeDongSize ; i++){
             postParameters = postParameters.concat("&waterTimePenLocation_" + (i+1) +"="+ waterTimePenLocation[i]);
@@ -101,6 +110,14 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
             postParameters = postParameters.concat("&harmonyPerOne" + (i+1) +"="+ harmonyPerOne[i]);
         }
 
+        for(int i = 0 ; i < strawDongSize ; i++){
+            postParameters = postParameters.concat("&strawPenLocation" + (i+1) +"="+ strawPenLocation[i]);
+            postParameters = postParameters.concat("&strawOneAnswer" + (i+1) +"="+ strawOneAnswer[i]);
+            postParameters = postParameters.concat("&strawTwoAnswer" + (i+1) +"="+ strawTwoAnswer[i]);
+            postParameters = postParameters.concat("&strawThreeAnswer" + (i+1) +"="+ strawThreeAnswer[i]);
+            postParameters = postParameters.concat("&strawScore" + (i+1) +"="+ strawScore[i]);
+        }
+
 
         Log.d("postpar",postParameters);
         try {
@@ -122,7 +139,7 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
 
 
             int responseStatusCode = httpURLConnection.getResponseCode();
-            Log.d("PHP", "POST response code - " + responseStatusCode);
+            Log.d("InsertDongAnswer", "POST response code - " + responseStatusCode);
 
             InputStream inputStream;
             if(responseStatusCode == HttpURLConnection.HTTP_OK) {

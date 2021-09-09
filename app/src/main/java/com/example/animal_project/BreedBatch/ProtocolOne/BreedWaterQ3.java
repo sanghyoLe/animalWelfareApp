@@ -122,7 +122,7 @@ public class    BreedWaterQ3 extends Fragment {
                 } else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem() == -1){
                     breed_total_water_score.setText("음수조 위생 평가를 완료하세요");
                 }else {
-                    int waterScore = getWaterScore(
+                    int waterScore = viewModel.calculatorWaterScore(
                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem(),
                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem(),
                             viewModel.getWaterTimeQuestion().getMaxWaterTimeScore());
@@ -149,50 +149,7 @@ public class    BreedWaterQ3 extends Fragment {
         }
     }
 
-    public int getWaterScore(int waterTankNum, int waterTankClean, int waterTankTime)
-    {
-        int waterScore = 0;
-        // 음수조 수 기준 합격
-        if (waterTankNum == 1) {
-            // 음수조 위생 청결 or 보통
-            if (waterTankClean <= 2) {
-                // 음수 행동 매우 양호 or 보통
-                if (waterTankTime < 2) {
-                    waterScore = 100;
-                } else {
-                    waterScore = 80;
-                }
-            }
-            // 음수조 위생 더러움
-            else {
-                if (waterTankTime < 2) {
-                    waterScore = 60;
-                } else {
-                    waterScore = 45;
-                }
-            }
-        }
-        // 음수조 수 기준 초과
-        else {
-            // 음수조 위생 청결 or 보통
-            if (waterTankClean <= 2) {
-                if (waterTankTime < 2) {
-                    waterScore = 55;
-                } else {
-                    waterScore = 40;
-                }
-            }
-            // 음수조 위생 더러움
-            else {
-                if (waterTankTime < 2) {
-                    waterScore = 35;
-                } else {
-                    waterScore = 20;
-                }
-            }
-        }
-        return waterScore;
-    }
+
 
 
 }

@@ -36,7 +36,17 @@ public class BreedWaterQ1 extends Fragment {
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).setSelectedItem(waterTankNum);
                 int selectItem = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem();
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).setAnswer(breed_water_tank_num,selectItem);
-
+                int waterScore = viewModel.calculatorWaterScore(
+                        ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem(),
+                        ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem(),
+                        viewModel.getWaterTimeQuestion().getMaxWaterTimeScore());
+                viewModel.setWaterScore(waterScore);
+                viewModel.setProtocolOneScore(
+                        viewModel.calculatorProtocolOneResult(
+                                viewModel.getPoorScore(),
+                                viewModel.getWaterScore()
+                        )
+                );
             }
         });
 

@@ -204,6 +204,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         int[] strawTwo;
         int[] strawThree;
         int[] strawScore;
+        float strawAvgScore = -1;
 
         public StrawQuestion(int dong_size){
             this.penLocation = new String[dong_size];
@@ -213,36 +214,54 @@ public class QuestionTemplateViewModel extends ViewModel {
             this.strawScore = new int[dong_size];
         }
 
-        public void setStrawOne(int[] strawOne) {
-            this.strawOne = strawOne;
+        public void setStrawOne(int strawOne,int i) {
+            this.strawOne[i] = strawOne;
         }
 
-        public void setStrawTwo(int[] strawTwo) {
-            this.strawTwo = strawTwo;
+        public void setStrawTwo(int strawTwo,int i) {
+            this.strawTwo[i] = strawTwo;
         }
 
-        public void setStrawThree(int[] strawThree) {
-            this.strawThree = strawThree;
+        public void setStrawThree(int strawThree,int i) {
+            this.strawThree[i] = strawThree;
         }
 
-        public void setStrawScore(int[] strawScore) {
-            this.strawScore = strawScore;
+        public void setStrawScore(int strawScore,int i) {
+            this.strawScore[i] = strawScore;
         }
 
-        public int[] getStrawOne() {
-            return strawOne;
+        public int getStrawOne(int i) {
+            return strawOne[i];
         }
-
-        public int[] getStrawTwo() {
-            return strawTwo;
+        public int getStrawTwo(int i) {
+            return strawTwo[i];
         }
-
-        public int[] getStrawThree() {
-            return strawThree;
+        public int getStrawThree(int i) {
+            return strawThree[i];
         }
-
         public int[] getStrawScore() {
             return strawScore;
+        }
+        public void setStrawAvgScore(int strawScore[], int dongSize){
+            float avgScore = 0;
+            for(int i = 0 ;i < dongSize ; i++){
+                avgScore += strawScore[i];
+            }
+            avgScore = (avgScore / dongSize);
+            avgScore = Math.round(avgScore*100)/100;
+            this.strawAvgScore = avgScore;
+        }
+        public int[] getStrawOneArr(){
+            return this.strawOne;
+        }
+        public int[] getStrawTwoArr(){
+            return this.strawTwo;
+        }
+        public int[] getStrawThreeArr(){
+            return this.strawThree;
+        }
+        public float getStrawAvgScore(){
+            return this.strawAvgScore;
         }
 
     }
@@ -384,7 +403,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     private int waterDrink = -1;
     private int waterScore = -1;
     // 깔짚 수분 프로토콜 재 정의 필요
-    private int strawScore = 50;
+    private float strawScore = -1;
     private int outwardScore = -1;
     private double restScore = -1;
     private int shadeScore = -1;
@@ -514,10 +533,10 @@ public class QuestionTemplateViewModel extends ViewModel {
     public int getWaterScore(){
         return this.waterScore;
     }
-    public void setStrawScore(int strawScore) {
+    public void setStrawScore(float strawScore) {
         this.strawScore = strawScore;
     }
-    public int getStrawScore() { return this.strawScore; };
+    public float getStrawScore() { return this.strawScore; };
     public void setOutwardScore(int outWardScore){
         this.outwardScore = outWardScore;
     }
@@ -652,6 +671,12 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public int getHairLossScore(){
         return this.hairLossScore;
+    }
+    public void setHairLossTotalRatio(float totalHairLossRatio){
+        this.hairLossTotalRatio = totalHairLossRatio;
+    }
+    public float getHairLossTotalRatio(){
+        return this.hairLossTotalRatio;
     }
     public void setMinInjuryScore(long minInjuryScore){
         this.minInjuryScore = minInjuryScore;
@@ -856,19 +881,71 @@ public class QuestionTemplateViewModel extends ViewModel {
 
 
     }
-
+    public int calculatorWaterScore(int waterTankNum, int waterTankClean, int waterTankTime)
+    {
+        int waterScore = 0;
+        // 음수조 수 기준 합격
+        if (waterTankNum == 1) {
+            // 음수조 위생 청결 or 보통
+            if (waterTankClean <= 2) {
+                // 음수 행동 매우 양호 or 보통
+                if (waterTankTime < 2) {
+                    waterScore = 100;
+                } else {
+                    waterScore = 80;
+                }
+            }
+            // 음수조 위생 더러움
+            else {
+                if (waterTankTime < 2) {
+                    waterScore = 60;
+                } else {
+                    waterScore = 45;
+                }
+            }
+        }
+        // 음수조 수 기준 초과
+        else {
+            // 음수조 위생 청결 or 보통
+            if (waterTankClean <= 2) {
+                if (waterTankTime < 2) {
+                    waterScore = 55;
+                } else {
+                    waterScore = 40;
+                }
+            }
+            // 음수조 위생 더러움
+            else {
+                if (waterTankTime < 2) {
+                    waterScore = 35;
+                } else {
+                    waterScore = 20;
+                }
+            }
+        }
+        return waterScore;
+    }
     public int calculatorBreedStrawScore(int feedTank, int normal, int restingPlace){
-        int StrawScore = 0;
-        if(feedTank <= 2  && normal < 2 && restingPlace <  2) {
+        int StrawScore = 100;
+        int checkCount = 0;
+        if(feedTank == 1){
+            checkCount++;
+        }
+        if(normal == 1){
+            checkCount++;
+        }
+                                                                                                                                                                                                                        if(restingPlace == 1){
+            checkCount++;
+        }
+
+        if(checkCount == 0){
             StrawScore = 100;
-        } else if(feedTank <= 2 && feedTank <= 2 && restingPlace < 2){
-            StrawScore = 80;
-        } else if(feedTank <= 3 && feedTank <= 3 && restingPlace <= 2){
-            StrawScore = 60;
-        } else if(feedTank <= 4 && feedTank <= 4 && restingPlace <= 3){
-            StrawScore = 40;
-        } else if(feedTank <= 4 && feedTank <= 4 && restingPlace <= 4) {
-            StrawScore = 20;
+        } else if( checkCount == 1){
+            StrawScore = 70;
+        } else if( checkCount == 2){
+            StrawScore = 30;
+        } else {
+            StrawScore = 0;
         }
         return StrawScore;
     }
@@ -904,7 +981,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         return (PoorScore * 0.7) + (WaterScore * 0.3);
     }
 
-    public double calculatorBreedRestScore(int strawScore, int outwardScore)
+    public double calculatorBreedRestScore(float strawScore, int outwardScore)
     {
         return (strawScore * 0.5) + (outwardScore * 0.5);
     }
@@ -1085,7 +1162,8 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public float getRatio(EditText editText){
         float ratio = (Float.parseFloat(editText.getText().toString()) / getSampleCowSize()) * 100;
-        ratio = Math.round(ratio*100)/100;
+        ratio = (float) (Math.round(ratio*100)/100.0);
+
         return ratio;
     }
 

@@ -33,10 +33,23 @@ public class BreedWaterQ2 extends Fragment {
                     waterTankClean = 2;
                 } else if (checkedId == R.id.breed_water_tank_clean_3) {
                     waterTankClean = 3;
+
                 }
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).setSelectedItem(waterTankClean);
                 int selectItem = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem();
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).setAnswer(breed_water_tank_clean,selectItem);
+
+                int waterScore = viewModel.calculatorWaterScore(
+                        ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem(),
+                        ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem(),
+                        viewModel.getWaterTimeQuestion().getMaxWaterTimeScore());
+                viewModel.setWaterScore(waterScore);
+                viewModel.setProtocolOneScore(
+                        viewModel.calculatorProtocolOneResult(
+                                viewModel.getPoorScore(),
+                                viewModel.getWaterScore()
+                        )
+                );
             }
         });
 

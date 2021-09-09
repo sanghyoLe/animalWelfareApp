@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -22,6 +24,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterDongQ3;
+import com.example.animal_project.QuestionTemplate;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
@@ -29,6 +33,7 @@ import java.util.Arrays;
 
 public class BreedStrawDong extends AppCompatActivity {
     private int dong_size;
+    private QuestionTemplateViewModel viewModel;
     @Override
     public void onBackPressed(){
 
@@ -38,7 +43,7 @@ public class BreedStrawDong extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.straw_dong);
-        QuestionTemplateViewModel viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
+        viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
         Intent intent = getIntent();
         dong_size = intent.getExtras().getInt("dong_count");
         
@@ -80,25 +85,10 @@ public class BreedStrawDong extends AppCompatActivity {
         viewModel.showQuestionView(questionViewArr, dong_size);
         EditText[] penLocationOneEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.pen_location_1_ed);
         EditText[] penLocationTwoEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.pen_location_2_ed);
+        CheckBox[] locationOne = makeCheckBoxArr(questionViewArr,dong_size, R.id.checkbox_location_one);
+        CheckBox[] locationTwo = makeCheckBoxArr(questionViewArr,dong_size, R.id.checkbox_location_two);
+        CheckBox[] locationThree = makeCheckBoxArr(questionViewArr,dong_size, R.id.checkbox_location_three);
 
-        ArrayAdapter spinnerAdapterQuestionOne = ArrayAdapter.createFromResource(getApplicationContext(),
-                R.array.straw_question_1,
-                android.R.layout.simple_dropdown_item_1line);
-        spinnerAdapterQuestionOne.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        ArrayAdapter spinnerAdapterQuestionTwo = ArrayAdapter.createFromResource(getApplicationContext(),
-                R.array.straw_question_2,
-                android.R.layout.simple_dropdown_item_1line);
-        spinnerAdapterQuestionTwo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        ArrayAdapter spinnerAdapterQuestionThree = ArrayAdapter.createFromResource(getApplicationContext(),
-                R.array.straw_question_3,
-                android.R.layout.simple_dropdown_item_1line);
-        spinnerAdapterQuestionThree.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        Spinner[] strawSpinnerOne = makeSpinner(questionViewArr,spinnerAdapterQuestionOne,dong_size,R.id.straw_question_spinner_1);
-        Spinner[] strawSpinnerTwo = makeSpinner(questionViewArr,spinnerAdapterQuestionTwo,dong_size,R.id.straw_question_spinner_2);
-        Spinner[] strawSpinnerThree = makeSpinner(questionViewArr,spinnerAdapterQuestionThree,dong_size,R.id.straw_question_spinner_3);
         QuestionTemplateViewModel.StrawQuestion strawQuestion = new QuestionTemplateViewModel.StrawQuestion(dong_size);
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(BreedStrawDong.this);
 
@@ -115,86 +105,94 @@ public class BreedStrawDong extends AppCompatActivity {
                 drawerHandler();
             }
         });
-        int[] answersOne = new int[dong_size];
-        for(int i = 0 ; i < dong_size ; i++){
-            int finalI = i;
-            strawSpinnerOne[i].setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    // 선택된 데이터 값
-                    String selectedItem = parent.getSelectedItem().toString();
-                    // 선택된 데이터 위치( 0 부터 )
-                    answersOne[finalI] = position;
 
-                }
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    answersOne[finalI] = 0;
-                }
-            });
-        }
-        int[] answersTwo = new int[dong_size];
-        for(int i = 0 ; i < dong_size ; i++){
-            int finalI = i;
-            strawSpinnerTwo[i].setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    // 선택된 데이터 값
-                    String selectedItem = parent.getSelectedItem().toString();
-                    // 선택된 데이터 위치( 0 부터 )
-                    answersTwo[finalI] = position;
-
-                }
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    answersTwo[finalI] = 0;
-                }
-            });
-        }
-        int[] answersThree = new int[dong_size];
-        for(int i = 0 ; i < dong_size ; i++){
-            int finalI = i;
-            strawSpinnerThree[i].setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    // 선택된 데이터 값
-                    String selectedItem = parent.getSelectedItem().toString();
-                    // 선택된 데이터 위치( 0 부터 )
-                    answersThree[finalI] = position;
-
-                }
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    answersThree[finalI] = 0;
-                }
-            });
-        }
         end_btn.setOnClickListener(new View.OnClickListener() {
             String msg;
             @Override
             public void onClick(View v) {
+
                 if(viewModel.checkEmptyEditText(penLocationOneEd,dong_size) != -1){
                     msg = viewModel.checkEmptyEditText(penLocationOneEd,dong_size) + "동 펜 위치를 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                 }else if(viewModel.checkEmptyEditText(penLocationTwoEd,dong_size) != -1){
                     msg = viewModel.checkEmptyEditText(penLocationOneEd,dong_size) + "동 펜 위치를 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                } else if(viewModel.checkEmptySpinner(answersOne ,dong_size) != -1){
-                    msg = viewModel.checkEmptySpinner(answersOne,dong_size) + "동 사료조 근처 비율을 선택하세요";
-                    Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                }else if(viewModel.checkEmptySpinner(answersTwo,dong_size) != -1){
-                    msg = viewModel.checkEmptySpinner(answersTwo ,dong_size) + "동 사료조와 주 휴식장소 사이 비율을 선택하세요";
-                    Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                }else if(viewModel.checkEmptySpinner(answersThree,dong_size) != -1){
-                    msg = viewModel.checkEmptySpinner(answersThree ,dong_size) + "동 주 휴식장소 사이 비율을 선택하세요";
-                    Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                } else {
+                }  else {
+                    for(int i = 0 ;i < dong_size;i++){
+                        int finalI = i;
+                        locationOne[i].setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (locationOne[finalI].isChecked()) {
+                                        strawQuestion.setStrawOne(1, finalI);
+                                } else {
+                                    strawQuestion.setStrawOne(0, finalI);
+                                }
+
+                            }
+                        });
+                        locationTwo[i].setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (locationTwo[finalI].isChecked()) {
+                                    strawQuestion.setStrawTwo(1, finalI);
+                                } else {
+                                    strawQuestion.setStrawTwo(0, finalI);
+                                }
+
+                            }
+                        });
+                        locationThree[i].setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (locationThree[finalI].isChecked()) {
+                                    strawQuestion.setStrawThree(1, finalI);
+                                } else {
+                                    strawQuestion.setStrawThree(0, finalI);
+                                }
+
+                            }
+                        });
+                        strawQuestion.setStrawScore(
+                                viewModel.calculatorBreedStrawScore(
+                                        strawQuestion.getStrawOne(finalI),
+                                        strawQuestion.getStrawTwo(finalI),
+                                        strawQuestion.getStrawThree(finalI)
+                                ),finalI
+                        );
+                    }
+
                     strawQuestion.setPenLocation(viewModel.makePenLocationArr(penLocationOneEd,penLocationTwoEd,dong_size));
-                    strawQuestion.setStrawOne(answersOne);
-                    strawQuestion.setStrawTwo(answersTwo);
-                    strawQuestion.setStrawThree(answersThree);
-                    // 깔짚 수분 기준 점수표 나오면 점수는 재 작성 예정
-                    finish();
+                    strawQuestion.setStrawAvgScore(strawQuestion.getStrawScore(),dong_size);
+                    strawQuestion.setDongSize(dong_size);
+                    String msg = makeInputString(
+                            strawQuestion.getStrawScore(),
+                            dong_size
+                    );
+
+                    AlertDialog.Builder AlertBuilder = new AlertDialog.Builder(BreedStrawDong.this);
+                    AlertBuilder.setTitle("평가 결과");
+                    AlertBuilder.setMessage(msg + "\n 깔짚수분 평균점수 : " + strawQuestion.getStrawAvgScore() + "점 \n" +
+                            "평가를 완료하시겠습니까 ? ");
+                    // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
+                    AlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
+                        public void onClick(DialogInterface dialog,int which){
+
+
+                        }
+                    });
+                    AlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent();
+                            intent.putExtra("strawDongQuestion",strawQuestion);
+                            setResult(1,intent);
+                            finish();
+                        }
+                    });
+                    AlertBuilder.show();
+
+
                 }
             }
         });
@@ -204,6 +202,15 @@ public class BreedStrawDong extends AppCompatActivity {
 
 
         }
+    private String makeInputString(int strawScore[] ,int dong_size){
+        String[] inputStrings = new String[dong_size];
+        String msg = "";
+        for(int i = 0 ; i < dong_size ; i++){
+            inputStrings[i] = (i+1) + "동 깔짚수분 점수 : " + strawScore[i] + "점 \n";
+            msg += inputStrings[i];
+        }
+        return msg;
+    }
     public void myOnBackPressed(AlertDialog.Builder AlertBuilder){
 
         AlertBuilder.setTitle("이전");
@@ -240,6 +247,13 @@ public class BreedStrawDong extends AppCompatActivity {
         } else if (drawer.isDrawerOpen(Gravity.RIGHT)) {
             drawer.closeDrawer(Gravity.RIGHT);
         }
+     }
+     private CheckBox[] makeCheckBoxArr(View[] view, int dongSize, int id){
+        CheckBox[] checkBoxes = new CheckBox[dongSize];
+        for(int i = 0 ; i <  dongSize ;  i++){
+            checkBoxes[i] = view[i].findViewById(id);
+        }
+        return checkBoxes;
      }
 
     }

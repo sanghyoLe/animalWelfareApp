@@ -24,7 +24,7 @@ import com.example.animal_project.R;
 
 public class FreestallCriticalHairloss extends Fragment {
     private View view;
-    public String sample_size_count = ((Input_userinfo)Input_userinfo.context_userinfo).sample_size_count;
+//    public String sample_size_count = ((Input_userinfo)Input_userinfo.context_userinfo).sample_size_count;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

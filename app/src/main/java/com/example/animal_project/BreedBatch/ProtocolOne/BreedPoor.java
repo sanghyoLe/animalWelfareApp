@@ -39,7 +39,7 @@ public class BreedPoor extends Fragment {
 
         QuestionTemplate activity = (QuestionTemplate) getActivity();
         int total_cow_count = viewModel.getTotalCowSize();
-        Log.d("total_cow_Count",String.valueOf(total_cow_count));
+
 
         ed_1_poorRate.addTextChangedListener(new TextWatcher() {
             @Override
@@ -57,57 +57,73 @@ public class BreedPoor extends Fragment {
                     ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setNumberOfCow(-1);
                     ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setScore(-1);
                     ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setRatio(-1);
+                    breed_poor_Rate_score.setText("-1");
                     // 총 두수 보다 입력한 값이 클 때
                 } else if (total_cow_count < Integer.parseInt(ed_1_poorRate.getText().toString())) {
                     breed_poor_Rate_ratio.setText("총 두수보다 큰 값을 입력할 수 없습니다.");
                     ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setNumberOfCow(-1);
                     ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setScore(-1);
                     ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setRatio(-1);
+                    breed_poor_Rate_score.setText("-1");
                 } else {
-                    String ratio = breedPoorRateRatio(String.valueOf(total_cow_count), ed_1_poorRate.getText().toString());
+                    float ratio = breedPoorRateRatio(String.valueOf(total_cow_count), ed_1_poorRate.getText().toString());
                     breed_poor_Rate_ratio.setText(ratio + "%");
                     breed_poor_rate_score = Integer.parseInt(breedPoorRateScore(ratio));
                     breed_poor_Rate_score.setText(String.valueOf(breed_poor_rate_score));
                     viewModel.setPoorScore(breed_poor_rate_score);
                     ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setNumberOfCow(Integer.parseInt(ed_1_poorRate.getText().toString()));
                     ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setScore(breed_poor_rate_score);
-                    ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setRatio(Float.parseFloat(ratio));
+                    ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setRatio(ratio);
+                    viewModel.setProtocolOneScore(
+                            viewModel.calculatorProtocolOneResult(
+                                    viewModel.getPoorScore(),
+                                    viewModel.getWaterScore()
+                            )
+                    );
                 }
             }});
         // Inflate the layout for this fragment
         return view;
     }
-    public String breedPoorRateScore(String ratio){
-        Float RatioFloat = Float.parseFloat(ratio);
+    public String breedPoorRateScore(float ratio){
+
         int poorScore = 0;
-        if (RatioFloat == 0) {
+        if (ratio == 0) {
             poorScore = 100;
-        } else if (RatioFloat < 1) {
+        } else if (ratio < 1) {
             poorScore = 90;
-        } else if (RatioFloat < 2) {
+        } else if (ratio < 2) {
             poorScore = 80;
-        } else if (RatioFloat < 3) {
+        } else if (ratio < 3) {
             poorScore = 70;
-        } else if (RatioFloat < 4) {
+        } else if (ratio < 4) {
             poorScore = 60;
-        } else if (RatioFloat < 5) {
+        } else if (ratio < 5) {
             poorScore = 50;
-        } else if (RatioFloat < 6) {
+        } else if (ratio < 6) {
             poorScore = 40;
-        } else if (RatioFloat <= 7) {
+        } else if (ratio <= 7) {
             poorScore = 30;
-        } else if (RatioFloat <= 9) {
+        } else if (ratio <= 9) {
             poorScore = 20;
-        } else if (RatioFloat < 11) {
+        } else if (ratio < 11) {
             poorScore = 10;
         } else  poorScore = 0;
 
         return Integer.toString(poorScore);
     }
-    public String breedPoorRateRatio(String total, String rate){
+    public float breedPoorRateRatio(String total, String rate){
         Float totalFloat = Float.parseFloat(total);
         Float rateFloat = Float.parseFloat(rate);
-        double result = (rateFloat / totalFloat) * 100;
-        return String.format("%.2f",result);
+
+        float ratio = (rateFloat / totalFloat) * 100;
+        if(ratio >= 1){
+            ratio = Math.round(ratio);
+        }
+
+
+
+
+        return ratio;
     }
 }

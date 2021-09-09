@@ -1,11 +1,16 @@
 package com.example.animal_project;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -465,203 +470,6 @@ public class QuestionTemplate extends AppCompatActivity
                 freestall_respiratory,freestall_diarrhea,freestall_outgenitals,freestall_breast,freestall_falldead,freestall_dystocia,freestall_astasia,freestall_horn_q1,freestall_horn_q2,freestall_horn_q3,freestall_struggle,
                 freestall_avoid_distance}; // 6,7,8,9,10,11 추가하기
 
-
-
-        transaction = fragmentManager.beginTransaction();
-
-        // 목록 버튼 누르면 왼쪽에서 나오는 드로우 나타내기 및 없애기 & 체크 이미지 바꾸기
-        list_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(farmType == 2) {
-                    drawerHandler();
-                    changeCheckImageFunc();
-                }
-                else if(farmType == 5) {
-                    drawerHandler();
-                    changeCheckImageFuncFreestall();
-                }
-            }
-        });
-        list_menu_btn_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(farmType == 2) {
-                    View view = findViewById(R.id.list_sub_menu_1);
-                    listMenuBtnHandler(list_menu_btn_1,view);
-                }
-                else if(farmType == 5) {
-                    View view = findViewById(R.id.freestall_list_sub_menu_1);
-                    listMenuBtnHandler(list_menu_btn_1,view);
-                }
-            }
-        });
-        list_menu_btn_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (farmType == 2) {
-                    View view = findViewById(R.id.list_sub_menu_2);
-                    listMenuBtnHandler(list_menu_btn_2, view);
-                } else if (farmType == 5) {
-                    View view = findViewById(R.id.freestall_list_sub_menu_2);
-                    view = findViewById(R.id.list_sub_menu_2);
-                    View fattenView = findViewById(R.id.fatten_list_sub_menu_2);
-                    if (farmType == 1) {
-                        listMenuBtnHandler(list_menu_btn_2, fattenView);
-                    } else if (farmType == 2 || farmType == 3) {
-
-                        listMenuBtnHandler(list_menu_btn_2, view);
-                    }
-                }
-            }
-        });
-        list_menu_btn_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(farmType == 2) {
-                    View view = findViewById(R.id.list_sub_menu_3);
-                    listMenuBtnHandler(list_menu_btn_3,view);
-                }
-                else if(farmType == 5) {
-                    View view = findViewById(R.id.freestall_list_sub_menu_3);
-                    listMenuBtnHandler(list_menu_btn_3,view);
-                }
-            }
-        });
-        list_menu_btn_4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(farmType == 2) {
-                    View view = findViewById(R.id.list_sub_menu_4);
-                    listMenuBtnHandler(list_menu_btn_4,view);
-                }
-                else if(farmType == 5) {
-                    View view = findViewById(R.id.freestall_list_sub_menu_4);
-                    listMenuBtnHandler(list_menu_btn_4,view);
-                }
-            }
-        });
-
-        transaction = fragmentManager.beginTransaction();
-
-        if (farmType == 1) {
-            transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
-            total_page.setText(String.valueOf(" / " + fatten_frag_arr.length));
-        }
-        else if (farmType == 2 || farmType == 3) {
-            transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
-            total_page.setText(String.valueOf(" / " + breed_frag_arr.length));
-            ImageButton breed_list_btn_1 = findViewById(R.id.question_list_btn_1);
-            ImageButton breed_list_btn_2 = findViewById(R.id.question_list_btn_2);
-            ImageButton breed_list_btn_3 = findViewById(R.id.question_list_btn_3);
-            ImageButton breed_list_btn_4 = findViewById(R.id.question_list_btn_4);
-            ImageButton breed_list_btn_5 = findViewById(R.id.question_list_btn_5);
-            ImageButton breed_list_btn_6 = findViewById(R.id.question_list_btn_6);
-            ImageButton breed_list_btn_7 = findViewById(R.id.question_list_btn_7);
-            ImageButton breed_list_btn_8 = findViewById(R.id.question_list_btn_8);
-            ImageButton breed_list_btn_9 = findViewById(R.id.question_list_btn_9);
-            ImageButton breed_list_btn_10 = findViewById(R.id.question_list_btn_10);
-            ImageButton breed_list_btn_11 = findViewById(R.id.question_list_btn_11);
-            ImageButton breed_list_btn_12 = findViewById(R.id.question_list_btn_12);
-            ImageButton breed_list_btn_13 = findViewById(R.id.question_list_btn_13);
-            ImageButton breed_list_btn_14 = findViewById(R.id.question_list_btn_14);
-            ImageButton breed_list_btn_15 = findViewById(R.id.question_list_btn_15);
-            ImageButton breed_list_btn_16 = findViewById(R.id.question_list_btn_16);
-            ImageButton breed_list_btn_17 = findViewById(R.id.question_list_btn_17);
-            ImageButton breed_list_btn_18 = findViewById(R.id.question_list_btn_18);
-            ImageButton breed_list_btn_19 = findViewById(R.id.question_list_btn_19);
-            ImageButton breed_list_btn_20 = findViewById(R.id.question_list_btn_20);
-            ImageButton breed_list_btn_21 = findViewById(R.id.question_list_btn_21);
-            ImageButton breed_list_btn_22 = findViewById(R.id.question_list_btn_22);
-            ImageButton breed_list_btn_23 = findViewById(R.id.question_list_btn_23);
-            ImageButton breed_list_btn_24 = findViewById(R.id.question_list_btn_24);
-            ImageButton breed_list_btn_25 = findViewById(R.id.question_list_btn_25);
-            ImageButton breed_list_btn_26 = findViewById(R.id.question_list_btn_26);
-            ImageButton breed_list_btn_27 = findViewById(R.id.question_list_btn_27);
-            ImageButton breed_list_btn_28 = findViewById(R.id.question_list_btn_28);
-            ImageButton breed_list_btn_29 = findViewById(R.id.question_list_btn_29);
-            ImageButton breed_list_btn_30 = findViewById(R.id.question_list_btn_30);
-            ImageButton breed_list_btn_31 = findViewById(R.id.question_list_btn_31);
-            ImageButton breed_list_btn_32 = findViewById(R.id.question_list_btn_32);
-            ImageButton breed_list_btn_33 = findViewById(R.id.question_list_btn_33);
-            ImageButton breed_list_btn_34 = findViewById(R.id.question_list_btn_34);
-            ImageButton breed_list_btn_35 = findViewById(R.id.question_list_btn_35);
-            ImageButton breed_list_btn_36 = findViewById(R.id.question_list_btn_36);
-
-            ImageButton[] breed_list_btn_arr = {
-                    breed_list_btn_1,breed_list_btn_2,breed_list_btn_3,breed_list_btn_4,breed_list_btn_5,
-                    breed_list_btn_6,breed_list_btn_7,breed_list_btn_8,breed_list_btn_9,breed_list_btn_10,
-                    breed_list_btn_11,breed_list_btn_12,breed_list_btn_13,breed_list_btn_14,breed_list_btn_15,
-                    breed_list_btn_16,breed_list_btn_17,breed_list_btn_18,breed_list_btn_19,breed_list_btn_20,
-                    breed_list_btn_21,breed_list_btn_22,breed_list_btn_23,breed_list_btn_24,breed_list_btn_25,
-                    breed_list_btn_26,breed_list_btn_27,breed_list_btn_28,breed_list_btn_29,breed_list_btn_30,
-                    breed_list_btn_31,breed_list_btn_32,breed_list_btn_33,breed_list_btn_34,breed_list_btn_35,
-                    breed_list_btn_36};
-            count = listBtnHandler(breed_list_btn_arr,breed_frag_arr);
-        }
-        else if (farmType == 4) {
-
-        }
-        else if (farmType == 5) {
-
-            transaction.replace(R.id.fragment_paper, freestall_poor).commitAllowingStateLoss();
-            total_page.setText(String.valueOf(" / " + freestall_frag_arr.length));
-//            ImageButton freestall_list_btn_1 = findViewById(R.id.freestall_question_list_btn_1);
-//            ImageButton freestall_list_btn_2 = findViewById(R.id.freestall_question_list_btn_2);
-//            ImageButton freestall_list_btn_3 = findViewById(R.id.freestall_question_list_btn_3);
-//            ImageButton freestall_list_btn_4 = findViewById(R.id.freestall_question_list_btn_4);
-//            ImageButton freestall_list_btn_5 = findViewById(R.id.freestall_question_list_btn_5);
-//            ImageButton freestall_list_btn_6 = findViewById(R.id.freestall_question_list_btn_6);
-//            ImageButton freestall_list_btn_7 = findViewById(R.id.freestall_question_list_btn_7);
-//            ImageButton freestall_list_btn_8 = findViewById(R.id.freestall_question_list_btn_8);
-//            ImageButton freestall_list_btn_9 = findViewById(R.id.freestall_question_list_btn_9);
-//            ImageButton freestall_list_btn_10 = findViewById(R.id.freestall_question_list_btn_10);
-//            ImageButton freestall_list_btn_11 = findViewById(R.id.freestall_question_list_btn_11);
-//            ImageButton freestall_list_btn_12 = findViewById(R.id.freestall_question_list_btn_12);
-//            ImageButton freestall_list_btn_13 = findViewById(R.id.freestall_question_list_btn_13);
-//            ImageButton freestall_list_btn_14 = findViewById(R.id.freestall_question_list_btn_14);
-//            ImageButton freestall_list_btn_15 = findViewById(R.id.freestall_question_list_btn_15);
-//            ImageButton freestall_list_btn_16 = findViewById(R.id.freestall_question_list_btn_16);
-//            ImageButton freestall_list_btn_17 = findViewById(R.id.freestall_question_list_btn_17);
-//            ImageButton freestall_list_btn_18 = findViewById(R.id.freestall_question_list_btn_18);
-//            ImageButton freestall_list_btn_19 = findViewById(R.id.freestall_question_list_btn_19);
-//            ImageButton freestall_list_btn_20 = findViewById(R.id.freestall_question_list_btn_20);
-//            ImageButton freestall_list_btn_21 = findViewById(R.id.freestall_question_list_btn_21);
-//            ImageButton freestall_list_btn_22 = findViewById(R.id.freestall_question_list_btn_22);
-//            ImageButton freestall_list_btn_23 = findViewById(R.id.freestall_question_list_btn_23);
-//            ImageButton freestall_list_btn_24 = findViewById(R.id.freestall_question_list_btn_24);
-//            ImageButton freestall_list_btn_25 = findViewById(R.id.freestall_question_list_btn_25);
-//            ImageButton freestall_list_btn_26 = findViewById(R.id.freestall_question_list_btn_26);
-//            ImageButton freestall_list_btn_27 = findViewById(R.id.freestall_question_list_btn_27);
-//            ImageButton freestall_list_btn_28 = findViewById(R.id.freestall_question_list_btn_28);
-//            ImageButton freestall_list_btn_29 = findViewById(R.id.freestall_question_list_btn_29);
-//            ImageButton freestall_list_btn_30 = findViewById(R.id.freestall_question_list_btn_30);
-//            ImageButton freestall_list_btn_31 = findViewById(R.id.freestall_question_list_btn_31);
-//            ImageButton freestall_list_btn_32 = findViewById(R.id.freestall_question_list_btn_32);
-//            ImageButton freestall_list_btn_33 = findViewById(R.id.freestall_question_list_btn_33);
-//            ImageButton freestall_list_btn_34 = findViewById(R.id.freestall_question_list_btn_34);
-//            ImageButton freestall_list_btn_35 = findViewById(R.id.freestall_question_list_btn_35);
-//            ImageButton freestall_list_btn_36 = findViewById(R.id.freestall_question_list_btn_36);
-//            ImageButton freestall_list_btn_37 = findViewById(R.id.freestall_question_list_btn_37);
-//            ImageButton freestall_list_btn_38 = findViewById(R.id.freestall_question_list_btn_38);
-//            ImageButton freestall_list_btn_39 = findViewById(R.id.freestall_question_list_btn_39);
-//            ImageButton freestall_list_btn_40 = findViewById(R.id.freestall_question_list_btn_40);
-//            ImageButton freestall_list_btn_41 = findViewById(R.id.freestall_question_list_btn_41);
-//            ImageButton[] freestall_list_btn_arr = {
-//                    freestall_list_btn_1,freestall_list_btn_2,freestall_list_btn_3,freestall_list_btn_4,freestall_list_btn_5,
-//                    freestall_list_btn_6,freestall_list_btn_7,freestall_list_btn_8,freestall_list_btn_9,freestall_list_btn_10,
-//                    freestall_list_btn_11,freestall_list_btn_12,freestall_list_btn_13,freestall_list_btn_14,freestall_list_btn_15,
-//                    freestall_list_btn_16,freestall_list_btn_17,freestall_list_btn_18,freestall_list_btn_19,freestall_list_btn_20,
-//                    freestall_list_btn_21,freestall_list_btn_22,freestall_list_btn_23,freestall_list_btn_24,freestall_list_btn_25,
-//                    freestall_list_btn_26,freestall_list_btn_27,freestall_list_btn_28,freestall_list_btn_29,freestall_list_btn_30,
-//                    freestall_list_btn_31,freestall_list_btn_32,freestall_list_btn_33,freestall_list_btn_34,freestall_list_btn_35,
-//                    freestall_list_btn_36,freestall_list_btn_37,freestall_list_btn_38,freestall_list_btn_39,freestall_list_btn_40,freestall_list_btn_41};
-//            count = listBtnHandler(freestall_list_btn_arr,freestall_frag_arr);
-
-                transaction.replace(R.id.fragment_paper, freestall_poor).commitAllowingStateLoss();
-                total_page.setText(String.valueOf(" / " + freestall_frag_arr.length));
-        }
         ImageButton breed_list_btn_1 = findViewById(R.id.question_list_btn_1);
         ImageButton breed_list_btn_2 = findViewById(R.id.question_list_btn_2);
         ImageButton breed_list_btn_3 = findViewById(R.id.question_list_btn_3);
@@ -708,6 +516,7 @@ public class QuestionTemplate extends AppCompatActivity
                 breed_list_btn_26,breed_list_btn_27,breed_list_btn_28,breed_list_btn_29,breed_list_btn_30,
                 breed_list_btn_31,breed_list_btn_32,breed_list_btn_33,breed_list_btn_34,breed_list_btn_35,
                 breed_list_btn_36};
+
         View fattenListSubMenuView = findViewById(R.id.fatten_list_sub_menu_2);
         ImageButton fatten_list_btn_5 = fattenListSubMenuView.findViewById(R.id.question_list_btn_5);
         ImageButton fatten_list_btn_6 = fattenListSubMenuView.findViewById(R.id.question_list_btn_6);
@@ -716,21 +525,164 @@ public class QuestionTemplate extends AppCompatActivity
         ImageButton fatten_list_btn_9 = fattenListSubMenuView.findViewById(R.id.question_list_btn_9);
         ImageButton fatten_list_btn_10 = fattenListSubMenuView.findViewById(R.id.question_list_btn_10);
         ImageButton fatten_list_btn_11 = fattenListSubMenuView.findViewById(R.id.question_list_btn_11);
+
         ImageButton[] fatten_list_btn_arr=  {
                 breed_list_btn_1,breed_list_btn_2,breed_list_btn_3,breed_list_btn_4,fatten_list_btn_5,
                 fatten_list_btn_6,fatten_list_btn_7,fatten_list_btn_8,fatten_list_btn_9,fatten_list_btn_10, fatten_list_btn_11,
                 breed_list_btn_18,breed_list_btn_19,breed_list_btn_20, breed_list_btn_21,breed_list_btn_22,breed_list_btn_23,
                 breed_list_btn_24,breed_list_btn_25, breed_list_btn_26,breed_list_btn_27,breed_list_btn_28,breed_list_btn_29,
                 breed_list_btn_30, breed_list_btn_31,breed_list_btn_32,breed_list_btn_33,breed_list_btn_34,breed_list_btn_35,
-                breed_list_btn_36
-        };
-        if( farmType == 1){
+                breed_list_btn_36};
+
+        ImageButton freestall_list_btn_1 = findViewById(R.id.freestall_question_list_btn_1);
+        ImageButton freestall_list_btn_2 = findViewById(R.id.freestall_question_list_btn_2);
+        ImageButton freestall_list_btn_3 = findViewById(R.id.freestall_question_list_btn_3);
+        ImageButton freestall_list_btn_4 = findViewById(R.id.freestall_question_list_btn_4);
+        ImageButton freestall_list_btn_5 = findViewById(R.id.freestall_question_list_btn_5);
+        ImageButton freestall_list_btn_6 = findViewById(R.id.freestall_question_list_btn_6);
+        ImageButton freestall_list_btn_7 = findViewById(R.id.freestall_question_list_btn_7);
+        ImageButton freestall_list_btn_8 = findViewById(R.id.freestall_question_list_btn_8);
+        ImageButton freestall_list_btn_9 = findViewById(R.id.freestall_question_list_btn_9);
+        ImageButton freestall_list_btn_10 = findViewById(R.id.freestall_question_list_btn_10);
+        ImageButton freestall_list_btn_11 = findViewById(R.id.freestall_question_list_btn_11);
+        ImageButton freestall_list_btn_12 = findViewById(R.id.freestall_question_list_btn_12);
+        ImageButton freestall_list_btn_13 = findViewById(R.id.freestall_question_list_btn_13);
+        ImageButton freestall_list_btn_14 = findViewById(R.id.freestall_question_list_btn_14);
+        ImageButton freestall_list_btn_15 = findViewById(R.id.freestall_question_list_btn_15);
+        ImageButton freestall_list_btn_16 = findViewById(R.id.freestall_question_list_btn_16);
+        ImageButton freestall_list_btn_17 = findViewById(R.id.freestall_question_list_btn_17);
+        ImageButton freestall_list_btn_18 = findViewById(R.id.freestall_question_list_btn_18);
+        ImageButton freestall_list_btn_19 = findViewById(R.id.freestall_question_list_btn_19);
+        ImageButton freestall_list_btn_20 = findViewById(R.id.freestall_question_list_btn_20);
+        ImageButton freestall_list_btn_21 = findViewById(R.id.freestall_question_list_btn_21);
+        ImageButton freestall_list_btn_22 = findViewById(R.id.freestall_question_list_btn_22);
+        ImageButton freestall_list_btn_23 = findViewById(R.id.freestall_question_list_btn_23);
+        ImageButton freestall_list_btn_24 = findViewById(R.id.freestall_question_list_btn_24);
+        ImageButton freestall_list_btn_25 = findViewById(R.id.freestall_question_list_btn_25);
+        ImageButton freestall_list_btn_26 = findViewById(R.id.freestall_question_list_btn_26);
+        ImageButton freestall_list_btn_27 = findViewById(R.id.freestall_question_list_btn_27);
+        ImageButton freestall_list_btn_28 = findViewById(R.id.freestall_question_list_btn_28);
+        ImageButton freestall_list_btn_29 = findViewById(R.id.freestall_question_list_btn_29);
+        ImageButton freestall_list_btn_30 = findViewById(R.id.freestall_question_list_btn_30);
+        ImageButton freestall_list_btn_31 = findViewById(R.id.freestall_question_list_btn_31);
+        ImageButton freestall_list_btn_32 = findViewById(R.id.freestall_question_list_btn_32);
+        ImageButton freestall_list_btn_33 = findViewById(R.id.freestall_question_list_btn_33);
+        ImageButton freestall_list_btn_34 = findViewById(R.id.freestall_question_list_btn_34);
+        ImageButton freestall_list_btn_35 = findViewById(R.id.freestall_question_list_btn_35);
+        ImageButton freestall_list_btn_36 = findViewById(R.id.freestall_question_list_btn_36);
+        ImageButton freestall_list_btn_37 = findViewById(R.id.freestall_question_list_btn_37);
+        ImageButton freestall_list_btn_38 = findViewById(R.id.freestall_question_list_btn_38);
+        ImageButton freestall_list_btn_39 = findViewById(R.id.freestall_question_list_btn_39);
+        ImageButton freestall_list_btn_40 = findViewById(R.id.freestall_question_list_btn_40);
+        ImageButton freestall_list_btn_41 = findViewById(R.id.freestall_question_list_btn_41);
+
+        ImageButton[] freestall_list_btn_arr = {
+                freestall_list_btn_1,freestall_list_btn_2,freestall_list_btn_3,freestall_list_btn_4,freestall_list_btn_5,
+                freestall_list_btn_6,freestall_list_btn_7,freestall_list_btn_8,freestall_list_btn_9,freestall_list_btn_10,
+                freestall_list_btn_11,freestall_list_btn_12,freestall_list_btn_13,freestall_list_btn_14,freestall_list_btn_15,
+                freestall_list_btn_16,freestall_list_btn_17,freestall_list_btn_18,freestall_list_btn_19,freestall_list_btn_20,
+                freestall_list_btn_21,freestall_list_btn_22,freestall_list_btn_23,freestall_list_btn_24,freestall_list_btn_25,
+                freestall_list_btn_26,freestall_list_btn_27,freestall_list_btn_28,freestall_list_btn_29,freestall_list_btn_30,
+                freestall_list_btn_31,freestall_list_btn_32,freestall_list_btn_33,freestall_list_btn_34,freestall_list_btn_35,
+                freestall_list_btn_36,freestall_list_btn_37,freestall_list_btn_38,freestall_list_btn_39,freestall_list_btn_40,
+                freestall_list_btn_41};
+
+
+        transaction = fragmentManager.beginTransaction();
+
+        // 목록 버튼 누르면 왼쪽에서 나오는 드로우 나타내기 및 없애기 & 체크 이미지 바꾸기
+        list_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(farmType == 1 || farmType == 2 || farmType == 3) {
+                    drawerHandler();
+                    changeCheckImageFunc();
+                }
+                else if(farmType == 5) {
+                    drawerHandler();
+                    changeCheckImageFuncFreestall();
+                }
+            }
+        });
+        list_menu_btn_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(farmType == 1 || farmType == 2 || farmType == 3) {
+                    View view = findViewById(R.id.list_sub_menu_1);
+                    listMenuBtnHandler(list_menu_btn_1,view);
+                }
+                else if(farmType == 5) {
+                    View view = findViewById(R.id.freestall_list_sub_menu_1);
+                    listMenuBtnHandler(list_menu_btn_1,view);
+                }
+            }
+        });
+        list_menu_btn_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (farmType == 1) {
+                    View fattenView = findViewById(R.id.fatten_list_sub_menu_2);
+                    listMenuBtnHandler(list_menu_btn_2, fattenView);
+                }
+                else if (farmType == 2 || farmType == 3) {
+                    View view = findViewById(R.id.list_sub_menu_2);
+                    listMenuBtnHandler(list_menu_btn_2, view);
+                } else if (farmType == 5) {
+                    View view = findViewById(R.id.freestall_list_sub_menu_2);
+                    listMenuBtnHandler(list_menu_btn_2, view);
+                }
+            }
+        });
+        list_menu_btn_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(farmType == 1 || farmType == 2 || farmType == 3) {
+                    View view = findViewById(R.id.list_sub_menu_3);
+                    listMenuBtnHandler(list_menu_btn_3,view);
+                }
+                else if(farmType == 5) {
+                    View view = findViewById(R.id.freestall_list_sub_menu_3);
+                    listMenuBtnHandler(list_menu_btn_3,view);
+                }
+            }
+        });
+        list_menu_btn_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(farmType == 1 || farmType == 2 || farmType == 3) {
+                    View view = findViewById(R.id.list_sub_menu_4);
+                    listMenuBtnHandler(list_menu_btn_4,view);
+                }
+                else if(farmType == 5) {
+                    View view = findViewById(R.id.freestall_list_sub_menu_4);
+                    listMenuBtnHandler(list_menu_btn_4,view);
+                }
+            }
+        });
+
+        transaction = fragmentManager.beginTransaction();
+
+        if (farmType == 1) {
+            transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
+            total_page.setText(String.valueOf(" / " + fatten_frag_arr.length));
             count = listBtnHandler(fatten_list_btn_arr,fatten_frag_arr);
+        }
+        else if (farmType == 2 || farmType == 3) {
+            transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
+            total_page.setText(String.valueOf(" / " + breed_frag_arr.length));
+            count = listBtnHandler(breed_list_btn_arr,breed_frag_arr);
 
         }
-        else if( farmType ==2 || farmType ==3 ){
-            count = listBtnHandler(breed_list_btn_arr,breed_frag_arr);
+        else if (farmType == 4) {
+
         }
+        else if (farmType == 5) {
+            transaction.replace(R.id.fragment_paper, freestall_poor).commitAllowingStateLoss();
+            total_page.setText(String.valueOf(" / " + freestall_frag_arr.length));
+//            count = listBtnHandler(freestall_list_btn_arr,freestall_frag_arr);
+        }
+
 
     }
     public void clickHandler(View view)
@@ -865,6 +817,7 @@ public class QuestionTemplate extends AppCompatActivity
 
     }
     private void nextBtnHandler(int count, int totalPageLength){
+        hideKeyboard(QuestionTemplate.this);
         if(count + 2 == totalPageLength){
             next_btn.setVisibility(View.INVISIBLE);
             end_btn.setVisibility(View.VISIBLE);
@@ -873,6 +826,7 @@ public class QuestionTemplate extends AppCompatActivity
         closeDrawer();
     }
     private void prevBtnHandler(int count, int totalPageLength){
+        hideKeyboard(QuestionTemplate.this);
         if(count + 1 == totalPageLength){
             next_btn.setVisibility(View.VISIBLE);
         }
@@ -943,6 +897,11 @@ public class QuestionTemplate extends AppCompatActivity
         ImageView check_sub_36 = findViewById(R.id.check_sub_36);
         if(farmType == 1){
             View fattenListMenuTwo = findViewById(R.id.fatten_list_sub_menu_2);
+            ImageView fatten_check_sub_5 = fattenListMenuTwo.findViewById(R.id.check_sub_5);
+
+            if(((QuestionTemplateViewModel.StrawQuestion)viewModel.StrawQuestion).getStrawAvgScore() != -1) {
+                changeCheckImage(fatten_check_sub_5);
+            }
             ImageView fatten_check_sub_6 = fattenListMenuTwo.findViewById(R.id.check_sub_6);
             if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward).getNumberOfCow() != -1) {
                 changeCheckImage(fatten_check_sub_6);
@@ -1127,8 +1086,6 @@ public class QuestionTemplate extends AppCompatActivity
             btn.setImageResource(R.drawable.outline_reorder_24);
         }
     }
-
-
     public void fragmentChange(int index) {
         if(index == 1) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_paper, freestall_water_q1_1).commit();
@@ -1137,7 +1094,6 @@ public class QuestionTemplate extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_paper, freestall_water_q1_2).commit();
         }
     }
-
 
     private void myOnBackPressed(AlertDialog.Builder AlertBuilder){
 
@@ -1190,11 +1146,13 @@ public class QuestionTemplate extends AppCompatActivity
          Object coughQuestion = viewModel.CoughQuestion;
          Object struggleQuestion = viewModel.StruggleQuestion;
          Object harmonyQuestion = viewModel.HarmonyQuestion;
+         Object strawQuestion = viewModel.StrawQuestion;
 
              task.execute(waterTimeQuestion,
                      coughQuestion,
                      struggleQuestion,
-                     harmonyQuestion
+                     harmonyQuestion,
+                     strawQuestion
              );
 
 
@@ -1206,6 +1164,8 @@ public class QuestionTemplate extends AppCompatActivity
          String breedWaterTankNum = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getAnswer();
          String breedWaterTankClean = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getAnswer();
          int waterScore = viewModel.getWaterScore();
+         float breedStrawAvgScore = ((QuestionTemplateViewModel.StrawQuestion)viewModel.StrawQuestion).getStrawAvgScore();
+         int breedStrawDongSize = ((QuestionTemplateViewModel.StrawQuestion)viewModel.StrawQuestion).getDongSize();
          String breedOutwardPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward).getPenLocation();
          int breedOutwardNumberOfCow = ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedOutward).getNumberOfCow();
          int breedOutwardScore = viewModel.getOutWardScore();
@@ -1234,11 +1194,11 @@ public class QuestionTemplate extends AppCompatActivity
          int breedSlightHairLossNumberOfCow = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getNumberOfCow();
          String breedSlightHairPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getPenLocation();
          float breedSlightHairLossRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getRatio();
-
+            Log.d("slightRatio",String.valueOf(breedSlightHairLossRatio));
          int breedCriticalHairLossNumberOfCow = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).getNumberOfCow();
          float breedCriticalHairLossScore = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).getScore();
          float breedCriticalHairLossRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).getRatio();
-
+         float breedTotalHairLossRatio = viewModel.getHairLossTotalRatio();
          String breedRunnyNosePenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose).getPenLocation();
          int breedRunnyNoseNumberOfCow = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose).getNumberOfCow();
          float breedRunnyNoseRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose).getRatio();
@@ -1303,6 +1263,8 @@ public class QuestionTemplate extends AppCompatActivity
          double BehaviorScore = viewModel.getSocialBehaviorScore();
          double minInjuryScore = viewModel.getMinInjuryScore();
          double minDiseaseScore = viewModel.getDiseaseScore();
+
+
 
 
          task.execute("http://" + IP_ADDRESS + "/insertBeefAnswer.php",
@@ -1388,12 +1350,25 @@ public class QuestionTemplate extends AppCompatActivity
                  String.valueOf(protocolFourScore),
                  String.valueOf(protocolThreeScore),
                  String.valueOf(minInjuryScore),
-                 String.valueOf(minDiseaseScore)
-
-
+                 String.valueOf(minDiseaseScore),
+                 String.valueOf(breedStrawAvgScore),
+                 String.valueOf(breedStrawDongSize),
+                 String.valueOf(breedTotalHairLossRatio),
+                 String.valueOf(farmType)
          );
 
      }
+     public static void hideKeyboard(Activity activity) {
+         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+         //Find the currently focused view, so we can grab the correct window token from it.
+         View view = activity.getCurrentFocus();
+         //If no view currently has focus, create a new one, just so we can grab a window token from it
+         if (view == null) {
+             view = new View(activity);
+         }
+         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+     }
+
 }
 
 

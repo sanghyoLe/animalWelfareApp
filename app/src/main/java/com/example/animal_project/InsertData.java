@@ -18,7 +18,7 @@ public class InsertData extends AsyncTask<String, Void, String> {
         void processFinish(String output);
     }
     public AsyncResponse delegate = null;
-    private static String TAG = "phpTest";
+    private static String TAG = "InsertUserData";
     private final Context context;
     private String farmId;
     ProgressDialog progressDialog = null;
@@ -57,6 +57,7 @@ public class InsertData extends AsyncTask<String, Void, String> {
         String evaYear = (String)params[11];
         String evaMonth = (String)params[12];
         String evaDay = (String)params[13];
+        String zipCode = (String)params[14];
 
         String serverURL = (String)params[0];
         String postParameters =
@@ -72,7 +73,8 @@ public class InsertData extends AsyncTask<String, Void, String> {
                         "&evaluatorName=" + evaName +
                         "&evaluatorYear=" + evaYear +
                         "&evaluatorMonth=" + evaMonth +
-                        "&evaluatorDay=" + evaDay;
+                        "&evaluatorDay=" + evaDay +
+                        "&zipCode=" + zipCode;
 
 
         try {

@@ -26,7 +26,7 @@ import com.example.animal_project.Result_View;
 
 public class FreestallBreast extends Fragment {
     private View view;
-    public String total_cow_count = ((Input_userinfo)Input_userinfo.context_userinfo).total_cow_count;
+//    public String total_cow_count = ((Input_userinfo)Input_userinfo.context_userinfo).total_cow_count;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

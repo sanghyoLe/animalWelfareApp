@@ -68,6 +68,8 @@ public class BreedCriticalHairLoss extends Fragment {
                         hairLossSampleSizeTv.setText("표본 두수 : " + viewModel.getSampleCowSize()
                                 + "\n" + "경미한 외피 변형 두수 : " + ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getNumberOfCow());
                     } else {
+                        TextView criticalHairLossTv = view.findViewById(R.id.breed_critical_hair_loss_ratio_tv);
+
                         ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).setNumberOfCow((int)criticalHairLoss);
                         ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).setPenLocation(
                                 ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedSlightHairLoss).getPenLocation()
@@ -76,19 +78,23 @@ public class BreedCriticalHairLoss extends Fragment {
                         float slight_ratio;
                         float critical_ratio;
                         float ratio_total;
-                        slight_ratio = viewModel.getSlightHairLoss() / viewModel.getSampleCowSize() ;
-                        slight_ratio = slight_ratio * 100;
-                        slight_ratio = (float)viewModel.cutDecimal(slight_ratio);
-                        ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedSlightHairLoss).setRatio(slight_ratio);
+
+                        slight_ratio =    ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedSlightHairLoss).getRatio();
+
+
+
 
                         critical_ratio = criticalHairLoss / viewModel.getSampleCowSize();
                         critical_ratio = critical_ratio * 100;
                         critical_ratio = (float)viewModel.cutDecimal(critical_ratio);
                         ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedCriticalHairLoss).setRatio(critical_ratio);
-
+                        criticalHairLossTv.setText(String.valueOf(
+                                critical_ratio
+                        ));
                         ratio_total = (slight_ratio + 5 * critical_ratio) / 5;
                         ratio_total = (float)viewModel.cutDecimal(ratio_total);
                         breedHairLossRatioTv.setText(String.valueOf(ratio_total));
+                        viewModel.setHairLossTotalRatio(ratio_total);
                         int hair_loss_score = viewModel.calculatorHairLossScore(ratio_total);
                         viewModel.setHairLossScore(hair_loss_score);
                         breedHairLossScoreTv.setText(String.valueOf(hair_loss_score));

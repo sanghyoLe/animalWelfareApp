@@ -72,7 +72,8 @@
     <string name="hair_loss_score">외피 변형 점수</string>
     <string name="slight_hair_loss">경미한 외피변형 두수를 입력하세요</string>
     <string name="critical_hair_loss">심각한 외피변형 두수를 입력하세요</string>
-    <string name="hair_loss_ratio">외피변형 개체 비율</string>
+
+    <string name="hair_loss_ratio">외피변형 개체 종합 비율</string>
     <string name="runny_nose_justice">비강분비물 : 콧구멍에서 분명하게 보이는 흐름 또는 배출</string>
     <string name="runny_nose_title">전체 표본에서 비강 분비물이 있는 가축의 비율은 얼마나 되는가?</string>
     <string name="runny_nose">비강 분비물 발현 개체 두수를 입력하세요</string>

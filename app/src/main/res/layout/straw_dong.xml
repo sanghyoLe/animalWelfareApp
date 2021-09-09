@@ -58,7 +58,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="위치에 따른 즉시 깔짚교체 시기의 비율을 선택"
+                android:text="깔짚수분 5점이상 구역을 체크"
                 android:textSize="16dp"
                 android:layout_marginBottom="20dp"
                 android:textColor="@color/colorCrison"
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 
-                android:text="즉시 깔짚교체 시기"/>
+                android:text="깔짚수분 5점이상 기준"/>
 
 
             <TableLayout
@@ -97,16 +97,13 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="동\n번호"
-                        android:layout_margin="1dp"
-                        android:paddingBottom="2dp"
                         android:textSize="16sp"
                         android:textColor="@color/black"
                         android:gravity="center_horizontal|center_vertical" />
                     <TextView
-                        android:layout_weight="0.6"
+                        android:layout_weight="1"
                         android:gravity="center_horizontal"
-                        android:layout_margin="1dp"
-                        android:paddingBottom="2dp"
+
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
@@ -116,7 +113,7 @@
                     <TextView
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
-                        android:layout_margin="1dp"
+
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
@@ -126,7 +123,7 @@
                     <TextView
                         android:layout_weight="1.3"
                         android:gravity="center_horizontal"
-                        android:layout_margin="1dp"
+
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
@@ -134,9 +131,10 @@
                         android:text="사료조와\n주 휴식장소 사이"
                         />
                     <TextView
-                        android:layout_weight="1.2"
-                        android:gravity="center_horizontal"
-                        android:layout_margin="1dp"
+                        android:layout_weight="1.0"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"

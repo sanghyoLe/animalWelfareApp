@@ -19,7 +19,7 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
         void processFinish(String output);
     }
 
-    private static String TAG = "phpTest";
+    private static String TAG = "InsertAnswer";
     private final Context context;
 
     ProgressDialog progressDialog = null;
@@ -130,6 +130,10 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
         String protocolThreeScore = (String)params[index++];
         String minInjuryScore = (String)params[index++];
         String minDiseaseScore = (String)params[index++];
+        String breedStrawAvgScore = (String)params[index++];
+        String breedStrawDongSize = (String)params[index++];
+        String breedTotalHairLossRatio = (String)params[index++];
+        String farmType = (String)params[index++];
         String postParameters =
                 "farmId=" + farmId +
                 "&breedPoorNumberOfCow=" + breedPoorNumberOfCow +
@@ -214,6 +218,10 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
                         +"&protocolThreeScore=" + protocolThreeScore
                         +"&minInjuryScore=" + minInjuryScore
                         +"&minDiseaseScore=" + minDiseaseScore
+                        +"&breedStrawAvgScore=" + breedStrawAvgScore
+                        +"&breedStrawDongSize=" + breedStrawDongSize
+                        +"&breedTotalHairLossRatio=" +breedTotalHairLossRatio
+                        +"&farmType=" + farmType
 
                 ;
 

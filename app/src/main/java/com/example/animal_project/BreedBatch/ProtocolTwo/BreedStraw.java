@@ -71,11 +71,9 @@ public class BreedStraw extends Fragment {
                     String msg = "축사 동 수를 선택해주세요";
                     Toast.makeText(getActivity().getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 } else {
-
                     int dong_size = Integer.parseInt(dong_count);
                     Intent intent = new Intent(getActivity(), BreedStrawDong.class);
                     intent.putExtra("dong_count", dong_size); /*송신*/
-
                     startActivityForResult(intent, 0);
 
 
@@ -93,10 +91,14 @@ public class BreedStraw extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 1:
-                int minStrawScore = data.getExtras().getInt("minStrawScore");
-                Log.d("after",String.valueOf(minStrawScore));
-                straw_score_tv.setText(String.valueOf(minStrawScore));
-                viewModel.setStrawScore(minStrawScore);
+                QuestionTemplateViewModel.StrawQuestion strawQuestion = (QuestionTemplateViewModel.StrawQuestion)
+                        data.getExtras().getSerializable("strawDongQuestion");
+                viewModel.StrawQuestion = strawQuestion;
+                float strawAvgScore = ((QuestionTemplateViewModel.StrawQuestion)viewModel.StrawQuestion).getStrawAvgScore();
+                straw_score_tv.setText(
+                        String.valueOf(strawAvgScore)
+                );
+                viewModel.setStrawScore(strawAvgScore);
                 // 프로토콜 1 점수
 
                 break;
