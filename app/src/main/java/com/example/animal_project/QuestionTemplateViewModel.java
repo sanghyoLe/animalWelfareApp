@@ -395,6 +395,7 @@ public class QuestionTemplateViewModel extends ViewModel {
                 CalfStraw,CalfWarm,CalfWindBlock, BreedHornRemoval,BreedHornAnesthesia,
                 BreedHornPainkiller, BreedCastration,BreedCastrationAnesthesia,BreedCastrationPainkiller};
 
+    private int farmType = 0;
     private int sampleCowSize = 0;
     private int totalCowSize = 0;
     private int poorScore = -1;
@@ -463,6 +464,12 @@ public class QuestionTemplateViewModel extends ViewModel {
     private double protocolThreeScore = -1;
     private double protocolFourScore = -1;
 
+    public void setFarmType(int farmType){
+        this.farmType = farmType;
+    }
+    public int getFarmType(){
+        return this.farmType;
+    }
 
     public void setProtocolOneScore(double protocolOneScore){
         this.protocolOneScore = protocolOneScore;
@@ -1758,6 +1765,12 @@ public class QuestionTemplateViewModel extends ViewModel {
             penQuestion.setNumberOfCow(Integer.parseInt(String.valueOf(questionEd.getText())));
             questionTv.setText(String.valueOf(getRatio(questionEd)));
         }
+    }
+    public boolean isBeef(int farmType){
+        if(farmType == 1 || farmType == 2 || farmType == 3){
+            return true;
+        } 
+        return false;
     }
 }
 

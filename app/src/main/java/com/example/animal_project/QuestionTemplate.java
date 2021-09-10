@@ -440,12 +440,11 @@ public class QuestionTemplate extends AppCompatActivity
         bundle.putInt("farmType",farmType);
         breed_winter_ventilating.setArguments(bundle);
         // ---- 테스트를 위한 최소 정보 ---------
-        farmType = BeforeBundle.getInt("farmType");
-        totalCowSize = BeforeBundle.getInt("totalCow");
-        sampleCowSize = BeforeBundle.getInt("sampleCowSize");
+  
         // ------------------------------------
         viewModel.setSampleCowSize(sampleCowSize);
         viewModel.setTotalCowSize(totalCowSize);
+        viewModel.setFarmType(farmType);
         breed_frag_arr = new Fragment[]{ breed_poor,breed_water_q1,breed_water_q2,breed_water_q3,
                 breed_straw,breed_outward,breed_shade,breed_summer_ventilating,breed_mist_spray,
                 breed_wind_block,breed_winter_ventilating,calf_shade,calf_summer_ventilating,calf_mist_spray,
@@ -675,7 +674,8 @@ public class QuestionTemplate extends AppCompatActivity
 
         }
         else if (farmType == 4) {
-
+            transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
+            
         }
         else if (farmType == 5) {
             transaction.replace(R.id.fragment_paper, freestall_poor).commitAllowingStateLoss();

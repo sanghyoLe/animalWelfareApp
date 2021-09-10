@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.animal_project.Input_userinfo;
+import com.example.animal_project.InputUserInfo;
 import com.example.animal_project.MilkCowViewModel;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
@@ -98,13 +98,13 @@ public class FreestallCriticalHairloss extends Fragment {
         return view;
     }
     public int getSlightHairlossRatio(int freestall_slight_hairloss_22_et) {
-        String sample_size_count = ((Input_userinfo)Input_userinfo.context_userinfo).sample_size_count;
+        String sample_size_count = ((InputUserInfo) InputUserInfo.context_userinfo).sample_size_count;
         float sample_count = Float.parseFloat(sample_size_count);
         float slightHairLossRatio = (freestall_slight_hairloss_22_et / sample_count) * 100;
         return Math.round(slightHairLossRatio);
     }
     public int getCriticalHairlossRatio(int freestall_critical_hairloss_22_et) {
-        String sample_size_count = ((Input_userinfo)Input_userinfo.context_userinfo).sample_size_count;
+        String sample_size_count = ((InputUserInfo) InputUserInfo.context_userinfo).sample_size_count;
         float sample_count = Float.parseFloat(sample_size_count);
         float criticalHairLossRatio = (freestall_critical_hairloss_22_et / sample_count) * 100;
         return Math.round(criticalHairLossRatio);
@@ -157,7 +157,7 @@ public class FreestallCriticalHairloss extends Fragment {
         freestall_critical_hairloss_ratio_tv.setText(String.valueOf(freestallCriticalHairlossRatio));
     }
     public void setHairlossScore(EditText freestall_slight_hairloss_22_et, TextView freestall_slight_hairloss_ratio_tv, EditText freestall_critical_hairloss_22_et, TextView freestall_critical_hairloss_ratio_tv, TextView freestall_hairloss_score_tv) {
-        String sample_size_count = ((Input_userinfo)Input_userinfo.context_userinfo).sample_size_count;
+        String sample_size_count = ((InputUserInfo) InputUserInfo.context_userinfo).sample_size_count;
         int freestallSlightHairloss = 0;
         int freestallCriticalHairloss = 0;
 

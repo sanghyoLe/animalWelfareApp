@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.animal_project.Input_userinfo;
+import com.example.animal_project.InputUserInfo;
 import com.example.animal_project.MilkCowViewModel;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
@@ -69,13 +69,13 @@ public class FreestallSlightLimp extends Fragment {
         return view;
     }
     public int getSlightLimpRatio(int freestall_slight_20_et) {
-        String sample_size_count = ((Input_userinfo)Input_userinfo.context_userinfo).sample_size_count;
+        String sample_size_count = ((InputUserInfo) InputUserInfo.context_userinfo).sample_size_count;
         float sample_count = Float.parseFloat(sample_size_count);
         float slightLimpRatio = (freestall_slight_20_et / sample_count) * 100;
         return Math.round(slightLimpRatio);
     }
     public int getCriticalLimpRatio(int freestall_critical_21_et) {
-        String sample_size_count = ((Input_userinfo)Input_userinfo.context_userinfo).sample_size_count;
+        String sample_size_count = ((InputUserInfo) InputUserInfo.context_userinfo).sample_size_count;
         float sample_count = Float.parseFloat(sample_size_count);
         float criticalLimpRatio = (freestall_critical_21_et / sample_count) * 100;
         return Math.round(criticalLimpRatio);
@@ -128,7 +128,7 @@ public class FreestallSlightLimp extends Fragment {
         freestall_critical_21_ratio.setText(String.valueOf(freestallCriticalLimpRatio));
     }
     public void setLimpScore(EditText freestall_slight_20_et, TextView freestall_slight_20_ratio, EditText freestall_critical_21_et, TextView freestall_critical_21_ratio, TextView freestall_limp_score) {
-        String sample_size_count = ((Input_userinfo)Input_userinfo.context_userinfo).sample_size_count;
+        String sample_size_count = ((InputUserInfo) InputUserInfo.context_userinfo).sample_size_count;
         int freestallSlightLimp = 0;
         int freestallCriticalLimp = 0;
 

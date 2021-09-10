@@ -23,7 +23,7 @@
         <activity android:name=".QuestionTemplate" />
         <activity android:name=".WebViewActivity" />
         <activity android:name=".Result_View" />
-        <activity android:name=".Input_userinfo" />
+        <activity android:name=".InputUserInfo" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -6,10 +6,13 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.animal_project.R;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2017-08-07.
@@ -29,7 +32,7 @@ public class CustomDialog {
 
 
     // 호출할 다이얼로그 함수를 정의한다.
-    public void setInputMessage(String[] inputMessage) {
+    public void setInputMessage(List<String> inputMessage) {
         dlg = new Dialog(context);
         // 커스텀 다이얼로그를 정의하기위해 Dialog클래스를 생성한다.
         // 액티비티의 타이틀바를 숨긴다.
@@ -54,20 +57,39 @@ public class CustomDialog {
         final TextView sample_cow_tv = (TextView) dlg.findViewById(R.id.sample_cow_tv);
         final TextView eva_name_tv = (TextView) dlg.findViewById(R.id.eva_name_tv);
         final TextView eva_date_tv = (TextView) dlg.findViewById(R.id.eva_date_tv);
+        final TextView milk_cow_tv = (TextView) dlg.findViewById(R.id.milk_cow_tv);
+        final TextView dry_milk_cow_tv = (TextView) dlg.findViewById(R.id.dry_milk_cow_tv);
+        final TextView pregnant_cow_tv = (TextView) dlg.findViewById(R.id.pregnant_cow_tv);
+        final LinearLayout beef_dialog_layout = (LinearLayout) dlg.findViewById(R.id.beef_cow_dialog_layout);
+        final LinearLayout milk_cow_dialog_layout = (LinearLayout) dlg.findViewById(R.id.milk_cow_dialog_layout);
         okButton = (Button)dlg.findViewById(R.id.okButton);
         cancelButton = (Button) dlg.findViewById(R.id.cancelButton);
-        farm_name_tv.setText(inputMessage[0]);
-        zip_code_tv.setText(inputMessage[1]);
-        address_tv.setText(inputMessage[2]);
-        address_detail_tv.setText(inputMessage[3]);
-        rep_name_tv.setText(inputMessage[4]);
-        farm_type_tv.setText(inputMessage[5]);
-        total_cow_tv.setText(inputMessage[6]);
-        adult_cow_tv.setText(inputMessage[7]);
-        child_cow_tv.setText(inputMessage[8]);
-        sample_cow_tv.setText(inputMessage[9]);
-        eva_name_tv.setText(inputMessage[10]);
-        eva_date_tv.setText(inputMessage[11]);
+        int inputMessageIndex = 0;
+        farm_name_tv.setText(inputMessage.get(inputMessageIndex++));
+        zip_code_tv.setText(inputMessage.get(inputMessageIndex++));
+        address_tv.setText(inputMessage.get(inputMessageIndex++));
+        address_detail_tv.setText(inputMessage.get(inputMessageIndex++));
+        rep_name_tv.setText(inputMessage.get(inputMessageIndex++));
+        farm_type_tv.setText(inputMessage.get(inputMessageIndex++));
+        total_cow_tv.setText(inputMessage.get(inputMessageIndex++));
+        child_cow_tv.setText(inputMessage.get(inputMessageIndex++));
+        sample_cow_tv.setText(inputMessage.get(inputMessageIndex++));
+        eva_name_tv.setText(inputMessage.get(inputMessageIndex++));
+        eva_date_tv.setText(inputMessage.get(inputMessageIndex++));
+        String stringFarmType = inputMessage.get(inputMessageIndex++);
+        int farmType = Integer.parseInt(stringFarmType);
+        if(farmType == 1 || farmType == 2 || farmType == 3){
+            beef_dialog_layout.setVisibility(View.VISIBLE);
+            milk_cow_dialog_layout.setVisibility(View.GONE);
+            adult_cow_tv.setText(inputMessage.get(inputMessageIndex));
+
+        } else if(farmType == 4 || farmType == 5) {
+            milk_cow_dialog_layout.setVisibility(View.VISIBLE);
+            beef_dialog_layout.setVisibility(View.GONE);
+            milk_cow_tv.setText(inputMessage.get(inputMessageIndex++));
+            dry_milk_cow_tv.setText(inputMessage.get(inputMessageIndex++));
+            pregnant_cow_tv.setText(inputMessage.get(inputMessageIndex));
+        }
 
 
     }

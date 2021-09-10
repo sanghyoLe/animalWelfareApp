@@ -7,22 +7,13 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
-import com.example.animal_project.Input_userinfo;
-import com.example.animal_project.MainActivity;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
-import com.example.animal_project.Result_View;
 
 public class FreestallWaterQ1_1 extends Fragment {
     private View view;

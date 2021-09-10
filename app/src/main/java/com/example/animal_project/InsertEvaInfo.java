@@ -13,7 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class InsertData extends AsyncTask<String, Void, String> {
+public class InsertEvaInfo extends AsyncTask<String, Void, String> {
     public interface AsyncResponse {
         void processFinish(String output);
     }
@@ -23,7 +23,7 @@ public class InsertData extends AsyncTask<String, Void, String> {
     private String farmId;
     ProgressDialog progressDialog = null;
 
-    public InsertData(Context context, AsyncResponse delegate){
+    public InsertEvaInfo(Context context, AsyncResponse delegate){
         this.context = context;
         this.delegate = delegate;
     }
@@ -58,7 +58,11 @@ public class InsertData extends AsyncTask<String, Void, String> {
         String evaMonth = (String)params[12];
         String evaDay = (String)params[13];
         String zipCode = (String)params[14];
-
+        String farmTypeNumber = (String)params[15];
+        String milkCow = (String)params[16];
+        String dryMilkCow = (String)params[17];
+        String pregnantCow = (String)params[18];
+        Log.d("farmTypeNumber",String.valueOf(farmTypeNumber));
         String serverURL = (String)params[0];
         String postParameters =
                 "farmName=" + farmName +
@@ -74,7 +78,11 @@ public class InsertData extends AsyncTask<String, Void, String> {
                         "&evaluatorYear=" + evaYear +
                         "&evaluatorMonth=" + evaMonth +
                         "&evaluatorDay=" + evaDay +
-                        "&zipCode=" + zipCode;
+                        "&zipCode=" + zipCode +
+                        "&farmTypeNumber=" + farmTypeNumber +
+                        "&milkCowSize=" + milkCow +
+                        "&dryMilkCowSize=" + dryMilkCow +
+                        "&pregnantCowSize=" + pregnantCow;
 
 
         try {
