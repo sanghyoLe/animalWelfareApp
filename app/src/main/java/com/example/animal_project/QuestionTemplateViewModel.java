@@ -63,12 +63,14 @@ public class QuestionTemplateViewModel extends ViewModel {
         String[] penLocation;
         int[] cowSize;
         int dongSize;
+
         public void setDongSize(int dongSize){this.dongSize = dongSize;}
         public int getDongSize(){ return dongSize;}
         public void setPenLocation(String[] penLocation){ this.penLocation = penLocation;}
         public String[] getPenLocation() { return this.penLocation;}
         public void setCowSize(int[] cowSize) {this.cowSize = cowSize;}
         public int[] getCowSize(){ return this.cowSize;}
+
     }
 
     public static class avoidDistance implements Serializable {
@@ -80,6 +82,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         int[] avoidDistance;
         int penSize;
         int farmId;
+
         public avoidDistance(int penNumber, String penLocation, int cowSize){
             this.penNumber = penNumber;
             this.penLocation = penLocation;
@@ -128,6 +131,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         public int[] getAvoidDistance(){
             return this.avoidDistance;
         }
+
     }
     public void setAvoidDistances(){
         for(int i = 1 ; i < 51 ; i++){
@@ -298,6 +302,7 @@ public class QuestionTemplateViewModel extends ViewModel {
             this.behaviorCount = new int[dong_size];
             this.behaviorPerOne = new float[dong_size];
             this.behaviorPerOneAvg = -1;
+
         }
 
         public void setBehaviorCount(int[] behaviorCount) {
@@ -336,20 +341,176 @@ public class QuestionTemplateViewModel extends ViewModel {
     public Object getHarmonyQuestion(){
         return this.HarmonyQuestion;
     }
+    public static class SitTimeQuestion extends Question{
+        int sitCount;
+        int[] sitTime;
+        float sitTimeAvg;
+        public SitTimeQuestion(int sitCount){
+            this.sitCount = sitCount;
+            this.sitTime = new int[sitCount];
+            for(int i = 0; i < sitCount; i++){
+                sitTime[i] = -1;
+            }
+        }
+        public void setSitCount(int sitCount){
+            this.sitCount = sitCount;
+        }
+        public int getSitCount(){
+            return this.sitCount;
+        }
+
+        public void setSitTime(String sitTime,int index) {
+            this.sitTime[index] = Integer.parseInt(sitTime);
+        }
+        public int[] getSitTime(){
+            return this.sitTime;
+        }
+        public void setSitTimeAvg(float sitTimeAvg){
+            this.sitTimeAvg = sitTimeAvg;
+        }
+        public float getSitTimeAvg(){
+            return this.sitTimeAvg;
+        }
+    }
+    public static class YearAvgQuestion extends Question{
+        int yearAvgCount = 0;
+        public void setYearAvgCount(int yearAvgCount){
+            this.yearAvgCount = yearAvgCount;
+        }
+        public int getYearAvgCount(){
+            return this.yearAvgCount;
+        }
+    }
+    public static class MilkCowStruggleQuestion extends DongQuestion implements Serializable{
+        int[] headBangCount;
+        float[] headBangPerOne;
+        float headBangPerOneAvg;
+        int[] headBangExceptStruggleCount;
+        float[] headBangExceptStrugglePerOne;
+        float headBangExceptStrugglePerOneAvg;
+        float struggleIndex;
+        float score;
+        public void setHeadBangCount(int[] headBangCount) {
+            this.headBangCount = headBangCount;
+        }
+
+        public int[] getHeadBangCount() {
+            return headBangCount;
+        }
+
+        public void setHeadBangPerOne(float[] headBangPerOne) {
+            this.headBangPerOne = headBangPerOne;
+        }
+
+        public float[] getHeadBangPerOne() {
+            return headBangPerOne;
+        }
+
+        public void setHeadBangPerOneAvg(float headBangPerOneAvg) {
+            this.headBangPerOneAvg = headBangPerOneAvg;
+        }
+
+        public float getHeadBangPerOneAvg() {
+            return headBangPerOneAvg;
+        }
+        public void setHeadBangExceptStruggleCount(int[] headBangExceptStruggleCount) {
+            this.headBangExceptStruggleCount = headBangExceptStruggleCount;
+        }
+
+        public int[] getHeadBangExceptStruggleCount() {
+            return headBangExceptStruggleCount;
+        }
+
+        public void setHeadBangExceptStrugglePerOne(float[] headBangExceptStrugglePerOne) {
+            this.headBangExceptStrugglePerOne = headBangExceptStrugglePerOne;
+        }
+
+        public float[] getHeadBangExceptStrugglePerOne() {
+            return headBangExceptStrugglePerOne;
+        }
+        public void setHeadBangExceptStrugglePerOneAvg(float headBangExceptStrugglePerOneAvg) {
+            this.headBangExceptStrugglePerOneAvg = headBangExceptStrugglePerOneAvg;
+        }
+
+        public float getHeadBangExceptStrugglePerOneAvg() {
+            return headBangExceptStrugglePerOneAvg;
+        }
+        public void setStruggleIndex(float struggleIndex){
+            this.struggleIndex = struggleIndex;
+        }
+        public float getStruggleIndex(){
+            return this.struggleIndex;
+        }
+
+        public float calculatorStruggleIndex(float headBangPerOneAvg,float headBangExceptStrugglePerOneAvg){
+            return  Math.round((float)(100 - (100 * (43.8 - (4 * headBangPerOneAvg + 11 * headBangExceptStrugglePerOneAvg)) / 43.8)));
+        }
 
 
+        public MilkCowStruggleQuestion(int dong_size) {
+            this.headBangCount = new int[dong_size];
+            this.headBangPerOne = new float[dong_size];
+            this.headBangPerOneAvg = -1;
+            this.headBangExceptStruggleCount = new int[dong_size];
+            this.headBangExceptStrugglePerOne = new float[dong_size];
+            this.headBangExceptStrugglePerOneAvg = -1;
+            this.struggleIndex = -1;
+            this.score = -1;
 
+        }
+        public float getScore(){
+            return this.score;
+        }
+        public void setScore(float score){
+            this.score = score;
+        }
 
+        public float calculatorScore(float struggleIndex){
+            float socialBehaviorScore = 0;
+            if (struggleIndex > 100) {
+                return socialBehaviorScore = -1;
+            }
+            if(struggleIndex == 0) {
+                socialBehaviorScore = 100;
+            } else if(struggleIndex <= 4 ) {
+                socialBehaviorScore = 90;
+            } else if(struggleIndex <= 9 ) {
+                socialBehaviorScore = 80;
+            } else if(struggleIndex <= 14 ) {
+                socialBehaviorScore = 70;
+            } else if(struggleIndex <= 19 ) {
+                socialBehaviorScore = 60;
+            } else if(struggleIndex <= 25 ) {
+                socialBehaviorScore = 50;
+            } else if(struggleIndex <= 32 ) {
+                socialBehaviorScore = 40;
+            } else if(struggleIndex <= 41 ) {
+                socialBehaviorScore = 30;
+            } else if(struggleIndex <= 53 ) {
+                socialBehaviorScore = 20;
+            } else if(struggleIndex <= 71 ) {
+                socialBehaviorScore = 10;
+            } else if(struggleIndex <= 100 ) {
+                socialBehaviorScore = 0;
+            }
+            return socialBehaviorScore;
+        }
+    }
 
+    public void setMilkCowStruggle(Object milkCowStruggle) {
+        MilkCowStruggle = milkCowStruggle;
+    }
+    public Object getMilkCowStruggle(){
+        return MilkCowStruggle;
+    }
 
+    // 한육우
     public Object WaterTimeQuestion = new WaterTimeQuestion(20);
     public Object CoughQuestion = new CoughQuestion(20);
     public Object StrawQuestion = new StrawQuestion(20);
     public Object StruggleQuestion = new BehaviorQuestion(20);
     public Object HarmonyQuestion = new BehaviorQuestion(20);
     public avoidDistance[] avoidDistances = new avoidDistance[51];
-
-
     public Object BreedPoor = new Question();
     public Object BreedLimp = new Question();
 
@@ -395,10 +556,33 @@ public class QuestionTemplateViewModel extends ViewModel {
                 CalfStraw,CalfWarm,CalfWindBlock, BreedHornRemoval,BreedHornAnesthesia,
                 BreedHornPainkiller, BreedCastration,BreedCastrationAnesthesia,BreedCastrationPainkiller};
 
+
+    // 착유우
+    public Object SitTimeQuestion = new SitTimeQuestion(50);
+    public Object AppearanceBottomLeg = new Question();
+    public Object AppearanceBack = new Question();
+    public Object AppearanceBreast = new Question();
+    public Object CriticalLimp = new Question();
+    public Object OutGenitals = new PenQuestion("-1",-1,-1);
+    public Object MilkInCell = new PenQuestion("-1",-1,-1);
+    public Object HardBirth = new YearAvgQuestion();
+    public Object UnableStand = new YearAvgQuestion();
+    public Object MilkCowStruggle = new MilkCowStruggleQuestion(12);
+
+
+
+
+
+
     private int farmType = 0;
+    private int milkCowSize = 0;
     private int sampleCowSize = 0;
     private int totalCowSize = 0;
     private int poorScore = -1;
+
+
+    // 착유우 음수조 형태
+    private String waterTankForm = "";
     private int waterTankNum = -1;
     private int waterTankClean = -1;
     private int waterDrink = -1;
@@ -455,6 +639,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     private double harmony = -1;
     private int socialBehaviorScore = -1;
     private int avoidDistanceScore = -1;
+    private float avoidDistanceRatio = -1;
     private int avoidDistanceLevelOneTotal = 0;
     private int avoidDistanceLevelTwoTotal = 0;
     private int avoidDistanceLevelThreeTotal = 0;
@@ -470,7 +655,8 @@ public class QuestionTemplateViewModel extends ViewModel {
     public int getFarmType(){
         return this.farmType;
     }
-
+    public void setMilkCowSize(int milkCowSize) { this.milkCowSize = milkCowSize; }
+    public int getMilkCowSize(){return this.milkCowSize; }
     public void setProtocolOneScore(double protocolOneScore){
         this.protocolOneScore = protocolOneScore;
     }
@@ -697,40 +883,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     public double getCough(){
         return this.cough;
     }
-    public void setCoughRatio(float coughRatio){
-        this.coughRatio = coughRatio;
-    }
-    public float getCoughRatio(){
-        return this.coughRatio;
-    }
-    public void setRunnyNoseRatio(float runnyNoseRatio){
-        this.runnyNoseRatio = runnyNoseRatio;
-    }
-    public float getRunnyNoseRatio(){
-        return this.runnyNoseRatio;
-    }
-    public void setOphthalmicRatio(float ophthalmicRatio){
-        this.ophthalmicRatio = ophthalmicRatio;
-    }
-    public float getOphthalmicRatio(){
-        return this.ophthalmicRatio;
-    }
-    public void setBreathRatio(float breathRatio){
-        this.breathRatio = breathRatio;
-    }
-    public float getBreathRatio(){
-        return this.breathRatio;
-    }
-    public void setDiarrheaRatio(float diarrheaRatio){ this.diarrheaRatio = diarrheaRatio;}
-    public float getDiarrheaRatio(){return this.diarrheaRatio;}
-    public void setRuminantRatio(float ruminantRatio) { this.ruminantRatio = ruminantRatio;}
-    public float getRuminantRatio(){return this.ruminantRatio;}
-    public void setFallDeadRatio(float fallDeadRatio){
-        this.fallDeadRatio = fallDeadRatio;
-    }
-    public float getFallDeadRatio(){
-        return this.fallDeadRatio;
-    }
+
     public void setDiseaseScore(double diseaseScore){
         this.diseaseScore = diseaseScore;
     }
@@ -761,24 +914,11 @@ public class QuestionTemplateViewModel extends ViewModel {
     public int getHornRemovalScore(){
         return this.hornRemovalScore;
     }
-    public void setCastration(int castration){
-        this.castration = castration;
-    }
-    public int getCastration(){
-        return this.castration;
-    }
-    public void setCastrationAnesthesia(int castrationAnesthesia){
-        this.castrationAnesthesia = castrationAnesthesia;
-    }
-    public int getCastrationAnesthesia(){
-        return this.castrationAnesthesia;
-    }
+
     public void setCastrationPainkiller(int castrationPainkiller){
         this.castrationPainkiller = castrationPainkiller;
     }
-    public int getCastrationPainkiller(){
-        return this.castrationPainkiller;
-    }
+
     public void setCastrationScore(int castrationScore){
         this. castrationScore = castrationScore;
     }
@@ -793,12 +933,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     public double getStruggle(){
         return this.struggle;
     }
-    public void setHarmony(double harmony){
-        this.harmony = harmony;
-    }
-    public double getHarmony(){
-        return this.harmony;
-    }
+
     public void setSocialBehaviorScore(int socialBehaviorScore){
         this.socialBehaviorScore = socialBehaviorScore;
     }
@@ -830,11 +965,15 @@ public class QuestionTemplateViewModel extends ViewModel {
         return this.avoidDistanceLevelFourTotal;
     }
 
-
+    public void setAvoidDistanceRatio(float avoidDistanceRatio){
+        this.avoidDistanceRatio = avoidDistanceRatio;
+    }
+    public float getAvoidDistanceRatio(){
+        return this.avoidDistanceRatio;
+    }
     public void setAvoidDistanceScore(int avoidDistanceScore){
         this.avoidDistanceScore = avoidDistanceScore;
     }
-
     public int getAvoidDistanceScore(){
         return this.avoidDistanceScore;
     }
@@ -984,8 +1123,11 @@ public class QuestionTemplateViewModel extends ViewModel {
         }
         return outwardHygieneScore;
     }
-    public double calculatorProtocolOneResult(int PoorScore, int WaterScore){
-        return (PoorScore * 0.7) + (WaterScore * 0.3);
+    public double calculatorProtocolOneResult(int farmType, int PoorScore, int WaterScore){
+        if(isBeef(farmType)){
+            return (PoorScore * 0.7) + (WaterScore * 0.3);
+        }
+        return (PoorScore * 0.65) + (WaterScore * 0.35);
     }
 
     public double calculatorBreedRestScore(float strawScore, int outwardScore)
@@ -1092,9 +1234,13 @@ public class QuestionTemplateViewModel extends ViewModel {
         return winterCalfRestScore;
     }
 
-    public double calculatorTotalWarmVentilationScore(int breedSummerScore, int breedWinterScore, int calfSummerScore, int calfWinterScore) {
-
-        double warmVenScore = (breedSummerScore * 0.35) + (breedWinterScore * 0.15) + (calfSummerScore * 0.25) + (calfWinterScore * 0.25);
+    public double calculatorTotalWarmVentilationScore(int farmType, int breedSummerScore, int breedWinterScore, int calfSummerScore, int calfWinterScore) {
+        double warmVenScore = 0;
+        if(farmType == 2 || farmType == 3){
+            warmVenScore = ((breedSummerScore * 0.35) + (breedWinterScore * 0.15)) + ((calfSummerScore * 0.25) + (calfWinterScore * 0.25));
+        } else if (farmType == 4 || farmType == 5){
+            warmVenScore = ((breedSummerScore * 0.4) + (breedWinterScore * 0.2)) + ((calfSummerScore * 0.2) + (calfWinterScore * 0.2));
+        }
 
         return warmVenScore;
     }
@@ -1160,10 +1306,16 @@ public class QuestionTemplateViewModel extends ViewModel {
         }
         return hairLossScore;
     }
-    public long calculatorMinInjuryScore(int limpScore, int hairLossScore){
+    public long calculatorMinInjuryScore(int farmType, int limpScore, int hairLossScore){
         long minInjuryScore = 0;
-        minInjuryScore = Math.round((limpScore * 0.6) + (hairLossScore *0.4));
-        minInjuryScore = Math.round(minInjuryScore);
+        if(isBeef(farmType)){
+            minInjuryScore = Math.round((limpScore * 0.6) + (hairLossScore *0.4));
+            minInjuryScore = Math.round(minInjuryScore);
+        } else {
+            minInjuryScore = Math.round((limpScore * 0.5) + (hairLossScore *0.5));
+            minInjuryScore = Math.round(minInjuryScore);
+        }
+
 
         return minInjuryScore;
     }
@@ -1440,8 +1592,12 @@ public class QuestionTemplateViewModel extends ViewModel {
     public double calculatorMinPainScore(int hornRemovalScore, int castrationScore){
         return (hornRemovalScore  * 0.7) + (castrationScore * 0.3);
     }
-    public double calculatorProtocolThreeResult(double minInjuryScore, double minPainScore, double diseaseScore){
-        return Math.round((minInjuryScore * 0.35) + (diseaseScore * 0.4) + (minPainScore * 0.25));
+    public double calculatorProtocolThreeResult(int farmType, double minInjuryScore, double minPainScore, double diseaseScore){
+        if(isBeef(farmType)){
+            return Math.round((minInjuryScore * 0.35) + (diseaseScore * 0.4) + (minPainScore * 0.25));
+        }
+        return Math.round((minInjuryScore * 0.3) + (diseaseScore * 0.5) + (minPainScore * 0.2));
+
     }
     // 사회적 행동의 표현(투쟁행동, 화합행동)" 종합 기준점수
     public int calculatorSocialBehaviorScore(double struggle, double harmony)
@@ -1771,6 +1927,12 @@ public class QuestionTemplateViewModel extends ViewModel {
             return true;
         } 
         return false;
+    }
+    public void setWaterTankForm(String waterTankForm){
+        this.waterTankForm = waterTankForm;
+    }
+    public String getWaterTankForm(){
+        return this.waterTankForm;
     }
 }
 

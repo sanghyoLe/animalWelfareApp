@@ -12,10 +12,70 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/milk_cow_water_tank_num_layout"
+            android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="음수조는 어떤 형태입니까?"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="60dp">
+            <RadioGroup
+                android:id="@+id/milk_cow_water_tank_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="10dp"
+                android:paddingLeft="20dp">
+                <RadioButton
+                    android:id="@+id/milk_cow_water_tank_form_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="개별급수기(최소 급수공간 450~700mm)"
+                    android:textSize="15dp"
+                    android:layout_weight="1">
+                </RadioButton>
+                <RadioButton
+                    android:id="@+id/milk_cow_water_tank_form_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="대형 급수기"
+                    android:layout_weight="1">
+                </RadioButton>
+            </RadioGroup>
+         </LinearLayout>
+        </LinearLayout>
+
+        <!-- 개별 급수기일 경우, 한육우 일경우 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/individual_drink_layout"
+            android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,6 +115,60 @@
                 </RadioButton>
             </RadioGroup>
 
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/large_drink_layout"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="음수조의 수가 얼마나 됩니까?"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="60dp">
+                <RadioGroup
+                    android:id="@+id/large_drink_tank_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp"
+                    android:paddingLeft="20dp">
+                    <RadioButton
+                        android:id="@+id/large_drink_tank_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="음수조 1개당 20두 이하 사용"
+                        android:textSize="15dp"
+                        android:layout_weight="1">
+                    </RadioButton>
+                    <RadioButton
+                        android:id="@+id/large_drink_tank_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:text="음수조 1개당 21두 이상 사용"
+                        android:layout_weight="1">
+                    </RadioButton>
+                </RadioGroup>
+
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

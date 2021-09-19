@@ -2,14 +2,12 @@ package com.example.animal_project;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -24,6 +22,42 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.animal_project.Beef.ProtocolFour.AvoidDistance;
+import com.example.animal_project.Beef.ProtocolFour.BreedHarmony;
+import com.example.animal_project.Beef.ProtocolFour.BreedStruggle;
+import com.example.animal_project.Beef.ProtocolOne.Poor;
+import com.example.animal_project.Beef.ProtocolOne.WaterTankNum;
+import com.example.animal_project.Beef.ProtocolOne.WaterTankClean;
+import com.example.animal_project.Beef.ProtocolOne.WaterTime;
+import com.example.animal_project.Beef.ProtocolThree.BreedBreath;
+import com.example.animal_project.Beef.ProtocolThree.BreedCastrationQ1;
+import com.example.animal_project.Beef.ProtocolThree.BreedCastrationQ2;
+import com.example.animal_project.Beef.ProtocolThree.BreedCastrationQ3;
+import com.example.animal_project.Beef.ProtocolThree.BreedCough;
+import com.example.animal_project.Beef.ProtocolThree.BreedCriticalHairLoss;
+import com.example.animal_project.Beef.ProtocolThree.BreedDiarrhea;
+import com.example.animal_project.Beef.ProtocolThree.BreedFallDead;
+import com.example.animal_project.Beef.ProtocolThree.BreedHornQ1;
+import com.example.animal_project.Beef.ProtocolThree.BreedHornQ2;
+import com.example.animal_project.Beef.ProtocolThree.BreedHornQ3;
+import com.example.animal_project.Beef.ProtocolThree.BreedLimp;
+import com.example.animal_project.Beef.ProtocolThree.BreedOphthalmic;
+import com.example.animal_project.Beef.ProtocolThree.BreedRuminant;
+import com.example.animal_project.Beef.ProtocolThree.BreedRunnyNose;
+import com.example.animal_project.Beef.ProtocolThree.BreedSlightHairLoss;
+import com.example.animal_project.Beef.ProtocolTwo.BreedMistSpray;
+import com.example.animal_project.Beef.ProtocolTwo.BreedOutward;
+import com.example.animal_project.Beef.ProtocolTwo.BreedShade;
+import com.example.animal_project.Beef.ProtocolTwo.BreedStraw;
+import com.example.animal_project.Beef.ProtocolTwo.BreedSummerVentilating;
+import com.example.animal_project.Beef.ProtocolTwo.BreedWindBlock;
+import com.example.animal_project.Beef.ProtocolTwo.BreedWinterVentilating;
+import com.example.animal_project.Beef.ProtocolTwo.CalfMistSpray;
+import com.example.animal_project.Beef.ProtocolTwo.CalfShade;
+import com.example.animal_project.Beef.ProtocolTwo.CalfStraw;
+import com.example.animal_project.Beef.ProtocolTwo.CalfSummerVentilating;
+import com.example.animal_project.Beef.ProtocolTwo.CalfWarm;
+import com.example.animal_project.Beef.ProtocolTwo.CalfWindBlock;
 import com.example.animal_project.Freestall.ProtocolFour.FreestallAvoidDistance;
 import com.example.animal_project.Freestall.ProtocolFour.FreestallStruggle;
 import com.example.animal_project.Freestall.ProtocolOne.FreestallPoor;
@@ -32,84 +66,21 @@ import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ1_1;
 import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ1_2;
 import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ2;
 import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ3;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallAstasia;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallBreast;
+import com.example.animal_project.MilkCow.UnableStand;
+import com.example.animal_project.MilkCow.MilkInCell;
 import com.example.animal_project.Freestall.ProtocolThree.FreestallCriticalHairloss;
 import com.example.animal_project.Freestall.ProtocolThree.FreestallCriticalLimp;
 import com.example.animal_project.Freestall.ProtocolThree.FreestallDiarrhea;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallDystocia;
+import com.example.animal_project.MilkCow.HardBirth;
 import com.example.animal_project.Freestall.ProtocolThree.FreestallFallDead;
 import com.example.animal_project.Freestall.ProtocolThree.FreestallHornQ1;
 import com.example.animal_project.Freestall.ProtocolThree.FreestallHornQ2;
 import com.example.animal_project.Freestall.ProtocolThree.FreestallHornQ3;
 import com.example.animal_project.Freestall.ProtocolThree.FreestallOphthalmic;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallOutGenitals;
 import com.example.animal_project.Freestall.ProtocolThree.FreestallRespiratory;
 import com.example.animal_project.Freestall.ProtocolThree.FreestallRunnyNose;
 import com.example.animal_project.Freestall.ProtocolThree.FreestallSlightHairloss;
 import com.example.animal_project.Freestall.ProtocolThree.FreestallSlightLimp;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallAppearanceQ1;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallAppearanceQ2;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallAppearanceQ3;
-
-import com.example.animal_project.BreedBatch.ProtocolFour.BreedAvoidDistance;
-import com.example.animal_project.BreedBatch.ProtocolFour.BreedHarmony;
-import com.example.animal_project.BreedBatch.ProtocolFour.BreedStruggle;
-
-import com.example.animal_project.BreedBatch.ProtocolFour.BreedAvoidDistance;
-import com.example.animal_project.BreedBatch.ProtocolFour.BreedHarmony;
-import com.example.animal_project.BreedBatch.ProtocolFour.BreedStruggle;
-import com.example.animal_project.BreedBatch.ProtocolOne.BreedPoor;
-import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ1;
-import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ2;
-import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ3;
-
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedBreath;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedCastrationQ1;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedCastrationQ2;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedCastrationQ3;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedCough;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedCriticalHairLoss;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedDiarrhea;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedFallDead;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedHornQ1;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedHornQ2;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedHornQ3;
-
-
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedLimp;
-
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedOphthalmic;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedRuminant;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedRunnyNose;
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedSlightHairLoss;
-
-import com.example.animal_project.BreedBatch.ProtocolThree.BreedLimp;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedMistSpray;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedOutward;
-import com.example.animal_project.BreedBatch.ProtocolOne.BreedPoor;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedShade;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedStraw;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedSummerVentilating;
-import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ1;
-import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ2;
-import com.example.animal_project.BreedBatch.ProtocolOne.BreedWaterQ3;
-
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedMistSpray;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedOutward;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedShade;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedStraw;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedSummerVentilating;
-
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedWindBlock;
-import com.example.animal_project.BreedBatch.ProtocolTwo.BreedWinterVentilating;
-import com.example.animal_project.BreedBatch.ProtocolTwo.CalfMistSpray;
-import com.example.animal_project.BreedBatch.ProtocolTwo.CalfShade;
-import com.example.animal_project.BreedBatch.ProtocolTwo.CalfStraw;
-import com.example.animal_project.BreedBatch.ProtocolTwo.CalfSummerVentilating;
-import com.example.animal_project.BreedBatch.ProtocolTwo.CalfWarm;
-import com.example.animal_project.BreedBatch.ProtocolTwo.CalfWindBlock;
-
 import com.example.animal_project.Freestall.ProtocolTwo.FreestallAreaOutCollision;
 import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfMistSpray;
 import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfShade;
@@ -125,9 +96,13 @@ import com.example.animal_project.Freestall.ProtocolTwo.FreestallSitTime;
 import com.example.animal_project.Freestall.ProtocolTwo.FreestallSummerVentilating;
 import com.example.animal_project.Freestall.ProtocolTwo.FreestallWindBlock;
 import com.example.animal_project.Freestall.ProtocolTwo.FreestallWinterVentilating;
+import com.example.animal_project.MilkCow.AppearanceQ1;
+import com.example.animal_project.MilkCow.AppearanceQ2;
+import com.example.animal_project.MilkCow.AppearanceQ3;
+import com.example.animal_project.MilkCow.CriticalLimp;
+import com.example.animal_project.MilkCow.OutGenitals;
 
-
-
+import com.example.animal_project.MilkCow.SitTime;
 import com.example.animal_project.Result.ResultTotal;
 import com.example.animal_project.Result.Result_1;
 import com.example.animal_project.Result.Result_2;
@@ -159,6 +134,9 @@ public class QuestionTemplate extends AppCompatActivity
      public int farmType = 0;
      private String farmId;
      private int sampleCowSize;
+     private int milkCowSize;
+     private int dryMilkCowSize;
+     private int pregnantCowSize;
      // ------------------------------
 
     // --- 결과 창 ---
@@ -175,10 +153,10 @@ public class QuestionTemplate extends AppCompatActivity
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
     // 한 육우 프로토콜 질문 항목 Fragments
-    private BreedPoor breed_poor;
-    private BreedWaterQ1 breed_water_q1;
-    private BreedWaterQ2 breed_water_q2;
-    private BreedWaterQ3 breed_water_q3;
+    private Poor breed_poor;
+    private WaterTankNum breed_water_q1;
+    private WaterTankClean breed_water_q2;
+    private WaterTime breed_water_q3;
     private BreedStraw breed_straw;
     private BreedOutward breed_outward;
     private BreedShade breed_shade;
@@ -210,9 +188,16 @@ public class QuestionTemplate extends AppCompatActivity
     private BreedCastrationQ3 breed_castration_q3;
     private BreedStruggle breed_struggle;
     private BreedHarmony breed_harmony;
-    private BreedAvoidDistance breed_avoid_distance;
-    // ---------------------------------------
+    private AvoidDistance breed_avoid_distance;
 
+    // 착유우 프로토콜 질문 항목 Fragments
+    private SitTime sit_time;
+    private CriticalLimp criticalLimp;
+     private AppearanceQ1 appearance_q1;
+     private AppearanceQ2 appearance_q2;
+     private AppearanceQ3 appearance_q3;
+     private OutGenitals out_genital;
+     private MilkInCell milk_min_cell;
 
     // --- UI에 사용되는 버튼들 ---------------------------
     private TextView current_page;
@@ -230,6 +215,7 @@ public class QuestionTemplate extends AppCompatActivity
 
     // 한 육우 프로토콜 질문 항목 fragments 를 담는 배열
     private Fragment[] breed_frag_arr = new Fragment[20];
+    private Fragment[] milk_cow_frag_arr = new Fragment[20];
     private Fragment[] fatten_frag_arr = new Fragment[20];
 
     // freestall
@@ -243,9 +229,7 @@ public class QuestionTemplate extends AppCompatActivity
     private FreestallSitCollision freestall_sit_collision;
     private FreestallAreaOutCollision freestall_area_out_collision;
     private FreestallSitTime freestall_sit_time;
-    private FreestallAppearanceQ1 freestall_appearance_q1;
-    private FreestallAppearanceQ2 freestall_appearance_q2;
-    private FreestallAppearanceQ3 freestall_appearance_q3;
+
     private FreestallShade freestall_shade;
     private FreestallSummerVentilating freestall_summer_ventilating;
     private FreestallMistSpray freestall_mist_spray;
@@ -265,11 +249,11 @@ public class QuestionTemplate extends AppCompatActivity
     private FreestallOphthalmic freestall_ophthalmic;
     private FreestallRespiratory freestall_respiratory;
     private FreestallDiarrhea freestall_diarrhea;
-    private FreestallOutGenitals freestall_outgenitals;
-    private FreestallBreast freestall_breast;
+
+    
     private FreestallFallDead freestall_falldead;
-    private FreestallDystocia freestall_dystocia;
-    private FreestallAstasia freestall_astasia;
+    private HardBirth hard_birth;
+    private UnableStand upable_stand;
     private FreestallHornQ1 freestall_horn_q1;
     private FreestallHornQ2 freestall_horn_q2;
     private FreestallHornQ3 freestall_horn_q3;
@@ -330,10 +314,10 @@ public class QuestionTemplate extends AppCompatActivity
         question_top_nav = findViewById(R.id.question_top_nav);
 
         // 평가를 위한 프래그먼트들
-        breed_poor = new BreedPoor();
-        breed_water_q1 = new BreedWaterQ1();
-        breed_water_q2 = new BreedWaterQ2();
-        breed_water_q3 = new BreedWaterQ3();
+        breed_poor = new Poor();
+        breed_water_q1 = new WaterTankNum();
+        breed_water_q2 = new WaterTankClean();
+        breed_water_q3 = new WaterTime();
         breed_straw = new BreedStraw();
         breed_outward = new BreedOutward();
         breed_shade = new BreedShade();
@@ -367,10 +351,15 @@ public class QuestionTemplate extends AppCompatActivity
         breed_castration_q3 = new BreedCastrationQ3();
         breed_struggle = new BreedStruggle();
         breed_harmony = new BreedHarmony();
-        breed_avoid_distance = new BreedAvoidDistance();
+        breed_avoid_distance = new AvoidDistance();
 
-
-
+        // 착유우
+        sit_time = new SitTime();
+        appearance_q1 = new AppearanceQ1();
+        appearance_q2 = new AppearanceQ2();
+        appearance_q3 = new AppearanceQ3();
+        criticalLimp = new CriticalLimp();
+        milk_min_cell = new MilkInCell();
         // 프리스톨
         freestall_poor = new FreestallPoor();
         freestall_water_q1 = new FreestallWaterQ1();
@@ -382,9 +371,7 @@ public class QuestionTemplate extends AppCompatActivity
         freestall_sit_collision = new FreestallSitCollision();
         freestall_area_out_collision = new FreestallAreaOutCollision();
         freestall_sit_time = new FreestallSitTime();
-        freestall_appearance_q1 = new FreestallAppearanceQ1();
-        freestall_appearance_q2 = new FreestallAppearanceQ2();
-        freestall_appearance_q3 = new FreestallAppearanceQ3();
+        
 
         freestall_shade = new FreestallShade();
         freestall_summer_ventilating = new FreestallSummerVentilating();
@@ -405,11 +392,11 @@ public class QuestionTemplate extends AppCompatActivity
         freestall_ophthalmic = new FreestallOphthalmic();
         freestall_respiratory = new FreestallRespiratory();
         freestall_diarrhea = new FreestallDiarrhea();
-        freestall_outgenitals = new FreestallOutGenitals();
-        freestall_breast = new FreestallBreast();
+        out_genital = new OutGenitals();
+        
         freestall_falldead = new FreestallFallDead();
-        freestall_dystocia = new FreestallDystocia();
-        freestall_astasia = new FreestallAstasia();
+        hard_birth = new HardBirth();
+        upable_stand = new UnableStand();
         freestall_horn_q1 = new FreestallHornQ1();
         freestall_horn_q2 = new FreestallHornQ2();
         freestall_horn_q3 = new FreestallHornQ3();
@@ -434,6 +421,11 @@ public class QuestionTemplate extends AppCompatActivity
         farmType = BeforeBundle.getInt("farmType");
         sampleCowSize = BeforeBundle.getInt("sampleCowSize");
         farmId = BeforeBundle.getString("farmId");
+        milkCowSize = BeforeBundle.getInt("milkCowSize");
+        dryMilkCowSize = BeforeBundle.getInt("dryMilkCowSize");
+        pregnantCowSize = BeforeBundle.getInt("pregnantCowSize");
+
+
 
         // ------------------------------------------------
         Bundle bundle = new Bundle(1);
@@ -444,6 +436,7 @@ public class QuestionTemplate extends AppCompatActivity
         // ------------------------------------
         viewModel.setSampleCowSize(sampleCowSize);
         viewModel.setTotalCowSize(totalCowSize);
+        viewModel.setMilkCowSize(milkCowSize);
         viewModel.setFarmType(farmType);
         breed_frag_arr = new Fragment[]{ breed_poor,breed_water_q1,breed_water_q2,breed_water_q3,
                 breed_straw,breed_outward,breed_shade,breed_summer_ventilating,breed_mist_spray,
@@ -460,13 +453,22 @@ public class QuestionTemplate extends AppCompatActivity
                 breed_horn_q1,breed_horn_q2,breed_horn_q3,breed_castration_q1,breed_castration_q2,breed_castration_q3,
                 breed_struggle,breed_harmony,breed_avoid_distance
         };
+        milk_cow_frag_arr = new Fragment[]{breed_poor,breed_water_q1,breed_water_q2,breed_water_q3,sit_time,appearance_q1,appearance_q2,appearance_q3
+                ,breed_shade,breed_summer_ventilating,breed_mist_spray,
+                breed_wind_block,breed_winter_ventilating,calf_shade,calf_summer_ventilating,calf_mist_spray,
+                calf_straw,calf_warm,calf_wind_block,breed_limp,criticalLimp,breed_slight_hair_loss,breed_critical_hair_loss,breed_cough,
+                breed_runny_nose,breed_ophthalmic,breed_breath,breed_diarrhea,out_genital,milk_min_cell,breed_fall_dead,hard_birth,upable_stand,
+                breed_horn_q1,breed_horn_q2,breed_horn_q3,breed_castration_q1,breed_castration_q2,breed_castration_q3,breed_struggle,breed_avoid_distance
+
+
+        };
 
         freestall_frag_arr = new Fragment[]{ freestall_poor,freestall_water_q1,freestall_water_q2,freestall_water_q3,
-                freestall_count,freestall_sit_collision,freestall_area_out_collision,freestall_sit_time,freestall_appearance_q1,freestall_appearance_q2,freestall_appearance_q3,freestall_shade,freestall_summer_ventilating,freestall_mist_spray,
+                freestall_count,freestall_sit_collision,freestall_area_out_collision,freestall_sit_time,appearance_q1,appearance_q2,appearance_q3,freestall_shade,freestall_summer_ventilating,freestall_mist_spray,
                 freestall_wind_block,freestall_winter_ventilating,freestall_calf_shade,freestall_calf_summer_ventilating,freestall_calf_mist_spray,
                 freestall_calf_straw,freestall_calf_warm,freestall_calf_wind_block,freestall_slight_limp,freestall_critical_limp,freestall_slight_hairloss,freestall_critical_hairloss,
                 breed_cough,freestall_runnynose,freestall_ophthalmic,
-                freestall_respiratory,freestall_diarrhea,freestall_outgenitals,freestall_breast,freestall_falldead,freestall_dystocia,freestall_astasia,freestall_horn_q1,freestall_horn_q2,freestall_horn_q3,freestall_struggle,
+                freestall_respiratory,freestall_diarrhea,out_genital,milk_min_cell,freestall_falldead,hard_birth,upable_stand,freestall_horn_q1,freestall_horn_q2,freestall_horn_q3,freestall_struggle,
                 freestall_avoid_distance}; // 6,7,8,9,10,11 추가하기
 
         ImageButton breed_list_btn_1 = findViewById(R.id.question_list_btn_1);
@@ -524,6 +526,7 @@ public class QuestionTemplate extends AppCompatActivity
         ImageButton fatten_list_btn_9 = fattenListSubMenuView.findViewById(R.id.question_list_btn_9);
         ImageButton fatten_list_btn_10 = fattenListSubMenuView.findViewById(R.id.question_list_btn_10);
         ImageButton fatten_list_btn_11 = fattenListSubMenuView.findViewById(R.id.question_list_btn_11);
+
 
         ImageButton[] fatten_list_btn_arr=  {
                 breed_list_btn_1,breed_list_btn_2,breed_list_btn_3,breed_list_btn_4,fatten_list_btn_5,
@@ -675,7 +678,8 @@ public class QuestionTemplate extends AppCompatActivity
         }
         else if (farmType == 4) {
             transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
-            
+            total_page.setText(" / " + milk_cow_frag_arr.length);
+
         }
         else if (farmType == 5) {
             transaction.replace(R.id.fragment_paper, freestall_poor).commitAllowingStateLoss();
@@ -706,7 +710,8 @@ public class QuestionTemplate extends AppCompatActivity
 
                 }
                 else if (farmType == 4) {
-
+                    nextBtnHandler(count,milk_cow_frag_arr.length);
+                    transaction.replace(R.id.fragment_paper, milk_cow_frag_arr[++count]).commitAllowingStateLoss();
                 }
                 else if (farmType == 5) {
                     nextBtnHandler(count,freestall_frag_arr.length);
@@ -726,6 +731,8 @@ public class QuestionTemplate extends AppCompatActivity
                     transaction.replace(R.id.fragment_paper, breed_frag_arr[--count]).commitAllowingStateLoss();
                 }
                 else if (farmType == 4) {
+                    prevBtnHandler(count,milk_cow_frag_arr.length);
+                    transaction.replace(R.id.fragment_paper, milk_cow_frag_arr[--count]).commitAllowingStateLoss();
                 }
 
                 else if (farmType == 5) {

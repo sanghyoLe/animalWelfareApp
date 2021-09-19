@@ -18,14 +18,14 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/question_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/breed_wind_block_title"
                 android:lineSpacingExtra="5dp"
-                android:textSize="18dp"
-                android:textStyle="bold"
+                android:text="@string/breed_wind_block_title"
                 android:textColor="@color/black"
-                />
+                android:textSize="18dp"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

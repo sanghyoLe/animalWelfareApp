@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="전체 표본에서 외음부 분비물이 있는 개체는 얼마나 되는가?"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_margin="30dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="외음부 분비물 - 외음부에서 나오는 화농성 분비물 또는 꼬리 말단 주변 고름 침착물"
+                    android:padding="20dp"
+                    android:layout_marginTop="50dp"
+                    android:textSize="15dp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/sample_size_tv"
+                android:text=""
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_margin="20dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="표본 펜 위치"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:layout_margin="20dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/pen_location_ed_1"
+                        android:hint="1"
+                        android:padding="10dp"
+                        android:maxLength="2"
+                        android:inputType="number"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"/>
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/pen_location_ed_2"
+                        android:hint="3"
+                        android:padding="10dp"
+                        android:maxLength="2"
+                        android:inputType="number"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Ex) 1-4, 2-5, 3-6"/>
+                </LinearLayout>
+                <EditText
+                    android:id="@+id/outgenitals_a1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="외음부 분비물이 발현된 개체 두수를 입력하세요"
+                    android:layout_margin="30dp"
+                    android:inputType="number">
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="외음부 분비물 개체 비율(%)"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:layout_margin="20dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:id="@+id/outgenitals_ratio_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" / 100 %"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

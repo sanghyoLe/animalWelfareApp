@@ -1,15 +1,14 @@
 package com.example.animal_project.Freestall.ProtocolTwo;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animal_project.MilkCowViewModel;
 import com.example.animal_project.QuestionTemplateViewModel;
@@ -64,6 +63,7 @@ public class FreestallCalfWindBlock extends Fragment {
                     totalWarmVenTv.setText("송아지 혹한기 설문조사를 완료하세요");
                 } else {
                     double totalWarmVen = viewModel.calculatorTotalWarmVentilationScore(
+                            viewModel.getFarmType(),
                             viewModel.getSummerRestScore(),
                             viewModel.getWinterRestScore(),
                             viewModel.getCalfSummerRestScore(),

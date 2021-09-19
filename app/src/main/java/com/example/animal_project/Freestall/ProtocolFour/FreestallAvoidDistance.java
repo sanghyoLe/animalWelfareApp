@@ -18,7 +18,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.animal_project.BreedBatch.ProtocolFour.BreedAvoidDistanceCowQuestions;
+import com.example.animal_project.Beef.ProtocolFour.AvoidDistanceCowQuestions;
 import com.example.animal_project.MilkCowViewModel;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
@@ -350,7 +350,7 @@ public class FreestallAvoidDistance extends Fragment {
             Toast.makeText(getActivity(),msg,Toast.LENGTH_LONG).show();
         }
         else{
-            Intent intent = new Intent(getActivity(), BreedAvoidDistanceCowQuestions.class);
+            Intent intent = new Intent(getActivity(), AvoidDistanceCowQuestions.class);
             intent.putExtra("pen_number",FinalI+1);
             intent.putExtra("pen_location",String.valueOf(edArr[FinalI].getText()));
             intent.putExtra("cow_count",selectedItemIndex[FinalI]);

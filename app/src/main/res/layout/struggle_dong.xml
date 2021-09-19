@@ -207,46 +207,7 @@
                             layout="@layout/struggle_dong_template"
                             android:visibility="gone"
                             />
-                        <include
-                            android:id="@+id/breed_struggle_dong_question_13"
-                            layout="@layout/struggle_dong_template"
-                            android:visibility="gone"
-                            />
-                        <include
-                            android:id="@+id/breed_struggle_dong_question_14"
-                            layout="@layout/struggle_dong_template"
-                            android:visibility="gone"
-                            />
-                        <include
-                            android:id="@+id/breed_struggle_dong_question_15"
-                            layout="@layout/struggle_dong_template"
-                            android:visibility="gone"
-                            />
-                        <include
-                            android:id="@+id/breed_struggle_dong_question_16"
-                            layout="@layout/struggle_dong_template"
-                            android:visibility="gone"
-                            />
-                        <include
-                            android:id="@+id/breed_struggle_dong_question_17"
-                            layout="@layout/struggle_dong_template"
-                            android:visibility="gone"
-                            />
-                        <include
-                            android:id="@+id/breed_struggle_dong_question_18"
-                            layout="@layout/struggle_dong_template"
-                            android:visibility="gone"
-                            />
-                        <include
-                            android:id="@+id/breed_struggle_dong_question_19"
-                            layout="@layout/struggle_dong_template"
-                            android:visibility="gone"
-                            />
-                        <include
-                            android:id="@+id/breed_struggle_dong_question_20"
-                            layout="@layout/struggle_dong_template"
-                            android:visibility="gone"
-                            />
+
 
                         <LinearLayout
                             android:layout_width="match_parent"

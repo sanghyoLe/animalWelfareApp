@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="연간 평균 분만횟수 대비 지난 12개월 동안의 난산 발생 비율은 얼마나 되는가?"
+                    android:textSize="18dp"
+                    android:layout_margin="30dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/dystocia_count_a1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="연간 평균 분만횟수를 입력하세요"
+                    android:layout_margin="30dp"
+                    android:inputType="number">
+                </EditText>
+                <EditText
+                    android:id="@+id/dystocia_a1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="농장에서 큰 도움이 필요했던 분만 횟수"
+                    android:layout_margin="30dp"
+                    android:inputType="number">
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="난산 개체 비율(%)"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:layout_margin="20dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:id="@+id/dystocia_ratio_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" / 100 %"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

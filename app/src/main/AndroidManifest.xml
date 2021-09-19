@@ -12,14 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".BreedBatch.ProtocolFour.BreedAvoidDistanceCowQuestions"></activity>
-        <activity android:name=".BreedBatch.ProtocolFour.BreedHarmonyDong" />
-        <activity android:name=".BreedBatch.ProtocolFour.BreedStruggleDong" />
-        <activity android:name=".BreedBatch.ProtocolThree.BreedCoughDong" />
-        <activity android:name=".BreedBatch.ProtocolTwo.BreedStrawDong" />
-        <activity android:name=".BreedBatch.ProtocolOne.BreedWaterDongQ3" />
-
+        <activity android:name=".MilkCow.MilkCowStruggleDong"></activity>
+        <activity android:name=".Beef.ProtocolFour.AvoidDistanceCowQuestions" />
+        <activity android:name=".Beef.ProtocolFour.BreedHarmonyDong" />
+        <activity android:name=".Beef.ProtocolFour.BreedStruggleDong" />
+        <activity android:name=".Beef.ProtocolThree.BreedCoughDong" />
+        <activity android:name=".Beef.ProtocolTwo.BreedStrawDong" />
+        <activity android:name=".Beef.ProtocolOne.WaterTimeDong" />
         <activity android:name=".QuestionTemplate" />
         <activity android:name=".WebViewActivity" />
         <activity android:name=".Result_View" />
@@ -31,7 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Freestall.FreestallWaterDongQ3" />
         <activity android:name=".Freestall.FreestallCountDong" />
     </application>

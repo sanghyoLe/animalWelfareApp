@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:stretchColumns="*"
+        android:shrinkColumns="*"
+        >
+        <TableRow>
+            <TextView
+                android:background="@color/colorPrimary"
+                android:id="@+id/dong_count_tv"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="동 순번"
+
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal" />
+        </TableRow>
+        <TableRow
+
+            >
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:background="@color/colorGray"
+                android:text="표본펜 위치"
+                />
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:background="@color/colorGray"
+                android:text="사육 두수"/>
+        </TableRow>
+
+        <TableRow
+
+            >
+
+            <EditText
+                android:id="@+id/pen_location_1_ed"
+                android:layout_weight="0.33"
+                android:gravity="center_horizontal"
+                android:layout_margin="1dp"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number"
+                android:hint="1"
+                />
+            <TextView
+                android:layout_weight="0.33"
+                android:gravity="center_horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:text="-"
+                />
+            <EditText
+                android:id="@+id/pen_location_2_ed"
+                android:layout_weight="0.33"
+                android:gravity="center_horizontal"
+                android:layout_margin="1dp"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number"
+                android:hint="5"
+                />
+            <EditText
+                android:id="@+id/cow_size_ed"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_margin="1dp"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:maxLength="4"
+                android:inputType="number"
+                android:hint="사육 두수"
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:background="@color/colorGray"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="머리 박치기 빈도"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:background="@color/colorGray"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:text="머리박치기 제외한 \n 투쟁행동 빈도"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginBottom="20dp">
+            <EditText
+                android:id="@+id/head_bang_freq_ed"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_margin="1dp"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:maxLength="4"
+                android:inputType="number"
+                android:hint="머리박치기 빈도"
+                />
+            <EditText
+                android:id="@+id/head_bang_except_ed"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_margin="1dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:maxLength="4"
+                android:inputType="number"
+                android:hint="머리박치기 제외한 투쟁행동 빈도"
+                />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

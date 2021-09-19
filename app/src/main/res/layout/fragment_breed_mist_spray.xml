@@ -18,14 +18,14 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/question_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/breed_mist_spray_title"
                 android:lineSpacingExtra="5dp"
-                android:textSize="18dp"
-                android:textStyle="bold"
+                android:text="@string/breed_mist_spray_title"
                 android:textColor="@color/black"
-                />
+                android:textSize="18dp"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,14 +62,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:orientation="vertical">
+
             <TextView
+                android:id="@+id/score_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:text="@string/summer_rest_score_title"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:textStyle="bold" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

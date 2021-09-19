@@ -1,8 +1,5 @@
 package com.example.animal_project;
 
-import android.util.Log;
-import android.widget.EditText;
-
 import androidx.lifecycle.ViewModel;
 
 import java.util.HashMap;
@@ -726,18 +723,11 @@ public class MilkCowViewModel extends ViewModel {
         double avoidDistanceRatio;
         double total = levelOne + levelTwo + levelThree + levelFour;
         double levelTwoRatio = Math.round((levelTwo / total) * 100);
-        Log.d("level_tow_ratio",String.valueOf(levelTwoRatio));
         double levelThreeRatio = Math.round((levelThree / total) * 100);
-        Log.d("level_three_ratio",String.valueOf(levelThreeRatio));
         double levelFourRatio = Math.round((levelFour / total ) * 100);
-        Log.d("level_four_ratio",String.valueOf(levelFourRatio));
-
         avoidDistanceRatio = (3 * levelTwoRatio + (11 * levelThreeRatio)  + (26 * levelFourRatio));
-        Log.d("avoid_distance_ratio_1",String.valueOf(avoidDistanceRatio));
         avoidDistanceRatio = avoidDistanceRatio / 26;
-        Log.d("avoid_distance_ratio_2",String.valueOf(avoidDistanceRatio));
         avoidDistanceRatio = Math.round(avoidDistanceRatio);
-        Log.d("avoid_distance_ratio_3",String.valueOf(avoidDistanceRatio));
         return avoidDistanceRatio;
     }
     public double calculatorProtocolOneScore(double PoorScore, double WaterScore){

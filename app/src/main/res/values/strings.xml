@@ -66,7 +66,9 @@
     <string name="outward_hygiene_title">전체 몸통 부위 면적 중 고상 이물질 분포 25% 초과하고 액상 이물질 분포 50% 초과하는 개체의 비율이 얼마나 되는가?</string>
     <string name="rest_score_title">편안한 휴식 종합 점수</string>
     <string name="limp_title">다리절음을 보이는 개체의 두수가 얼마나 됩니까?</string>
-    <string name="limp_ratio_title">전체 두수 중 다리절음 개체의 비율</string>
+    <string name="limp_ratio_title">다리절음 개체의 비율</string>
+    <string name="critical_limp_title">심각한 다리절음을 보이는 개체의 두수가 얼마나 됩니까?</string>
+    <string name="critical_limp_ratio_title">심각한 다리절음 개체의 비율</string>
     <string name="slight_hair_loss_title">경미한 외피 변형</string>
     <string name="critical_hair_loss_title">심각한 외피 변형</string>
     <string name="hair_loss_score">외피 변형 점수</string>
@@ -192,7 +194,7 @@
     <string name="freestall_list_sub_menu_title_39">39. 제각/탈각 평가 - 3</string>
     <string name="freestall_list_sub_menu_title_40">40. 투쟁(서열) 행동 평가</string>
     <string name="freestall_list_sub_menu_title_41">41. 회피 거리 평가</string>
-=======
+    =======
     <string name="list_sub_menu_title_1"> 여윈 개체 평가</string>
     <string name="list_sub_menu_title_2"> 음수조 수 평가</string>
     <string name="list_sub_menu_title_3"> 음수조 위생 평가</string>
@@ -229,7 +231,7 @@
     <string name="list_sub_menu_title_34"> 투쟁(서열) 행동 평가</string>
     <string name="list_sub_menu_title_35"> 화합 행동 평가</string>
     <string name="list_sub_menu_title_36"> 회피 거리 평가</string>
->>>>>>> master
+    >>>>>>> master
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
