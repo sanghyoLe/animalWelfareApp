@@ -27,10 +27,10 @@ public class HardBirth extends Fragment {
         view = inflater.inflate(R.layout.fragment_hard_birth, container, false);
 
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
-        EditText dystocia_count_a1 = (EditText) view.findViewById(R.id.dystocia_count_a1);
-        EditText dystocia_a1 = (EditText) view.findViewById(R.id.dystocia_a1);
-        TextView dystocia_ratio_1 = (TextView) view.findViewById(R.id.dystocia_ratio_1);
-        dystocia_count_a1.addTextChangedListener(new TextWatcher() {
+        EditText hardBirthYearAvgEd = (EditText) view.findViewById(R.id.hard_birth_year_avg_ed);
+        EditText hardBirthCountEd = (EditText) view.findViewById(R.id.hard_birth_count_ed);
+        TextView hardBirthRatioTv = (TextView) view.findViewById(R.id.hard_birth_ratio_tv);
+        hardBirthYearAvgEd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -43,29 +43,29 @@ public class HardBirth extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (TextUtils.isEmpty(dystocia_count_a1.getText().toString())){
-                    dystocia_ratio_1.setText("값을 입력하세요");
+                if (TextUtils.isEmpty(hardBirthYearAvgEd.getText().toString())){
+                    hardBirthRatioTv.setText("값을 입력하세요");
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setRatio(-1);
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setScore(-1);
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setYearAvgCount(-1);
-                } else if (TextUtils.isEmpty(dystocia_a1.getText().toString())) {
-                    dystocia_ratio_1.setText("값을 입력하세요");
-                } else if(Integer.parseInt(dystocia_a1.getText().toString()) > Integer.parseInt(dystocia_count_a1.getText().toString())) {
+                } else if (TextUtils.isEmpty(hardBirthCountEd.getText().toString())) {
+                    hardBirthRatioTv.setText("값을 입력하세요");
+                } else if(Integer.parseInt(hardBirthCountEd.getText().toString()) > Integer.parseInt(hardBirthYearAvgEd.getText().toString())) {
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setRatio(-1);
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setScore(-1);
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setYearAvgCount(-1);
-                    dystocia_ratio_1.setText("2번 문항은 1번 문항보다 클 수 없습니다");
+                    hardBirthRatioTv.setText("2번 문항은 1번 문항보다 클 수 없습니다");
 
                 } else {
-                    float ratio = Float.parseFloat(dystocia_a1.getText().toString()) / Float.parseFloat(dystocia_count_a1.getText().toString());
+                    float ratio = Float.parseFloat(hardBirthCountEd.getText().toString()) / Float.parseFloat(hardBirthYearAvgEd.getText().toString());
                     ratio = ratio * 100;
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setRatio(ratio);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setYearAvgCount(Integer.parseInt(String.valueOf(dystocia_count_a1.getText())));
-                    dystocia_ratio_1.setText(String.valueOf(ratio));
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setYearAvgCount(Integer.parseInt(String.valueOf(hardBirthYearAvgEd.getText())));
+                    hardBirthRatioTv.setText(String.valueOf(ratio));
                 }
             }
         });
-        dystocia_a1.addTextChangedListener(new TextWatcher() {
+        hardBirthCountEd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -78,26 +78,26 @@ public class HardBirth extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (TextUtils.isEmpty(dystocia_count_a1.getText().toString())){
-                    dystocia_ratio_1.setText("값을 입력하세요");
+                if (TextUtils.isEmpty(hardBirthYearAvgEd.getText().toString())){
+                    hardBirthRatioTv.setText("값을 입력하세요");
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setRatio(-1);
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setScore(-1);
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setNumberOfCow(-1);
-                } else if (TextUtils.isEmpty(dystocia_a1.getText().toString())) {
-                    dystocia_ratio_1.setText("값을 입력하세요");
-                } else if(Integer.parseInt(dystocia_a1.getText().toString()) > Integer.parseInt(dystocia_count_a1.getText().toString())) {
+                } else if (TextUtils.isEmpty(hardBirthCountEd.getText().toString())) {
+                    hardBirthRatioTv.setText("값을 입력하세요");
+                } else if(Integer.parseInt(hardBirthCountEd.getText().toString()) > Integer.parseInt(hardBirthYearAvgEd.getText().toString())) {
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setRatio(-1);
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setScore(-1);
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setNumberOfCow(-1);
-                    dystocia_ratio_1.setText("2번 문항은 1번 문항보다 클 수 없습니다");
+                    hardBirthRatioTv.setText("2번 문항은 1번 문항보다 클 수 없습니다");
                 } else {
-                    float ratio = Float.parseFloat(dystocia_a1.getText().toString()) / Float.parseFloat(dystocia_count_a1.getText().toString());
+                    float ratio = Float.parseFloat(hardBirthCountEd.getText().toString()) / Float.parseFloat(hardBirthYearAvgEd.getText().toString());
                     ratio = ratio * 100;
                     ratio = Math.round(ratio);
                     ratio = (float) viewModel.cutDecimal(ratio);
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setRatio(ratio);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setNumberOfCow(Integer.parseInt(String.valueOf(dystocia_count_a1.getText())));
-                    dystocia_ratio_1.setText(String.valueOf(ratio));
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setNumberOfCow(Integer.parseInt(String.valueOf(hardBirthYearAvgEd.getText())));
+                    hardBirthRatioTv.setText(String.valueOf(ratio));
                 }
             }
         });

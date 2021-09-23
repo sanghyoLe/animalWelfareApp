@@ -58,44 +58,44 @@ import com.example.animal_project.Beef.ProtocolTwo.CalfStraw;
 import com.example.animal_project.Beef.ProtocolTwo.CalfSummerVentilating;
 import com.example.animal_project.Beef.ProtocolTwo.CalfWarm;
 import com.example.animal_project.Beef.ProtocolTwo.CalfWindBlock;
-import com.example.animal_project.Freestall.ProtocolFour.FreestallAvoidDistance;
-import com.example.animal_project.Freestall.ProtocolFour.FreestallStruggle;
-import com.example.animal_project.Freestall.ProtocolOne.FreestallPoor;
-import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ1;
-import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ1_1;
-import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ1_2;
-import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ2;
-import com.example.animal_project.Freestall.ProtocolOne.FreestallWaterQ3;
+import com.example.animal_project.FreeStall.ProtocolFour.FreestallAvoidDistance;
+import com.example.animal_project.FreeStall.ProtocolFour.FreestallStruggle;
+import com.example.animal_project.FreeStall.ProtocolOne.FreestallPoor;
+import com.example.animal_project.FreeStall.ProtocolOne.FreestallWaterQ1;
+import com.example.animal_project.FreeStall.ProtocolOne.FreestallWaterQ1_1;
+import com.example.animal_project.FreeStall.ProtocolOne.FreestallWaterQ1_2;
+import com.example.animal_project.FreeStall.ProtocolOne.FreestallWaterQ2;
+import com.example.animal_project.FreeStall.ProtocolOne.FreestallWaterQ3;
 import com.example.animal_project.MilkCow.UnableStand;
 import com.example.animal_project.MilkCow.MilkInCell;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallCriticalHairloss;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallCriticalLimp;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallDiarrhea;
+import com.example.animal_project.FreeStall.ProtocolThree.FreestallCriticalHairloss;
+import com.example.animal_project.FreeStall.ProtocolThree.FreestallCriticalLimp;
+import com.example.animal_project.FreeStall.ProtocolThree.FreestallDiarrhea;
 import com.example.animal_project.MilkCow.HardBirth;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallFallDead;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallHornQ1;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallHornQ2;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallHornQ3;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallOphthalmic;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallRespiratory;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallRunnyNose;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallSlightHairloss;
-import com.example.animal_project.Freestall.ProtocolThree.FreestallSlightLimp;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallAreaOutCollision;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfMistSpray;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfShade;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfStraw;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfSummerVentilating;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfWarm;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallCalfWindBlock;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallCount;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallMistSpray;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallShade;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallSitCollision;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallSitTime;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallSummerVentilating;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallWindBlock;
-import com.example.animal_project.Freestall.ProtocolTwo.FreestallWinterVentilating;
+import com.example.animal_project.FreeStall.ProtocolThree.FreestallFallDead;
+import com.example.animal_project.FreeStall.ProtocolThree.FreestallHornQ1;
+import com.example.animal_project.FreeStall.ProtocolThree.FreestallHornQ2;
+import com.example.animal_project.FreeStall.ProtocolThree.FreestallHornQ3;
+import com.example.animal_project.FreeStall.ProtocolThree.FreestallOphthalmic;
+import com.example.animal_project.FreeStall.ProtocolThree.FreestallRespiratory;
+import com.example.animal_project.FreeStall.ProtocolThree.FreestallRunnyNose;
+import com.example.animal_project.FreeStall.ProtocolThree.FreestallSlightHairloss;
+import com.example.animal_project.FreeStall.ProtocolThree.FreestallSlightLimp;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallAreaOutCollision;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallCalfMistSpray;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallCalfShade;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallCalfStraw;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallCalfSummerVentilating;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallCalfWarm;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallCalfWindBlock;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallCount;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallMistSpray;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallShade;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallSitCollision;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallSitTime;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallSummerVentilating;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallWindBlock;
+import com.example.animal_project.FreeStall.ProtocolTwo.FreestallWinterVentilating;
 import com.example.animal_project.MilkCow.AppearanceQ1;
 import com.example.animal_project.MilkCow.AppearanceQ2;
 import com.example.animal_project.MilkCow.AppearanceQ3;
@@ -536,7 +536,59 @@ public class QuestionTemplate extends AppCompatActivity
                 breed_list_btn_30, breed_list_btn_31,breed_list_btn_32,breed_list_btn_33,breed_list_btn_34,breed_list_btn_35,
                 breed_list_btn_36};
 
-        ImageButton freestall_list_btn_1 = findViewById(R.id.freestall_question_list_btn_1);
+        View milkCowListSubMenuViewTwo = findViewById(R.id.milk_cow_list_sub_menu_2);
+        View milkCowListSubMenuViewThree = findViewById(R.id.milk_cow_list_sub_menu_3);
+        View milkCowListSubMenuViewFour = findViewById(R.id.milk_cow_list_sub_menu_4);
+        ImageButton milk_cow_list_btn_5 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_5);
+        ImageButton milk_cow_list_btn_6 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_6);
+        ImageButton milk_cow_list_btn_7 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_7);
+        ImageButton milk_cow_list_btn_8 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_8);
+        ImageButton milk_cow_list_btn_9 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_9);
+        ImageButton milk_cow_list_btn_10 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_10);
+        ImageButton milk_cow_list_btn_11 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_11);
+        ImageButton milk_cow_list_btn_12 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_12);
+        ImageButton milk_cow_list_btn_13 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_13);
+        ImageButton milk_cow_list_btn_14 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_14);
+        ImageButton milk_cow_list_btn_15 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_15);
+        ImageButton milk_cow_list_btn_16 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_16);
+        ImageButton milk_cow_list_btn_17 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_17);
+        ImageButton milk_cow_list_btn_18 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_18);
+        ImageButton milk_cow_list_btn_19 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_19);
+
+        ImageButton milk_cow_list_btn_20 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_20);
+        ImageButton milk_cow_list_btn_21 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_21);
+        ImageButton milk_cow_list_btn_22 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_22);
+        ImageButton milk_cow_list_btn_23 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_23);
+        ImageButton milk_cow_list_btn_24 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_24);
+        ImageButton milk_cow_list_btn_25 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_25);
+        ImageButton milk_cow_list_btn_26 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_26);
+        ImageButton milk_cow_list_btn_27 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_27);
+        ImageButton milk_cow_list_btn_28 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_28);
+        ImageButton milk_cow_list_btn_29 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_29);
+        ImageButton milk_cow_list_btn_30 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_30);
+        ImageButton milk_cow_list_btn_31 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_31);
+        ImageButton milk_cow_list_btn_32 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_32);
+        ImageButton milk_cow_list_btn_33 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_33);
+        ImageButton milk_cow_list_btn_34 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_34);
+        ImageButton milk_cow_list_btn_35 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_35);
+        ImageButton milk_cow_list_btn_36 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_36);
+        ImageButton milk_cow_list_btn_37 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_37);
+        ImageButton milk_cow_list_btn_38 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_38);
+        ImageButton milk_cow_list_btn_39 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_39);
+
+        ImageButton milk_cow_list_btn_40 = milkCowListSubMenuViewFour.findViewById(R.id.question_list_btn_40);
+        ImageButton milk_cow_list_btn_41 = milkCowListSubMenuViewFour.findViewById(R.id.question_list_btn_41);
+
+        ImageButton[] milk_cow_list_btn_arr = {breed_list_btn_1,breed_list_btn_2,breed_list_btn_3,breed_list_btn_4,milk_cow_list_btn_5,
+                milk_cow_list_btn_6,milk_cow_list_btn_7,milk_cow_list_btn_8,milk_cow_list_btn_9,milk_cow_list_btn_10,
+                milk_cow_list_btn_11,milk_cow_list_btn_12,milk_cow_list_btn_13,milk_cow_list_btn_14,milk_cow_list_btn_15
+        ,milk_cow_list_btn_16,milk_cow_list_btn_17,milk_cow_list_btn_18,milk_cow_list_btn_19,milk_cow_list_btn_20,milk_cow_list_btn_21,
+                milk_cow_list_btn_22,milk_cow_list_btn_23,milk_cow_list_btn_24,milk_cow_list_btn_25,milk_cow_list_btn_26,milk_cow_list_btn_27,
+                milk_cow_list_btn_28,milk_cow_list_btn_29,milk_cow_list_btn_30,milk_cow_list_btn_31,milk_cow_list_btn_32,milk_cow_list_btn_33,
+                milk_cow_list_btn_34,milk_cow_list_btn_35,milk_cow_list_btn_36,milk_cow_list_btn_37,milk_cow_list_btn_38,milk_cow_list_btn_39,
+                milk_cow_list_btn_40, milk_cow_list_btn_41};
+
+/*        ImageButton freestall_list_btn_1 = findViewById(R.id.freestall_question_list_btn_1);
         ImageButton freestall_list_btn_2 = findViewById(R.id.freestall_question_list_btn_2);
         ImageButton freestall_list_btn_3 = findViewById(R.id.freestall_question_list_btn_3);
         ImageButton freestall_list_btn_4 = findViewById(R.id.freestall_question_list_btn_4);
@@ -587,7 +639,7 @@ public class QuestionTemplate extends AppCompatActivity
                 freestall_list_btn_26,freestall_list_btn_27,freestall_list_btn_28,freestall_list_btn_29,freestall_list_btn_30,
                 freestall_list_btn_31,freestall_list_btn_32,freestall_list_btn_33,freestall_list_btn_34,freestall_list_btn_35,
                 freestall_list_btn_36,freestall_list_btn_37,freestall_list_btn_38,freestall_list_btn_39,freestall_list_btn_40,
-                freestall_list_btn_41};
+                freestall_list_btn_41};*/
 
 
         transaction = fragmentManager.beginTransaction();
@@ -600,23 +652,17 @@ public class QuestionTemplate extends AppCompatActivity
                     drawerHandler();
                     changeCheckImageFunc();
                 }
-                else if(farmType == 5) {
+                else if(farmType == 4 || farmType == 5) {
                     drawerHandler();
-                    changeCheckImageFuncFreestall();
+                    changeCheckImageMilkCowFunc();
                 }
             }
         });
         list_menu_btn_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(farmType == 1 || farmType == 2 || farmType == 3) {
                     View view = findViewById(R.id.list_sub_menu_1);
                     listMenuBtnHandler(list_menu_btn_1,view);
-                }
-                else if(farmType == 5) {
-                    View view = findViewById(R.id.freestall_list_sub_menu_1);
-                    listMenuBtnHandler(list_menu_btn_1,view);
-                }
             }
         });
         list_menu_btn_2.setOnClickListener(new View.OnClickListener() {
@@ -630,6 +676,9 @@ public class QuestionTemplate extends AppCompatActivity
                 else if (farmType == 2 || farmType == 3) {
                     View view = findViewById(R.id.list_sub_menu_2);
                     listMenuBtnHandler(list_menu_btn_2, view);
+                } else if(farmType == 4){
+                    View milkCowView = findViewById(R.id.milk_cow_list_sub_menu_2);
+                    listMenuBtnHandler(list_menu_btn_2,milkCowView);
                 } else if (farmType == 5) {
                     View view = findViewById(R.id.freestall_list_sub_menu_2);
                     listMenuBtnHandler(list_menu_btn_2, view);
@@ -641,6 +690,9 @@ public class QuestionTemplate extends AppCompatActivity
             public void onClick(View v) {
                 if(farmType == 1 || farmType == 2 || farmType == 3) {
                     View view = findViewById(R.id.list_sub_menu_3);
+                    listMenuBtnHandler(list_menu_btn_3,view);
+                }else if(farmType == 4){
+                    View view = findViewById(R.id.milk_cow_list_sub_menu_3);
                     listMenuBtnHandler(list_menu_btn_3,view);
                 }
                 else if(farmType == 5) {
@@ -654,6 +706,10 @@ public class QuestionTemplate extends AppCompatActivity
             public void onClick(View v) {
                 if(farmType == 1 || farmType == 2 || farmType == 3) {
                     View view = findViewById(R.id.list_sub_menu_4);
+                    listMenuBtnHandler(list_menu_btn_4,view);
+                }
+                else if(farmType == 4 ){
+                    View view =findViewById(R.id.milk_cow_list_sub_menu_4);
                     listMenuBtnHandler(list_menu_btn_4,view);
                 }
                 else if(farmType == 5) {
@@ -679,6 +735,7 @@ public class QuestionTemplate extends AppCompatActivity
         else if (farmType == 4) {
             transaction.replace(R.id.fragment_paper, breed_poor).commitAllowingStateLoss();
             total_page.setText(" / " + milk_cow_frag_arr.length);
+            count = listBtnHandler(milk_cow_list_btn_arr,milk_cow_frag_arr);
 
         }
         else if (farmType == 5) {
@@ -860,219 +917,218 @@ public class QuestionTemplate extends AppCompatActivity
         list_btn.setImageResource(R.drawable.outline_reorder_24);
     }
 
-    private void changeCheckImageFunc (){
+     private void changeCheckImageFunc (){
 
-        ImageView check_total_1 = findViewById(R.id.check_total_1);
-        ImageView check_total_2 = findViewById(R.id.check_total_2);
-        ImageView check_total_3 = findViewById(R.id.check_total_3);
-        ImageView check_total_4 = findViewById(R.id.check_total_4);
-        ImageView check_sub_1 = findViewById(R.id.check_sub_1);
-        ImageView check_sub_2 = findViewById(R.id.check_sub_2);
-        ImageView check_sub_3 = findViewById(R.id.check_sub_3);
-        ImageView check_sub_4 = findViewById(R.id.check_sub_4);
-        ImageView check_sub_5 = findViewById(R.id.check_sub_5);
-        ImageView check_sub_6 = findViewById(R.id.check_sub_6);
-        ImageView check_sub_7 = findViewById(R.id.check_sub_7);
-        ImageView check_sub_8 = findViewById(R.id.check_sub_8);
-        ImageView check_sub_9 = findViewById(R.id.check_sub_9);
-        ImageView check_sub_10 = findViewById(R.id.check_sub_10);
-        ImageView check_sub_11 = findViewById(R.id.check_sub_11);
-        ImageView check_sub_12 = findViewById(R.id.check_sub_12);
-        ImageView check_sub_13 = findViewById(R.id.check_sub_13);
-        ImageView check_sub_14 = findViewById(R.id.check_sub_14);
-        ImageView check_sub_15 = findViewById(R.id.check_sub_15);
-        ImageView check_sub_16 = findViewById(R.id.check_sub_16);
-        ImageView check_sub_17 = findViewById(R.id.check_sub_17);
-        ImageView check_sub_18 = findViewById(R.id.check_sub_18);
-        ImageView check_sub_19 = findViewById(R.id.check_sub_19);
-        ImageView check_sub_20 = findViewById(R.id.check_sub_20);
-        ImageView check_sub_21 = findViewById(R.id.check_sub_21);
-        ImageView check_sub_22 = findViewById(R.id.check_sub_22);
-        ImageView check_sub_23 = findViewById(R.id.check_sub_23);
-        ImageView check_sub_24 = findViewById(R.id.check_sub_24);
-        ImageView check_sub_25 = findViewById(R.id.check_sub_25);
-        ImageView check_sub_26 = findViewById(R.id.check_sub_26);
-        ImageView check_sub_27 = findViewById(R.id.check_sub_27);
-        ImageView check_sub_28 = findViewById(R.id.check_sub_28);
-        ImageView check_sub_29 = findViewById(R.id.check_sub_29);
-        ImageView check_sub_30 = findViewById(R.id.check_sub_30);
-        ImageView check_sub_31 = findViewById(R.id.check_sub_31);
-        ImageView check_sub_32 = findViewById(R.id.check_sub_32);
-        ImageView check_sub_33 = findViewById(R.id.check_sub_33);
-        ImageView check_sub_34 = findViewById(R.id.check_sub_34);
-        ImageView check_sub_35 = findViewById(R.id.check_sub_35);
-        ImageView check_sub_36 = findViewById(R.id.check_sub_36);
-        if(farmType == 1){
-            View fattenListMenuTwo = findViewById(R.id.fatten_list_sub_menu_2);
-            ImageView fatten_check_sub_5 = fattenListMenuTwo.findViewById(R.id.check_sub_5);
+         ImageView check_total_1 = findViewById(R.id.check_total_1);
+         ImageView check_total_2 = findViewById(R.id.check_total_2);
+         ImageView check_total_3 = findViewById(R.id.check_total_3);
+         ImageView check_total_4 = findViewById(R.id.check_total_4);
+         ImageView check_sub_1 = findViewById(R.id.check_sub_1);
+         ImageView check_sub_2 = findViewById(R.id.check_sub_2);
+         ImageView check_sub_3 = findViewById(R.id.check_sub_3);
+         ImageView check_sub_4 = findViewById(R.id.check_sub_4);
+         ImageView check_sub_5 = findViewById(R.id.check_sub_5);
+         ImageView check_sub_6 = findViewById(R.id.check_sub_6);
+         ImageView check_sub_7 = findViewById(R.id.check_sub_7);
+         ImageView check_sub_8 = findViewById(R.id.check_sub_8);
+         ImageView check_sub_9 = findViewById(R.id.check_sub_9);
+         ImageView check_sub_10 = findViewById(R.id.check_sub_10);
+         ImageView check_sub_11 = findViewById(R.id.check_sub_11);
+         ImageView check_sub_12 = findViewById(R.id.check_sub_12);
+         ImageView check_sub_13 = findViewById(R.id.check_sub_13);
+         ImageView check_sub_14 = findViewById(R.id.check_sub_14);
+         ImageView check_sub_15 = findViewById(R.id.check_sub_15);
+         ImageView check_sub_16 = findViewById(R.id.check_sub_16);
+         ImageView check_sub_17 = findViewById(R.id.check_sub_17);
+         ImageView check_sub_18 = findViewById(R.id.check_sub_18);
+         ImageView check_sub_19 = findViewById(R.id.check_sub_19);
+         ImageView check_sub_20 = findViewById(R.id.check_sub_20);
+         ImageView check_sub_21 = findViewById(R.id.check_sub_21);
+         ImageView check_sub_22 = findViewById(R.id.check_sub_22);
+         ImageView check_sub_23 = findViewById(R.id.check_sub_23);
+         ImageView check_sub_24 = findViewById(R.id.check_sub_24);
+         ImageView check_sub_25 = findViewById(R.id.check_sub_25);
+         ImageView check_sub_26 = findViewById(R.id.check_sub_26);
+         ImageView check_sub_27 = findViewById(R.id.check_sub_27);
+         ImageView check_sub_28 = findViewById(R.id.check_sub_28);
+         ImageView check_sub_29 = findViewById(R.id.check_sub_29);
+         ImageView check_sub_30 = findViewById(R.id.check_sub_30);
+         ImageView check_sub_31 = findViewById(R.id.check_sub_31);
+         ImageView check_sub_32 = findViewById(R.id.check_sub_32);
+         ImageView check_sub_33 = findViewById(R.id.check_sub_33);
+         ImageView check_sub_34 = findViewById(R.id.check_sub_34);
+         ImageView check_sub_35 = findViewById(R.id.check_sub_35);
+         ImageView check_sub_36 = findViewById(R.id.check_sub_36);
+         if(farmType == 1){
+             View fattenListMenuTwo = findViewById(R.id.fatten_list_sub_menu_2);
+             ImageView fatten_check_sub_5 = fattenListMenuTwo.findViewById(R.id.check_sub_5);
 
-            if(((QuestionTemplateViewModel.StrawQuestion)viewModel.StrawQuestion).getStrawAvgScore() != -1) {
-                changeCheckImage(fatten_check_sub_5);
-            }
-            ImageView fatten_check_sub_6 = fattenListMenuTwo.findViewById(R.id.check_sub_6);
-            if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward).getNumberOfCow() != -1) {
-                changeCheckImage(fatten_check_sub_6);
-            }
-            ImageView fatten_check_sub_7 = fattenListMenuTwo.findViewById(R.id.check_sub_7);
-            ImageView fatten_check_sub_8 = fattenListMenuTwo.findViewById(R.id.check_sub_8);
-            ImageView fatten_check_sub_9 = fattenListMenuTwo.findViewById(R.id.check_sub_9);
-            ImageView fatten_check_sub_10 = fattenListMenuTwo.findViewById(R.id.check_sub_10);
-            ImageView fatten_check_sub_11 = fattenListMenuTwo.findViewById(R.id.check_sub_11);
-            if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem() != -1){
-                changeCheckImage(fatten_check_sub_7);
-            }
-            if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getSelectedItem() != -1){
-                changeCheckImage(fatten_check_sub_8);
-            }
-            if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).getSelectedItem() != -1){
-                changeCheckImage(fatten_check_sub_9);
-            }
-            if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWindBlock).getSelectedItem() != -1){
-                changeCheckImage(fatten_check_sub_10);
-            }
-            if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWinterVentilating).getSelectedItem() != -1){
-                changeCheckImage(fatten_check_sub_11);
-            }
+             if(((QuestionTemplateViewModel.StrawQuestion)viewModel.StrawQuestion).getStrawAvgScore() != -1) {
+                 changeCheckImage(fatten_check_sub_5);
+             }
+             ImageView fatten_check_sub_6 = fattenListMenuTwo.findViewById(R.id.check_sub_6);
+             if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward).getNumberOfCow() != -1) {
+                 changeCheckImage(fatten_check_sub_6);
+             }
+             ImageView fatten_check_sub_7 = fattenListMenuTwo.findViewById(R.id.check_sub_7);
+             ImageView fatten_check_sub_8 = fattenListMenuTwo.findViewById(R.id.check_sub_8);
+             ImageView fatten_check_sub_9 = fattenListMenuTwo.findViewById(R.id.check_sub_9);
+             ImageView fatten_check_sub_10 = fattenListMenuTwo.findViewById(R.id.check_sub_10);
+             ImageView fatten_check_sub_11 = fattenListMenuTwo.findViewById(R.id.check_sub_11);
+             if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem() != -1){
+                 changeCheckImage(fatten_check_sub_7);
+             }
+             if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getSelectedItem() != -1){
+                 changeCheckImage(fatten_check_sub_8);
+             }
+             if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).getSelectedItem() != -1){
+                 changeCheckImage(fatten_check_sub_9);
+             }
+             if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWindBlock).getSelectedItem() != -1){
+                 changeCheckImage(fatten_check_sub_10);
+             }
+             if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWinterVentilating).getSelectedItem() != -1){
+                 changeCheckImage(fatten_check_sub_11);
+             }
 
-        }
-        // 라디오 그룹들
-        ImageView[] radioImageViewArr = {
-                check_sub_2,check_sub_3,check_sub_7,check_sub_8,check_sub_9,
-                check_sub_10,check_sub_11,check_sub_12,check_sub_13,check_sub_14,
-                check_sub_15,check_sub_16,check_sub_17, check_sub_28,check_sub_29,
-                check_sub_30,check_sub_31,check_sub_32,check_sub_33};
+         }
+         // 라디오 그룹들
+         ImageView[] radioImageViewArr = {
+                 check_sub_2,check_sub_3,check_sub_7,check_sub_8,check_sub_9,
+                 check_sub_10,check_sub_11,check_sub_12,check_sub_13,check_sub_14,
+                 check_sub_15,check_sub_16,check_sub_17, check_sub_28,check_sub_29,
+                 check_sub_30,check_sub_31,check_sub_32,check_sub_33};
 
-        ImageView[] penImageViewArr = {
-                check_sub_6,check_sub_19,check_sub_20,check_sub_22,check_sub_23,
-                check_sub_24, check_sub_25,check_sub_26,check_sub_27
-        };
-        for(int i = 0 ; i < radioImageViewArr.length ; i ++){
-            if(((QuestionTemplateViewModel.RadioQuestion)viewModel.radioQuestionArr[i]).getSelectedItem() != -1){
-                changeCheckImage(radioImageViewArr[i]);
-            }
-        }
-        for(int i = 0 ;i < penImageViewArr.length ; i++){
-            if(((QuestionTemplateViewModel.PenQuestion)viewModel.penQuestionArr[i]).getNumberOfCow() != -1){
-                changeCheckImage(penImageViewArr[i]);
-            }
-        }
-        
-        // 프로토콜 1
-        changeEditTextCheckImage(check_sub_1,viewModel.getPoorScore());
-        if(viewModel.getWaterTimeQuestion().getMaxWaterTimeScore() != -1) changeCheckImage(check_sub_4);
-        if(viewModel.getProtocolOneScore() != -1)changeCheckImage(check_total_1);
-        // 프로토콜 2
-        if(viewModel.getStrawScore() != -1) changeCheckImage(check_sub_5);
-        if(viewModel.getProtocolTwoScore() != -1) changeCheckImage(check_total_2);
-        //프로토콜 3
-        if(((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getNumberOfCow() != -1) changeCheckImage(check_sub_18);
-        if(viewModel.getCoughQuestion().getCoughPerOneAvg() != -1) changeCheckImage(check_sub_21);
-        if(viewModel.getProtocolThreeScore() != -1) changeCheckImage(check_total_3);
-        //프로토콜 4
-        if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg() != -1) changeCheckImage(check_sub_34);
-        if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg() != -1)changeCheckImage(check_sub_35);
-        if(viewModel.getAvoidDistanceScore() != -1) changeCheckImage(check_sub_36);
-        if(viewModel.getProtocolFourScore() != -1)changeCheckImage(check_total_4);
-    }
-    private void changeCheckImageFuncFreestall (){
-        ImageView check_total_1 = findViewById(R.id.check_total_1);
-        ImageView check_total_2 = findViewById(R.id.check_total_2);
-        ImageView check_total_3 = findViewById(R.id.check_total_3);
-        ImageView check_total_4 = findViewById(R.id.check_total_4);
-        ImageView check_sub_1 = findViewById(R.id.freestall_check_sub_1);
-        ImageView check_sub_2 = findViewById(R.id.freestall_check_sub_2);
-        ImageView check_sub_3 = findViewById(R.id.freestall_check_sub_3);
-        ImageView check_sub_4 = findViewById(R.id.freestall_check_sub_4);
-        ImageView check_sub_5 = findViewById(R.id.freestall_check_sub_5);
-        ImageView check_sub_6 = findViewById(R.id.freestall_check_sub_6);
-        ImageView check_sub_7 = findViewById(R.id.freestall_check_sub_7);
-        ImageView check_sub_8 = findViewById(R.id.freestall_check_sub_8);
-        ImageView check_sub_9 = findViewById(R.id.freestall_check_sub_9);
-        ImageView check_sub_10 = findViewById(R.id.freestall_check_sub_10);
-        ImageView check_sub_11 = findViewById(R.id.freestall_check_sub_11);
-        ImageView check_sub_12 = findViewById(R.id.freestall_check_sub_12);
-        ImageView check_sub_13 = findViewById(R.id.freestall_check_sub_13);
-        ImageView check_sub_14 = findViewById(R.id.freestall_check_sub_14);
-        ImageView check_sub_15 = findViewById(R.id.freestall_check_sub_15);
-        ImageView check_sub_16 = findViewById(R.id.freestall_check_sub_16);
-        ImageView check_sub_17 = findViewById(R.id.freestall_check_sub_17);
-        ImageView check_sub_18 = findViewById(R.id.freestall_check_sub_18);
-        ImageView check_sub_19 = findViewById(R.id.freestall_check_sub_19);
-        ImageView check_sub_20 = findViewById(R.id.freestall_check_sub_20);
-        ImageView check_sub_21 = findViewById(R.id.freestall_check_sub_21);
-        ImageView check_sub_22 = findViewById(R.id.freestall_check_sub_22);
-        ImageView check_sub_23 = findViewById(R.id.freestall_check_sub_23);
-        ImageView check_sub_24 = findViewById(R.id.freestall_check_sub_24);
-        ImageView check_sub_25 = findViewById(R.id.freestall_check_sub_25);
-        ImageView check_sub_26 = findViewById(R.id.freestall_check_sub_26);
-        ImageView check_sub_27 = findViewById(R.id.freestall_check_sub_27);
-        ImageView check_sub_28 = findViewById(R.id.freestall_check_sub_28);
-        ImageView check_sub_29 = findViewById(R.id.freestall_check_sub_29);
-        ImageView check_sub_30 = findViewById(R.id.freestall_check_sub_30);
-        ImageView check_sub_31 = findViewById(R.id.freestall_check_sub_31);
-        ImageView check_sub_32 = findViewById(R.id.freestall_check_sub_32);
-        ImageView check_sub_33 = findViewById(R.id.freestall_check_sub_33);
-        ImageView check_sub_34 = findViewById(R.id.freestall_check_sub_34);
-        ImageView check_sub_35 = findViewById(R.id.freestall_check_sub_35);
-        ImageView check_sub_36 = findViewById(R.id.freestall_check_sub_36);
-        ImageView check_sub_37 = findViewById(R.id.freestall_check_sub_37);
-        ImageView check_sub_38 = findViewById(R.id.freestall_check_sub_38);
-        ImageView check_sub_39 = findViewById(R.id.freestall_check_sub_39);
-        ImageView check_sub_40 = findViewById(R.id.freestall_check_sub_40);
-        ImageView check_sub_41 = findViewById(R.id.freestall_check_sub_41);
+         ImageView[] penImageViewArr = {
+                 check_sub_6,check_sub_19,check_sub_20,check_sub_22,check_sub_23,
+                 check_sub_24, check_sub_25,check_sub_26,check_sub_27
+         };
+         for(int i = 0 ; i < radioImageViewArr.length ; i ++){
+             if(((QuestionTemplateViewModel.RadioQuestion)viewModel.radioQuestionArr[i]).getSelectedItem() != -1){
+                 changeCheckImage(radioImageViewArr[i]);
+             }
+         }
+         for(int i = 0 ;i < penImageViewArr.length ; i++){
+             if(((QuestionTemplateViewModel.PenQuestion)viewModel.penQuestionArr[i]).getNumberOfCow() != -1){
+                 changeCheckImage(penImageViewArr[i]);
+             }
+         }
 
+         // 프로토콜 1
+         changeEditTextCheckImage(check_sub_1, (int) ((QuestionTemplateViewModel.Question)viewModel.BreedPoor).getScore());
+         if(viewModel.getWaterTimeQuestion().getMaxWaterTimeScore() != -1) changeCheckImage(check_sub_4);
+         if(viewModel.getProtocolOneScore() != -1)changeCheckImage(check_total_1);
+         // 프로토콜 2
+         if(viewModel.getStrawScore() != -1) changeCheckImage(check_sub_5);
+         if(viewModel.getProtocolTwoScore() != -1) changeCheckImage(check_total_2);
+         //프로토콜 3
+         if(((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getNumberOfCow() != -1) changeCheckImage(check_sub_18);
+         if(viewModel.getCoughQuestion().getCoughPerOneAvg() != -1) changeCheckImage(check_sub_21);
+         if(viewModel.getProtocolThreeScore() != -1) changeCheckImage(check_total_3);
+         //프로토콜 4
+         if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg() != -1) changeCheckImage(check_sub_34);
+         if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg() != -1)changeCheckImage(check_sub_35);
+         if(viewModel.getAvoidDistanceScore() != -1) changeCheckImage(check_sub_36);
+         if(viewModel.getProtocolFourScore() != -1)changeCheckImage(check_total_4);
+     }
+     private void changeCheckImageMilkCowFunc (){
+         View milkCowListSubMenuViewTwo = findViewById(R.id.milk_cow_list_sub_menu_2);
+         View milkCowListSubMenuViewThree = findViewById(R.id.milk_cow_list_sub_menu_3);
+         View milkCowListSubMenuViewFour = findViewById(R.id.milk_cow_list_sub_menu_4);
+         ImageView check_total_1 = findViewById(R.id.check_total_1);
+         ImageView check_total_2 = findViewById(R.id.check_total_2);
+         ImageView check_total_3 = findViewById(R.id.check_total_3);
+         ImageView check_total_4 = findViewById(R.id.check_total_4);
+         ImageView check_sub_1 = findViewById(R.id.check_sub_1);
+         ImageView check_sub_2 = findViewById(R.id.check_sub_2);
+         ImageView check_sub_3 = findViewById(R.id.check_sub_3);
+         ImageView check_sub_4 = findViewById(R.id.check_sub_4);
+         ImageView check_sub_5 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_5);
+         ImageView check_sub_6 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_6);
+         ImageView check_sub_7 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_7);
+         ImageView check_sub_8 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_8);
+         ImageView check_sub_9 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_9);
+         ImageView check_sub_10 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_10);
+         ImageView check_sub_11 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_11);
+         ImageView check_sub_12 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_12);
+         ImageView check_sub_13 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_13);
+         ImageView check_sub_14 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_14);
+         ImageView check_sub_15 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_15);
+         ImageView check_sub_16 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_16);
+         ImageView check_sub_17 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_17);
+         ImageView check_sub_18 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_18);
+         ImageView check_sub_19 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_19);
+         ImageView check_sub_20 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_20);
+         ImageView check_sub_21 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_21);
+         ImageView check_sub_22 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_22);
+         ImageView check_sub_23 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_23);
+         ImageView check_sub_24 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_24);
+         ImageView check_sub_25 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_25);
+         ImageView check_sub_26 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_26);
+         ImageView check_sub_27 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_27);
+         ImageView check_sub_28 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_28);
+         ImageView check_sub_29 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_29);
+         ImageView check_sub_30 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_30);
+         ImageView check_sub_31 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_31);
+         ImageView check_sub_32 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_32);
+         ImageView check_sub_33 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_33);
+         ImageView check_sub_34 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_34);
+         ImageView check_sub_35 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_35);
+         ImageView check_sub_36 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_36);
+         ImageView check_sub_37 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_37);
+         ImageView check_sub_38 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_38);
+         ImageView check_sub_39 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_39);
+         ImageView check_sub_40 = milkCowListSubMenuViewFour.findViewById(R.id.check_sub_40);
+         ImageView check_sub_41 = milkCowListSubMenuViewFour.findViewById(R.id.check_sub_41);
 
-        // 프로토콜 1
-        changeEditTextCheckImage(check_sub_1,viewModel.getPoorScore());
-        if(viewModel.getWaterTankNum() != -1) changeCheckImage(check_sub_2);
-        if(viewModel.getWaterTankClean() != -1) changeCheckImage(check_sub_3);
-        if(viewModel.getWaterDrink() != -1) changeCheckImage(check_sub_4);
-        if(viewModel.getProtocolOneScore() != -1)changeCheckImage(check_total_1);
+         // 라디오 그룹들
+         ImageView[] radioImageViewArr = {
+                 check_sub_2,check_sub_3,check_sub_9,
+                 check_sub_10,check_sub_11,check_sub_12,check_sub_13,check_sub_14,
+                 check_sub_15,check_sub_16,check_sub_17,check_sub_18,check_sub_19,
+         check_sub_34,check_sub_35,check_sub_36,check_sub_37,check_sub_38,check_sub_39};
 
-        // 프로토콜 2
-        //5프리스톨 수
-        if(viewModelMilk.getAreaOutCollision() != -1) changeCheckImage(check_sub_7);
-        if(viewModelMilk.getAppearanceQ1Score() != -1) changeCheckImage(check_sub_9);
-        if(viewModelMilk.getAppearanceQ2Score() != -1) changeCheckImage(check_sub_10);
-        if(viewModelMilk.getAppearanceQ3Score() != -1) changeCheckImage(check_sub_11);
-        if(viewModel.getShadeScore() != -1) changeCheckImage(check_sub_12);
-        if(viewModel.getSummerVentilatingScore() != -1) changeCheckImage(check_sub_13);
-        if(viewModel.getMistSprayScore() != -1) changeCheckImage(check_sub_14);
-        if(viewModel.getWindBlockScore() != -1) changeCheckImage(check_sub_15);
-        if(viewModel.getWinterVentilatingScore() != -1) changeCheckImage(check_sub_16);
-        if(viewModel.getCalfShadeScore() != -1) changeCheckImage(check_sub_17);
-        if(viewModel.getCalfSummerVentilatingScore() != -1) changeCheckImage(check_sub_18);
-        if(viewModel.getCalfMistSprayScore() != -1) changeCheckImage(check_sub_19);
-        if(viewModel.getCalfStrawScore() != -1) changeCheckImage(check_sub_20);
-        if(viewModel.getCalfWarmScore() != -1) changeCheckImage(check_sub_21);
-        if(viewModel.getCalfWindBlockScore() != -1) changeCheckImage(check_sub_22);
-        if(viewModel.getProtocolTwoScore() != -1) changeCheckImage(check_total_2);
+         ImageView[] penImageViewArr = {
+                 check_sub_22,check_sub_25,check_sub_26,check_sub_27,check_sub_28,
+                 check_sub_29,check_sub_30,check_sub_31,
 
-        //프로토콜 3
-        changeEditTextCheckImage(check_sub_23,(int)viewModelMilk.getSlightHairLoss());
-        changeEditTextCheckImage(check_sub_24,(int)viewModelMilk.getCriticalHairLoss());
-        changeEditTextCheckImage(check_sub_25,(int)viewModelMilk.getSlightHairLoss());
-        changeEditTextCheckImage(check_sub_26,(int)viewModelMilk.getCriticalHairLoss());
-        if(viewModel.getCough() != -1) changeCheckImage(check_sub_27);
-        changeEditTextCheckImage(check_sub_28,(int)viewModelMilk.getRunnyNoseRatio());
-        changeEditTextCheckImage(check_sub_29,(int)viewModelMilk.getOphthalmicRatio());
-        changeEditTextCheckImage(check_sub_30,(int)viewModelMilk.getRespiratoryRatio());
-        changeEditTextCheckImage(check_sub_31,(int)viewModelMilk.getDiarrheaRatio());
-        changeEditTextCheckImage(check_sub_32,(int)viewModelMilk.getOutGenitalsRatio());
-        changeEditTextCheckImage(check_sub_33,(int)viewModelMilk.getBreastRatio());
-        changeEditTextCheckImage(check_sub_34,(int)viewModelMilk.getFallDeadRatio());
-        changeEditTextCheckImage(check_sub_35,(int)viewModelMilk.getDystociaRatio());
-        changeEditTextCheckImage(check_sub_36,(int)viewModelMilk.getAstasiaRatio());
-        if(viewModel.getHornRemoval() != -1) changeCheckImage(check_sub_28);
-        if(viewModel.getAnesthesia() != -1) changeCheckImage(check_sub_29);
-        if(viewModel.getPainkiller() != -1) changeCheckImage(check_sub_30);
-        if(viewModel.getProtocolThreeScore() != -1) changeCheckImage(check_total_3);
+         };
+         for(int i = 0 ; i < radioImageViewArr.length ; i ++){
+             if(((QuestionTemplateViewModel.RadioQuestion)viewModel.radioQuestionArr[i]).getSelectedItem() != -1){
+                 changeCheckImage(radioImageViewArr[i]);
+             }
+         }
+         for(int i = 0 ;i < penImageViewArr.length ; i++){
+             if(((QuestionTemplateViewModel.PenQuestion)viewModel.penQuestionArr[i]).getNumberOfCow() != -1){
+                 changeCheckImage(penImageViewArr[i]);
+             }
+         }
 
-        //프로토콜 4
-        if(viewModel.getStruggle() != -1) changeCheckImage(check_sub_34);
-        if(viewModel.getAvoidDistanceScore() != -1) changeCheckImage(check_sub_36);
-        if(viewModel.getProtocolFourScore() != -1)changeCheckImage(check_total_4);
-    }
+         // 프로토콜 1
+         changeEditTextCheckImage(check_sub_1, (int) ((QuestionTemplateViewModel.Question)viewModel.BreedPoor).getScore());
+         if(viewModel.getWaterTimeQuestion().getMaxWaterTimeScore() != -1) changeCheckImage(check_sub_4);
+         if(viewModel.getProtocolOneScore() != -1)changeCheckImage(check_total_1);
+         // 프로토콜 2
+         if(((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore() != -1) changeCheckImage(check_sub_5);
+         changeEditTextCheckImage(check_sub_6, (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getScore());
+         changeEditTextCheckImage(check_sub_7, (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getScore());
+         changeEditTextCheckImage(check_sub_8, (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getScore());
+         if(viewModel.getStrawScore() != -1) changeCheckImage(check_sub_5);
+         if(viewModel.getProtocolTwoScore() != -1) changeCheckImage(check_total_2);
+         //프로토콜 3
+         changeEditTextCheckImage(check_sub_20,((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getNumberOfCow());
+         changeEditTextCheckImage(check_sub_21,((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).getNumberOfCow());
+         changeEditTextCheckImage(check_sub_23,((QuestionTemplateViewModel.Question)viewModel.BreedCriticalHairLoss).getNumberOfCow());
+         if(((QuestionTemplateViewModel.CoughQuestion)viewModel.CoughQuestion).getCoughPerOneAvg() != -1) changeCheckImage(check_sub_24);
+         changeEditTextCheckImage(check_sub_32,((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getNumberOfCow());
+         changeEditTextCheckImage(check_sub_33,((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getNumberOfCow());
+         if(viewModel.getProtocolThreeScore() != -1) changeCheckImage(check_total_3);
+         //프로토콜 4
+        if(((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getStruggleIndex() != -1) changeCheckImage(check_sub_40);
+
+         if(viewModel.getAvoidDistanceScore() != -1) changeCheckImage(check_sub_41);
+         if(viewModel.getProtocolFourScore() != -1)changeCheckImage(check_total_4);
+     }
 
     private void changeEditTextCheckImage(ImageView checkImageView,int questionScore){
         if(questionScore == -1)
@@ -1375,6 +1431,7 @@ public class QuestionTemplate extends AppCompatActivity
          }
          imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
      }
+
 
 }
 

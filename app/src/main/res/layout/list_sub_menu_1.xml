@@ -24,7 +24,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/list_sub_menu_title_1"
+                        android:text="@string/poor_sub_menu_title"
                         android:textColor="@color/black"
                         android:textSize="14dp"
                         android:layout_gravity="center_vertical"
@@ -57,7 +57,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/list_sub_menu_title_2"
+                        android:text="@string/water_tank_num_sub_menu_title"
                         android:textColor="@color/black"
                         android:textSize="14dp"
                         android:layout_gravity="center_vertical"
@@ -89,7 +89,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/list_sub_menu_title_3"
+                        android:text="@string/water_clean_sub_menu_title"
                         android:textColor="@color/black"
                         android:textSize="14dp"
                         android:layout_gravity="center_vertical"
@@ -121,7 +121,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/list_sub_menu_title_4"
+                        android:text="@string/water_wait_time_sub_menu_title"
                         android:textColor="@color/black"
                         android:textSize="14dp"
                         android:layout_gravity="center_vertical"

@@ -58,6 +58,8 @@ public class WaterTankNum extends Fragment {
                     viewModel.setWaterTankForm("대형 급수기");
                     individualTankBtnOne.setChecked(false);
                     individualTankBtnTwo.setChecked(false);
+                    waterTankNum = -1;
+                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).setSelectedItem(-1);
                 }
             }
         });

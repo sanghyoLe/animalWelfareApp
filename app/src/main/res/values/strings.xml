@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">animal_project</string>
-    <string name="wating_drink_cow">1</string>
-    <string name="wating_drink_cow_hint">2</string>
-    <string name="wating_ratio_cow">3</string>
-
 
     <string name="pen_location_1">1동 표본 펜 위치</string>
     <string name="pen_location_2">2동 표본 펜 위치</string>
@@ -195,45 +191,51 @@
     <string name="freestall_list_sub_menu_title_40">40. 투쟁(서열) 행동 평가</string>
     <string name="freestall_list_sub_menu_title_41">41. 회피 거리 평가</string>
     =======
-    <string name="list_sub_menu_title_1"> 여윈 개체 평가</string>
-    <string name="list_sub_menu_title_2"> 음수조 수 평가</string>
-    <string name="list_sub_menu_title_3"> 음수조 위생 평가</string>
-    <string name="list_sub_menu_title_4"> 음수 대기우와 음수 시간 평가</string>
-    <string name="list_sub_menu_title_5"> 깔짚 수분 평가</string>
-    <string name="list_sub_menu_title_6"> 가축외형 위생 평가</string>
-    <string name="list_sub_menu_title_7"> 혹서기 그늘 평가</string>
-    <string name="list_sub_menu_title_8"> 혹서기 환기팬 평가</string>
-    <string name="list_sub_menu_title_9"> 혹서기 안개분무시설 평가</string>
-    <string name="list_sub_menu_title_10"> 혹한기 바람차단시설 평가</string>
-    <string name="list_sub_menu_title_11"> 혹한기 환기시설 평가</string>
-    <string name="list_sub_menu_title_12"> 포유송아지 그늘 평가</string>
-    <string name="list_sub_menu_title_13"> 포유송아지 환기팬 평가</string>
-    <string name="list_sub_menu_title_14"> 포유송아지 안개분무시설 평가</string>
-    <string name="list_sub_menu_title_15"> 포유송아지 깔짚 평가</string>
-    <string name="list_sub_menu_title_16"> 포유송아지 보온 평가</string>
-    <string name="list_sub_menu_title_17"> 포유송아지 바람차단시설 평가</string>
-    <string name="list_sub_menu_title_18"> 다리절음 평가</string>
-    <string name="list_sub_menu_title_19"> 경미한 외피 변형 평가</string>
-    <string name="list_sub_menu_title_20"> 심각한 외피 변형 평가</string>
-    <string name="list_sub_menu_title_21"> 기침 평가</string>
-    <string name="list_sub_menu_title_22"> 비강 분비물 평가</string>
-    <string name="list_sub_menu_title_23"> 안구 분비물 평가</string>
-    <string name="list_sub_menu_title_24"> 호흡 장애 평가</string>
-    <string name="list_sub_menu_title_25"> 설사 평가</string>
-    <string name="list_sub_menu_title_26"> 반추위 팽창 평가</string>
-    <string name="list_sub_menu_title_27"> 폐사율 평가</string>
-    <string name="list_sub_menu_title_28"> 제각/탈각 평가 - 1</string>
-    <string name="list_sub_menu_title_29"> 제각/탈각 평가 - 2</string>
-    <string name="list_sub_menu_title_30"> 제각/탈각 평가 - 3</string>
-    <string name="list_sub_menu_title_31"> 거세 평가 - 1</string>
-    <string name="list_sub_menu_title_32"> 거세 평가 - 2</string>
-    <string name="list_sub_menu_title_33"> 거세 평가 - 3</string>
-    <string name="list_sub_menu_title_34"> 투쟁(서열) 행동 평가</string>
-    <string name="list_sub_menu_title_35"> 화합 행동 평가</string>
-    <string name="list_sub_menu_title_36"> 회피 거리 평가</string>
-    >>>>>>> master
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="poor_sub_menu_title"> 여윈 개체 평가</string>
+    <string name="water_tank_num_sub_menu_title"> 음수조 수 평가</string>
+    <string name="water_clean_sub_menu_title"> 음수조 위생 평가</string>
+    <string name="water_wait_time_sub_menu_title"> 음수 대기우와 음수 시간 평가</string>
+    <string name="straw_sub_menu_title"> 깔짚 수분 평가</string>
+    <string name="outward_sub_menu_title"> 가축외형 위생 평가</string>
+    <string name="summer_shade_sub_menu_title"> 혹서기 그늘 평가</string>
+    <string name="summer_ventilating_sub_menu_title"> 혹서기 환기팬 평가</string>
+    <string name="summer_mist_spray_sub_menu_title"> 혹서기 안개분무시설 평가</string>
+    <string name="winter_wind_block_sub_menu_title"> 혹한기 바람차단시설 평가</string>
+    <string name="winter_ventilating_sub_menu_title"> 혹한기 환기시설 평가</string>
+    <string name="calf_shade_sub_menu_title"> 포유송아지 그늘 평가</string>
+    <string name="calf_ventilating_sub_menu_title"> 포유송아지 환기팬 평가</string>
+    <string name="calf_mist_spray_sub_menu_title"> 포유송아지 안개분무시설 평가</string>
+    <string name="calf_straw_sub_menu_title"> 포유송아지 깔짚 평가</string>
+    <string name="calf_warm_sub_menu_title"> 포유송아지 보온 평가</string>
+    <string name="calf_wind_block_sub_menu_title"> 포유송아지 바람차단시설 평가</string>
+    <string name="slight_limp_sub_menu_title"> 다리절음 평가</string>
+    <string name="slight_hair_loss_sub_menu_title"> 경미한 외피 변형 평가</string>
+    <string name="critical_hair_loss_sub_menu_title"> 심각한 외피 변형 평가</string>
+    <string name="cough_sub_menu_title"> 기침 평가</string>
+    <string name="runny_nose_sub_menu_title"> 비강 분비물 평가</string>
+    <string name="ophthalmic_sub_menu_title"> 안구 분비물 평가</string>
+    <string name="breath_sub_menu_title"> 호흡 장애 평가</string>
+    <string name="diarrhea_sub_menu_title"> 설사 평가</string>
+    <string name="ruminant_sub_menu_title"> 반추위 팽창 평가</string>
+    <string name="fall_dead_sub_menu_title"> 폐사율 평가</string>
+    <string name="horn_sub_menu_title_1"> 제각/탈각 평가 - 1</string>
+    <string name="horn_sub_menu_title_2"> 제각/탈각 평가 - 2</string>
+    <string name="horn_sub_menu_title_3"> 제각/탈각 평가 - 3</string>
+    <string name="castration_sub_menu_title_1"> 거세 평가 - 1</string>
+    <string name="castration_sub_menu_title_2"> 거세 평가 - 2</string>
+    <string name="castration_sub_menu_title_3"> 거세 평가 - 3</string>
+    <string name="struggle_sub_menu_title"> 투쟁(서열) 행동 평가</string>
+    <string name="harmony_sub_menu_title"> 화합 행동 평가</string>
+    <string name="avoid_distance_sub_menu_title"> 회피 거리 평가</string>
+    <string name="sit_time_sub_menu_title">앉기 동작 소요시간 평가</string>
+    <string name="outward_back_leg_sub_menu_title">가축외형 위생(뒤쪽 아랫다리) 평가</string>
+    <string name="outward_back_sub_menu_title">가축외형 위생(뒷 부분) 평가</string>
+    <string name="breast_sub_menu_title">가축외형 위생(유방) 평가</string>
+    <string name="critical_limp_sub_menu_title">심각한 다리절음 평가</string>
+    <string name="out_genital_sub_menu_title">외음부 분비물 평가</string>
+    <string name="milk_in_cell_sub_menu_title">우유 내 체세포 수 평가</string>
+    <string name="hard_birth_sub_menu_title">난산 평가</string>
+    <string name="unable_stand_sub_menu_title">기립불능 소 평가</string>
 
 
     //프리스톨

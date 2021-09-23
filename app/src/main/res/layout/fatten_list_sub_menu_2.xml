@@ -27,7 +27,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/list_sub_menu_title_5"
+                    android:text="@string/straw_sub_menu_title"
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:layout_gravity="center_vertical"
@@ -60,7 +60,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/list_sub_menu_title_6"
+                    android:text="@string/outward_sub_menu_title"
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:layout_gravity="center_vertical"
@@ -92,7 +92,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/list_sub_menu_title_7"
+                    android:text="@string/summer_shade_sub_menu_title"
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:layout_gravity="center_vertical"
@@ -124,7 +124,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/list_sub_menu_title_8"
+                    android:text="@string/summer_ventilating_sub_menu_title"
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:layout_gravity="center_vertical"
@@ -157,7 +157,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/list_sub_menu_title_9"
+                    android:text="@string/summer_mist_spray_sub_menu_title"
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:layout_gravity="center_vertical"
@@ -190,7 +190,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/list_sub_menu_title_10"
+                    android:text="@string/winter_wind_block_sub_menu_title"
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:layout_gravity="center_vertical"
@@ -225,7 +225,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/list_sub_menu_title_11"
+                    android:text="@string/winter_ventilating_sub_menu_title"
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:layout_gravity="center_vertical"

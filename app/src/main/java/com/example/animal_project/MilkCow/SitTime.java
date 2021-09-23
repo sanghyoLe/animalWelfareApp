@@ -150,7 +150,7 @@ public class SitTime extends Fragment {
                                     for(int j = 0 ; j < sitCount ; j++){
                                         sitTimeAvg += sitTimeArr[j];
                                     }
-                                    Log.d("sitTimeAvg",String.valueOf(sitTimeAvg));
+
                                     sitTimeAvg = sitTimeAvg / (float)sitCount;
                                     sitTimeAvg = (float) viewModel.cutDecimal(sitTimeAvg);
                                     sit_time_ratio.setText(String.valueOf(sitTimeAvg));

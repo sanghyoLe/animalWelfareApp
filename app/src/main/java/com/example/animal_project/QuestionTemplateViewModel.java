@@ -568,7 +568,10 @@ public class QuestionTemplateViewModel extends ViewModel {
     public Object HardBirth = new YearAvgQuestion();
     public Object UnableStand = new YearAvgQuestion();
     public Object MilkCowStruggle = new MilkCowStruggleQuestion(12);
-
+    public Object[] milkCowPenQuestionArr = {
+            BreedSlightHairLoss,BreedRunnyNose,BreedOphthalmic,BreedBreath, BreedDiarrhea,
+            OutGenitals,MilkInCell,BreedFallDead
+    };
 
 
 
