@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,10 +56,14 @@ public class InputUserInfo extends AppCompatActivity {
     private String farmId;
     private LinearLayout beef_cow_input_layout;
     private LinearLayout milk_cow_input_layout;
+    private RadioButton beefRBOne;
+    private RadioButton beefRBTwo;
+    private RadioButton beefRBThree;
+    private RadioButton milkCowRBOne;
+    private RadioButton milkCowRBTwo;
 
 
 
-    private QuestionTemplate Qt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +94,11 @@ public class InputUserInfo extends AppCompatActivity {
         milk_cow_et = findViewById(R.id.milk_cow_ed);
         dry_milk_cow_et = findViewById(R.id.dry_milk_cow_ed);
         pregnant_cow_et = findViewById(R.id.pregnant_cow_ed);
+        beefRBOne = findViewById(R.id.input_1);
+        beefRBTwo = findViewById(R.id.input_2);
+        beefRBThree = findViewById(R.id.input_3);
+        milkCowRBOne = findViewById(R.id.input_4);
+        milkCowRBTwo = findViewById(R.id.input_5);
 
 
 
@@ -97,6 +107,7 @@ public class InputUserInfo extends AppCompatActivity {
         input_farm_beef.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+
                 if (checkedId == R.id.input_1) { // 비육 농장
                     input_checked = 1;
                     farmType = "한육우, 비육 농장";
@@ -393,13 +404,17 @@ public class InputUserInfo extends AppCompatActivity {
                 milk_cow_group.setVisibility(View.GONE);
                 beef_cow_input_layout.setVisibility(View.VISIBLE);
                 milk_cow_input_layout.setVisibility(View.GONE);
+                milkCowRBOne.setChecked(false);
+                milkCowRBTwo.setChecked(false);
                 break;
             case R.id.milk_cow_btn:
                 milk_cow_group.setVisibility(View.VISIBLE);
                 beef_group.setVisibility(View.GONE);
                 milk_cow_input_layout.setVisibility(View.VISIBLE);
                 beef_cow_input_layout.setVisibility(View.GONE);
-
+                beefRBOne.setChecked(false);
+                beefRBTwo.setChecked(false);
+                beefRBThree.setChecked(false);
                 break;
         }
     }

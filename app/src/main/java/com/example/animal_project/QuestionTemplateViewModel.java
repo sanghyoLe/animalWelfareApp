@@ -2,10 +2,7 @@ package com.example.animal_project;
 
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -72,6 +69,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         public int[] getCowSize(){ return this.cowSize;}
 
     }
+
 
     public static class avoidDistance implements Serializable {
         int penNumber;
@@ -153,13 +151,13 @@ public class QuestionTemplateViewModel extends ViewModel {
         float[] waitingRatio;
         int farmId;
         int maxWaterTimeScore = -1;
-        public WaterTimeQuestion(int dong_size){
-            this.penLocation = new String[dong_size];
-            this.cowSize = new int[dong_size];
-            this.waitingCowSize = new int[dong_size];
-            this.drinkTime = new int[dong_size];
-            this.waterTimeScore = new int[dong_size];
-            this.waitingRatio = new float[dong_size];
+        public WaterTimeQuestion(int dongSize){
+            this.penLocation = new String[dongSize];
+            this.cowSize = new int[dongSize];
+            this.waitingCowSize = new int[dongSize];
+            this.drinkTime = new int[dongSize];
+            this.waterTimeScore = new int[dongSize];
+            this.waitingRatio = new float[dongSize];
         }
         public void setFarmId(int farmId){
             this.farmId = farmId;
@@ -210,12 +208,12 @@ public class QuestionTemplateViewModel extends ViewModel {
         int[] strawScore;
         float strawAvgScore = -1;
 
-        public StrawQuestion(int dong_size){
-            this.penLocation = new String[dong_size];
-            this.strawOne = new int[dong_size];
-            this.strawTwo = new int[dong_size];
-            this.strawThree = new int[dong_size];
-            this.strawScore = new int[dong_size];
+        public StrawQuestion(int dongSize){
+            this.penLocation = new String[dongSize];
+            this.strawOne = new int[dongSize];
+            this.strawTwo = new int[dongSize];
+            this.strawThree = new int[dongSize];
+            this.strawScore = new int[dongSize];
         }
 
         public void setStrawOne(int strawOne,int i) {
@@ -275,11 +273,11 @@ public class QuestionTemplateViewModel extends ViewModel {
         float[] coughPerOne;
         float CoughPerOneAvg = -1;
         float coughRatio = -1;
-        public CoughQuestion(int dong_size){
-            this.penLocation = new String[dong_size];
-            this.cowSize = new int[dong_size];
-            this.coughCount = new int[dong_size];
-            this.coughPerOne = new float[dong_size];
+        public CoughQuestion(int dongSize){
+            this.penLocation = new String[dongSize];
+            this.cowSize = new int[dongSize];
+            this.coughCount = new int[dongSize];
+            this.coughPerOne = new float[dongSize];
         }
         public void setCoughCount(int[] coughCount){ this.coughCount = coughCount; }
         public int[] getCoughCount() {return this.coughCount; }
@@ -296,11 +294,11 @@ public class QuestionTemplateViewModel extends ViewModel {
         int[] behaviorCount;
         float[] behaviorPerOne;
         float behaviorPerOneAvg;
-        public BehaviorQuestion(int dong_size){
-            this.penLocation = new String[dong_size];
-            this.cowSize = new int[dong_size];
-            this.behaviorCount = new int[dong_size];
-            this.behaviorPerOne = new float[dong_size];
+        public BehaviorQuestion(int dongSize){
+            this.penLocation = new String[dongSize];
+            this.cowSize = new int[dongSize];
+            this.behaviorCount = new int[dongSize];
+            this.behaviorPerOne = new float[dongSize];
             this.behaviorPerOneAvg = -1;
 
         }
@@ -341,6 +339,9 @@ public class QuestionTemplateViewModel extends ViewModel {
     public Object getHarmonyQuestion(){
         return this.HarmonyQuestion;
     }
+
+
+    // 착유우 Class
     public static class SitTimeQuestion extends Question{
         int sitCount;
         int[] sitTime;
@@ -447,12 +448,12 @@ public class QuestionTemplateViewModel extends ViewModel {
         }
 
 
-        public MilkCowStruggleQuestion(int dong_size) {
-            this.headBangCount = new int[dong_size];
-            this.headBangPerOne = new float[dong_size];
+        public MilkCowStruggleQuestion(int dongSize) {
+            this.headBangCount = new int[dongSize];
+            this.headBangPerOne = new float[dongSize];
             this.headBangPerOneAvg = -1;
-            this.headBangExceptStruggleCount = new int[dong_size];
-            this.headBangExceptStrugglePerOne = new float[dong_size];
+            this.headBangExceptStruggleCount = new int[dongSize];
+            this.headBangExceptStrugglePerOne = new float[dongSize];
             this.headBangExceptStrugglePerOneAvg = -1;
             this.struggleIndex = -1;
             this.score = -1;
@@ -496,7 +497,6 @@ public class QuestionTemplateViewModel extends ViewModel {
             return socialBehaviorScore;
         }
     }
-
     public void setMilkCowStruggle(Object milkCowStruggle) {
         MilkCowStruggle = milkCowStruggle;
     }
@@ -504,7 +504,136 @@ public class QuestionTemplateViewModel extends ViewModel {
         return MilkCowStruggle;
     }
 
-    // 한육우
+    // 프리스톨 Class
+    public static class FreeStallCountQuestion extends DongQuestion{
+        int[] freeStallCount;
+        double[] freeStallCountRatio;
+        int[] freeStallCountScore;
+        int lowestScore;
+        double lowestRatio;
+        public FreeStallCountQuestion(int dongSize){
+            freeStallCount = new int[dongSize];
+            freeStallCountRatio = new double[dongSize];
+            freeStallCountScore = new int[dongSize];
+        }
+
+        public void setFreeStallCount(int[] freeStallCount) {
+            this.freeStallCount = freeStallCount;
+        }
+        public int[] getFreeStallCount() {
+            return freeStallCount;
+        }
+        public void setFreeStallCountRatio(double[] freeStallCountRatio){
+            this.freeStallCountRatio = freeStallCountRatio;
+        }
+        public double[] getFreeStallCountRatio(){
+            return this.freeStallCountRatio;
+        }
+        public void setFreeStallCountScore(int[] freeStallCountScore){
+            this.freeStallCountScore = freeStallCountScore;
+        }
+        public int[] getFreeStallCountScore(){
+            return this.freeStallCountScore;
+        }
+        public void setLowestScore(int lowestScore) {
+            this.lowestScore = lowestScore;
+        }
+        public int getLowestScore(){
+            return this.lowestScore;
+        }
+        public void setLowestRatio(double lowestRatio) { this.lowestRatio = lowestRatio;}
+        public double getLowestRatio() { return this.lowestRatio;}
+
+
+        public double[] calculatorRatio(int[] cowSize, int[] freeStallCount,int dongSize){
+            double[] freeStallCountRatio = new double[dongSize];
+            for(int i = 0 ; i < dongSize ; i++){
+                freeStallCountRatio[i] = (double)Math.round((((double)cowSize[i] / (double)freeStallCount[i]) *100)) / 100.0;
+            }
+            return freeStallCountRatio;
+        }
+        public int[] calculatorScore(double[] freeStallCountRatio, int dongSize){
+            int score[] = new int[dongSize];
+            for(int i = 0 ; i < dongSize ;i++){
+                if(freeStallCountRatio[i] >= 1){
+                    score[i] = 100;
+                } else if(freeStallCountRatio[i] >= 0.95){
+                    score[i] = 70;
+                } else {
+                    score[i] = 40;
+                }
+            }
+            return score;
+        }
+        public int calculatorLowestScore(int[] freeStallCountScore, int dongSize){
+            int lowestScore = 101;
+            for(int i = 0 ; i < dongSize ; i++)
+                lowestScore = lowestScore > freeStallCountScore[i] ? freeStallCountScore[i] :  lowestScore ;
+
+            return lowestScore;
+        }
+        public double calculatorLowestRatio(double[] freeStallCountRatio, int dongSize){
+            double lowestScore = 101;
+            for(int i = 0 ; i < dongSize ; i++)
+                lowestScore = lowestScore > freeStallCountRatio[i] ? freeStallCountRatio[i] :  lowestScore ;
+
+            return lowestScore;
+        }
+    }
+    public void setFreeStallCountQuestion(Object freeStallCountQuestion){ this.freeStallCountQuestion  = freeStallCountQuestion; }
+    public Object getFreeStallCountQuestion(){return this.freeStallCountQuestion; }
+
+    public static class SitCollisionQuestion extends Question{
+        int sitCount;
+        boolean[]  sitCollision;
+        int score;
+        public SitCollisionQuestion(int sitCount){
+            this.sitCount = sitCount;
+            this.sitCollision = new boolean[sitCount];
+            for(int i = 0; i < sitCount; i++){
+                this.sitCollision[i] = false;
+            }
+        }
+        public void setSitCount(int sitCount){
+            this.sitCount = sitCount;
+        }
+        public int getSitCount(){
+            return this.sitCount;
+        }
+        public void setSitCollision(boolean sitCollision,int index) {
+            this.sitCollision[index] = sitCollision;
+        }
+        public boolean[] getSitCollision (){
+            return this.sitCollision;
+        }
+        public float calculatorRatio(boolean[] sitCollision, int sitCount){
+            float ratio = 0;
+            int sitCollisionCount = 0;
+            for(int i = 0 ;  i < sitCount ; i++){
+                if(sitCollision[i] == true) {
+                    sitCollisionCount += 1;
+                }
+            }
+            ratio = ((float) (Math.round( ((float)sitCollisionCount / (float)sitCount) * 100)));
+
+            return ratio;
+        }
+        public int calculatorScore(float ratio){
+            int score;
+            if(ratio >= 31){
+                score = 40;
+            } else if(ratio >= 21){
+                score = 70;
+            } else{
+                score = 100;
+            }
+            return score;
+        }
+
+
+
+    }
+    // 한육우 Objects
     public Object WaterTimeQuestion = new WaterTimeQuestion(20);
     public Object CoughQuestion = new CoughQuestion(20);
     public Object StrawQuestion = new StrawQuestion(20);
@@ -572,6 +701,10 @@ public class QuestionTemplateViewModel extends ViewModel {
             BreedSlightHairLoss,BreedRunnyNose,BreedOphthalmic,BreedBreath, BreedDiarrhea,
             OutGenitals,MilkInCell,BreedFallDead
     };
+    
+    // 프리스톨
+    public Object freeStallCountQuestion = new FreeStallCountQuestion(20);
+    public Object sitCollision = new SitCollisionQuestion(50);
 
 
 
@@ -981,55 +1114,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         return this.avoidDistanceScore;
     }
 
-    public void clickDongHandler(ImageButton nextBtn, ImageButton prevBtn, Button endButton, LinearLayout[] dongArr, TextView currentDongTv, int dong_size){
 
-        final int[] currentDong = {0};
-            nextBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(currentDong[0] == 0) {
-                        prevBtn.setVisibility(View.VISIBLE);
-                    }
-                    // 마지막 전 페이지
-                    if(currentDong[0] + 2 == dong_size){
-                        endButton.setVisibility(View.VISIBLE);
-                        dongArr[currentDong[0]].setVisibility(View.GONE);
-                        dongArr[++currentDong[0]].setVisibility(View.VISIBLE);
-                        currentDongTv.setText(String.valueOf(currentDong[0] +1));
-                        nextBtn.setVisibility(View.INVISIBLE);
-                    }
-                    else {
-                        dongArr[currentDong[0]].setVisibility(View.GONE);
-                        dongArr[++currentDong[0]].setVisibility(View.VISIBLE);
-                        currentDongTv.setText(String.valueOf(currentDong[0] +1));
-                    }
-
-                }
-            });
-            prevBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // 마지막 페이지에서 이전 버튼 눌렀을 때
-                    if(currentDong[0] + 1 == dong_size){
-                        nextBtn.setVisibility(View.VISIBLE);
-                        endButton.setVisibility(View.INVISIBLE);
-                    }
-                    dongArr[currentDong[0]].setVisibility(View.GONE);
-                    dongArr[--currentDong[0]].setVisibility(View.VISIBLE);
-                    currentDongTv.setText(String.valueOf(currentDong[0] +1));
-
-                    if(currentDong[0] == 0){
-                        prevBtn.setVisibility(View.INVISIBLE);
-                    }
-
-                }
-
-
-            });
-
-
-
-    }
     public int calculatorWaterScore(int waterTankNum, int waterTankClean, int waterTankTime)
     {
         int waterScore = 0;
@@ -1447,11 +1532,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         return careWarningScore;
     }
 
-    public float getTotalRatio(EditText editText){
-        float ratio = (Float.parseFloat(editText.getText().toString()) / getTotalCowSize()) * 100;
-        ratio = Math.round(ratio);
-        return ratio;
-    }
+
 
     public double calculatorDiseaseScore(Map careWarningScore)
     {
@@ -1828,26 +1909,26 @@ public class QuestionTemplateViewModel extends ViewModel {
     public double cutDecimal(double value){
         return (double)Math.round(value*100)/100;
     }
-    public void showQuestionView(View[] QuestionViewArr, int dong_size) {
-        TextView[] tvArr = new TextView[dong_size];
-        for (int i = 0; i < dong_size; i++) {
+    public void showQuestionView(View[] QuestionViewArr, int dongSize) {
+        TextView[] tvArr = new TextView[dongSize];
+        for (int i = 0; i < dongSize; i++) {
             tvArr[i] = QuestionViewArr[i].findViewById(R.id.dong_count_tv);
             QuestionViewArr[i].setVisibility(View.GONE);
             tvArr[i].setText(String.valueOf(i + 1) + "동");
         }
-        for (int i = 0; i < dong_size; i++) {
+        for (int i = 0; i < dongSize; i++) {
             QuestionViewArr[i].setVisibility(View.VISIBLE);
         }
     }
-    public EditText[] makeEditText(View[] QuestionViewArr, int dong_size, int id){
-        EditText[] newEditText = new EditText[dong_size];
-        for(int i = 0 ; i < dong_size ; i++){
+    public EditText[] makeEditText(View[] QuestionViewArr, int dongSize, int id){
+        EditText[] newEditText = new EditText[dongSize];
+        for(int i = 0 ; i < dongSize ; i++){
             newEditText[i] = QuestionViewArr[i].findViewById(id);
         }
         return newEditText;
     }
-    public int checkEmptyEditText(EditText[] editTexts, int dong_size){
-        for(int i = 0 ; i < dong_size ; i++){
+    public int checkEmptyEditText(EditText[] editTexts, int dongSize){
+        for(int i = 0 ; i < dongSize ; i++){
             if(TextUtils.isEmpty(editTexts[i].getText())){
                 return i+1;
             }
@@ -1877,22 +1958,22 @@ public class QuestionTemplateViewModel extends ViewModel {
         }
         return 0;
     }
-    public String[] makePenLocationArr(EditText[] penLocationOne, EditText[] penLocationTwo, int dong_size){
-        String[] penLocation = new String[dong_size];
-        for(int i = 0 ; i < dong_size ; i++){
+    public String[] makePenLocationArr(EditText[] penLocationOne, EditText[] penLocationTwo, int dongSize){
+        String[] penLocation = new String[dongSize];
+        for(int i = 0 ; i < dongSize ; i++){
             penLocation[i] = penLocationOne[i].getText() + "-" + penLocationTwo[i].getText();
         }
         return penLocation;
     }
-    public int[] getIntEditTextValues(EditText[] editTexts, int dong_size){
-        int[] newIntArr = new int[dong_size];
-        for(int i = 0 ; i < dong_size ; i++){
+    public int[] getIntEditTextValues(EditText[] editTexts, int dongSize){
+        int[] newIntArr = new int[dongSize];
+        for(int i = 0 ; i < dongSize ; i++){
             newIntArr[i] = Integer.parseInt(String.valueOf(editTexts[i].getText()));
         }
         return newIntArr;
     }
-    public int checkEmptySpinner(int[] selectedItemIndex, int dong_size){
-        for(int i = 0 ; i < dong_size ; i++){
+    public int checkEmptySpinner(int[] selectedItemIndex, int dongSize){
+        for(int i = 0 ; i < dongSize ; i++){
             if(selectedItemIndex[i] == 0){
               return i+1;
             }

@@ -232,6 +232,7 @@ public class MilkCowViewModel extends ViewModel {
         this.respiratoryRatio = respiratoryRatio;
     }
 
+
     public float getRespiratoryRatio() {
         return this.respiratoryRatio;
     }

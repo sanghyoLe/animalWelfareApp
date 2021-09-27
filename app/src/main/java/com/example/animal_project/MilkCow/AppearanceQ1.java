@@ -24,7 +24,7 @@ public class AppearanceQ1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.fragment_freestall_appearance_q1, container, false);
+        view = inflater.inflate(R.layout.fragment_appearance_q1, container, false);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         MilkCowScoreCalculator mc = new MilkCowScoreCalculator();
         TextView ratio_number = (TextView) view.findViewById(R.id.ratio_number);

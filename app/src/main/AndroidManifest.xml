@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MilkCow.MilkCowStruggleDong"></activity>
+        <activity android:name=".MilkCow.FreeStallCountDong"></activity>
+        <activity android:name=".MilkCow.MilkCowStruggleDong" />
         <activity android:name=".Beef.ProtocolFour.AvoidDistanceCowQuestions" />
         <activity android:name=".Beef.ProtocolFour.BreedHarmonyDong" />
         <activity android:name=".Beef.ProtocolFour.BreedStruggleDong" />
@@ -31,8 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

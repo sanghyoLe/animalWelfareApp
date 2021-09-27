@@ -1,11 +1,7 @@
-package com.example.animal_project.FreeStall.ProtocolTwo;
+package com.example.animal_project.MilkCow;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -16,13 +12,16 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.animal_project.MilkCowViewModel;
 import com.example.animal_project.QuestionTemplate;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
 
-public class FreestallAreaOutCollision extends Fragment {
+public class FreeStallAreaOutCollision extends Fragment {
     int freestall_area_out_collision_score = 0;
     private EditText freestall_area_out_collision_a1, freestall_area_out_collision_a2;
     private View view;

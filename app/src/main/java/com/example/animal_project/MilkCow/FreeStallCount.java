@@ -1,4 +1,4 @@
-package com.example.animal_project.FreeStall.ProtocolFour;
+package com.example.animal_project.MilkCow;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,13 +19,13 @@ import com.example.animal_project.MilkCowViewModel;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
+public class FreeStallCount extends Fragment {
 
-public class FreestallStruggle extends Fragment {
     private View view;
     private int dong_size;
-    private double struggle;
-    private TextView breed_struggle_tv;
-    private TextView breed_struggle_ratio_tv;
+    private double freeStallNum;
+    TextView freeStallCountScoreTv;
+    TextView freeStallCountRatioTv;
     private QuestionTemplateViewModel viewModel;
     private MilkCowViewModel viewModelMilk;
     @Override
@@ -33,30 +33,18 @@ public class FreestallStruggle extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        view = inflater.inflate(R.layout.fragment_freestall_struggle, container, false);
+        view = inflater.inflate(R.layout.fragment_freestall_count, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         viewModelMilk = new ViewModelProvider(getActivity()).get(MilkCowViewModel.class);
 
-
-
-        breed_struggle_tv = view.findViewById(R.id.breed_struggle_tv);
-
-
-        if(viewModelMilk.getStruggle() == -1){
-            breed_struggle_tv.setText("평가를 완료하세요");
-        } else {
-            viewModelMilk.setSocialBehaviorScore(
-                    viewModelMilk.calculatorSocialBehaviorScore(viewModelMilk.getStruggle())
-            );
-            breed_struggle_tv.setText(String.valueOf(viewModelMilk.getSocialBehaviorScore()));
-        }
-
+        freeStallCountScoreTv = view.findViewById(R.id.free_stall_count_score);
+        freeStallCountRatioTv = view.findViewById(R.id.free_stall_count_ratio);
 
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
-                R.array.dong_size_12,
-                android.R.layout.simple_dropdown_item_1line);
+                R.array.dong_size,
+                android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner mSpinner = view.findViewById(R.id.spinner_breed_struggle);
+        Spinner mSpinner = view.findViewById(R.id.spinner_freestall_count);
 
 
         mSpinner.setAdapter( spinnerAdapter );
@@ -75,10 +63,10 @@ public class FreestallStruggle extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        Button breed_btn_struggle = view.findViewById(R.id.breed_struggle_btn);
+        Button freeStallCountDongBtn = view.findViewById(R.id.freestall_count_btn);
 
 
-        breed_btn_struggle.setOnClickListener(new View.OnClickListener(){
+        freeStallCountDongBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 String dong_count = Integer.toString(selectedItemIndex[0]);
@@ -87,7 +75,7 @@ public class FreestallStruggle extends Fragment {
                     Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
                 }else{
                     dong_size = Integer.parseInt(dong_count);
-                    Intent intent = new Intent(getActivity(), FreestallStruggleDong.class);
+                    Intent intent = new Intent(getActivity(), FreeStallCountDong.class);
                     intent.putExtra("dong_count",dong_size); /*송신*/
                     startActivityForResult(intent, 0);
                 }
@@ -101,17 +89,12 @@ public class FreestallStruggle extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 1:
-                struggle = data.getExtras().getDouble("ratioAvg");
-//                breed_struggle_tv.setText(String.valueOf(struggle));
-                viewModelMilk.setStruggle(struggle);
-                if(viewModelMilk.getStruggle() == -1){
-                    breed_struggle_tv.setText("평가를 완료하세요");
-                } else {
-                    viewModelMilk.setSocialBehaviorScore(
-                            viewModelMilk.calculatorSocialBehaviorScore(viewModelMilk.getStruggle())
-                    );
-                    breed_struggle_tv.setText(String.valueOf(viewModelMilk.getSocialBehaviorScore()));
-                }
+                QuestionTemplateViewModel.FreeStallCountQuestion freeStallCountQuestion = (QuestionTemplateViewModel.FreeStallCountQuestion)data.getExtras().getSerializable("freeStallCountQuestion");
+                viewModel.setFreeStallCountQuestion(freeStallCountQuestion);
+                freeStallCountScoreTv.setText(String.valueOf(freeStallCountQuestion.getLowestScore()));
+                freeStallCountRatioTv.setText(String.valueOf(freeStallCountQuestion.getLowestRatio()));
+
+                
                 break;
             default:
                 break;

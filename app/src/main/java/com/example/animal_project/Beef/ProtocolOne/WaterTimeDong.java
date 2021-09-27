@@ -19,7 +19,7 @@ import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
 public class WaterTimeDong extends AppCompatActivity {
-    private int dong_size;
+    private int dongSize;
     private QuestionTemplateViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class WaterTimeDong extends AppCompatActivity {
         setContentView(R.layout.water_q3_dong);
         viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
         Intent intent = getIntent();
-        dong_size = intent.getExtras().getInt("dong_count");
+        dongSize = intent.getExtras().getInt("dong_count");
 
         View view = findViewById(R.id.breed_water_q3_dong_question_layout);
         ImageButton home_btn = view.findViewById(R.id.home_btn);
@@ -67,59 +67,59 @@ public class WaterTimeDong extends AppCompatActivity {
             }
         });
 
-        viewModel.showQuestionView(questionViewArr, dong_size);
-        EditText[] penLocationOneEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.pen_location_1_ed);
-        EditText[] penLocationTwoEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.pen_location_2_ed);
-        EditText[] cowSizeEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.cow_size_ed);
-        EditText[] waitingCowSizeEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.waiting_cow_size_ed);
-        EditText[] drinkTimeEd = viewModel.makeEditText(questionViewArr,dong_size,R.id.drink_time_ed);
-        QuestionTemplateViewModel.WaterTimeQuestion WaterTimeQuestion = new QuestionTemplateViewModel.WaterTimeQuestion(dong_size);
+        viewModel.showQuestionView(questionViewArr, dongSize);
+        EditText[] penLocationOneEd = viewModel.makeEditText(questionViewArr,dongSize,R.id.pen_location_1_ed);
+        EditText[] penLocationTwoEd = viewModel.makeEditText(questionViewArr,dongSize,R.id.pen_location_2_ed);
+        EditText[] cowSizeEd = viewModel.makeEditText(questionViewArr,dongSize,R.id.cow_size_ed);
+        EditText[] waitingCowSizeEd = viewModel.makeEditText(questionViewArr,dongSize,R.id.waiting_cow_size_ed);
+        EditText[] drinkTimeEd = viewModel.makeEditText(questionViewArr,dongSize,R.id.drink_time_ed);
+        QuestionTemplateViewModel.WaterTimeQuestion WaterTimeQuestion = new QuestionTemplateViewModel.WaterTimeQuestion(dongSize);
         Button endBtn = view.findViewById(R.id.end_btn);
 
         endBtn.setOnClickListener(new View.OnClickListener() {
             String msg;
             @Override
             public void onClick(View v) {
-                if(viewModel.checkEmptyEditText(penLocationOneEd,dong_size) != -1){
-                    msg = viewModel.checkEmptyEditText(penLocationOneEd,dong_size) + "동 펜 위치를 입력하세요";
+                if(viewModel.checkEmptyEditText(penLocationOneEd,dongSize) != -1){
+                    msg = viewModel.checkEmptyEditText(penLocationOneEd,dongSize) + "동 펜 위치를 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                }else if(viewModel.checkEmptyEditText(penLocationTwoEd,dong_size) != -1){
-                    msg = viewModel.checkEmptyEditText(penLocationTwoEd,dong_size) + "동 펜 위치를 입력하세요";
+                }else if(viewModel.checkEmptyEditText(penLocationTwoEd,dongSize) != -1){
+                    msg = viewModel.checkEmptyEditText(penLocationTwoEd,dongSize) + "동 펜 위치를 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                } else if(viewModel.checkEmptyEditText(cowSizeEd,dong_size) != -1){
-                    msg = viewModel.checkEmptyEditText(cowSizeEd,dong_size) + "동 사육 두수를 입력하세요";
+                } else if(viewModel.checkEmptyEditText(cowSizeEd,dongSize) != -1){
+                    msg = viewModel.checkEmptyEditText(cowSizeEd,dongSize) + "동 사육 두수를 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                } else if(viewModel.checkEmptyEditText(waitingCowSizeEd,dong_size) != -1){
-                    msg = viewModel.checkEmptyEditText(waitingCowSizeEd,dong_size) + "동 대기우 수를 입력하세요";
+                } else if(viewModel.checkEmptyEditText(waitingCowSizeEd,dongSize) != -1){
+                    msg = viewModel.checkEmptyEditText(waitingCowSizeEd,dongSize) + "동 대기우 수를 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                }else if(viewModel.checkEmptyEditText(drinkTimeEd,dong_size) != -1){
-                    msg = viewModel.checkEmptyEditText(drinkTimeEd,dong_size) + "동 음수 우 음수시간을 입력하세요";
+                }else if(viewModel.checkEmptyEditText(drinkTimeEd,dongSize) != -1){
+                    msg = viewModel.checkEmptyEditText(drinkTimeEd,dongSize) + "동 음수 우 음수시간을 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                }else if(checkGreaterThanCowSize(cowSizeEd,waitingCowSizeEd,dong_size) != -1) {
-                    msg = checkGreaterThanCowSize(cowSizeEd,waitingCowSizeEd,dong_size) + "동의 대기우 수가 사육두수 보다 큽니다";
+                }else if(checkGreaterThanCowSize(cowSizeEd,waitingCowSizeEd,dongSize) != -1) {
+                    msg = checkGreaterThanCowSize(cowSizeEd,waitingCowSizeEd,dongSize) + "동의 대기우 수가 사육두수 보다 큽니다";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                 } else {
-                    WaterTimeQuestion.setDongSize(dong_size);
-                    WaterTimeQuestion.setPenLocation(viewModel.makePenLocationArr(penLocationOneEd,penLocationTwoEd,dong_size));
-                    WaterTimeQuestion.setCowSize(viewModel.getIntEditTextValues(cowSizeEd,dong_size));
-                    WaterTimeQuestion.setWaitingCowSize(viewModel.getIntEditTextValues(waitingCowSizeEd,dong_size));
-                    WaterTimeQuestion.setDrinkTime(viewModel.getIntEditTextValues(drinkTimeEd,dong_size));
-                    WaterTimeQuestion.setWaitingRatio(getWaitingRatio(cowSizeEd,waitingCowSizeEd,dong_size));
+                    WaterTimeQuestion.setDongSize(dongSize);
+                    WaterTimeQuestion.setPenLocation(viewModel.makePenLocationArr(penLocationOneEd,penLocationTwoEd,dongSize));
+                    WaterTimeQuestion.setCowSize(viewModel.getIntEditTextValues(cowSizeEd,dongSize));
+                    WaterTimeQuestion.setWaitingCowSize(viewModel.getIntEditTextValues(waitingCowSizeEd,dongSize));
+                    WaterTimeQuestion.setDrinkTime(viewModel.getIntEditTextValues(drinkTimeEd,dongSize));
+                    WaterTimeQuestion.setWaitingRatio(getWaitingRatio(cowSizeEd,waitingCowSizeEd,dongSize));
                     WaterTimeQuestion.setWaterTimeScore(getWaterTimeScore(
                             WaterTimeQuestion.getWaitingRatio(),
                             WaterTimeQuestion.getDrinkTime(),
-                            dong_size
+                            dongSize
                     ));
 
                     WaterTimeQuestion.setMaxWaterTimeScore(
                             getMaxWaterTimeScore(
                                     WaterTimeQuestion.getWaterTimeScore(),
-                                    dong_size)
+                                    dongSize)
                     );
                     String msg = makeInputString(
                             WaterTimeQuestion.getWaitingRatio(),
                             WaterTimeQuestion.getWaterTimeScore(),
-                            dong_size
+                            dongSize
                     );
 
                     AlertDialog.Builder AlertBuilder = new AlertDialog.Builder(WaterTimeDong.this);
@@ -149,9 +149,9 @@ public class WaterTimeDong extends AppCompatActivity {
 
     }
 
-    private float[] getWaitingRatio(EditText[] cowSizeEd, EditText[] waitingCowEd,int dong_size) {
-        float waitingRatio[] = new float[dong_size];
-        for(int i = 0 ; i< dong_size ; i++){
+    private float[] getWaitingRatio(EditText[] cowSizeEd, EditText[] waitingCowEd,int dongSize) {
+        float waitingRatio[] = new float[dongSize];
+        for(int i = 0 ; i< dongSize ; i++){
             waitingRatio[i] = (Float.parseFloat(String.valueOf(waitingCowEd[i].getText())) /
                     Float.parseFloat(String.valueOf(cowSizeEd[i].getText()))) * 100;
             waitingRatio[i] = (float) viewModel.cutDecimal((double)waitingRatio[i]);
@@ -160,9 +160,9 @@ public class WaterTimeDong extends AppCompatActivity {
         return waitingRatio;
     }
 
-    private int[] getWaterTimeScore(float[] waitingRatio, int[] drinkTime,int dong_size) {
-        int waterTimeScore[] = new int[dong_size];
-        for(int i = 0 ;i < dong_size ; i++)
+    private int[] getWaterTimeScore(float[] waitingRatio, int[] drinkTime,int dongSize) {
+        int waterTimeScore[] = new int[dongSize];
+        for(int i = 0 ;i < dongSize ; i++)
         {
            if(waitingRatio[i] == 0 && drinkTime[i] <= 5) {
                waterTimeScore[i] = 0;
@@ -174,9 +174,9 @@ public class WaterTimeDong extends AppCompatActivity {
         }
         return waterTimeScore;
     }
-    private int getMaxWaterTimeScore(int[] waterTimeScore,int dong_size){
+    private int getMaxWaterTimeScore(int[] waterTimeScore,int dongSize){
         int max = -1;
-        for(int i = 0 ; i < dong_size ; i++){
+        for(int i = 0 ; i < dongSize ; i++){
             if(waterTimeScore[i] > max){
                 max = waterTimeScore[i];
             }
@@ -184,8 +184,8 @@ public class WaterTimeDong extends AppCompatActivity {
         return max;
     }
 
-    public int checkGreaterThanCowSize(EditText[] cowSizes, EditText[] waitingCowSizes,int dong_size){
-        for(int i = 0 ; i < dong_size ; i++){
+    public int checkGreaterThanCowSize(EditText[] cowSizes, EditText[] waitingCowSizes,int dongSize){
+        for(int i = 0 ; i < dongSize ; i++){
             if(Integer.parseInt(String.valueOf(cowSizes[i].getText()))
                     < Integer.parseInt(String.valueOf(waitingCowSizes[i].getText()))){
                 return i+1;
@@ -205,10 +205,10 @@ public class WaterTimeDong extends AppCompatActivity {
             drawer.closeDrawer(Gravity.RIGHT);
         }
     }
-    private String makeInputString(float[] waitingRatio, int[] waterTimeScore,int dong_size){
-        String[] inputStrings = new String[dong_size];
+    private String makeInputString(float[] waitingRatio, int[] waterTimeScore,int dongSize){
+        String[] inputStrings = new String[dongSize];
         String msg = "";
-     for(int i = 0 ; i < dong_size ; i++){
+     for(int i = 0 ; i < dongSize ; i++){
          inputStrings[i] = (i+1) + "동 음수 대기우 비율 : " + waitingRatio[i] + "%\n"
                  + "음수 행동 점수 : " + waterTimeScore[i] + "점 \n\n";
          msg += inputStrings[i];

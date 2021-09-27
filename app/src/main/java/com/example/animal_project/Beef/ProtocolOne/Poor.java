@@ -31,7 +31,7 @@ public class Poor extends Fragment {
                              Bundle savedInstanceState) {
 
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
-        view = inflater.inflate(R.layout.fragment_breed_poor, container, false);
+        view = inflater.inflate(R.layout.fragment_poor, container, false);
         int farmType = viewModel.getFarmType();
 
 
