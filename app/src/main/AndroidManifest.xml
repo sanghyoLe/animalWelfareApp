@@ -20,7 +20,7 @@
         <activity android:name=".Beef.ProtocolThree.BreedCoughDong" />
         <activity android:name=".Beef.ProtocolTwo.BreedStrawDong" />
         <activity android:name=".Beef.ProtocolOne.WaterTimeDong" />
-        <activity android:name=".FreeStall.ProtocolTwo.FreestallCountDong" />
+
         <activity android:name=".QuestionTemplate" />
         <activity android:name=".WebViewActivity" />
         <activity android:name=".Result_View" />

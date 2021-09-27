@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.animal_project.MilkCowViewModel;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 

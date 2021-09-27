@@ -509,12 +509,13 @@ public class QuestionTemplateViewModel extends ViewModel {
         int[] freeStallCount;
         double[] freeStallCountRatio;
         int[] freeStallCountScore;
-        int lowestScore;
+        int lowestScore = -1;
         double lowestRatio;
         public FreeStallCountQuestion(int dongSize){
             freeStallCount = new int[dongSize];
             freeStallCountRatio = new double[dongSize];
             freeStallCountScore = new int[dongSize];
+
         }
 
         public void setFreeStallCount(int[] freeStallCount) {
@@ -582,11 +583,38 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public void setFreeStallCountQuestion(Object freeStallCountQuestion){ this.freeStallCountQuestion  = freeStallCountQuestion; }
     public Object getFreeStallCountQuestion(){return this.freeStallCountQuestion; }
+    public static class FreeStallAreaOutCollision extends Question{
+        int sitCowCount;
+        int areaOutCollisionCowCount;
+        public void setSitCowCount(int sitCowCount){
+            this.sitCowCount = sitCowCount;
+        }
+        public int getSitCowCount(){
+            return this.sitCowCount;
+        }
+        public void setAreaOutCollisionCowCount(int areaOutCollisionCowCount){
+            this.areaOutCollisionCowCount = areaOutCollisionCowCount;
+        }
+        public int getAreaOutCollisionCowCount(){
+            return this.areaOutCollisionCowCount;
+        }
+        public int calculatorScore(float ratio){
+            int score = 0;
+         if(ratio <= 3){
+             score = 100;
+         } else if(ratio <= 5){
+             score = 70;
+         } else {
+             score = 40;
+         }
+         return score;
+        }
+    }
 
     public static class SitCollisionQuestion extends Question{
         int sitCount;
         boolean[]  sitCollision;
-        int score;
+
         public SitCollisionQuestion(int sitCount){
             this.sitCount = sitCount;
             this.sitCollision = new boolean[sitCount];
@@ -705,6 +733,8 @@ public class QuestionTemplateViewModel extends ViewModel {
     // 프리스톨
     public Object freeStallCountQuestion = new FreeStallCountQuestion(20);
     public Object sitCollision = new SitCollisionQuestion(50);
+    public Object freeStallAreaOutCollision = new FreeStallAreaOutCollision();
+
 
 
 

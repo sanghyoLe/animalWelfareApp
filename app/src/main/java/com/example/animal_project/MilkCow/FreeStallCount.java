@@ -15,7 +15,6 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.animal_project.MilkCowViewModel;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
@@ -27,7 +26,7 @@ public class FreeStallCount extends Fragment {
     TextView freeStallCountScoreTv;
     TextView freeStallCountRatioTv;
     private QuestionTemplateViewModel viewModel;
-    private MilkCowViewModel viewModelMilk;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,7 +34,7 @@ public class FreeStallCount extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_freestall_count, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
-        viewModelMilk = new ViewModelProvider(getActivity()).get(MilkCowViewModel.class);
+
 
         freeStallCountScoreTv = view.findViewById(R.id.free_stall_count_score);
         freeStallCountRatioTv = view.findViewById(R.id.free_stall_count_ratio);

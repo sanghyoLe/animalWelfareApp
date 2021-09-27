@@ -17,7 +17,114 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:id="@+id/free_stall_list_layout_1"
+                android:visibility="gone">
+                <ImageButton
+                    android:id="@+id/free_stall_list_btn_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:src="@drawable/outline_arrow_forward_ios_24"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/freestall_count_title"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:layout_gravity="center_vertical"
+
+                    android:paddingLeft="10dp"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:id="@+id/free_stall_sub_1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_not_check_circle_24"
+                    android:layout_margin="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:id="@+id/free_stall_list_layout_2"
+                android:visibility="gone">
+                <ImageButton
+                    android:id="@+id/free_stall_list_btn_2"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:src="@drawable/outline_arrow_forward_ios_24"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/freestall_sit_collision_title"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:layout_gravity="center_vertical"
+
+                    android:paddingLeft="10dp"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:id="@+id/free_stall_sub_2"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_not_check_circle_24"
+                    android:layout_margin="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:id="@+id/free_stall_list_layout_3"
+                android:visibility="gone">
+                <ImageButton
+                    android:id="@+id/free_stall_list_btn_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:src="@drawable/outline_arrow_forward_ios_24"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="프리스톨 영역 외 앉기 평가"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:layout_gravity="center_vertical"
+
+                    android:paddingLeft="10dp"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:id="@+id/free_stall_sub_3"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_not_check_circle_24"
+                    android:layout_margin="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                >
                 <ImageButton
                     android:id="@+id/question_list_btn_5"
 

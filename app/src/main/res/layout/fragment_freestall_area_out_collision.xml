@@ -23,6 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/freestall_area_out_collision_title"
+                android:layout_margin="30dp"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -33,7 +34,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <EditText
-                android:id="@+id/freestall_area_out_collision_a1"
+                android:id="@+id/free_stall_area_out_collision_sit_ed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="앉아 있는 소의 수"
@@ -41,9 +42,10 @@
                 android:inputType="number">
             </EditText>
             <EditText
-                android:id="@+id/freestall_area_out_collision_a2"
+                android:id="@+id/free_stall_area_out_collision_out_ed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="15dp"
                 android:hint="부분 또는 완전히 영역을 벗어나 앉아있는 두수"
                 android:layout_margin="30dp"
                 android:inputType="number">

@@ -18,7 +18,7 @@ import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
 
-public class AppearanceQ1 extends Fragment {
+public class AppearanceBackReg extends Fragment {
     private View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -240,6 +240,7 @@
 
     //프리스톨
     <string name="freestall_count_title">프리스톨 수 평가</string>
+    <string name="freestall_sit_collision_title">앉기 시 충돌 평가</string>
     <string name="freestall_count_dong">동별 프리스톨 수 점수 측정</string>
     <string name="freestall_count_dong_hint">동별 사육두수를 입력하세요</string>
     <string name="freestall_count_dong_available_hint">동별 사용가능 프리스톨 수를 입력하세요</string>

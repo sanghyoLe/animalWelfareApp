@@ -7,44 +7,51 @@ import java.util.Map;
 
 public class MilkCowScoreCalculator {
     public int calculatorAppearanceQ1Score(float appearanceQ1Ratio) {
-        int freestall_back_score = 0;
+        int free_stall_back_score = 0;
         if (appearanceQ1Ratio <= 10) {
-            freestall_back_score = 100;
+            free_stall_back_score = 100;
         } else if (appearanceQ1Ratio <= 19) {
-            freestall_back_score = 70;
+            free_stall_back_score = 70;
         } else {
-            freestall_back_score = 40;
+            free_stall_back_score = 40;
         }
-        return freestall_back_score;
+        return free_stall_back_score;
     }
 
     public int calculatorAppearanceQ2Score(float appearanceQ2Ratio) {
-        int freestall_back_score = 0;
+        int free_stall_back_score = 0;
         if (appearanceQ2Ratio <= 10) {
-            freestall_back_score = 100;
+            free_stall_back_score = 100;
         } else if (appearanceQ2Ratio <= 19) {
-            freestall_back_score = 70;
+            free_stall_back_score = 70;
         } else {
-            freestall_back_score = 40;
+            free_stall_back_score = 40;
         }
-        return freestall_back_score;
+        return free_stall_back_score;
     }
 
     public int calculatorAppearanceQ3Score(float appearanceQ3Ratio) {
-        int freestall_breast_score = 0;
+        int free_stall_breast_score = 0;
         if (appearanceQ3Ratio <= 10) {
-            freestall_breast_score = 100;
+            free_stall_breast_score = 100;
         } else if (appearanceQ3Ratio <= 19) {
-            freestall_breast_score = 70;
+            free_stall_breast_score = 70;
         } else {
-            freestall_breast_score = 40;
+            free_stall_breast_score = 40;
         }
-        return freestall_breast_score;
+        return free_stall_breast_score;
     }
     // ap == appearance
     public float calculatorRestScore(float sitTimeScore, float apBottomRegScore,
                                             float apBack, float apBreast){
         return (float) (sitTimeScore * 0.6 + apBottomRegScore * 0.15 + apBack * 0.10 + apBreast * 0.15);
+    }
+    public float calculatorFreeStallRestScore(
+            float freeStallCountScore, float sitCollisionScore, float areaOutCollisionScore, float sitTimeScore,
+            float appearanceBackRegScore, float appearanceBackScore, float appearanceBreastScore
+    ){
+        return (float) ((freeStallCountScore * 0.15) + (sitCollisionScore * 0.1) + (areaOutCollisionScore * 0.1) +
+                (sitTimeScore * 0.25) + (appearanceBackRegScore * 0.15) + (appearanceBackScore * 0.1) + (appearanceBreastScore * 0.15));
     }
 
     public float calculatorTotalLimpRatio(float limp, float criticalLimp){

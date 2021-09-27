@@ -18,7 +18,7 @@ import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
 
-public class AppearanceQ3 extends Fragment {
+public class AppearanceBreast extends Fragment {
     private View view;
     double restScore;
     @Override
@@ -75,16 +75,33 @@ public class AppearanceQ3 extends Fragment {
                     ((QuestionTemplateViewModel.Question) viewModel.AppearanceBreast).setRatio(ratio);
 
 
-                    // 편안한 휴식 점수 계산
-                    restScore = mc.calculatorRestScore(
-                            ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore(),
-                            ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getScore(),
-                            ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getScore(),
-                            ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getScore()
-                    );
-                    restScore = viewModel.cutDecimal(restScore);
-                    freestall_rest_score.setText(String.valueOf(restScore));
-                    viewModel.setRestScore(restScore);
+                    // 운동장형 축사 편안한 휴식 점수
+                    if(viewModel.getFarmType() == 4 ){
+                        restScore = mc.calculatorRestScore(
+                                ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore(),
+                                ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getScore(),
+                                ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getScore(),
+                                ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getScore()
+                        );
+                        restScore = viewModel.cutDecimal(restScore);
+                        freestall_rest_score.setText(String.valueOf(restScore));
+                        viewModel.setRestScore(restScore);
+                    } else if(viewModel.getFarmType() == 5){
+
+                        restScore = mc.calculatorFreeStallRestScore(
+                                ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.freeStallCountQuestion).getLowestScore(),
+                                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getScore(),
+                                ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).getScore(),
+                                ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore(),
+                                ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getScore(),
+                                ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getScore(),
+                                ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getScore()
+                        );
+                        restScore = viewModel.cutDecimal(restScore);
+                        freestall_rest_score.setText(String.valueOf(restScore));
+                        viewModel.setRestScore(restScore);
+                    }
+
                 }
            }
         });

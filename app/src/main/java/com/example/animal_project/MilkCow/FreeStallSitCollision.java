@@ -15,14 +15,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animal_project.CustomImageDialog;
-import com.example.animal_project.MilkCowViewModel;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
 
 public class FreeStallSitCollision extends Fragment {
     private QuestionTemplateViewModel viewModel;
-    private MilkCowViewModel viewModelMilk;
+
     private View view;
     private int sitCount;
     private TextView sitCollisionRatioTv;

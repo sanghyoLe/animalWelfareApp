@@ -17,14 +17,13 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.animal_project.MilkCowViewModel;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
 
 public class SitTime extends Fragment {
     private QuestionTemplateViewModel viewModel;
-    private MilkCowViewModel viewModelMilk;
+
     private View view;
     private int sitCount;
     private EditText[] sitTimeAnswer;
