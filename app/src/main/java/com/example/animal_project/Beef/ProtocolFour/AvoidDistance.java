@@ -108,7 +108,6 @@ public class AvoidDistance extends Fragment {
         View question_49 = view.findViewById(R.id.breed_avoid_distance_question_49);
         View question_50 = view.findViewById(R.id.breed_avoid_distance_question_50);
 
-
         questionViewArr = new View[]{
                 question_1, question_2, question_3, question_4, question_5
                 , question_6, question_7, question_8, question_9, question_10

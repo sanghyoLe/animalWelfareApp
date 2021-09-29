@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -58,8 +57,8 @@ import com.example.animal_project.Beef.ProtocolTwo.CalfStraw;
 import com.example.animal_project.Beef.ProtocolTwo.CalfSummerVentilating;
 import com.example.animal_project.Beef.ProtocolTwo.CalfWarm;
 import com.example.animal_project.Beef.ProtocolTwo.CalfWindBlock;
-import com.example.animal_project.MilkCow.AppearanceBackReg;
 import com.example.animal_project.MilkCow.AppearanceBack;
+import com.example.animal_project.MilkCow.AppearanceBackReg;
 import com.example.animal_project.MilkCow.AppearanceBreast;
 import com.example.animal_project.MilkCow.CriticalLimp;
 import com.example.animal_project.MilkCow.FreeStallAreaOutCollision;
@@ -369,43 +368,46 @@ public class QuestionTemplate extends AppCompatActivity
                 breed_runny_nose,breed_ophthalmic,breed_breath,breed_diarrhea,out_genital,milk_min_cell,breed_fall_dead,hard_birth, unAble_stand,
                 breed_horn_q1,breed_horn_q2,breed_horn_q3,breed_castration_q1,breed_castration_q2,breed_castration_q3,breed_struggle,breed_avoid_distance
         };
-
-        ImageButton breed_list_btn_1 = findViewById(R.id.question_list_btn_1);
-        ImageButton breed_list_btn_2 = findViewById(R.id.question_list_btn_2);
-        ImageButton breed_list_btn_3 = findViewById(R.id.question_list_btn_3);
-        ImageButton breed_list_btn_4 = findViewById(R.id.question_list_btn_4);
-        ImageButton breed_list_btn_5 = findViewById(R.id.question_list_btn_5);
-        ImageButton breed_list_btn_6 = findViewById(R.id.question_list_btn_6);
-        ImageButton breed_list_btn_7 = findViewById(R.id.question_list_btn_7);
-        ImageButton breed_list_btn_8 = findViewById(R.id.question_list_btn_8);
-        ImageButton breed_list_btn_9 = findViewById(R.id.question_list_btn_9);
-        ImageButton breed_list_btn_10 = findViewById(R.id.question_list_btn_10);
-        ImageButton breed_list_btn_11 = findViewById(R.id.question_list_btn_11);
-        ImageButton breed_list_btn_12 = findViewById(R.id.question_list_btn_12);
-        ImageButton breed_list_btn_13 = findViewById(R.id.question_list_btn_13);
-        ImageButton breed_list_btn_14 = findViewById(R.id.question_list_btn_14);
-        ImageButton breed_list_btn_15 = findViewById(R.id.question_list_btn_15);
-        ImageButton breed_list_btn_16 = findViewById(R.id.question_list_btn_16);
-        ImageButton breed_list_btn_17 = findViewById(R.id.question_list_btn_17);
-        ImageButton breed_list_btn_18 = findViewById(R.id.question_list_btn_18);
-        ImageButton breed_list_btn_19 = findViewById(R.id.question_list_btn_19);
-        ImageButton breed_list_btn_20 = findViewById(R.id.question_list_btn_20);
-        ImageButton breed_list_btn_21 = findViewById(R.id.question_list_btn_21);
-        ImageButton breed_list_btn_22 = findViewById(R.id.question_list_btn_22);
-        ImageButton breed_list_btn_23 = findViewById(R.id.question_list_btn_23);
-        ImageButton breed_list_btn_24 = findViewById(R.id.question_list_btn_24);
-        ImageButton breed_list_btn_25 = findViewById(R.id.question_list_btn_25);
-        ImageButton breed_list_btn_26 = findViewById(R.id.question_list_btn_26);
-        ImageButton breed_list_btn_27 = findViewById(R.id.question_list_btn_27);
-        ImageButton breed_list_btn_28 = findViewById(R.id.question_list_btn_28);
-        ImageButton breed_list_btn_29 = findViewById(R.id.question_list_btn_29);
-        ImageButton breed_list_btn_30 = findViewById(R.id.question_list_btn_30);
-        ImageButton breed_list_btn_31 = findViewById(R.id.question_list_btn_31);
-        ImageButton breed_list_btn_32 = findViewById(R.id.question_list_btn_32);
-        ImageButton breed_list_btn_33 = findViewById(R.id.question_list_btn_33);
-        ImageButton breed_list_btn_34 = findViewById(R.id.question_list_btn_34);
-        ImageButton breed_list_btn_35 = findViewById(R.id.question_list_btn_35);
-        ImageButton breed_list_btn_36 = findViewById(R.id.question_list_btn_36);
+        LinearLayout listSubMenuLayoutOne = findViewById(R.id.list_sub_menu_1);
+        LinearLayout listSubMenuLayoutTwo = findViewById(R.id.list_sub_menu_2);
+        LinearLayout listSubMenuLayoutThree = findViewById(R.id.list_sub_menu_3);
+        LinearLayout listSubMenuLayoutFour = findViewById(R.id.list_sub_menu_4);
+        ImageButton breed_list_btn_1 = listSubMenuLayoutOne.findViewById(R.id.question_list_btn_1);
+        ImageButton breed_list_btn_2 = listSubMenuLayoutOne.findViewById(R.id.question_list_btn_2);
+        ImageButton breed_list_btn_3 = listSubMenuLayoutOne.findViewById(R.id.question_list_btn_3);
+        ImageButton breed_list_btn_4 = listSubMenuLayoutOne.findViewById(R.id.question_list_btn_4);
+        ImageButton breed_list_btn_5 = listSubMenuLayoutTwo.findViewById(R.id.question_list_btn_5);
+        ImageButton breed_list_btn_6 = listSubMenuLayoutTwo.findViewById(R.id.question_list_btn_6);
+        ImageButton breed_list_btn_7 = listSubMenuLayoutTwo.findViewById(R.id.question_list_btn_7);
+        ImageButton breed_list_btn_8 = listSubMenuLayoutTwo.findViewById(R.id.question_list_btn_8);
+        ImageButton breed_list_btn_9 = listSubMenuLayoutTwo.findViewById(R.id.question_list_btn_9);
+        ImageButton breed_list_btn_10 = listSubMenuLayoutTwo.findViewById(R.id.question_list_btn_10);
+        ImageButton breed_list_btn_11 = listSubMenuLayoutTwo.findViewById(R.id.question_list_btn_11);
+        ImageButton breed_list_btn_12 = listSubMenuLayoutTwo.findViewById(R.id.question_list_btn_12);
+        ImageButton breed_list_btn_13 = listSubMenuLayoutTwo.findViewById(R.id.question_list_btn_13);
+        ImageButton breed_list_btn_14 = listSubMenuLayoutTwo.findViewById(R.id.question_list_btn_14);
+        ImageButton breed_list_btn_15 = listSubMenuLayoutTwo.findViewById(R.id.question_list_btn_15);
+        ImageButton breed_list_btn_16 = listSubMenuLayoutTwo.findViewById(R.id.question_list_btn_16);
+        ImageButton breed_list_btn_17 = listSubMenuLayoutTwo.findViewById(R.id.question_list_btn_17);
+        ImageButton breed_list_btn_18 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_18);
+        ImageButton breed_list_btn_19 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_19);
+        ImageButton breed_list_btn_20 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_20);
+        ImageButton breed_list_btn_21 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_21);
+        ImageButton breed_list_btn_22 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_22);
+        ImageButton breed_list_btn_23 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_23);
+        ImageButton breed_list_btn_24 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_24);
+        ImageButton breed_list_btn_25 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_25);
+        ImageButton breed_list_btn_26 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_26);
+        ImageButton breed_list_btn_27 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_27);
+        ImageButton breed_list_btn_28 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_28);
+        ImageButton breed_list_btn_29 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_29);
+        ImageButton breed_list_btn_30 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_30);
+        ImageButton breed_list_btn_31 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_31);
+        ImageButton breed_list_btn_32 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_32);
+        ImageButton breed_list_btn_33 = listSubMenuLayoutThree.findViewById(R.id.question_list_btn_33);
+        ImageButton breed_list_btn_34 = listSubMenuLayoutFour.findViewById(R.id.question_list_btn_34);
+        ImageButton breed_list_btn_35 = listSubMenuLayoutFour.findViewById(R.id.question_list_btn_35);
+        ImageButton breed_list_btn_36 = listSubMenuLayoutFour.findViewById(R.id.question_list_btn_36);
 
         ImageButton[] breed_list_btn_arr = {
                 breed_list_btn_1,breed_list_btn_2,breed_list_btn_3,breed_list_btn_4,breed_list_btn_5,
@@ -993,8 +995,8 @@ public class QuestionTemplate extends AppCompatActivity
          changeEditTextCheckImage(check_sub_21,((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).getNumberOfCow());
          changeEditTextCheckImage(check_sub_23,((QuestionTemplateViewModel.Question)viewModel.BreedCriticalHairLoss).getNumberOfCow());
          if(((QuestionTemplateViewModel.CoughQuestion)viewModel.CoughQuestion).getCoughPerOneAvg() != -1) changeCheckImage(check_sub_24);
-         changeEditTextCheckImage(check_sub_32,((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getNumberOfCow());
-         changeEditTextCheckImage(check_sub_33,((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getNumberOfCow());
+         changeEditTextCheckImage(check_sub_32,((QuestionTemplateViewModel.YearAvgQuestion)viewModel.hardBirth).getNumberOfCow());
+         changeEditTextCheckImage(check_sub_33,((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).getNumberOfCow());
          if(viewModel.getProtocolThreeScore() != -1) changeCheckImage(check_total_3);
          //프로토콜 4
         if(((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getStruggleIndex() != -1) changeCheckImage(check_sub_40);
@@ -1076,12 +1078,20 @@ public class QuestionTemplate extends AppCompatActivity
          Object struggleQuestion = viewModel.StruggleQuestion;
          Object harmonyQuestion = viewModel.HarmonyQuestion;
          Object strawQuestion = viewModel.StrawQuestion;
+         Object freeStallCountQuestion = viewModel.freeStallCountQuestion;
+         Object sitCollision = viewModel.sitCollision;
+         Object sitAreaOut  = viewModel.freeStallAreaOutCollision;
+         Object sitTime = viewModel.SitTimeQuestion;
 
              task.execute(waterTimeQuestion,
                      coughQuestion,
                      struggleQuestion,
                      harmonyQuestion,
-                     strawQuestion
+                     strawQuestion,
+                     freeStallCountQuestion,
+                     sitCollision,
+                     sitAreaOut,
+                     sitTime
              );
 
 
@@ -1193,8 +1203,48 @@ public class QuestionTemplate extends AppCompatActivity
          double minInjuryScore = viewModel.getMinInjuryScore();
          double minDiseaseScore = viewModel.getDiseaseScore();
 
+         // 착유우
+         String waterTankForm = viewModel.getWaterTankForm();
+         int sitCowCount = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).getSitCowCount();
+         int sitAreaOutCowCount = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).getAreaOutCollisionCowCount();
+         float areaOutCollisionRatio = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).getRatio();
+         float areaOutCollisionScore = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).getScore();
+
+         int appearanceBackRegNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getNumberOfCow();
+         float appearanceBackRegRatio = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getRatio();
+         float appearanceBackRegScore = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getScore();
+
+         int appearanceBackNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getNumberOfCow();
+         float appearanceBackRatio = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getRatio();
+         float appearanceBackScore = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getScore();
+
+         int appearanceBreastNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getNumberOfCow();
+         float appearanceBreastRatio = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getRatio();
+         float appearanceBreastScore = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getScore();
+
+        int criticalLimpNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).getNumberOfCow();
+        float criticalLimpRatio = ((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).getRatio();
+         float criticalLimpScore = ((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).getScore();
+        float totalLimpRatio = viewModel.getTotalLimpRatio();
+
+        String outGenitalsPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.OutGenitals).getPenLocation();
+        int outGenitalsNumberOfCow =((QuestionTemplateViewModel.PenQuestion)viewModel.OutGenitals).getNumberOfCow();
+        float outGenitalsRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.OutGenitals).getRatio();
+
+         String milkInCellPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.MilkInCell).getPenLocation();
+         int milkInCellNumberOfCow =((QuestionTemplateViewModel.PenQuestion)viewModel.MilkInCell).getNumberOfCow();
+         float milkInCellRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.MilkInCell).getRatio();
+
+         int hardBirthYearAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.hardBirth).getYearAvgCount();
+         int hardBirthYearSubAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.hardBirth).getNumberOfCow();
+         float hardBirthRatio = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.hardBirth).getRatio();
 
 
+         int unAbleStandYearAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).getYearAvgCount();
+         int unAbleStandYearSubAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).getNumberOfCow();
+         float unAbleStandRatio = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).getRatio();
+
+         int milkCowStruggleDongSize =  ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getDongSize();
 
          task.execute("http://" + IP_ADDRESS + "/insertBeefAnswer.php",
                  farmId,
@@ -1283,7 +1333,39 @@ public class QuestionTemplate extends AppCompatActivity
                  String.valueOf(breedStrawAvgScore),
                  String.valueOf(breedStrawDongSize),
                  String.valueOf(breedTotalHairLossRatio),
-                 String.valueOf(farmType)
+                 String.valueOf(farmType),
+                 String.valueOf(waterTankForm),
+                 String.valueOf(sitCowCount),
+                 String.valueOf(sitAreaOutCowCount),
+                 String.valueOf(areaOutCollisionRatio),
+                 String.valueOf(areaOutCollisionScore),
+                 String.valueOf(appearanceBackRegNumberOfCow),
+                 String.valueOf(appearanceBackRegRatio),
+                 String.valueOf(appearanceBackRegScore),
+                 String.valueOf(appearanceBackNumberOfCow),
+                 String.valueOf(appearanceBackRatio),
+                 String.valueOf(appearanceBackScore),
+                 String.valueOf(appearanceBreastNumberOfCow),
+                 String.valueOf(appearanceBreastRatio),
+                 String.valueOf(appearanceBreastScore),
+                 String.valueOf(criticalLimpNumberOfCow),
+                 String.valueOf(criticalLimpRatio),
+                 String.valueOf(criticalLimpScore),
+                 String.valueOf(totalLimpRatio),
+                 String.valueOf(outGenitalsPenLocation),
+                 String.valueOf(outGenitalsNumberOfCow),
+                 String.valueOf(outGenitalsRatio),
+                 String.valueOf(milkInCellPenLocation),
+                 String.valueOf(milkInCellNumberOfCow),
+                 String.valueOf(milkInCellRatio),
+                 String.valueOf(hardBirthYearAnswer),
+                 String.valueOf(hardBirthYearSubAnswer),
+                 String.valueOf(hardBirthRatio),
+                 String.valueOf(unAbleStandYearAnswer),
+                 String.valueOf(unAbleStandYearSubAnswer),
+                 String.valueOf(unAbleStandRatio),
+                 String.valueOf(milkCowStruggleDongSize)
+
          );
 
      }

@@ -519,14 +519,15 @@
                     android:layout_height="wrap_content"
                     android:onClick="listBtnHandler"
                     android:src="@drawable/outline_arrow_forward_ios_24"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="10dp"
                     android:text="@string/castration_sub_menu_title_3"
                     android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="10dp"/>
+                    android:textSize="14dp" />
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"

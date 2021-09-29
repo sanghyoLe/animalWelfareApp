@@ -151,6 +151,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         float[] waitingRatio;
         int farmId;
         int maxWaterTimeScore = -1;
+        int farmType;
         public WaterTimeQuestion(int dongSize){
             this.penLocation = new String[dongSize];
             this.cowSize = new int[dongSize];
@@ -158,6 +159,12 @@ public class QuestionTemplateViewModel extends ViewModel {
             this.drinkTime = new int[dongSize];
             this.waterTimeScore = new int[dongSize];
             this.waitingRatio = new float[dongSize];
+        }
+        public void setFarmType(int farmType){
+            this.farmType = farmType;
+        }
+        public int getFarmType(){
+            return this.farmType;
         }
         public void setFarmId(int farmId){
             this.farmId = farmId;
@@ -373,8 +380,9 @@ public class QuestionTemplateViewModel extends ViewModel {
             return this.sitTimeAvg;
         }
     }
-    public static class YearAvgQuestion extends Question{
-        int yearAvgCount = 0;
+    public class YearAvgQuestion extends Question{
+        int yearAvgCount;
+
         public void setYearAvgCount(int yearAvgCount){
             this.yearAvgCount = yearAvgCount;
         }
@@ -722,8 +730,8 @@ public class QuestionTemplateViewModel extends ViewModel {
     public Object CriticalLimp = new Question();
     public Object OutGenitals = new PenQuestion("-1",-1,-1);
     public Object MilkInCell = new PenQuestion("-1",-1,-1);
-    public Object HardBirth = new YearAvgQuestion();
-    public Object UnableStand = new YearAvgQuestion();
+    public Object hardBirth = new YearAvgQuestion();
+    public Object unableStand = new YearAvgQuestion();
     public Object MilkCowStruggle = new MilkCowStruggleQuestion(12);
     public Object[] milkCowPenQuestionArr = {
             BreedSlightHairLoss,BreedRunnyNose,BreedOphthalmic,BreedBreath, BreedDiarrhea,
@@ -784,21 +792,11 @@ public class QuestionTemplateViewModel extends ViewModel {
     private float hairLossTotalRatio = -1;
     private long minInjuryScore = -1;
     private double cough = -1;
-    private float coughRatio = -1;
-    private float runnyNoseRatio = -1;
-    private float ophthalmicRatio = -1;
-    private float breathRatio = -1;
-    private float diarrheaRatio = -1;
-    private float ruminantRatio = -1;
-    private float fallDeadRatio = -1;
+
     private double diseaseScore = -1;
-    private int hornRemoval = -1;
-    private int anesthesia = -1;
-    private int painkiller = -1;
+
     private int hornRemovalScore = -1;
-    private int castration = -1;
-    private int castrationAnesthesia = -1;
-    private int castrationPainkiller = -1;
+
     private int castrationScore = -1;
     private double minPainScore = -1;
     private double struggle = -1;
@@ -814,6 +812,8 @@ public class QuestionTemplateViewModel extends ViewModel {
     private double protocolTwoScore = -1;
     private double protocolThreeScore = -1;
     private double protocolFourScore = -1;
+
+    private float totalLimpRatio = -1;
 
     public void setFarmType(int farmType){
         this.farmType = farmType;
@@ -832,11 +832,9 @@ public class QuestionTemplateViewModel extends ViewModel {
     public void setProtocolTwoScore(double protocolTwoScore){
         this.protocolTwoScore = protocolTwoScore;
     }
-
     public double getProtocolTwoScore() {
         return protocolTwoScore;
     }
-
     public void setProtocolThreeScore(double protocolThreeScore){
         this.protocolThreeScore = protocolThreeScore;
     }
@@ -848,6 +846,13 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public double getProtocolFourScore(){
         return protocolFourScore;
+    }
+
+    public void setTotalLimpRatio(float totalLimpRatio){
+        this.totalLimpRatio = totalLimpRatio;
+    }
+    public float getTotalLimpRatio(){
+        return this.totalLimpRatio;
     }
 
     public void setTotalCowSize(int totalCowSize){
@@ -1056,24 +1061,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     public double getDiseaseScore(){
         return this.diseaseScore;
     }
-    public void setHornRemoval(int hornRemoval){
-        this.hornRemoval = hornRemoval;
-    }
-    public int getHornRemoval(){
-        return this.hornRemoval;
-    }
-    public void setAnesthesia(int anesthesia){
-        this.anesthesia = anesthesia;
-    }
-    public int getAnesthesia(){
-        return this.anesthesia;
-    }
-    public void setPainkiller(int painkiller){
-        this.painkiller = painkiller;
-    }
-    public int getPainkiller(){
-        return  this.painkiller;
-    }
+
     public void setHornRemovalScore(int hornRemovalScore){
         this.hornRemovalScore = hornRemovalScore;
     }
@@ -1081,9 +1069,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         return this.hornRemovalScore;
     }
 
-    public void setCastrationPainkiller(int castrationPainkiller){
-        this.castrationPainkiller = castrationPainkiller;
-    }
+
 
     public void setCastrationScore(int castrationScore){
         this. castrationScore = castrationScore;
@@ -1982,12 +1968,7 @@ public class QuestionTemplateViewModel extends ViewModel {
             return Integer.parseInt(String.valueOf(numberOfCow.getText()));
         }
     }
-    public int checkNumberOfCow(EditText numberOfCow){
-        if(TextUtils.isEmpty(numberOfCow.getText())){
-            return -1;
-        }
-        return 0;
-    }
+
     public String[] makePenLocationArr(EditText[] penLocationOne, EditText[] penLocationTwo, int dongSize){
         String[] penLocation = new String[dongSize];
         for(int i = 0 ; i < dongSize ; i++){
@@ -2002,15 +1983,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         }
         return newIntArr;
     }
-    public int checkEmptySpinner(int[] selectedItemIndex, int dongSize){
-        for(int i = 0 ; i < dongSize ; i++){
-            if(selectedItemIndex[i] == 0){
-              return i+1;
-            }
-            return -1;
-        }
-        return -1;
-    }
+
     public void penQuestionAfterTextChanged(EditText questionEd, TextView questionTv,
                                             TextView sampleSizeTv,EditText locationOneEd, EditText locationTwoEd,
                                             PenQuestion penQuestion){

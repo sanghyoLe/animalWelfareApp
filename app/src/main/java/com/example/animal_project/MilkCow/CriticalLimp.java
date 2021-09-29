@@ -74,7 +74,7 @@ public class CriticalLimp extends Fragment {
                         ((QuestionTemplateViewModel.Question) viewModel.CriticalLimp).setRatio(criticalRatio);
                         float totalRatio = mc.calculatorTotalLimpRatio(((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getRatio(),criticalRatio);
                         totalRatio = (float) viewModel.cutDecimal(totalRatio);
-                        
+                        viewModel.setTotalLimpRatio(totalRatio);
                         limpScore = mc.calculatorLimpScore(totalRatio);
                         totalRatioTv.setText(String.valueOf(totalRatio));
                         ((QuestionTemplateViewModel.Question) viewModel.BreedLimp).setScore(limpScore);

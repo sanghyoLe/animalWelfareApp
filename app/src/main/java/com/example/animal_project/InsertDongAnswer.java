@@ -30,11 +30,21 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
         Object struggleQuestion = objects[2];
         Object harmonyQuestion = objects[3];
         Object strawQuestion = objects[4];
+        Object freeStallCount =  objects[5];
+        freeStallCount = (QuestionTemplateViewModel.FreeStallCountQuestion) freeStallCount;
+        Object sitCollision = objects[6];
+        sitCollision = (QuestionTemplateViewModel.SitCollisionQuestion) sitCollision;
+        Object sitAreaOut  = objects[7];
+        sitAreaOut = (QuestionTemplateViewModel.FreeStallAreaOutCollision) sitAreaOut;
+        Object sitTime =  objects[8];
+        sitTime =  (QuestionTemplateViewModel.SitTimeQuestion) sitTime;
 
 
 
-
+        // waterTimeQuestion -> farmType추가 -> PHP  에서 farmType으로 구별-> freeStallCount 마무리하기
         int farmId = ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).getFarmId();
+        int farmType = ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).getFarmType();
+
         String[] waterTimePenLocation = ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).getPenLocation();
         int[] waterTimeAnswer = ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).getDrinkTime();
         int[] waterTimeTotalCowSize = ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).getCowSize();
@@ -72,7 +82,20 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
         int[] strawScore = ((QuestionTemplateViewModel.StrawQuestion)strawQuestion).getStrawScore();
         float strawAvgScore =  ((QuestionTemplateViewModel.StrawQuestion)strawQuestion).getStrawAvgScore();
 
+        int  freeStallDongSize = ((QuestionTemplateViewModel.FreeStallCountQuestion) freeStallCount).getDongSize();
+        int[] freeStallCountCowSize = ((QuestionTemplateViewModel.FreeStallCountQuestion) freeStallCount).getCowSize();
+        int[] freeStallCountSize  = ((QuestionTemplateViewModel.FreeStallCountQuestion) freeStallCount).getFreeStallCount();
+        double[] freeStallCountRatio = ((QuestionTemplateViewModel.FreeStallCountQuestion) freeStallCount).getFreeStallCountRatio();
+        int[] freeStallCountScore = ((QuestionTemplateViewModel.FreeStallCountQuestion) freeStallCount).getFreeStallCountScore();
+        int freeStallLowestScore = ((QuestionTemplateViewModel.FreeStallCountQuestion) freeStallCount).getLowestScore();
 
+        int sitCollisionSitCount = ((QuestionTemplateViewModel.SitCollisionQuestion)sitCollision).getSitCount();
+        boolean[] sitCollisionCheck = ((QuestionTemplateViewModel.SitCollisionQuestion) sitCollision).getSitCollision();
+
+        int sitTimeSitCount = ((QuestionTemplateViewModel.SitTimeQuestion)sitTime).getSitCount();
+        int[] sitTimeCount =  ((QuestionTemplateViewModel.SitTimeQuestion)sitTime).getSitTime();
+
+        Log.d("farmType",String.valueOf(farmType));
 
 
 
@@ -81,7 +104,12 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
                 +"&coughDongSize=" + coughDongSize
                 +"&struggleDongSize=" + struggleDongSize
                 +"&harmonyDongSize=" +  harmonyDongSize
-                +"&strawDongSize=" + strawDongSize;
+                +"&strawDongSize=" + strawDongSize
+                +"&freeStallCountDongSize=" + freeStallDongSize
+                +"&freeStallLowestScore=" + freeStallLowestScore
+                +"&farmType=" +farmType
+                +"&sitCollisionSitCount=" + sitCollisionSitCount
+                +"&sitTimeSitCount=" + sitTimeSitCount;
 
         for(int i = 0 ; i < waterTimeDongSize ; i++){
             postParameters = postParameters.concat("&waterTimePenLocation_" + (i+1) +"="+ waterTimePenLocation[i]);
@@ -117,6 +145,24 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
             postParameters = postParameters.concat("&strawThreeAnswer" + (i+1) +"="+ strawThreeAnswer[i]);
             postParameters = postParameters.concat("&strawScore" + (i+1) +"="+ strawScore[i]);
         }
+        // 착유우
+
+        for(int i = 0 ; i < freeStallDongSize ; i++){
+            postParameters = postParameters.concat("&freeStallCountCowSize" + (i+1) +"="+ freeStallCountCowSize[i]);
+            postParameters = postParameters.concat("&freeStallCountSize" + (i+1) +"="+ freeStallCountSize[i]);
+            postParameters = postParameters.concat("&freeStallCountRatio" + (i+1) +"="+ freeStallCountRatio[i]);
+            postParameters = postParameters.concat("&freeStallCountScore" + (i+1) +"="+ freeStallCountScore[i]);
+
+        }
+        for(int i = 0 ; i < sitCollisionSitCount ; i++){
+            postParameters = postParameters.concat("&sitCollisionCheck" + (i+1) +"="+ sitCollisionCheck[i]);
+
+        }
+        for(int i = 0 ; i < sitTimeSitCount ; i++){
+            postParameters = postParameters.concat("&sitTimeCount" + (i+1) +"="+ sitTimeCount[i]);
+
+        }
+
 
 
         Log.d("postpar",postParameters);

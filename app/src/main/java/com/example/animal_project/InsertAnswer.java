@@ -134,6 +134,40 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
         String breedStrawDongSize = (String)params[index++];
         String breedTotalHairLossRatio = (String)params[index++];
         String farmType = (String)params[index++];
+
+        // 착유우
+        String waterTankForm = (String)params[index++];
+        String sitCowCount = (String)params[index++];
+        String sitAreaOutCowCount = (String)params[index++];
+        String areaOutCollisionRatio = (String)params[index++];
+        String areaOutCollisionScore = (String)params[index++];
+        String appearanceBackRegNumberOfCow = (String)params[index++];
+        String appearanceBackRegRatio = (String)params[index++];
+        String appearanceBackRegScore = (String)params[index++];
+        String appearanceBackNumberOfCow = (String)params[index++];
+        String appearanceBackRatio = (String)params[index++];
+        String appearanceBackScore = (String)params[index++];
+        String appearanceBreastNumberOfCow = (String)params[index++];
+        String appearanceBreastRatio = (String)params[index++];
+        String appearanceBreastScore = (String)params[index++];
+        String criticalLimpNumberOfCow = (String)params[index++];
+        String criticalLimpRatio = (String)params[index++];
+        String criticalLimpScore = (String)params[index++];
+        String totalLimpRatio = (String)params[index++];
+        String outGenitalsPenLocation = (String)params[index++];
+        String outGenitalsNumberOfCow = (String)params[index++];
+        String outGenitalsRatio = (String)params[index++];
+        String milkInCellPenLocation = (String)params[index++];
+        String milkInCellNumberOfCow = (String)params[index++];
+        String milkInCellRatio = (String)params[index++];
+        String hardBirthYearAnswer = (String)params[index++];
+        String hardBirthYearSubAnswer = (String)params[index++];
+        String hardBirthRatio = (String)params[index++];
+        String unAbleStandYearAnswer = (String)params[index++];
+        String unAbleStandYearSubAnswer = (String)params[index++];
+        String unAbleStandRatio = (String)params[index++];
+        String milkCowStruggleDongSize =(String)params[index++];
+
         String postParameters =
                 "farmId=" + farmId +
                 "&breedPoorNumberOfCow=" + breedPoorNumberOfCow +
@@ -222,6 +256,39 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
                         +"&breedStrawDongSize=" + breedStrawDongSize
                         +"&breedTotalHairLossRatio=" +breedTotalHairLossRatio
                         +"&farmType=" + farmType
+                        +"&waterTankForm=" + waterTankForm
+                        +"&sitCowCount=" + sitCowCount
+                        +"&sitAreaOutCowCount=" + sitAreaOutCowCount
+                        +"&areaOutCollisionRatio=" + areaOutCollisionRatio
+                        +"&areaOutCollisionScore=" + areaOutCollisionScore
+                        +"&appearanceBackRegNumberOfCow=" + appearanceBackRegNumberOfCow
+                        +"&appearanceBackRegRatio=" + appearanceBackRegRatio
+                        +"&appearanceBackRegScore=" + appearanceBackRegScore
+                        +"&appearanceBackNumberOfCow=" + appearanceBackNumberOfCow
+                        +"&appearanceBackRatio=" + appearanceBackRatio
+                        +"&appearanceBackScore=" + appearanceBackScore
+                        +"&appearanceBreastNumberOfCow=" + appearanceBreastNumberOfCow
+                        +"&appearanceBreastRatio=" + appearanceBreastRatio
+                        +"&appearanceBreastScore=" + appearanceBreastScore
+                        +"&criticalLimpNumberOfCow=" + criticalLimpNumberOfCow
+                        +"&criticalLimpRatio=" + criticalLimpRatio
+                        +"&criticalLimpScore=" + criticalLimpScore
+                        +"&totalLimpRatio=" + totalLimpRatio
+                        +"&outGenitalsPenLocation=" + outGenitalsPenLocation
+                        +"&outGenitalsNumberOfCow=" + outGenitalsNumberOfCow
+                        +"&outGenitalsRatio=" + outGenitalsRatio
+                        +"&milkInCellPenLocation=" + milkInCellPenLocation
+                        +"&milkInCellNumberOfCow=" + milkInCellNumberOfCow
+                        +"&milkInCellRatio=" + milkInCellRatio
+                        +"&hardBirthYearAnswer=" + hardBirthYearAnswer
+                        +"&hardBirthYearSubAnswer=" + hardBirthYearSubAnswer
+                        +"&hardBirthRatio=" + hardBirthRatio
+                        +"&unAbleStandYearAnswer=" + unAbleStandYearAnswer
+                        +"&unAbleStandYearSubAnswer=" + unAbleStandYearSubAnswer
+                        +"&unAbleStandRatio=" + unAbleStandRatio
+                        +"&milkCowStruggleDongSize=" + milkCowStruggleDongSize
+
+
 
                 ;
 

@@ -74,7 +74,7 @@ public class WaterTankNum extends Fragment {
                 }
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).setSelectedItem(waterTankNum);
                 int selectItem = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem();
-                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).setAnswer(breed_water_tank_num,selectItem);
+                ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).setAnswer(largeWaterTankNum,selectItem);
                 int waterScore = viewModel.calculatorWaterScore(
                         ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem(),
                         ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem(),

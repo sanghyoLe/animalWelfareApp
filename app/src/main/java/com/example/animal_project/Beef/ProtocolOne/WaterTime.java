@@ -109,7 +109,7 @@ public class WaterTime extends Fragment {
             case 1:
                 QuestionTemplateViewModel.WaterTimeQuestion waterTimeQuestion = (QuestionTemplateViewModel.WaterTimeQuestion)
                         data.getExtras().getSerializable("waterTimeQuestion");
-
+                waterTimeQuestion.setFarmType(viewModel.getFarmType());
                 viewModel.setWaterTimeQuestion(waterTimeQuestion);
 
                 breed_drink_water_score.setText(
