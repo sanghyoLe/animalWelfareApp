@@ -117,7 +117,9 @@ public class SitTime extends Fragment {
                 // 선택된 데이터 위치( 0 부터 )
                 selectedItemIndex[0] = position;
 
-
+                if(selectedItemIndex[0] == 0){
+                    showQuestionView(questionViewArr,0);
+                }
                 if(selectedItemIndex[0] != 0){
                     sitCount = selectedItemIndex[0] + 5;
                     showQuestionView(questionViewArr, sitCount);
@@ -195,14 +197,22 @@ public class SitTime extends Fragment {
     }
     public void showQuestionView(View[] QuestionViewArr, int sit_num) {
         TextView[] tvArr = new TextView[50];
-        for (int i = 0; i < 50; i++) {
-            tvArr[i] = QuestionViewArr[i].findViewById(R.id.sit_time_tv);
-            QuestionViewArr[i].setVisibility(View.GONE);
-            tvArr[i].setText(String.valueOf(i + 1));
+        if(sit_num == 0){
+            for(int i = 0 ; i < 50 ; i++){
+                QuestionViewArr[i].setVisibility(View.GONE);
+            }
+
+        }else{
+            for (int i = 0; i < 50; i++) {
+                tvArr[i] = QuestionViewArr[i].findViewById(R.id.sit_time_tv);
+                QuestionViewArr[i].setVisibility(View.GONE);
+                tvArr[i].setText(String.valueOf(i + 1));
+            }
+            for (int i = 0; i < sit_num ; i++) {
+                QuestionViewArr[i].setVisibility(View.VISIBLE);
+            }
         }
-        for (int i = 0; i < sit_num ; i++) {
-            QuestionViewArr[i].setVisibility(View.VISIBLE);
-        }
+
     }
     public int calculatorSitTimeScore(float sitTime) {
         int sitTimeScore = 0;

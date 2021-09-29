@@ -2,7 +2,6 @@ package com.example.animal_project.Beef.ProtocolFour;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -129,8 +128,8 @@ public class BreedStruggle extends Fragment {
                 QuestionTemplateViewModel.MilkCowStruggleQuestion milkCowStruggleQuestion = (QuestionTemplateViewModel.MilkCowStruggleQuestion)
                         data.getExtras().getSerializable("milkCowStruggleQuestion");
                 viewModel.setMilkCowStruggle(milkCowStruggleQuestion);
-                milk_cow_struggle_tv.setText(String.valueOf(milkCowStruggleQuestion.getStruggleIndex()));
-                milkCowStruggleQuestion.setScore(milkCowStruggleQuestion.calculatorScore(milkCowStruggleQuestion.getStruggleIndex()));
+                milk_cow_struggle_tv.setText(String.valueOf(milkCowStruggleQuestion.getStruggleIndexAvg()));
+                milkCowStruggleQuestion.setScore(milkCowStruggleQuestion.calculatorScore(milkCowStruggleQuestion.getStruggleIndexAvg()));
                 milk_cow_struggle_score_tv.setText(String.valueOf(milkCowStruggleQuestion.getScore()));
             default:
                 break;

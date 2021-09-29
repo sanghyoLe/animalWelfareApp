@@ -125,8 +125,9 @@ public class FreeStallSitCollision extends Fragment {
                 String selectedItem = parent.getSelectedItem().toString();
                 // 선택된 데이터 위치( 0 부터 )
                 selectedItemIndex[0] = position;
-
-                if(selectedItemIndex[0] != 0) {
+                if(selectedItemIndex[0] == 0){
+                    showQuestionView(questionViewArr,0);
+                }else if(selectedItemIndex[0] != 0) {
                     sitCount = selectedItemIndex[0] + 5;
                     showQuestionView(questionViewArr, sitCount);
                     sitCollisionCB = makeCheckBoxArr(questionViewArr, sitCount, R.id.collision_check_box);
@@ -169,14 +170,22 @@ public class FreeStallSitCollision extends Fragment {
 
     public void showQuestionView(View[] QuestionViewArr, int sit_num) {
         TextView[] tvArr = new TextView[50];
-        for (int i = 0; i < 50; i++) {
-            tvArr[i] = QuestionViewArr[i].findViewById(R.id.sit_collision_num_tv);
-            QuestionViewArr[i].setVisibility(View.GONE);
-            tvArr[i].setText(String.valueOf(i + 1));
+        if(sit_num == 0){
+            for(int i = 0 ; i < 50 ; i++){
+                QuestionViewArr[i].setVisibility(View.GONE);
+            }
+
+        }else {
+            for (int i = 0; i < 50; i++) {
+                tvArr[i] = QuestionViewArr[i].findViewById(R.id.sit_collision_num_tv);
+                QuestionViewArr[i].setVisibility(View.GONE);
+                tvArr[i].setText(String.valueOf(i + 1));
+            }
+            for (int i = 0; i < sit_num ; i++) {
+                QuestionViewArr[i].setVisibility(View.VISIBLE);
+            }
         }
-        for (int i = 0; i < sit_num ; i++) {
-            QuestionViewArr[i].setVisibility(View.VISIBLE);
-        }
+
     }
 
     private CheckBox[] makeCheckBoxArr(View[] view,int sitCount, int id){

@@ -45,12 +45,8 @@ public class WaterTankClean extends Fragment {
                         ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem(),
                         viewModel.getWaterTimeQuestion().getMaxWaterTimeScore());
                 viewModel.setWaterScore(waterScore);
-                viewModel.setProtocolOneScore(
-                        viewModel.calculatorProtocolOneResult(viewModel.getFarmType(),
-                                viewModel.getPoorScore(),
-                                viewModel.getWaterScore()
-                        )
-                );
+
+
             }
         });
 

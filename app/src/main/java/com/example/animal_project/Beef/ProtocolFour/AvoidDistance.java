@@ -412,3 +412,4 @@ public class AvoidDistance extends Fragment {
             }
         }
     }
+

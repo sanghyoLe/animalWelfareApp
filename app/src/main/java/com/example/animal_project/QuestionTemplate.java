@@ -999,7 +999,7 @@ public class QuestionTemplate extends AppCompatActivity
          changeEditTextCheckImage(check_sub_33,((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).getNumberOfCow());
          if(viewModel.getProtocolThreeScore() != -1) changeCheckImage(check_total_3);
          //프로토콜 4
-        if(((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getStruggleIndex() != -1) changeCheckImage(check_sub_40);
+        if(((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getStruggleIndexAvg() != -1) changeCheckImage(check_sub_40);
 
          if(viewModel.getAvoidDistanceScore() != -1) changeCheckImage(check_sub_41);
          if(viewModel.getProtocolFourScore() != -1)changeCheckImage(check_total_4);
@@ -1245,7 +1245,9 @@ public class QuestionTemplate extends AppCompatActivity
          float unAbleStandRatio = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).getRatio();
 
          int milkCowStruggleDongSize =  ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getDongSize();
-
+         int freeStallCountDongSize = ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.freeStallCountQuestion).getDongSize();
+         int sitCollisionSitCount = ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getSitCount();
+         int sitTimeSitCount = ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getSitCount();
          task.execute("http://" + IP_ADDRESS + "/insertBeefAnswer.php",
                  farmId,
                  String.valueOf(breedPoorNumberOfCow),
@@ -1364,7 +1366,10 @@ public class QuestionTemplate extends AppCompatActivity
                  String.valueOf(unAbleStandYearAnswer),
                  String.valueOf(unAbleStandYearSubAnswer),
                  String.valueOf(unAbleStandRatio),
-                 String.valueOf(milkCowStruggleDongSize)
+                 String.valueOf(milkCowStruggleDongSize),
+                 String.valueOf(freeStallCountDongSize),
+                 String.valueOf(sitCollisionSitCount),
+                 String.valueOf(sitTimeSitCount)
 
          );
 

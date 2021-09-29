@@ -405,17 +405,14 @@ public class InputUserInfo extends AppCompatActivity {
                 milk_cow_group.setVisibility(View.GONE);
                 beef_cow_input_layout.setVisibility(View.VISIBLE);
                 milk_cow_input_layout.setVisibility(View.GONE);
-                milkCowRBOne.setChecked(false);
-                milkCowRBTwo.setChecked(false);
+                ((RadioGroup)findViewById(R.id.input_farm_milk_cow)).clearCheck();
                 break;
             case R.id.milk_cow_btn:
                 milk_cow_group.setVisibility(View.VISIBLE);
                 beef_group.setVisibility(View.GONE);
                 milk_cow_input_layout.setVisibility(View.VISIBLE);
                 beef_cow_input_layout.setVisibility(View.GONE);
-                beefRBOne.setChecked(false);
-                beefRBTwo.setChecked(false);
-                beefRBThree.setChecked(false);
+                ((RadioGroup)findViewById(R.id.input_farm_beef)).clearCheck();
                 break;
         }
     }

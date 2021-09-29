@@ -167,6 +167,9 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
         String unAbleStandYearSubAnswer = (String)params[index++];
         String unAbleStandRatio = (String)params[index++];
         String milkCowStruggleDongSize =(String)params[index++];
+        String freeStallCountDongSize = (String)params[index++];
+        String sitCollisionSitCount = (String)params[index++];
+        String sitTimeSitCount = (String)params[index++];
 
         String postParameters =
                 "farmId=" + farmId +
@@ -287,6 +290,9 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
                         +"&unAbleStandYearSubAnswer=" + unAbleStandYearSubAnswer
                         +"&unAbleStandRatio=" + unAbleStandRatio
                         +"&milkCowStruggleDongSize=" + milkCowStruggleDongSize
+                        +"&freeStallCountDongSize=" + freeStallCountDongSize
+                        +"&sitCollisionSitCount=" + sitCollisionSitCount
+                        +"&sitTimeSitCount=" + sitTimeSitCount
 
 
 

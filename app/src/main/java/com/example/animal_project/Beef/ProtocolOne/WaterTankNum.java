@@ -80,12 +80,7 @@ public class WaterTankNum extends Fragment {
                         ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem(),
                         viewModel.getWaterTimeQuestion().getMaxWaterTimeScore());
                 viewModel.setWaterScore(waterScore);
-                viewModel.setProtocolOneScore(
-                        viewModel.calculatorProtocolOneResult(farmType,
-                                viewModel.getPoorScore(),
-                                viewModel.getWaterScore()
-                        )
-                );
+
             }
         });
         breed_water_tank_num.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -104,12 +99,7 @@ public class WaterTankNum extends Fragment {
                         ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem(),
                         viewModel.getWaterTimeQuestion().getMaxWaterTimeScore());
                 viewModel.setWaterScore(waterScore);
-                viewModel.setProtocolOneScore(
-                        viewModel.calculatorProtocolOneResult(farmType,
-                                viewModel.getPoorScore(),
-                                viewModel.getWaterScore()
-                        )
-                );
+
             }
         });
 

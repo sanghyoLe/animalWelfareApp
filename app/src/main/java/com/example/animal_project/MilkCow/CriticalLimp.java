@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,7 +74,9 @@ public class CriticalLimp extends Fragment {
                         ((QuestionTemplateViewModel.Question) viewModel.CriticalLimp).setNumberOfCow(viewModel.makeNumberOfCow(criticalEd));
                         ((QuestionTemplateViewModel.Question) viewModel.CriticalLimp).setRatio(criticalRatio);
                         float totalRatio = mc.calculatorTotalLimpRatio(((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getRatio(),criticalRatio);
+                        Log.d("totalRatio_1",String.valueOf(totalRatio));
                         totalRatio = (float) viewModel.cutDecimal(totalRatio);
+                        Log.d("totalRatio_2",String.valueOf(totalRatio));
                         viewModel.setTotalLimpRatio(totalRatio);
                         limpScore = mc.calculatorLimpScore(totalRatio);
                         totalRatioTv.setText(String.valueOf(totalRatio));

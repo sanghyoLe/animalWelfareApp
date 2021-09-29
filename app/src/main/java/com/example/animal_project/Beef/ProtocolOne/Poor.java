@@ -93,12 +93,7 @@ public class Poor extends Fragment {
                     ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setNumberOfCow(Integer.parseInt(ed_1_poorRate.getText().toString()));
                     ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setScore(breed_poor_rate_score);
                     ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setRatio(ratio);
-                    viewModel.setProtocolOneScore(
-                            viewModel.calculatorProtocolOneResult(viewModel.getFarmType(),
-                                    viewModel.getPoorScore(),
-                                    viewModel.getWaterScore()
-                            )
-                    );
+
                 }
             }});
         // Inflate the layout for this fragment

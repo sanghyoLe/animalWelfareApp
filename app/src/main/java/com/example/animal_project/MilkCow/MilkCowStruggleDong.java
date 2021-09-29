@@ -98,6 +98,7 @@ public class MilkCowStruggleDong extends AppCompatActivity {
                     milkCowStruggleQuestion.setCowSize(viewModel.getIntEditTextValues(cowSizeEd,dong_size));
                     // 착유우는 머리박치기 제외 빈도 수
                     milkCowStruggleQuestion.setHeadBangExceptStruggleCount(viewModel.getIntEditTextValues(headBangExceptStruggle,dong_size));
+                    milkCowStruggleQuestion.setHeadBangCount(viewModel.getIntEditTextValues(headBangFreqEd,dong_size));
                     milkCowStruggleQuestion.setHeadBangExceptStrugglePerOne(
                             calStrugglePerOne(
                                     milkCowStruggleQuestion.getCowSize(),
@@ -105,51 +106,57 @@ public class MilkCowStruggleDong extends AppCompatActivity {
                                     dong_size
                             )
                     );
-
-                    milkCowStruggleQuestion.setHeadBangExceptStrugglePerOneAvg(
-                            calStrugglePerOneAvg(
-                                    milkCowStruggleQuestion.getCowSize(),
-                                    milkCowStruggleQuestion.getHeadBangExceptStruggleCount(),
-                                    dong_size
-                            )
-                    );
-
-                    // 머리 박치기
-                    milkCowStruggleQuestion.setHeadBangCount(viewModel.getIntEditTextValues(headBangFreqEd,dong_size));
                     milkCowStruggleQuestion.setHeadBangPerOne(
                             calStrugglePerOne(
-                             milkCowStruggleQuestion.getCowSize(),
-                             milkCowStruggleQuestion.getHeadBangCount(),
-                             dong_size
-                            )
-                    );
-                    milkCowStruggleQuestion.setHeadBangPerOneAvg(
-                            calStrugglePerOneAvg(
                                     milkCowStruggleQuestion.getCowSize(),
                                     milkCowStruggleQuestion.getHeadBangCount(),
                                     dong_size
                             )
                     );
-                    if(milkCowStruggleQuestion.getHeadBangPerOneAvg() >= 1.6){
-                        milkCowStruggleQuestion.setHeadBangPerOneAvg((float)1.6);
+                    float[] headBangPerOne = milkCowStruggleQuestion.getHeadBangPerOne();
+                    float[] headBangExceptPerOne = milkCowStruggleQuestion.getHeadBangExceptStrugglePerOne();
+                    for(int i = 0 ; i < dong_size ; i++){
+                        if(headBangPerOne[i] >= 1.6){
+                            headBangPerOne[i] = (float)1.6;
+                        }
+                        if(headBangExceptPerOne[i] >= 3.4){
+                            headBangExceptPerOne[i] = (float)3.4;
+                        }
                     }
-                    if(milkCowStruggleQuestion.getHeadBangExceptStrugglePerOneAvg() >= 3.4){
-                        milkCowStruggleQuestion.setHeadBangExceptStrugglePerOneAvg((float)3.4);
+                    milkCowStruggleQuestion.setHeadBangPerOne(headBangPerOne);
+                    milkCowStruggleQuestion.setHeadBangExceptStrugglePerOne(headBangExceptPerOne);
+
+
+
+
+
+
+                    float[] struggleIndex = new float[dong_size];
+                    for(int i = 0 ; i < dong_size ; i++) {
+                        struggleIndex[i] = milkCowStruggleQuestion.calculatorStruggleIndex(
+                                headBangPerOne[i],
+                                headBangExceptPerOne[i]
+                        );
                     }
-                    milkCowStruggleQuestion.setStruggleIndex(
-                            milkCowStruggleQuestion.calculatorStruggleIndex(
-                            milkCowStruggleQuestion.getHeadBangPerOneAvg(),
-                            milkCowStruggleQuestion.getHeadBangExceptStrugglePerOneAvg()
+
+                    milkCowStruggleQuestion.setStruggleIndex(struggleIndex);
+                    milkCowStruggleQuestion.setStruggleIndexAvg(
+                            calStruggleIndexAvg(
+                                    milkCowStruggleQuestion.getStruggleIndex(),
+                                    dong_size
                             )
                     );
 
 //                    String msg = makeInputString(strugglePerOne, dong_size);
                     AlertDialog.Builder AlterBuilder = new AlertDialog.Builder(MilkCowStruggleDong.this);
                     AlterBuilder.setTitle("평과 결과");
+                    String msg = makeInputString(
+                            milkCowStruggleQuestion.getStruggleIndex(),
+                            dong_size
+                    );
                     AlterBuilder.setMessage(
-                            "머리박치기 평균 : " + milkCowStruggleQuestion.getHeadBangPerOneAvg() +"번"+" \n"
-                            +"머리박치기 제외 투쟁행동 평균 : " + milkCowStruggleQuestion.getHeadBangExceptStrugglePerOneAvg() +"번" +"\n"
-                            +"투쟁행동 지수 : " + milkCowStruggleQuestion.getStruggleIndex());
+                            msg + "\n"
+                            +"투쟁행동 지수 : " + milkCowStruggleQuestion.getStruggleIndexAvg());
                     // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
                     AlterBuilder.setPositiveButton("취소", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
@@ -182,27 +189,22 @@ public class MilkCowStruggleDong extends AppCompatActivity {
             strugglePerOne[i] = strugglePerOne[i] * 6;
             strugglePerOne[i] = (float) viewModel.cutDecimal(strugglePerOne[i]);
         }
+
         return strugglePerOne;
     }
-    private float calStrugglePerOneAvg(int[] cowSize, int[] struggleEd, int dong_size){
-        float strugglePerOneAvg;
-        int totalCowSize = 0;
-        float totalStruggle = 0;
-        for(int i = 0 ; i< dong_size ; i++){
-            totalCowSize += cowSize[i];
-            totalStruggle += struggleEd[i];
+    private float calStruggleIndexAvg(float[] struggleIndex, int dongSize){
+        float struggleIndexTotal= 0 ;
+        for (int i = 0; i< dongSize ; i++){
+            struggleIndexTotal += struggleIndex[i];
         }
-        strugglePerOneAvg = totalStruggle / (float)totalCowSize;
-        strugglePerOneAvg = (float) viewModel.cutDecimal(strugglePerOneAvg);
-        strugglePerOneAvg = strugglePerOneAvg * 6;
-
-        return (float)viewModel.cutDecimal(strugglePerOneAvg);
+        struggleIndexTotal = struggleIndexTotal / (float) dongSize;
+        return struggleIndexTotal;
     }
-    private String makeInputString(float[] strugglePerOne,int dong_size){
+    private String makeInputString(float[] struggleIndex,int dong_size){
         String[] inputStrings = new String[dong_size];
         String msg = "";
         for(int i = 0 ; i < dong_size ; i++){
-            inputStrings[i] = (i+1) + "동 \n1마리당 1시간 동안 투쟁 행동 수 : " + strugglePerOne[i] + "번\n";
+            inputStrings[i] = (i+1) + "동 \n1마리당 1시간 동안 투쟁 지수 : " + struggleIndex[i] + "\n";
             msg += inputStrings[i];
         }
         return msg;

@@ -393,11 +393,10 @@ public class QuestionTemplateViewModel extends ViewModel {
     public static class MilkCowStruggleQuestion extends DongQuestion implements Serializable{
         int[] headBangCount;
         float[] headBangPerOne;
-        float headBangPerOneAvg;
         int[] headBangExceptStruggleCount;
         float[] headBangExceptStrugglePerOne;
-        float headBangExceptStrugglePerOneAvg;
-        float struggleIndex;
+        float struggleIndexAvg;
+        float[] struggleIndex;
         float score;
         public void setHeadBangCount(int[] headBangCount) {
             this.headBangCount = headBangCount;
@@ -415,13 +414,6 @@ public class QuestionTemplateViewModel extends ViewModel {
             return headBangPerOne;
         }
 
-        public void setHeadBangPerOneAvg(float headBangPerOneAvg) {
-            this.headBangPerOneAvg = headBangPerOneAvg;
-        }
-
-        public float getHeadBangPerOneAvg() {
-            return headBangPerOneAvg;
-        }
         public void setHeadBangExceptStruggleCount(int[] headBangExceptStruggleCount) {
             this.headBangExceptStruggleCount = headBangExceptStruggleCount;
         }
@@ -437,18 +429,19 @@ public class QuestionTemplateViewModel extends ViewModel {
         public float[] getHeadBangExceptStrugglePerOne() {
             return headBangExceptStrugglePerOne;
         }
-        public void setHeadBangExceptStrugglePerOneAvg(float headBangExceptStrugglePerOneAvg) {
-            this.headBangExceptStrugglePerOneAvg = headBangExceptStrugglePerOneAvg;
-        }
 
-        public float getHeadBangExceptStrugglePerOneAvg() {
-            return headBangExceptStrugglePerOneAvg;
-        }
-        public void setStruggleIndex(float struggleIndex){
+        public void setStruggleIndex(float[] struggleIndex){
             this.struggleIndex = struggleIndex;
         }
-        public float getStruggleIndex(){
+        public float[] getStruggleIndex(){
             return this.struggleIndex;
+        }
+
+        public void setStruggleIndexAvg(float struggleIndexAvg){
+            this.struggleIndexAvg = struggleIndexAvg;
+        }
+        public float getStruggleIndexAvg(){
+            return this.struggleIndexAvg;
         }
 
         public float calculatorStruggleIndex(float headBangPerOneAvg,float headBangExceptStrugglePerOneAvg){
@@ -459,11 +452,10 @@ public class QuestionTemplateViewModel extends ViewModel {
         public MilkCowStruggleQuestion(int dongSize) {
             this.headBangCount = new int[dongSize];
             this.headBangPerOne = new float[dongSize];
-            this.headBangPerOneAvg = -1;
             this.headBangExceptStruggleCount = new int[dongSize];
             this.headBangExceptStrugglePerOne = new float[dongSize];
-            this.headBangExceptStrugglePerOneAvg = -1;
-            this.struggleIndex = -1;
+            this.struggleIndex = new float[dongSize];
+            this.struggleIndexAvg = -1;
             this.score = -1;
 
         }
