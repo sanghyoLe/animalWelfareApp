@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.lifecycle.ViewModel;
 
+import com.example.animal_project.MilkCow.MovementStability;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -60,7 +62,18 @@ public class QuestionTemplateViewModel extends ViewModel {
         String[] penLocation;
         int[] cowSize;
         int dongSize;
-
+        int farmType;
+        int farmId;
+        public void setFarmType(int farmType){
+            this.farmType = farmType;
+        }
+        public int getFarmType(){
+            return this.farmType;
+        }
+        public void setFarmId(int farmId){
+            this.farmId = farmId;
+        }
+        public int getFarmId(){return this.farmId;}
         public void setDongSize(int dongSize){this.dongSize = dongSize;}
         public int getDongSize(){ return dongSize;}
         public void setPenLocation(String[] penLocation){ this.penLocation = penLocation;}
@@ -149,9 +162,9 @@ public class QuestionTemplateViewModel extends ViewModel {
         int[] drinkTime;
         int[] waterTimeScore;
         float[] waitingRatio;
-        int farmId;
+
         int maxWaterTimeScore = -1;
-        int farmType;
+
         public WaterTimeQuestion(int dongSize){
             this.penLocation = new String[dongSize];
             this.cowSize = new int[dongSize];
@@ -160,16 +173,7 @@ public class QuestionTemplateViewModel extends ViewModel {
             this.waterTimeScore = new int[dongSize];
             this.waitingRatio = new float[dongSize];
         }
-        public void setFarmType(int farmType){
-            this.farmType = farmType;
-        }
-        public int getFarmType(){
-            return this.farmType;
-        }
-        public void setFarmId(int farmId){
-            this.farmId = farmId;
-        }
-        public int getFarmId(){return this.farmId;}
+
         public void setWaitingCowSize(int[] waitingCowSize){
             this.waitingCowSize = waitingCowSize;
         }
@@ -397,7 +401,8 @@ public class QuestionTemplateViewModel extends ViewModel {
         float[] headBangExceptStrugglePerOne;
         float struggleIndexAvg;
         float[] struggleIndex;
-        float score;
+        float repScore;
+        float score[];
         public void setHeadBangCount(int[] headBangCount) {
             this.headBangCount = headBangCount;
         }
@@ -456,14 +461,22 @@ public class QuestionTemplateViewModel extends ViewModel {
             this.headBangExceptStrugglePerOne = new float[dongSize];
             this.struggleIndex = new float[dongSize];
             this.struggleIndexAvg = -1;
-            this.score = -1;
+            this.repScore = -1;
+            this.score = new float[dongSize];
 
         }
-        public float getScore(){
-            return this.score;
+        public float[] getScore(){
+            return score;
         }
-        public void setScore(float score){
+        public void setScore(float[] score){
             this.score = score;
+        }
+
+        public float getRepScore(){
+            return this.repScore;
+        }
+        public void setRepScore(float repScore){
+            this.repScore = repScore;
         }
 
         public float calculatorScore(float struggleIndex){
@@ -503,7 +516,75 @@ public class QuestionTemplateViewModel extends ViewModel {
     public Object getMilkCowStruggle(){
         return MilkCowStruggle;
     }
+    public class MovementStability extends Question{
+        int accessTroubleCowCount;
+        int exitTroubleCowCount;
+        float accessTroubleRatio;
+        float exitTroubleRatio;
+        float totalRatio;
+        public void setAccessTroubleCowCount(int accessTroubleCowCount){
+            this.accessTroubleCowCount =  accessTroubleCowCount;
+        }
+        public int getAccessTroubleCowCount(){
+            return this.accessTroubleCowCount;
+        }
+        public void setExitTroubleCowCount(int exitTroubleCowCount){
+            this.exitTroubleCowCount = exitTroubleCowCount;
+        }
+        public int getExitTroubleCowCount() {
+            return this.exitTroubleCowCount;
+        }
+        public void setAccessTroubleRatio(float accessTroubleRatio){
+            this.accessTroubleRatio = accessTroubleRatio;
+        }
+        public float getAccessTroubleRatio(){
+            return accessTroubleRatio;
+        }
+        public void setExitTroubleRatio(float exitTroubleRatio){
+            this.exitTroubleRatio = exitTroubleRatio;
+        }
+        public float getExitTroubleRatio(){
+            return this.exitTroubleRatio;
+        }
+        public float getTotalRatio(){
+            return this.totalRatio;
+        }
+        public void setTotalRatio(float totalRatio){
+            this.totalRatio = totalRatio;
+        }
+        public float calculatorTotalRatio(float accessTroubleRatio, float exitTroubleRatio){
+            return (float) (accessTroubleRatio * 0.6 + exitTroubleRatio * 0.4);
+        }
+        public int calculatorScore(float totalRatio){
+            int score = 0;
+            if(totalRatio >= 49){
+                score = 0;
+            } else if(totalRatio >= 32){
+                score = 10;
+            }else if(totalRatio >= 21){
+                score = 20;
+            }else if(totalRatio >= 14){
+                score = 30;
+            }else if(totalRatio >= 11){
+                score = 40;
+            }else if(totalRatio >= 8){
+                score = 50;
+            }else if(totalRatio >= 6){
+                score = 60;
+            }else if(totalRatio >= 4){
+                score = 70;
+            }else if(totalRatio >= 1.6){
+                score = 80;
+            }else if(totalRatio >= 0.1){
+                score = 90;
+            }else if(totalRatio == 0){
+                score = 0;
+            }
+            return score;
 
+        }
+
+    }
     // 프리스톨 Class
     public static class FreeStallCountQuestion extends DongQuestion{
         int[] freeStallCount;
@@ -581,8 +662,8 @@ public class QuestionTemplateViewModel extends ViewModel {
             return lowestScore;
         }
     }
-    public void setFreeStallCountQuestion(Object freeStallCountQuestion){ this.freeStallCountQuestion  = freeStallCountQuestion; }
-    public Object getFreeStallCountQuestion(){return this.freeStallCountQuestion; }
+    public void setFreeStallCountQuestion(Object freeStallCountQuestion){ this.FreeStallCountQuestion = freeStallCountQuestion; }
+    public Object getFreeStallCountQuestion(){return this.FreeStallCountQuestion; }
     public static class FreeStallAreaOutCollision extends Question{
         int sitCowCount;
         int areaOutCollisionCowCount;
@@ -610,7 +691,6 @@ public class QuestionTemplateViewModel extends ViewModel {
          return score;
         }
     }
-
     public static class SitCollisionQuestion extends Question{
         int sitCount;
         boolean[]  sitCollision;
@@ -720,10 +800,11 @@ public class QuestionTemplateViewModel extends ViewModel {
     public Object AppearanceBack = new Question();
     public Object AppearanceBreast = new Question();
     public Object CriticalLimp = new Question();
+    public Object MovementStability = new MovementStability();
     public Object OutGenitals = new PenQuestion("-1",-1,-1);
     public Object MilkInCell = new PenQuestion("-1",-1,-1);
-    public Object hardBirth = new YearAvgQuestion();
-    public Object unableStand = new YearAvgQuestion();
+    public Object HardBirth = new YearAvgQuestion();
+    public Object UnableStand = new YearAvgQuestion();
     public Object MilkCowStruggle = new MilkCowStruggleQuestion(12);
     public Object[] milkCowPenQuestionArr = {
             BreedSlightHairLoss,BreedRunnyNose,BreedOphthalmic,BreedBreath, BreedDiarrhea,
@@ -731,9 +812,9 @@ public class QuestionTemplateViewModel extends ViewModel {
     };
     
     // 프리스톨
-    public Object freeStallCountQuestion = new FreeStallCountQuestion(20);
-    public Object sitCollision = new SitCollisionQuestion(50);
-    public Object freeStallAreaOutCollision = new FreeStallAreaOutCollision();
+    public Object FreeStallCountQuestion = new FreeStallCountQuestion(20);
+    public Object SitCollision = new SitCollisionQuestion(50);
+    public Object FreeStallAreaOutCollision = new FreeStallAreaOutCollision();
 
 
 
@@ -742,8 +823,15 @@ public class QuestionTemplateViewModel extends ViewModel {
 
     private int farmType = 0;
     private int milkCowSize = 0;
+    private int adultCowSize = 0;
     private int sampleCowSize = 0;
+    private int childCowSize = 0;
+    private int dryMilkCowSize = 0;
+    private int pregnantCowSize = 0;
+    private String farmTypeMsg;
+
     private int totalCowSize = 0;
+
     private int poorScore = -1;
 
 
@@ -813,8 +901,38 @@ public class QuestionTemplateViewModel extends ViewModel {
     public int getFarmType(){
         return this.farmType;
     }
+    public void setFarmTypeMsg(String farmTypeMsg){
+        this.farmTypeMsg = farmTypeMsg;
+    }
+    public String getFarmTypeMsg(){
+        return this.farmTypeMsg;
+    }
     public void setMilkCowSize(int milkCowSize) { this.milkCowSize = milkCowSize; }
     public int getMilkCowSize(){return this.milkCowSize; }
+    public void setChildCowSize(int childCowSize){
+        this.childCowSize = childCowSize;
+    }
+    public int getChildCowSize(){
+        return this.childCowSize;
+    }
+    public void setDryMilkCowSize(int dryMilkCowSize){
+        this.dryMilkCowSize = dryMilkCowSize;
+    }
+    public int getDryMilkCowSize(){
+        return this.dryMilkCowSize;
+    }
+    public void setPregnantCowSize(int pregnantCowSize){
+        this.pregnantCowSize = pregnantCowSize;
+    }
+    public int getPregnantCowSize(){
+        return this.pregnantCowSize;
+    }
+    public void setAdultCowSize(int adultCowSize){
+        this.adultCowSize = adultCowSize;
+    }
+    public int getAdultCowSize(){
+        return this.adultCowSize;
+    }
     public void setProtocolOneScore(double protocolOneScore){
         this.protocolOneScore = protocolOneScore;
     }
@@ -1071,12 +1189,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public void setMinPainScore(double minPainScore){this.minPainScore = minPainScore;}
     public double getMinPainScore() { return this.minPainScore; }
-    public void setStruggle(double struggle){
-        this.struggle = struggle;
-    }
-    public double getStruggle(){
-        return this.struggle;
-    }
+
 
     public void setSocialBehaviorScore(int socialBehaviorScore){
         this.socialBehaviorScore = socialBehaviorScore;
@@ -1340,9 +1453,9 @@ public class QuestionTemplateViewModel extends ViewModel {
 
         return warmVenScore;
     }
-    public double calculatorProtocolTwoScore(double restScore, double totalWarmVentilatingScore){
-
-        double protocolTwoScore = (restScore * 0.6) + (totalWarmVentilatingScore * 0.4);
+    public double calculatorProtocolTwoScore(double restScore, double totalWarmVentilatingScore ){
+        double protocolTwoScore = 0;
+         protocolTwoScore = (restScore * 0.7) + (totalWarmVentilatingScore * 0.3);
 
         return Math.round(protocolTwoScore);
     }
@@ -1802,8 +1915,7 @@ public class QuestionTemplateViewModel extends ViewModel {
             } else if (struggleRatio >= 50) {
                 socialBehaviorScore = 24;
             } else if (struggleRatio >= 40) {
-                // 왜 여기서 점수가 내려가는지?
-                socialBehaviorScore = 20;
+                socialBehaviorScore = 25;
             } else if (struggleRatio >= 30) {
                 socialBehaviorScore = 27;
             } else if (struggleRatio >= 20) {
@@ -1845,8 +1957,11 @@ public class QuestionTemplateViewModel extends ViewModel {
 
         return socialBehaviorScore;
     }
-    public double calculatorProtocolFourScore(double socialBehaviorScore, double avoidDistanceScore){
-        return Math.round((socialBehaviorScore * 0.65) + (avoidDistanceScore * 0.35));
+    public double calculatorProtocolFourScore(int farmType, double socialBehaviorScore, double avoidDistanceScore){
+        if(isBeef(farmType) == true){
+            return Math.round((socialBehaviorScore * 0.60) + (avoidDistanceScore * 0.40));
+        }
+        return Math.round((socialBehaviorScore * 0.40) + (avoidDistanceScore * 0.60));
     }
     public int calculatorAvoidDistanceScore(double avoidDistanceRatio){
         int avoidDistanceScore = 0;
@@ -1977,7 +2092,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
 
     public void penQuestionAfterTextChanged(EditText questionEd, TextView questionTv,
-                                            TextView sampleSizeTv,EditText locationOneEd, EditText locationTwoEd,
+                                            EditText locationOneEd, EditText locationTwoEd,
                                             PenQuestion penQuestion){
         if(TextUtils.isEmpty(questionEd.getText().toString())){
             questionTv.setText("값을 입력하세요");
@@ -1989,8 +2104,7 @@ public class QuestionTemplateViewModel extends ViewModel {
             questionTv.setText("표본 규모보다 큰 값 입력 불가");
             penQuestion.setNumberOfCow(-1);
             penQuestion.setScore(-1);
-            sampleSizeTv.setVisibility(View.VISIBLE);
-            sampleSizeTv.setText("표본 규모 : " + String.valueOf(getSampleCowSize()));
+
         } else {
             penQuestion.setPenLocation(
                     makePenLocation(locationOneEd,locationTwoEd)

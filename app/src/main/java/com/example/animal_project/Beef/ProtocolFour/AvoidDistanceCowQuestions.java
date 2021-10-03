@@ -39,9 +39,7 @@ public class AvoidDistanceCowQuestions extends AppCompatActivity {
         int cow_size = intent.getExtras().getInt("cow_count");
 
         QuestionTemplateViewModel.avoidDistance avoidDistance = new QuestionTemplateViewModel.avoidDistance(pen_number, pen_location, cow_size);
-        Log.d("pen_number",String.valueOf(avoidDistance.getPenNumber()));
-        Log.d("pen_location",String.valueOf(avoidDistance.getPenLocation()));
-        Log.d("cow_size",String.valueOf(avoidDistance.getCowSize()));
+
         avoidDistance.setCowFieldSize(cow_size);
 
 

@@ -14,8 +14,6 @@ import android.widget.ImageView;
 public class CustomImageDialog {
 
     private Context context;
-    protected Button okButton;
-    protected Button cancelButton;
     protected Dialog dlg;
     public CustomImageDialog(Context context) {
         this.context = context;

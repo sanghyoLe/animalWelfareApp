@@ -50,7 +50,7 @@ public class InsertAvoidDistance extends AsyncTask<Object[], Void, String> {
                 postParameters = postParameters.concat("&avoidDistanceLevel" + (j+1) +"=" + avoidDistanceLevel[i][j]);
             }
         }
-        Log.d("avoidDinsa",String.valueOf(postParameters));
+
 
 
         try {

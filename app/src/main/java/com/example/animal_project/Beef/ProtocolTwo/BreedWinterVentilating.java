@@ -31,7 +31,7 @@ public class BreedWinterVentilating extends Fragment {
         TextView totalWarmVenTv = fattenProtocolTwoView.findViewById(R.id.warm_ventilation_score);
         TextView protocolTwoTv = fattenProtocolTwoView.findViewById(R.id.breed_protocol_2);
         farmType = viewModel.getFarmType();
-        Log.d("FarmType",String.valueOf(farmType));
+
         if (farmType == 1  ) {
             fattenProtocolTwoView.setVisibility(View.VISIBLE);
         } else {
@@ -80,7 +80,7 @@ public class BreedWinterVentilating extends Fragment {
                     } else {
                         viewModel.setProtocolTwoScore(
                                 viewModel.calculatorProtocolTwoScore(
-                                        50,
+                                        viewModel.getRestScore(),
                                         viewModel.getTotalWarmVentilatingScore()
                                 )
                         );

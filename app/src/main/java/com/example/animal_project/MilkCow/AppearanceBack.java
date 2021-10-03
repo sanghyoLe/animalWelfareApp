@@ -28,12 +28,12 @@ public class AppearanceBack extends Fragment {
 
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         MilkCowScoreCalculator mc = new MilkCowScoreCalculator();
-        TextView ratio_number = (TextView) view.findViewById(R.id.ratio_number);
+
         EditText appearance_a2 = (EditText) view.findViewById(R.id.appearance_a2);
         TextView appearance_ratio_2 = (TextView) view.findViewById(R.id.appearance_ratio_2);
         TextView appearance_score_2 = (TextView) view.findViewById(R.id.appearance_score_2);
 
-        ratio_number.setText(String.valueOf(viewModel.getSampleCowSize())); //표본 두수 표시
+
         appearance_a2.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

@@ -353,13 +353,26 @@ public class AvoidDistance extends Fragment {
                 }
                 else
                 {
-                    viewModel.setProtocolFourScore(
-                            viewModel.calculatorProtocolFourScore
-                                    (
-                                            viewModel.getSocialBehaviorScore(),
-                                            viewModel.getAvoidDistanceScore()
-                                    )
-                    );
+                    if(viewModel.isBeef(viewModel.getFarmType())){
+                        viewModel.setProtocolFourScore(
+                                viewModel.calculatorProtocolFourScore
+                                        (
+                                                viewModel.getFarmType(),
+                                                viewModel.getSocialBehaviorScore(),
+                                                viewModel.getAvoidDistanceScore()
+                                        )
+                        );
+                    }  else {
+                        viewModel.setProtocolFourScore(
+                                viewModel.calculatorProtocolFourScore
+                                        (
+                                                viewModel.getFarmType(),
+                                                ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getRepScore(),
+                                                viewModel.getAvoidDistanceScore()
+                                        )
+                        );
+                    }
+
                     protocol_4.setText(String.valueOf(viewModel.getProtocolFourScore()));
 
                 }

@@ -62,7 +62,7 @@ public class InsertEvaInfo extends AsyncTask<String, Void, String> {
         String milkCow = (String)params[16];
         String dryMilkCow = (String)params[17];
         String pregnantCow = (String)params[18];
-        Log.d("farmTypeNumber",String.valueOf(farmTypeNumber));
+
         String serverURL = (String)params[0];
         String postParameters =
                 "farmName=" + farmName +

@@ -3,12 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/activity_input_userinfo.xml" value="0.33" />
+        <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/activity_question_template.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/breed_avoid_distance_pen_template.xml" value="0.1" />
+        <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/check_sample_size_dialog.xml" value="0.1" />
+        <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/custom_dialog.xml" value="0.22777777777777777" />
+        <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/custom_imageview_dialog.xml" value="0.2101851851851852" />
+        <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/fragment_appearance_q2.xml" value="0.1" />
+        <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/fragment_breed_struggle.xml" value="0.36770833333333336" />
+        <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/fragment_calf_wind_block.xml" value="0.2631578947368421" />
         <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/fragment_freestall_area_out_collision.xml" value="0.21197916666666666" />
         <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/fragment_freestall_sit_collision.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/fragment_hard_birth.xml" value="0.1425925925925926" />
+        <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/fragment_movement_stability.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/fragment_out_genitals.xml" value="0.1" />
+        <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/fragment_poor.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/free_stall_dong_count_template.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/free_stall_list_sub_menu_2.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/input_user_info_dialog.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/list_sub_menu_1.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/list_sub_menu_2.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/pc/Desktop/animalProject/app/src/main/res/layout/list_sub_menu_3.xml" value="0.20108695652173914" />
@@ -20,7 +32,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

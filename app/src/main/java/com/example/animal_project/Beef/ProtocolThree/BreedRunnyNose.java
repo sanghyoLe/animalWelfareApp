@@ -25,7 +25,7 @@ public class BreedRunnyNose extends Fragment {
         // Inflate the layout for this fragment
         EditText breed_runny_nose_ed = view.findViewById(R.id.breed_runny_nose_ed);
         TextView breed_runny_nose_ratio_tv = view.findViewById(R.id.breed_runny_nose_ratio);
-        TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
+
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
         EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
@@ -47,7 +47,7 @@ public class BreedRunnyNose extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 viewModel.penQuestionAfterTextChanged(breed_runny_nose_ed,breed_runny_nose_ratio_tv
-                        ,sample_size_tv,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose);
+                        ,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose);
 
             }
 

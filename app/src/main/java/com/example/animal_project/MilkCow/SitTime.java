@@ -161,7 +161,7 @@ public class SitTime extends Fragment {
                                     ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).setScore(calculatorSitTimeScore(sitTimeAvg));
                                     for(int j = 0 ; j < sitCount ; j++){
                                         int[] sitTime = ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getSitTime();
-                                        Log.d("sitTIme",String.valueOf(sitTime[j]));
+
                                         if(sitTime[j] == -1){
                                             sit_time_ratio.setText((j + 1) + "번 앉기 동작 문항을 완료하세요.");
                                             sit_time_score.setText((j + 1) + "번 앉기 동작 문항을 완료하세요.");

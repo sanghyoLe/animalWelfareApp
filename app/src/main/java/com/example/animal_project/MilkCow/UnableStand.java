@@ -51,29 +51,29 @@ public class UnableStand extends Fragment {
                 if(TextUtils.isEmpty(astasia_count_a1.getText().toString()) || TextUtils.isEmpty(astasia_a1.getText().toString())){
                     astasia_ratio_1.setText("값을 입력하세요");
                     disease_score.setText("문항을 완료하세요");
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setRatio(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setScore(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setYearAvgCount(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setRatio(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setScore(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setYearAvgCount(-1);
                 }else if(Integer.parseInt(astasia_a1.getText().toString()) > Integer.parseInt(astasia_count_a1.getText().toString())){
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setRatio(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setScore(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setYearAvgCount(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setRatio(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setScore(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setYearAvgCount(-1);
                     astasia_ratio_1.setText("2번 문항은 1번 문항보다 클 수 없습니다");
                     disease_score.setText("문항을 완료하세요");
                 }else if(Integer.parseInt(astasia_count_a1.getText().toString()) > viewModel.getTotalCowSize()) {
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setRatio(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setScore(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setYearAvgCount(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setRatio(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setScore(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setYearAvgCount(-1);
                     astasia_ratio_1.setText("전체 두수보다 큰 값 입력 불가");
                 }else {
                     float ratio = Float.parseFloat(astasia_a1.getText().toString()) / Float.parseFloat(astasia_count_a1.getText().toString());
                     ratio = ratio * 100;
                     ratio = Math.round(ratio);
                     ratio = (float) viewModel.cutDecimal(ratio);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setRatio(ratio);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setScore(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setYearAvgCount(Integer.parseInt(astasia_count_a1.getText().toString()));
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setNumberOfCow(Integer.parseInt(String.valueOf(astasia_a1.getText())));
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setRatio(ratio);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setScore(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setYearAvgCount(Integer.parseInt(astasia_count_a1.getText().toString()));
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setNumberOfCow(Integer.parseInt(String.valueOf(astasia_a1.getText())));
                     astasia_ratio_1.setText(String.valueOf(ratio));
 
                     calculatorMilkCowDiseaseSection();
@@ -98,28 +98,28 @@ public class UnableStand extends Fragment {
                 if(TextUtils.isEmpty(astasia_a1.getText().toString())  ||  TextUtils.isEmpty(astasia_count_a1.getText().toString()) ){
                     astasia_ratio_1.setText("값을 입력하세요");
                     disease_score.setText("문항을 완료하세요");
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setRatio(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setScore(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setNumberOfCow(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setRatio(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setScore(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setNumberOfCow(-1);
                 }else if(Integer.parseInt(astasia_a1.getText().toString()) > Integer.parseInt(astasia_count_a1.getText().toString())){
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setRatio(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setScore(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setNumberOfCow(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setRatio(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setScore(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setNumberOfCow(-1);
                     astasia_ratio_1.setText("2번 문항은 1번 문항보다 클 수 없습니다");
                     disease_score.setText("문항을 완료하세요");
                 }else if(Integer.parseInt(astasia_a1.getText().toString()) > viewModel.getTotalCowSize()) {
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setRatio(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setScore(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setNumberOfCow(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setRatio(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setScore(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setNumberOfCow(-1);
                     astasia_ratio_1.setText("전체 두수보다 큰 값 입력 불가");
                 } else {
                     float ratio = Float.parseFloat(astasia_a1.getText().toString()) / Float.parseFloat(astasia_count_a1.getText().toString());
                     ratio = ratio * 100;
                     ratio = Math.round(ratio);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setRatio(ratio);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setScore(-1);
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setNumberOfCow(Integer.parseInt(String.valueOf(astasia_a1.getText())));
-                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).setYearAvgCount(Integer.parseInt(astasia_count_a1.getText().toString()));
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setRatio(ratio);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setScore(-1);
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setNumberOfCow(Integer.parseInt(String.valueOf(astasia_a1.getText())));
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setYearAvgCount(Integer.parseInt(astasia_count_a1.getText().toString()));
                     astasia_ratio_1.setText(String.valueOf(ratio));
 
                     calculatorMilkCowDiseaseSection();
@@ -148,9 +148,9 @@ public class UnableStand extends Fragment {
             disease_score.setText("우유내 체세포 평가를 완료하세요");
         }else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead).getRatio() == -1){ //영역8
             disease_score.setText("폐사율 평가를 완료하세요");
-        }else if(((QuestionTemplateViewModel.YearAvgQuestion)viewModel.hardBirth).getRatio() == -1) { //영역6
+        }else if(((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getRatio() == -1) { //영역6
             disease_score.setText("난산 평가를 완료하세요");
-        } else if(((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).getRatio() == -1){
+        } else if(((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getRatio() == -1){
             disease_score.setText("기립불능 평가를 완료하세요");
         }else {
             double diseaseScore =
@@ -167,8 +167,8 @@ public class UnableStand extends Fragment {
                                     mc.calculatorDiseaseSectionThree(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedDiarrhea).getRatio()),
                                     mc.calculatorDiseaseSectionFour(((QuestionTemplateViewModel.PenQuestion)viewModel.MilkInCell).getRatio()),
                                     mc.calculatorDiseaseSectionFive(((QuestionTemplateViewModel.PenQuestion)viewModel.OutGenitals).getRatio()),
-                                    mc.calculatorDiseaseSectionSix(((QuestionTemplateViewModel.YearAvgQuestion)viewModel.hardBirth).getRatio()),
-                                    mc.calculatorDiseaseSectionSeven(((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).getRatio()),
+                                    mc.calculatorDiseaseSectionSix(((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getRatio()),
+                                    mc.calculatorDiseaseSectionSeven(((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getRatio()),
                                     mc.calculatorDiseaseSectionEight(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead).getRatio())
                             )
                     );

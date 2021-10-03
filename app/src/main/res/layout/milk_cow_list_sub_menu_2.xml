@@ -632,7 +632,41 @@
                     android:layout_margin="10dp"/>
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
 
+                <ImageButton
+                    android:id="@+id/movement_stability_move_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:src="@drawable/outline_arrow_forward_ios_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="착유실 이동 안정성 평가"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="10dp"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/movement_stability_check_sub"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_not_check_circle_24"
+                    android:layout_margin="10dp"/>
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

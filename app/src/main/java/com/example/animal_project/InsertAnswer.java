@@ -299,7 +299,7 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
                 ;
 
 
-            Log.d("farmId",String.valueOf(farmId));
+
 
         try {
 

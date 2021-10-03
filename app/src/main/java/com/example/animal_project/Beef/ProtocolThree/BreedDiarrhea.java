@@ -24,7 +24,7 @@ public class BreedDiarrhea extends Fragment {
         view = inflater.inflate(R.layout.fragment_breed_diarrhea, container, false);
         EditText breed_diarrhea_ed = view.findViewById(R.id.breed_diarrhea_ed);
         TextView breed_diarrhea_tv = view.findViewById(R.id.breed_diarrhea_ratio);
-        TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
+
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
         EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
@@ -43,7 +43,7 @@ public class BreedDiarrhea extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 viewModel.penQuestionAfterTextChanged(breed_diarrhea_ed,breed_diarrhea_tv,
-                        sample_size_tv,penLocationOne,penLocationTwo, (QuestionTemplateViewModel.PenQuestion)viewModel.BreedDiarrhea);
+                        penLocationOne,penLocationTwo, (QuestionTemplateViewModel.PenQuestion)viewModel.BreedDiarrhea);
             }
 
         });

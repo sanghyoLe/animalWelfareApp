@@ -25,7 +25,7 @@ public class BreedOphthalmic extends Fragment {
         view = inflater.inflate(R.layout.fragment_breed_ophthalmic, container, false);
         EditText breed_ophthalmic_ed = view.findViewById(R.id.breed_ophthalmic_ed);
         TextView breed_ophthalmic_tv = view.findViewById(R.id.breed_ophthalmic_ratio);
-        TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
+
         EditText pen_location_one_ed = view.findViewById(R.id.pen_location_ed_1);
         EditText pen_location_two_ed = view.findViewById(R.id.pen_location_ed_2);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
@@ -44,7 +44,7 @@ public class BreedOphthalmic extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 viewModel.penQuestionAfterTextChanged(breed_ophthalmic_ed,breed_ophthalmic_tv,
-                        sample_size_tv, pen_location_one_ed,pen_location_two_ed,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedOphthalmic);
+                       pen_location_one_ed,pen_location_two_ed,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedOphthalmic);
 
 
             }

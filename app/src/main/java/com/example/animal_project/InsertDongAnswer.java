@@ -38,10 +38,12 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
         sitAreaOut = (QuestionTemplateViewModel.FreeStallAreaOutCollision) sitAreaOut;
         Object sitTime =  objects[8];
         sitTime =  (QuestionTemplateViewModel.SitTimeQuestion) sitTime;
+        Object milkCowStruggle = objects[9];
+        milkCowStruggle = (QuestionTemplateViewModel.MilkCowStruggleQuestion) milkCowStruggle;
 
 
 
-        // waterTimeQuestion -> farmType추가 -> PHP  에서 farmType으로 구별-> freeStallCount 마무리하기
+
         int farmId = ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).getFarmId();
         int farmType = ((QuestionTemplateViewModel.WaterTimeQuestion)waterTimeQuestion).getFarmType();
 
@@ -95,7 +97,19 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
         int sitTimeSitCount = ((QuestionTemplateViewModel.SitTimeQuestion)sitTime).getSitCount();
         int[] sitTimeCount =  ((QuestionTemplateViewModel.SitTimeQuestion)sitTime).getSitTime();
 
-        Log.d("farmType",String.valueOf(farmType));
+        int milkCowStruggleDongSize = ((QuestionTemplateViewModel.MilkCowStruggleQuestion) milkCowStruggle).getDongSize();
+        String[] milkCowStrugglePenLocation = ((QuestionTemplateViewModel.MilkCowStruggleQuestion) milkCowStruggle).getPenLocation();
+        int[] milkCowStruggleCowSize =((QuestionTemplateViewModel.MilkCowStruggleQuestion) milkCowStruggle).getCowSize();
+        int[] headBangCount = ((QuestionTemplateViewModel.MilkCowStruggleQuestion) milkCowStruggle).getHeadBangCount();
+        int[] headBangExceptStruggleCount = ((QuestionTemplateViewModel.MilkCowStruggleQuestion) milkCowStruggle).getHeadBangExceptStruggleCount();
+        float[] headBangPerOne = ((QuestionTemplateViewModel.MilkCowStruggleQuestion) milkCowStruggle).getHeadBangPerOne();
+        float[] headBangExceptStrugglePerOne = ((QuestionTemplateViewModel.MilkCowStruggleQuestion) milkCowStruggle).getHeadBangExceptStrugglePerOne();
+        float[] struggleIndex = ((QuestionTemplateViewModel.MilkCowStruggleQuestion) milkCowStruggle).getStruggleIndex();
+        float[] dongScores = ((QuestionTemplateViewModel.MilkCowStruggleQuestion) milkCowStruggle).getScore();
+
+
+
+
 
 
 
@@ -109,7 +123,8 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
                 +"&freeStallLowestScore=" + freeStallLowestScore
                 +"&farmType=" +farmType
                 +"&sitCollisionSitCount=" + sitCollisionSitCount
-                +"&sitTimeSitCount=" + sitTimeSitCount;
+                +"&sitTimeSitCount=" + sitTimeSitCount
+                +"&milkCowStruggleDongSize=" + milkCowStruggleDongSize;
 
         for(int i = 0 ; i < waterTimeDongSize ; i++){
             postParameters = postParameters.concat("&waterTimePenLocation_" + (i+1) +"="+ waterTimePenLocation[i]);
@@ -162,6 +177,18 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
             postParameters = postParameters.concat("&sitTimeCount" + (i+1) +"="+ sitTimeCount[i]);
 
         }
+        for(int i = 0 ; i < milkCowStruggleDongSize ; i++){
+            postParameters = postParameters.concat("&milkCowStrugglePenLocation" + (i+1) +"="+ milkCowStrugglePenLocation[i]);
+            postParameters = postParameters.concat("&headBangCount" + (i+1) +"="+ headBangCount[i]);
+            postParameters = postParameters.concat("&headBangExceptStruggleCount" + (i+1) +"="+ headBangExceptStruggleCount[i]);
+            postParameters = postParameters.concat("&headBangPerOne" + (i+1) +"="+ headBangPerOne[i]);
+            postParameters = postParameters.concat("&headBangExceptStrugglePerOne" + (i+1) +"="+ headBangExceptStrugglePerOne[i]);
+            postParameters = postParameters.concat("&struggleIndex" + (i+1) +"="+ struggleIndex[i]);
+            postParameters = postParameters.concat("&dongScore" + (i+1) +"="+ dongScores[i]);
+            postParameters = postParameters.concat("&milkCowStruggleCowSize" + (i+1) +"="+ milkCowStruggleCowSize[i]);
+
+        }
+
 
 
 

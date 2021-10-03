@@ -25,7 +25,7 @@ public class BreedFallDead extends Fragment {
         view = inflater.inflate(R.layout.fragment_breed_fall_dead, container, false);
         EditText breed_fall_dead_ed = view.findViewById(R.id.breed_fall_dead_ed);
         TextView breed_fall_dead_tv = view.findViewById(R.id.breed_fall_dead_ratio);
-        TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
+
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         TextView breed_disease_score_tv = view.findViewById(R.id.breed_disease_score);
         EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
@@ -49,7 +49,7 @@ public class BreedFallDead extends Fragment {
             public void afterTextChanged(Editable s) {
                 // 질병의 최소화 프로토콜 점수 표시하는 로직
                 viewModel.penQuestionAfterTextChanged(breed_fall_dead_ed,breed_fall_dead_tv,
-                        sample_size_tv,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead);
+                       penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead);
 
                 if(viewModel.isBeef(viewModel.getFarmType()))
                 {

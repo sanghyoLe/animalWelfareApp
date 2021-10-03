@@ -6,6 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MilkCowScoreCalculator {
+    public double calculatorProtocolTwoScore(double restScore, double totalWarmVentilatingScore, double movementStabilityScore){
+        double protocolTwoScore = 0;
+        protocolTwoScore = (restScore * 0.4) + (totalWarmVentilatingScore * 0.3) + (movementStabilityScore * 0.3);
+        return Math.round(protocolTwoScore);
+    }
     public int calculatorAppearanceQ1Score(float appearanceQ1Ratio) {
         int free_stall_back_score = 0;
         if (appearanceQ1Ratio <= 10) {
@@ -44,7 +49,7 @@ public class MilkCowScoreCalculator {
     // ap == appearance
     public float calculatorRestScore(float sitTimeScore, float apBottomRegScore,
                                             float apBack, float apBreast){
-        return (float) (sitTimeScore * 0.6 + apBottomRegScore * 0.15 + apBack * 0.10 + apBreast * 0.15);
+        return (float) (sitTimeScore * 0.3 + apBottomRegScore * 0.15 + apBack * 0.20 + apBreast * 0.35);
     }
     public float calculatorFreeStallRestScore(
             float freeStallCountScore, float sitCollisionScore, float areaOutCollisionScore, float sitTimeScore,
@@ -282,11 +287,9 @@ public class MilkCowScoreCalculator {
         float diseaseScore = 0;
         float careScore = (int)careWarningScore.get("care");
         float warningScore = (int)careWarningScore.get("warning");
-        Log.d("care",String.valueOf(careScore));
-        Log.d("waring",String.valueOf(warningScore));
+
         diseaseScore = ((float)(100)/(float)8) * (8 - ((careScore) + 3 * (warningScore)) / 3);
 
-        Log.d("disaseScore",String.valueOf(diseaseScore));
 
         return Math.round(diseaseScore);
     }

@@ -24,6 +24,7 @@ import com.example.animal_project.R;
 public class BreedStrawDong extends AppCompatActivity {
     private int dong_size;
     private QuestionTemplateViewModel viewModel;
+    private QuestionTemplateViewModel.StrawQuestion strawQuestion;
     @Override
     public void onBackPressed(){
 
@@ -78,8 +79,43 @@ public class BreedStrawDong extends AppCompatActivity {
         CheckBox[] locationOne = makeCheckBoxArr(questionViewArr,dong_size, R.id.checkbox_location_one);
         CheckBox[] locationTwo = makeCheckBoxArr(questionViewArr,dong_size, R.id.checkbox_location_two);
         CheckBox[] locationThree = makeCheckBoxArr(questionViewArr,dong_size, R.id.checkbox_location_three);
+        for(int i = 0 ; i< dong_size ; i++){
+            int finalI = i;
+            locationOne[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (locationOne[finalI].isChecked()) {
+                        strawQuestion.setStrawOne(1, finalI);
+                    } else {
+                        strawQuestion.setStrawOne(0, finalI);
+                    }
 
-        QuestionTemplateViewModel.StrawQuestion strawQuestion = new QuestionTemplateViewModel.StrawQuestion(dong_size);
+                }
+            });
+            locationTwo[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (locationTwo[finalI].isChecked()) {
+                        strawQuestion.setStrawTwo(1, finalI);
+                    } else {
+                        strawQuestion.setStrawTwo(0, finalI);
+                    }
+
+                }
+            });
+            locationThree[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (locationThree[finalI].isChecked()) {
+                        strawQuestion.setStrawThree(1, finalI);
+                    } else {
+                        strawQuestion.setStrawThree(0, finalI);
+                    }
+
+                }
+            });
+        }
+        strawQuestion = new QuestionTemplateViewModel.StrawQuestion(dong_size);
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(BreedStrawDong.this);
 
         home_btn.setOnClickListener(new View.OnClickListener() {
@@ -110,39 +146,7 @@ public class BreedStrawDong extends AppCompatActivity {
                 }  else {
                     for(int i = 0 ;i < dong_size;i++){
                         int finalI = i;
-                        locationOne[i].setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                if (locationOne[finalI].isChecked()) {
-                                        strawQuestion.setStrawOne(1, finalI);
-                                } else {
-                                    strawQuestion.setStrawOne(0, finalI);
-                                }
 
-                            }
-                        });
-                        locationTwo[i].setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                if (locationTwo[finalI].isChecked()) {
-                                    strawQuestion.setStrawTwo(1, finalI);
-                                } else {
-                                    strawQuestion.setStrawTwo(0, finalI);
-                                }
-
-                            }
-                        });
-                        locationThree[i].setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                if (locationThree[finalI].isChecked()) {
-                                    strawQuestion.setStrawThree(1, finalI);
-                                } else {
-                                    strawQuestion.setStrawThree(0, finalI);
-                                }
-
-                            }
-                        });
                         strawQuestion.setStrawScore(
                                 viewModel.calculatorBreedStrawScore(
                                         strawQuestion.getStrawOne(finalI),

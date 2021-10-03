@@ -30,7 +30,7 @@ public class OutGenitals extends Fragment {
       
         EditText outGenitalEd = (EditText) view.findViewById(R.id.outgenitals_a1);
         TextView outGenitalTv = (TextView) view.findViewById(R.id.outgenitals_ratio_1);
-        TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
+
         EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
         EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
 
@@ -49,7 +49,7 @@ public class OutGenitals extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 viewModel.penQuestionAfterTextChanged(outGenitalEd,outGenitalTv,
-                        sample_size_tv, penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.OutGenitals);
+                     penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.OutGenitals);
             }
         });
         return view;

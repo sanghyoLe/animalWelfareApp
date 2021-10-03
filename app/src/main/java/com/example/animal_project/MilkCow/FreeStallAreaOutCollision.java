@@ -70,13 +70,13 @@ public class FreeStallAreaOutCollision extends Fragment {
                     float ratio = Float.parseFloat(freeStallAreaOutCollisionOutEd.getText().toString()) / Float.parseFloat(freeStallAreaOutCollisionSitEd.getText().toString());;
                     ratio = ratio * 100;
                     ratio = Math.round(ratio);
-                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).setSitCowCount(
+                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setSitCowCount(
                             Integer.parseInt(freeStallAreaOutCollisionSitEd.getText().toString()));
-                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).setAreaOutCollisionCowCount(
+                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setAreaOutCollisionCowCount(
                             Integer.parseInt(freeStallAreaOutCollisionSitEd.getText().toString()));
-                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).setRatio(ratio);
-                    areaOutCollisionScore = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).calculatorScore(ratio);
-                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).setScore(areaOutCollisionScore);
+                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setRatio(ratio);
+                    areaOutCollisionScore = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).calculatorScore(ratio);
+                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setScore(areaOutCollisionScore);
                     freeStallAreaOutCollisionScoreTv.setText(String.valueOf(areaOutCollisionScore));
                     freeStallAreaOutCollisionRatioTv.setText(String.valueOf(ratio));
 
@@ -116,13 +116,13 @@ public class FreeStallAreaOutCollision extends Fragment {
                     float ratio = Float.parseFloat(freeStallAreaOutCollisionOutEd.getText().toString()) / Float.parseFloat(freeStallAreaOutCollisionSitEd.getText().toString());;
                     ratio = ratio * 100;
                     ratio = (float) (Math.round(ratio*100)/100.0);
-                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).setSitCowCount(
+                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setSitCowCount(
                             Integer.parseInt(freeStallAreaOutCollisionSitEd.getText().toString()));
-                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).setAreaOutCollisionCowCount(
+                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setAreaOutCollisionCowCount(
                             Integer.parseInt(freeStallAreaOutCollisionSitEd.getText().toString()));
-                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).setRatio(ratio);
-                    areaOutCollisionScore = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).calculatorScore(ratio);
-                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).setScore(areaOutCollisionScore);
+                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setRatio(ratio);
+                    areaOutCollisionScore = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).calculatorScore(ratio);
+                    ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setScore(areaOutCollisionScore);
                     freeStallAreaOutCollisionScoreTv.setText(String.valueOf(areaOutCollisionScore));
                     freeStallAreaOutCollisionRatioTv.setText(String.valueOf(ratio));
                 }
@@ -132,9 +132,9 @@ public class FreeStallAreaOutCollision extends Fragment {
         return view;
     }
     public void wrongInputSetValues(){
-        ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).setSitCowCount(-1);
-        ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).setAreaOutCollisionCowCount(-1);
-        ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).setScore(-1);
-        ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).setRatio(-1);
+        ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setSitCowCount(-1);
+        ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setAreaOutCollisionCowCount(-1);
+        ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setScore(-1);
+        ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setRatio(-1);
     }
 }

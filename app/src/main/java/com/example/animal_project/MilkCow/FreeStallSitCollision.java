@@ -131,26 +131,26 @@ public class FreeStallSitCollision extends Fragment {
                     sitCount = selectedItemIndex[0] + 5;
                     showQuestionView(questionViewArr, sitCount);
                     sitCollisionCB = makeCheckBoxArr(questionViewArr, sitCount, R.id.collision_check_box);
-                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).setSitCount(sitCount);
+                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setSitCount(sitCount);
 
                     for(int i = 0 ; i < sitCount ; i++){
-                        ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).setSitCollision(false,i);
+                        ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setSitCollision(false,i);
                         sitCollisionCB[i].setChecked(false);
                     }
-                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).setRatio(
-                            ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).calculatorRatio(
-                                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getSitCollision(),
-                                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getSitCount()
+                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setRatio(
+                            ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).calculatorRatio(
+                                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getSitCollision(),
+                                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getSitCount()
                             )
                     );
-                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).setScore(
-                            ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).calculatorScore(
-                                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getRatio()
+                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setScore(
+                            ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).calculatorScore(
+                                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getRatio()
                             )
                     );
 
-                    sitCollisionRatioTv.setText(String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getRatio()));
-                    sitCollisionScoreTv.setText(String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getScore()));
+                    sitCollisionRatioTv.setText(String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getRatio()));
+                    sitCollisionScoreTv.setText(String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getScore()));
                     for(int i  = 0; i < sitCount ; i++){
                         onClickSitCollisionCheckBox(sitCollisionCB[i],i);
                     }
@@ -201,21 +201,21 @@ public class FreeStallSitCollision extends Fragment {
             public void onClick(View view) {
                 boolean ifChecked;
                 ifChecked = cb.isChecked() ? true : false;
-                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).setSitCollision(ifChecked, index);
-                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).setRatio(
-                        ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).calculatorRatio(
-                                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getSitCollision(),
-                                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getSitCount()
+                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setSitCollision(ifChecked, index);
+                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setRatio(
+                        ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).calculatorRatio(
+                                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getSitCollision(),
+                                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getSitCount()
                         )
                 );
-                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).setScore(
-                        ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).calculatorScore(
-                                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getRatio()
+                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setScore(
+                        ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).calculatorScore(
+                                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getRatio()
                         )
                 );
 
-                sitCollisionRatioTv.setText(String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getRatio()));
-                sitCollisionScoreTv.setText(String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getScore()));
+                sitCollisionRatioTv.setText(String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getRatio()));
+                sitCollisionScoreTv.setText(String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getScore()));
 
             }
         });

@@ -27,7 +27,7 @@ public class BreedOutward extends Fragment {
         EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
         TextView breed_outward_ratio = view.findViewById(R.id.breed_outward_ratio);
         TextView breed_outward_score = view.findViewById(R.id.breed_outward_score);
-        TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
+
         breed_outward_ed.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -38,8 +38,8 @@ public class BreedOutward extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 TextView breed_rest_score = view.findViewById(R.id.breed_rest_score);
-                viewModel.penQuestionAfterTextChanged(breed_outward_ed,breed_outward_ratio,
-                        sample_size_tv,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward);
+                viewModel.penQuestionAfterTextChanged(breed_outward_ed,breed_outward_ratio
+                    ,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward);
                 if(((QuestionTemplateViewModel.PenQuestion) viewModel.BreedOutward).getRatio() == -1){
                     breed_outward_score.setText("값을 입력해주세요");
                 } else {

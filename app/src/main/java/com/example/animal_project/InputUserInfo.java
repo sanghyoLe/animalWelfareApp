@@ -385,10 +385,11 @@ public class InputUserInfo extends AppCompatActivity {
         bundle.putString("farmName",farmName);
         bundle.putString("address",address);
         bundle.putString("addressDetail",addressDetail);
+
         bundle.putString("repName",repName);
         bundle.putInt("totalCow",totalCow);
         bundle.putInt("totalChildCow",totalChildCow);
-        bundle.putInt("sampleCowSize",sampleCow);
+        bundle.putInt("sampleCow",sampleCow);
         bundle.putString("evaName",evaName);
         bundle.putString("evaDate",evaDate);
         bundle.putInt("farmType",farmType);
@@ -433,7 +434,8 @@ public class InputUserInfo extends AppCompatActivity {
         } else {
             farmTypeMsg ="착유우, 프리스톨 우사";
         }
-        CustomDialog customDialog = new CustomDialog(InputUserInfo.this);
+        bundle.putString("farmTypeMsg",farmTypeMsg);
+        InputUserInfoDialog customDialog = new InputUserInfoDialog(InputUserInfo.this);
 
         String evaDate = year + "년 " + (month+1) + " 월 " + day + " 일";
         List<String> inputMessage = new ArrayList<String>();
@@ -510,6 +512,7 @@ public class InputUserInfo extends AppCompatActivity {
                             String.valueOf(pregnantCow)
                     );
                 customDialog.dismiss();
+
             }
         });
 

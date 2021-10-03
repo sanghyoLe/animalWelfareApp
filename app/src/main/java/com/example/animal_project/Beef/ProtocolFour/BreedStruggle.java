@@ -129,8 +129,8 @@ public class BreedStruggle extends Fragment {
                         data.getExtras().getSerializable("milkCowStruggleQuestion");
                 viewModel.setMilkCowStruggle(milkCowStruggleQuestion);
                 milk_cow_struggle_tv.setText(String.valueOf(milkCowStruggleQuestion.getStruggleIndexAvg()));
-                milkCowStruggleQuestion.setScore(milkCowStruggleQuestion.calculatorScore(milkCowStruggleQuestion.getStruggleIndexAvg()));
-                milk_cow_struggle_score_tv.setText(String.valueOf(milkCowStruggleQuestion.getScore()));
+                milkCowStruggleQuestion.setRepScore(milkCowStruggleQuestion.calculatorScore(milkCowStruggleQuestion.getStruggleIndexAvg()));
+                milk_cow_struggle_score_tv.setText(String.valueOf(milkCowStruggleQuestion.getRepScore()));
             default:
                 break;
         }

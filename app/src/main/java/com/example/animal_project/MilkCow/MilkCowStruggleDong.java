@@ -146,6 +146,11 @@ public class MilkCowStruggleDong extends AppCompatActivity {
                                     dong_size
                             )
                     );
+                    float[] scores = new float[50];
+                    for(int i = 0 ; i < dong_size; i++){
+                        scores[i] = milkCowStruggleQuestion.calculatorScore(struggleIndex[i]);
+                    }
+                    milkCowStruggleQuestion.setScore(scores);
 
 //                    String msg = makeInputString(strugglePerOne, dong_size);
                     AlertDialog.Builder AlterBuilder = new AlertDialog.Builder(MilkCowStruggleDong.this);
@@ -156,7 +161,7 @@ public class MilkCowStruggleDong extends AppCompatActivity {
                     );
                     AlterBuilder.setMessage(
                             msg + "\n"
-                            +"투쟁행동 지수 : " + milkCowStruggleQuestion.getStruggleIndexAvg());
+                            +"투쟁행동 지수 평균 : " + milkCowStruggleQuestion.getStruggleIndexAvg());
                     // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
                     AlterBuilder.setPositiveButton("취소", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
@@ -204,7 +209,7 @@ public class MilkCowStruggleDong extends AppCompatActivity {
         String[] inputStrings = new String[dong_size];
         String msg = "";
         for(int i = 0 ; i < dong_size ; i++){
-            inputStrings[i] = (i+1) + "동 \n1마리당 1시간 동안 투쟁 지수 : " + struggleIndex[i] + "\n";
+            inputStrings[i] = (i+1) + "동 \n1마리당 1시간 동안 투쟁행동 지수 : " + struggleIndex[i] + "\n";
             msg += inputStrings[i];
         }
         return msg;

@@ -29,13 +29,13 @@ public class AppearanceBreast extends Fragment {
         
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         MilkCowScoreCalculator mc = new MilkCowScoreCalculator();
-        TextView ratio_number = (TextView) view.findViewById(R.id.ratio_number);
+
         EditText appearance_a3 = (EditText) view.findViewById(R.id.appearance_a3);
         TextView appearance_ratio_3 = (TextView) view.findViewById(R.id.appearance_ratio_3);
         TextView appearance_score_3 = (TextView) view.findViewById(R.id.appearance_score_3);
         TextView freestall_rest_score = (TextView) view.findViewById(R.id.freestall_rest_score);
 
-        ratio_number.setText(String.valueOf(viewModel.getSampleCowSize())); //표본 두수 표시
+
         appearance_a3.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -89,9 +89,9 @@ public class AppearanceBreast extends Fragment {
                     } else if(viewModel.getFarmType() == 5){
 
                         restScore = mc.calculatorFreeStallRestScore(
-                                ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.freeStallCountQuestion).getLowestScore(),
-                                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getScore(),
-                                ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).getScore(),
+                                ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getLowestScore(),
+                                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getScore(),
+                                ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getScore(),
                                 ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore(),
                                 ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getScore(),
                                 ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getScore(),

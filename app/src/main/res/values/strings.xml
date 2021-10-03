@@ -255,6 +255,8 @@
     <string name="struggle_question_hint_2">10분동안 관찰한 머리박치기 제외 투쟁행동빈도</string>
     <string name="struggle_ratio_1">평균 머리박치기 빈도(1마리/1시간)</string>
     <string name="struggle_ratio_2">평균 머리박치기 제외 투쟁행동빈도(1마리/1시간)</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

@@ -34,7 +34,7 @@ public class MilkInCell extends Fragment {
         EditText milkInCellEd = (EditText) view.findViewById(R.id.milk_in_cell_a1);
         TextView milkInCellTv = (TextView) view.findViewById(R.id.milk_in_cell_ratio_1);
 
-        TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
+        
         EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
         EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
 
@@ -61,8 +61,7 @@ public class MilkInCell extends Fragment {
                     milkInCellTv.setText("표본 규모보다 큰 값 입력 불가");
                     ((QuestionTemplateViewModel.PenQuestion)viewModel.MilkInCell).setNumberOfCow(-1);
                     ((QuestionTemplateViewModel.PenQuestion)viewModel.MilkInCell).setScore(-1);
-                    sample_size_tv.setVisibility(View.VISIBLE);
-                    sample_size_tv.setText("착유우 규모 : " + String.valueOf(viewModel.getMilkCowSize()));
+  ;
                 } else {
                     ((QuestionTemplateViewModel.PenQuestion)viewModel.MilkInCell).setPenLocation(
                             viewModel.makePenLocation(penLocationOne,penLocationTwo)

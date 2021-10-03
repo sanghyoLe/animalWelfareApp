@@ -74,9 +74,9 @@ public class CriticalLimp extends Fragment {
                         ((QuestionTemplateViewModel.Question) viewModel.CriticalLimp).setNumberOfCow(viewModel.makeNumberOfCow(criticalEd));
                         ((QuestionTemplateViewModel.Question) viewModel.CriticalLimp).setRatio(criticalRatio);
                         float totalRatio = mc.calculatorTotalLimpRatio(((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getRatio(),criticalRatio);
-                        Log.d("totalRatio_1",String.valueOf(totalRatio));
+
                         totalRatio = (float) viewModel.cutDecimal(totalRatio);
-                        Log.d("totalRatio_2",String.valueOf(totalRatio));
+
                         viewModel.setTotalLimpRatio(totalRatio);
                         limpScore = mc.calculatorLimpScore(totalRatio);
                         totalRatioTv.setText(String.valueOf(totalRatio));

@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -66,6 +68,7 @@ import com.example.animal_project.MilkCow.FreeStallCount;
 import com.example.animal_project.MilkCow.FreeStallSitCollision;
 import com.example.animal_project.MilkCow.HardBirth;
 import com.example.animal_project.MilkCow.MilkInCell;
+import com.example.animal_project.MilkCow.MovementStability;
 import com.example.animal_project.MilkCow.OutGenitals;
 import com.example.animal_project.MilkCow.SitTime;
 import com.example.animal_project.MilkCow.UnableStand;
@@ -75,6 +78,12 @@ import com.example.animal_project.Result.Result_2;
 import com.example.animal_project.Result.Result_3;
 import com.example.animal_project.Result.Result_4;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 // DataBase 처리를 위한 Import
 // ---------------------------------
@@ -91,6 +100,7 @@ public class QuestionTemplate extends AppCompatActivity
      private String farmName;
      private String address;
      private String addressDetail;
+     private String farmTypeMsg;
      private String repName;
      private int totalCowSize;
      private int totalAdultCow;
@@ -162,6 +172,7 @@ public class QuestionTemplate extends AppCompatActivity
      private AppearanceBackReg appearance_q1;
      private AppearanceBack appearance_q2;
      private AppearanceBreast appearance_q3;
+     private MovementStability movementStability;
      private OutGenitals out_genital;
      private MilkInCell milk_min_cell;
      private HardBirth hard_birth;
@@ -183,6 +194,8 @@ public class QuestionTemplate extends AppCompatActivity
     private ImageButton list_menu_btn_2;
     private ImageButton list_menu_btn_3;
     private ImageButton list_menu_btn_4;
+    private Button checkSampleSizeBtn;
+    private Button evaWayBtn;
     // --------------------------------------------------------
 
 
@@ -190,12 +203,6 @@ public class QuestionTemplate extends AppCompatActivity
     private Fragment[] breed_frag_arr = new Fragment[20];
     private Fragment[] milk_cow_frag_arr = new Fragment[20];
     private Fragment[] fatten_frag_arr = new Fragment[20];
-
-
-
-
-
-
     private Fragment[] freeStall_frag_arr = new Fragment[20];
 
     int count = 0;
@@ -204,7 +211,7 @@ public class QuestionTemplate extends AppCompatActivity
     AlertDialog.Builder myAlertBuilder;
 
 
-
+    private int[] drawableIdArr = new int[20];
 
     // 사용자가 이전 안드로이드 이전 버튼 눌렀을 때 처리를 위한 Override
     @Override
@@ -246,6 +253,8 @@ public class QuestionTemplate extends AppCompatActivity
         list_menu_btn_4 = findViewById(R.id.list_menu_btn_4);
         fragment_paper = findViewById(R.id.fragment_paper);
         question_top_nav = findViewById(R.id.question_top_nav);
+        checkSampleSizeBtn = findViewById(R.id.check_sample_size_btn);
+        evaWayBtn = findViewById(R.id.eva_way_btn);
 
         // 평가를 위한 프래그먼트들
         breed_poor = new Poor();
@@ -293,6 +302,7 @@ public class QuestionTemplate extends AppCompatActivity
         appearance_q2 = new AppearanceBack();
         appearance_q3 = new AppearanceBreast();
         criticalLimp = new CriticalLimp();
+        movementStability = new MovementStability();
         milk_min_cell = new MilkInCell();
         out_genital = new OutGenitals();
         hard_birth = new HardBirth();
@@ -318,11 +328,12 @@ public class QuestionTemplate extends AppCompatActivity
         evaName = BeforeBundle.getString("evaName");
         evaDate = BeforeBundle.getString("evaDate");
         farmType = BeforeBundle.getInt("farmType");
-        sampleCowSize = BeforeBundle.getInt("sampleCowSize");
+        farmTypeMsg = BeforeBundle.getString("farmTypeMsg");
+        sampleCowSize = BeforeBundle.getInt("sampleCow");
         farmId = BeforeBundle.getString("farmId");
-        milkCowSize = BeforeBundle.getInt("milkCowSize");
-        dryMilkCowSize = BeforeBundle.getInt("dryMilkCowSize");
-        pregnantCowSize = BeforeBundle.getInt("pregnantCowSize");
+        milkCowSize = BeforeBundle.getInt("milkCow");
+        dryMilkCowSize = BeforeBundle.getInt("dryMilkCow");
+        pregnantCowSize = BeforeBundle.getInt("pregnantCow");
 
 
 
@@ -335,7 +346,13 @@ public class QuestionTemplate extends AppCompatActivity
         // ------------------------------------
         viewModel.setSampleCowSize(sampleCowSize);
         viewModel.setTotalCowSize(totalCowSize);
+        viewModel.setAdultCowSize(totalAdultCow);
         viewModel.setMilkCowSize(milkCowSize);
+        viewModel.setChildCowSize(totalChildCow);
+        viewModel.setDryMilkCowSize(dryMilkCowSize);
+        viewModel.setPregnantCowSize(pregnantCowSize);
+
+
         viewModel.setFarmType(farmType);
         breed_frag_arr = new Fragment[]{ breed_poor,breed_water_q1,breed_water_q2,breed_water_q3,
                 breed_straw,breed_outward,breed_shade,breed_summer_ventilating,breed_mist_spray,
@@ -355,7 +372,7 @@ public class QuestionTemplate extends AppCompatActivity
         milk_cow_frag_arr = new Fragment[]{breed_poor,breed_water_q1,breed_water_q2,breed_water_q3,sit_time,appearance_q1,appearance_q2,appearance_q3
                 ,breed_shade,breed_summer_ventilating,breed_mist_spray,
                 breed_wind_block,breed_winter_ventilating,calf_shade,calf_summer_ventilating,calf_mist_spray,
-                calf_straw,calf_warm,calf_wind_block,breed_limp,criticalLimp,breed_slight_hair_loss,breed_critical_hair_loss,breed_cough,
+                calf_straw,calf_warm,calf_wind_block,movementStability,breed_limp,criticalLimp,breed_slight_hair_loss,breed_critical_hair_loss,breed_cough,
                 breed_runny_nose,breed_ophthalmic,breed_breath,breed_diarrhea,out_genital,milk_min_cell,breed_fall_dead,hard_birth, unAble_stand,
                 breed_horn_q1,breed_horn_q2,breed_horn_q3,breed_castration_q1,breed_castration_q2,breed_castration_q3,breed_struggle,breed_avoid_distance
         };
@@ -364,7 +381,7 @@ public class QuestionTemplate extends AppCompatActivity
                 free_stall_count,free_stall_sit_collision, free_stall_area_out_collision, sit_time,appearance_q1,appearance_q2,appearance_q3
                 ,breed_shade,breed_summer_ventilating,breed_mist_spray,
                 breed_wind_block,breed_winter_ventilating,calf_shade,calf_summer_ventilating,calf_mist_spray,
-                calf_straw,calf_warm,calf_wind_block,breed_limp,criticalLimp,breed_slight_hair_loss,breed_critical_hair_loss,breed_cough,
+                calf_straw,calf_warm,calf_wind_block,movementStability,breed_limp,criticalLimp,breed_slight_hair_loss,breed_critical_hair_loss,breed_cough,
                 breed_runny_nose,breed_ophthalmic,breed_breath,breed_diarrhea,out_genital,milk_min_cell,breed_fall_dead,hard_birth, unAble_stand,
                 breed_horn_q1,breed_horn_q2,breed_horn_q3,breed_castration_q1,breed_castration_q2,breed_castration_q3,breed_struggle,breed_avoid_distance
         };
@@ -455,7 +472,7 @@ public class QuestionTemplate extends AppCompatActivity
         ImageButton milk_cow_list_btn_17 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_17);
         ImageButton milk_cow_list_btn_18 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_18);
         ImageButton milk_cow_list_btn_19 = milkCowListSubMenuViewTwo.findViewById(R.id.question_list_btn_19);
-
+        ImageButton movementStabilityBtn = milkCowListSubMenuViewTwo.findViewById(R.id.movement_stability_move_btn);
         ImageButton milk_cow_list_btn_20 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_20);
         ImageButton milk_cow_list_btn_21 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_21);
         ImageButton milk_cow_list_btn_22 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_22);
@@ -476,14 +493,13 @@ public class QuestionTemplate extends AppCompatActivity
         ImageButton milk_cow_list_btn_37 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_37);
         ImageButton milk_cow_list_btn_38 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_38);
         ImageButton milk_cow_list_btn_39 = milkCowListSubMenuViewThree.findViewById(R.id.question_list_btn_39);
-
         ImageButton milk_cow_list_btn_40 = milkCowListSubMenuViewFour.findViewById(R.id.question_list_btn_40);
         ImageButton milk_cow_list_btn_41 = milkCowListSubMenuViewFour.findViewById(R.id.question_list_btn_41);
 
         ImageButton[] milk_cow_list_btn_arr = {breed_list_btn_1,breed_list_btn_2,breed_list_btn_3,breed_list_btn_4,milk_cow_list_btn_5,
                 milk_cow_list_btn_6,milk_cow_list_btn_7,milk_cow_list_btn_8,milk_cow_list_btn_9,milk_cow_list_btn_10,
                 milk_cow_list_btn_11,milk_cow_list_btn_12,milk_cow_list_btn_13,milk_cow_list_btn_14,milk_cow_list_btn_15
-        ,milk_cow_list_btn_16,milk_cow_list_btn_17,milk_cow_list_btn_18,milk_cow_list_btn_19,milk_cow_list_btn_20,milk_cow_list_btn_21,
+        ,milk_cow_list_btn_16,milk_cow_list_btn_17,milk_cow_list_btn_18,milk_cow_list_btn_19,movementStabilityBtn,milk_cow_list_btn_20,milk_cow_list_btn_21,
                 milk_cow_list_btn_22,milk_cow_list_btn_23,milk_cow_list_btn_24,milk_cow_list_btn_25,milk_cow_list_btn_26,milk_cow_list_btn_27,
                 milk_cow_list_btn_28,milk_cow_list_btn_29,milk_cow_list_btn_30,milk_cow_list_btn_31,milk_cow_list_btn_32,milk_cow_list_btn_33,
                 milk_cow_list_btn_34,milk_cow_list_btn_35,milk_cow_list_btn_36,milk_cow_list_btn_37,milk_cow_list_btn_38,milk_cow_list_btn_39,
@@ -497,16 +513,100 @@ public class QuestionTemplate extends AppCompatActivity
                 free_stall_list_btn_1,free_stall_list_btn_2,free_stall_list_btn_3,
                 milk_cow_list_btn_5, milk_cow_list_btn_6,milk_cow_list_btn_7,milk_cow_list_btn_8,milk_cow_list_btn_9,milk_cow_list_btn_10,
                 milk_cow_list_btn_11,milk_cow_list_btn_12,milk_cow_list_btn_13,milk_cow_list_btn_14,milk_cow_list_btn_15
-                ,milk_cow_list_btn_16,milk_cow_list_btn_17,milk_cow_list_btn_18,milk_cow_list_btn_19,milk_cow_list_btn_20,milk_cow_list_btn_21,
+                ,milk_cow_list_btn_16,milk_cow_list_btn_17,milk_cow_list_btn_18,milk_cow_list_btn_19,movementStabilityBtn,milk_cow_list_btn_20,milk_cow_list_btn_21,
                 milk_cow_list_btn_22,milk_cow_list_btn_23,milk_cow_list_btn_24,milk_cow_list_btn_25,milk_cow_list_btn_26,milk_cow_list_btn_27,
                 milk_cow_list_btn_28,milk_cow_list_btn_29,milk_cow_list_btn_30,milk_cow_list_btn_31,milk_cow_list_btn_32,milk_cow_list_btn_33,
                 milk_cow_list_btn_34,milk_cow_list_btn_35,milk_cow_list_btn_36,milk_cow_list_btn_37,milk_cow_list_btn_38,milk_cow_list_btn_39,
                 milk_cow_list_btn_40, milk_cow_list_btn_41};
 
+        drawableIdArr = new int[]{
+                R.drawable.sit_collision
+        };
 
 
+        // 표본 규모 확인 버튼
+        checkSampleSizeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (Fragment fragment: getSupportFragmentManager().getFragments()) {
+                    if (fragment.isVisible()) {
+                        List<String> inputMessage = new ArrayList<String>();
+                        inputMessage.add(farmTypeMsg);
+                        inputMessage.add( String.valueOf(totalCowSize));
+                        inputMessage.add(String.valueOf(totalChildCow));
+                        inputMessage.add(String.valueOf(sampleCowSize));
+                        inputMessage.add(String.valueOf(farmType));
+                        if(viewModel.isBeef(farmType)){
+                            inputMessage.add(String.valueOf(totalAdultCow));
+                        }
+                        else {
+                            inputMessage.add(String.valueOf(milkCowSize));
+                            inputMessage.add(String.valueOf(dryMilkCowSize));
+                            inputMessage.add(String.valueOf(pregnantCowSize));
+                        }
+
+                        CheckSampleSizeDialog checkSampleSizeDialog = new CheckSampleSizeDialog(fragment.getContext());
+                        checkSampleSizeDialog.viewSampleSize(inputMessage);
+                    }
+                    }
+                }
+
+        });
+        evaWayBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                for (Fragment fragment: getSupportFragmentManager().getFragments()) {
+                    if (fragment.isVisible()) {
+                        for (int i = 0; i < breed_frag_arr.length; i++) {
+                            if (fragment == breed_frag_arr[i]) {
+                                if(fragment == breed_poor){
+                                    if(viewModel.isBeef(viewModel.getFarmType())){
+                                                setEvaWayFragmentImage(breed_poor,R.drawable.beef_poor);
+                                    }else {
+                                        setEvaWayFragmentImage(breed_poor,R.drawable.milk_cow_poor);
+                                    }
+                                } else {
+                                    setEvaWayFragmentImage(breed_frag_arr[i], drawableIdArr[0]);
+                                }
+
+                            }
+                        }
+//                        if(fragment == breed_poor){
+//                            if(viewModel.isBeef(viewModel.getFarmType())){
+//                                setEvaWayFragmentImage(breed_poor,R.drawable.beef_poor);
+//                            } else{
+//                                setEvaWayFragmentImage(breed_poor,R.drawable.milk_cow_poor);
+//                                }
+//                            }
+//                        else if(fragment == breed_water_q1){
+//                            setEvaWayFragmentImage(breed_water_q1,R.drawable.beef_poor);
+//                            }
+//                        }
+                    }
+                }
+
+
+
+//                for (Fragment fragment: getSupportFragmentManager().getFragments()) {
+//                    if (fragment.isVisible()) {
+//                        if(fragment instanceof Poor){
+//                            CustomImageDialog customImageDialog = new CustomImageDialog(fragment.getContext());
+//                            if(viewModel.isBeef(viewModel.getFarmType())) customImageDialog.setImage(R.drawable.beef_poor);
+//                            else customImageDialog.setImage(R.drawable.milk_cow_poor);
+//                        } else if(fragment instanceof FreeStallSitCollision){
+//                            CustomImageDialog customImageDialog = new CustomImageDialog(fragment.getContext());
+//                            customImageDialog.setImage(R.drawable.sit_collision);
+//                        }
+//                    }
+//                }
+
+            }
+        });
 
         transaction = fragmentManager.beginTransaction();
+
+
 
         // 목록 버튼 누르면 왼쪽에서 나오는 드로우 나타내기 및 없애기 & 체크 이미지 바꾸기
         list_btn.setOnClickListener(new View.OnClickListener() {
@@ -925,6 +1025,7 @@ public class QuestionTemplate extends AppCompatActivity
          ImageView check_sub_17 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_17);
          ImageView check_sub_18 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_18);
          ImageView check_sub_19 = milkCowListSubMenuViewTwo.findViewById(R.id.check_sub_19);
+         ImageView movementStabilityCheckSub = milkCowListSubMenuViewTwo.findViewById(R.id.movement_stability_check_sub);;
          ImageView check_sub_20 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_20);
          ImageView check_sub_21 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_21);
          ImageView check_sub_22 = milkCowListSubMenuViewThree.findViewById(R.id.check_sub_22);
@@ -984,19 +1085,21 @@ public class QuestionTemplate extends AppCompatActivity
          changeEditTextCheckImage(check_sub_6, (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getScore());
          changeEditTextCheckImage(check_sub_7, (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getScore());
          changeEditTextCheckImage(check_sub_8, (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getScore());
-         if(viewModel.getStrawScore() != -1) changeCheckImage(check_sub_5);
+         if(((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getScore() != -1){
+             changeCheckImage(movementStabilityCheckSub);
+         }
          if(viewModel.getProtocolTwoScore() != -1) changeCheckImage(check_total_2);
          // 프리스톨
-         if(((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.freeStallCountQuestion).getLowestScore() != -1) changeCheckImage(free_stall_sub_1);
-         if( ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getScore() != -1) changeCheckImage(free_stall_sub_2);
-         changeEditTextCheckImage(free_stall_sub_3, (int) ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).getScore());
+         if(((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getLowestScore() != -1) changeCheckImage(free_stall_sub_1);
+         if( ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getScore() != -1) changeCheckImage(free_stall_sub_2);
+         changeEditTextCheckImage(free_stall_sub_3, (int) ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getScore());
          //프로토콜 3
          changeEditTextCheckImage(check_sub_20,((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getNumberOfCow());
          changeEditTextCheckImage(check_sub_21,((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).getNumberOfCow());
          changeEditTextCheckImage(check_sub_23,((QuestionTemplateViewModel.Question)viewModel.BreedCriticalHairLoss).getNumberOfCow());
          if(((QuestionTemplateViewModel.CoughQuestion)viewModel.CoughQuestion).getCoughPerOneAvg() != -1) changeCheckImage(check_sub_24);
-         changeEditTextCheckImage(check_sub_32,((QuestionTemplateViewModel.YearAvgQuestion)viewModel.hardBirth).getNumberOfCow());
-         changeEditTextCheckImage(check_sub_33,((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).getNumberOfCow());
+         changeEditTextCheckImage(check_sub_32,((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getNumberOfCow());
+         changeEditTextCheckImage(check_sub_33,((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getNumberOfCow());
          if(viewModel.getProtocolThreeScore() != -1) changeCheckImage(check_total_3);
          //프로토콜 4
         if(((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getStruggleIndexAvg() != -1) changeCheckImage(check_sub_40);
@@ -1078,10 +1181,11 @@ public class QuestionTemplate extends AppCompatActivity
          Object struggleQuestion = viewModel.StruggleQuestion;
          Object harmonyQuestion = viewModel.HarmonyQuestion;
          Object strawQuestion = viewModel.StrawQuestion;
-         Object freeStallCountQuestion = viewModel.freeStallCountQuestion;
-         Object sitCollision = viewModel.sitCollision;
-         Object sitAreaOut  = viewModel.freeStallAreaOutCollision;
+         Object freeStallCountQuestion = viewModel.FreeStallCountQuestion;
+         Object sitCollision = viewModel.SitCollision;
+         Object sitAreaOut  = viewModel.FreeStallAreaOutCollision;
          Object sitTime = viewModel.SitTimeQuestion;
+         Object milkCowStruggle = viewModel.MilkCowStruggle;
 
              task.execute(waterTimeQuestion,
                      coughQuestion,
@@ -1091,7 +1195,8 @@ public class QuestionTemplate extends AppCompatActivity
                      freeStallCountQuestion,
                      sitCollision,
                      sitAreaOut,
-                     sitTime
+                     sitTime,
+                     milkCowStruggle
              );
 
 
@@ -1205,10 +1310,10 @@ public class QuestionTemplate extends AppCompatActivity
 
          // 착유우
          String waterTankForm = viewModel.getWaterTankForm();
-         int sitCowCount = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).getSitCowCount();
-         int sitAreaOutCowCount = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).getAreaOutCollisionCowCount();
-         float areaOutCollisionRatio = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).getRatio();
-         float areaOutCollisionScore = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.freeStallAreaOutCollision).getScore();
+         int sitCowCount = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getSitCowCount();
+         int sitAreaOutCowCount = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getAreaOutCollisionCowCount();
+         float areaOutCollisionRatio = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getRatio();
+         float areaOutCollisionScore = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getScore();
 
          int appearanceBackRegNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getNumberOfCow();
          float appearanceBackRegRatio = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getRatio();
@@ -1235,18 +1340,18 @@ public class QuestionTemplate extends AppCompatActivity
          int milkInCellNumberOfCow =((QuestionTemplateViewModel.PenQuestion)viewModel.MilkInCell).getNumberOfCow();
          float milkInCellRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.MilkInCell).getRatio();
 
-         int hardBirthYearAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.hardBirth).getYearAvgCount();
-         int hardBirthYearSubAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.hardBirth).getNumberOfCow();
-         float hardBirthRatio = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.hardBirth).getRatio();
+         int hardBirthYearAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getYearAvgCount();
+         int hardBirthYearSubAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getNumberOfCow();
+         float hardBirthRatio = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getRatio();
 
 
-         int unAbleStandYearAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).getYearAvgCount();
-         int unAbleStandYearSubAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).getNumberOfCow();
-         float unAbleStandRatio = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.unableStand).getRatio();
+         int unAbleStandYearAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getYearAvgCount();
+         int unAbleStandYearSubAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getNumberOfCow();
+         float unAbleStandRatio = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getRatio();
 
          int milkCowStruggleDongSize =  ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getDongSize();
-         int freeStallCountDongSize = ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.freeStallCountQuestion).getDongSize();
-         int sitCollisionSitCount = ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.sitCollision).getSitCount();
+         int freeStallCountDongSize = ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getDongSize();
+         int sitCollisionSitCount = ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getSitCount();
          int sitTimeSitCount = ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getSitCount();
          task.execute("http://" + IP_ADDRESS + "/insertBeefAnswer.php",
                  farmId,
@@ -1384,6 +1489,12 @@ public class QuestionTemplate extends AppCompatActivity
          }
          imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
      }
+
+    public void setEvaWayFragmentImage(Fragment fragmentClass, int drawableId ){
+
+                  CustomImageDialog customImageDialog = new CustomImageDialog(fragmentClass.getContext());
+                  customImageDialog.setImage(drawableId);
+                }
 
 
 }

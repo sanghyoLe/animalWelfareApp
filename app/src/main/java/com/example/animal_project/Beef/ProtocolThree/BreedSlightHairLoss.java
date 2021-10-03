@@ -28,7 +28,7 @@ public class BreedSlightHairLoss extends Fragment {
         TextView breed_slight_hair_loss_tv = view.findViewById(R.id.breed_slight_hair_loss_tv);
         EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
         EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
-        TextView sample_size_tv = view.findViewById(R.id.sample_size_tv);
+
         breedSlightHairLossEd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -42,7 +42,7 @@ public class BreedSlightHairLoss extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                viewModel.penQuestionAfterTextChanged(breedSlightHairLossEd,breed_slight_hair_loss_tv,sample_size_tv,
+                viewModel.penQuestionAfterTextChanged(breedSlightHairLossEd,breed_slight_hair_loss_tv,
                         penLocationOne,penLocationTwo,((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss));
             }
         });

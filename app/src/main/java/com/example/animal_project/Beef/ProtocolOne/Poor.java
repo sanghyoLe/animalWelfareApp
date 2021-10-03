@@ -43,21 +43,7 @@ public class Poor extends Fragment {
 
         QuestionTemplate activity = (QuestionTemplate) getActivity();
         int total_cow_count = viewModel.getTotalCowSize();
-        Button standard_btn = view.findViewById(R.id.standard_btn);
-        standard_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CustomImageDialog customImageDialog = new CustomImageDialog(Poor.this.getContext());
 
-
-                if (viewModel.isBeef(farmType)) {
-                    customImageDialog.setImage(R.drawable.beef_poor);
-                } else {
-                    customImageDialog.setImage(R.drawable.milk_cow_poor);
-                }
-
-            }
-        });
 
         ed_1_poorRate.addTextChangedListener(new TextWatcher() {
             @Override
