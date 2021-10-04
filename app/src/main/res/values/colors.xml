@@ -13,4 +13,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="darkGreen">#1C8B4F</color>
+    <color name="chocolate">#D2691E</color>
+    <color name="lime">#00FF00</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#0000FF</color>
 </resources>

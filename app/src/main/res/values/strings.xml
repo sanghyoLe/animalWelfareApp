@@ -255,8 +255,25 @@
     <string name="struggle_question_hint_2">10분동안 관찰한 머리박치기 제외 투쟁행동빈도</string>
     <string name="struggle_ratio_1">평균 머리박치기 빈도(1마리/1시간)</string>
     <string name="struggle_ratio_2">평균 머리박치기 제외 투쟁행동빈도(1마리/1시간)</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    // totalScoreString
+    <string name="total_score_explain_excellent">우수한 동물복지 수준이 제공되는 농장입니다.
+        \n현재와 같은 쾌적한 환경과 정밀사양관리가
+        \n우군 전 생애주기에 걸쳐 유지되기를 바랍니다.
+    </string>
+    <string name="total_score_explain_enhance">양호한 수준의 동물복지가 이루어지는 농장입니다.
+        \n4개 원칙 중 부족한 부분을 보완하고 나머지 원칙과
+        \n부속 기준 및 측정 항목을 개선한다면
+        \n우수한 복지 환경을 실현할 수 있을 것입니다.
+    </string>
+    <string name="total_score_explain_acceptable">허용할 만 하나 다소 낮은 수준의 동물복지가 이루어지는 \n단계입니다.
+        4개 원칙 중 부족한 부분을 확인, 보완하면
+        \n소에게 조금 더 양호한 복지 환경을 제공할 수 있을 것입니다
+    </string>
+    <string name="total_score_explain_not_classified">동물복지 수준이 최하 단계입니다.
+        \n농장에 최소한의 동물복지부터 제공할 수 있도록 \n모든 항목의 점검이 필요합니다.
+    </string>
+
 
 
 </resources>

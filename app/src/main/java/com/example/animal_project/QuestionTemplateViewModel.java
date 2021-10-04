@@ -892,6 +892,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     private double protocolTwoScore = -1;
     private double protocolThreeScore = -1;
     private double protocolFourScore = -1;
+    private String protocolTotalScoreString = "0";
 
     private float totalLimpRatio = -1;
 
@@ -2126,6 +2127,53 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public String getWaterTankForm(){
         return this.waterTankForm;
+    }
+    public String calculatorTotalProtocolScoreString(){
+        String totalProtocolScoreString = "0";
+        int gradeFlag = 0;
+        if
+        (       getProtocolOneScore() >= 70
+                && getProtocolTwoScore() >= 70
+                && getProtocolThreeScore() >= 70
+                && getProtocolFourScore() >= 70
+        ) {
+            if(getProtocolOneScore() >= 90) gradeFlag++;
+            if(getProtocolTwoScore() >= 90) gradeFlag++;
+            if(getProtocolThreeScore() >= 90) gradeFlag++;
+            if(getProtocolFourScore() >= 90) gradeFlag++;
+            if(gradeFlag >= 2) totalProtocolScoreString = "Excellent";
+        } else if(getProtocolOneScore() >= 50 &&
+                getProtocolTwoScore() >= 50 &&
+                getProtocolThreeScore() >= 50 &&
+                getProtocolFourScore() >= 50
+        ){
+            gradeFlag = 0;
+            if(getProtocolOneScore() >= 70) gradeFlag++;
+            if(getProtocolTwoScore() >= 70) gradeFlag++;
+            if(getProtocolThreeScore() >= 70) gradeFlag++;
+            if(getProtocolFourScore() >= 70) gradeFlag++;
+            if(gradeFlag >= 2) totalProtocolScoreString = "Enhanced";
+        } else if(getProtocolOneScore() >= 40 &&
+                getProtocolTwoScore() >= 40 &&
+                getProtocolThreeScore() >= 40 &&
+                getProtocolFourScore() >= 40
+        ) {
+            gradeFlag = 0;
+            if(getProtocolOneScore() >= 50) gradeFlag++;
+            if(getProtocolTwoScore() >= 50) gradeFlag++;
+            if(getProtocolThreeScore() >= 50) gradeFlag++;
+            if(getProtocolFourScore() >= 50) gradeFlag++;
+            if(gradeFlag >= 2) totalProtocolScoreString = "Acceptable";
+        } else {
+            totalProtocolScoreString = "NotClassified";
+        }
+        return totalProtocolScoreString;
+    }
+    public void setTotalProtocolScoreString(String protocolTotalScoreString){
+            this.protocolTotalScoreString = protocolTotalScoreString;
+    }
+    public String getTotalProtocolScoreString(){
+        return protocolTotalScoreString;
     }
 }
 

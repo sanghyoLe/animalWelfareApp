@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
-public class Result_4 extends Fragment {
+public class ResultProtocolFour extends Fragment {
     QuestionTemplateViewModel viewModel;
     @Nullable
     @Override

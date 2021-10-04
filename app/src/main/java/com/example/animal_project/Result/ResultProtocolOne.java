@@ -15,18 +15,21 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
-public class Result_2 extends Fragment {
+public class ResultProtocolOne extends Fragment {
     QuestionTemplateViewModel viewModel;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.result_2, container, false);
+        View view = inflater.inflate(R.layout.result_1, container, false);
+
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
-        View progressBarView = view.findViewById(R.id.result_progressbar_2);
+
+        View progressBarView = view.findViewById(R.id.result_progressbar_1);
+
         TextView progressBarTv = progressBarView.findViewById(R.id.progress_tv);
         ProgressBar progressBar = progressBarView.findViewById(R.id.circular_determinative_pb);
 
-         viewModel.setProgressBar(viewModel.getProtocolTwoScore(),progressBar,progressBarTv);
+        viewModel.setProgressBar(viewModel.getProtocolOneScore(),progressBar,progressBarTv);
 
         return view;
     }

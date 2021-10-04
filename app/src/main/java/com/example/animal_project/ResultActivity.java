@@ -1,0 +1,94 @@
+package com.example.animal_project;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+
+import com.example.animal_project.Result.ResultTotal;
+import com.example.animal_project.Result.ResultProtocolOne;
+import com.example.animal_project.Result.ResultProtocolTwo;
+import com.example.animal_project.Result.ResultProtocolThree;
+import com.example.animal_project.Result.ResultProtocolFour;
+import com.google.android.material.tabs.TabLayout;
+
+public class ResultActivity extends AppCompatActivity {
+
+    QuestionTemplateViewModel viewModel;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ResultTotal resultTotal;
+        ResultProtocolOne resultOne;
+        ResultProtocolTwo resultTwo;
+        ResultProtocolThree resultThree;
+        ResultProtocolFour resultFour;
+        TabLayout tabs;
+
+            viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
+            setContentView(R.layout.activity_result);
+
+            resultTotal = new ResultTotal();
+            resultOne = new ResultProtocolOne();
+            resultTwo = new ResultProtocolTwo();
+            resultThree = new ResultProtocolThree();
+            resultFour = new ResultProtocolFour();
+
+            getSupportFragmentManager().beginTransaction().add(R.id.container, resultTotal).commit();
+            tabs = findViewById(R.id.tab_layout);
+            tabs.addTab(tabs.newTab().setText("종합"));
+            tabs.addTab(tabs.newTab().setText("사료"));
+            tabs.addTab(tabs.newTab().setText("환경"));
+            tabs.addTab(tabs.newTab().setText("건강"));
+            tabs.addTab(tabs.newTab().setText("행동"));
+
+
+            Intent intent = getIntent();
+            Bundle resultBundle = intent.getExtras();
+            viewModel.setTotalProtocolScoreString(resultBundle.getString("protocolTotalScoreString"));
+            viewModel.setFarmType(resultBundle.getInt("farmType"));
+            viewModel.setProtocolOneScore(resultBundle.getDouble("protocolOneScore"));
+            viewModel.setProtocolTwoScore(resultBundle.getDouble("protocolTwoScore"));
+            viewModel.setProtocolThreeScore(resultBundle.getDouble("protocolThreeScore"));
+            viewModel.setProtocolFourScore(resultBundle.getDouble("protocolFourScore"));
+            Log.d("totalScoreString",viewModel.getTotalProtocolScoreString());
+
+
+
+
+
+
+            tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    int position = tab.getPosition();
+                    Fragment selected = null;
+                    if(position == 0)
+                        selected = resultTotal;
+                    else if(position == 1)
+                        selected = resultOne;
+                    else if(position == 2)
+                        selected = resultTwo;
+                    else if(position == 3)
+                        selected = resultThree;
+                    else if(position == 4)
+                        selected = resultFour;
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, selected).commit();
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+
+                }
+            });
+
+        }
+    }

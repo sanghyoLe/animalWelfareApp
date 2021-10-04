@@ -49,6 +49,14 @@ public class AvoidDistance extends Fragment {
         penLocationOne = view.findViewById(R.id.pen_location_ed_1);
         penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
 
+        // -----------------------------------------
+        viewModel.setProtocolOneScore(90);
+        viewModel.setProtocolTwoScore(90);
+        viewModel.setProtocolThreeScore(70);
+        viewModel.setProtocolFourScore(70);
+
+
+        // ---------------------------------------
         avoid_distance_score_tv = view.findViewById(R.id.breed_avoid_distance_score_tv);
         avoid_distance_ratio_tv = view.findViewById(R.id.breed_avoid_distance_ratio_tv);
         if(viewModel.getAvoidDistanceScore() == -1){

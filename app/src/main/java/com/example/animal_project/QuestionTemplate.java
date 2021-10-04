@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -14,8 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -73,17 +72,14 @@ import com.example.animal_project.MilkCow.OutGenitals;
 import com.example.animal_project.MilkCow.SitTime;
 import com.example.animal_project.MilkCow.UnableStand;
 import com.example.animal_project.Result.ResultTotal;
-import com.example.animal_project.Result.Result_1;
-import com.example.animal_project.Result.Result_2;
-import com.example.animal_project.Result.Result_3;
-import com.example.animal_project.Result.Result_4;
+import com.example.animal_project.Result.ResultProtocolOne;
+import com.example.animal_project.Result.ResultProtocolTwo;
+import com.example.animal_project.Result.ResultProtocolThree;
+import com.example.animal_project.Result.ResultProtocolFour;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 // DataBase 처리를 위한 Import
 // ---------------------------------
@@ -117,10 +113,10 @@ public class QuestionTemplate extends AppCompatActivity
 
     // --- 결과 창 ---
     ResultTotal result_total;
-    Result_1 result1;
-    Result_2 result2;
-    Result_3 result3;
-    Result_4 result4;
+    ResultProtocolOne result1;
+    ResultProtocolTwo result2;
+    ResultProtocolThree result3;
+    ResultProtocolFour result4;
     TabLayout tabs;
     Bundle bundle;
     // --------------------------------------------------------
@@ -213,10 +209,20 @@ public class QuestionTemplate extends AppCompatActivity
 
     private int[] drawableIdArr = new int[20];
 
-    // 사용자가 이전 안드로이드 이전 버튼 눌렀을 때 처리를 위한 Override
-    @Override
-    public void onBackPressed(){
-        myOnBackPressed(myAlertBuilder);
+
+
+     // 사용자가 이전 안드로이드 이전 버튼 눌렀을 때 처리를 위한 Override
+    @Override public void onBackPressed() {
+        for (Fragment fragment: getSupportFragmentManager().getFragments()) {
+            if (fragment.isVisible()) {
+                if (fragment == result1 || fragment == result2 || fragment == result3 || fragment == result4 || fragment == result_total) {
+                    Log.d("back", String.valueOf("back"));
+                    break;
+                } else {
+                    myOnBackPressed(myAlertBuilder);
+                }
+            }
+        }
     }
 
     @Override
@@ -227,10 +233,10 @@ public class QuestionTemplate extends AppCompatActivity
 
         // 결과 창 fragments  ?Activity 로 변경할 지 고민중(변경 시 모든 정보 Bundle 로 결과창에 넘겨주어야 함) ----------------------
         result_total = new ResultTotal();
-        result1 = new Result_1();
-        result2 = new Result_2();
-        result3 = new Result_3();
-        result4 = new Result_4();
+        result1 = new ResultProtocolOne();
+        result2 = new ResultProtocolTwo();
+        result3 = new ResultProtocolThree();
+        result4 = new ResultProtocolFour();
         // ------------------------------------------
 
         viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
@@ -572,34 +578,12 @@ public class QuestionTemplate extends AppCompatActivity
 
                             }
                         }
-//                        if(fragment == breed_poor){
-//                            if(viewModel.isBeef(viewModel.getFarmType())){
-//                                setEvaWayFragmentImage(breed_poor,R.drawable.beef_poor);
-//                            } else{
-//                                setEvaWayFragmentImage(breed_poor,R.drawable.milk_cow_poor);
-//                                }
-//                            }
-//                        else if(fragment == breed_water_q1){
-//                            setEvaWayFragmentImage(breed_water_q1,R.drawable.beef_poor);
-//                            }
-//                        }
                     }
                 }
 
 
 
-//                for (Fragment fragment: getSupportFragmentManager().getFragments()) {
-//                    if (fragment.isVisible()) {
-//                        if(fragment instanceof Poor){
-//                            CustomImageDialog customImageDialog = new CustomImageDialog(fragment.getContext());
-//                            if(viewModel.isBeef(viewModel.getFarmType())) customImageDialog.setImage(R.drawable.beef_poor);
-//                            else customImageDialog.setImage(R.drawable.milk_cow_poor);
-//                        } else if(fragment instanceof FreeStallSitCollision){
-//                            CustomImageDialog customImageDialog = new CustomImageDialog(fragment.getContext());
-//                            customImageDialog.setImage(R.drawable.sit_collision);
-//                        }
-//                    }
-//                }
+
 
             }
         });
@@ -767,49 +751,17 @@ public class QuestionTemplate extends AppCompatActivity
             case R.id.back_btn:
                 myOnBackPressed(myAlertBuilder);
                 break;
+
+
             case R.id.end_btn:
                 // database 연동
-                InsertAnswerFunc();
-                fragment_paper.setVisibility(View.GONE);
-                end_btn.setVisibility(View.GONE);
-                question_top_nav.setVisibility(View.GONE);
-                getSupportFragmentManager().beginTransaction().add(R.id.container, result_total).commit();
-                tabs = findViewById(R.id.tab_layout);
-                tabs.addTab(tabs.newTab().setText("종합"));
-                tabs.addTab(tabs.newTab().setText("사료"));
-                tabs.addTab(tabs.newTab().setText("환경"));
-                tabs.addTab(tabs.newTab().setText("건강"));
-                tabs.addTab(tabs.newTab().setText("행동"));
-
-                tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-                    @Override
-                    public void onTabSelected(TabLayout.Tab tab) {
-                        int position = tab.getPosition();
-                        Fragment selected = null;
-                        if(position == 0)
-                            selected = result_total;
-                        else if(position == 1)
-                            selected = result1;
-                        else if(position == 2)
-                            selected = result2;
-                        else if(position == 3)
-                            selected = result3;
-                        else if(position == 4)
-                            selected = result4;
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, selected).commit();
-                    }
-
-                    @Override
-                    public void onTabUnselected(TabLayout.Tab tab) {
-
-                    }
-
-                    @Override
-                    public void onTabReselected(TabLayout.Tab tab) {
-
-                    }
-                });
-                break;
+                viewModel.setTotalProtocolScoreString(viewModel.calculatorTotalProtocolScoreString());
+                //InsertAnswerFunc();
+                Bundle resultBundle = new Bundle();
+                makeResultBundle(resultBundle);
+                Intent intentResultActivity = new Intent(QuestionTemplate.this,ResultActivity.class);
+                intentResultActivity.putExtras(resultBundle);
+                startActivity(intentResultActivity);
 
         }
     }
@@ -1495,8 +1447,16 @@ public class QuestionTemplate extends AppCompatActivity
                   CustomImageDialog customImageDialog = new CustomImageDialog(fragmentClass.getContext());
                   customImageDialog.setImage(drawableId);
                 }
-
-
+     public Bundle makeResultBundle(Bundle bundle){
+         bundle.putInt("farmType",viewModel.getFarmType());
+         bundle.putString("protocolTotalScoreString",viewModel.getTotalProtocolScoreString());
+         bundle.putDouble("protocolOneScore",viewModel.getProtocolOneScore());
+         bundle.putDouble("protocolTwoScore",viewModel.getProtocolTwoScore());
+         bundle.putDouble("protocolThreeScore",viewModel.getProtocolThreeScore());
+         bundle.putDouble("protocolFourScore",viewModel.getProtocolFourScore());
+        return bundle;
+     }
 }
+
 
 

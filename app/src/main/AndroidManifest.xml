@@ -6,13 +6,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_sample_1"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_sample_1_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MilkCow.FreeStallCountDong"></activity>
+        <activity
+            android:name=".ResultActivity"
+            android:exported="true" />
+        <activity android:name=".MilkCow.FreeStallCountDong" />
         <activity android:name=".MilkCow.MilkCowStruggleDong" />
         <activity android:name=".Beef.ProtocolFour.AvoidDistanceCowQuestions" />
         <activity android:name=".Beef.ProtocolFour.BreedHarmonyDong" />
@@ -20,10 +23,8 @@
         <activity android:name=".Beef.ProtocolThree.BreedCoughDong" />
         <activity android:name=".Beef.ProtocolTwo.BreedStrawDong" />
         <activity android:name=".Beef.ProtocolOne.WaterTimeDong" />
-
         <activity android:name=".QuestionTemplate" />
         <activity android:name=".WebViewActivity" />
-        <activity android:name=".Result_View" />
         <activity android:name=".InputUserInfo" />
         <activity android:name=".MainActivity">
             <intent-filter>
