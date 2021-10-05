@@ -1449,11 +1449,24 @@ public class QuestionTemplate extends AppCompatActivity
                 }
      public Bundle makeResultBundle(Bundle bundle){
          bundle.putInt("farmType",viewModel.getFarmType());
+         bundle.putInt("nutritionScore",viewModel.getPoorScore());
+         bundle.putInt("waterScore",viewModel.getWaterScore());
+
+         bundle.putFloat("strawScore",viewModel.getStrawScore());
+         bundle.putFloat("outwardScore",viewModel.getOutWardScore());
+         bundle.putFloat("summerScore",viewModel.getSummerRestScore());
+         bundle.putFloat("winterScore",viewModel.getWinterRestScore());
+         bundle.putFloat("calfSummerScore",viewModel.getCalfSummerRestScore());
+         bundle.putFloat("calfWinterScore",viewModel.getCalfWinterRestScore());
+         bundle.putDouble("totalWarmVentilatingScore",viewModel.getTotalWarmVentilatingScore());
+
+
          bundle.putString("protocolTotalScoreString",viewModel.getTotalProtocolScoreString());
          bundle.putDouble("protocolOneScore",viewModel.getProtocolOneScore());
          bundle.putDouble("protocolTwoScore",viewModel.getProtocolTwoScore());
          bundle.putDouble("protocolThreeScore",viewModel.getProtocolThreeScore());
          bundle.putDouble("protocolFourScore",viewModel.getProtocolFourScore());
+
         return bundle;
      }
 }

@@ -10,16 +10,21 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import uk.co.senab.photoview.PhotoViewAttacher;
+
+
 
 public class CustomImageDialog {
 
     private Context context;
     protected Dialog dlg;
+
     public CustomImageDialog(Context context) {
         this.context = context;
 
     }
     public void setImage(int drawResId){
+
         dlg = new Dialog(context);
         // 커스텀 다이얼로그를 정의하기위해 Dialog클래스를 생성한다.
         // 액티비티의 타이틀바를 숨긴다.
@@ -43,6 +48,8 @@ public class CustomImageDialog {
         int y = (int)(size.y * 0.9f);
 
         window.setLayout(x,y);
+        PhotoViewAttacher attacher;
+        attacher = new PhotoViewAttacher(dialogImageView);
 
         dialogCloseBtn.setOnClickListener(new View.OnClickListener() {
         @Override

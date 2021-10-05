@@ -50,10 +50,24 @@ public class ResultActivity extends AppCompatActivity {
             Bundle resultBundle = intent.getExtras();
             viewModel.setTotalProtocolScoreString(resultBundle.getString("protocolTotalScoreString"));
             viewModel.setFarmType(resultBundle.getInt("farmType"));
+            viewModel.setPoorScore(resultBundle.getInt("nutritionScore"));
+            viewModel.setWaterScore(resultBundle.getInt("waterScore"));
+
+            viewModel.setStrawScore(resultBundle.getFloat("strawScore"));
+            viewModel.setOutwardScore((int) resultBundle.getFloat("outwardScore"));
+            viewModel.setSummerRestScore((int) resultBundle.getFloat("summerScore"));
+            viewModel.setWinterRestScore((int) resultBundle.getFloat("winterScore"));
+            viewModel.setCalfSummerRestScore((int) resultBundle.getFloat("calfSummerScore"));
+            viewModel.setCalfWinterRestScore((int) resultBundle.getFloat("calfWinterScore"));
+            viewModel.setTotalWarmVentilatingScore(resultBundle.getDouble("totalWarmVentilatingScore"));
+
+
             viewModel.setProtocolOneScore(resultBundle.getDouble("protocolOneScore"));
             viewModel.setProtocolTwoScore(resultBundle.getDouble("protocolTwoScore"));
             viewModel.setProtocolThreeScore(resultBundle.getDouble("protocolThreeScore"));
             viewModel.setProtocolFourScore(resultBundle.getDouble("protocolFourScore"));
+
+
             Log.d("totalScoreString",viewModel.getTotalProtocolScoreString());
 
 

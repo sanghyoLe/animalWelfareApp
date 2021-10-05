@@ -23,13 +23,12 @@ public class ResultProtocolOne extends Fragment {
         View view = inflater.inflate(R.layout.result_1, container, false);
 
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
-
-        View progressBarView = view.findViewById(R.id.result_progressbar_1);
-
-        TextView progressBarTv = progressBarView.findViewById(R.id.progress_tv);
-        ProgressBar progressBar = progressBarView.findViewById(R.id.circular_determinative_pb);
-
-        viewModel.setProgressBar(viewModel.getProtocolOneScore(),progressBar,progressBarTv);
+        TextView protocolOneTv = view.findViewById(R.id.protocol_score_tv);
+        TextView nutritionScoreTv = view.findViewById(R.id.protocol_one_nutrition_tv);
+        TextView waterScoreTv = view.findViewById(R.id.protocol_one_water_tv);
+        protocolOneTv.setText(String.valueOf(viewModel.getProtocolOneScore()));
+        nutritionScoreTv.setText(String.valueOf(viewModel.getPoorScore()));
+        waterScoreTv.setText(String.valueOf(viewModel.getWaterScore()));
 
         return view;
     }

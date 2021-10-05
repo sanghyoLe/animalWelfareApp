@@ -53,7 +53,7 @@ public class AvoidDistance extends Fragment {
         viewModel.setProtocolOneScore(90);
         viewModel.setProtocolTwoScore(90);
         viewModel.setProtocolThreeScore(70);
-        viewModel.setProtocolFourScore(70);
+        viewModel.setProtocolFourScore(39);
 
 
         // ---------------------------------------
