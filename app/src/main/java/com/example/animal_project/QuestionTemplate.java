@@ -1451,16 +1451,38 @@ public class QuestionTemplate extends AppCompatActivity
          bundle.putInt("farmType",viewModel.getFarmType());
          bundle.putInt("nutritionScore",viewModel.getPoorScore());
          bundle.putInt("waterScore",viewModel.getWaterScore());
-
+         //
          bundle.putFloat("strawScore",viewModel.getStrawScore());
          bundle.putFloat("outwardScore",viewModel.getOutWardScore());
+         //
+         bundle.putInt("freeStallCountScore",((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getLowestScore());
+         bundle.putInt("sitCollisionScore", (int) ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getScore());
+         bundle.putInt("areaOutSitCollision", (int) ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getScore());
+         bundle.putInt("sitTimeScore", (int) ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore());
+         bundle.putInt("outwardBackRegScore", (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getScore());
+         bundle.putInt("outwardBackScore", (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getScore());
+         bundle.putInt("outwardBreastScore", (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getScore());
+
+         //
+         bundle.putDouble("restScore",viewModel.getRestScore());
          bundle.putFloat("summerScore",viewModel.getSummerRestScore());
          bundle.putFloat("winterScore",viewModel.getWinterRestScore());
          bundle.putFloat("calfSummerScore",viewModel.getCalfSummerRestScore());
          bundle.putFloat("calfWinterScore",viewModel.getCalfWinterRestScore());
          bundle.putDouble("totalWarmVentilatingScore",viewModel.getTotalWarmVentilatingScore());
+         //
+         bundle.putLong("minInjuryScore", viewModel.getMinInjuryScore());
+         bundle.putDouble("diseaseScore",viewModel.getDiseaseScore());
+         bundle.putDouble("minPainScore",viewModel.getMinPainScore());
+         bundle.putInt("breedLimpScore", (int) ((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getScore());
+         bundle.putInt("milkCowLimpScore", (int) ((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).getScore());
+         bundle.putInt("hairLossScore",viewModel.getHairLossScore());
+         bundle.putInt("hornRemoveScore",viewModel.getHornRemovalScore());
+         bundle.putInt("castrationScore",viewModel.getCastrationScore());
+         bundle.putInt("socialBehaviorScore",viewModel.getSocialBehaviorScore());
+         bundle.putInt("avoidDistanceScore",viewModel.getAvoidDistanceScore());
 
-
+         //
          bundle.putString("protocolTotalScoreString",viewModel.getTotalProtocolScoreString());
          bundle.putDouble("protocolOneScore",viewModel.getProtocolOneScore());
          bundle.putDouble("protocolTwoScore",viewModel.getProtocolTwoScore());

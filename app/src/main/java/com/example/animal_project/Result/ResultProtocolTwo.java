@@ -36,21 +36,51 @@ public class ResultProtocolTwo extends Fragment {
         TextView winterScoreTv = view.findViewById(R.id.winter_score_tv);
         TextView calfSummerScoreTv = view.findViewById(R.id.calf_summer_score_tv);
         TextView calfWinterScoreTv = view.findViewById(R.id.calf_winter_score_tv);
+        LinearLayout calfSummerWinterLayout = view.findViewById(R.id.calf_summer_winter_layout);
 
+
+        protocolScoreTv.setText(String.valueOf((int)viewModel.getProtocolTwoScore()));
+        protocolRestScoreTv.setText(String.valueOf((int)viewModel.getRestScore()));
 
         LinearLayout beefRestLayout = view.findViewById(R.id.beef_rest_layout);
-        protocolScoreTv.setText(String.valueOf(viewModel.getProtocolTwoScore()));
-        protocolRestScoreTv.setText(String.valueOf(viewModel.getRestScore()));
+        LinearLayout milkCowRestLayout = view.findViewById(R.id.milk_cow_rest_layout);
+        LinearLayout freeStallRestLayout = view.findViewById(R.id.free_stall_rest_layout);
+        TextView freeStallCountScoreTv = view.findViewById(R.id.free_stall_count_score_tv);
+        TextView sitCollisionScoreTv = view.findViewById(R.id.sit_collision_score_tv);
+        TextView areaOutSitCollisionScoreTv = view.findViewById(R.id.area_out_collision_score_tv);
+        TextView sitTimeScoreTv = view.findViewById(R.id.sit_time_score_tv);
+        TextView outwardBackRegScoreTv = view.findViewById(R.id.outward_back_reg_score_tv);
+        TextView outwardBackScoreTv = view.findViewById(R.id.outward_back_score_tv);
+        TextView outwardBreastScoreTv = view.findViewById(R.id.outward_breast_score_tv);
 
-        LinearLayout calfSummerWinterLayout = view.findViewById(R.id.calf_summer_winter_layout);
+
+
         if(viewModel.isBeef(viewModel.getFarmType())){
             beefRestLayout.setVisibility(View.VISIBLE);
-            strawScoreTv.setText(String.valueOf(viewModel.getStrawScore()));
+            strawScoreTv.setText(String.valueOf((int)viewModel.getStrawScore()));
             outwardScoreTv.setText(String.valueOf(viewModel.getOutWardScore()));
         }else {
+            milkCowRestLayout.setVisibility(View.VISIBLE);
+            sitTimeScoreTv.setText(String.valueOf((int)((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore()));
+            int outwardBackRegScore = (int)((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getScore();
+            int outwardBackScore = (int)((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getScore();
+            int outwardBreastScore = (int)((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getScore();
 
+            outwardBackRegScoreTv.setText(String.valueOf(outwardBackRegScore));
+            outwardBackScoreTv.setText(String.valueOf(outwardBackScore));
+            outwardBreastScoreTv.setText(String.valueOf(outwardBreastScore));
+
+            if(viewModel.getFarmType() == 5) {
+                freeStallRestLayout.setVisibility(View.VISIBLE);
+                int freeStallCountScore = ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getLowestScore();
+                int sitCollisionScore = (int)((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getScore();
+                int areaOutSitCollisionScore = (int)((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getScore();
+                freeStallCountScoreTv.setText(String.valueOf(freeStallCountScore));
+                sitCollisionScoreTv.setText(String.valueOf(sitCollisionScore));
+                areaOutSitCollisionScoreTv.setText(String.valueOf(areaOutSitCollisionScore));
+            }
         }
-        protocolWarmVentilatingScoreTv.setText(String.valueOf(viewModel.getTotalWarmVentilatingScore()));
+        protocolWarmVentilatingScoreTv.setText(String.valueOf((int)viewModel.getTotalWarmVentilatingScore()));
         summerScoreTv.setText(String.valueOf(viewModel.getSummerRestScore()));
         winterScoreTv.setText(String.valueOf(viewModel.getWinterRestScore()));
 

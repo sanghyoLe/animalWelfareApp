@@ -131,6 +131,7 @@ public class BreedStruggle extends Fragment {
                 milk_cow_struggle_tv.setText(String.valueOf(milkCowStruggleQuestion.getStruggleIndexAvg()));
                 milkCowStruggleQuestion.setRepScore(milkCowStruggleQuestion.calculatorScore(milkCowStruggleQuestion.getStruggleIndexAvg()));
                 milk_cow_struggle_score_tv.setText(String.valueOf(milkCowStruggleQuestion.getRepScore()));
+                viewModel.setSocialBehaviorScore((int) milkCowStruggleQuestion.getRepScore());
             default:
                 break;
         }

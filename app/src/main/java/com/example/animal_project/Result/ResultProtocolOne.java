@@ -26,9 +26,9 @@ public class ResultProtocolOne extends Fragment {
         TextView protocolOneTv = view.findViewById(R.id.protocol_score_tv);
         TextView nutritionScoreTv = view.findViewById(R.id.protocol_one_nutrition_tv);
         TextView waterScoreTv = view.findViewById(R.id.protocol_one_water_tv);
-        protocolOneTv.setText(String.valueOf(viewModel.getProtocolOneScore()));
-        nutritionScoreTv.setText(String.valueOf(viewModel.getPoorScore()));
-        waterScoreTv.setText(String.valueOf(viewModel.getWaterScore()));
+        protocolOneTv.setText(String.valueOf((int)viewModel.getProtocolOneScore()));
+        nutritionScoreTv.setText(String.valueOf((int)viewModel.getPoorScore()));
+        waterScoreTv.setText(String.valueOf((int)viewModel.getWaterScore()));
 
         return view;
     }

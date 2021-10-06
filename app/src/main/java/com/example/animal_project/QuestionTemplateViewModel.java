@@ -1344,7 +1344,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     {
         return (strawScore * 0.5) + (outwardScore * 0.5);
     }
-    public int calculatorBreedSummerRestScore(int shade,int summerVentilating, int mistSpary)
+    public int calculatorBreedSummerRestScore(int shade,int summerVentilating, int mistSpray)
     {
         int summerRestScore = 0;
         // 충분한 그늘 항목 "예"인 경우
@@ -1352,13 +1352,13 @@ public class QuestionTemplateViewModel extends ViewModel {
             // 충분한 풍속 항목 "예"인 경우
             if (summerVentilating  == 1) {
                 //안개분무 풍속 "예"인 경우
-                if (mistSpary == 1) {
+                if (mistSpray == 1) {
                     summerRestScore = 100;
                 } else {
                     summerRestScore = 80;
                 }
             } else {
-                if (mistSpary == 1) {
+                if (mistSpray == 1) {
                     summerRestScore = 60;
                 } else {
                     summerRestScore = 45;
@@ -1366,13 +1366,13 @@ public class QuestionTemplateViewModel extends ViewModel {
             }
         } else {
             if (summerVentilating == 1) {
-                if (mistSpary == 1) {
+                if (mistSpray == 1) {
                     summerRestScore = 55;
                 } else {
                     summerRestScore = 40;
                 }
             } else {
-                if (mistSpary == 1) {
+                if (mistSpray == 1) {
                     summerRestScore = 20;
                 } else {
                     summerRestScore = 0;

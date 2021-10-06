@@ -175,7 +175,7 @@
                         android:layout_height="wrap_content"
                         android:text="깔짚수분\n간이측정"
                         android:layout_weight="1"
-                        android:padding="2dp"
+
                         android:textSize="13dp"
                         android:textColor="@color/colorBlack"
                         />
@@ -187,7 +187,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:padding="2dp"
+
                         android:layout_gravity="center_vertical"
                         android:orientation="horizontal">
                         <TextView
@@ -217,65 +217,486 @@
                             android:text="100"/>
                     </LinearLayout>
                 </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/black"/>/
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
 
-                 <View
-                     android:layout_width="match_parent"
-                     android:layout_height="1dp"
-                     android:background="@color/black"/>
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="가축외형 위생"
+                            android:padding="2dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/colorBlack"
+                            />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/black"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/outward_score_tv"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="2dp"
+                                android:textColor="@color/black"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="점수"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="2dp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="/"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="2dp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="100"/>
+                        </LinearLayout>
+                    </LinearLayout>
+            </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="가축외형 위생"
-                        android:layout_weight="1"
-                        android:padding="2dp"
-                        android:textColor="@color/colorBlack"
-                        />
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/black"/>
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:id="@+id/milk_cow_rest_layout">
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="2dp"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:id="@+id/free_stall_rest_layout">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal">
                         <TextView
-                            android:id="@+id/outward_score_tv"
                             android:gravity="center"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:textColor="@color/black"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="점수"/>
-                        <TextView
-                            android:gravity="center"
-                            android:layout_gravity="center"
+                            android:text="프리스톨 수"
                             android:layout_weight="1"
-                            
+                            android:padding="2dp"
+                            android:textSize="13dp"
+                            android:textColor="@color/colorBlack"
+                            />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/black"/>
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="/"/>
-                        <TextView
-                            android:gravity="center"
-                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="100"/>
+                            android:padding="2dp"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/free_stall_count_score_tv"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="점수"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="/"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="100"/>
+                        </LinearLayout>
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/black"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="앉기 시 충돌"
+                            android:layout_weight="1"
+                            android:padding="2dp"
+                            android:textColor="@color/colorBlack"
+                            />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/black"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="2dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/sit_collision_score_tv"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="점수"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="/"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="100"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:gravity="center"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="프리스톨 \n영역 외 앉기"
+                                android:layout_weight="1"
+
+                                android:textColor="@color/colorBlack"
+                                />
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/black"/>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/area_out_collision_score_tv"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/black"
+                                    android:layout_width="0dp"
+                                    android:padding="2dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="점수"/>
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:padding="2dp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="/"/>
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:padding="2dp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="100"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black"/>
                 </LinearLayout>
-            </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="앉기동작\n소요시간"
+                            android:layout_weight="1"
+
+                            android:textColor="@color/colorBlack"
+                            />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/black"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/sit_time_score_tv"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_width="0dp"
+                                android:padding="2dp"
+                                android:layout_height="wrap_content"
+                                android:text="점수"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="2dp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="/"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="2dp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="100"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/black"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="가축외형\n뒤쪽 아래다리"
+                            android:layout_weight="1"
+
+                            android:textColor="@color/colorBlack"
+                            />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/black"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/outward_back_reg_score_tv"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_width="0dp"
+                                android:padding="2dp"
+                                android:layout_height="wrap_content"
+                                android:text="점수"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="2dp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="/"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="2dp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="100"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/black"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="가축외형\n뒷부분"
+                            android:layout_weight="1"
+
+                            android:textColor="@color/colorBlack"
+                            />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/black"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/outward_back_score_tv"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_width="0dp"
+                                android:padding="2dp"
+                                android:layout_height="wrap_content"
+                                android:text="점수"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="2dp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="/"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="2dp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="100"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/black"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="가축외형\n유방"
+                            android:layout_weight="1"
+
+                            android:textColor="@color/colorBlack"
+                            />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/black"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/outward_breast_score_tv"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_width="0dp"
+                                android:padding="2dp"
+                                android:layout_height="wrap_content"
+                                android:text="점수"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="2dp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="/"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="2dp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="100"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
 

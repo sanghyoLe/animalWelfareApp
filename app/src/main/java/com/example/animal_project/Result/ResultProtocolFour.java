@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -22,10 +23,17 @@ public class ResultProtocolFour extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.result_4, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
-        View progressBarView = view.findViewById(R.id.result_progressbar_4);
-        TextView progressBarTv = progressBarView.findViewById(R.id.progress_tv);
-        ProgressBar progressBar = progressBarView.findViewById(R.id.circular_determinative_pb);
-        viewModel.setProgressBar(viewModel.getProtocolFourScore(),progressBar,progressBarTv);
+        LinearLayout harmonyLayout = view.findViewById(R.id.harmony_layout);
+        TextView protocolScoreTv = view.findViewById(R.id.protocol_score_tv);
+        TextView behaviorScoreTv = view.findViewById(R.id.protocol_behavior_score_tv);
+        TextView avoidDistanceScoreTv = view.findViewById(R.id.protocol_avoid_distance_score_tv);
+
+        protocolScoreTv.setText(String.valueOf((int)viewModel.getProtocolFourScore()));
+        behaviorScoreTv.setText(String.valueOf(viewModel.getSocialBehaviorScore()));
+        avoidDistanceScoreTv.setText(String.valueOf(viewModel.getAvoidDistanceScore()));
+        if(viewModel.isBeef(viewModel.getFarmType())){
+            harmonyLayout.setVisibility(View.VISIBLE);
+        }
 
         return view;
     }

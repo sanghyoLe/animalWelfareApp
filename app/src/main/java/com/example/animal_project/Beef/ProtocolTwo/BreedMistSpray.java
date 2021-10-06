@@ -1,6 +1,7 @@
 package com.example.animal_project.Beef.ProtocolTwo;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,13 +35,14 @@ public class BreedMistSpray extends Fragment {
                 if(checkedId == R.id.breed_mist_spray_1)
                 {
                     mistSpray = 1;
+
                 } else if(checkedId == R.id.breed_mist_spray_2)
                 {
                     mistSpray = 2;
+
                 }
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).setSelectedItem(mistSpray);
                 int selectedItem = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).getSelectedItem();
-
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).setAnswer(mistSprayRg,selectedItem);
 
 
@@ -52,8 +54,8 @@ public class BreedMistSpray extends Fragment {
                     int summerRestScore = viewModel.calculatorBreedSummerRestScore(
                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem(),
                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getSelectedItem(),
-                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem()
-                );
+                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).getSelectedItem()
+                    );
                     viewModel.setSummerRestScore(summerRestScore);
                     breedRestScoreTv.setText(String.valueOf(summerRestScore));
                 }

@@ -53,6 +53,7 @@ public class ResultActivity extends AppCompatActivity {
             viewModel.setPoorScore(resultBundle.getInt("nutritionScore"));
             viewModel.setWaterScore(resultBundle.getInt("waterScore"));
 
+            viewModel.setRestScore(resultBundle.getDouble("restScore"));
             viewModel.setStrawScore(resultBundle.getFloat("strawScore"));
             viewModel.setOutwardScore((int) resultBundle.getFloat("outwardScore"));
             viewModel.setSummerRestScore((int) resultBundle.getFloat("summerScore"));
@@ -60,6 +61,30 @@ public class ResultActivity extends AppCompatActivity {
             viewModel.setCalfSummerRestScore((int) resultBundle.getFloat("calfSummerScore"));
             viewModel.setCalfWinterRestScore((int) resultBundle.getFloat("calfWinterScore"));
             viewModel.setTotalWarmVentilatingScore(resultBundle.getDouble("totalWarmVentilatingScore"));
+
+            ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).setLowestScore(resultBundle.getInt("freeStallCountScore"));
+            ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setScore(resultBundle.getInt("sitCollisionScore"));
+            ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setScore(resultBundle.getInt("areaOutSitCollision"));
+            ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).setScore(resultBundle.getInt("sitTimeScore"));
+            ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).setScore(resultBundle.getInt("outwardBackRegScore"));
+            ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).setScore(resultBundle.getInt("outwardBackRegScore"));
+            ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).setScore(resultBundle.getInt("outwardBackRegScore"));
+
+
+            viewModel.setMinInjuryScore(resultBundle.getLong("minInjuryScore"));
+            viewModel.setDiseaseScore(resultBundle.getDouble("diseaseScore"));
+            viewModel.setMinPainScore(resultBundle.getDouble("minPainScore"));
+
+            ((QuestionTemplateViewModel.Question)viewModel.BreedLimp).setScore(resultBundle.getInt("breedLimpScore"));
+            ((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).setScore(resultBundle.getInt("milkCowLimpScore"));
+            viewModel.setHairLossScore(resultBundle.getInt("hairLossScore"));
+            viewModel.setHornRemovalScore(resultBundle.getInt("hornRemoveScore"));
+            viewModel.setCastrationScore(resultBundle.getInt("castrationScore"));
+            viewModel.setSocialBehaviorScore(resultBundle.getInt("socialBehaviorScore"));
+            viewModel.setAvoidDistanceScore(resultBundle.getInt("avoidDistanceScore"));
+
+
+
 
 
             viewModel.setProtocolOneScore(resultBundle.getDouble("protocolOneScore"));
