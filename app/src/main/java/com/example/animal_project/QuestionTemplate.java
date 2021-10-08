@@ -58,9 +58,9 @@ import com.example.animal_project.Beef.ProtocolTwo.CalfStraw;
 import com.example.animal_project.Beef.ProtocolTwo.CalfSummerVentilating;
 import com.example.animal_project.Beef.ProtocolTwo.CalfWarm;
 import com.example.animal_project.Beef.ProtocolTwo.CalfWindBlock;
-import com.example.animal_project.MilkCow.AppearanceBack;
-import com.example.animal_project.MilkCow.AppearanceBackReg;
-import com.example.animal_project.MilkCow.AppearanceBreast;
+import com.example.animal_project.MilkCow.OutwardBack;
+import com.example.animal_project.MilkCow.OutwardBackReg;
+import com.example.animal_project.MilkCow.OutwardBreast;
 import com.example.animal_project.MilkCow.CriticalLimp;
 import com.example.animal_project.MilkCow.FreeStallAreaOutCollision;
 import com.example.animal_project.MilkCow.FreeStallCount;
@@ -165,9 +165,9 @@ public class QuestionTemplate extends AppCompatActivity
     // 착유우 프로토콜 질문 항목 Fragments
      private SitTime sit_time;
      private CriticalLimp criticalLimp;
-     private AppearanceBackReg appearance_q1;
-     private AppearanceBack appearance_q2;
-     private AppearanceBreast appearance_q3;
+     private OutwardBackReg appearance_q1;
+     private OutwardBack appearance_q2;
+     private OutwardBreast appearance_q3;
      private MovementStability movementStability;
      private OutGenitals out_genital;
      private MilkInCell milk_min_cell;
@@ -304,9 +304,9 @@ public class QuestionTemplate extends AppCompatActivity
 
         // 착유우
         sit_time = new SitTime();
-        appearance_q1 = new AppearanceBackReg();
-        appearance_q2 = new AppearanceBack();
-        appearance_q3 = new AppearanceBreast();
+        appearance_q1 = new OutwardBackReg();
+        appearance_q2 = new OutwardBack();
+        appearance_q3 = new OutwardBreast();
         criticalLimp = new CriticalLimp();
         movementStability = new MovementStability();
         milk_min_cell = new MilkInCell();
@@ -756,7 +756,7 @@ public class QuestionTemplate extends AppCompatActivity
             case R.id.end_btn:
                 // database 연동
                 viewModel.setTotalProtocolScoreString(viewModel.calculatorTotalProtocolScoreString());
-                //InsertAnswerFunc();
+                InsertAnswerFunc();
                 Bundle resultBundle = new Bundle();
                 makeResultBundle(resultBundle);
                 Intent intentResultActivity = new Intent(QuestionTemplate.this,ResultActivity.class);
@@ -823,10 +823,8 @@ public class QuestionTemplate extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         if(!drawer.isDrawerOpen(Gravity.LEFT)){
             drawer.openDrawer(Gravity.LEFT);
-            list_btn.setImageResource(R.drawable.outline_menu_open_24);
         } else if(drawer.isDrawerOpen(Gravity.LEFT)){
             drawer.closeDrawer(Gravity.LEFT);
-            list_btn.setImageResource(R.drawable.outline_reorder_24);
         }
     }
     private void closeDrawer(){
@@ -1034,9 +1032,9 @@ public class QuestionTemplate extends AppCompatActivity
          if(viewModel.getProtocolOneScore() != -1)changeCheckImage(check_total_1);
          // 프로토콜 2
          if(((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore() != -1) changeCheckImage(check_sub_5);
-         changeEditTextCheckImage(check_sub_6, (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getScore());
-         changeEditTextCheckImage(check_sub_7, (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getScore());
-         changeEditTextCheckImage(check_sub_8, (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getScore());
+         changeEditTextCheckImage(check_sub_6, (int) ((QuestionTemplateViewModel.Question)viewModel.OutwardBackReg).getScore());
+         changeEditTextCheckImage(check_sub_7, (int) ((QuestionTemplateViewModel.Question)viewModel.OutwardBack).getScore());
+         changeEditTextCheckImage(check_sub_8, (int) ((QuestionTemplateViewModel.Question)viewModel.OutwardBreast).getScore());
          if(((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getScore() != -1){
              changeCheckImage(movementStabilityCheckSub);
          }
@@ -1122,6 +1120,7 @@ public class QuestionTemplate extends AppCompatActivity
      public void insertAvoidDistance(InsertAvoidDistance task){
          Object[] avoidDistances  = viewModel.avoidDistances;
          ((QuestionTemplateViewModel.avoidDistance)avoidDistances[1]).setFarmId(Integer.parseInt(farmId));
+         ((QuestionTemplateViewModel.avoidDistance)avoidDistances[1]).setFarmType(viewModel.getFarmType());
 
          task.execute(avoidDistances);
 
@@ -1264,47 +1263,62 @@ public class QuestionTemplate extends AppCompatActivity
          String waterTankForm = viewModel.getWaterTankForm();
          int sitCowCount = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getSitCowCount();
          int sitAreaOutCowCount = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getAreaOutCollisionCowCount();
-         float areaOutCollisionRatio = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getRatio();
-         float areaOutCollisionScore = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getScore();
-
-         int appearanceBackRegNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getNumberOfCow();
-         float appearanceBackRegRatio = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getRatio();
-         float appearanceBackRegScore = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getScore();
-
-         int appearanceBackNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getNumberOfCow();
-         float appearanceBackRatio = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getRatio();
-         float appearanceBackScore = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getScore();
-
-         int appearanceBreastNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getNumberOfCow();
-         float appearanceBreastRatio = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getRatio();
-         float appearanceBreastScore = ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getScore();
-
+         int appearanceBackRegNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.OutwardBackReg).getNumberOfCow();
+         int appearanceBackNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.OutwardBack).getNumberOfCow();
+         int appearanceBreastNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.OutwardBreast).getNumberOfCow();
         int criticalLimpNumberOfCow = ((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).getNumberOfCow();
-        float criticalLimpRatio = ((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).getRatio();
-         float criticalLimpScore = ((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).getScore();
-        float totalLimpRatio = viewModel.getTotalLimpRatio();
-
         String outGenitalsPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.OutGenitals).getPenLocation();
         int outGenitalsNumberOfCow =((QuestionTemplateViewModel.PenQuestion)viewModel.OutGenitals).getNumberOfCow();
-        float outGenitalsRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.OutGenitals).getRatio();
-
          String milkInCellPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.MilkInCell).getPenLocation();
          int milkInCellNumberOfCow =((QuestionTemplateViewModel.PenQuestion)viewModel.MilkInCell).getNumberOfCow();
-         float milkInCellRatio = ((QuestionTemplateViewModel.PenQuestion)viewModel.MilkInCell).getRatio();
-
          int hardBirthYearAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getYearAvgCount();
          int hardBirthYearSubAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getNumberOfCow();
-         float hardBirthRatio = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getRatio();
-
-
          int unAbleStandYearAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getYearAvgCount();
          int unAbleStandYearSubAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getNumberOfCow();
-         float unAbleStandRatio = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getRatio();
-
          int milkCowStruggleDongSize =  ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getDongSize();
          int freeStallCountDongSize = ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getDongSize();
          int sitCollisionSitCount = ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getSitCount();
          int sitTimeSitCount = ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getSitCount();
+         int accessTroubleCowCount = ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getAccessTroubleCowCount();
+         int exitTroubleCowCount = ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getExitTroubleCowCount();
+         // 착유우 점수
+         int freeStallCountScore = ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getLowestScore();
+         float sitCollisionScore = ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getScore();
+         float areaOutCollisionScore = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getScore();
+         float sitTimeScore= ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore();
+         float outwardBackRegScore = ((QuestionTemplateViewModel.Question)viewModel.OutwardBackReg).getScore();
+         float outwardBackScore = ((QuestionTemplateViewModel.Question)viewModel.OutwardBack).getScore();
+         float outwardBreastScore = ((QuestionTemplateViewModel.Question)viewModel.OutwardBreast).getScore();
+         float movementStabilityScore = ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getScore();
+         float milkCowLimpScore = ((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).getScore();
+         float milkCowStruggleScore = ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getRepScore();
+         // 착유우 비율
+         double freeStallCountRatio = ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getLowestRatio();
+         float sitCollisionRatio = ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getRatio();
+         float areaOutSitCollisionRatio = ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getRatio();
+         float sitTimeAvgTime = ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getSitTimeAvg();
+         float outwardBackRegRatio = ((QuestionTemplateViewModel.Question)viewModel.OutwardBackReg).getRatio();
+         float outwardBackRatio = ((QuestionTemplateViewModel.Question)viewModel.OutwardBack).getRatio();
+         float outwardBreastRatio = ((QuestionTemplateViewModel.Question)viewModel.OutwardBreast).getRatio();
+         float accessTroubleRatio = ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getAccessTroubleRatio();
+         float exitTroubleRatio = ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getExitTroubleRatio();
+         float totalAccessTroubleRatio =((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getTotalRatio();
+         float milkCowLimpRatio = ((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getRatio();
+         float milkCowCriticalLimpRatio= ((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).getRatio();
+         float milkCowTotalLimpRatio= viewModel.getTotalLimpRatio();
+         float outGenitalsRatio = ((QuestionTemplateViewModel.Question)viewModel.OutGenitals).getRatio();
+         float milkInCellRatio = ((QuestionTemplateViewModel.Question)viewModel.MilkInCell).getRatio();
+         float hardBirthRatio = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getRatio();
+         float unAbleStandRatio = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getRatio();
+         float milkCowStruggleIndexAvg = ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getStruggleIndexAvg();
+         float milkCowAvoidDistanceRatio = viewModel.getAvoidDistanceRatio();
+
+
+
+
+
+
+
          task.execute("http://" + IP_ADDRESS + "/insertBeefAnswer.php",
                  farmId,
                  String.valueOf(breedPoorNumberOfCow),
@@ -1396,37 +1410,53 @@ public class QuestionTemplate extends AppCompatActivity
                  String.valueOf(waterTankForm),
                  String.valueOf(sitCowCount),
                  String.valueOf(sitAreaOutCowCount),
-                 String.valueOf(areaOutCollisionRatio),
-                 String.valueOf(areaOutCollisionScore),
                  String.valueOf(appearanceBackRegNumberOfCow),
-                 String.valueOf(appearanceBackRegRatio),
-                 String.valueOf(appearanceBackRegScore),
                  String.valueOf(appearanceBackNumberOfCow),
-                 String.valueOf(appearanceBackRatio),
-                 String.valueOf(appearanceBackScore),
                  String.valueOf(appearanceBreastNumberOfCow),
-                 String.valueOf(appearanceBreastRatio),
-                 String.valueOf(appearanceBreastScore),
                  String.valueOf(criticalLimpNumberOfCow),
-                 String.valueOf(criticalLimpRatio),
-                 String.valueOf(criticalLimpScore),
-                 String.valueOf(totalLimpRatio),
                  String.valueOf(outGenitalsPenLocation),
                  String.valueOf(outGenitalsNumberOfCow),
-                 String.valueOf(outGenitalsRatio),
                  String.valueOf(milkInCellPenLocation),
                  String.valueOf(milkInCellNumberOfCow),
-                 String.valueOf(milkInCellRatio),
                  String.valueOf(hardBirthYearAnswer),
                  String.valueOf(hardBirthYearSubAnswer),
-                 String.valueOf(hardBirthRatio),
                  String.valueOf(unAbleStandYearAnswer),
                  String.valueOf(unAbleStandYearSubAnswer),
-                 String.valueOf(unAbleStandRatio),
                  String.valueOf(milkCowStruggleDongSize),
                  String.valueOf(freeStallCountDongSize),
                  String.valueOf(sitCollisionSitCount),
-                 String.valueOf(sitTimeSitCount)
+                 String.valueOf(sitTimeSitCount),
+                 String.valueOf(accessTroubleCowCount),
+                 String.valueOf(exitTroubleCowCount),
+                 String.valueOf(freeStallCountScore),
+                 String.valueOf(sitCollisionScore),
+                 String.valueOf(areaOutCollisionScore),
+                 String.valueOf(sitTimeScore),
+                 String.valueOf(outwardBackRegScore),
+                 String.valueOf(outwardBackScore),
+                 String.valueOf(outwardBreastScore),
+                 String.valueOf(movementStabilityScore),
+                 String.valueOf(milkCowLimpScore),
+                 String.valueOf(milkCowStruggleScore),
+                 String.valueOf(freeStallCountRatio),
+                 String.valueOf(sitCollisionRatio),
+                 String.valueOf(areaOutSitCollisionRatio),
+                 String.valueOf(sitTimeAvgTime),
+                 String.valueOf(outwardBackRegRatio),
+                 String.valueOf(outwardBackRatio),
+                 String.valueOf(outwardBreastRatio),
+                 String.valueOf(accessTroubleRatio),
+                 String.valueOf(exitTroubleRatio),
+                 String.valueOf(totalAccessTroubleRatio),
+                 String.valueOf(milkCowLimpRatio),
+                 String.valueOf(milkCowCriticalLimpRatio),
+                 String.valueOf(milkCowTotalLimpRatio),
+                 String.valueOf(outGenitalsRatio),
+                 String.valueOf(milkInCellRatio),
+                 String.valueOf(hardBirthRatio),
+                 String.valueOf(unAbleStandRatio),
+                 String.valueOf(milkCowStruggleIndexAvg),
+                 String.valueOf(milkCowAvoidDistanceRatio)
 
          );
 
@@ -1459,9 +1489,9 @@ public class QuestionTemplate extends AppCompatActivity
          bundle.putInt("sitCollisionScore", (int) ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getScore());
          bundle.putInt("areaOutSitCollision", (int) ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getScore());
          bundle.putInt("sitTimeScore", (int) ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore());
-         bundle.putInt("outwardBackRegScore", (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getScore());
-         bundle.putInt("outwardBackScore", (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getScore());
-         bundle.putInt("outwardBreastScore", (int) ((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getScore());
+         bundle.putInt("outwardBackRegScore", (int) ((QuestionTemplateViewModel.Question)viewModel.OutwardBackReg).getScore());
+         bundle.putInt("outwardBackScore", (int) ((QuestionTemplateViewModel.Question)viewModel.OutwardBack).getScore());
+         bundle.putInt("outwardBreastScore", (int) ((QuestionTemplateViewModel.Question)viewModel.OutwardBreast).getScore());
 
          //
          bundle.putDouble("restScore",viewModel.getRestScore());

@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <EditText
-                    android:id="@+id/appearance_a3"
+                    android:id="@+id/outward_breast_ed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="표본 중 유방이 더러운 소의 수"
@@ -63,7 +63,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginBottom="10dp">
                     <TextView
-                        android:id="@+id/appearance_ratio_3"
+                        android:id="@+id/outward_breast_ratio_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -95,7 +95,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginBottom="10dp">
                     <TextView
-                        android:id="@+id/appearance_score_3"
+                        android:id="@+id/outward_breast_score_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -126,7 +126,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginBottom="10dp">
                     <TextView
-                        android:id="@+id/freestall_rest_score"
+                        android:id="@+id/free_stall_rest_score_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"

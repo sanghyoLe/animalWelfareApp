@@ -248,7 +248,7 @@
     <string name="freestall_count_score">프리스톨 수 간이 측정 점수</string>
     <string name="choice_sit_num">앉기 동작 개수 선택</string>
     <string name="freestall_area_out_collision_title">앉은 소 중 프리스톨 영역을 벗어난 비율은 얼마나 됩니까?</string>
-    <string name="freestall_appearance_title1">가축외형 아랫다리 위생</string>
+    <string name="freestall_appearance_title1">가축외형 뒤쪽 아랫다리 위생</string>
     <string name="freestall_appearance_title2">가축외형 뒷부분 위생</string>
     <string name="freestall_appearance_title3">가축외형 유방 위생</string>
     <string name="struggle_question_hint_1">10분동안 관찰한 머리박치기 빈도</string>

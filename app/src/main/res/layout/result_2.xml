@@ -606,7 +606,7 @@
                             android:layout_gravity="center_vertical"
                             android:orientation="horizontal">
                             <TextView
-                                android:id="@+id/outward_back_score_tv"
+                                android:id="@+id/outward_back_reg_score_tv"
                                 android:gravity="center"
                                 android:layout_gravity="center"
                                 android:layout_weight="1"

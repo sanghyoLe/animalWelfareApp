@@ -3,6 +3,7 @@ package com.example.animal_project;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Point;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
@@ -44,8 +45,10 @@ public class CustomImageDialog {
 
         Window window = dlg.getWindow();
 
+
         int x = (int) (size.x * 0.9f);
         int y = (int)(size.y * 0.9f);
+
 
         window.setLayout(x,y);
         PhotoViewAttacher attacher;

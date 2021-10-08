@@ -26,7 +26,7 @@ public class InsertAvoidDistance extends AsyncTask<Object[], Void, String> {
         String serverURL = "http://" + IP_ADDRESS + "/insertAvoidDistance.php";
         int penSize = ((QuestionTemplateViewModel.avoidDistance)avoidDistances[1]).getPenSize();
         int farmId = ((QuestionTemplateViewModel.avoidDistance)avoidDistances[1]).getFarmId();
-
+        int farmType = ((QuestionTemplateViewModel.avoidDistance)avoidDistances[1]).getFarmType();
         String[] penLocationArr = new String[51];
         int[] cowSizeArr = new int[51];
         int[][] cowNumberArr = new int[50][50];
@@ -39,7 +39,8 @@ public class InsertAvoidDistance extends AsyncTask<Object[], Void, String> {
         }
         postParameters =
                 "farmId=" + farmId
-                +"&penSize=" + penSize;
+                +"&penSize=" + penSize
+                +"&farmType=" + farmType;
 
 
         for(int i = 0 ; i < penSize; i++){

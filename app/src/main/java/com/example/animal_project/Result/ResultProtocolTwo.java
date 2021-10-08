@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,8 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
-
-import org.w3c.dom.Text;
 
 
 public class ResultProtocolTwo extends Fragment {
@@ -50,7 +47,7 @@ public class ResultProtocolTwo extends Fragment {
         TextView areaOutSitCollisionScoreTv = view.findViewById(R.id.area_out_collision_score_tv);
         TextView sitTimeScoreTv = view.findViewById(R.id.sit_time_score_tv);
         TextView outwardBackRegScoreTv = view.findViewById(R.id.outward_back_reg_score_tv);
-        TextView outwardBackScoreTv = view.findViewById(R.id.outward_back_score_tv);
+        TextView outwardBackScoreTv = view.findViewById(R.id.outward_back_reg_score_tv);
         TextView outwardBreastScoreTv = view.findViewById(R.id.outward_breast_score_tv);
 
 
@@ -62,9 +59,9 @@ public class ResultProtocolTwo extends Fragment {
         }else {
             milkCowRestLayout.setVisibility(View.VISIBLE);
             sitTimeScoreTv.setText(String.valueOf((int)((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore()));
-            int outwardBackRegScore = (int)((QuestionTemplateViewModel.Question)viewModel.AppearanceBottomLeg).getScore();
-            int outwardBackScore = (int)((QuestionTemplateViewModel.Question)viewModel.AppearanceBack).getScore();
-            int outwardBreastScore = (int)((QuestionTemplateViewModel.Question)viewModel.AppearanceBreast).getScore();
+            int outwardBackRegScore = (int)((QuestionTemplateViewModel.Question)viewModel.OutwardBackReg).getScore();
+            int outwardBackScore = (int)((QuestionTemplateViewModel.Question)viewModel.OutwardBack).getScore();
+            int outwardBreastScore = (int)((QuestionTemplateViewModel.Question)viewModel.OutwardBreast).getScore();
 
             outwardBackRegScoreTv.setText(String.valueOf(outwardBackRegScore));
             outwardBackScoreTv.setText(String.valueOf(outwardBackScore));

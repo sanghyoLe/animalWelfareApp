@@ -93,6 +93,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         int[] avoidDistance;
         int penSize;
         int farmId;
+        int farmType;
 
         public avoidDistance(int penNumber, String penLocation, int cowSize){
             this.penNumber = penNumber;
@@ -111,6 +112,8 @@ public class QuestionTemplateViewModel extends ViewModel {
         public int getFarmId(){
             return this.farmId;
         }
+        public void setFarmType(int farmType) {this.farmType = farmType;}
+        public int getFarmType(){return this.farmType;}
         public int getPenNumber(){
             return this.penNumber;
         }
@@ -796,9 +799,9 @@ public class QuestionTemplateViewModel extends ViewModel {
 
     // 착유우
     public Object SitTimeQuestion = new SitTimeQuestion(50);
-    public Object AppearanceBottomLeg = new Question();
-    public Object AppearanceBack = new Question();
-    public Object AppearanceBreast = new Question();
+    public Object OutwardBackReg = new Question();
+    public Object OutwardBack = new Question();
+    public Object OutwardBreast = new Question();
     public Object CriticalLimp = new Question();
     public Object MovementStability = new MovementStability();
     public Object OutGenitals = new PenQuestion("-1",-1,-1);

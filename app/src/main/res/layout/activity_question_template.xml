@@ -9,6 +9,15 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_question_template"
     tools:context=".MainActivity">
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawer">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
 
     <LinearLayout
         android:id="@+id/question_top_nav"
@@ -137,18 +146,10 @@
         </LinearLayout>
 
     </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/drawer">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/scroll_view_question_template"
             >
             <LinearLayout
@@ -167,21 +168,8 @@
 
                 </LinearLayout>
 
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tab_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="?actionBarSize"
-                    app:tabIndicatorColor="#000000"
-                    app:tabSelectedTextColor="#000000"
-                    app:tabTextColor="#3F51B5" />
 
-                <FrameLayout
-                    android:id="@+id/container"
-                    android:layout_below="@id/tab_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
 
-                </FrameLayout>
                 <Button
                     android:id="@+id/end_btn"
                     android:layout_width="match_parent"
@@ -196,14 +184,14 @@
                     android:text="완료"/>
             </LinearLayout>
         </ScrollView>
+
+
+
+        </LinearLayout>
         <include
             android:id="@+id/list_menu_layout"
             layout="@layout/list_menu"/>
     </androidx.drawerlayout.widget.DrawerLayout>
-
-
-</LinearLayout>
-
 
 
 

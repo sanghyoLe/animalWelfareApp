@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <EditText
-                    android:id="@+id/appearance_a2"
+                    android:id="@+id/outward_back_ed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="표본 중 뒷부분이 더러운 소의 수"
@@ -64,7 +64,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginBottom="10dp">
                     <TextView
-                        android:id="@+id/appearance_ratio_2"
+                        android:id="@+id/outward_back_ratio_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -96,7 +96,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginBottom="10dp">
                     <TextView
-                        android:id="@+id/appearance_score_2"
+                        android:id="@+id/outward_back_reg_score_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"

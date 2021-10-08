@@ -34,10 +34,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <EditText
-                android:id="@+id/appearance_a1"
+                android:id="@+id/outward_back_reg_ed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="표본 중 아랫다리가 더러운 소의 수"
+                android:hint="표본 중 뒤쪽 아랫다리가 더러운 소의 수"
                 android:layout_margin="30dp"
                 android:inputType="number">
             </EditText>
@@ -50,10 +50,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="제 1영역(아랫다리)이 더러운 소의 비율(%)"
+                android:text="제 1영역(뒤쪽 아랫다리)이 더러운 소의 비율(%)"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:layout_margin="20dp"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="10dp">
                 <TextView
-                    android:id="@+id/appearance_ratio_1"
+                    android:id="@+id/outward_back_reg_ratio_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="제 1영역(아랫다리) 점수"
+                android:text="제 1영역(뒤쪽 아랫다리) 점수"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="20dp"/>
@@ -94,7 +94,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="10dp">
                 <TextView
-                    android:id="@+id/appearance_score_1"
+                    android:id="@+id/outward_back_reg_score_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
