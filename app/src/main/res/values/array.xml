@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="search_filter_string_array">
+        <item>농장명</item>
+        <item>대표자명</item>
+        <item>평가자명</item>
+
+    </string-array>
     <string-array name="straw_question_1">
         <item>선택</item>
         <item>20% 이하</item>

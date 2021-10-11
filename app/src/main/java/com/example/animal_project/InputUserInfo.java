@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -57,11 +58,7 @@ public class InputUserInfo extends AppCompatActivity {
     private String farmId;
     private LinearLayout beef_cow_input_layout;
     private LinearLayout milk_cow_input_layout;
-    private RadioButton beefRBOne;
-    private RadioButton beefRBTwo;
-    private RadioButton beefRBThree;
-    private RadioButton milkCowRBOne;
-    private RadioButton milkCowRBTwo;
+    private ImageButton back_btn;
 
 
 
@@ -95,11 +92,16 @@ public class InputUserInfo extends AppCompatActivity {
         milk_cow_et = findViewById(R.id.milk_cow_ed);
         dry_milk_cow_et = findViewById(R.id.dry_milk_cow_ed);
         pregnant_cow_et = findViewById(R.id.pregnant_cow_ed);
-        beefRBOne = findViewById(R.id.input_1);
-        beefRBTwo = findViewById(R.id.input_2);
-        beefRBThree = findViewById(R.id.input_3);
-        milkCowRBOne = findViewById(R.id.input_4);
-        milkCowRBTwo = findViewById(R.id.input_5);
+
+        back_btn = findViewById(R.id.back_btn);
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                finish();
+            }
+        });
 
 
 
@@ -111,14 +113,14 @@ public class InputUserInfo extends AppCompatActivity {
 
                 if (checkedId == R.id.input_1) { // 비육 농장
                     input_checked = 1;
-                    farmType = "한육우, 비육 농장";
+                    farmType = "비육 농장";
                 }
                 if (checkedId == R.id.input_2) { // 번식 농장
                     input_checked = 2;
-                    farmType = "한육우, 번식 농장";
+                    farmType = "번식 농장";
                 } else if (checkedId == R.id.input_3) { // 일괄 사육 농장
                     input_checked = 3;
-                    farmType = "한육우, 일괄 사육 농장";
+                    farmType = "일괄 사육 농장";
                 }
 
             }
@@ -130,10 +132,10 @@ public class InputUserInfo extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.input_4) { // 젖소 일반 우사
                     input_checked = 4;
-                    farmType = "착유우, 일반 우사";
+                    farmType = "일반 우사";
                 } if (checkedId == R.id.input_5) { // 젖소 프리스톨 우사
                     input_checked = 5;
-                    farmType = "착유우, 프리스톨 우사";
+                    farmType = "프리스톨 우사";
                 }
             }
         });

@@ -26,6 +26,7 @@
         <activity android:name=".QuestionTemplate" />
         <activity android:name=".WebViewActivity" />
         <activity android:name=".InputUserInfo" />
+        <activity android:name=".SearchActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

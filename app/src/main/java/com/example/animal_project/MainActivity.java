@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ScrollView;
 
@@ -20,7 +21,11 @@ import android.widget.ScrollView;
 public class MainActivity extends AppCompatActivity {
     public static Context mContext;
     private onKeyBackPressedListener OnKeyBackPressedListener;
-
+    private Button evaStartBtn;
+    private Button searchStartBtn;
+    private Button searchBeefBtn;
+    private Button searchMilkCowBtn;
+    private ImageButton searchBackBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = this;
 
-        Button startbtn = (Button) findViewById(R.id.startbtn);
+        evaStartBtn = (Button) findViewById(R.id.eva_start_btn);
+        searchStartBtn = (Button) findViewById(R.id.search_start_btn);
+        searchBeefBtn = (Button) findViewById(R.id.search_beef_btn);
+        searchMilkCowBtn = (Button) findViewById(R.id.search_milk_cow_btn);
+        searchBackBtn = (ImageButton) findViewById(R.id.search_back_btn);
 
-        startbtn.setOnClickListener(new View.OnClickListener() {
+        evaStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, InputUserInfo.class);
@@ -39,6 +48,44 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        searchStartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                evaStartBtn.setVisibility(View.GONE);
+                searchStartBtn.setVisibility(View.GONE);
+                searchBeefBtn.setVisibility(View.VISIBLE);
+                searchMilkCowBtn.setVisibility(View.VISIBLE);
+                searchBackBtn.setVisibility(View.VISIBLE);
+
+
+            }
+        });
+        searchBeefBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                intent.putExtra("searchCowKind","beef");
+                startActivity(intent);
+            }
+        });
+        searchMilkCowBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                intent.putExtra("searchCowKind","milkCow");
+                startActivity(intent);
+            }
+        });
+        searchBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchMilkCowBtn.setVisibility(View.GONE);
+                searchBeefBtn.setVisibility(View.GONE);
+                searchBackBtn.setVisibility(View.GONE);
+                searchStartBtn.setVisibility(View.VISIBLE);
+                evaStartBtn.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
 
