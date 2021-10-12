@@ -48,9 +48,13 @@ public class SearchActivity extends AppCompatActivity {
     private EvaInfoAdapter mAdapter;
     private RecyclerView mRecyclerView;
     private ImageButton searchBtn;
+    private ImageButton backBtn;
     private EditText searchEd;
     private String mJsonString;
+    private String searchWord;
+    private String searchCowKind;
     private String searchFilterString;
+    private TextView searchTitleTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,29 +62,29 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_main);
 
         Intent intent = getIntent();
-        String searchCowKind = intent.getStringExtra("searchCowKind");
+        Bundle bundle = intent.getExtras();
+        searchWord = bundle.getString("searchWord");
+        searchCowKind = bundle.getString("searchCowKind");
+        searchFilterString = bundle.getString("searchFilterString");
 
-        Spinner searchFilterSpinner = findViewById(R.id.search_filter_spinner);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.search_filter_string_array,android.R.layout.simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        searchFilterSpinner.setAdapter(adapter);
 
-        String searchFilter = "";
-        searchFilterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        backBtn = findViewById(R.id.back_btn);
+        searchTitleTv = findViewById(R.id.search_title);
+        if(searchCowKind.equals("beef")){
+            searchTitleTv.setText("조회하기 - 한육우");
+        } else {
+            searchTitleTv.setText("조회하기 - 착유우");
+        }
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = parent.getSelectedItem().toString();
-                searchFilterString = selectedItem;
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+            public void onClick(View v) {
+                finish();
+                onBackPressed();
             }
         });
+
+
 
 
         mRecyclerView = (RecyclerView) findViewById(R.id.eva_info_list_view);
@@ -95,24 +99,12 @@ public class SearchActivity extends AppCompatActivity {
 
         searchBtn = findViewById(R.id.search_btn);
         searchEd = findViewById(R.id.search_ed);
+        mArrayList.clear();
+        mAdapter.notifyDataSetChanged();
 
-        searchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(TextUtils.isEmpty(searchEd.getText().toString())){
-                    Toast.makeText(SearchActivity.this, "검색어를 입력하세요", Toast.LENGTH_SHORT).show();
-                }else {
-                    String searchWord = searchEd.getText().toString();
+        GetData task = new GetData();
+        task.execute("http://" + IP_ADDRESS + "/getjson.php",searchWord,searchFilterString,searchCowKind);
 
-                    mArrayList.clear();
-                    mAdapter.notifyDataSetChanged();
-
-                    GetData task = new GetData();
-                    task.execute("http://" + IP_ADDRESS + "/getjson.php",searchWord,searchFilterString,searchCowKind);
-
-                }
-            }
-        });
     }
     private class GetData extends AsyncTask<String, Void, String>{
 
@@ -136,14 +128,11 @@ public class SearchActivity extends AppCompatActivity {
 
 //            Log.d(TAG, "response - " + result);
 
-            if (result.equals("searchNothing")){
-                Toast.makeText(SearchActivity.this, "검색결과가 없습니다", Toast.LENGTH_SHORT).show();
-            }
-            else {
+
 
                 mJsonString = result;
                 showResult();
-            }
+
         }
 
 

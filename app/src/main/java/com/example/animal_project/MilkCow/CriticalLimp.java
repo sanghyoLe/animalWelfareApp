@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.animal_project.CustomImageDialog;
+import com.example.animal_project.CustomDialog;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
@@ -38,8 +37,8 @@ public class CriticalLimp extends Fragment {
         standard_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomImageDialog customImageDialog = new CustomImageDialog(CriticalLimp.this.getContext());
-                customImageDialog.setImage(R.drawable.milk_cow_critical_limp);
+                CustomDialog customDialog = new CustomDialog(CriticalLimp.this.getContext());
+                customDialog.setImage(R.drawable.milk_cow_critical_limp);
 
             }
         });

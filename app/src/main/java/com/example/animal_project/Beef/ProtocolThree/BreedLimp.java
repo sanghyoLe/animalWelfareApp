@@ -15,7 +15,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.animal_project.CustomImageDialog;
+import com.example.animal_project.CustomDialog;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
@@ -45,8 +45,8 @@ public class BreedLimp extends Fragment {
         standard_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomImageDialog customImageDialog = new CustomImageDialog(BreedLimp.this.getContext());
-                    customImageDialog.setImage(R.drawable.milk_cow_limp);
+                CustomDialog customDialog = new CustomDialog(BreedLimp.this.getContext());
+                    customDialog.setImage(R.drawable.milk_cow_limp);
 
             }
         });

@@ -1474,8 +1474,8 @@ public class QuestionTemplate extends AppCompatActivity
 
     public void setEvaWayFragmentImage(Fragment fragmentClass, int drawableId ){
 
-                  CustomImageDialog customImageDialog = new CustomImageDialog(fragmentClass.getContext());
-                  customImageDialog.setImage(drawableId);
+                  CustomDialog customDialog = new CustomDialog(fragmentClass.getContext());
+                  customDialog.setImage(drawableId);
                 }
      public Bundle makeResultBundle(Bundle bundle){
          bundle.putInt("farmType",viewModel.getFarmType());

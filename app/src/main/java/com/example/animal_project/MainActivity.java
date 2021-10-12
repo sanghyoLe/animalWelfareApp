@@ -36,9 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         evaStartBtn = (Button) findViewById(R.id.eva_start_btn);
         searchStartBtn = (Button) findViewById(R.id.search_start_btn);
-        searchBeefBtn = (Button) findViewById(R.id.search_beef_btn);
-        searchMilkCowBtn = (Button) findViewById(R.id.search_milk_cow_btn);
-        searchBackBtn = (ImageButton) findViewById(R.id.search_back_btn);
+
 
         evaStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,41 +49,30 @@ public class MainActivity extends AppCompatActivity {
         searchStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                evaStartBtn.setVisibility(View.GONE);
-                searchStartBtn.setVisibility(View.GONE);
-                searchBeefBtn.setVisibility(View.VISIBLE);
-                searchMilkCowBtn.setVisibility(View.VISIBLE);
-                searchBackBtn.setVisibility(View.VISIBLE);
+
+                CustomDialog customDialog = new CustomDialog(MainActivity.this);
+                customDialog.searchDialog();
 
 
             }
         });
-        searchBeefBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                intent.putExtra("searchCowKind","beef");
-                startActivity(intent);
-            }
-        });
-        searchMilkCowBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                intent.putExtra("searchCowKind","milkCow");
-                startActivity(intent);
-            }
-        });
-        searchBackBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchMilkCowBtn.setVisibility(View.GONE);
-                searchBeefBtn.setVisibility(View.GONE);
-                searchBackBtn.setVisibility(View.GONE);
-                searchStartBtn.setVisibility(View.VISIBLE);
-                evaStartBtn.setVisibility(View.VISIBLE);
-            }
-        });
+//        searchBeefBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+//                intent.putExtra("searchCowKind","beef");
+//                startActivity(intent);
+//            }
+//        });
+//        searchMilkCowBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+//                intent.putExtra("searchCowKind","milkCow");
+//                startActivity(intent);
+//            }
+//        });
+
     }
 
 

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.animal_project.CustomImageDialog;
+import com.example.animal_project.CustomDialog;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
@@ -112,8 +112,8 @@ public class FreeStallSitCollision extends Fragment {
         standard_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomImageDialog customImageDialog = new CustomImageDialog(FreeStallSitCollision.this.getContext());
-                    customImageDialog.setImage(R.drawable.sit_collision);
+                CustomDialog customDialog = new CustomDialog(FreeStallSitCollision.this.getContext());
+                    customDialog.setImage(R.drawable.sit_collision);
             }
         });
 
