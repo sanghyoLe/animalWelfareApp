@@ -213,6 +213,9 @@ public class SearchActivity extends AppCompatActivity {
         String TAG_REP_NAME ="repName";
         String TAG_FARM_TYPE ="farmType";
         String TAG_EVA_NAME ="evaluatorName";
+        String TAG_EVA_YEAR = "evaluatorYear";
+        String TAG_EVA_MONTH = "evaluatorMonth";
+        String TAG_EVA_DAY = "evaluatorDay";
 
 
         try {
@@ -228,6 +231,9 @@ public class SearchActivity extends AppCompatActivity {
                 String repName = item.getString(TAG_REP_NAME);
                 String farmType = item.getString(TAG_FARM_TYPE);
                 String evaName = item.getString(TAG_EVA_NAME);
+                String evaYear = item.getString(TAG_EVA_YEAR);
+                String evaMonth = item.getString(TAG_EVA_MONTH);
+                String evaDay = item.getString(TAG_EVA_DAY);
 
 
                 EvaInfoData evaInfoData = new EvaInfoData();
@@ -237,6 +243,7 @@ public class SearchActivity extends AppCompatActivity {
                 evaInfoData.setRepName(repName);
                 evaInfoData.setFarmType(farmType);
                 evaInfoData.setEvaName(evaName);
+                evaInfoData.setEvaDay(evaYear + "-" + evaMonth + "-" + evaDay);
 
                 mArrayList.add(evaInfoData);
                 mAdapter.notifyDataSetChanged();

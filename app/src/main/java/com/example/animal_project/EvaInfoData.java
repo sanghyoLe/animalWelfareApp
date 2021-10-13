@@ -6,6 +6,17 @@ public class EvaInfoData {
     private String repName;
     private String farmType;
     private String evaName;
+    private String evaDay;
+
+    public String getEvaDay() {
+        return evaDay;
+    }
+
+    public void setEvaDay(String evaDay) {
+        this.evaDay = evaDay;
+    }
+
+
 
     public String getEvaInfoId() {
         return evaInfoId;

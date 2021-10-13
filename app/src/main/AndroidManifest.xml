@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".ResultActivity"
             android:exported="true" />
@@ -26,7 +27,8 @@
         <activity android:name=".QuestionTemplate" />
         <activity android:name=".WebViewActivity" />
         <activity android:name=".InputUserInfo" />
-        <activity android:name=".SearchActivity"/>
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".DetailSearchActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

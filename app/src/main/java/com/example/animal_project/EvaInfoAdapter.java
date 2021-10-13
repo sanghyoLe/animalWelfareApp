@@ -2,6 +2,7 @@ package com.example.animal_project;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,8 +30,8 @@ public class EvaInfoAdapter extends RecyclerView.Adapter<EvaInfoAdapter.CustomVi
         protected Button detailSearchBtn;
         protected TextView farmName;
         protected TextView repName;
-        protected TextView farmType;
-        protected TextView evaName;
+        protected TextView evaDay;
+
 
 
 
@@ -39,8 +40,8 @@ public class EvaInfoAdapter extends RecyclerView.Adapter<EvaInfoAdapter.CustomVi
             this.detailSearchBtn = (Button) view.findViewById(R.id.detail_search_btn);
             this.farmName = (TextView) view.findViewById(R.id.farm_name_tv);
             this.repName = (TextView) view.findViewById(R.id.rep_name_tv);
-            this.farmType = (TextView) view.findViewById(R.id.farm_type_tv);
-            this.evaName= (TextView) view.findViewById(R.id.eva_name_tv);
+            this.evaDay = (TextView) view.findViewById(R.id.eva_day_tv);
+
         }
     }
 
@@ -61,13 +62,14 @@ public class EvaInfoAdapter extends RecyclerView.Adapter<EvaInfoAdapter.CustomVi
         viewHolder.detailSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(context,DetailSearchActivity.class);
+                context.startActivity(intent);
                 Log.d("FarmId",String.valueOf(mList.get(position).getEvaInfoId()));
             }
         });
         viewHolder.farmName.setText(mList.get(position).getFarmName());
         viewHolder.repName.setText(mList.get(position).getRepName());
-        viewHolder.farmType.setText(mList.get(position).getFarmType());
-        viewHolder.evaName.setText(mList.get(position).getEvaName());
+        viewHolder.evaDay.setText(mList.get(position).getEvaDay());
 
     }
 
