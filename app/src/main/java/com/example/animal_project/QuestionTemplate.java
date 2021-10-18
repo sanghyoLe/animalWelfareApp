@@ -1313,6 +1313,8 @@ public class QuestionTemplate extends AppCompatActivity
          float milkCowStruggleIndexAvg = ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getStruggleIndexAvg();
          float milkCowAvoidDistanceRatio = viewModel.getAvoidDistanceRatio();
 
+         String protocolTotalString = viewModel.getTotalProtocolScoreString();
+
 
 
 
@@ -1456,8 +1458,8 @@ public class QuestionTemplate extends AppCompatActivity
                  String.valueOf(hardBirthRatio),
                  String.valueOf(unAbleStandRatio),
                  String.valueOf(milkCowStruggleIndexAvg),
-                 String.valueOf(milkCowAvoidDistanceRatio)
-
+                 String.valueOf(milkCowAvoidDistanceRatio),
+                 String.valueOf(protocolTotalString)
          );
 
      }

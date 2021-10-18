@@ -62,6 +62,11 @@ public class EvaInfoAdapter extends RecyclerView.Adapter<EvaInfoAdapter.CustomVi
         viewHolder.detailSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GetScoreData task = new GetScoreData(context);
+//                task.execute("http://218.151.112.65/getNormalSearchResultJson",
+//                          cowKind
+//                          farmId
+//                        )
                 Intent intent = new Intent(context,DetailSearchActivity.class);
                 context.startActivity(intent);
                 Log.d("FarmId",String.valueOf(mList.get(position).getEvaInfoId()));

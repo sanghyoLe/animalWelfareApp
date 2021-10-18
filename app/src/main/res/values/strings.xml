@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">animal_project</string>
-
+    <string name="app_name">동물복지수준 자가평가</string>ㅌ
     <string name="pen_location_1">1동 표본 펜 위치</string>
     <string name="pen_location_2">2동 표본 펜 위치</string>
     <string name="pen_location_3">3동 표본 펜 위치</string>

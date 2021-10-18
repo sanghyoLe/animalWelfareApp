@@ -190,6 +190,7 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
         String unAbleStandRatio= (String)params[index++];
         String milkCowStruggleIndexAvg= (String)params[index++];
         String milkCowAvoidDistanceRatio= (String)params[index++];
+        String totalProtocolString= (String)params[index++];
 
 
         String postParameters =
@@ -330,8 +331,7 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
                         +"&unAbleStandRatio=" + unAbleStandRatio
                         +"&milkCowStruggleIndexAvg=" + milkCowStruggleIndexAvg
                         +"&milkCowAvoidDistanceRatio=" + milkCowAvoidDistanceRatio
-
-
+                        +"&totalProtocolString=" + totalProtocolString
                 ;
 
 

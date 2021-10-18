@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -176,16 +177,20 @@ public class CustomDialog {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(TextUtils.isEmpty(searchEd.getText().toString())){
-                    Toast.makeText(context, "검색어를 입력하세요", Toast.LENGTH_SHORT).show();
-                }else if(searchCowKind == null ){
-                    Toast.makeText(context, "농장 종류를 선택하세요", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    searchWord = searchEd.getText().toString();
-                    CheckData task = new CheckData();
-                    task.execute("http://" + IP_ADDRESS + "/getjson.php",searchWord,searchFilterString,searchCowKind);
+                if(isNetworkConnected() == false){
+                    Toast.makeText(context,"인터넷 연결을 확인하세요",Toast.LENGTH_SHORT).show();     
+                }else {
+                    if(TextUtils.isEmpty(searchEd.getText().toString())){
+                        Toast.makeText(context, "검색어를 입력하세요", Toast.LENGTH_SHORT).show();
+                    }else if(searchCowKind == null ){
+                        Toast.makeText(context, "농장 종류를 선택하세요", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        searchWord = searchEd.getText().toString();
+                        CheckData task = new CheckData();
+                        task.execute("http://" + IP_ADDRESS + "/getjson.php",searchWord,searchFilterString,searchCowKind);
 
+                    }
                 }
             }
         });
@@ -310,5 +315,10 @@ public class CustomDialog {
             }
 
         }
+    }
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 }

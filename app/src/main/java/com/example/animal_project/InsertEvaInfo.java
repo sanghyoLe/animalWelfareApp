@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -131,6 +132,7 @@ public class InsertEvaInfo extends AsyncTask<String, Void, String> {
 
         } catch (Exception e) {
             Log.d(TAG, "InsertData: Error ", e);
+
             return new String("Error: " + e.getMessage());
         }
 

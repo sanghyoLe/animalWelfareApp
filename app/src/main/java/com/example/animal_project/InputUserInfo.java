@@ -4,10 +4,12 @@ package com.example.animal_project;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -145,90 +147,80 @@ public class InputUserInfo extends AppCompatActivity {
             String msg;
             @Override
             public void onClick(View v) {
-                // 사용자가 모든 정보를 입력하였는지 확인
-                if(input_checked == 1 || input_checked == 2 || input_checked == 3){
-                    if(!checkEmptyInputInfo(farm_name_et, "농장명을 입력하세요")
-                            && !checkEmptyInputInfo(address_et, "주소를 입력하세요")
-                            && !checkEmptyInputInfo(address_detail_et, "상세 주소를 입력하세요")
-                            && !checkEmptyInputInfo(farm_rep_name_et, "대표자명을 입력하세요")
-                            && !checkEmptyInputInfo(total_cow_et, "총 두수를 입력하세요")
-                            && !checkEmptyInputInfo(total_adult_cow_et, "성우 두수를 입력하세요")
-                            && !checkEmptyInputInfo(total_child_cow_et, "송아지 두수를 입력하세요")
-                            && !checkEmptyInputInfo(eva_name_et, "평가자명을 입력하세요")
-                    ){
-                        AlertDialog.Builder AlertBuilder = new AlertDialog.Builder(InputUserInfo.this);
-                        CheckInputInformation(
-                                AlertBuilder,
-                                String.valueOf(farm_name_et.getText()),
-                                String.valueOf(zipcode_et.getText()),
-                                String.valueOf(address_et.getText()),
-                                String.valueOf(address_detail_et.getText()),
-                                String.valueOf(farm_rep_name_et.getText()),
-                                Integer.parseInt(String.valueOf(total_cow_et.getText())),
-                                Integer.parseInt(String.valueOf(total_adult_cow_et.getText())),
-                                Integer.parseInt(String.valueOf(total_child_cow_et.getText())),
-                                Integer.parseInt(String.valueOf(sample_size_count)),
-                                String.valueOf(eva_name_et.getText()),
-                                eva_data_picker.getYear(),
-                                eva_data_picker.getMonth(),
-                                eva_data_picker.getDayOfMonth(), input_checked,
-                                0,0,0
-                        );
+                // 인터넷 연결 안되있을 경우
+                if(isNetworkConnected() == false){
+                    Toast.makeText(InputUserInfo.this, "인터넷 연결을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                } else {
+                    // 사용자가 모든 정보를 입력하였는지 확인
+                    if(input_checked == 1 || input_checked == 2 || input_checked == 3){
+                        if(!checkEmptyInputInfo(farm_name_et, "농장명을 입력하세요")
+                                && !checkEmptyInputInfo(address_et, "주소를 입력하세요")
+                                && !checkEmptyInputInfo(address_detail_et, "상세 주소를 입력하세요")
+                                && !checkEmptyInputInfo(farm_rep_name_et, "대표자명을 입력하세요")
+                                && !checkEmptyInputInfo(total_cow_et, "총 두수를 입력하세요")
+                                && !checkEmptyInputInfo(total_adult_cow_et, "성우 두수를 입력하세요")
+                                && !checkEmptyInputInfo(total_child_cow_et, "송아지 두수를 입력하세요")
+                                && !checkEmptyInputInfo(eva_name_et, "평가자명을 입력하세요")
+                        ){
+                            AlertDialog.Builder AlertBuilder = new AlertDialog.Builder(InputUserInfo.this);
+                            CheckInputInformation(
+                                    AlertBuilder,
+                                    String.valueOf(farm_name_et.getText()),
+                                    String.valueOf(zipcode_et.getText()),
+                                    String.valueOf(address_et.getText()),
+                                    String.valueOf(address_detail_et.getText()),
+                                    String.valueOf(farm_rep_name_et.getText()),
+                                    Integer.parseInt(String.valueOf(total_cow_et.getText())),
+                                    Integer.parseInt(String.valueOf(total_adult_cow_et.getText())),
+                                    Integer.parseInt(String.valueOf(total_child_cow_et.getText())),
+                                    Integer.parseInt(String.valueOf(sample_size_count)),
+                                    String.valueOf(eva_name_et.getText()),
+                                    eva_data_picker.getYear(),
+                                    eva_data_picker.getMonth(),
+                                    eva_data_picker.getDayOfMonth(), input_checked,
+                                    0,0,0
+                            );
+                        }
+                    } else if(input_checked == 4 || input_checked == 5){
+                        if(!checkEmptyInputInfo(farm_name_et, "농장명을 입력하세요")
+                                && !checkEmptyInputInfo(address_et, "주소를 입력하세요")
+                                && !checkEmptyInputInfo(address_detail_et, "상세 주소를 입력하세요")
+                                && !checkEmptyInputInfo(farm_rep_name_et, "대표자명을 입력하세요")
+                                && !checkEmptyInputInfo(total_cow_et, "성우 두수를 입력하세요")
+                                && !checkEmptyInputInfo(milk_cow_et, "착유우 두수를 입력하세요")
+                                && !checkEmptyInputInfo(dry_milk_cow_et, "건유우 두수를 입력하세요")
+                                && !checkEmptyInputInfo(pregnant_cow_et, "미경산임신우 두수를 입력하세요")
+                                && !checkEmptyInputInfo(total_child_cow_et, "송아지 두수를 입력하세요")
+                                && !checkEmptyInputInfo(eva_name_et, "평가자명을 입력하세요")){
+                            AlertDialog.Builder AlertBuilder = new AlertDialog.Builder(InputUserInfo.this);
+                            CheckInputInformation(
+                                    AlertBuilder,
+                                    String.valueOf(farm_name_et.getText()),
+                                    String.valueOf(zipcode_et.getText()),
+                                    String.valueOf(address_et.getText()),
+                                    String.valueOf(address_detail_et.getText()),
+                                    String.valueOf(farm_rep_name_et.getText()),
+                                    Integer.parseInt(String.valueOf(total_cow_et.getText())),
+                                    0,
+                                    Integer.parseInt(String.valueOf(total_child_cow_et.getText())),
+                                    Integer.parseInt(String.valueOf(sample_size_count)),
+                                    String.valueOf(eva_name_et.getText()),
+                                    eva_data_picker.getYear(),
+                                    eva_data_picker.getMonth(),
+                                    eva_data_picker.getDayOfMonth(), input_checked,
+                                    Integer.parseInt(String.valueOf(milk_cow_et.getText())),
+                                    Integer.parseInt(String.valueOf(dry_milk_cow_et.getText())),
+                                    Integer.parseInt(String.valueOf(pregnant_cow_et.getText()))
+                            );
+                        }
                     }
-                } else if(input_checked == 4 || input_checked == 5){
-                    if(!checkEmptyInputInfo(farm_name_et, "농장명을 입력하세요")
-                            && !checkEmptyInputInfo(address_et, "주소를 입력하세요")
-                            && !checkEmptyInputInfo(address_detail_et, "상세 주소를 입력하세요")
-                            && !checkEmptyInputInfo(farm_rep_name_et, "대표자명을 입력하세요")
-                            && !checkEmptyInputInfo(total_cow_et, "성우 두수를 입력하세요")
-                            && !checkEmptyInputInfo(milk_cow_et, "착유우 두수를 입력하세요")
-                            && !checkEmptyInputInfo(dry_milk_cow_et, "건유우 두수를 입력하세요")
-                            && !checkEmptyInputInfo(pregnant_cow_et, "미경산임신우 두수를 입력하세요")
-                            && !checkEmptyInputInfo(total_child_cow_et, "송아지 두수를 입력하세요")
-                            && !checkEmptyInputInfo(eva_name_et, "평가자명을 입력하세요")){
-                        AlertDialog.Builder AlertBuilder = new AlertDialog.Builder(InputUserInfo.this);
-                        CheckInputInformation(
-                                AlertBuilder,
-                                String.valueOf(farm_name_et.getText()),
-                                String.valueOf(zipcode_et.getText()),
-                                String.valueOf(address_et.getText()),
-                                String.valueOf(address_detail_et.getText()),
-                                String.valueOf(farm_rep_name_et.getText()),
-                                Integer.parseInt(String.valueOf(total_cow_et.getText())),
-                                0,
-                                Integer.parseInt(String.valueOf(total_child_cow_et.getText())),
-                                Integer.parseInt(String.valueOf(sample_size_count)),
-                                String.valueOf(eva_name_et.getText()),
-                                eva_data_picker.getYear(),
-                                eva_data_picker.getMonth(),
-                                eva_data_picker.getDayOfMonth(), input_checked,
-                                Integer.parseInt(String.valueOf(milk_cow_et.getText())),
-                                Integer.parseInt(String.valueOf(dry_milk_cow_et.getText())),
-                                Integer.parseInt(String.valueOf(pregnant_cow_et.getText()))
-                        );
+                    else if(input_checked == 0){
+                        msg = "농장 종류를 선택하세요";
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                     }
                 }
-                else if(input_checked == 0){
-                    msg = "농장 종류를 선택하세요";
-                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                }
 
-                // 모든 정보를 입력하였을 때
 
-                // 테스트 용 코드 위에 조건문 주석 걸고 실행
-/*                if(input_checked == 0) {
-                    String msg = "농장 종류 선택";
-                    Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                }else {
-                    Intent intentQuestionTemplate = new Intent(Input_userinfo.this, QuestionTemplate.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("totalCow",Integer.parseInt(total_cow_count));
-                    bundle.putInt("sampleCowSize",Integer.parseInt(sample_size_count));
-                    bundle.putInt("farmType",input_checked);
-                    intentQuestionTemplate.putExtras(bundle);
-                    startActivity(intentQuestionTemplate);
-                }*/
-                // --------------------------------------------------
             }
         });
 
@@ -528,5 +520,11 @@ public class InputUserInfo extends AppCompatActivity {
         }
         return false;
     }
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
+
 
 }
