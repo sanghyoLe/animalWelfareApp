@@ -83,15 +83,29 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorPrimary"
                             android:gravity="center"
-                            android:text="평가일자"/>
-
+                            android:text="농장 종류"/>
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorGray"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorPrimary"
                             android:gravity="center"
-                            android:text="상세조회"/>
+                            android:text="평가일자"/>
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorGray"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorPrimary"
+                            android:gravity="center"
+                            android:text="등급"/>
                         <View
                             android:layout_width="2dp"
                             android:layout_height="match_parent"

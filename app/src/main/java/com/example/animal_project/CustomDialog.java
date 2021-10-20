@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -58,7 +57,7 @@ public class CustomDialog {
         // 액티비티의 타이틀바를 숨긴다.
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
         // 커스텀 다이얼로그의 레이아웃을 설정한다.
-        dlg.setContentView(R.layout.custom_imageview_dialog);
+        dlg.setContentView(R.layout.m_custom_dialog);
         // 커스텀 다이얼로그를 노출한다.
         dlg.show();
         final ImageView dialogImageView = (ImageView) dlg.findViewById(R.id.dialog_imageview);
@@ -94,7 +93,7 @@ public class CustomDialog {
         // 액티비티의 타이틀바를 숨긴다.
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
         // 커스텀 다이얼로그의 레이아웃을 설정한다.
-        dlg.setContentView(R.layout.custom_imageview_dialog);
+        dlg.setContentView(R.layout.m_custom_dialog);
         // 커스텀 다이얼로그를 노출한다.
         dlg.show();
         final ImageView dialogCloseBtn = (ImageButton) dlg.findViewById(R.id.dialog_close_btn);
@@ -103,8 +102,10 @@ public class CustomDialog {
         TextView adminMemberTv = searchView.findViewById(R.id.admin_member);
         Spinner searchFilterSpinner = searchView.findViewById(R.id.search_filter_spinner);
         EditText searchEd = searchView.findViewById(R.id.search_ed);
-        ImageButton searchBtn = searchView.findViewById(R.id.search_btn);
+        Button searchBtn = searchView.findViewById(R.id.search_btn);
         RadioGroup cowKindRg = searchView.findViewById(R.id.cow_kind_rg);
+        LinearLayout normalMemberLayout = searchView.findViewById(R.id.normal_member_layout);
+        LinearLayout adminMemberLayout = searchView.findViewById(R.id.admin_member_layout);
         searchView.setVisibility(View.VISIBLE);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
@@ -127,11 +128,10 @@ public class CustomDialog {
                 normalMemberTv.setTypeface(Typeface.DEFAULT_BOLD);
                 adminMemberTv.setBackground(null);
                 adminMemberTv.setTypeface(Typeface.DEFAULT);
-                int x = (int) (size.x * 0.9f);
-                int y = (int)(size.y * 0.3f);
+                adminMemberLayout.setVisibility(View.GONE);
+                normalMemberLayout.setVisibility(View.VISIBLE);
 
 
-                window.setLayout(x,y);
 
             }
         });
@@ -142,11 +142,10 @@ public class CustomDialog {
                 adminMemberTv.setTypeface(Typeface.DEFAULT_BOLD);
                 normalMemberTv.setBackground(null);
                 normalMemberTv.setTypeface(Typeface.DEFAULT);
-                int x = (int) (size.x * 0.9f);
-                int y = (int)(size.y * 0.5f);
+                normalMemberLayout.setVisibility(View.GONE);
+                adminMemberLayout.setVisibility(View.VISIBLE);
 
 
-                window.setLayout(x,y);
             }
         });
 
@@ -199,8 +198,8 @@ public class CustomDialog {
 
 
 
-        int x = (int) (size.x * 0.9f);
-        int y = (int)(size.y * 0.4f);
+        int x = (int) (size.x * 0.95f);
+        int y = (int)(size.y * 0.65f);
         window.setLayout(x,y);
 
         dialogCloseBtn.setOnClickListener(new View.OnClickListener() {

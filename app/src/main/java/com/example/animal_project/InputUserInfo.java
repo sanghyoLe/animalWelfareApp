@@ -418,15 +418,15 @@ public class InputUserInfo extends AppCompatActivity {
                                        int month, int day,int farmType,int milkCow, int dryMilkCow, int pregnantCow){
         String farmTypeMsg;
         if(farmType == 1){
-            farmTypeMsg = "한육우, 비육 농장";
+            farmTypeMsg = "비육 농장";
         } else if(farmType == 2) {
-            farmTypeMsg = "한육우, 번식 농장";
+            farmTypeMsg = "번식 농장";
         } else if(farmType == 3){
-            farmTypeMsg = "한육우, 일괄 사육 농장";
+            farmTypeMsg = "일괄 사육 농장";
         } else if(farmType == 4){
-            farmTypeMsg = "착유우, 운동장형 우사";
+            farmTypeMsg = "운동장형 우사";
         } else {
-            farmTypeMsg ="착유우, 프리스톨 우사";
+            farmTypeMsg ="프리스톨 우사";
         }
         bundle.putString("farmTypeMsg",farmTypeMsg);
         InputUserInfoDialog customDialog = new InputUserInfoDialog(InputUserInfo.this);

@@ -244,6 +244,7 @@ public class SearchActivity extends AppCompatActivity {
                 evaInfoData.setFarmType(farmType);
                 evaInfoData.setEvaName(evaName);
                 evaInfoData.setEvaDay(evaYear + "-" + evaMonth + "-" + evaDay);
+                evaInfoData.setSearchCowKind(searchCowKind);
 
                 mArrayList.add(evaInfoData);
                 mAdapter.notifyDataSetChanged();

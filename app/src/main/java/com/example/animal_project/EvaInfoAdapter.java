@@ -30,6 +30,7 @@ public class EvaInfoAdapter extends RecyclerView.Adapter<EvaInfoAdapter.CustomVi
         protected Button detailSearchBtn;
         protected TextView farmName;
         protected TextView repName;
+        protected TextView farmType;
         protected TextView evaDay;
 
 
@@ -41,6 +42,7 @@ public class EvaInfoAdapter extends RecyclerView.Adapter<EvaInfoAdapter.CustomVi
             this.farmName = (TextView) view.findViewById(R.id.farm_name_tv);
             this.repName = (TextView) view.findViewById(R.id.rep_name_tv);
             this.evaDay = (TextView) view.findViewById(R.id.eva_day_tv);
+            this.farmType = (TextView) view.findViewById(R.id.farm_type_tv);
 
         }
     }
@@ -62,17 +64,17 @@ public class EvaInfoAdapter extends RecyclerView.Adapter<EvaInfoAdapter.CustomVi
         viewHolder.detailSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GetScoreData task = new GetScoreData(context);
-//                task.execute("http://218.151.112.65/getNormalSearchResultJson",
-//                          cowKind
-//                          farmId
-//                        )
                 Intent intent = new Intent(context,DetailSearchActivity.class);
+                intent.putExtra("searchCowKind",mList.get(position).getSearchCowKind());
+                intent.putExtra("evaInfoId",mList.get(position).getEvaInfoId());
+
+
                 context.startActivity(intent);
-                Log.d("FarmId",String.valueOf(mList.get(position).getEvaInfoId()));
+
             }
         });
         viewHolder.farmName.setText(mList.get(position).getFarmName());
+        viewHolder.farmType.setText(mList.get(position).getFarmType());
         viewHolder.repName.setText(mList.get(position).getRepName());
         viewHolder.evaDay.setText(mList.get(position).getEvaDay());
 

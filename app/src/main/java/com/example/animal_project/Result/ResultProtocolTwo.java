@@ -36,8 +36,7 @@ public class ResultProtocolTwo extends Fragment {
         LinearLayout calfSummerWinterLayout = view.findViewById(R.id.calf_summer_winter_layout);
 
 
-        protocolScoreTv.setText(String.valueOf((int)viewModel.getProtocolTwoScore()));
-        protocolRestScoreTv.setText(String.valueOf((int)viewModel.getRestScore()));
+
 
         LinearLayout beefRestLayout = view.findViewById(R.id.beef_rest_layout);
         LinearLayout milkCowRestLayout = view.findViewById(R.id.milk_cow_rest_layout);
@@ -51,6 +50,11 @@ public class ResultProtocolTwo extends Fragment {
         TextView outwardBreastScoreTv = view.findViewById(R.id.outward_breast_score_tv);
 
 
+        protocolScoreTv.setText(String.valueOf((int)viewModel.getProtocolTwoScore()));
+        protocolRestScoreTv.setText(String.valueOf((int)viewModel.getRestScore()));
+        protocolWarmVentilatingScoreTv.setText(String.valueOf((int)viewModel.getTotalWarmVentilatingScore()));
+        summerScoreTv.setText(String.valueOf(viewModel.getSummerRestScore()));
+        winterScoreTv.setText(String.valueOf(viewModel.getWinterRestScore()));
 
         if(viewModel.isBeef(viewModel.getFarmType())){
             beefRestLayout.setVisibility(View.VISIBLE);
@@ -77,9 +81,7 @@ public class ResultProtocolTwo extends Fragment {
                 areaOutSitCollisionScoreTv.setText(String.valueOf(areaOutSitCollisionScore));
             }
         }
-        protocolWarmVentilatingScoreTv.setText(String.valueOf((int)viewModel.getTotalWarmVentilatingScore()));
-        summerScoreTv.setText(String.valueOf(viewModel.getSummerRestScore()));
-        winterScoreTv.setText(String.valueOf(viewModel.getWinterRestScore()));
+
 
         if(viewModel.getFarmType() == 1){
             calfSummerWinterLayout.setVisibility(View.GONE);

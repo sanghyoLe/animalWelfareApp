@@ -8,24 +8,29 @@ public class EvaInfoData {
     private String evaName;
     private String evaDay;
 
+
+    public String getSearchCowKind() {
+        return searchCowKind;
+    }
+
+    public void setSearchCowKind(String searchCowKind) {
+        this.searchCowKind = searchCowKind;
+    }
+
+    private String searchCowKind;
+
     public String getEvaDay() {
         return evaDay;
     }
-
     public void setEvaDay(String evaDay) {
         this.evaDay = evaDay;
     }
-
-
-
     public String getEvaInfoId() {
         return evaInfoId;
     }
-
     public String getFarmName() {
         return farmName;
     }
-
     public String getRepName() {
         return repName;
     }
