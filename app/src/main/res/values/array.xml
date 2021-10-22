@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="search_filter_string_array">
+    <string-array name="search_filter_normal_member">
         <item>농장명</item>
         <item>대표자명</item>
-        <item>평가자명</item>
-
+    </string-array>
+    <string-array name="search_filter_admin_member">
+        <item>전체</item>
+        <item>농장명</item>
+        <item>대표자명</item>
+        <item>평가일</item>
     </string-array>
     <string-array name="straw_question_1">
         <item>선택</item>

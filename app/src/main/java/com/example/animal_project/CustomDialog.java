@@ -45,6 +45,7 @@ public class CustomDialog {
     private Context context;
     protected Dialog dlg;
     private String searchFilterString;
+    private Boolean isAdminMember;
 
     public CustomDialog(Context context) {
         this.context = context;
@@ -106,10 +107,20 @@ public class CustomDialog {
         RadioGroup cowKindRg = searchView.findViewById(R.id.cow_kind_rg);
         LinearLayout normalMemberLayout = searchView.findViewById(R.id.normal_member_layout);
         LinearLayout adminMemberLayout = searchView.findViewById(R.id.admin_member_layout);
-        searchView.setVisibility(View.VISIBLE);
+        EditText adminMemberIdEd = searchView.findViewById(R.id.admin_member_id);
+        EditText adminMemberPasswordEd = searchView.findViewById(R.id.admin_member_password);
+        Button adminMemberLoginBtn = searchView.findViewById(R.id.admin_member_login_btn);
+        isAdminMember = false;
 
+
+
+
+
+
+
+        searchView.setVisibility(View.VISIBLE);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
-                R.array.search_filter_string_array,R.layout.spinner_item);
+                R.array.search_filter_normal_member,R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         searchFilterSpinner.setAdapter(adapter);
 
@@ -130,8 +141,11 @@ public class CustomDialog {
                 adminMemberTv.setTypeface(Typeface.DEFAULT);
                 adminMemberLayout.setVisibility(View.GONE);
                 normalMemberLayout.setVisibility(View.VISIBLE);
-
-
+                isAdminMember = false;
+                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
+                        R.array.search_filter_normal_member,R.layout.spinner_item);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                searchFilterSpinner.setAdapter(adapter);
 
             }
         });
@@ -144,8 +158,24 @@ public class CustomDialog {
                 normalMemberTv.setTypeface(Typeface.DEFAULT);
                 normalMemberLayout.setVisibility(View.GONE);
                 adminMemberLayout.setVisibility(View.VISIBLE);
+                isAdminMember = true;
 
 
+            }
+        });
+        adminMemberLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(adminMemberIdEd.getText().toString().equals("1") && adminMemberPasswordEd.getText().toString().equals("1")){
+                    adminMemberLayout.setVisibility(View.GONE);
+                    normalMemberLayout.setVisibility(View.VISIBLE);
+                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
+                            R.array.search_filter_admin_member,R.layout.spinner_item);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    searchFilterSpinner.setAdapter(adapter);
+                } else {
+                    Toast.makeText(context, "아이디 또는 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -164,7 +194,11 @@ public class CustomDialog {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = parent.getSelectedItem().toString();
                 searchFilterString = selectedItem;
-
+                if(searchFilterString.equals("전체")){
+                    searchEd.setVisibility(View.GONE);
+                }else {
+                    searchEd.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -179,16 +213,22 @@ public class CustomDialog {
                 if(isNetworkConnected() == false){
                     Toast.makeText(context,"인터넷 연결을 확인하세요",Toast.LENGTH_SHORT).show();     
                 }else {
-                    if(TextUtils.isEmpty(searchEd.getText().toString())){
-                        Toast.makeText(context, "검색어를 입력하세요", Toast.LENGTH_SHORT).show();
-                    }else if(searchCowKind == null ){
+                    if(searchCowKind == null ){
                         Toast.makeText(context, "농장 종류를 선택하세요", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        searchWord = searchEd.getText().toString();
-                        CheckData task = new CheckData();
-                        task.execute("http://" + IP_ADDRESS + "/getjson.php",searchWord,searchFilterString,searchCowKind);
-
+                    } else {
+                        // 전체일 경우
+                        if (searchFilterString.equals("전체")) {
+                            CheckData task = new CheckData();
+                            task.execute("http://" + IP_ADDRESS + "/getSearchResultJson.php", searchWord, searchFilterString, searchCowKind);
+                        } else {
+                            if (TextUtils.isEmpty(searchEd.getText().toString())) {
+                                Toast.makeText(context, "검색어를 입력하세요", Toast.LENGTH_SHORT).show();
+                            } else {
+                                    searchWord = searchEd.getText().toString();
+                                    CheckData task = new CheckData();
+                                    task.execute("http://" + IP_ADDRESS + "/getSearchResultJson.php", searchWord, searchFilterString, searchCowKind);
+                            }
+                        }
                     }
                 }
             }
@@ -240,6 +280,7 @@ public class CustomDialog {
                 bundle.putString("searchWord",searchWord);
                 bundle.putString("searchCowKind",searchCowKind);
                 bundle.putString("searchFilterString",searchFilterString);
+                bundle.putBoolean("isAdminMember",isAdminMember);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }

@@ -3,7 +3,6 @@ package com.example.animal_project;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +18,15 @@ public class EvaInfoAdapter extends RecyclerView.Adapter<EvaInfoAdapter.CustomVi
 
     private ArrayList<EvaInfoData> mList = null;
     private Activity context = null;
+    private Boolean isAdminMember;
+    private String searchCowKind;
 
 
-    public EvaInfoAdapter(Activity context, ArrayList<EvaInfoData> list) {
+    public EvaInfoAdapter(Activity context, ArrayList<EvaInfoData> list,Boolean isAdminMember,String searchCowKind) {
         this.context = context;
         this.mList = list;
+        this.isAdminMember = isAdminMember;
+        this.searchCowKind = searchCowKind;
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
@@ -32,6 +35,10 @@ public class EvaInfoAdapter extends RecyclerView.Adapter<EvaInfoAdapter.CustomVi
         protected TextView repName;
         protected TextView farmType;
         protected TextView evaDay;
+
+
+
+
 
 
 
@@ -64,12 +71,20 @@ public class EvaInfoAdapter extends RecyclerView.Adapter<EvaInfoAdapter.CustomVi
         viewHolder.detailSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,DetailSearchActivity.class);
-                intent.putExtra("searchCowKind",mList.get(position).getSearchCowKind());
-                intent.putExtra("evaInfoId",mList.get(position).getEvaInfoId());
+                if(!isAdminMember){
+                    Intent intent = new Intent(context, DetailSearchNormalMemberActivity.class);
+                    intent.putExtra("evaInfoId",mList.get(position).getEvaInfoId());
+                    context.startActivity(intent);
+                } else {
+                    Intent intent = new Intent(context, DetailSearchAdminMemberActivity.class);
+                    intent.putExtra("evaInfoId",mList.get(position).getEvaInfoId());
+                    intent.putExtra("searchCowKind",searchCowKind);
+                    context.startActivity(intent);
+                }
 
 
-                context.startActivity(intent);
+
+
 
             }
         });

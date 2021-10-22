@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -26,7 +25,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class DetailSearchActivity extends AppCompatActivity {
+public class DetailSearchNormalMemberActivity extends AppCompatActivity {
     QuestionTemplateViewModel viewModel;
 
     private View resultTotalView;
@@ -49,14 +48,14 @@ public class DetailSearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_search);
+        setContentView(R.layout.activity_detail_search_normal_member);
         viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
 
 
         Intent beforeIntent = getIntent();
-        searchCowKind = beforeIntent.getStringExtra("searchCowKind");
+
         evaInfoId = beforeIntent.getStringExtra("evaInfoId");
-        farmType = beforeIntent.getIntExtra("farmType",1);
+
 
         searchFindNothingView = findViewById(R.id.search_find_nothing);
         searchFindOkView = findViewById(R.id.search_find_ok);
@@ -94,7 +93,7 @@ public class DetailSearchActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            progressDialog = ProgressDialog.show(DetailSearchActivity.this,
+            progressDialog = ProgressDialog.show(DetailSearchNormalMemberActivity.this,
                     "Please Wait", null, true, true);
         }
 

@@ -47,27 +47,36 @@ public class SearchActivity extends AppCompatActivity {
     private ArrayList<EvaInfoData> mArrayList;
     private EvaInfoAdapter mAdapter;
     private RecyclerView mRecyclerView;
-    private ImageButton searchBtn;
+    private Button searchBtn;
     private ImageButton backBtn;
     private EditText searchEd;
     private String mJsonString;
     private String searchWord;
     private String searchCowKind;
     private String searchFilterString;
+    private Boolean isAdminMember;
     private TextView searchTitleTv;
+    private TextView detailSearchTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_main);
 
+
+        detailSearchTitle = findViewById(R.id.detail_search_title);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         searchWord = bundle.getString("searchWord");
         searchCowKind = bundle.getString("searchCowKind");
         searchFilterString = bundle.getString("searchFilterString");
+        isAdminMember = bundle.getBoolean("isAdminMember");
 
 
+
+        if(isAdminMember == true){
+            detailSearchTitle.setText("상세조회");
+        }
 
         backBtn = findViewById(R.id.back_btn);
         searchTitleTv = findViewById(R.id.search_title);
@@ -94,7 +103,7 @@ public class SearchActivity extends AppCompatActivity {
 
         mArrayList = new ArrayList<>();
 
-        mAdapter = new EvaInfoAdapter(this, mArrayList);
+        mAdapter = new EvaInfoAdapter(this, mArrayList,isAdminMember,searchCowKind);
         mRecyclerView.setAdapter(mAdapter);
 
         searchBtn = findViewById(R.id.search_btn);
@@ -102,8 +111,9 @@ public class SearchActivity extends AppCompatActivity {
         mArrayList.clear();
         mAdapter.notifyDataSetChanged();
 
+
         GetData task = new GetData();
-        task.execute("http://" + IP_ADDRESS + "/getjson.php",searchWord,searchFilterString,searchCowKind);
+        task.execute("http://" + IP_ADDRESS + "/getSearchResultJson.php",searchWord,searchFilterString,searchCowKind);
 
     }
     private class GetData extends AsyncTask<String, Void, String>{
