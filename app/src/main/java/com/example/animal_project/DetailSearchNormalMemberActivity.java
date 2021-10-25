@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,7 +37,7 @@ public class DetailSearchNormalMemberActivity extends AppCompatActivity {
     private Integer farmType;
     private String mJsonString;
     private String grade;
-
+    private ImageButton backBtn;
 
     private TextView totalScoreTitleTv;
     private TextView totalScoreExplainTv;
@@ -55,7 +56,7 @@ public class DetailSearchNormalMemberActivity extends AppCompatActivity {
         Intent beforeIntent = getIntent();
 
         evaInfoId = beforeIntent.getStringExtra("evaInfoId");
-
+        searchCowKind = beforeIntent.getStringExtra("searchCowKind");
 
         searchFindNothingView = findViewById(R.id.search_find_nothing);
         searchFindOkView = findViewById(R.id.search_find_ok);
@@ -65,8 +66,13 @@ public class DetailSearchNormalMemberActivity extends AppCompatActivity {
         totalScoreTitleTv = resultTotalView.findViewById(R.id.total_score_title_tv);
         totalScoreExplainTv = resultTotalView.findViewById(R.id.total_score_explain_tv);
 
-
-
+        backBtn = findViewById(R.id.back_btn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         GetScoreData task = new GetScoreData();
         task.execute("http://218.151.112.65/getNormalSearchResultJson.php",

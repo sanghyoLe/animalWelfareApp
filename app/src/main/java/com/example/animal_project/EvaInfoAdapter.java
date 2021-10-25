@@ -74,6 +74,7 @@ public class EvaInfoAdapter extends RecyclerView.Adapter<EvaInfoAdapter.CustomVi
                 if(!isAdminMember){
                     Intent intent = new Intent(context, DetailSearchNormalMemberActivity.class);
                     intent.putExtra("evaInfoId",mList.get(position).getEvaInfoId());
+                    intent.putExtra("searchCowKind",searchCowKind);
                     context.startActivity(intent);
                 } else {
                     Intent intent = new Intent(context, DetailSearchAdminMemberActivity.class);
