@@ -37,6 +37,7 @@ public class InsertAvoidDistance extends AsyncTask<Object[], Void, String> {
             cowNumberArr[i] = ((QuestionTemplateViewModel.avoidDistance)avoidDistances[i+1]).getCowNumber();
             avoidDistanceLevel[i] = ((QuestionTemplateViewModel.avoidDistance)avoidDistances[i+1]).getAvoidDistance();
         }
+
         postParameters =
                 "farmId=" + farmId
                 +"&penSize=" + penSize

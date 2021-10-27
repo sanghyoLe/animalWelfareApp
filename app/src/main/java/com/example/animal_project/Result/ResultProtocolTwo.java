@@ -46,7 +46,7 @@ public class ResultProtocolTwo extends Fragment {
         TextView areaOutSitCollisionScoreTv = view.findViewById(R.id.area_out_collision_score_tv);
         TextView sitTimeScoreTv = view.findViewById(R.id.sit_time_score_tv);
         TextView outwardBackRegScoreTv = view.findViewById(R.id.outward_back_reg_score_tv);
-        TextView outwardBackScoreTv = view.findViewById(R.id.outward_back_reg_score_tv);
+        TextView outwardBackScoreTv = view.findViewById(R.id.outward_back_score_tv);
         TextView outwardBreastScoreTv = view.findViewById(R.id.outward_breast_score_tv);
 
 

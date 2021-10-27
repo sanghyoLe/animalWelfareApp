@@ -67,7 +67,7 @@ public class ResultActivity extends AppCompatActivity {
             ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).setScore(resultBundle.getInt("areaOutSitCollision"));
             ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).setScore(resultBundle.getInt("sitTimeScore"));
             ((QuestionTemplateViewModel.Question)viewModel.OutwardBackReg).setScore(resultBundle.getInt("outwardBackRegScore"));
-            ((QuestionTemplateViewModel.Question)viewModel.OutwardBack).setScore(resultBundle.getInt("outwardBackRegScore"));
+            ((QuestionTemplateViewModel.Question)viewModel.OutwardBack).setScore(resultBundle.getInt("outwardBackScore"));
             ((QuestionTemplateViewModel.Question)viewModel.OutwardBreast).setScore(resultBundle.getInt("outwardBackRegScore"));
 
 

@@ -70,6 +70,7 @@ public class Poor extends Fragment {
                 } else {
 
                     float ratio = getPoorRatio(farmType,String.valueOf(total_cow_count), ed_1_poorRate.getText().toString());
+                    viewModel.cutDecimal(ratio);
                     breed_poor_Rate_ratio.setText(ratio + "%");
                     breed_poor_rate_score = Integer.parseInt(getPoorRateScore(farmType,ratio));
                     breed_poor_Rate_score.setText(String.valueOf(breed_poor_rate_score));

@@ -1160,7 +1160,9 @@ public class QuestionTemplate extends AppCompatActivity
          String breedWaterTankClean = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getAnswer();
          int waterScore = viewModel.getWaterScore();
          float breedStrawAvgScore = ((QuestionTemplateViewModel.StrawQuestion)viewModel.StrawQuestion).getStrawAvgScore();
-         int breedStrawDongSize = ((QuestionTemplateViewModel.StrawQuestion)viewModel.StrawQuestion).getDongSize();
+         String breedStrawDongSize = String.valueOf(
+                 ((QuestionTemplateViewModel.StrawQuestion)viewModel.StrawQuestion).getDongSize()
+         );
          String breedOutwardPenLocation = ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward).getPenLocation();
          int breedOutwardNumberOfCow = ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedOutward).getNumberOfCow();
          int breedOutwardScore = viewModel.getOutWardScore();
@@ -1228,24 +1230,31 @@ public class QuestionTemplate extends AppCompatActivity
          String breedCastrationPainkillerAnswer = ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedCastrationPainkiller).getAnswer();
          int breedCastrationScore = viewModel.getCastrationScore();
          Object waterTimeQuestion = viewModel.WaterTimeQuestion;
-         int waterTimeDongSize = ((QuestionTemplateViewModel.DongQuestion)viewModel.WaterTimeQuestion).getDongSize();
+
+         String waterTimeDongSize = String.valueOf(((QuestionTemplateViewModel.DongQuestion)viewModel.WaterTimeQuestion).getDongSize());
          int waterTimeMaxScore = ((QuestionTemplateViewModel.WaterTimeQuestion)viewModel.WaterTimeQuestion).getMaxWaterTimeScore();
          Object coughQuestion = viewModel.CoughQuestion;
          Object struggleQuestion = viewModel.StruggleQuestion;
          Object harmonyQuestion = viewModel.HarmonyQuestion;
 
-         int coughDongSize = ((QuestionTemplateViewModel.CoughQuestion)coughQuestion).getDongSize();
+         String coughDongSize =String.valueOf(
+                 ((QuestionTemplateViewModel.CoughQuestion)coughQuestion).getDongSize()
+         );
          float coughPerOneAvg = ((QuestionTemplateViewModel.CoughQuestion)coughQuestion).getCoughPerOneAvg();
          float coughRatio = ((QuestionTemplateViewModel.CoughQuestion)coughQuestion).getCoughRatio();
 
-         int struggleDongSize = ((QuestionTemplateViewModel.BehaviorQuestion)struggleQuestion).getDongSize();
+         String struggleDongSize = String.valueOf(((QuestionTemplateViewModel.BehaviorQuestion)struggleQuestion).getDongSize());
          float strugglePerOneAvg = ((QuestionTemplateViewModel.BehaviorQuestion)struggleQuestion).getBehaviorPerOneAvg();
 
-         int harmonyDongSize = ((QuestionTemplateViewModel.BehaviorQuestion)harmonyQuestion).getDongSize();
+         String harmonyDongSize = String.valueOf(
+                 ((QuestionTemplateViewModel.BehaviorQuestion)harmonyQuestion).getDongSize()
+         );
          float harmonyPerOneAvg = ((QuestionTemplateViewModel.BehaviorQuestion)harmonyQuestion).getBehaviorPerOneAvg();
          Object avoidDistance = viewModel.avoidDistances[1];
 
-         int avoidDistancePenSize = ((QuestionTemplateViewModel.avoidDistance)avoidDistance).getPenSize();
+         String avoidDistancePenSize = String.valueOf(
+                 ((QuestionTemplateViewModel.avoidDistance)avoidDistance).getPenSize()
+         );
          float avoidDistanceScore =  viewModel.getAvoidDistanceScore();
 
          double protocolOneScore = viewModel.getProtocolOneScore();
@@ -1275,10 +1284,19 @@ public class QuestionTemplate extends AppCompatActivity
          int hardBirthYearSubAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getNumberOfCow();
          int unAbleStandYearAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getYearAvgCount();
          int unAbleStandYearSubAnswer = ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getNumberOfCow();
-         int milkCowStruggleDongSize =  ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getDongSize();
-         int freeStallCountDongSize = ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getDongSize();
-         int sitCollisionSitCount = ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getSitCount();
-         int sitTimeSitCount = ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getSitCount();
+         String milkCowStruggleDongSize = String.valueOf(
+                 ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getDongSize()
+         );
+         String freeStallCountDongSize =String.valueOf(
+                 ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getDongSize()
+         );
+
+         String sitCollisionSitCount =String.valueOf(
+                 ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getSitCount()
+         );
+         String sitTimeSitCount =String.valueOf(
+                 ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getSitCount()
+         );
          int accessTroubleCowCount = ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getAccessTroubleCowCount();
          int exitTroubleCowCount = ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getExitTroubleCowCount();
          // 착유우 점수
@@ -1314,6 +1332,18 @@ public class QuestionTemplate extends AppCompatActivity
          float milkCowAvoidDistanceRatio = viewModel.getAvoidDistanceRatio();
 
          String protocolTotalString = viewModel.getTotalProtocolScoreString();
+
+
+         waterTimeDongSize = waterTimeDongSize + "\t(축사동 수)";
+         breedStrawDongSize = breedStrawDongSize + "\t(축사동 수)";
+         sitTimeSitCount = sitTimeSitCount + "\t(앉기동작 개수)";
+         coughDongSize = coughDongSize + "\t(축사동 수)";
+         struggleDongSize = struggleDongSize + "\t(축사동 수)";
+         milkCowStruggleDongSize = milkCowStruggleDongSize + "\t(축사동 수)";
+         freeStallCountDongSize = freeStallCountDongSize + "\t(축사동 수)";
+         sitCollisionSitCount = sitCollisionSitCount + "\t(앉기동작 개수)";
+         harmonyDongSize = harmonyDongSize + "\t(축사동 수)";
+         avoidDistancePenSize = avoidDistancePenSize + "\t(표본펜 수)";
 
 
 
