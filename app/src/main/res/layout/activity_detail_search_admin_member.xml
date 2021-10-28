@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailSearchAdminMemberActivity">
+    tools:context=".Result.DetailSearchAdminMemberActivity">
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,11 +38,11 @@
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -131,60 +131,60 @@
                         android:visibility="gone"
                         android:id="@+id/have_found_eva_answer_layout"
                         >
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="@color/colorPrimary"
-                        />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorPrimary"
+                            />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
 
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="0.2"
-                            android:textColor="@color/colorPrimary"
-                            android:gravity="center"
-                            android:layout_height="wrap_content"
-                            android:text="번호"/>
-                        <View
-                            android:layout_width="2dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorGray"/>
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorPrimary"
-                            android:gravity="center"
-                            android:text="제목"/>
-                        <View
-                            android:layout_width="2dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorGray"/>
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorPrimary"
-                            android:gravity="center"
-                            android:text="내용"/>
-                        <View
-                            android:layout_width="2dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorGray"/>
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="0.2"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="center"
+                                android:layout_height="wrap_content"
+                                android:text="번호"/>
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorGray"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="제목"/>
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorGray"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="내용"/>
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorGray"/>
 
+                        </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorGray"/>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/eva_answer_list_view"/>
                     </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/colorGray"/>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/eva_answer_list_view"/>
-                </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -205,101 +205,114 @@
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:gravity="center"
-                        android:text="표본펜 위치"/>
+                        android:text="세부평가 정보"/>
                     <ImageButton
-                        android:id="@+id/pen_location_btn"
+                        android:id="@+id/detail_question_btn"
                         android:layout_weight="0.1"
                         android:src="@drawable/outline_arrow_drop_down_24"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
-
-
-
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:id="@+id/eva_detail_answer_list_layout"
                     android:visibility="gone"
-                    android:id="@+id/pen_location_layout">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:id="@+id/have_not_found_pen_location_layout"
                     android:orientation="vertical">
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorCrison"
-                        android:text="표본펜 위치 결과가 없습니다."/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    android:id="@+id/have_found_pen_location_layout">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorPrimary"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:id="@+id/have_not_found_eva_detail_answer_layout">
+                        <TextView
+                            android:textSize="20dp"
+                            android:gravity="center"
+                            android:textColor="@color/colorCrison"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="평가정보를 찾을 수 없습니다."/>
 
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="0.2"
-                        android:textColor="@color/colorPrimary"
-                        android:gravity="center"
-                        android:layout_height="wrap_content"
-                        android:text="번호"/>
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorGray"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimary"
-                        android:gravity="center"
-                        android:text="제목"/>
-
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorGray"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimary"
-                        android:gravity="center"
-                        android:text="표본펜 위치"/>
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorGray"/>
-                </LinearLayout>
-                    <View
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="@color/colorGray"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/pen_location_list_view"/>
-            </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:id="@+id/have_found_eva_detail_answer_layout"
+                        >
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorPrimary"
+                            />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
 
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="0.2"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="center"
+                                android:layout_height="wrap_content"
+                                android:text="번호"/>
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorGray"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="제목"/>
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorGray"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="내용"/>
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorGray"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="0.4"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="center"
+                                android:layout_height="wrap_content"
+                                android:text="조회"/>
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorGray"/>
+
+                        </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorGray"/>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/eva_detail_answer_list_view"/>
+                    </LinearLayout>
                 </LinearLayout>
+
+
+
+
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.animal_project.R;
+
 import java.util.List;
 
 

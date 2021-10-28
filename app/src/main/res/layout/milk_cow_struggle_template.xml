@@ -19,43 +19,42 @@
         >
         <TableRow>
             <TextView
-                android:background="@color/colorPrimary"
                 android:id="@+id/dong_count_tv"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="동 순번"
-
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:gravity="center_horizontal" />
         </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"/>
         <TableRow
-
+            android:layout_height="wrap_content"
             >
 
             <TextView
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-
-
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:background="@color/colorGray"
                 android:text="표본펜 위치"
                 />
 
             <TextView
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:background="@color/colorGray"
+
                 android:text="사육 두수"/>
         </TableRow>
 
@@ -116,30 +115,35 @@
                 />
 
         </TableRow>
-
-        <TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorGray"/>
+        <TableRow
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:background="@color/colorGray"
+                android:layout_height="match_parent"
+
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:text="머리 박치기 빈도"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
             <TextView
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:background="@color/colorGray"
+                android:gravity="center"
                 android:layout_width="0dp"
-                android:layout_height="44dp"
+                android:layout_height="match_parent"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:text="머리박치기 제외한 \n 투쟁행동 빈도"/>
         </TableRow>
         <TableRow
-            android:layout_marginBottom="20dp">
+            >
             <EditText
                 android:id="@+id/head_bang_freq_ed"
                 android:layout_weight="1"
@@ -168,5 +172,10 @@
                 android:hint="머리박치기 제외한 투쟁행동 빈도"
                 />
         </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray"
+            android:layout_marginBottom="10dp"/>
     </TableLayout>
 </LinearLayout>

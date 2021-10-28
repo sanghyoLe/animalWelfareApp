@@ -1,4 +1,4 @@
-package com.example.animal_project;
+package com.example.animal_project.Result;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.animal_project.R;
 
 import java.util.ArrayList;
 
@@ -74,12 +76,24 @@ public class EvaInfoAdapter extends RecyclerView.Adapter<EvaInfoAdapter.CustomVi
                 if(!isAdminMember){
                     Intent intent = new Intent(context, DetailSearchNormalMemberActivity.class);
                     intent.putExtra("evaInfoId",mList.get(position).getEvaInfoId());
-                    intent.putExtra("searchCowKind",searchCowKind);
+                    if(mList.get(position).getFarmType().equals("운동장형 우사")){
+                        intent.putExtra("searchCowKind","playGround");
+                    }else if(mList.get(position).getFarmType().equals("프리스톨 우사")){
+                        intent.putExtra("searchCowKind","freeStall");
+                    }else {
+                        intent.putExtra("searchCowKind","beef");
+                    }
                     context.startActivity(intent);
                 } else {
                     Intent intent = new Intent(context, DetailSearchAdminMemberActivity.class);
                     intent.putExtra("evaInfoId",mList.get(position).getEvaInfoId());
-                    intent.putExtra("searchCowKind",searchCowKind);
+                    if(mList.get(position).getFarmType().equals("운동장형 우사")){
+                        intent.putExtra("searchCowKind","playGround");
+                    }else if(mList.get(position).getFarmType().equals("프리스톨 우사")){
+                        intent.putExtra("searchCowKind","freeStall");
+                    }else {
+                        intent.putExtra("searchCowKind","beef");
+                    }
                     context.startActivity(intent);
                 }
 

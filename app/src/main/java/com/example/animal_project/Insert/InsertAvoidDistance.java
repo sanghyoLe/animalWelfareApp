@@ -1,8 +1,10 @@
-package com.example.animal_project;
+package com.example.animal_project.Insert;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.example.animal_project.QuestionTemplateViewModel;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

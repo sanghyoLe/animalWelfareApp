@@ -58,6 +58,9 @@ import com.example.animal_project.Beef.ProtocolTwo.CalfStraw;
 import com.example.animal_project.Beef.ProtocolTwo.CalfSummerVentilating;
 import com.example.animal_project.Beef.ProtocolTwo.CalfWarm;
 import com.example.animal_project.Beef.ProtocolTwo.CalfWindBlock;
+import com.example.animal_project.Insert.InsertAnswer;
+import com.example.animal_project.Insert.InsertAvoidDistance;
+import com.example.animal_project.Insert.InsertDongAnswer;
 import com.example.animal_project.MilkCow.OutwardBack;
 import com.example.animal_project.MilkCow.OutwardBackReg;
 import com.example.animal_project.MilkCow.OutwardBreast;
@@ -71,6 +74,7 @@ import com.example.animal_project.MilkCow.MovementStability;
 import com.example.animal_project.MilkCow.OutGenitals;
 import com.example.animal_project.MilkCow.SitTime;
 import com.example.animal_project.MilkCow.UnableStand;
+import com.example.animal_project.Result.ResultActivity;
 import com.example.animal_project.Result.ResultTotal;
 import com.example.animal_project.Result.ResultProtocolOne;
 import com.example.animal_project.Result.ResultProtocolTwo;
@@ -759,7 +763,7 @@ public class QuestionTemplate extends AppCompatActivity
                 InsertAnswerFunc();
                 Bundle resultBundle = new Bundle();
                 makeResultBundle(resultBundle);
-                Intent intentResultActivity = new Intent(QuestionTemplate.this,ResultActivity.class);
+                Intent intentResultActivity = new Intent(QuestionTemplate.this, ResultActivity.class);
                 intentResultActivity.putExtras(resultBundle);
                 startActivity(intentResultActivity);
 

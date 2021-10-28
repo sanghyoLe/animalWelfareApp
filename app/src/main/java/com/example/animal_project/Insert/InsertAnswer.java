@@ -1,4 +1,4 @@
-package com.example.animal_project;
+package com.example.animal_project.Insert;
 
 import android.app.ProgressDialog;
 import android.content.Context;

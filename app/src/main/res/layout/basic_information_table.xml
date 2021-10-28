@@ -13,6 +13,7 @@
             <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:orientation="vertical">
 
         <View
@@ -29,8 +30,9 @@
                 android:layout_weight="0.4"
                 android:layout_height="30dp"
                 android:gravity="center"
+
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text="농장명"
                 />
             <View
@@ -44,7 +46,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text=""/>
         </LinearLayout>
         <View
@@ -62,7 +64,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text="우편번호"
                 />
             <View
@@ -76,7 +78,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text=""/>
         </LinearLayout>
         <View
@@ -86,16 +88,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             >
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="0.4"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text="주소"
                 />
             <View
@@ -127,7 +130,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text="상세 주소"
                 />
             <View
@@ -141,7 +144,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text=""/>
         </LinearLayout>
         <View
@@ -159,7 +162,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text="대표자명"
                 />
             <View
@@ -173,7 +176,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text=""/>
         </LinearLayout>
         <View
@@ -191,7 +194,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text="농장 종류"
                 />
             <View
@@ -205,7 +208,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text=""/>
         </LinearLayout>
         <View
@@ -223,7 +226,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text="총 두수"
                 />
             <View
@@ -237,7 +240,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text=""/>
         </LinearLayout>
         <View
@@ -262,7 +265,7 @@
                     android:layout_height="30dp"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="16dp"
+                    android:textSize="12dp"
                     android:text="성우 두수"
                     />
                 <View
@@ -276,7 +279,7 @@
                     android:layout_height="30dp"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="16dp"
+                    android:textSize="12dp"
                     android:text=""/>
             </LinearLayout>
             <View
@@ -303,7 +306,7 @@
                     android:layout_height="30dp"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="16dp"
+                    android:textSize="12dp"
                     android:text="착유우 두수"
                     />
                 <View
@@ -317,7 +320,7 @@
                     android:layout_height="30dp"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="16dp"
+                    android:textSize="12dp"
                     android:text=""/>
             </LinearLayout>
             <View
@@ -336,7 +339,7 @@
                     android:layout_height="30dp"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="16dp"
+                    android:textSize="12dp"
                     android:text="건유우 두수"
                     />
                 <View
@@ -350,7 +353,7 @@
                     android:layout_height="30dp"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="16dp"
+                    android:textSize="12dp"
                     android:text=""/>
             </LinearLayout>
             <View
@@ -369,7 +372,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="16dp"
+                    android:textSize="12dp"
                     android:text="임신우 두수"
                     />
                 <View
@@ -383,7 +386,7 @@
                     android:layout_height="30dp"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="16dp"
+                    android:textSize="12dp"
                     android:text=""/>
             </LinearLayout>
             <View
@@ -404,7 +407,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text="송아지 두수"
                 />
             <View
@@ -418,7 +421,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text=""/>
         </LinearLayout>
 
@@ -437,7 +440,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text="표본 규모"
                 />
             <View
@@ -451,7 +454,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text=""/>
         </LinearLayout>
         <View
@@ -469,7 +472,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text="평가자명"
                 />
             <View
@@ -483,7 +486,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text=""/>
         </LinearLayout>
         <View
@@ -501,7 +504,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text="평가일"
                 />
             <View
@@ -515,7 +518,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text=""/>
         </LinearLayout>
         <View

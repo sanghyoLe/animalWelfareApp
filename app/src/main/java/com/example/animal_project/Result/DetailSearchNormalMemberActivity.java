@@ -1,4 +1,4 @@
-package com.example.animal_project;
+package com.example.animal_project.Result;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,6 +14,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.animal_project.QuestionTemplateViewModel;
+import com.example.animal_project.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

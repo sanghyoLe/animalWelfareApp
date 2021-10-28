@@ -15,13 +15,15 @@ import android.widget.TextView;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.animal_project.QuestionTemplateViewModel;
+import com.example.animal_project.R;
+
 import java.util.List;
 
 public class CheckSampleSizeDialog {
-    private QuestionTemplateViewModel viewModel;
+
     private Context context;
-    protected Button okButton;
-    protected Button cancelButton;
+
     protected Dialog dlg;
     public CheckSampleSizeDialog(Context context) {
         this.context = context;

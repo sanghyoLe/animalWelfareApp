@@ -1,4 +1,4 @@
-package com.example.animal_project;
+package com.example.animal_project.Result;
 
 public class EvaAnswerData {
     public String getAnswer() {

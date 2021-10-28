@@ -15,10 +15,13 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".DetailSearchAdminMemberActivity"
+            android:name=".Result.DongQuestionSearchResult"
+            android:exported="false" />
+        <activity
+            android:name=".Result.DetailSearchAdminMemberActivity"
             android:exported="true" />
         <activity
-            android:name=".ResultActivity"
+            android:name=".Result.ResultActivity"
             android:exported="true" />
         <activity android:name=".MilkCow.FreeStallCountDong" />
         <activity android:name=".MilkCow.MilkCowStruggleDong" />
@@ -32,7 +35,7 @@
         <activity android:name=".WebViewActivity" />
         <activity android:name=".InputUserInfo" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".DetailSearchNormalMemberActivity" />
+        <activity android:name=".Result.DetailSearchNormalMemberActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

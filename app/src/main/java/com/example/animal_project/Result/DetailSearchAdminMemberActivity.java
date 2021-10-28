@@ -1,4 +1,4 @@
-package com.example.animal_project;
+package com.example.animal_project.Result;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +16,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.animal_project.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,28 +33,35 @@ import java.util.ArrayList;
 public class DetailSearchAdminMemberActivity extends AppCompatActivity {
 
 
+
     private ArrayList<EvaAnswerData> mArrayList;
     private EvaAnswerAdapter evaAnswerAdapter;
     private RecyclerView mRecyclerView;
 
+    private ArrayList<EvaAnswerData> detailArrayList;
+    private EvaDetailAnswerAdapter evaDetailAnswerAdapter;
+    private RecyclerView detailAnswerRecyclerView;
 
-    private ArrayList<EvaPenLocationData> penLocationArrayList;
-    private EvaPenLocationAdapter evaPenLocationAdapter;
-    private RecyclerView penLocationRecyclerView;
 
 
     private String evaInfoId;
     private String searchCowKind;
+
     private View basicInformationView;
     private ImageButton basicInformationBtn;
+
     private View evaAnswerView;
     private View haveFoundAnswerView;
     private View haveNotFoundAnswerView;
     private ImageButton evaAnswerBtn;
-    private View penLocationView;
-    private View haveFoundPenLocationView;
-    private View haveNotFoundPenLocationView;
-    private ImageButton penLocationBtn;
+
+    private View evaDetailAnswerLayout;
+    private View evaDetailAnswerView;
+    private View haveFoundDetailAnswerView;
+    private View haveNotFoundDetailAnswerView;
+    private ImageButton detailAnswerBtn;
+
+
     private String farmName;
     private String zipCode;
     private String address;
@@ -94,19 +103,21 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_search_admin_member);
+
         basicInformationView = findViewById(R.id.basic_information_table);
         basicInformationBtn = findViewById(R.id.basic_information_btn);
+
+
+        backBtn = findViewById(R.id.back_btn);
+
+        // 평가 정보 Layout, RecyclerView
+
         evaAnswerBtn = findViewById(R.id.eva_answer_btn);
         evaAnswerView = findViewById(R.id.eva_answer_list_layout);
         haveFoundAnswerView = findViewById(R.id.have_found_eva_answer_layout);
         haveNotFoundAnswerView = findViewById(R.id.have_not_found_eva_answer_layout);
-        penLocationView = findViewById(R.id.pen_location_layout);
-        penLocationBtn = findViewById(R.id.pen_location_btn);
-        haveFoundPenLocationView = findViewById(R.id.have_found_pen_location_layout);
-        haveNotFoundPenLocationView = findViewById(R.id.have_not_found_pen_location_layout);
-        backBtn = findViewById(R.id.back_btn);
 
-        // 평가 정보 RecyclerView
+
         mRecyclerView = (RecyclerView) findViewById(R.id.eva_answer_list_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mArrayList = new ArrayList<>();
@@ -115,18 +126,29 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
         mArrayList.clear();
         evaAnswerAdapter.notifyDataSetChanged();
 
-        // 표본펜 위치 RecyclerView
-        penLocationRecyclerView = (RecyclerView) findViewById(R.id.pen_location_list_view);
-        penLocationRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        penLocationArrayList = new ArrayList<>();
-        evaPenLocationAdapter = new EvaPenLocationAdapter(this, penLocationArrayList);
-        penLocationRecyclerView.setAdapter(evaPenLocationAdapter);
-        penLocationArrayList.clear();
-        evaPenLocationAdapter.notifyDataSetChanged();
+
+
+
+        detailAnswerBtn = findViewById(R.id.detail_question_btn);
+        evaDetailAnswerView = findViewById(R.id.eva_detail_answer_list_layout);
+        haveFoundDetailAnswerView = findViewById(R.id.have_found_eva_detail_answer_layout);
+        haveNotFoundDetailAnswerView = findViewById(R.id.have_not_found_eva_detail_answer_layout);
+        detailAnswerRecyclerView = (RecyclerView) findViewById(R.id.eva_detail_answer_list_view);
+
+        detailAnswerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        detailArrayList = new ArrayList<>();
+        evaDetailAnswerAdapter = new EvaDetailAnswerAdapter(this, detailArrayList);
+        detailAnswerRecyclerView.setAdapter(evaDetailAnswerAdapter);
+        detailArrayList.clear();
+        evaDetailAnswerAdapter.notifyDataSetChanged();
+
+
+
 
         Intent beforeIntent = getIntent();
         evaInfoId = beforeIntent.getStringExtra("evaInfoId");
         searchCowKind = beforeIntent.getStringExtra("searchCowKind");
+
         
         farmNameTv = (TextView) basicInformationView.findViewById(R.id.farm_name_tv);
         zipCodeTv = (TextView) basicInformationView.findViewById(R.id.zip_code_tv);
@@ -149,14 +171,12 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
         if(searchCowKind.equals("beef")){
             beef_dialog_layout.setVisibility(View.VISIBLE);
             milk_cow_dialog_layout.setVisibility(View.GONE);
-//            adult_cow_tv.setText(inputMessage.get(inputMessageIndex));
 
-        } else if(searchCowKind.equals("milkCow")) {
+        } else {
             milk_cow_dialog_layout.setVisibility(View.VISIBLE);
             beef_dialog_layout.setVisibility(View.GONE);
-//            milk_cow_tv.setText(inputMessage.get(inputMessageIndex++));
-//            dry_milk_cow_tv.setText(inputMessage.get(inputMessageIndex++));
-//            pregnant_cow_tv.setText(inputMessage.get(inputMessageIndex));
+
+
         }
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,7 +188,7 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
 
         setListBtnOnClick(basicInformationView,basicInformationBtn);
         setListBtnOnClick(evaAnswerView,evaAnswerBtn);
-        setListBtnOnClick(penLocationView,penLocationBtn);
+        setListBtnOnClick(evaDetailAnswerView,detailAnswerBtn);
 
         GetSearchResultJson task = new GetSearchResultJson();
         task.execute("http://218.151.112.65/getAdminSearchResultJson.php",
@@ -213,6 +233,7 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
             String postParameters =
                     "searchCowKind=" + searchCowKind
                             +"&farmId=" + farmId;
+
 
 
             try {
@@ -296,7 +317,7 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
                 }
                 childCowSize = item.getString("childCowSize");
                 sampleCowSize = item.getString("sampleCowSize");
-                if(searchCowKind.equals("milkCow")){
+                if(searchCowKind.equals("playGround") || searchCowKind.equals("freeStall")){
                     milkCowSize = item.getString("milkCowSize");
                     dryMilkCowSize = item.getString("dryMilkCowSize");
                     pregnantCowSize = item.getString("pregnantCowSize");
@@ -331,28 +352,25 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
                     haveNotFoundAnswerView.setVisibility(View.VISIBLE);
                 }
 
-                if(jsonObject.has("penLocation")){
-                    haveFoundPenLocationView.setVisibility(View.VISIBLE);
-                    JSONArray penLocationArray = jsonObject.getJSONArray("penLocation");
-                    for(int i = 0 ; i <penLocationArray.length(); i++){
-                        JSONObject penLocationItem = penLocationArray.getJSONObject(i);
+                if(jsonObject.has("evaDetailAnswer")){
+                    haveFoundDetailAnswerView.setVisibility(View.VISIBLE);
+                    JSONArray jsonAnswerArray = jsonObject.getJSONArray("evaDetailAnswer");
+                    for(int i = 0 ; i <jsonAnswerArray.length(); i++){
+                        JSONObject answerItem = jsonAnswerArray.getJSONObject(i);
 
-                        String penLocation = penLocationItem.optString("penlocation","결과 없음");
-                        String questionName = penLocationItem.getString("questionTitle");
-                        String questionNumber = penLocationItem.optString("questionNumber");
+                        String answer = answerItem.optString("answer","결과 없음");
+                        String questionName = answerItem.getString("questionName");
 
-                        EvaPenLocationData penLocationData = new EvaPenLocationData();
+                        EvaAnswerData evaAnswerData = new EvaAnswerData();
+                        evaAnswerData.setAnswer(answer);
+                        evaAnswerData.setQuestionName(questionName);
 
-                        penLocationData.setPenLocation(penLocation);
-                        penLocationData.setQuestionName(questionName);
-                        penLocationData.setQuestionNumber(questionNumber);
-
-                        penLocationArrayList.add(penLocationData);
-                        evaPenLocationAdapter.notifyDataSetChanged();;
+                        detailArrayList.add(evaAnswerData);
+                        evaDetailAnswerAdapter.notifyDataSetChanged();;
 
                     }
                 } else {
-                    haveNotFoundPenLocationView.setVisibility(View.VISIBLE);
+                    haveNotFoundDetailAnswerView.setVisibility(View.VISIBLE);
                 }
 
 

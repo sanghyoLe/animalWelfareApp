@@ -1,4 +1,4 @@
-package com.example.animal_project;
+package com.example.animal_project.Result;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.animal_project.QuestionTemplateViewModel;
+import com.example.animal_project.R;
 import com.example.animal_project.Result.ResultTotal;
 import com.example.animal_project.Result.ResultProtocolOne;
 import com.example.animal_project.Result.ResultProtocolTwo;
