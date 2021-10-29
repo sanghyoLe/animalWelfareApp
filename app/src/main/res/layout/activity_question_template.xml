@@ -193,8 +193,4 @@
             layout="@layout/list_menu"/>
     </androidx.drawerlayout.widget.DrawerLayout>
 
-
-
-
-
 </LinearLayout>

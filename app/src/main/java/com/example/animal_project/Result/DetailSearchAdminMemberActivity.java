@@ -1,14 +1,19 @@
 package com.example.animal_project.Result;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -48,18 +53,18 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
     private String searchCowKind;
 
     private View basicInformationView;
-    private ImageButton basicInformationBtn;
+
 
     private View evaAnswerView;
     private View haveFoundAnswerView;
     private View haveNotFoundAnswerView;
-    private ImageButton evaAnswerBtn;
+
 
     private View evaDetailAnswerLayout;
     private View evaDetailAnswerView;
     private View haveFoundDetailAnswerView;
     private View haveNotFoundDetailAnswerView;
-    private ImageButton detailAnswerBtn;
+
 
 
     private String farmName;
@@ -97,23 +102,52 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
     private TextView pregnantCowTv;
 
 
+    private TextView basicInfoTv;
+    private TextView evaAnswerTv;
+    private TextView evaDetailAnswerTv;
+    private TextView detailSearchTitleTv;
+    private View detailSearchListMenuView;
+    private ImageButton listBtn;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_search_admin_member);
+        setContentView(R.layout.detail_search_admin_member);
+
+
+        Intent beforeIntent = getIntent();
+        evaInfoId = beforeIntent.getStringExtra("evaInfoId");
+        searchCowKind = beforeIntent.getStringExtra("searchCowKind");
+
+        detailSearchTitleTv = findViewById(R.id.detail_search_title);
+        detailSearchListMenuView = findViewById(R.id.detail_search_list_view);
+        basicInfoTv = detailSearchListMenuView.findViewById(R.id.basic_info_tv);
+        evaAnswerTv = detailSearchListMenuView.findViewById(R.id.eva_answer_tv);
+        evaDetailAnswerTv = detailSearchListMenuView.findViewById(R.id.eva_detail_answer_tv);
+
+
+
 
         basicInformationView = findViewById(R.id.basic_information_table);
-        basicInformationBtn = findViewById(R.id.basic_information_btn);
 
-
+        listBtn = findViewById(R.id.detail_search_list_btn);
         backBtn = findViewById(R.id.back_btn);
 
-        // 평가 정보 Layout, RecyclerView
 
-        evaAnswerBtn = findViewById(R.id.eva_answer_btn);
-        evaAnswerView = findViewById(R.id.eva_answer_list_layout);
+        listBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerHandler();
+            }
+        });
+
+        // 목록에 있는 TextView 클릭시 화면 전환
+        changeSearchResultView();
+
+//        // 평가 정보 Layout, RecyclerView
+          evaAnswerView = findViewById(R.id.eva_answer_list_layout);
         haveFoundAnswerView = findViewById(R.id.have_found_eva_answer_layout);
         haveNotFoundAnswerView = findViewById(R.id.have_not_found_eva_answer_layout);
 
@@ -129,7 +163,6 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
 
 
 
-        detailAnswerBtn = findViewById(R.id.detail_question_btn);
         evaDetailAnswerView = findViewById(R.id.eva_detail_answer_list_layout);
         haveFoundDetailAnswerView = findViewById(R.id.have_found_eva_detail_answer_layout);
         haveNotFoundDetailAnswerView = findViewById(R.id.have_not_found_eva_detail_answer_layout);
@@ -137,17 +170,13 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
 
         detailAnswerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         detailArrayList = new ArrayList<>();
-        evaDetailAnswerAdapter = new EvaDetailAnswerAdapter(this, detailArrayList);
+        evaDetailAnswerAdapter = new EvaDetailAnswerAdapter(this, detailArrayList,evaInfoId,searchCowKind);
         detailAnswerRecyclerView.setAdapter(evaDetailAnswerAdapter);
         detailArrayList.clear();
         evaDetailAnswerAdapter.notifyDataSetChanged();
 
 
 
-
-        Intent beforeIntent = getIntent();
-        evaInfoId = beforeIntent.getStringExtra("evaInfoId");
-        searchCowKind = beforeIntent.getStringExtra("searchCowKind");
 
         
         farmNameTv = (TextView) basicInformationView.findViewById(R.id.farm_name_tv);
@@ -186,9 +215,6 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
         });
 
 
-        setListBtnOnClick(basicInformationView,basicInformationBtn);
-        setListBtnOnClick(evaAnswerView,evaAnswerBtn);
-        setListBtnOnClick(evaDetailAnswerView,detailAnswerBtn);
 
         GetSearchResultJson task = new GetSearchResultJson();
         task.execute("http://218.151.112.65/getAdminSearchResultJson.php",
@@ -398,60 +424,70 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
         evaDateTv.setText(evaDate);
 
     }
-    private void setListBtnOnClick(View view, ImageButton btn){
-        Animation slide_down = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.slide_down);
-
-        Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.slide_up);
-
-        slide_down.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                view.setVisibility(View.VISIBLE);
-            }
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                btn.setImageResource(R.drawable.outline_arrow_drop_up_24);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-        slide_up.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                view.setVisibility(View.GONE);
-                btn.setImageResource(R.drawable.outline_arrow_drop_down_24);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
 
 
-        btn.setOnClickListener(new View.OnClickListener() {
-
+    private void drawerHandler(){
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.detail_search_drawer);
+        if(!drawer.isDrawerOpen(Gravity.LEFT)){
+            drawer.openDrawer(Gravity.LEFT);
+        } else if(drawer.isDrawerOpen(Gravity.LEFT)){
+            drawer.closeDrawer(Gravity.LEFT);
+        }
+    }
+    private void closeDrawer(){
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.detail_search_drawer);
+        drawer.closeDrawer(Gravity.LEFT);
+    }
+    private void changeSearchResultView(){
+        basicInfoTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(view.getVisibility() == View.GONE){
-                    btn.startAnimation(slide_down);
-                }else {
-                    btn.startAnimation(slide_up);
-                }
+                basicInformationView.setVisibility(View.VISIBLE);
+                evaAnswerView.setVisibility(View.GONE);
+                evaDetailAnswerView.setVisibility(View.GONE);
+                setStyleTextView(basicInfoTv);
+                setNoneStyleTextView(evaAnswerTv);
+                setNoneStyleTextView(evaDetailAnswerTv);
+                detailSearchTitleTv.setText("기본 정보");
+                closeDrawer();
+            }
+        });
 
+        evaAnswerTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                evaAnswerView.setVisibility(View.VISIBLE);
+                basicInformationView.setVisibility(View.GONE);
+                evaDetailAnswerView.setVisibility(View.GONE);
+                setStyleTextView(evaAnswerTv);
+                setNoneStyleTextView(basicInfoTv);
+                setNoneStyleTextView(evaDetailAnswerTv);
+                detailSearchTitleTv.setText("평가 정보");
+                closeDrawer();
+            }
+        });
 
-
+        evaDetailAnswerTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                evaDetailAnswerView.setVisibility(View.VISIBLE);
+                basicInformationView.setVisibility(View.GONE);
+                evaAnswerView.setVisibility(View.GONE);
+                setStyleTextView(evaDetailAnswerTv);
+                setNoneStyleTextView(basicInfoTv);
+                setNoneStyleTextView(evaAnswerTv);
+                detailSearchTitleTv.setText("세부평가 정보");
+                closeDrawer();
             }
         });
     }
+    private void setNoneStyleTextView(TextView tv){
+        tv.setBackground(null);
+        tv.setTypeface(Typeface.DEFAULT);
+    }
+    private void setStyleTextView(TextView tv){
+        tv.setBackgroundResource(R.drawable.edge_bottom);
+        tv.setTypeface(Typeface.DEFAULT_BOLD);
+    }
+
 }

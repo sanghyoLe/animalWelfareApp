@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/detail_search_drawer">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:id="@+id/detail_search_list_btn"
+                    android:src="@drawable/outline_reorder_24"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="23dp"
+                    android:id="@+id/detail_search_title"
+                    android:layout_height="wrap_content"
+                    android:text="기본 정보"/>
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:id="@+id/back_btn"
+                    android:src="@drawable/outline_arrow_back_24"/>
+
+            </LinearLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_search_scroll_view">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <include
+                        android:visibility="visible"
+                        android:id="@+id/basic_information_table"
+                        layout="@layout/basic_information_table"/>
+                    <include
+                        android:visibility="gone"
+                        android:id="@+id/eva_answer_list_layout"
+                        layout="@layout/eva_answer_search_result"/>
+                    <include
+                        android:visibility="gone"
+                        android:id="@+id/eva_detail_answer_list_layout"
+                        layout="@layout/eva_detail_answer_search_result"/>
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+        <include
+            android:id="@+id/detail_search_list_view"
+            layout="@layout/detail_search_list_menu"/>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

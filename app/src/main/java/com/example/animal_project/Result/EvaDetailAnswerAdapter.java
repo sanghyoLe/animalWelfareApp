@@ -4,7 +4,7 @@ package com.example.animal_project.Result;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.animal_project.MultipleAnswerResult.MultipleAnswerSearchResultActivity;
 import com.example.animal_project.R;
 
 import java.util.ArrayList;
@@ -22,11 +23,14 @@ public class EvaDetailAnswerAdapter extends RecyclerView.Adapter<EvaDetailAnswer
 
     private ArrayList<EvaAnswerData> mList = null;
     private Activity context = null;
+    private String searchCowKind;
+    private String evaInfoId;
 
-
-    public EvaDetailAnswerAdapter(Activity context,ArrayList<EvaAnswerData> list){
+    public EvaDetailAnswerAdapter(Activity context,ArrayList<EvaAnswerData> list,String evaInfoId, String searchCowKind){
         this.context = context;
         this.mList = list;
+        this.searchCowKind = searchCowKind;
+        this.evaInfoId = evaInfoId;
 
     }
     class CustomViewHolder extends RecyclerView.ViewHolder {
@@ -37,7 +41,6 @@ public class EvaDetailAnswerAdapter extends RecyclerView.Adapter<EvaDetailAnswer
 
         public CustomViewHolder(View view){
             super(view);
-
             this.answer = (TextView) view.findViewById(R.id.answer_tv);
             this.questionName = (TextView) view.findViewById(R.id.question_name_tv);
             this.questionNumber = (TextView) view.findViewById(R.id.question_number_tv);
@@ -68,7 +71,11 @@ public class EvaDetailAnswerAdapter extends RecyclerView.Adapter<EvaDetailAnswer
         viewHolder.detailSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("questionName",mList.get(position).getQuestionName());
+                Intent intent = new Intent(context, MultipleAnswerSearchResultActivity.class);
+                intent.putExtra("questionName",mList.get(position).getQuestionName());
+                intent.putExtra("searchCowKind",searchCowKind);
+                intent.putExtra("evaInfoId",evaInfoId);
+                context.startActivity(intent);
             }
         });
 
