@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
             <View
                 android:layout_weight="0.1"
@@ -40,10 +41,81 @@
                 android:src="@drawable/outline_arrow_back_24"
                 android:layout_gravity="right"
                 android:id="@+id/back_btn"
+
                 android:layout_marginRight="5dp"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="농장명"/>
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:text="대표자명"/>
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:text="농장 종류"/>
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:text="평가일자"/>
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+            <TextView
+                android:id="@+id/detail_search_title"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:text="등급"/>
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorGray"/>
 
 
             <ScrollView
@@ -57,77 +129,7 @@
                     android:layout_marginRight="2dp"
                     android:layout_marginLeft="2dp"
                     >
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="@color/colorPrimary"
-                    />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
 
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:textColor="@color/colorPrimary"
-                            android:gravity="center"
-                            android:layout_height="wrap_content"
-                            android:text="농장명"/>
-                        <View
-                            android:layout_width="2dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorGray"/>
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorPrimary"
-                            android:gravity="center"
-                            android:text="대표자명"/>
-                        <View
-                            android:layout_width="2dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorGray"/>
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorPrimary"
-                            android:gravity="center"
-                            android:text="농장 종류"/>
-                        <View
-                            android:layout_width="2dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorGray"/>
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorPrimary"
-                            android:gravity="center"
-                            android:text="평가일자"/>
-                        <View
-                            android:layout_width="2dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorGray"/>
-                        <TextView
-                            android:id="@+id/detail_search_title"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorPrimary"
-                            android:gravity="center"
-                            android:text="등급"/>
-                        <View
-                            android:layout_width="2dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorGray"/>
-                    </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="@color/colorGray"/>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"

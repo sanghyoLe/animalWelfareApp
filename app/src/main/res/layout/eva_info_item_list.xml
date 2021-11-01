@@ -67,6 +67,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorGray"/>
     <Button
+
         android:gravity="center"
         android:id="@+id/detail_search_btn"
         android:text="조회"

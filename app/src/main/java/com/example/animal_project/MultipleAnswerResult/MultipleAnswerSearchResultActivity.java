@@ -14,8 +14,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.animal_project.R;
-import com.example.animal_project.Result.EvaAnswerAdapter;
-import com.example.animal_project.Result.EvaAnswerData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,12 +34,26 @@ public class MultipleAnswerSearchResultActivity extends AppCompatActivity {
 
     private ArrayList<WaterTimeData> waterTimeList;
     private WaterTimeAdapter waterTimeAdapter;
+
+    private ArrayList<CoughStruggleHarmonyData> coughStruggleHarmonyDataList;
+    private CoughStruggleHarmonyAdapter coughStruggleHarmonyAdapter;
+
+    private ArrayList<StrawData> strawDataList;
+    private StrawAdapter strawAdapter;
+
+    private ArrayList<AvoidDistanceData> avoidDistanceDataList;
+    private AvoidDistanceAdapter avoidDistanceAdapter;
+
     private RecyclerView mRecyclerView;
 
     private ImageButton backBtn;
     private TextView titleTv;
     private View identifiersView;
     private View waterTimeIdentifierView;
+    private View coughIdentifierView;
+    private View beefBehaviorIdentifierView;
+    private View strawIdentifierView;
+    private View avoidDistanceIdentifierView;
     private final String IP_ADDRESS = "218.151.112.65";
 
     @Override
@@ -49,22 +61,40 @@ public class MultipleAnswerSearchResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiple_answer_search_result);
         Intent beforeIntent = getIntent();
+        questionName =  beforeIntent.getStringExtra("questionName");
+        searchCowKind = beforeIntent.getStringExtra("searchCowKind");
+        evaInfoId = beforeIntent.getStringExtra("evaInfoId");
+
 
         titleTv = findViewById(R.id.multiple_answer_title);
         identifiersView = findViewById(R.id.multiple_answer_identifiers);
         waterTimeIdentifierView = identifiersView.findViewById(R.id.water_time_identifier);
+        coughIdentifierView = identifiersView.findViewById(R.id.cough_identifier);
+        beefBehaviorIdentifierView = identifiersView.findViewById(R.id.beef_behavior_identifier);
+        strawIdentifierView = identifiersView.findViewById(R.id.straw_identifier);
+        avoidDistanceIdentifierView= identifiersView.findViewById(R.id.avoid_distance_identifier);
+
         backBtn = findViewById(R.id.back_btn);
+
 
 
         mRecyclerView = (RecyclerView) findViewById(R.id.multiple_recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
         waterTimeList = new ArrayList<>();
         waterTimeAdapter = new WaterTimeAdapter(this, waterTimeList);
 
+        coughStruggleHarmonyDataList = new ArrayList<>();
+        coughStruggleHarmonyAdapter = new CoughStruggleHarmonyAdapter(this, coughStruggleHarmonyDataList);
 
-       questionName =  beforeIntent.getStringExtra("questionName");
-       searchCowKind = beforeIntent.getStringExtra("searchCowKind");
-       evaInfoId = beforeIntent.getStringExtra("evaInfoId");
+        strawDataList = new ArrayList<>();
+        strawAdapter = new StrawAdapter(this, strawDataList);
+
+        avoidDistanceDataList = new ArrayList<>();
+        avoidDistanceAdapter = new AvoidDistanceAdapter(this, avoidDistanceDataList,searchCowKind);
+
+
 
        backBtn.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -184,12 +214,6 @@ public class MultipleAnswerSearchResultActivity extends AppCompatActivity {
         }
 
         private void getResult(){
-
-
-
-
-
-
             try{
                 JSONObject jsonObject = new JSONObject(mJsonString);
                 if(jsonObject.has("waterTime")){
@@ -225,14 +249,163 @@ public class MultipleAnswerSearchResultActivity extends AppCompatActivity {
                         waterTimeData.setRatio(ratio);
 
                         waterTimeList.add(waterTimeData);
-                        waterTimeAdapter.notifyDataSetChanged();;
+                        waterTimeAdapter.notifyDataSetChanged();
+                    }
+                } else if(jsonObject.has("cough")){
+                    titleTv.setText("기침");
+                    coughIdentifierView.setVisibility(View.VISIBLE);
+                    mRecyclerView.setAdapter(coughStruggleHarmonyAdapter);
+                    coughStruggleHarmonyDataList.clear();
+                    coughStruggleHarmonyAdapter.notifyDataSetChanged();
+
+                    JSONArray jsonArray = jsonObject.getJSONArray("cough");
+                    for(int i = 0 ; i < jsonArray.length() ; i++){
+                        JSONObject item = jsonArray.getJSONObject(i);
+                        String penLocation = item.getString("penLocation");
+                        String dongTotalCowSize = item.getString("dongTotalCowSize");
+                        String answer = item.getString("answer");
+                        String answerPerOne = item.getString("answerPerOne");
+
+
+                        CoughStruggleHarmonyData coughData = new CoughStruggleHarmonyData();
+
+                        coughData.setPenLocation(penLocation);
+                        coughData.setDongTotalCowSize(dongTotalCowSize);
+                        coughData.setAnswer(answer);
+                        coughData.setAnswerPenOne(answerPerOne);
+
+                        coughStruggleHarmonyDataList.add(coughData);
+                        coughStruggleHarmonyAdapter.notifyDataSetChanged();
+                    }
+                } else if(jsonObject.has("struggle")){
+                    titleTv.setText("투쟁(서열) 행동");
+                    beefBehaviorIdentifierView.setVisibility(View.VISIBLE);
+                    mRecyclerView.setAdapter(coughStruggleHarmonyAdapter);
+                    coughStruggleHarmonyDataList.clear();
+                    coughStruggleHarmonyAdapter.notifyDataSetChanged();
+
+                    JSONArray jsonArray = jsonObject.getJSONArray("struggle");
+                    for(int i = 0 ; i < jsonArray.length() ; i++){
+                        JSONObject item = jsonArray.getJSONObject(i);
+                        String penLocation = item.getString("penLocation");
+                        String dongTotalCowSize = item.getString("dongTotalCowSize");
+                        String answer = item.getString("answer");
+                        String answerPerOne = item.getString("answerPerOne");
+
+
+                        CoughStruggleHarmonyData struggleData = new CoughStruggleHarmonyData();
+
+                        struggleData.setPenLocation(penLocation);
+                        struggleData.setDongTotalCowSize(dongTotalCowSize);
+                        struggleData.setAnswer(answer);
+                        struggleData.setAnswerPenOne(answerPerOne);
+
+                        coughStruggleHarmonyDataList.add(struggleData);
+                        coughStruggleHarmonyAdapter.notifyDataSetChanged();
+                    }
+                } else if(jsonObject.has("harmony")){
+                    titleTv.setText("화합 행동");
+                    beefBehaviorIdentifierView.setVisibility(View.VISIBLE);
+                    mRecyclerView.setAdapter(coughStruggleHarmonyAdapter);
+                    coughStruggleHarmonyDataList.clear();
+                    coughStruggleHarmonyAdapter.notifyDataSetChanged();
+
+                    JSONArray jsonArray = jsonObject.getJSONArray("harmony");
+                    for(int i = 0 ; i < jsonArray.length() ; i++){
+                        JSONObject item = jsonArray.getJSONObject(i);
+                        String penLocation = item.getString("penLocation");
+                        String dongTotalCowSize = item.getString("dongTotalCowSize");
+                        String answer = item.getString("answer");
+                        String answerPerOne = item.getString("answerPerOne");
+
+
+                        CoughStruggleHarmonyData coughData = new CoughStruggleHarmonyData();
+
+                        coughData.setPenLocation(penLocation);
+                        coughData.setDongTotalCowSize(dongTotalCowSize);
+                        coughData.setAnswer(answer);
+                        coughData.setAnswerPenOne(answerPerOne);
+
+                        coughStruggleHarmonyDataList.add(coughData);
+                        coughStruggleHarmonyAdapter.notifyDataSetChanged();
+                    }
+
+
+                }  else if(jsonObject.has("straw")){
+                    titleTv.setText("깔짚 수분");
+                    strawIdentifierView.setVisibility(View.VISIBLE);
+                    mRecyclerView.setAdapter(strawAdapter);
+                    strawDataList.clear();
+                    strawAdapter.notifyDataSetChanged();
+
+                    JSONArray jsonArray = jsonObject.getJSONArray("straw");
+                    for(int i = 0 ; i < jsonArray.length() ; i++){
+                        JSONObject item = jsonArray.getJSONObject(i);
+                        String penLocation = item.getString("penLocation");
+                        String answerOne = item.getString("answerOne");
+                        String answerTwo = item.getString("answerTwo");
+                        String answerThree = item.getString("answerThree");
+                        String score = item.getString("score");
+                        if(answerOne.equals("0")) {
+                            answerOne = "X";
+                        } else {
+                            answerOne = "O";
+                        }
+                        if(answerTwo.equals("0")){
+                            answerTwo = "X";
+                        }else {
+                            answerTwo = "O";
+                        }
+                        if(answerThree.equals("0")){
+                            answerThree = "X";
+                        } else {
+                            answerThree = "O";
+                        }
+
+                        StrawData strawData = new StrawData();
+
+                        strawData.setPenLocation(penLocation);
+                        strawData.setAnswerOne(answerOne);
+                        strawData.setAnswerTwo(answerTwo);
+                        strawData.setAnswerThree(answerThree);
+                        strawData.setScore(score);
+
+                        strawDataList.add(strawData);
+                        strawAdapter.notifyDataSetChanged();
                     }
                 }
+                else if(jsonObject.has("avoidDistance")){
+                    titleTv.setText("회피 거리");
+                    avoidDistanceIdentifierView.setVisibility(View.VISIBLE);
+                    mRecyclerView.setAdapter(avoidDistanceAdapter);
+                    avoidDistanceDataList.clear();
+                    avoidDistanceAdapter.notifyDataSetChanged();
 
+                    JSONArray jsonArray = jsonObject.getJSONArray("avoidDistance");
+                    for(int i = 0 ; i < jsonArray.length() ; i++){
+                        JSONObject item = jsonArray.getJSONObject(i);
+                        String penLocation = item.getString("penLocation");
+                        String cowSize = item.getString("cowSize");
+                        String id = item.getString("id");
+
+
+                        AvoidDistanceData avoidDistanceData = new AvoidDistanceData();
+
+                        avoidDistanceData.setId(id);
+                        avoidDistanceData.setCowSize(cowSize);
+                        avoidDistanceData.setPenLocation(penLocation);
+
+                        avoidDistanceDataList.add(avoidDistanceData);
+                        avoidDistanceAdapter.notifyDataSetChanged();
+                    }
+                } else {
+                    titleTv.setText("평가 결과를 찾을 수 없습니다.");
+
+                }
             } catch (JSONException e){
                 Log.d("MultipleAnswerQuestion","showResult : ", e);
             }
 
         }
-        }
     }
+}
