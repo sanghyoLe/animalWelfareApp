@@ -52,10 +52,12 @@
                         android:visibility="gone"
                         android:id="@+id/eva_answer_list_layout"
                         layout="@layout/eva_answer_search_result"/>
+
                     <include
                         android:visibility="gone"
                         android:id="@+id/eva_detail_answer_list_layout"
                         layout="@layout/eva_detail_answer_search_result"/>
+
 
 
         </LinearLayout>

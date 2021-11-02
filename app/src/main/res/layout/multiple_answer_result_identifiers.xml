@@ -467,6 +467,384 @@
             android:layout_height="2dp"
             android:background="@color/colorGray"/>
     </LinearLayout>
+    <!-- freeStallCount -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/free_stall_identifier"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:textSize="12dp"
+                android:text="동 번호"
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+            <TextView
+                android:textSize="11dp"
+                android:text="사육 두수"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+            <TextView
+                android:textSize="12dp"
+                android:text="프리스톨 수"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+
+            <TextView
+                android:textSize="12dp"
+                android:text="점수"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+            <TextView
+                android:textSize="12dp"
+                android:text="비율"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorGray"/>
+    </LinearLayout>
+    <!-- sitCollision -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sit_collision_identifier"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:textSize="12dp"
+                android:text="앉기 동작 순번"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
 
 
+            <TextView
+                android:textSize="12dp"
+                android:text="구조물 충돌 여부"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorGray"/>
+    </LinearLayout>
+    <!-- sitTime -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sit_time_identifier"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:textSize="12dp"
+                android:text="앉기 동작 순번"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+
+
+            <TextView
+                android:textSize="12dp"
+                android:text="동작 별 지속시간"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorGray"/>
+    </LinearLayout>
+    <!-- milkCowStruggle -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/milk_cow_struggle_identifier"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:textSize="10dp"
+                android:text="동 번호"
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+            <TextView
+                android:textSize="9dp"
+                android:text="표본펜 위치"
+                android:layout_weight="0.7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+            <TextView
+                android:textSize="10dp"
+                android:text="사육 두수"
+                android:layout_weight="0.7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:text="머리박치기"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorGray"/>
+                <LinearLayout
+                    android:layout_weight="0.49"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textSize="10dp"
+                        android:text="빈도 "
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        />
+                    <View
+                        android:background="@color/colorGray"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"/>
+                    <TextView
+                        android:textSize="10dp"
+                        android:text="평균"
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:text="머리박치기 제외 투쟁행동"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorGray"/>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textSize="10dp"
+                        android:text="빈도 "
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        />
+                    <View
+                        android:background="@color/colorGray"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"/>
+                    <TextView
+                        android:textSize="10dp"
+                        android:text="평균"
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+            <TextView
+                android:textSize="10dp"
+                android:text="투쟁행동 지수"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+            <TextView
+                android:textSize="12dp"
+                android:text="점수"
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorGray"/>
+    </LinearLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>

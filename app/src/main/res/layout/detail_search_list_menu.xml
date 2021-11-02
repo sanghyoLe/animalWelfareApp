@@ -44,17 +44,26 @@
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:gravity="center" />
-<!--            <TextView-->
-<!--                android:padding="20dp"-->
-<!--                android:layout_margin="10dp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="기본 정보"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="20dp"-->
-<!--                android:gravity="center" />-->
-
-
+            <TextView
+                android:id="@+id/eva_score_tv"
+                android:padding="20dp"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="점수 정보"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:gravity="center" />
+            <TextView
+                android:id="@+id/eva_ratio_tv"
+                android:padding="20dp"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="비율 정보"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:gravity="center" />
 
 
 

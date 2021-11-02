@@ -766,6 +766,7 @@ public class QuestionTemplate extends AppCompatActivity
                 Intent intentResultActivity = new Intent(QuestionTemplate.this, ResultActivity.class);
                 intentResultActivity.putExtras(resultBundle);
                 startActivity(intentResultActivity);
+                finish();
 
         }
     }

@@ -180,6 +180,7 @@ public class InputUserInfo extends AppCompatActivity {
                                     eva_data_picker.getDayOfMonth(), input_checked,
                                     0,0,0
                             );
+
                         }
                     } else if(input_checked == 4 || input_checked == 5){
                         if(!checkEmptyInputInfo(farm_name_et, "농장명을 입력하세요")
@@ -212,6 +213,7 @@ public class InputUserInfo extends AppCompatActivity {
                                     Integer.parseInt(String.valueOf(dry_milk_cow_et.getText())),
                                     Integer.parseInt(String.valueOf(pregnant_cow_et.getText()))
                             );
+
                         }
                     }
                     else if(input_checked == 0){
@@ -506,7 +508,7 @@ public class InputUserInfo extends AppCompatActivity {
                             String.valueOf(pregnantCow)
                     );
                 customDialog.dismiss();
-
+                finish();
             }
         });
 

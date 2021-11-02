@@ -17,4 +17,5 @@
     <color name="lime">#00FF00</color>
     <color name="red">#FF0000</color>
     <color name="blue">#0000FF</color>
+    <color name="slightGray">#F6F6F6</color>
 </resources>

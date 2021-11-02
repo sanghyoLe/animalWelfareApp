@@ -2,8 +2,6 @@ package com.example.animal_project.Result;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,8 +13,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -39,6 +35,8 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
 
 
 
+
+
     private ArrayList<EvaAnswerData> mArrayList;
     private EvaAnswerAdapter evaAnswerAdapter;
     private RecyclerView mRecyclerView;
@@ -47,6 +45,11 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
     private EvaDetailAnswerAdapter evaDetailAnswerAdapter;
     private RecyclerView detailAnswerRecyclerView;
 
+    private ArrayList<EvaAnswerData> scoreDataList;
+    private EvaAnswerAdapter evaScoreAdapter;
+
+    private ArrayList<EvaAnswerData> ratioDataList;
+    private EvaAnswerAdapter evaRatioAdapter;
 
 
     private String evaInfoId;
@@ -64,6 +67,12 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
     private View evaDetailAnswerView;
     private View haveFoundDetailAnswerView;
     private View haveNotFoundDetailAnswerView;
+
+    private View haveFoundScoreView;
+    private View haveFoundRatioView;
+    private View haveNotFoundScoreView;
+    private View haveNotFoundRatioView;
+
 
 
 
@@ -106,6 +115,9 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
     private TextView evaAnswerTv;
     private TextView evaDetailAnswerTv;
     private TextView detailSearchTitleTv;
+    private TextView evaScoreTv;
+    private TextView evaRatioTv;
+    private TextView answerTitleTv;
     private View detailSearchListMenuView;
     private ImageButton listBtn;
 
@@ -114,7 +126,7 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detail_search_admin_member);
+        setContentView(R.layout.activity_detail_search_admin_member);
 
 
         Intent beforeIntent = getIntent();
@@ -126,6 +138,8 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
         basicInfoTv = detailSearchListMenuView.findViewById(R.id.basic_info_tv);
         evaAnswerTv = detailSearchListMenuView.findViewById(R.id.eva_answer_tv);
         evaDetailAnswerTv = detailSearchListMenuView.findViewById(R.id.eva_detail_answer_tv);
+        evaScoreTv = detailSearchListMenuView.findViewById(R.id.eva_score_tv);
+        evaRatioTv = detailSearchListMenuView.findViewById(R.id.eva_ratio_tv);
 
 
 
@@ -147,18 +161,29 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
         changeSearchResultView();
 
 //        // 평가 정보 Layout, RecyclerView
-          evaAnswerView = findViewById(R.id.eva_answer_list_layout);
+        evaAnswerView = findViewById(R.id.eva_answer_list_layout);
         haveFoundAnswerView = findViewById(R.id.have_found_eva_answer_layout);
         haveNotFoundAnswerView = findViewById(R.id.have_not_found_eva_answer_layout);
 
+        haveFoundScoreView = findViewById(R.id.have_found_eva_score_layout);
+        haveFoundRatioView = findViewById(R.id.have_found_eva_ratio_layout);
+        haveNotFoundScoreView = findViewById(R.id.have_not_found_eva_score_layout);
+        haveNotFoundRatioView = findViewById(R.id.have_not_found_eva_ratio_layout);
+
+        // answer,score,ratio 는 RecyclerView, Adapter , Data 동일 . View의 표 제목만 변경하며 사용
+        answerTitleTv = evaAnswerView.findViewById(R.id.answer_title_tv);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.eva_answer_list_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mArrayList = new ArrayList<>();
         evaAnswerAdapter = new EvaAnswerAdapter(this, mArrayList);
-        mRecyclerView.setAdapter(evaAnswerAdapter);
-        mArrayList.clear();
-        evaAnswerAdapter.notifyDataSetChanged();
+
+
+        scoreDataList = new ArrayList<>();
+        evaScoreAdapter = new EvaAnswerAdapter(this, scoreDataList);
+
+        ratioDataList = new ArrayList<>();
+        evaRatioAdapter = new EvaAnswerAdapter(this, ratioDataList);
 
 
 
@@ -400,6 +425,50 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
                 }
 
 
+                if(jsonObject.has("evaScore")){
+                    haveFoundScoreView.setVisibility(View.VISIBLE);
+                    JSONArray jsonAnswerArray = jsonObject.getJSONArray("evaScore");
+                    for(int i = 0 ; i <jsonAnswerArray.length(); i++){
+                        JSONObject answerItem = jsonAnswerArray.getJSONObject(i);
+
+                        String answer = answerItem.optString("score","결과 없음");
+                        String questionName = answerItem.getString("titleName");
+
+                        EvaAnswerData evaScoreData = new EvaAnswerData();
+
+                        evaScoreData.setAnswer(answer);
+                        evaScoreData.setQuestionName(questionName);
+
+                        scoreDataList.add(evaScoreData);
+                        evaScoreAdapter.notifyDataSetChanged();;
+
+                    }
+                } else {
+                    haveNotFoundScoreView.setVisibility(View.VISIBLE);
+                }
+
+                if(jsonObject.has("evaRatio")){
+                    haveFoundRatioView.setVisibility(View.VISIBLE);
+                    JSONArray jsonAnswerArray = jsonObject.getJSONArray("evaRatio");
+                    for(int i = 0 ; i <jsonAnswerArray.length(); i++){
+                        JSONObject answerItem = jsonAnswerArray.getJSONObject(i);
+
+                        String answer = answerItem.optString("ratio","결과 없음");
+                        String questionName = answerItem.getString("titleName");
+
+                        EvaAnswerData evaRatioData = new EvaAnswerData();
+
+                        evaRatioData.setAnswer(answer);
+                        evaRatioData.setQuestionName(questionName);
+
+                        ratioDataList.add(evaRatioData);
+                        evaRatioAdapter.notifyDataSetChanged();
+
+                    }
+                } else {
+                    haveNotFoundRatioView.setVisibility(View.VISIBLE);
+                }
+
             } catch (JSONException e){
                 Log.d("evaInfoData","showResult : ", e);
             }
@@ -448,6 +517,8 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
                 setStyleTextView(basicInfoTv);
                 setNoneStyleTextView(evaAnswerTv);
                 setNoneStyleTextView(evaDetailAnswerTv);
+                setNoneStyleTextView(evaScoreTv);
+                setNoneStyleTextView(evaRatioTv);
                 detailSearchTitleTv.setText("기본 정보");
                 closeDrawer();
             }
@@ -456,12 +527,17 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
         evaAnswerTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mRecyclerView.setAdapter(evaAnswerAdapter);
+                evaAnswerAdapter.notifyDataSetChanged();
                 evaAnswerView.setVisibility(View.VISIBLE);
+                answerTitleTv.setText("내용");
                 basicInformationView.setVisibility(View.GONE);
                 evaDetailAnswerView.setVisibility(View.GONE);
                 setStyleTextView(evaAnswerTv);
                 setNoneStyleTextView(basicInfoTv);
                 setNoneStyleTextView(evaDetailAnswerTv);
+                setNoneStyleTextView(evaScoreTv);
+                setNoneStyleTextView(evaRatioTv);
                 detailSearchTitleTv.setText("평가 정보");
                 closeDrawer();
             }
@@ -476,7 +552,45 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
                 setStyleTextView(evaDetailAnswerTv);
                 setNoneStyleTextView(basicInfoTv);
                 setNoneStyleTextView(evaAnswerTv);
+                setNoneStyleTextView(evaScoreTv);
+                setNoneStyleTextView(evaRatioTv);
                 detailSearchTitleTv.setText("세부평가 정보");
+                closeDrawer();
+            }
+        });
+        evaScoreTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mRecyclerView.setAdapter(evaScoreAdapter);
+                evaScoreAdapter.notifyDataSetChanged();
+                evaAnswerView.setVisibility(View.VISIBLE);
+                answerTitleTv.setText("점수");
+                basicInformationView.setVisibility(View.GONE);
+                evaDetailAnswerView.setVisibility(View.GONE);
+                setStyleTextView(evaScoreTv);
+                setNoneStyleTextView(basicInfoTv);
+                setNoneStyleTextView(evaDetailAnswerTv);
+                setNoneStyleTextView(evaAnswerTv);
+                setNoneStyleTextView(evaRatioTv);
+                detailSearchTitleTv.setText("점수 정보");
+                closeDrawer();
+            }
+        });
+        evaRatioTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mRecyclerView.setAdapter(evaRatioAdapter);
+                evaRatioAdapter.notifyDataSetChanged();
+                evaAnswerView.setVisibility(View.VISIBLE);
+                answerTitleTv.setText("비율");
+                basicInformationView.setVisibility(View.GONE);
+                evaDetailAnswerView.setVisibility(View.GONE);
+                setStyleTextView(evaRatioTv);
+                setNoneStyleTextView(basicInfoTv);
+                setNoneStyleTextView(evaDetailAnswerTv);
+                setNoneStyleTextView(evaAnswerTv);
+                setNoneStyleTextView(evaScoreTv);
+                detailSearchTitleTv.setText("비율 정보");
                 closeDrawer();
             }
         });
