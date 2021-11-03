@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ThemedSpinnerAdapter;
 
 import com.example.animal_project.R;
 
@@ -47,9 +49,11 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
 
     private ArrayList<EvaAnswerData> scoreDataList;
     private EvaAnswerAdapter evaScoreAdapter;
+    private RecyclerView scoreRecyclerView;
 
     private ArrayList<EvaAnswerData> ratioDataList;
     private EvaAnswerAdapter evaRatioAdapter;
+    private RecyclerView ratioRecyclerView;
 
 
     private String evaInfoId;
@@ -63,16 +67,36 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
     private View haveNotFoundAnswerView;
 
 
-    private View evaDetailAnswerLayout;
+
     private View evaDetailAnswerView;
     private View haveFoundDetailAnswerView;
     private View haveNotFoundDetailAnswerView;
 
+
+    private View evaScoreView;
+    private View evaRatioView;
     private View haveFoundScoreView;
     private View haveFoundRatioView;
     private View haveNotFoundScoreView;
     private View haveNotFoundRatioView;
 
+    // totalScore view
+    private View totalScoreView;
+    private TextView feedWaterScoreTv;
+    private TextView stockEnvScoreTv;
+    private TextView healthStatusScoreTv;
+    private TextView behaviorScoreTv;
+    private TextView nutritionScoreTv;
+    private TextView drinkWaterScoreTv;
+    private TextView restScoreTv;
+    private TextView heatVentilatingScoreTv;
+    private TextView woundScoreTv;
+    private TextView diseaseScoreTv;
+    private TextView painScoreTv;
+    private TextView socialBehaviorScoreTv;
+    private TextView humanLiveStockScoreTv;
+
+    private TextView gradeTv;
 
 
 
@@ -117,7 +141,7 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
     private TextView detailSearchTitleTv;
     private TextView evaScoreTv;
     private TextView evaRatioTv;
-    private TextView answerTitleTv;
+
     private View detailSearchListMenuView;
     private ImageButton listBtn;
 
@@ -165,33 +189,52 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
         haveFoundAnswerView = findViewById(R.id.have_found_eva_answer_layout);
         haveNotFoundAnswerView = findViewById(R.id.have_not_found_eva_answer_layout);
 
+        evaScoreView = findViewById(R.id.eva_score_list_layout);
+        evaRatioView = findViewById(R.id.eva_ratio_list_layout);
         haveFoundScoreView = findViewById(R.id.have_found_eva_score_layout);
         haveFoundRatioView = findViewById(R.id.have_found_eva_ratio_layout);
         haveNotFoundScoreView = findViewById(R.id.have_not_found_eva_score_layout);
         haveNotFoundRatioView = findViewById(R.id.have_not_found_eva_ratio_layout);
 
-        // answer,score,ratio 는 RecyclerView, Adapter , Data 동일 . View의 표 제목만 변경하며 사용
-        answerTitleTv = evaAnswerView.findViewById(R.id.answer_title_tv);
+
+
 
         mRecyclerView = (RecyclerView) findViewById(R.id.eva_answer_list_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mArrayList = new ArrayList<>();
         evaAnswerAdapter = new EvaAnswerAdapter(this, mArrayList);
 
+        mArrayList.clear();
+        mRecyclerView.setAdapter(evaAnswerAdapter);
+        evaAnswerAdapter.notifyDataSetChanged();
 
+
+
+        scoreRecyclerView = findViewById(R.id.eva_score_list_view);
+        scoreRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         scoreDataList = new ArrayList<>();
         evaScoreAdapter = new EvaAnswerAdapter(this, scoreDataList);
 
+        scoreDataList.clear();
+        scoreRecyclerView.setAdapter(evaScoreAdapter);
+        evaScoreAdapter.notifyDataSetChanged();
+
+        ratioRecyclerView = findViewById(R.id.eva_ratio_list_view);
+        ratioRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         ratioDataList = new ArrayList<>();
         evaRatioAdapter = new EvaAnswerAdapter(this, ratioDataList);
 
-
+        ratioDataList.clear();
+        ratioRecyclerView.setAdapter(evaRatioAdapter);
+        evaRatioAdapter.notifyDataSetChanged();
 
 
         evaDetailAnswerView = findViewById(R.id.eva_detail_answer_list_layout);
         haveFoundDetailAnswerView = findViewById(R.id.have_found_eva_detail_answer_layout);
         haveNotFoundDetailAnswerView = findViewById(R.id.have_not_found_eva_detail_answer_layout);
         detailAnswerRecyclerView = (RecyclerView) findViewById(R.id.eva_detail_answer_list_view);
+
+
 
         detailAnswerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         detailArrayList = new ArrayList<>();
@@ -202,6 +245,22 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
 
 
 
+        // totalScoreView
+        totalScoreView = findViewById(R.id.total_score_layout);
+        feedWaterScoreTv = findViewById(R.id.feed_water_tv);
+        stockEnvScoreTv = findViewById(R.id.stock_env_tv);
+        healthStatusScoreTv = findViewById(R.id.health_status_tv);
+        behaviorScoreTv = findViewById(R.id.behavior_tv);
+        nutritionScoreTv = findViewById(R.id.nutrition_tv);
+        drinkWaterScoreTv = findViewById(R.id.water_tv);
+        restScoreTv = findViewById(R.id.rest_tv);
+        heatVentilatingScoreTv = findViewById(R.id.heat_ventilating_tv);
+        woundScoreTv = findViewById(R.id.wound_tv);
+        diseaseScoreTv = findViewById(R.id.disease_tv);
+        painScoreTv = findViewById(R.id.pain_tv);
+        socialBehaviorScoreTv = findViewById(R.id.social_behavior_tv);
+        humanLiveStockScoreTv = findViewById(R.id.human_live_stock_tv);
+        gradeTv = findViewById(R.id.grade_tv);
 
         
         farmNameTv = (TextView) basicInformationView.findViewById(R.id.farm_name_tv);
@@ -382,6 +441,7 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
 
 
                 if(jsonObject.has("evaAnswer")){
+
                     haveFoundAnswerView.setVisibility(View.VISIBLE);
                     JSONArray jsonAnswerArray = jsonObject.getJSONArray("evaAnswer");
                     for(int i = 0 ; i <jsonAnswerArray.length(); i++){
@@ -426,6 +486,8 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
 
 
                 if(jsonObject.has("evaScore")){
+
+
                     haveFoundScoreView.setVisibility(View.VISIBLE);
                     JSONArray jsonAnswerArray = jsonObject.getJSONArray("evaScore");
                     for(int i = 0 ; i <jsonAnswerArray.length(); i++){
@@ -449,6 +511,7 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
 
                 if(jsonObject.has("evaRatio")){
                     haveFoundRatioView.setVisibility(View.VISIBLE);
+
                     JSONArray jsonAnswerArray = jsonObject.getJSONArray("evaRatio");
                     for(int i = 0 ; i <jsonAnswerArray.length(); i++){
                         JSONObject answerItem = jsonAnswerArray.getJSONObject(i);
@@ -468,6 +531,50 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
                 } else {
                     haveNotFoundRatioView.setVisibility(View.VISIBLE);
                 }
+
+                if(jsonObject.has("totalScore")){
+                    totalScoreView.setVisibility(View.VISIBLE);
+                    JSONArray jsonAnswerArray = jsonObject.getJSONArray("totalScore");
+                        JSONObject totalScoreItem = jsonAnswerArray.getJSONObject(0);
+
+                        feedWaterScoreTv.setText(totalScoreItem.getString("feedWater"));
+                        stockEnvScoreTv.setText(totalScoreItem.getString("stockEnvironment"));
+                        healthStatusScoreTv.setText(totalScoreItem.getString("healthStatus"));
+                        behaviorScoreTv.setText(totalScoreItem.getString("behavior"));
+                        nutritionScoreTv.setText(totalScoreItem.getString("nutrition"));
+                        drinkWaterScoreTv.setText(totalScoreItem.getString("drinkWater"));
+                        restScoreTv.setText(totalScoreItem.getString("rest"));
+                        heatVentilatingScoreTv.setText(totalScoreItem.getString("heatVentilation"));
+                        woundScoreTv.setText(totalScoreItem.getString("wound"));
+                        diseaseScoreTv.setText(totalScoreItem.getString("disease"));
+                        painScoreTv.setText(totalScoreItem.getString("pain"));
+                        socialBehaviorScoreTv.setText(totalScoreItem.getString("socialBehavior"));
+                        humanLiveStockScoreTv.setText(totalScoreItem.getString("humanLiveStock"));
+
+                        String grade  = totalScoreItem.getString("grade");
+                        if(grade.equals("Excellent")) {
+                            grade = "우수";
+                            gradeTv.setTextColor(Color.parseColor("#0000FF"));
+                        }
+                        else if(grade.equals("Enhanced")) {
+                            grade = "양호";
+                            gradeTv.setTextColor(Color.parseColor("#32CD32"));
+                        }
+                        else if(grade.equals("Acceptable")) {
+                            grade = "허용";
+                            gradeTv.setTextColor(Color.parseColor("#D2691E"));
+                        }
+                        else if(grade.equals("NotClassified")) {
+                            grade = "분류불가";
+                            gradeTv.setTextColor(Color.parseColor("#FF0000"));
+                        }
+                        else grade ="결과 없음";
+
+                        gradeTv.setText(grade);
+                } else {
+                    totalScoreView.setVisibility(View.GONE);
+                }
+
 
             } catch (JSONException e){
                 Log.d("evaInfoData","showResult : ", e);
@@ -514,6 +621,9 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
                 basicInformationView.setVisibility(View.VISIBLE);
                 evaAnswerView.setVisibility(View.GONE);
                 evaDetailAnswerView.setVisibility(View.GONE);
+                evaRatioView.setVisibility(View.GONE);
+                evaScoreView.setVisibility(View.GONE);
+
                 setStyleTextView(basicInfoTv);
                 setNoneStyleTextView(evaAnswerTv);
                 setNoneStyleTextView(evaDetailAnswerTv);
@@ -527,17 +637,20 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
         evaAnswerTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mRecyclerView.setAdapter(evaAnswerAdapter);
-                evaAnswerAdapter.notifyDataSetChanged();
+
+
                 evaAnswerView.setVisibility(View.VISIBLE);
-                answerTitleTv.setText("내용");
                 basicInformationView.setVisibility(View.GONE);
                 evaDetailAnswerView.setVisibility(View.GONE);
+                evaRatioView.setVisibility(View.GONE);
+                evaScoreView.setVisibility(View.GONE);
+
                 setStyleTextView(evaAnswerTv);
                 setNoneStyleTextView(basicInfoTv);
                 setNoneStyleTextView(evaDetailAnswerTv);
                 setNoneStyleTextView(evaScoreTv);
                 setNoneStyleTextView(evaRatioTv);
+
                 detailSearchTitleTv.setText("평가 정보");
                 closeDrawer();
             }
@@ -546,9 +659,15 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
         evaDetailAnswerTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 evaDetailAnswerView.setVisibility(View.VISIBLE);
                 basicInformationView.setVisibility(View.GONE);
                 evaAnswerView.setVisibility(View.GONE);
+                evaRatioView.setVisibility(View.GONE);
+                evaScoreView.setVisibility(View.GONE);
+
+
                 setStyleTextView(evaDetailAnswerTv);
                 setNoneStyleTextView(basicInfoTv);
                 setNoneStyleTextView(evaAnswerTv);
@@ -561,12 +680,15 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
         evaScoreTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mRecyclerView.setAdapter(evaScoreAdapter);
-                evaScoreAdapter.notifyDataSetChanged();
-                evaAnswerView.setVisibility(View.VISIBLE);
-                answerTitleTv.setText("점수");
+
+
+                evaScoreView.setVisibility(View.VISIBLE);
+                evaAnswerView.setVisibility(View.GONE);
                 basicInformationView.setVisibility(View.GONE);
                 evaDetailAnswerView.setVisibility(View.GONE);
+                evaRatioView.setVisibility(View.GONE);
+
+
                 setStyleTextView(evaScoreTv);
                 setNoneStyleTextView(basicInfoTv);
                 setNoneStyleTextView(evaDetailAnswerTv);
@@ -579,12 +701,15 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
         evaRatioTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mRecyclerView.setAdapter(evaRatioAdapter);
-                evaRatioAdapter.notifyDataSetChanged();
-                evaAnswerView.setVisibility(View.VISIBLE);
-                answerTitleTv.setText("비율");
+
+
+                evaRatioView.setVisibility(View.VISIBLE);
+                evaAnswerView.setVisibility(View.GONE);
                 basicInformationView.setVisibility(View.GONE);
                 evaDetailAnswerView.setVisibility(View.GONE);
+                evaScoreView.setVisibility(View.GONE);
+
+
                 setStyleTextView(evaRatioTv);
                 setNoneStyleTextView(basicInfoTv);
                 setNoneStyleTextView(evaDetailAnswerTv);
@@ -605,3 +730,4 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
     }
 
 }
+

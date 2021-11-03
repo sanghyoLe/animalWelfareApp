@@ -37,6 +37,7 @@ public class AvoidDistance extends Fragment {
     private TextView penLocationAlreadyInput[];
     private TextView avoid_distance_ratio_tv;
     private TextView avoid_distance_score_tv;
+    private TextView protocol_4;
     private EditText penLocationOne;
     private EditText penLocationTwo;
     private QuestionTemplateViewModel.avoidDistance[] avoidDistances;
@@ -49,13 +50,19 @@ public class AvoidDistance extends Fragment {
         penLocationOne = view.findViewById(R.id.pen_location_ed_1);
         penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
 
-
+        protocol_4 = view.findViewById(R.id.breed_protocol_4);
         avoid_distance_score_tv = view.findViewById(R.id.breed_avoid_distance_score_tv);
         avoid_distance_ratio_tv = view.findViewById(R.id.breed_avoid_distance_ratio_tv);
         if(viewModel.getAvoidDistanceScore() == -1){
             avoid_distance_score_tv.setText("회피 거리 평가를 모두 완료하세요");
         } else {
             avoid_distance_score_tv.setText(String.valueOf(viewModel.getAvoidDistanceScore()));
+        }
+        if(viewModel.getAvoidDistanceRatio() != -1){
+            avoid_distance_ratio_tv.setText(String.valueOf(viewModel.getAvoidDistanceRatio()));
+        }
+        if(viewModel.getProtocolFourScore() != -1){
+            protocol_4.setText(String.valueOf(viewModel.getProtocolFourScore()));
         }
 
         View question_1 = view.findViewById(R.id.breed_avoid_distance_question_1);
@@ -346,7 +353,7 @@ public class AvoidDistance extends Fragment {
                     avoid_distance_ratio_tv.setText(String.valueOf(viewModel.getAvoidDistanceRatio()));
                     avoid_distance_score_tv.setText(String.valueOf(viewModel.getAvoidDistanceScore()));
                     }
-                TextView protocol_4 = view.findViewById(R.id.breed_protocol_4);
+
                 if (viewModel.getSocialBehaviorScore() == -1) {
                     protocol_4.setText("사회적 행동의 표현 평가를 완료하세요");
                 } else if(viewModel.getAvoidDistanceScore()== -1 ) {

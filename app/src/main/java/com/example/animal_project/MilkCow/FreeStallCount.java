@@ -35,6 +35,17 @@ public class FreeStallCount extends Fragment {
         view = inflater.inflate(R.layout.fragment_freestall_count, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
 
+        if((((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getLowestRatio()) != -1){
+                freeStallCountRatioTv.setText(String.valueOf(
+                        ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getLowestRatio()
+                ));
+        }
+        if((((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getLowestScore()) != -1){
+            freeStallCountScoreTv.setText(String.valueOf(
+                    ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getLowestScore()
+            ));
+        }
+
 
         freeStallCountScoreTv = view.findViewById(R.id.free_stall_count_score);
         freeStallCountRatioTv = view.findViewById(R.id.free_stall_count_ratio);

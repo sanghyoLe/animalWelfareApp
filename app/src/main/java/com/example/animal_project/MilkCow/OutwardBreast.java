@@ -66,7 +66,7 @@ public class OutwardBreast extends Fragment {
                     int appearanceQ3Score = 0;
                     float ratio = Float.parseFloat(outwardBreastEd.getText().toString()) / viewModel.getSampleCowSize();
                     ratio = ratio * 100;
-                    ratio = Math.round(ratio);
+                    ratio = viewModel.cutDecimal(ratio);
                     outwardBreastRatioTv.setText(String.valueOf(ratio));
                     appearanceQ3Score = mc.calculatorAppearanceQ3Score(ratio);
                     outwardBreastScoreTv.setText(String.valueOf(appearanceQ3Score));

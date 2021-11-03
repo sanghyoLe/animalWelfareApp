@@ -63,7 +63,7 @@ public class OutwardBack extends Fragment {
                     int appearanceQ2Score = 0;
                     float ratio = Float.parseFloat(outwardBackEd.getText().toString()) / viewModel.getSampleCowSize();
                     ratio = ratio * 100;
-                    ratio = Math.round(ratio);
+                    ratio = viewModel.cutDecimal(ratio);
                     outwardBackRatioTv.setText(String.valueOf(ratio));
                     appearanceQ2Score = mc.calculatorAppearanceQ2Score(ratio);
                     outwardBackScoreTv.setText(String.valueOf(appearanceQ2Score));

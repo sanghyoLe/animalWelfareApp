@@ -556,7 +556,10 @@ public class QuestionTemplateViewModel extends ViewModel {
             this.totalRatio = totalRatio;
         }
         public float calculatorTotalRatio(float accessTroubleRatio, float exitTroubleRatio){
-            return (float) (accessTroubleRatio * 0.6 + exitTroubleRatio * 0.4);
+            float totalRatio = (float) (accessTroubleRatio * 0.6 + exitTroubleRatio * 0.4);
+            totalRatio = totalRatio * 100;
+            totalRatio = (float)(Math.round(totalRatio*100)/100.0);
+            return totalRatio;
         }
         public int calculatorScore(float totalRatio){
             int score = 0;
@@ -633,7 +636,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         public double[] calculatorRatio(int[] cowSize, int[] freeStallCount,int dongSize){
             double[] freeStallCountRatio = new double[dongSize];
             for(int i = 0 ; i < dongSize ; i++){
-                freeStallCountRatio[i] = (double)Math.round((((double)cowSize[i] / (double)freeStallCount[i]) *100)) / 100.0;
+                freeStallCountRatio[i] = (double)Math.round(((double)freeStallCount[i] / ((double)cowSize[i]) *100)) / 100.0;
             }
             return freeStallCountRatio;
         }
@@ -2033,8 +2036,9 @@ public class QuestionTemplateViewModel extends ViewModel {
         progressBarTv.setText(String.valueOf(protocolScore));
     }
 
-    public double cutDecimal(double value){
-        return (double)Math.round(value*100)/100;
+    public float cutDecimal(double value){
+
+        return (float)(Math.round(value*100)/100.0);
     }
     public void showQuestionView(View[] QuestionViewArr, int dongSize) {
         TextView[] tvArr = new TextView[dongSize];

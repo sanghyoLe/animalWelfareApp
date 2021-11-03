@@ -209,7 +209,7 @@ public class MilkCowStruggleDong extends AppCompatActivity {
         String[] inputStrings = new String[dong_size];
         String msg = "";
         for(int i = 0 ; i < dong_size ; i++){
-            inputStrings[i] = (i+1) + "동 \n1마리당 1시간 동안 투쟁행동 지수 : " + struggleIndex[i] + "\n";
+            inputStrings[i] = (i+1) + "동 \n1마리당 1시간 동안 투쟁행동 지수 : " + struggleIndex[i] + "\n\n";
             msg += inputStrings[i];
         }
         return msg;

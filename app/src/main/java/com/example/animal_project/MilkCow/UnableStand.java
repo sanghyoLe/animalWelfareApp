@@ -68,7 +68,6 @@ public class UnableStand extends Fragment {
                 }else {
                     float ratio = Float.parseFloat(astasia_a1.getText().toString()) / Float.parseFloat(astasia_count_a1.getText().toString());
                     ratio = ratio * 100;
-                    ratio = Math.round(ratio);
                     ratio = (float) viewModel.cutDecimal(ratio);
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setRatio(ratio);
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).setScore(-1);

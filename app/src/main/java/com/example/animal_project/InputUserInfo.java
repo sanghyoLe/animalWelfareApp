@@ -61,7 +61,29 @@ public class InputUserInfo extends AppCompatActivity {
     private LinearLayout beef_cow_input_layout;
     private LinearLayout milk_cow_input_layout;
     private ImageButton back_btn;
+    private long backKeyPressedTime = 0;
+    private Toast toast;
+    @Override
+    public void onBackPressed() {
 
+
+        // 마지막으로 뒤로가기 버튼을 눌렀던 시간에 2초를 더해 현재시간과 비교 후
+        // 마지막으로 뒤로가기 버튼을 눌렀던 시간이 2초가 지났으면 Toast Show
+        // 2000 milliseconds = 2 seconds
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis();
+            toast = Toast.makeText(this, "\'뒤로\' 버튼을 한번 더 누르시면 시작화면으로 돌아갑니다.", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
+        // 마지막으로 뒤로가기 버튼을 눌렀던 시간에 2초를 더해 현재시간과 비교 후
+        // 마지막으로 뒤로가기 버튼을 눌렀던 시간이 2초가 지나지 않았으면 종료
+        // 현재 표시된 Toast 취소
+        if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            finish();
+            toast.cancel();
+        }
+    }
 
 
     @Override
@@ -100,7 +122,7 @@ public class InputUserInfo extends AppCompatActivity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                InputUserInfo.super.onBackPressed();
                 finish();
             }
         });

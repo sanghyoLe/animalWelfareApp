@@ -58,6 +58,7 @@ public class HardBirth extends Fragment {
                 } else {
                     float ratio = Float.parseFloat(hardBirthCountEd.getText().toString()) / Float.parseFloat(hardBirthYearAvgEd.getText().toString());
                     ratio = ratio * 100;
+                    ratio = viewModel.cutDecimal(ratio);
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setRatio(ratio);
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setYearAvgCount(Integer.parseInt(hardBirthYearAvgEd.getText().toString()));
                     ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).setNumberOfCow(Integer.parseInt(hardBirthCountEd.getText().toString()));

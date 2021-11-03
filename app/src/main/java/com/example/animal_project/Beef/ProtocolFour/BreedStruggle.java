@@ -41,23 +41,42 @@ public class BreedStruggle extends Fragment {
 
         LinearLayout beefStruggleScoreLayout = view.findViewById(R.id.beef_struggle_score_layout);
         LinearLayout milkCowStruggleScoreLayout = view.findViewById(R.id.milk_cow_struggle_score_layout);
-        if(viewModel.isBeef(viewModel.getFarmType())){
-            beefStruggleScoreLayout.setVisibility(View.VISIBLE);
-            milkCowStruggleScoreLayout.setVisibility(View.GONE);
-        } else {
-            milkCowStruggleScoreLayout.setVisibility(View.VISIBLE);
-            beefStruggleScoreLayout.setVisibility(View.GONE);
-        }
         breed_struggle_tv = view.findViewById(R.id.breed_struggle_tv);
         milk_cow_struggle_tv = view.findViewById(R.id.milk_cow_struggle_tv);
         milk_cow_struggle_score_tv = view.findViewById(R.id.milk_cow_struggle_score);
 
-
-        if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg() == -1){
-            breed_struggle_tv.setText("평가를 완료하세요");
+        if(viewModel.isBeef(viewModel.getFarmType())){
+            beefStruggleScoreLayout.setVisibility(View.VISIBLE);
+            milkCowStruggleScoreLayout.setVisibility(View.GONE);
+            if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg() == -1){
+                breed_struggle_tv.setText("평가를 완료하세요");
+            } else {
+                breed_struggle_tv.setText(String.valueOf(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg()));
+            }
         } else {
-            breed_struggle_tv.setText(String.valueOf(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg()));
+            milkCowStruggleScoreLayout.setVisibility(View.VISIBLE);
+            beefStruggleScoreLayout.setVisibility(View.GONE);
+
+            if((((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getStruggleIndexAvg()) != -1) {
+                milk_cow_struggle_tv.setText(
+                        String.valueOf(
+                                ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getStruggleIndexAvg()
+                        )
+                );
+            }
+            if((((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getRepScore()) != -1) {
+                milk_cow_struggle_score_tv.setText(
+                        String.valueOf(
+                                ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getRepScore()
+                        )
+                );
+            }
+
         }
+
+
+
+
 
 
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),

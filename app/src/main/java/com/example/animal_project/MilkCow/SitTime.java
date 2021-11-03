@@ -37,8 +37,25 @@ public class SitTime extends Fragment {
 
 
         view = inflater.inflate(R.layout.fragment_sit_time, container, false);
+
         TextView sit_time_ratio = view.findViewById(R.id.sit_time_ratio);
         TextView sit_time_score = view.findViewById(R.id.sit_time_score);
+
+        if(
+                (((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getSitTimeAvg()) != -1
+        ) {
+            sit_time_ratio.setText(String.valueOf(
+                    ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getSitTimeAvg()
+            ));
+        }
+        if(
+                (((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore()) != -1
+        ) {
+            sit_time_score.setText(String.valueOf(
+                    ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore()
+            ));
+        }
+
         View question_1 = view.findViewById(R.id.sit_time_question_1);
         View question_2 = view.findViewById(R.id.sit_time_question_2);
         View question_3 = view.findViewById(R.id.sit_time_question_3);

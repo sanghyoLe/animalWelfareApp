@@ -19,8 +19,8 @@ import com.example.animal_project.Result.ResultProtocolFour;
 import com.google.android.material.tabs.TabLayout;
 
 public class ResultActivity extends AppCompatActivity {
-    private long backKeyPressedTime = 0;
     QuestionTemplateViewModel viewModel;
+    private long backKeyPressedTime = 0;
     private Toast toast;
     @Override
     public void onBackPressed() {
@@ -31,7 +31,7 @@ public class ResultActivity extends AppCompatActivity {
         // 2000 milliseconds = 2 seconds
         if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
             backKeyPressedTime = System.currentTimeMillis();
-            toast = Toast.makeText(this, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT);
+            toast = Toast.makeText(this, "\'뒤로\' 버튼을 한번 더 누르시면 시작화면으로 돌아갑니다.", Toast.LENGTH_SHORT);
             toast.show();
             return;
         }

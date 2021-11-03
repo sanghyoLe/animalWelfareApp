@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,6 +87,7 @@ public class BreedCriticalHairLoss extends Fragment {
                                     critical_ratio
                             ));
                             ratio_total = (slight_ratio + 5 * critical_ratio) / 5;
+
                             ratio_total = (float)viewModel.cutDecimal(ratio_total);
                             breedHairLossRatioTv.setText(String.valueOf(ratio_total));
                             viewModel.setHairLossTotalRatio(ratio_total);

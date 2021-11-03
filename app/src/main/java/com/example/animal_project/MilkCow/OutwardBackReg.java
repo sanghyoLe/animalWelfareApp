@@ -64,7 +64,7 @@ public class OutwardBackReg extends Fragment {
                     float ratio = Float.parseFloat(outwardBackRegEd.getText().toString()) / viewModel.getSampleCowSize();
 
                     ratio = ratio * 100;
-                    ratio = Math.round(ratio);
+                    ratio = viewModel.cutDecimal(ratio);
                     outwardBackRegRatioTv.setText(String.valueOf(ratio));
                     appearanceQ1Score = mc.calculatorAppearanceQ1Score(ratio);
                     outwardBackRegScoreTv.setText(String.valueOf(appearanceQ1Score));

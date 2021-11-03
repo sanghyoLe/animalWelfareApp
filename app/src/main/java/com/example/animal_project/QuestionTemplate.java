@@ -839,7 +839,8 @@ public class QuestionTemplate extends AppCompatActivity
     }
 
      private void changeCheckImageFunc (){
-
+        View breedListSubMenuThreeView  = findViewById(R.id.list_sub_menu_3);
+        View breedListSubMenuFourView = findViewById(R.id.list_sub_menu_4);
          ImageView check_total_1 = findViewById(R.id.check_total_1);
          ImageView check_total_2 = findViewById(R.id.check_total_2);
          ImageView check_total_3 = findViewById(R.id.check_total_3);
@@ -861,8 +862,8 @@ public class QuestionTemplate extends AppCompatActivity
          ImageView check_sub_15 = findViewById(R.id.check_sub_15);
          ImageView check_sub_16 = findViewById(R.id.check_sub_16);
          ImageView check_sub_17 = findViewById(R.id.check_sub_17);
-         ImageView check_sub_18 = findViewById(R.id.check_sub_18);
-         ImageView check_sub_19 = findViewById(R.id.check_sub_19);
+         ImageView check_sub_18 = breedListSubMenuThreeView.findViewById(R.id.check_sub_18);
+         ImageView check_sub_19 = breedListSubMenuThreeView.findViewById(R.id.check_sub_19);
          ImageView check_sub_20 = findViewById(R.id.check_sub_20);
          ImageView check_sub_21 = findViewById(R.id.check_sub_21);
          ImageView check_sub_22 = findViewById(R.id.check_sub_22);
@@ -877,9 +878,10 @@ public class QuestionTemplate extends AppCompatActivity
          ImageView check_sub_31 = findViewById(R.id.check_sub_31);
          ImageView check_sub_32 = findViewById(R.id.check_sub_32);
          ImageView check_sub_33 = findViewById(R.id.check_sub_33);
-         ImageView check_sub_34 = findViewById(R.id.check_sub_34);
-         ImageView check_sub_35 = findViewById(R.id.check_sub_35);
-         ImageView check_sub_36 = findViewById(R.id.check_sub_36);
+
+         ImageView check_sub_34 = breedListSubMenuFourView.findViewById(R.id.check_sub_34);
+         ImageView check_sub_35 = breedListSubMenuFourView.findViewById(R.id.check_sub_35);
+         ImageView check_sub_36 = breedListSubMenuFourView.findViewById(R.id.check_sub_36);
          if(farmType == 1){
              View fattenListMenuTwo = findViewById(R.id.fatten_list_sub_menu_2);
              ImageView fatten_check_sub_5 = fattenListMenuTwo.findViewById(R.id.check_sub_5);
@@ -943,7 +945,7 @@ public class QuestionTemplate extends AppCompatActivity
          if(viewModel.getStrawScore() != -1) changeCheckImage(check_sub_5);
          if(viewModel.getProtocolTwoScore() != -1) changeCheckImage(check_total_2);
          //프로토콜 3
-         if(((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getNumberOfCow() != -1) changeCheckImage(check_sub_18);
+         if( (((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getNumberOfCow()) != -1) changeCheckImage(check_sub_18);
          if(viewModel.getCoughQuestion().getCoughPerOneAvg() != -1) changeCheckImage(check_sub_21);
          if(viewModel.getProtocolThreeScore() != -1) changeCheckImage(check_total_3);
          //프로토콜 4
@@ -1088,7 +1090,7 @@ public class QuestionTemplate extends AppCompatActivity
 
         AlertBuilder.setTitle("이전");
         AlertBuilder.setMessage("지금까지 평가한 항목이 사라집니다.\n" +
-                "정보 입력 화면으로 돌아가시겠습니까?");
+                "시작 화면으로 돌아가시겠습니까?");
         // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
         AlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog,int which){

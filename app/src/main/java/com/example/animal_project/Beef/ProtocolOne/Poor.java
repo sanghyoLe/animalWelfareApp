@@ -68,10 +68,9 @@ public class Poor extends Fragment {
                     ((QuestionTemplateViewModel.Question) viewModel.BreedPoor).setRatio(-1);
                     breed_poor_Rate_score.setText("-1");
                 } else {
-
-                    float ratio = getPoorRatio(farmType,String.valueOf(total_cow_count), ed_1_poorRate.getText().toString());
-                    viewModel.cutDecimal(ratio);
-                    breed_poor_Rate_ratio.setText(ratio + "%");
+                    float ratio = (Float.parseFloat(ed_1_poorRate.getText().toString()) / viewModel.getTotalCowSize()) * 100;
+                    ratio = viewModel.cutDecimal(ratio);
+                    breed_poor_Rate_ratio.setText(String.valueOf(ratio));
                     breed_poor_rate_score = Integer.parseInt(getPoorRateScore(farmType,ratio));
                     breed_poor_Rate_score.setText(String.valueOf(breed_poor_rate_score));
                     viewModel.setPoorScore(breed_poor_rate_score);
@@ -134,17 +133,7 @@ public class Poor extends Fragment {
         }
         return Integer.toString(poorScore);
     }
-    public float getPoorRatio(int farmType, String total, String rate){
-        Float totalFloat = Float.parseFloat(total);
-        Float rateFloat = Float.parseFloat(rate);
-        float ratio = (rateFloat / totalFloat) * 100;
-        if(viewModel.isBeef(farmType)){
-            if(ratio >= 1){
-                ratio = Math.round(ratio);
-            }
-        }
-        return ratio;
-    }
+
     
 
 }
