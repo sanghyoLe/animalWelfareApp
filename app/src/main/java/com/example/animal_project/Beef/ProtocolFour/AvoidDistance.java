@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -40,10 +41,12 @@ public class AvoidDistance extends Fragment {
     private TextView protocol_4;
     private EditText penLocationOne;
     private EditText penLocationTwo;
+    private boolean isTouched;
     private QuestionTemplateViewModel.avoidDistance[] avoidDistances;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        isTouched = false;
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         mc = new MilkCowScoreCalculator();
         view = inflater.inflate(R.layout.fragment_breed_avoid_distance, container, false);
@@ -138,11 +141,19 @@ public class AvoidDistance extends Fragment {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(spinnerAdapter);
 
+
         ArrayAdapter spinnerAdapterCowSize = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
                 R.array.cow_size_50,
                 android.R.layout.simple_dropdown_item_1line);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        mSpinner.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                isTouched = true;
+                return false;
+            }
+        });
         final int[] selectedItemIndex = new int[1];
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -162,7 +173,113 @@ public class AvoidDistance extends Fragment {
                 showQuestionView(questionViewArr, avoidDistanceArr,penLocationOneArr,penLocationTwoArr,cowSizeSpinnerArr,
                         penLocationAlreadyInput,alreadyCowSizeTv,btnArr,selectedItemIndex[0]);
 
+                if(isTouched){
+                    avoidDistances = viewModel.getAvoidDistances();
+                    boolean flagPenQuestion = true;
 
+                    for(int i = 1 ; i <= pen_size ;i++){
+                        if(avoidDistances[i].getCowSize() == -1){
+                            flagPenQuestion = true;
+                            avoid_distance_score_tv.setText(String.valueOf(i) + "번 표본펜 설문을 완료하세요");
+                            avoid_distance_ratio_tv.setText(String.valueOf(i) + "번 표본펜 설문을 완료하세요");
+                        } else {
+                            flagPenQuestion = false;
+                        }
+                    }
+
+                    if(flagPenQuestion == false){
+                        for(int i =1 ; i <=pen_size ;i++){
+                            int[] avoidDistanceLevel = avoidDistances[i].getAvoidDistance();
+                            for(int j = 0 ; j < avoidDistances[i].getCowSize() ; j++){
+                                if(avoidDistanceLevel[j] == 1){
+                                    viewModel.setAvoidDistanceLevelOneTotal(avoidDistanceLevel[j]);
+                                }else if(avoidDistanceLevel[j] == 2){
+                                    viewModel.setAvoidDistanceLevelTwoTotal(avoidDistanceLevel[j]);
+                                }else if(avoidDistanceLevel[j] == 3){
+                                    viewModel.setAvoidDistanceLevelThreeTotal(avoidDistanceLevel[j]);
+                                }else if(avoidDistanceLevel[j] == 4){
+                                    viewModel.setAvoidDistanceLevelFourTotal(avoidDistanceLevel[j]);
+                                }
+                            }
+                        }
+                        if(viewModel.isBeef(viewModel.getFarmType())){
+                            viewModel.setAvoidDistanceRatio((float)
+                                    viewModel.calculatorAvoidDistanceRatio(
+                                            viewModel.getAvoidDistanceLevelOneTotal(),
+                                            viewModel.getAvoidDistanceLevelTwoTotal(),
+                                            viewModel.getAvoidDistanceLevelThreeTotal(),
+                                            viewModel.getAvoidDistanceLevelFourTotal()
+                                    )
+                            );
+                            viewModel.setAvoidDistanceScore(
+                                    viewModel.calculatorAvoidDistanceScore(
+                                            viewModel.calculatorAvoidDistanceRatio(
+                                                    viewModel.getAvoidDistanceLevelOneTotal(),
+                                                    viewModel.getAvoidDistanceLevelTwoTotal(),
+                                                    viewModel.getAvoidDistanceLevelThreeTotal(),
+                                                    viewModel.getAvoidDistanceLevelFourTotal()
+                                            )
+                                    )
+                            );
+                        } else {
+                            viewModel.setAvoidDistanceRatio((float)
+                                    mc.calculatorAvoidDistanceRatio(
+                                            viewModel.getAvoidDistanceLevelOneTotal(),
+                                            viewModel.getAvoidDistanceLevelTwoTotal(),
+                                            viewModel.getAvoidDistanceLevelThreeTotal(),
+                                            viewModel.getAvoidDistanceLevelFourTotal()
+                                    )
+                            );
+                            viewModel.setAvoidDistanceScore(
+                                    mc.calculatorAvoidDistanceScore(
+                                            mc.calculatorAvoidDistanceRatio(
+                                                    viewModel.getAvoidDistanceLevelOneTotal(),
+                                                    viewModel.getAvoidDistanceLevelTwoTotal(),
+                                                    viewModel.getAvoidDistanceLevelThreeTotal(),
+                                                    viewModel.getAvoidDistanceLevelFourTotal()
+                                            )
+                                    )
+                            );
+                        }
+
+                        avoid_distance_ratio_tv.setText(String.valueOf(viewModel.getAvoidDistanceRatio()));
+                        avoid_distance_score_tv.setText(String.valueOf(viewModel.getAvoidDistanceScore()));
+                    }
+
+                    if (viewModel.getSocialBehaviorScore() == -1) {
+                        protocol_4.setText("사회적 행동의 표현 평가를 완료하세요");
+                    } else if(viewModel.getAvoidDistanceScore()== -1 ) {
+                        protocol_4.setText("회피 거리 평가를 완료하세요");
+                    }
+                    else
+                    {
+                        if(viewModel.isBeef(viewModel.getFarmType())){
+                            viewModel.setProtocolFourScore(
+                                    viewModel.calculatorProtocolFourScore
+                                            (
+                                                    viewModel.getFarmType(),
+                                                    viewModel.getSocialBehaviorScore(),
+                                                    viewModel.getAvoidDistanceScore()
+                                            )
+                            );
+                        }  else {
+                            viewModel.setProtocolFourScore(
+                                    viewModel.calculatorProtocolFourScore
+                                            (
+                                                    viewModel.getFarmType(),
+                                                    ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getRepScore(),
+                                                    viewModel.getAvoidDistanceScore()
+                                            )
+                            );
+                        }
+
+                        protocol_4.setText(String.valueOf(viewModel.getProtocolFourScore()));
+
+                    }
+                    showQuestionView(questionViewArr, avoidDistanceArr,penLocationOneArr,penLocationTwoArr,cowSizeSpinnerArr,
+                            penLocationAlreadyInput,alreadyCowSizeTv,btnArr,pen_size);
+                    viewModel.avoidDistances[1].setPenSize(pen_size);
+                }
             }
 
 
@@ -278,11 +395,10 @@ public class AvoidDistance extends Fragment {
                 viewModel.setAvoidDistance(pen_number,avoidDistance);
                 QuestionTemplateViewModel.avoidDistance avoid = viewModel.getAvoidDistance(pen_number);
 
-                int[] exAvoid = avoid.getAvoidDistance();
-                int[] exCowNum = avoid.getCowNumber();
 
 
                 btnArr[pen_number-1].setVisibility(View.INVISIBLE);
+
                 avoidDistances = viewModel.getAvoidDistances();
                 boolean flagPenQuestion = true;
 

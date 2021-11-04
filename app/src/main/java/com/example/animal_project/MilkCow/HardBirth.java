@@ -30,7 +30,11 @@ public class HardBirth extends Fragment {
         EditText hardBirthYearAvgEd = (EditText) view.findViewById(R.id.hard_birth_year_avg_ed);
         EditText hardBirthCountEd = (EditText) view.findViewById(R.id.hard_birth_count_ed);
         TextView hardBirthRatioTv = (TextView) view.findViewById(R.id.hard_birth_ratio_tv);
-
+        if(((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getRatio() != -1){
+            hardBirthRatioTv.setText(String.valueOf(
+                    ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getRatio()
+            ));
+        }
         hardBirthYearAvgEd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

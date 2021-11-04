@@ -106,6 +106,9 @@ public class CustomDialog {
         TextView adminMemberTv = searchView.findViewById(R.id.admin_member);
         Spinner searchFilterSpinner = searchView.findViewById(R.id.search_filter_spinner);
         EditText searchEd = searchView.findViewById(R.id.search_ed);
+        LinearLayout datePickerLayout = searchView.findViewById(R.id.date_picker_layout);
+        TextView beforeDateTv = searchView.findViewById(R.id.before_date_picker_tv);
+        TextView afterDateTv = searchView.findViewById(R.id.after_date_picker);
         Button searchBtn = searchView.findViewById(R.id.search_btn);
         RadioGroup cowKindRg = searchView.findViewById(R.id.cow_kind_rg);
         LinearLayout normalMemberLayout = searchView.findViewById(R.id.normal_member_layout);
@@ -197,10 +200,16 @@ public class CustomDialog {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = parent.getSelectedItem().toString();
                 searchFilterString = selectedItem;
+
                 if(searchFilterString.equals("전체")){
                     searchEd.setVisibility(View.GONE);
+                    datePickerLayout.setVisibility(View.GONE);
+                }else if(searchFilterString.equals("평가일")){
+                    searchEd.setVisibility(View.GONE);
+                    datePickerLayout.setVisibility(View.VISIBLE);
                 }else {
                     searchEd.setVisibility(View.VISIBLE);
+                    datePickerLayout.setVisibility(View.GONE);
                 }
             }
 
@@ -223,7 +232,10 @@ public class CustomDialog {
                         if (searchFilterString.equals("전체")) {
                             CheckData task = new CheckData();
                             task.execute("http://" + IP_ADDRESS + "/getSearchResultJson.php", searchWord, searchFilterString, searchCowKind);
-                        } else {
+                        } else if(searchFilterString.equals("평가일")){
+
+                        }
+                        else {
                             if (TextUtils.isEmpty(searchEd.getText().toString())) {
                                 Toast.makeText(context, "검색어를 입력하세요", Toast.LENGTH_SHORT).show();
                             } else {

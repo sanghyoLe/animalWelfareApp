@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -28,11 +29,12 @@ public class SitTime extends Fragment {
     private int sitCount;
     private EditText[] sitTimeAnswer;
     float sitTimeAvg = 0;
-
+    private boolean isTouched;
     int sitTimeScore;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        isTouched = false;
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
 
 
@@ -124,6 +126,13 @@ public class SitTime extends Fragment {
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(), R.array.sit_collision_num, android.R.layout.simple_dropdown_item_1line);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         numSpinner.setAdapter(spinnerAdapter);
+        numSpinner.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                isTouched = true;
+                return false;
+            }
+        });
 
         final int[] selectedItemIndex = new int[1];
         numSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -139,8 +148,16 @@ public class SitTime extends Fragment {
                 }
                 if(selectedItemIndex[0] != 0){
                     sitCount = selectedItemIndex[0] + 5;
+
+                    sitTimeAnswer = makeEditText(questionViewArr, sitCount, R.id.sit_time_duration);
                     showQuestionView(questionViewArr, sitCount);
-                    sitTimeAnswer = viewModel.makeEditText(questionViewArr, sitCount, R.id.sit_time_duration);
+                    if(isTouched){
+                        for(int i = 0 ; i< sitCount ; i++){
+                            ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).setSitTime(String.valueOf(-1),i);
+                            sitTimeAnswer[i].setText("");
+                        }
+
+                    }
                     ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).setSitCount(sitCount);
                     for(int i = 0 ; i < sitCount; i++){
                         int finalI = i;
@@ -230,6 +247,19 @@ public class SitTime extends Fragment {
             }
         }
 
+    }
+    public EditText[] makeEditText(View[] QuestionViewArr, int dongSize, int id){
+        EditText[] newEditText = new EditText[dongSize];
+        int[] sitTime = ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getSitTime();
+        for(int i = 0 ; i < dongSize ; i++){
+            newEditText[i] = QuestionViewArr[i].findViewById(id);
+            if(sitTime[i] != -1){
+                newEditText[i].setText(
+                        String.valueOf(sitTime[i])
+                );
+            }
+        }
+        return newEditText;
     }
     public int calculatorSitTimeScore(float sitTime) {
         int sitTimeScore = 0;

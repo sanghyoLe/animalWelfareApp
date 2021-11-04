@@ -31,25 +31,11 @@ public class BreedLimp extends Fragment {
         EditText breedLimpEd = view.findViewById(R.id.breed_limp_ed);
         TextView breedLimpScoreTV = view.findViewById(R.id.breed_limp_score);
         TextView breedLimpRatioTv = view.findViewById(R.id.breed_limp_ratio);
-        LinearLayout limpStandardLayout = view.findViewById(R.id.limp_standard_layout);
+
         LinearLayout limpScoreLayout = view.findViewById(R.id.limp_score_layout);
 
         // 한육우가 아닐 경우 다리절음 기준 버튼 VISIBLE, 점수 Layout GONE
-        if(!viewModel.isBeef(viewModel.getFarmType())){
-            limpStandardLayout.setVisibility(View.VISIBLE);
-            limpScoreLayout.setVisibility(View.GONE);
-        } else {
-            limpScoreLayout.setVisibility(View.VISIBLE);
-        }
-        Button standard_btn = view.findViewById(R.id.standard_btn);
-        standard_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CustomDialog customDialog = new CustomDialog(BreedLimp.this.getContext());
-                    customDialog.setImage(R.drawable.milk_cow_limp);
 
-            }
-        });
 
         breedLimpEd.addTextChangedListener(new TextWatcher() {
             @Override

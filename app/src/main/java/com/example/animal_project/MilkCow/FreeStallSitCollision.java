@@ -1,7 +1,10 @@
 package com.example.animal_project.MilkCow;
 
+import android.net.sip.SipSession;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -24,6 +27,7 @@ public class FreeStallSitCollision extends Fragment {
 
     private View view;
     private int sitCount;
+    private boolean isTouched;
     private TextView sitCollisionRatioTv;
     private TextView sitCollisionScoreTv;
     private CheckBox[] sitCollisionCB;
@@ -31,13 +35,27 @@ public class FreeStallSitCollision extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        isTouched = false;
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
 
-        view = inflater.inflate(R.layout.fragment_freestall_sit_collision, container,
+        view = inflater.inflate(R.layout.fragment_freestall_sit_collision, container, false);
 
-                false);
+
         sitCollisionRatioTv = view.findViewById(R.id.sit_collision_ratio);
         sitCollisionScoreTv = view.findViewById(R.id.sit_collision_score);
+
+        if(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getRatio() != -1){
+          sitCollisionRatioTv.setText(
+                  String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getRatio())
+          );
+        }
+        if(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getScore() != -1){
+            sitCollisionScoreTv.setText(
+                    String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getScore())
+            );
+        }
+
+
         View question_1 = view.findViewById(R.id.free_stall_sit_collision_question_1);
         View question_2 = view.findViewById(R.id.free_stall_sit_collision_question_2);
         View question_3 = view.findViewById(R.id.free_stall_sit_collision_question_3);
@@ -101,66 +119,89 @@ public class FreeStallSitCollision extends Fragment {
                 question_41, question_42, question_43, question_44, question_45
                 , question_46, question_47, question_48, question_49, question_50};
 
+
+
+
+
+
+        final int[] selectedItemIndex = new int[1];
         Spinner numSpinner = view.findViewById(R.id.sit_collision_spinner);
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(), R.array.sit_collision_num, android.R.layout.simple_dropdown_item_1line);
 
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         numSpinner.setAdapter(spinnerAdapter);
 
-
-        Button standard_btn = view.findViewById(R.id.standard_btn);
-        standard_btn.setOnClickListener(new View.OnClickListener() {
+        numSpinner.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                CustomDialog customDialog = new CustomDialog(FreeStallSitCollision.this.getContext());
-                    customDialog.setImage(R.drawable.sit_collision);
+            public boolean onTouch(View v, MotionEvent event) {
+                isTouched = true;
+                return false;
             }
         });
-
-        final int[] selectedItemIndex = new int[1];
         numSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedItemIndex[0] = position;
                 // 선택된 데이터 값
                 String selectedItem = parent.getSelectedItem().toString();
                 // 선택된 데이터 위치( 0 부터 )
-                selectedItemIndex[0] = position;
+
                 if(selectedItemIndex[0] == 0){
                     showQuestionView(questionViewArr,0);
                 }else if(selectedItemIndex[0] != 0) {
-                    sitCount = selectedItemIndex[0] + 5;
-                    showQuestionView(questionViewArr, sitCount);
-                    sitCollisionCB = makeCheckBoxArr(questionViewArr, sitCount, R.id.collision_check_box);
-                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setSitCount(sitCount);
 
-                    for(int i = 0 ; i < sitCount ; i++){
-                        ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setSitCollision(false,i);
-                        sitCollisionCB[i].setChecked(false);
-                    }
-                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setRatio(
-                            ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).calculatorRatio(
-                                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getSitCollision(),
-                                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getSitCount()
-                            )
-                    );
-                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setScore(
-                            ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).calculatorScore(
-                                    ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getRatio()
-                            )
-                    );
+                        sitCount = selectedItemIndex[0] + 5;
+                        sitCollisionCB = makeCheckBoxArr(questionViewArr, sitCount, R.id.collision_check_box);
+                        showQuestionView(questionViewArr, sitCount);
 
-                    sitCollisionRatioTv.setText(String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getRatio()));
-                    sitCollisionScoreTv.setText(String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getScore()));
-                    for(int i  = 0; i < sitCount ; i++){
-                        onClickSitCollisionCheckBox(sitCollisionCB[i],i);
+
+                        if(isTouched){
+                            for(int i = 0 ; i < sitCount ; i++){
+                                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setSitCollision(false,i);
+                                sitCollisionCB[i].setChecked(false);
+                            }
+                        }
+
+
+
+                        ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setSitCount(sitCount);
+
+
+
+                        ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setRatio(
+                                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).calculatorRatio(
+                                        ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getSitCollision(),
+                                        ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getSitCount()
+                                )
+                        );
+                        ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).setScore(
+                                ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).calculatorScore(
+                                        ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getRatio()
+                                )
+                        );
+
+                        sitCollisionRatioTv.setText(String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getRatio()));
+                        sitCollisionScoreTv.setText(String.valueOf(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getScore()));
+                        for(int i  = 0; i < sitCount ; i++){
+                            onClickSitCollisionCheckBox(sitCollisionCB[i],i);
+                            }
+                        }
                     }
-                }
-            }
+
+
+
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
+
+
+
+
+
+
 
 
 
@@ -186,12 +227,18 @@ public class FreeStallSitCollision extends Fragment {
             }
         }
 
+
+
     }
 
     private CheckBox[] makeCheckBoxArr(View[] view,int sitCount, int id){
         CheckBox[] checkBoxes = new CheckBox[sitCount];
         for(int i = 0 ; i <  sitCount ;  i++){
             checkBoxes[i] = view[i].findViewById(id);
+            boolean[] sitCollisionCheck = ((QuestionTemplateViewModel.SitCollisionQuestion) viewModel.SitCollision).getSitCollision();
+                if (sitCollisionCheck[i] == true) {
+                    checkBoxes[i].setChecked(true);
+            }
         }
         return checkBoxes;
     }
@@ -220,4 +267,5 @@ public class FreeStallSitCollision extends Fragment {
             }
         });
     }
+
 }

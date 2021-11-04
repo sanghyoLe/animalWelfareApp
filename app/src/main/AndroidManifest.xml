@@ -14,32 +14,54 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
+
         <activity
+            android:screenOrientation="portrait"
             android:name=".MultipleAnswerResult.AvoidDistanceDetailSearchResult"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".MultipleAnswerResult.MultipleAnswerSearchResultActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Result.DetailSearchAdminMemberActivity"
             android:exported="true" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Result.ResultActivity"
             android:exported="true" />
-        <activity android:name=".MilkCow.FreeStallCountDong" />
-        <activity android:name=".MilkCow.MilkCowStruggleDong" />
-        <activity android:name=".Beef.ProtocolFour.AvoidDistanceCowQuestions" />
-        <activity android:name=".Beef.ProtocolFour.BreedHarmonyDong" />
-        <activity android:name=".Beef.ProtocolFour.BreedStruggleDong" />
-        <activity android:name=".Beef.ProtocolThree.BreedCoughDong" />
-        <activity android:name=".Beef.ProtocolTwo.BreedStrawDong" />
-        <activity android:name=".Beef.ProtocolOne.WaterTimeDong" />
-        <activity android:name=".QuestionTemplate" />
-        <activity android:name=".WebViewActivity" />
-        <activity android:name=".InputUserInfo" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".Result.DetailSearchNormalMemberActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".MilkCow.FreeStallCountDong" />
+        <activity
+            android:name=".MilkCow.MilkCowStruggleDong"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Beef.ProtocolFour.AvoidDistanceCowQuestions"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Beef.ProtocolFour.BreedHarmonyDong"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Beef.ProtocolFour.BreedStruggleDong"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Beef.ProtocolThree.BreedCoughDong"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Beef.ProtocolTwo.BreedStrawDong"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Beef.ProtocolOne.WaterTimeDong"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".QuestionTemplate"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".WebViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".InputUserInfo"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SearchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Result.DetailSearchNormalMemberActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

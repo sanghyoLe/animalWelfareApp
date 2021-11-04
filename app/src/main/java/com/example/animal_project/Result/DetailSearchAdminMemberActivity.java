@@ -433,9 +433,7 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
                     pregnantCowSize = item.getString("pregnantCowSize");
                 }
                 evaName = item.getString("evaluatorName");
-                evaDate = item.getString("evaluatorYear") + "-"
-                        + item.getString("evaluatorMonth") + "-"
-                        + item.getString("evaluatorDay");
+                evaDate = item.getString("evaluatorDate");
 
 
 

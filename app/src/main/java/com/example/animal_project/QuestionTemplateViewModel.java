@@ -557,7 +557,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         }
         public float calculatorTotalRatio(float accessTroubleRatio, float exitTroubleRatio){
             float totalRatio = (float) (accessTroubleRatio * 0.6 + exitTroubleRatio * 0.4);
-            totalRatio = totalRatio * 100;
+
             totalRatio = (float)(Math.round(totalRatio*100)/100.0);
             return totalRatio;
         }
@@ -703,6 +703,8 @@ public class QuestionTemplateViewModel extends ViewModel {
 
         public SitCollisionQuestion(int sitCount){
             this.sitCount = sitCount;
+            this.ratio = -1;
+            this.score = -1;
             this.sitCollision = new boolean[sitCount];
             for(int i = 0; i < sitCount; i++){
                 this.sitCollision[i] = false;
@@ -728,7 +730,9 @@ public class QuestionTemplateViewModel extends ViewModel {
                     sitCollisionCount += 1;
                 }
             }
-            ratio = ((float) (Math.round( ((float)sitCollisionCount / (float)sitCount) * 100)));
+            ratio = (float)sitCollisionCount / (float)sitCount;
+            ratio = ratio * 100;
+            ratio =(float) (Math.round(ratio * 100) / 100.0);
 
             return ratio;
         }

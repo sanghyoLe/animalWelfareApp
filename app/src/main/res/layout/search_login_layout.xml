@@ -106,11 +106,45 @@
                     android:background="@drawable/round_square"
                     android:layout_weight="0.6"
                     android:textSize="15dp"
+                    android:visibility="visible"
                     android:padding="5dp"
-
                     android:layout_gravity="center_vertical"
                     android:hint="검색어를 입력해주세요."
                     android:gravity="center"/>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_weight="0.6"
+                    android:layout_width="0dp"
+                    android:id="@+id/date_picker_layout"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/before_date_picker_tv"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/black"
+                        android:text="2000-01-10"/>
+                    <TextView
+                        android:gravity="center"
+                        android:layout_weight="0.3"
+                        android:layout_width="0dp"
+                        android:textSize="25sp"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content"
+                        android:text="-"/>
+                    <TextView
+                        android:id="@+id/after_date_picker"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/black"
+                        android:text="2000-01-10"/>
+
+
+                </LinearLayout>
             </LinearLayout>
             <Button
                 android:id="@+id/search_btn"
@@ -126,7 +160,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:visibility="gone"
+            android:visibility="visible"
             android:gravity="center"
             android:layout_margin="20dp"
             android:id="@+id/admin_member_layout">

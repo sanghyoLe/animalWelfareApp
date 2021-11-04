@@ -33,15 +33,8 @@ public class CriticalLimp extends Fragment {
         TextView criticalLimpRatioTv = view.findViewById(R.id.critical_limp_ratio);
         TextView totalRatioTv = view.findViewById(R.id.total_limp_ratio);
         TextView totalScoreTv = view.findViewById(R.id.total_limp_score);
-        Button standard_btn = view.findViewById(R.id.standard_btn);
-        standard_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CustomDialog customDialog = new CustomDialog(CriticalLimp.this.getContext());
-                customDialog.setImage(R.drawable.milk_cow_critical_limp);
 
-            }
-        });
+
 
 
 

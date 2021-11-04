@@ -62,7 +62,7 @@ public class MovementStability extends Fragment {
                     ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).setScore(-1);
                 }else {
                     float ratio = (Float.parseFloat(accessTroubleEd.getText().toString()) / viewModel.getMilkCowSize()) * 100;
-                    ratio = (float) (Math.round(ratio*100)/100.0);
+                    ratio = viewModel.cutDecimal(ratio);
                     accessTroubleRatioTv.setText(String.valueOf(ratio) + "%");
                     ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).setAccessTroubleRatio(ratio);
                     ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).setAccessTroubleCowCount(
@@ -125,7 +125,7 @@ public class MovementStability extends Fragment {
                     ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).setScore(-1);
                 }else {
                     float ratio = (Float.parseFloat(exitTroubleEd.getText().toString()) / viewModel.getMilkCowSize()) * 100;
-                    ratio = (float) (Math.round(ratio*100)/100.0);
+                    ratio = viewModel.cutDecimal(ratio);
                     exitTroubleRatioTv.setText(String.valueOf(ratio));
                     ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).setExitTroubleRatio(ratio);
                     ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).setExitTroubleCowCount(

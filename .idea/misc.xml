@@ -102,6 +102,7 @@
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_detail_search_normal_member.xml" value="0.25" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_dong_question_search_result.xml" value="0.36205128205128206" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_free_stall_count_dong.xml" value="0.36205128205128206" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_input_userinfo.xml" value="0.3466666666666667" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_multiple_answer_search_result.xml" value="0.25" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_question_template.xml" value="0.33" />
@@ -127,15 +128,21 @@
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/eva_score_ratio_list_view.xml" value="0.30185185185185187" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/eva_score_ratio_search_result.xml" value="0.25" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/eva_score_search_result.xml" value="0.5" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_limp.xml" value="0.19907407407407407" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_critical_limp.xml" value="0.1" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_freestall_sit_collision.xml" value="0.19831223628691982" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_sit_time.xml" value="0.33" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/free_stall_count_item_list.xml" value="0.1" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/free_stall_sit_collision_num_template.xml" value="0.33" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/list_menu.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/list_sub_menu_3.xml" value="0.3466666666666667" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/m_custom_dialog.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/milk_cow_struggle_item_list.xml" value="0.33" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/milk_cow_struggle_template.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/multiple_answer_result_identifiers.xml" value="0.33" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/mutilple_answer_result_titles.xml" value="0.36770833333333336" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/result_total.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/search_login_layout.xml" value="0.25" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/sit_question_item_list.xml" value="0.3466666666666667" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/straw_item_list.xml" value="0.33" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/total_score_item_list.xml" value="0.1" />
