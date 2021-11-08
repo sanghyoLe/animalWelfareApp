@@ -1,13 +1,16 @@
 package com.example.animal_project;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -27,8 +31,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+
 import com.example.animal_project.R;
 import com.example.animal_project.SearchActivity;
+import com.google.android.material.datepicker.MaterialDatePicker;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -36,6 +43,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -49,6 +61,16 @@ public class CustomDialog {
     protected Dialog dlg;
     private String searchFilterString;
     private Boolean isAdminMember;
+    private DatePickerDialog afterDatePicker;
+    private DatePickerDialog beforeDatePicker;
+    private Calendar beforeCalendar;
+    private Calendar afterCalendar;
+    private long beforeTime;
+    private long afterTime;
+
+    private String searchBeforeDate;
+    private String searchAfterDate;
+
 
     public CustomDialog(Context context) {
         this.context = context;
@@ -91,6 +113,7 @@ public class CustomDialog {
         }
     });
     }
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void searchDialog(){
         dlg = new Dialog(context);
         // 커스텀 다이얼로그를 정의하기위해 Dialog클래스를 생성한다.
@@ -117,7 +140,12 @@ public class CustomDialog {
         EditText adminMemberPasswordEd = searchView.findViewById(R.id.admin_member_password);
         Button adminMemberLoginBtn = searchView.findViewById(R.id.admin_member_login_btn);
         isAdminMember = false;
+        String currentDateTimeString = DateFormat.getDateInstance().format(new Date());
+        Date dt = new Date();
 
+        SimpleDateFormat currentDateTime = new SimpleDateFormat("yyyy-MM-dd");
+
+        afterDateTv.setText(currentDateTime.format(dt).toString());
 
 
 
@@ -233,7 +261,10 @@ public class CustomDialog {
                             CheckData task = new CheckData();
                             task.execute("http://" + IP_ADDRESS + "/getSearchResultJson.php", searchWord, searchFilterString, searchCowKind);
                         } else if(searchFilterString.equals("평가일")){
-
+                            searchBeforeDate = beforeDateTv.getText().toString();
+                            searchAfterDate = afterDateTv.getText().toString();
+                            CheckData task = new CheckData();
+                            task.execute("http://" +IP_ADDRESS + "/getSearchResultJson.php",searchWord,searchFilterString,searchCowKind,searchBeforeDate,searchAfterDate);
                         }
                         else {
                             if (TextUtils.isEmpty(searchEd.getText().toString())) {
@@ -250,6 +281,58 @@ public class CustomDialog {
         });
 
 
+        long currentTime = new Date().getTime();
+
+        afterDatePicker = new DatePickerDialog(context);
+        beforeDatePicker = new DatePickerDialog(context);
+        afterDatePicker.getDatePicker().setMaxDate(currentTime);
+        beforeDatePicker.getDatePicker().setMaxDate(currentTime);
+
+
+
+
+        beforeDatePicker.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+
+                beforeDateTv.setText(year + "-" + (month+1) + "-" + dayOfMonth);
+                if(beforeCalendar != null){
+                    beforeCalendar.set(year, month, dayOfMonth);
+                    afterDatePicker.getDatePicker().setMinDate(beforeCalendar.getTimeInMillis());
+                    afterDatePicker.show();
+                }
+
+            }
+
+        });
+        afterDatePicker.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                afterDateTv.setText(year + "-" + (month+1) + "-" + dayOfMonth);
+            }
+        });
+
+
+
+        beforeDateTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                beforeCalendar = Calendar.getInstance();
+                afterDatePicker.getDatePicker().setMinDate(new Date().getTime()-2000000000);
+                if (beforeDateTv.isClickable()) {
+                    beforeDatePicker.show();
+                }
+            }
+        });
+        afterDateTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (beforeDateTv.isClickable()) {
+                    beforeDatePicker.show();
+                }
+            }
+        });
 
 
 
@@ -295,6 +378,10 @@ public class CustomDialog {
                 bundle.putString("searchWord",searchWord);
                 bundle.putString("searchCowKind",searchCowKind);
                 bundle.putString("searchFilterString",searchFilterString);
+                if(searchFilterString.equals("평가일")){
+                    bundle.putString("searchBeforeDate",searchBeforeDate);
+                    bundle.putString("searchAfterDate",searchAfterDate);
+                }
                 bundle.putBoolean("isAdminMember",isAdminMember);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
@@ -309,10 +396,18 @@ public class CustomDialog {
             String searchWord = params[1];
             String searchFilterString = params[2];
             String searchCowKind = params[3];
+            if(searchFilterString.equals("평가일")){
+                String searchBeforeDate = params[4];
+                String searchAfterDate = params[5];
+
+            }
+
             String postParameters =
                     "searchWord=" + searchWord
                             +"&searchFilterString=" + searchFilterString
-                            +"&searchCowKind=" + searchCowKind;
+                            +"&searchCowKind=" + searchCowKind
+                            +"&searchBeforeDate=" + searchBeforeDate
+                            +"&searchAfterDate=" + searchAfterDate;
 
 
             try {
@@ -376,4 +471,6 @@ public class CustomDialog {
 
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
+    // 기간을 선택하기 위한 datePicker
+
 }

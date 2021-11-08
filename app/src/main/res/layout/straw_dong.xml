@@ -30,7 +30,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="clickDongHandler"
-                    android:src="@drawable/outline_home_24" />
+                    android:src="@drawable/outline_arrow_back_24" />
             </LinearLayout>
         </LinearLayout>
 

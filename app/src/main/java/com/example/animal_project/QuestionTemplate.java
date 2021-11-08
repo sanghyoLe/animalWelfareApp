@@ -209,6 +209,7 @@ public class QuestionTemplate extends AppCompatActivity
     QuestionTemplateViewModel viewModel;
 
     AlertDialog.Builder myAlertBuilder;
+    AlertDialog.Builder endBtnAlertBuilder;
 
 
     private int[] drawableIdArr = new int[20];
@@ -234,6 +235,7 @@ public class QuestionTemplate extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_template);
         myAlertBuilder = new AlertDialog.Builder(QuestionTemplate.this);
+        endBtnAlertBuilder = new AlertDialog.Builder(QuestionTemplate.this);
 
         // 결과 창 fragments  ?Activity 로 변경할 지 고민중(변경 시 모든 정보 Bundle 로 결과창에 넘겨주어야 함) ----------------------
         result_total = new ResultTotal();
@@ -759,14 +761,30 @@ public class QuestionTemplate extends AppCompatActivity
 
             case R.id.end_btn:
                 // database 연동
-                viewModel.setTotalProtocolScoreString(viewModel.calculatorTotalProtocolScoreString());
-                InsertAnswerFunc();
-                Bundle resultBundle = new Bundle();
-                makeResultBundle(resultBundle);
-                Intent intentResultActivity = new Intent(QuestionTemplate.this, ResultActivity.class);
-                intentResultActivity.putExtras(resultBundle);
-                startActivity(intentResultActivity);
-                finish();
+
+                endBtnAlertBuilder.setTitle("완료");
+                endBtnAlertBuilder.setMessage("평가를 완료하면\n평가 내용을 수정할 수 없습니다.\n평가를 완료하시겠습니까?");
+                // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
+                endBtnAlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog,int which){
+
+                    }
+                });
+                endBtnAlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        viewModel.setTotalProtocolScoreString(viewModel.calculatorTotalProtocolScoreString());
+                        InsertAnswerFunc();
+                        Bundle resultBundle = new Bundle();
+                        makeResultBundle(resultBundle);
+                        Intent intentResultActivity = new Intent(QuestionTemplate.this, ResultActivity.class);
+                        intentResultActivity.putExtras(resultBundle);
+                        startActivity(intentResultActivity);
+                        finish();
+                    }
+                });
+                endBtnAlertBuilder.show();
+
 
         }
     }

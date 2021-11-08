@@ -5,7 +5,9 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
-
+    repositories {
+        jcenter()
+    }
     defaultConfig {
         applicationId "com.example.fragmentexample2"
        minSdkVersion 16
@@ -45,6 +47,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.reginald:editspinner:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
     compile 'com.github.chrisbanes.photoview:library:1.2.3'
 
 

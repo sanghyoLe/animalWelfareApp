@@ -51,6 +51,8 @@ public class SearchActivity extends AppCompatActivity {
     private String searchWord;
     private String searchCowKind;
     private String searchFilterString;
+    private String searchBeforeDate;
+    private String searchAfterDate;
     private Boolean isAdminMember;
     private TextView searchTitleTv;
     private TextView detailSearchTitle;
@@ -67,7 +69,12 @@ public class SearchActivity extends AppCompatActivity {
         searchWord = bundle.getString("searchWord");
         searchCowKind = bundle.getString("searchCowKind");
         searchFilterString = bundle.getString("searchFilterString");
+        if(searchFilterString.equals("평가일")){
+            searchBeforeDate = bundle.getString("searchBeforeDate");
+            searchAfterDate = bundle.getString("searchAfterDate");
+        }
         isAdminMember = bundle.getBoolean("isAdminMember");
+
 
 
 
@@ -110,7 +117,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
         GetData task = new GetData();
-        task.execute("http://" + IP_ADDRESS + "/getSearchResultJson.php",searchWord,searchFilterString,searchCowKind);
+        task.execute("http://" + IP_ADDRESS + "/getSearchResultJson.php",searchWord,searchFilterString,searchCowKind,searchBeforeDate,searchAfterDate);
 
     }
     private class GetData extends AsyncTask<String, Void, String>{
@@ -150,10 +157,15 @@ public class SearchActivity extends AppCompatActivity {
             String searchWord = params[1];
             String searchFilterString = params[2];
             String searchCowKind = params[3];
+            String searchBeforeDate = params[4];
+            String searchAfterDate = params[5];
+
             String postParameters =
                     "searchWord=" + searchWord
-                    +"&searchFilterString=" + searchFilterString
-                    +"&searchCowKind=" + searchCowKind;
+                            +"&searchFilterString=" + searchFilterString
+                            +"&searchCowKind=" + searchCowKind
+                            +"&searchBeforeDate=" + searchBeforeDate
+                            +"&searchAfterDate=" + searchAfterDate;
 
 
             try {
