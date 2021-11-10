@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -25,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.animal_project.Insert.InsertEvaInfo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -42,7 +44,7 @@ public class InputUserInfo extends AppCompatActivity {
     private LinearLayout beef_group;
     private LinearLayout milk_cow_group;
     private Bundle bundle = new Bundle();
-
+    private CheckBox agreeCheckBox;
 
     private EditText farm_name_et;
     private EditText zipcode_et;
@@ -118,6 +120,9 @@ public class InputUserInfo extends AppCompatActivity {
         pregnant_cow_et = findViewById(R.id.pregnant_cow_ed);
 
         back_btn = findViewById(R.id.back_btn);
+        eva_data_picker.setMaxDate(new Date().getTime());
+
+        agreeCheckBox = findViewById(R.id.agree_check_box);
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,8 +131,19 @@ public class InputUserInfo extends AppCompatActivity {
                 finish();
             }
         });
+        agreeCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                    CustomDialog agreeDialog = new CustomDialog(InputUserInfo.this);
+                    if(agreeDialog.agreePrivacyDialog()){
+                        agreeCheckBox.setChecked(true);
+                    } else {
+                        agreeCheckBox.setChecked(false);
+                    }
 
+            }
+        });
 
 
         // 한육우 라디오 그룹 클릭 시

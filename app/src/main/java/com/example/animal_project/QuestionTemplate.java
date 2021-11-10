@@ -773,7 +773,20 @@ public class QuestionTemplate extends AppCompatActivity
                 endBtnAlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        viewModel.setTotalProtocolScoreString(viewModel.calculatorTotalProtocolScoreString());
+                        viewModel.setTotalProtocolScoreString(
+                                viewModel.calculatorTotalProtocolScoreString(
+                                        viewModel.getProtocolOneScore(),
+                                        viewModel.getProtocolTwoScore(),
+                                        viewModel.getProtocolThreeScore(),
+                                        viewModel.getProtocolFourScore()
+                                )
+                        );
+                        Log.d("protocolOneScore",String.valueOf(viewModel.getProtocolOneScore()));
+                        Log.d("protocolOneScore",String.valueOf(viewModel.getProtocolTwoScore()));
+                        Log.d("protocolOneScore",String.valueOf(viewModel.getProtocolThreeScore()));
+                        Log.d("protocolOneScore",String.valueOf(viewModel.getProtocolFourScore()));
+                        Log.d("protocolOneScore",String.valueOf(viewModel.getTotalProtocolScoreString()));
+
                         InsertAnswerFunc();
                         Bundle resultBundle = new Bundle();
                         makeResultBundle(resultBundle);

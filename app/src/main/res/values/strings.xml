@@ -255,7 +255,7 @@
     <string name="struggle_ratio_1">평균 머리박치기 빈도(1마리/1시간)</string>
     <string name="struggle_ratio_2">평균 머리박치기 제외 투쟁행동빈도(1마리/1시간)</string>
 
-    // totalScoreString
+    <!-- totalScoreString -->
     <string name="total_score_explain_excellent">우수한 동물복지 수준이 제공되는 농장입니다.
         \n현재와 같은 쾌적한 환경과 정밀사양관리가
         \n우군 전 생애주기에 걸쳐 유지되기를 바랍니다.
@@ -273,19 +273,14 @@
         \n농장에 최소한의 동물복지부터 제공할 수 있도록 \n모든 항목의 점검이 필요합니다.
     </string>
 
+    <!-- Agree Dialog -->
+    <string name="agree_privacy_main_text">
+        개인정보보호법 등 관련 법규에 의거하여 ---는 고객님의 개인정보 수집 및 활용에 대해 개인정보 수집-활용 동의서를 받고 있습니다.
+    </string>
+    <string name="agree_privacy_sub_text">
+        개인정보 제공자가 동의한 내용 외의 다른 목적으로 활용하지 않으며, 제공한 개인정보의 이용을 거부하고자 할 때에는 개인정보 관리책임자를 통해 열람, 정정, 삭제를 요구할 수 있습니다.
+    </string>
 
-    <!-- DatePicker -->
-    <string name="mtrl_picker_title_str">날짜를 선택해주세요.</string>
-    <string name="mtrl_picker_range_header_unselected" >시작일 - 종료일</string>
-    <string name="mtrl_picker_range_header_only_start_selected" tools:override="true">%s - 종료일</string>
-    <string name="mtrl_picker_range_header_only_end_selected" tools:override="true">시작일 - %s</string>
-    <string name="mtrl_picker_text_input_date_range_start_hint" tools:override="true">시작일</string>
-    <string name="mtrl_picker_text_input_date_range_end_hint" tools:override="true">종료일</string>
-    <string name="mtrl_picker_text_input_date_format" tools:override="true">yyyy.MM.dd</string>
-    <string name="mtrl_picker_invalid_range" tools:override="true">유효하지 않은 범위입니다.</string>
-    <string name="mtrl_picker_out_of_range" tools:override="true">범위를 벗어났습니다. : %1$s</string>
-    <string name="mtrl_picker_invalid_format" tools:override="true">날짜 형식이 잘못되었습니다.</string>
-    <string name="mtrl_picker_invalid_format_use" tools:override="true">%1$s 형식을 사용하세요.</string>
-    <string name="mtrl_picker_invalid_format_example" tools:override="true">예시 : %1$s</string>
-    <string name="mtrl_picker_save" tools:override="true">저장</string>
+
+
 </resources>

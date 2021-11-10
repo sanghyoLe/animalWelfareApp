@@ -15,12 +15,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.animal_project.Beef.ProtocolTwo.BreedStrawDong;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
 public class WaterTimeDong extends AppCompatActivity {
     private int dongSize;
     private QuestionTemplateViewModel viewModel;
+    public void onBackPressed(){
+        myOnBackPressed(new AlertDialog.Builder(WaterTimeDong.this));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +70,12 @@ public class WaterTimeDong extends AppCompatActivity {
                 drawerHandler();
             }
         });
-
+        home_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myOnBackPressed(new AlertDialog.Builder(WaterTimeDong.this));
+            }
+        });
         viewModel.showQuestionView(questionViewArr, dongSize);
         EditText[] penLocationOneEd = viewModel.makeEditText(questionViewArr,dongSize,R.id.pen_location_1_ed);
         EditText[] penLocationTwoEd = viewModel.makeEditText(questionViewArr,dongSize,R.id.pen_location_2_ed);
@@ -126,6 +135,7 @@ public class WaterTimeDong extends AppCompatActivity {
                     AlertBuilder.setTitle("평가 결과");
                     AlertBuilder.setMessage(msg + "\n 대표 점수 : " + WaterTimeQuestion.getMaxWaterTimeScore() + "점 \n" +
                     "평가를 완료하시겠습니까 ? ");
+
                     // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
                     AlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
                         public void onClick(DialogInterface dialog,int which){
@@ -214,6 +224,26 @@ public class WaterTimeDong extends AppCompatActivity {
          msg += inputStrings[i];
      }
      return msg;
+    }
+    public void myOnBackPressed(AlertDialog.Builder AlertBuilder){
+
+        AlertBuilder.setTitle("이전");
+        AlertBuilder.setMessage("지금까지 평가한 항목이 사라집니다.\n" +
+                "평가 화면으로 돌아가시겠습니까?");
+        // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
+        AlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog,int which){
+                // OK 버튼을 눌렸을 경우
+
+            }
+        });
+        AlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        AlertBuilder.show();
     }
 
 }

@@ -38,6 +38,7 @@ import com.example.animal_project.SearchActivity;
 import com.google.android.material.datepicker.MaterialDatePicker;
 
 import java.io.BufferedReader;
+import java.io.DataInput;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -79,13 +80,11 @@ public class CustomDialog {
     public void setImage(int drawResId){
 
         dlg = new Dialog(context);
-        // 커스텀 다이얼로그를 정의하기위해 Dialog클래스를 생성한다.
-        // 액티비티의 타이틀바를 숨긴다.
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        // 커스텀 다이얼로그의 레이아웃을 설정한다.
         dlg.setContentView(R.layout.m_custom_dialog);
-        // 커스텀 다이얼로그를 노출한다.
         dlg.show();
+
+
         final ImageView dialogImageView = (ImageView) dlg.findViewById(R.id.dialog_imageview);
         dialogImageView.setVisibility(View.VISIBLE);
         final ImageView dialogCloseBtn = (ImageButton) dlg.findViewById(R.id.dialog_close_btn);
@@ -113,15 +112,24 @@ public class CustomDialog {
         }
     });
     }
+    public boolean agreePrivacyDialog(){
+        boolean agree = false;
+        dlg = new Dialog(context);
+        dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dlg.setContentView(R.layout.agree_privacy_dialog_layout);
+        dlg.show();
+
+
+
+        return agree;
+
+
+    }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void searchDialog(){
         dlg = new Dialog(context);
-        // 커스텀 다이얼로그를 정의하기위해 Dialog클래스를 생성한다.
-        // 액티비티의 타이틀바를 숨긴다.
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        // 커스텀 다이얼로그의 레이아웃을 설정한다.
         dlg.setContentView(R.layout.m_custom_dialog);
-        // 커스텀 다이얼로그를 노출한다.
         dlg.show();
         final ImageView dialogCloseBtn = (ImageButton) dlg.findViewById(R.id.dialog_close_btn);
         View searchView = dlg.findViewById(R.id.search_layout);

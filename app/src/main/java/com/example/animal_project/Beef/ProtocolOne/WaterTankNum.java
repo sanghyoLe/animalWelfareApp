@@ -51,6 +51,7 @@ public class WaterTankNum extends Fragment {
                     viewModel.setWaterTankForm("개별 급수기");
                     largeWaterTankBtnOne.setChecked(false);
                     largeWaterTankBtnTwo.setChecked(false);
+                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).setSelectedItem(-1);
 
                 } else if(checkedId == R.id.milk_cow_water_tank_form_2){
                     largeWaterTankLayout.setVisibility(View.VISIBLE);
@@ -58,6 +59,7 @@ public class WaterTankNum extends Fragment {
                     viewModel.setWaterTankForm("대형 급수기");
                     individualTankBtnOne.setChecked(false);
                     individualTankBtnTwo.setChecked(false);
+
                     waterTankNum = -1;
                     ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).setSelectedItem(-1);
                 }

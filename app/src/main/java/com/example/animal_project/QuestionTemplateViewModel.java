@@ -2139,41 +2139,41 @@ public class QuestionTemplateViewModel extends ViewModel {
     public String getWaterTankForm(){
         return this.waterTankForm;
     }
-    public String calculatorTotalProtocolScoreString(){
+    public String calculatorTotalProtocolScoreString(double protocolOneScore, double protocolTwoScore, double protocolThreeScore, double protocolFourScore){
         String totalProtocolScoreString = "0";
         int gradeFlag = 0;
         if
-        (       getProtocolOneScore() >= 70
-                && getProtocolTwoScore() >= 70
-                && getProtocolThreeScore() >= 70
-                && getProtocolFourScore() >= 70
+        (       protocolOneScore >= 70
+                && protocolTwoScore >= 70
+                && protocolThreeScore >= 70
+                && protocolFourScore >= 70
         ) {
-            if(getProtocolOneScore() >= 90) gradeFlag++;
-            if(getProtocolTwoScore() >= 90) gradeFlag++;
-            if(getProtocolThreeScore() >= 90) gradeFlag++;
-            if(getProtocolFourScore() >= 90) gradeFlag++;
+            if(protocolOneScore >= 90) gradeFlag++;
+            if(protocolTwoScore >= 90) gradeFlag++;
+            if(protocolThreeScore >= 90) gradeFlag++;
+            if(protocolFourScore >= 90) gradeFlag++;
             if(gradeFlag >= 2) totalProtocolScoreString = "Excellent";
-        } else if(getProtocolOneScore() >= 50 &&
-                getProtocolTwoScore() >= 50 &&
-                getProtocolThreeScore() >= 50 &&
-                getProtocolFourScore() >= 50
+        } else if(protocolOneScore >= 50 &&
+                protocolTwoScore >= 50 &&
+                protocolThreeScore >= 50 &&
+                protocolFourScore >= 50
         ){
             gradeFlag = 0;
-            if(getProtocolOneScore() >= 70) gradeFlag++;
-            if(getProtocolTwoScore() >= 70) gradeFlag++;
-            if(getProtocolThreeScore() >= 70) gradeFlag++;
-            if(getProtocolFourScore() >= 70) gradeFlag++;
+            if(protocolOneScore >= 70) gradeFlag++;
+            if(protocolTwoScore >= 70) gradeFlag++;
+            if(protocolThreeScore >= 70) gradeFlag++;
+            if(protocolFourScore >= 70) gradeFlag++;
             if(gradeFlag >= 2) totalProtocolScoreString = "Enhanced";
-        } else if(getProtocolOneScore() >= 40 &&
-                getProtocolTwoScore() >= 40 &&
-                getProtocolThreeScore() >= 40 &&
-                getProtocolFourScore() >= 40
+        } else if(protocolOneScore >= 40 &&
+                protocolTwoScore >= 40 &&
+                protocolThreeScore >= 40 &&
+                protocolFourScore >= 40
         ) {
             gradeFlag = 0;
-            if(getProtocolOneScore() >= 50) gradeFlag++;
-            if(getProtocolTwoScore() >= 50) gradeFlag++;
-            if(getProtocolThreeScore() >= 50) gradeFlag++;
-            if(getProtocolFourScore() >= 50) gradeFlag++;
+            if(protocolOneScore >= 50) gradeFlag++;
+            if(protocolTwoScore >= 50) gradeFlag++;
+            if(protocolThreeScore >= 50) gradeFlag++;
+            if(protocolFourScore >= 50) gradeFlag++;
             if(gradeFlag >= 2) totalProtocolScoreString = "Acceptable";
         } else {
             totalProtocolScoreString = "NotClassified";
@@ -2184,7 +2184,7 @@ public class QuestionTemplateViewModel extends ViewModel {
             this.protocolTotalScoreString = protocolTotalScoreString;
     }
     public String getTotalProtocolScoreString(){
-        return protocolTotalScoreString;
+        return this.protocolTotalScoreString;
     }
 }
 
