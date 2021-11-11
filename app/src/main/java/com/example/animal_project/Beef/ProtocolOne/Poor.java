@@ -69,7 +69,7 @@ public class Poor extends Fragment {
                     breed_poor_Rate_score.setText("-1");
                 } else {
                     float ratio = (Float.parseFloat(ed_1_poorRate.getText().toString()) / viewModel.getTotalCowSize()) * 100;
-                    ratio = viewModel.cutDecimal(ratio);
+                    ratio = cutDecimal(ratio);
                     breed_poor_Rate_ratio.setText(String.valueOf(ratio));
                     breed_poor_rate_score = Integer.parseInt(getPoorRateScore(farmType,ratio));
                     breed_poor_Rate_score.setText(String.valueOf(breed_poor_rate_score));
@@ -132,6 +132,17 @@ public class Poor extends Fragment {
             } else poorScore = 0;
         }
         return Integer.toString(poorScore);
+    }
+    public float cutDecimal(double value){
+        float ratio = 0 ;
+        ratio = (float)(Math.round(value));
+        if(ratio > 1 )
+        return ratio;
+        else {
+            return (float)(Math.round(value*100)/100.0);
+        }
+
+
     }
 
     

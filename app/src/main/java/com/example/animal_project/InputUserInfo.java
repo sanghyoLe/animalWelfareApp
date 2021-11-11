@@ -211,24 +211,30 @@ public class InputUserInfo extends AppCompatActivity {
                                 && !checkEmptyInputInfo(eva_name_et, "평가자명을 입력하세요")
 
                         ){
-                            AlertDialog.Builder AlertBuilder = new AlertDialog.Builder(InputUserInfo.this);
-                            CheckInputInformation(
-                                    AlertBuilder,
-                                    String.valueOf(farm_name_et.getText()),
-                                    String.valueOf(zipcode_et.getText()),
-                                    String.valueOf(address_et.getText()),
-                                    String.valueOf(address_detail_et.getText()),
-                                    String.valueOf(farm_rep_name_et.getText()),
-                                    Integer.parseInt(String.valueOf(total_cow_et.getText())),
-                                    Integer.parseInt(String.valueOf(total_adult_cow_et.getText())),
-                                    Integer.parseInt(String.valueOf(total_child_cow_et.getText())),
-                                    Integer.parseInt(String.valueOf(sample_size_count)),
-                                    String.valueOf(eva_name_et.getText()),
-                                    eva_data_picker.getYear(),
-                                    eva_data_picker.getMonth(),
-                                    eva_data_picker.getDayOfMonth(), input_checked,
-                                    0,0,0
-                            );
+                            if(!agreeCheckBox.isChecked()){
+                                msg = "개인정보 수집 및 활용에 동의해주세요.";
+                                Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
+                            } else {
+                                AlertDialog.Builder AlertBuilder = new AlertDialog.Builder(InputUserInfo.this);
+                                CheckInputInformation(
+                                        AlertBuilder,
+                                        String.valueOf(farm_name_et.getText()),
+                                        String.valueOf(zipcode_et.getText()),
+                                        String.valueOf(address_et.getText()),
+                                        String.valueOf(address_detail_et.getText()),
+                                        String.valueOf(farm_rep_name_et.getText()),
+                                        Integer.parseInt(String.valueOf(total_cow_et.getText())),
+                                        Integer.parseInt(String.valueOf(total_adult_cow_et.getText())),
+                                        Integer.parseInt(String.valueOf(total_child_cow_et.getText())),
+                                        Integer.parseInt(String.valueOf(sample_size_count)),
+                                        String.valueOf(eva_name_et.getText()),
+                                        eva_data_picker.getYear(),
+                                        eva_data_picker.getMonth(),
+                                        eva_data_picker.getDayOfMonth(), input_checked,
+                                        0,0,0
+                                );
+                            }
+
 
                         }
                     } else if(input_checked == 4 || input_checked == 5){
@@ -241,38 +247,42 @@ public class InputUserInfo extends AppCompatActivity {
                                 && !checkEmptyInputInfo(dry_milk_cow_et, "건유우 두수를 입력하세요")
                                 && !checkEmptyInputInfo(pregnant_cow_et, "미경산임신우 두수를 입력하세요")
                                 && !checkEmptyInputInfo(total_child_cow_et, "송아지 두수를 입력하세요")
-                                && !checkEmptyInputInfo(eva_name_et, "평가자명을 입력하세요")){
-                            AlertDialog.Builder AlertBuilder = new AlertDialog.Builder(InputUserInfo.this);
-                            CheckInputInformation(
-                                    AlertBuilder,
-                                    String.valueOf(farm_name_et.getText()),
-                                    String.valueOf(zipcode_et.getText()),
-                                    String.valueOf(address_et.getText()),
-                                    String.valueOf(address_detail_et.getText()),
-                                    String.valueOf(farm_rep_name_et.getText()),
-                                    Integer.parseInt(String.valueOf(total_cow_et.getText())),
-                                    0,
-                                    Integer.parseInt(String.valueOf(total_child_cow_et.getText())),
-                                    Integer.parseInt(String.valueOf(sample_size_count)),
-                                    String.valueOf(eva_name_et.getText()),
-                                    eva_data_picker.getYear(),
-                                    eva_data_picker.getMonth(),
-                                    eva_data_picker.getDayOfMonth(), input_checked,
-                                    Integer.parseInt(String.valueOf(milk_cow_et.getText())),
-                                    Integer.parseInt(String.valueOf(dry_milk_cow_et.getText())),
-                                    Integer.parseInt(String.valueOf(pregnant_cow_et.getText()))
-                            );
+                                && !checkEmptyInputInfo(eva_name_et, "평가자명을 입력하세요")
+                                ){
+                            if(!agreeCheckBox.isChecked()){
+                                msg = "개인정보 수집 및 활용에 동의해주세요.";
+                                Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
+                            } else {
+                                AlertDialog.Builder AlertBuilder = new AlertDialog.Builder(InputUserInfo.this);
+                                CheckInputInformation(
+                                        AlertBuilder,
+                                        String.valueOf(farm_name_et.getText()),
+                                        String.valueOf(zipcode_et.getText()),
+                                        String.valueOf(address_et.getText()),
+                                        String.valueOf(address_detail_et.getText()),
+                                        String.valueOf(farm_rep_name_et.getText()),
+                                        Integer.parseInt(String.valueOf(total_cow_et.getText())),
+                                        0,
+                                        Integer.parseInt(String.valueOf(total_child_cow_et.getText())),
+                                        Integer.parseInt(String.valueOf(sample_size_count)),
+                                        String.valueOf(eva_name_et.getText()),
+                                        eva_data_picker.getYear(),
+                                        eva_data_picker.getMonth(),
+                                        eva_data_picker.getDayOfMonth(), input_checked,
+                                        Integer.parseInt(String.valueOf(milk_cow_et.getText())),
+                                        Integer.parseInt(String.valueOf(dry_milk_cow_et.getText())),
+                                        Integer.parseInt(String.valueOf(pregnant_cow_et.getText()))
+                                );
+                            }
+
 
                         }
-                    }
-                    else if(!agreeCheckBox.isChecked()){
-                        msg = "개인정보 수집 및 활용에 동의해주세요.";
-                        Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                     }
                     else if(input_checked == 0){
                         msg = "농장 종류를 선택하세요";
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                     }
+
                 }
 
 
