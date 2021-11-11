@@ -94,6 +94,9 @@
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/drawable-v24/outline_reorder_24.xml" value="0.2074074074074074" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/drawable-v24/outline_sentiment_very_satisfied_24.xml" value="0.3779487179487179" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/drawable-v24/outline_sick_24.xml" value="0.3779487179487179" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/drawable/border_square.xml" value="0.23148148148148148" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/drawable/edge_bottom.xml" value="0.23148148148148148" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/drawable/edittext.xml" value="0.23148148148148148" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/drawable/pb_circular_determinative.xml" value="0.3779487179487179" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/drawable/round_square.xml" value="0.3779487179487179" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout-land/activity_main.xml" value="0.33" />
@@ -102,7 +105,7 @@
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_detail_search_normal_member.xml" value="0.25" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_dong_question_search_result.xml" value="0.36205128205128206" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_free_stall_count_dong.xml" value="0.36205128205128206" />
-        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_input_userinfo.xml" value="0.1" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_input_userinfo.xml" value="0.33" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_multiple_answer_search_result.xml" value="0.25" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/activity_question_template.xml" value="0.33" />

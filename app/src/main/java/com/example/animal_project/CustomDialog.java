@@ -112,19 +112,7 @@ public class CustomDialog {
         }
     });
     }
-    public boolean agreePrivacyDialog(){
-        boolean agree = false;
-        dlg = new Dialog(context);
-        dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dlg.setContentView(R.layout.agree_privacy_dialog_layout);
-        dlg.show();
 
-
-
-        return agree;
-
-
-    }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void searchDialog(){
         dlg = new Dialog(context);

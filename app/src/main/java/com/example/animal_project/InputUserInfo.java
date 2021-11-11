@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -124,6 +126,7 @@ public class InputUserInfo extends AppCompatActivity {
 
         agreeCheckBox = findViewById(R.id.agree_check_box);
 
+
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,19 +134,26 @@ public class InputUserInfo extends AppCompatActivity {
                 finish();
             }
         });
-        agreeCheckBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        ScrollView parentScroll = findViewById(R.id.parent_scroll_view);
+        ScrollView childScroll = findViewById(R.id.agree_privacy_scroll_view);
+        parentScroll.setOnTouchListener(new View.OnTouchListener() {
 
-                    CustomDialog agreeDialog = new CustomDialog(InputUserInfo.this);
-                    if(agreeDialog.agreePrivacyDialog()){
-                        agreeCheckBox.setChecked(true);
-                    } else {
-                        agreeCheckBox.setChecked(false);
-                    }
-
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.v("PARENT", "PARENT TOUCH");
+                findViewById(R.id.agree_privacy_scroll_view).getParent()
+                        .requestDisallowInterceptTouchEvent(false);
+                return false;
             }
         });
+        childScroll.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                // Disallow the touch request for parent scroll on touch of
+                // child view
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+
 
 
         // 한육우 라디오 그룹 클릭 시
@@ -199,6 +209,7 @@ public class InputUserInfo extends AppCompatActivity {
                                 && !checkEmptyInputInfo(total_adult_cow_et, "성우 두수를 입력하세요")
                                 && !checkEmptyInputInfo(total_child_cow_et, "송아지 두수를 입력하세요")
                                 && !checkEmptyInputInfo(eva_name_et, "평가자명을 입력하세요")
+
                         ){
                             AlertDialog.Builder AlertBuilder = new AlertDialog.Builder(InputUserInfo.this);
                             CheckInputInformation(
@@ -253,6 +264,10 @@ public class InputUserInfo extends AppCompatActivity {
                             );
 
                         }
+                    }
+                    else if(!agreeCheckBox.isChecked()){
+                        msg = "개인정보 수집 및 활용에 동의해주세요.";
+                        Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                     }
                     else if(input_checked == 0){
                         msg = "농장 종류를 선택하세요";
