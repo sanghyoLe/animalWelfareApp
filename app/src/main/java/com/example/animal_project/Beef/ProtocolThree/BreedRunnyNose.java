@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,42 @@ public class BreedRunnyNose extends Fragment {
         EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
         EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
 
+        penLocationOne.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewModel.penQuestionAfterTextChanged(breed_runny_nose_ed,breed_runny_nose_ratio_tv
+                        ,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose);
+
+            }
+        });
+        penLocationTwo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewModel.penQuestionAfterTextChanged(breed_runny_nose_ed,breed_runny_nose_ratio_tv
+                        ,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose);
+
+            }
+        });
 
 
         breed_runny_nose_ed.addTextChangedListener(new TextWatcher() {

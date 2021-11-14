@@ -26,6 +26,9 @@ public class CalfMistSpray extends Fragment {
         TextView calfRestScoreTv = view.findViewById(R.id.calf_summer_rest_score);
         RadioGroup mistSprayRg = view.findViewById(R.id.calf_mist_spray_rg);
 
+        if(viewModel.getCalfSummerRestScore() != -1){
+            calfRestScoreTv.setText(String.valueOf(viewModel.getCalfSummerRestScore()));
+        }
 
         mistSprayRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -42,19 +45,17 @@ public class CalfMistSpray extends Fragment {
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfMistSpray).setAnswer(mistSprayRg,selectedItem);
 
 
-                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfShade).getSelectedItem() == -1){
-                    calfRestScoreTv.setText("11번 문항을 완료해주세요");
-                } else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfSummerVentilating).getSelectedItem() == -1){
-                    calfRestScoreTv.setText("12번 문항을 완료해주세요");
-                } else {
-                    int summerRestScore = viewModel.calculatorBreedSummerRestScore(
-                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfShade).getSelectedItem(),
-                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfSummerVentilating).getSelectedItem(),
-                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfMistSpray).getSelectedItem()
+
+
+                    viewModel.setCalfSummerRestScore(
+                            viewModel.calculatorBreedSummerRestScore(
+                                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfShade).getSelectedItem(),
+                                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfSummerVentilating).getSelectedItem(),
+                                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfMistSpray).getSelectedItem()
+                            )
                     );
-                    viewModel.setCalfSummerRestScore(summerRestScore);
-                    calfRestScoreTv.setText(String.valueOf(summerRestScore));
-                }
+                    calfRestScoreTv.setText(String.valueOf(viewModel.getCalfSummerRestScore()));
+
 
             }
         });

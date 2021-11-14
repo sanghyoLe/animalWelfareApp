@@ -39,8 +39,11 @@ public class MovementStability extends Fragment {
         TextView totalRatioTv = view.findViewById(R.id.total_access_ratio_tv);
         TextView movementStabilityScoreTv = view.findViewById(R.id.movement_stability_score_tv);
         TextView milkCowProtocolTwoTv = view.findViewById(R.id.milk_cow_protocol_two_tv);
-
-
+        if(viewModel.getProtocolTwoScore() != -1){
+            milkCowProtocolTwoTv.setText(String.valueOf(
+                    viewModel.getProtocolTwoScore()
+            ));
+        }
         accessTroubleEd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -167,14 +170,7 @@ public class MovementStability extends Fragment {
                     );
 
 
-                        if(viewModel.getRestScore() == -1){
-                           milkCowProtocolTwoTv.setText("편안한 휴식 평가를 완료해주세요.");
-                        }else if(viewModel.getTotalWarmVentilatingScore() == -1){
-                            milkCowProtocolTwoTv.setText("편안한 열환경과 환기 평가를 완료해주세요");
-                        }else if(((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getScore() == -1){
-                            milkCowProtocolTwoTv.setText("착유실 이동 안정성 평가를 완료해주세요");
-                        }
-                        else {
+
                             viewModel.setProtocolTwoScore(
                                     mc.calculatorProtocolTwoScore(
                                             viewModel.getRestScore(),
@@ -183,7 +179,7 @@ public class MovementStability extends Fragment {
                                     )
                             );
                             milkCowProtocolTwoTv.setText(String.valueOf(viewModel.getProtocolTwoScore()));
-                        }
+
 
 
                 }

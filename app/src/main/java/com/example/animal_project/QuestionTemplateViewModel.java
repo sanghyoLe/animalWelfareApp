@@ -1,5 +1,7 @@
 package com.example.animal_project;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -30,9 +32,9 @@ public class QuestionTemplateViewModel extends ViewModel {
         public float getScore(){return this.score;}
     }
     public static class PenQuestion extends Question {
-        String penLocation;
+        String penLocation = null;
         public PenQuestion(String penLocation, int numberOfCow, float ratio){
-            this.penLocation = penLocation;
+            this.penLocation = null;
             this.numberOfCow = numberOfCow;
             this.ratio = ratio;
         }
@@ -307,7 +309,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     public static class BehaviorQuestion extends DongQuestion implements Serializable{
         int[] behaviorCount;
         float[] behaviorPerOne;
-        float behaviorPerOneAvg;
+        float behaviorPerOneAvg = -1;
         public BehaviorQuestion(int dongSize){
             this.penLocation = new String[dongSize];
             this.cowSize = new int[dongSize];
@@ -361,7 +363,7 @@ public class QuestionTemplateViewModel extends ViewModel {
         int[] sitTime;
         float sitTimeAvg;
         public SitTimeQuestion(int sitCount){
-            this.sitCount = sitCount;
+            this.sitCount = -1;
             this.sitTime = new int[sitCount];
             for(int i = 0; i < sitCount; i++){
                 sitTime[i] = -1;
@@ -520,8 +522,8 @@ public class QuestionTemplateViewModel extends ViewModel {
         return MilkCowStruggle;
     }
     public class MovementStability extends Question{
-        int accessTroubleCowCount;
-        int exitTroubleCowCount;
+        int accessTroubleCowCount = -1;
+        int exitTroubleCowCount = -1;
         float accessTroubleRatio;
         float exitTroubleRatio;
         float totalRatio;
@@ -671,8 +673,8 @@ public class QuestionTemplateViewModel extends ViewModel {
     public void setFreeStallCountQuestion(Object freeStallCountQuestion){ this.FreeStallCountQuestion = freeStallCountQuestion; }
     public Object getFreeStallCountQuestion(){return this.FreeStallCountQuestion; }
     public static class FreeStallAreaOutCollision extends Question{
-        int sitCowCount;
-        int areaOutCollisionCowCount;
+        int sitCowCount = -1;
+        int areaOutCollisionCowCount = -1;
         public void setSitCowCount(int sitCowCount){
             this.sitCowCount = sitCowCount;
         }
@@ -698,11 +700,11 @@ public class QuestionTemplateViewModel extends ViewModel {
         }
     }
     public static class SitCollisionQuestion extends Question{
-        int sitCount;
+        int sitCount = -1;
         boolean[]  sitCollision;
 
         public SitCollisionQuestion(int sitCount){
-            this.sitCount = sitCount;
+            this.sitCount = -1;
             this.ratio = -1;
             this.score = -1;
             this.sitCollision = new boolean[sitCount];
@@ -1159,6 +1161,11 @@ public class QuestionTemplateViewModel extends ViewModel {
     }
     public void setHairLossTotalRatio(float totalHairLossRatio){
         this.hairLossTotalRatio = totalHairLossRatio;
+    }
+    public float calculatorHairLossTotalRatio(float slightHairLoss, float criticalHairLoss){
+        return cutDecimal(
+                ((slightHairLoss + 5 * criticalHairLoss) / 5)
+        );
     }
     public float getHairLossTotalRatio(){
         return this.hairLossTotalRatio;
@@ -2186,6 +2193,7 @@ public class QuestionTemplateViewModel extends ViewModel {
     public String getTotalProtocolScoreString(){
         return this.protocolTotalScoreString;
     }
+
 }
 
 

@@ -19,6 +19,10 @@ public class WaterTankNum extends Fragment {
     private View view;
     Integer waterTankNum = 0;
 
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,7 +67,14 @@ public class WaterTankNum extends Fragment {
                     waterTankNum = -1;
                     ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).setSelectedItem(-1);
                 }
+                viewModel.setProtocolOneScore(
+                        viewModel.calculatorProtocolOneResult(viewModel.getFarmType(),
+                                viewModel.getPoorScore(),
+                                viewModel.getWaterScore()
+                        )
+                );
             }
+
         });
 
         largeWaterTankNum.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -83,6 +94,13 @@ public class WaterTankNum extends Fragment {
                         viewModel.getWaterTimeQuestion().getMaxWaterTimeScore());
                 viewModel.setWaterScore(waterScore);
 
+                viewModel.setProtocolOneScore(
+                        viewModel.calculatorProtocolOneResult(viewModel.getFarmType(),
+                                viewModel.getPoorScore(),
+                                viewModel.getWaterScore()
+                        )
+                );
+
             }
         });
         breed_water_tank_num.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -101,6 +119,8 @@ public class WaterTankNum extends Fragment {
                         ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem(),
                         viewModel.getWaterTimeQuestion().getMaxWaterTimeScore());
                 viewModel.setWaterScore(waterScore);
+
+
 
             }
         });

@@ -35,18 +35,20 @@ public class WaterTime extends Fragment {
         TextView breed_drink_water_score = view.findViewById(R.id.breed_drink_water_score);
         TextView breed_total_water_score = view.findViewById(R.id.breed_total_water_score);
 
-        if(viewModel.getWaterTimeQuestion().getMaxWaterTimeScore() == -1){
-            breed_drink_water_score.setText("음수 대기 우와 음수 시간 평가를 완료하세요");
-        } else {
-            breed_drink_water_score.setText(String.valueOf(viewModel.getWaterTimeQuestion().getMaxWaterTimeScore()));
+        if(viewModel.getWaterTimeQuestion().getMaxWaterTimeScore() != -1){
+            breed_drink_water_score.setText(String.valueOf(
+                    viewModel.getWaterTimeQuestion().getMaxWaterTimeScore()
+            ));
         }
-        if(viewModel.getWaterScore() == -1){
-            breed_total_water_score.setText("충분한 물 섭취 평가를 모두 완료하세요");
-        } else{
-            breed_total_water_score.setText(String.valueOf(viewModel.getWaterScore()));
+        if(viewModel.getWaterScore() != -1){
+            breed_total_water_score.setText(String.valueOf(
+                    viewModel.getWaterScore()
+                    ));
         }
         if(viewModel.getProtocolOneScore() != -1){
-            protocolOneTv.setText(String.valueOf(viewModel.getProtocolOneScore()));
+            protocolOneTv.setText(String.valueOf(
+                    viewModel.getProtocolOneScore()
+            ));
         }
 
 
@@ -117,31 +119,31 @@ public class WaterTime extends Fragment {
                                 viewModel.getWaterTimeQuestion().getMaxWaterTimeScore()
                         ));
                 // 프로토콜 1 점수
-                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem() == -1){
-                    breed_total_water_score.setText("음수조 수 평가를 완료하세요");
-                } else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem() == -1){
-                    breed_total_water_score.setText("음수조 위생 평가를 완료하세요");
-                }else {
-                    int waterScore = viewModel.calculatorWaterScore(
-                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem(),
-                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem(),
-                            viewModel.getWaterTimeQuestion().getMaxWaterTimeScore());
-                    breed_total_water_score.setText(String.valueOf(waterScore));
-                    viewModel.setWaterScore(waterScore);
-                }
-                if(viewModel.getPoorScore() == -1){
-                    protocolOneTv.setText("여윈 개체 평가를 완료하세요");
-                } else if(viewModel.getWaterScore() == -1) {
-                    protocolOneTv.setText("충분한 물 섭취 평가를 완료하세요");
-                } else {
+
+
+
+                    viewModel.setWaterScore(
+                            viewModel.calculatorWaterScore(
+                                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem(),
+                                    ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem(),
+                                    viewModel.getWaterTimeQuestion().getMaxWaterTimeScore()
+                            )
+                    );
+                    breed_total_water_score.setText(
+                            String.valueOf(
+                                    viewModel.getWaterScore()
+                            )
+                    );
+
                     viewModel.setProtocolOneScore(
                             viewModel.calculatorProtocolOneResult(viewModel.getFarmType(),
                                     viewModel.getPoorScore(),
                                     viewModel.getWaterScore()
                             )
                     );
+
                     protocolOneTv.setText(String.valueOf(viewModel.getProtocolOneScore()));
-                }
+
 
                 break;
             default:

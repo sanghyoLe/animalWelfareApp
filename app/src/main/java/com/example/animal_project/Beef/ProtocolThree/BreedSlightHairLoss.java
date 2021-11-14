@@ -29,6 +29,41 @@ public class BreedSlightHairLoss extends Fragment {
         EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
         EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
 
+        penLocationOne.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewModel.penQuestionAfterTextChanged(breedSlightHairLossEd,breed_slight_hair_loss_tv,
+                        penLocationOne,penLocationTwo,((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss));
+            }
+        });
+
+        penLocationTwo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewModel.penQuestionAfterTextChanged(breedSlightHairLossEd,breed_slight_hair_loss_tv,
+                        penLocationOne,penLocationTwo,((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss));
+            }
+        });
         breedSlightHairLossEd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

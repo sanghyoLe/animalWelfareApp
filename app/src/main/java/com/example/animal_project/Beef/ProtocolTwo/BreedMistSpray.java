@@ -27,7 +27,9 @@ public class BreedMistSpray extends Fragment {
         TextView breedRestScoreTv = view.findViewById(R.id.breed_summer_rest_score);
         RadioGroup mistSprayRg = view.findViewById(R.id.breed_mist_spray_rg);
 
-
+        if(viewModel.getSummerRestScore() != -1){
+            breedRestScoreTv.setText(String.valueOf(viewModel.getSummerRestScore()));
+        }
 
         mistSprayRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -45,20 +47,14 @@ public class BreedMistSpray extends Fragment {
                 int selectedItem = ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).getSelectedItem();
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).setAnswer(mistSprayRg,selectedItem);
 
+                viewModel.setSummerRestScore(viewModel.calculatorBreedSummerRestScore(
+                        ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem(),
+                        ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getSelectedItem(),
+                        ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).getSelectedItem()
+                        )
+                );
+                    breedRestScoreTv.setText(String.valueOf(viewModel.getSummerRestScore()));
 
-                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem() == -1){
-                    breedRestScoreTv.setText("7번 문항을 완료해주세요");
-                } else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getSelectedItem() == -1){
-                    breedRestScoreTv.setText("8번 문항을 완료해주세요");
-                } else {
-                    int summerRestScore = viewModel.calculatorBreedSummerRestScore(
-                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem(),
-                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getSelectedItem(),
-                            ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).getSelectedItem()
-                    );
-                    viewModel.setSummerRestScore(summerRestScore);
-                    breedRestScoreTv.setText(String.valueOf(summerRestScore));
-                }
 
             }
         });

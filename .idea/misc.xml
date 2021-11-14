@@ -132,7 +132,15 @@
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/eva_score_ratio_list_view.xml" value="0.30185185185185187" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/eva_score_ratio_search_result.xml" value="0.25" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/eva_score_search_result.xml" value="0.5" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_castration_q2.xml" value="0.35208333333333336" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_critical_hair_loss.xml" value="0.12777777777777777" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_limp.xml" value="0.19907407407407407" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_ophthalmic.xml" value="0.36770833333333336" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_summer_ventilating.xml" value="0.22" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_wind_block.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_winter_ventilating.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_calf_summer_ventilating.xml" value="0.35208333333333336" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_calf_wind_block.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_critical_limp.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_freestall_sit_collision.xml" value="0.19831223628691982" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_sit_time.xml" value="0.33" />
@@ -141,6 +149,7 @@
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/list_menu.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/list_sub_menu_3.xml" value="0.3466666666666667" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/m_custom_dialog.xml" value="0.1" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/milk_cow_list_sub_menu_3.xml" value="0.2833333333333333" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/milk_cow_struggle_item_list.xml" value="0.33" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/milk_cow_struggle_template.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/multiple_answer_result_identifiers.xml" value="0.33" />

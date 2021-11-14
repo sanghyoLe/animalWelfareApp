@@ -29,7 +29,40 @@ public class BreedBreath extends Fragment {
         EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
 
+        penLocationOne.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewModel.penQuestionAfterTextChanged(breed_breath_ed,breed_breath_tv,
+                        penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedBreath);
+            }
+        });
+        penLocationTwo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewModel.penQuestionAfterTextChanged(breed_breath_ed,breed_breath_tv,
+                        penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedBreath);
+            }
+        });
         breed_breath_ed.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

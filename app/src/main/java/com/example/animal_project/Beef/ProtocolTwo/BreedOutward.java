@@ -3,6 +3,7 @@ package com.example.animal_project.Beef.ProtocolTwo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,52 @@ public class BreedOutward extends Fragment {
         EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
         TextView breed_outward_ratio = view.findViewById(R.id.breed_outward_ratio);
         TextView breed_outward_score = view.findViewById(R.id.breed_outward_score);
+        TextView breed_rest_score = view.findViewById(R.id.breed_rest_score);
+
+        if(viewModel.getRestScore() != -1){
+            breed_rest_score.setText(String.valueOf(viewModel.getRestScore()));
+        }
+
+        penLocationOne.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewModel.penQuestionAfterTextChanged(breed_outward_ed,breed_outward_ratio
+                        ,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward);
+
+
+            }
+        });
+
+        penLocationTwo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewModel.penQuestionAfterTextChanged(breed_outward_ed,breed_outward_ratio
+                        ,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward);
+
+
+
+            }
+        });
 
         breed_outward_ed.addTextChangedListener(new TextWatcher() {
             @Override
@@ -37,7 +84,7 @@ public class BreedOutward extends Fragment {
             }
             @Override
             public void afterTextChanged(Editable editable) {
-                TextView breed_rest_score = view.findViewById(R.id.breed_rest_score);
+
                 viewModel.penQuestionAfterTextChanged(breed_outward_ed,breed_outward_ratio
                     ,penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward);
                 if(((QuestionTemplateViewModel.PenQuestion) viewModel.BreedOutward).getRatio() == -1){
@@ -62,6 +109,9 @@ public class BreedOutward extends Fragment {
                         breed_rest_score.setText(String.valueOf(viewModel.getRestScore()));
                         }
                     }
+                Log.d("penLocation",String.valueOf(
+                        ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward).getPenLocation()
+                ));
                 }
             });
         return view;

@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -61,6 +62,7 @@ import com.example.animal_project.Beef.ProtocolTwo.CalfWindBlock;
 import com.example.animal_project.Insert.InsertAnswer;
 import com.example.animal_project.Insert.InsertAvoidDistance;
 import com.example.animal_project.Insert.InsertDongAnswer;
+import com.example.animal_project.MilkCow.MilkCowScoreCalculator;
 import com.example.animal_project.MilkCow.OutwardBack;
 import com.example.animal_project.MilkCow.OutwardBackReg;
 import com.example.animal_project.MilkCow.OutwardBreast;
@@ -94,7 +96,7 @@ public class QuestionTemplate extends AppCompatActivity
  {
         private String IP_ADDRESS = "218.151.112.65";
 
-
+     private MilkCowScoreCalculator mc = new MilkCowScoreCalculator();
 
      // 정보 입력 창에서 넘어온 정보들
      private String farmName;
@@ -718,6 +720,8 @@ public class QuestionTemplate extends AppCompatActivity
                     transaction.replace(R.id.fragment_paper,fatten_frag_arr[++count]).commitAllowingStateLoss();
                 }
                 else if (farmType == 2 || farmType == 3) {
+
+
                     nextBtnHandler(count,breed_frag_arr.length);
                     transaction.replace(R.id.fragment_paper,breed_frag_arr[++count]).commitAllowingStateLoss();
 
@@ -761,42 +765,43 @@ public class QuestionTemplate extends AppCompatActivity
 
             case R.id.end_btn:
                 // database 연동
+                if(checkEvaEndBtn() != null) {
+                    String msg = checkEvaEndBtn() + " 항목을 완료해주세요";
+                    Log.d("h",msg);
+                    Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
+                }
+                else{
+                    endBtnAlertBuilder.setTitle("완료");
+                    endBtnAlertBuilder.setMessage("평가를 완료하면\n평가 내용을 수정할 수 없습니다.\n평가를 완료하시겠습니까?");
+                    // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
+                    endBtnAlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
+                        public void onClick(DialogInterface dialog,int which){
 
-                endBtnAlertBuilder.setTitle("완료");
-                endBtnAlertBuilder.setMessage("평가를 완료하면\n평가 내용을 수정할 수 없습니다.\n평가를 완료하시겠습니까?");
-                // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
-                endBtnAlertBuilder.setPositiveButton("취소",new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog,int which){
+                        }
+                    });
+                    endBtnAlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            viewModel.setTotalProtocolScoreString(
+                                    viewModel.calculatorTotalProtocolScoreString(
+                                            viewModel.getProtocolOneScore(),
+                                            viewModel.getProtocolTwoScore(),
+                                            viewModel.getProtocolThreeScore(),
+                                            viewModel.getProtocolFourScore()
+                                    )
+                            );
+                            InsertAnswerFunc();
+                            Bundle resultBundle = new Bundle();
+                            makeResultBundle(resultBundle);
+                            Intent intentResultActivity = new Intent(QuestionTemplate.this, ResultActivity.class);
+                            intentResultActivity.putExtras(resultBundle);
+                            startActivity(intentResultActivity);
+                            finish();
+                        }
+                    });
+                    endBtnAlertBuilder.show();
+                }
 
-                    }
-                });
-                endBtnAlertBuilder.setNegativeButton("네", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        viewModel.setTotalProtocolScoreString(
-                                viewModel.calculatorTotalProtocolScoreString(
-                                        viewModel.getProtocolOneScore(),
-                                        viewModel.getProtocolTwoScore(),
-                                        viewModel.getProtocolThreeScore(),
-                                        viewModel.getProtocolFourScore()
-                                )
-                        );
-                        Log.d("protocolOneScore",String.valueOf(viewModel.getProtocolOneScore()));
-                        Log.d("protocolOneScore",String.valueOf(viewModel.getProtocolTwoScore()));
-                        Log.d("protocolOneScore",String.valueOf(viewModel.getProtocolThreeScore()));
-                        Log.d("protocolOneScore",String.valueOf(viewModel.getProtocolFourScore()));
-                        Log.d("protocolOneScore",String.valueOf(viewModel.getTotalProtocolScoreString()));
-
-                        InsertAnswerFunc();
-                        Bundle resultBundle = new Bundle();
-                        makeResultBundle(resultBundle);
-                        Intent intentResultActivity = new Intent(QuestionTemplate.this, ResultActivity.class);
-                        intentResultActivity.putExtras(resultBundle);
-                        startActivity(intentResultActivity);
-                        finish();
-                    }
-                });
-                endBtnAlertBuilder.show();
 
 
         }
@@ -826,6 +831,7 @@ public class QuestionTemplate extends AppCompatActivity
                     }
                     current_page.setText(String.valueOf(count+1));
                     closeDrawer();
+                    hideKeyboard(QuestionTemplate.this);
                     transaction.replace(R.id.fragment_paper,fragments[count]).commitAllowingStateLoss();
                 }
             });
@@ -841,6 +847,7 @@ public class QuestionTemplate extends AppCompatActivity
             end_btn.setVisibility(View.VISIBLE);
         }
         prev_btn.setVisibility(View.VISIBLE);
+        setScores();
         closeDrawer();
     }
     private void prevBtnHandler(int count, int totalPageLength){
@@ -1590,6 +1597,451 @@ public class QuestionTemplate extends AppCompatActivity
          bundle.putDouble("protocolFourScore",viewModel.getProtocolFourScore());
 
         return bundle;
+     }
+     private String checkEvaEndBtn(){
+        String msg = null;
+         if(((QuestionTemplateViewModel.Question)viewModel.BreedPoor).getNumberOfCow() == -1){
+                msg = "여윈 개체";
+         }
+         if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem() == -1){
+             msg = "음수조 수";
+         }
+         if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem() == -1){
+             msg = "음수조 위생";
+         }
+         if(((QuestionTemplateViewModel.WaterTimeQuestion)viewModel.WaterTimeQuestion).getMaxWaterTimeScore() == -1){
+             msg = "음수 대기우와 음수 시간";
+         }
+
+         if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem() == -1){
+             msg = "혹서기 그늘";
+         }
+         if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getSelectedItem() == -1){
+             msg = "혹서기 환기팬";
+         }
+         if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).getSelectedItem() == -1){
+             msg = "혹서기 안개분무시설";
+         }
+         if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWindBlock).getSelectedItem() == -1){
+             msg = "혹한기 바람차단시설";
+         }
+         if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWinterVentilating).getSelectedItem() == -1){
+             msg = "혹한기 환기시설";
+         }
+         if(((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getNumberOfCow() == -1){
+             msg = "다리 절음";
+         }
+
+         if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getNumberOfCow() == -1){
+             msg = "경미한 외피 변형";
+         }
+         if(((QuestionTemplateViewModel.Question)viewModel.BreedCriticalHairLoss).getNumberOfCow() == -1){
+             msg = "심각한 외피 변형";
+         }
+         if(((QuestionTemplateViewModel.CoughQuestion)viewModel.CoughQuestion).getCoughPerOneAvg() == -1){
+             msg = "기침 평가";
+         }
+         if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose).getNumberOfCow() == -1){
+             msg = "비강 분비물";
+         }
+
+         if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOphthalmic).getNumberOfCow() == -1){
+             msg = "안구 분비물";
+         }
+
+
+
+         if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedBreath).getNumberOfCow() == -1){
+             msg = "호흡 장애";
+         }
+
+
+
+         if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedDiarrhea).getNumberOfCow() == -1){
+             msg = "설사";
+         }
+
+
+
+         if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead).getNumberOfCow() == -1){
+             msg = "폐사율";
+         }
+
+         if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornRemoval).getSelectedItem() == -1){
+             msg = "제각/탈각 - 1";
+         }
+         if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornAnesthesia).getSelectedItem() == -1){
+             msg = "제각/탈각 - 2";
+         }
+         if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornPainkiller).getSelectedItem() == -1){
+             msg = "제각/탈각 - 3";
+         }
+
+         if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastration).getSelectedItem() == -1){
+             msg = "거세 - 1";
+         }
+         if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationAnesthesia).getSelectedItem() == -1){
+             msg = "거세 - 2";
+         }
+         if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationPainkiller).getSelectedItem() == -1){
+             msg = "거세 - 3";
+         }
+
+
+
+        if(viewModel.getAvoidDistanceScore() == -1){
+            msg = "회피 거리";
+        }
+
+
+
+//         비육 농장을 제외한 송아지 평가 항목
+         if(viewModel.getFarmType() != 1){
+             if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfShade).getSelectedItem() == -1){
+                 msg = "포유 송아지 그늘";
+             }
+             if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfSummerVentilating).getSelectedItem() == -1){
+                 msg = "포유 송아지 환기팬";
+             }
+             if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfMistSpray).getSelectedItem() == -1){
+                 msg = "포유 송아지 안개분무시설";
+             }
+             if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfStraw).getSelectedItem() == -1){
+                 msg = "포유 송아지 깔짚";
+             }
+             if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWarm).getSelectedItem() == -1){
+                 msg = "포유 송아지 보온";
+             }
+             if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWindBlock).getSelectedItem() == -1){
+                 msg = "포유 송아지 바람차단시설";
+             }
+         }
+
+
+
+
+
+
+
+
+         // 한-육우 착우유 별로 구분이 필요한 항목들
+         if(viewModel.isBeef(viewModel.getFarmType())){
+             if(((QuestionTemplateViewModel.StrawQuestion)viewModel.StrawQuestion).getStrawAvgScore() == -1) {
+                 msg = "깔짚 평가";
+             }
+             if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward).getNumberOfCow() == -1){
+                 msg = "가축외형 위생";
+             }
+
+             if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRuminant).getNumberOfCow() == -1){
+                 msg = "반추위 팽창";
+             }
+             if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg() == -1){
+                 msg = "투쟁(서열) 행동";
+             }
+             if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg() == -1){
+                 msg = "화합 행동";
+             }
+
+         } else {
+             if(((QuestionTemplateViewModel.PenQuestion)viewModel.MilkInCell).getNumberOfCow() == -1){
+                 msg = "우유 내 체세포";
+             }
+
+             if(((QuestionTemplateViewModel.PenQuestion)viewModel.OutGenitals).getNumberOfCow() == -1){
+                 msg = "외음부 분비물";
+             }
+            if(((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getNumberOfCow() == -1
+            || ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.HardBirth).getYearAvgCount() == -1){
+                msg = "난산";
+            }
+             if(((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getNumberOfCow() == -1
+                     || ((QuestionTemplateViewModel.YearAvgQuestion)viewModel.UnableStand).getYearAvgCount() == -1){
+                 msg = "기립불능";
+             }
+            if(((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore() == -1){
+                msg = "앉기 동작 소요시간";
+            }
+            if( ((QuestionTemplateViewModel.Question)viewModel.OutwardBackReg).getNumberOfCow() == -1 ){
+                msg = "가축외형 위생(뒤쪽 아랫다리)";
+            }
+             if( ((QuestionTemplateViewModel.Question)viewModel.OutwardBack).getNumberOfCow() == -1 ){
+                 msg = "가축외형 위생(뒷 부분)";
+             }
+             if( ((QuestionTemplateViewModel.Question)viewModel.OutwardBreast).getNumberOfCow() == -1 ){
+                 msg = "가축외형 위생(유방)";
+             }
+             if(((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getAccessTroubleCowCount() == -1){
+                 msg = "착유실 이동 안정성";
+             }
+             if(((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getExitTroubleCowCount() == -1){
+                 msg = "착유실 이동 안정성";
+             }
+             if( ((QuestionTemplateViewModel.Question)viewModel.CriticalLimp).getNumberOfCow() == -1){
+                 msg = "심각한 다리 절음";
+             }
+             if(((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getStruggleIndexAvg() == -1 ){
+                 msg = "투쟁(서열) 행동";
+             }
+
+             // 프리스톨 우사일 경우
+             if(viewModel.getFarmType() == 5){
+                 if(((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getLowestScore() == -1){
+                     msg = "프리스톨 수";
+                 }
+                 if(((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getSitCount() == -1){
+                     msg = "앉기 시 충돌";
+                 }
+                 if(((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getAreaOutCollisionCowCount() == -1){
+                     msg = "프리스톨 영역 외 앉기";
+                 }
+                 if(((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getSitCowCount() == -1){
+                     msg = "프리스톨 영역 외 앉기";
+                 }
+             }
+         }
+
+
+         return msg;
+     }
+     private void setScores(){
+         viewModel.setWaterScore(
+                 viewModel.calculatorWaterScore(
+                         ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankNum).getSelectedItem(),
+                         ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedWaterTankClean).getSelectedItem(),
+                         viewModel.getWaterTimeQuestion().getMaxWaterTimeScore()
+                 )
+         );
+         if(viewModel.getProtocolOneScore() != -1){
+             viewModel.setProtocolOneScore(
+                     viewModel.calculatorProtocolOneResult(viewModel.getFarmType(),
+                             viewModel.getPoorScore(),
+                             viewModel.getWaterScore()
+                     )
+             );
+         }
+         if(viewModel.getRestScore() != -1){
+             viewModel.setRestScore(
+                     viewModel.calculatorBreedRestScore(
+                             viewModel.getStrawScore(),
+                             viewModel.getOutWardScore()
+                     )
+             );
+         }
+         if(viewModel.getSummerRestScore() != -1){
+             viewModel.setSummerRestScore(viewModel.calculatorBreedSummerRestScore(
+                     ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedShade).getSelectedItem(),
+                     ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedSummerVentilating).getSelectedItem(),
+                     ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedMistSpray).getSelectedItem()
+                     )
+             );
+         }
+         if(viewModel.getWinterRestScore() != -1){
+             viewModel.setWinterRestScore( viewModel.calculatorBreedWinterRestScore(
+                     ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedWindBlock).getSelectedItem(),
+                     ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedWinterVentilating).getSelectedItem()
+                     )
+             );
+         }
+
+
+         if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getRatio() != -1
+                 && ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).getRatio() != -1
+         ) {
+             viewModel.setHairLossTotalRatio(
+                     viewModel.calculatorHairLossTotalRatio(
+                             ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getRatio(),
+                             ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).getRatio()
+                     )
+             );
+             viewModel.setHairLossScore(
+                     viewModel.calculatorHairLossScore(
+                             viewModel.getHairLossTotalRatio()
+                     )
+             );
+         }
+
+        if(viewModel.getMinInjuryScore() != -1){
+            viewModel.setMinInjuryScore(
+                    viewModel.calculatorMinInjuryScore(
+                            viewModel.getFarmType(),
+                            (int)((QuestionTemplateViewModel.Question)viewModel.BreedLimp).getScore(),
+                            viewModel.getHairLossScore()
+                    )
+            );
+        }
+         if(viewModel.getHornRemovalScore() != -1){
+             viewModel.setHornRemovalScore(
+                     viewModel.calculatorHornRemovalScore(
+                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornRemoval).getSelectedItem(),
+                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornAnesthesia).getSelectedItem(),
+                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornPainkiller).getSelectedItem()
+                     )
+             );
+         }
+
+
+         if(viewModel.getCastrationScore() != -1){
+             viewModel.setCastrationScore(
+                     viewModel.calculatorCastrationScore(
+                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastration).getSelectedItem(),
+                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationAnesthesia).getSelectedItem(),
+                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedCastrationPainkiller).getSelectedItem()
+                     )
+             );
+         }
+
+
+         if(viewModel.getMinPainScore() != -1){
+             viewModel.setMinPainScore(
+                     viewModel.calculatorMinPainScore(
+                             viewModel.getHornRemovalScore(),
+                             viewModel.getCastrationScore()
+                     )
+             );
+         }
+
+         if(viewModel.getProtocolThreeScore() != -1){
+             viewModel.setProtocolThreeScore(
+                     viewModel.calculatorProtocolThreeResult(
+                             viewModel.getFarmType(),
+                             viewModel.getMinInjuryScore(),
+                             viewModel.getMinPainScore(),
+                             viewModel.getDiseaseScore()
+                     )
+             );
+         }
+
+
+
+
+
+         if(viewModel.isBeef(viewModel.getFarmType())) {
+             if (viewModel.getCoughQuestion().getCoughPerOneAvg() != -1
+                     && ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedRunnyNose).getRatio() != -1
+                     && ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedOphthalmic).getRatio() != -1
+                     && ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedBreath).getRatio() != -1
+                     && ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedDiarrhea).getRatio() != -1
+                     && ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedRuminant).getRatio() != -1
+                     && ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedFallDead).getRatio() != -1
+             ) {
+                 viewModel.setDiseaseScore(
+                         viewModel.calculatorDiseaseScore(
+                                 viewModel.calculatorCareWarningScore(
+                                         viewModel.calculatorDiseaseSectionOne(
+                                                 ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedRunnyNose).getRatio(),
+                                                 ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedOphthalmic).getRatio()
+                                         ),
+                                         viewModel.calculatorDiseaseSectionTwo(
+                                                 viewModel.getCoughQuestion().getCoughRatio(),
+                                                 ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedBreath).getRatio()
+                                         ),
+                                         viewModel.calculatorDiseaseSectionThree(
+                                                 ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedRuminant).getRatio(),
+                                                 ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedDiarrhea).getRatio()
+                                         ),
+                                         viewModel.calculatorDiseaseSectionFour(
+                                                 ((QuestionTemplateViewModel.PenQuestion) viewModel.BreedFallDead).getRatio()
+                                         )
+                                 )
+                         )
+                 );
+             }
+             if(viewModel.getSocialBehaviorScore() != -1){
+                 viewModel.setSocialBehaviorScore(
+                         viewModel.calculatorSocialBehaviorScore(
+                                 ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg(),
+                                 ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg()
+                         )
+                 );
+             }
+
+             if(viewModel.getProtocolFourScore() != -1){
+                 viewModel.setProtocolFourScore(
+                         viewModel.calculatorProtocolFourScore
+                                 (
+                                         viewModel.getFarmType(),
+                                         viewModel.getSocialBehaviorScore(),
+                                         viewModel.getAvoidDistanceScore()
+                                 )
+                 );
+             }
+         } else {
+             if(viewModel.getProtocolFourScore() != -1){
+                 viewModel.setProtocolFourScore(
+                         viewModel.calculatorProtocolFourScore
+                                 (
+                                         viewModel.getFarmType(),
+                                         ((QuestionTemplateViewModel.MilkCowStruggleQuestion)viewModel.MilkCowStruggle).getRepScore(),
+                                         viewModel.getAvoidDistanceScore()
+                                 )
+                 );
+             }
+         }
+
+
+
+
+         if(farmType == 1){
+             double totalWarmVenScore = viewModel.getSummerRestScore() * 0.7 + viewModel.getWinterRestScore() * 0.3;
+             viewModel.setTotalWarmVentilatingScore(totalWarmVenScore);
+             if(viewModel.getProtocolTwoScore() != -1){
+                 viewModel.setProtocolTwoScore(
+                         viewModel.calculatorProtocolTwoScore(
+                                 viewModel.getRestScore(),
+                                 viewModel.getTotalWarmVentilatingScore()
+                         )
+                 );
+             }
+
+         }
+         else {
+
+             viewModel.setCalfSummerRestScore(
+                     viewModel.calculatorBreedSummerRestScore(
+                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfShade).getSelectedItem(),
+                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfSummerVentilating).getSelectedItem(),
+                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfMistSpray).getSelectedItem()
+                     )
+             );
+             viewModel.setCalfWinterRestScore(
+                     viewModel.calculatorCalfWinterRestScore(
+                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfStraw).getSelectedItem(),
+                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWarm).getSelectedItem(),
+                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWindBlock).getSelectedItem()
+                     )
+             );
+             viewModel.setTotalWarmVentilatingScore(
+                     viewModel.calculatorTotalWarmVentilationScore(
+                             viewModel.getFarmType(),
+                             viewModel.getSummerRestScore(),
+                             viewModel.getWinterRestScore(),
+                             viewModel.getCalfSummerRestScore(),
+                             viewModel.getCalfWinterRestScore()
+                     )
+             );
+
+             if(viewModel.isBeef(viewModel.getFarmType())) {
+                 if(viewModel.getProtocolTwoScore() != -1){
+                     viewModel.setProtocolTwoScore(
+                             viewModel.calculatorProtocolTwoScore(
+                                     viewModel.getRestScore(),
+                                     viewModel.getTotalWarmVentilatingScore()
+                             )
+                     );
+                 }
+
+             } else {
+                 viewModel.setProtocolTwoScore(
+                         mc.calculatorProtocolTwoScore(
+                                 viewModel.getRestScore(),
+                                 viewModel.getTotalWarmVentilatingScore(),
+                                 ((QuestionTemplateViewModel.MovementStability)viewModel.MovementStability).getScore()
+                         )
+                 );
+             }
+
+         }
      }
 }
 

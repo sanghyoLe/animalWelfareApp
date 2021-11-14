@@ -30,18 +30,26 @@ public class BreedWinterVentilating extends Fragment {
         View fattenProtocolTwoView = view.findViewById(R.id.fatten_protocol_2);
         TextView totalWarmVenTv = fattenProtocolTwoView.findViewById(R.id.warm_ventilation_score);
         TextView protocolTwoTv = fattenProtocolTwoView.findViewById(R.id.breed_protocol_2);
+        RadioGroup winterVentilatingRg = view.findViewById(R.id.breed_winter_ventilating_rg);
+        TextView winterRestScoreTv = view.findViewById(R.id.breed_winter_rest_score);
         farmType = viewModel.getFarmType();
-
-        if (farmType == 1  ) {
+        if(viewModel.getWinterRestScore() != -1){
+            winterRestScoreTv.setText(String.valueOf(
+                    viewModel.getWinterRestScore()
+            ));
+        }
+        if (farmType == 1) {
             fattenProtocolTwoView.setVisibility(View.VISIBLE);
+            if(viewModel.getTotalWarmVentilatingScore() != -1){
+                totalWarmVenTv.setText(String.valueOf(viewModel.getTotalWarmVentilatingScore()));
+            }
         } else {
             fattenProtocolTwoView.setVisibility(View.INVISIBLE);
         }
 
 
 
-        RadioGroup winterVentilatingRg = view.findViewById(R.id.breed_winter_ventilating_rg);
-        TextView winterRestScoreTv = view.findViewById(R.id.breed_winter_rest_score);
+
         winterVentilatingRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -55,37 +63,29 @@ public class BreedWinterVentilating extends Fragment {
                 ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedWinterVentilating).setAnswer(winterVentilatingRg,selectedItem);
 
 
-                if (((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedWindBlock).getSelectedItem() == -1) {
-                    winterRestScoreTv.setText("9번 문항을 완료해주세요");
-                } else {
-                    int winterRestScore = viewModel.calculatorBreedWinterRestScore(
+
+
+                    viewModel.setWinterRestScore( viewModel.calculatorBreedWinterRestScore(
                             ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedWindBlock).getSelectedItem(),
                             ((QuestionTemplateViewModel.RadioQuestion) viewModel.BreedWinterVentilating).getSelectedItem()
+                        )
                     );
-                    viewModel.setWinterRestScore(winterRestScore);
-                    winterRestScoreTv.setText(String.valueOf(winterRestScore));
-                }
+                    winterRestScoreTv.setText(String.valueOf(viewModel.getWinterRestScore()));
+
                 if (farmType == 1) {
-                    if (viewModel.getSummerRestScore() == 0) {
-                        totalWarmVenTv.setText("성우 혹서기 설문조사를 완료하세요");
-                    } else if (viewModel.getWinterRestScore() == 0) {
-                        totalWarmVenTv.setText("성우 혹한기 설문조사를 완료하세요");
-                    } else {
                         double totalWarmVenScore = viewModel.getSummerRestScore() * 0.7 + viewModel.getWinterRestScore() * 0.3;
                         viewModel.setTotalWarmVentilatingScore(totalWarmVenScore);
-                        totalWarmVenTv.setText(String.valueOf(viewModel.getTotalWarmVentilatingScore()));
-                    }
-                  if (viewModel.getTotalWarmVentilatingScore() == -1) {
-                        protocolTwoTv.setText("편안한 열환경과 환기 평가를 완료해주세요");
-                    } else {
                         viewModel.setProtocolTwoScore(
                                 viewModel.calculatorProtocolTwoScore(
                                         viewModel.getRestScore(),
                                         viewModel.getTotalWarmVentilatingScore()
                                 )
                         );
+
+
+                        totalWarmVenTv.setText(String.valueOf(viewModel.getTotalWarmVentilatingScore()));
                         protocolTwoTv.setText(String.valueOf(viewModel.getProtocolTwoScore()));
-                    }
+
                 }
 
             }

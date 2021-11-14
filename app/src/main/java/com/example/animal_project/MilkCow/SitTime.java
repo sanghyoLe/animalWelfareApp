@@ -199,6 +199,7 @@ public class SitTime extends Fragment {
                                         if(sitTime[j] == -1){
                                             sit_time_ratio.setText((j + 1) + "번 앉기 동작 문항을 완료하세요.");
                                             sit_time_score.setText((j + 1) + "번 앉기 동작 문항을 완료하세요.");
+                                            ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).setScore(-1);
                                         }
                                     }
                                 }

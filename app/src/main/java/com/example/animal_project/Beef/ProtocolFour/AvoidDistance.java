@@ -56,9 +56,7 @@ public class AvoidDistance extends Fragment {
         protocol_4 = view.findViewById(R.id.breed_protocol_4);
         avoid_distance_score_tv = view.findViewById(R.id.breed_avoid_distance_score_tv);
         avoid_distance_ratio_tv = view.findViewById(R.id.breed_avoid_distance_ratio_tv);
-        if(viewModel.getAvoidDistanceScore() == -1){
-            avoid_distance_score_tv.setText("회피 거리 평가를 모두 완료하세요");
-        } else {
+        if(viewModel.getAvoidDistanceScore() != -1){
             avoid_distance_score_tv.setText(String.valueOf(viewModel.getAvoidDistanceScore()));
         }
         if(viewModel.getAvoidDistanceRatio() != -1){

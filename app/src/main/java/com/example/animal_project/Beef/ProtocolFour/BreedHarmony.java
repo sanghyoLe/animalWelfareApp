@@ -41,28 +41,15 @@ public class BreedHarmony extends Fragment {
         breed_harmony_tv = view.findViewById(R.id.breed_harmony_tv);
 
         // 화합 평가 항목 점수 설정
-        if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg() == -1){
-            breed_harmony_tv.setText("평가를 완료하세요");
-        } else {
+        if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg() != -1){
             breed_harmony_tv.setText(String.valueOf(
                     ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg()
                     )
             );
         }
         // 사회적 평가 항목 점수 설정
-        if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg() == -1){
-            breed_social_behavior_tv.setText("투쟁(서열) 행동 평가를 완료하세요");
-        }else if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg() == -1){
-            breed_social_behavior_tv.setText("화합 행동 평가를 완료하세요");
-        }else {
-            viewModel.setSocialBehaviorScore(
-                    viewModel.calculatorSocialBehaviorScore(
-                            ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg(),
-                            ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg()
-                    )
-            );
+        if(viewModel.getSocialBehaviorScore() != -1) {
             breed_social_behavior_tv.setText(String.valueOf(viewModel.getSocialBehaviorScore()));
-
         }
 
 
@@ -121,11 +108,7 @@ public class BreedHarmony extends Fragment {
                 breed_harmony_tv.setText(String.valueOf(
                         ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg()
                 ));
-                if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg() == -1){
-                    breed_social_behavior_tv.setText("투쟁(서열) 행동 평가를 완료하세요");
-                }else if(((QuestionTemplateViewModel.BehaviorQuestion)viewModel.HarmonyQuestion).getBehaviorPerOneAvg() == -1){
-                    breed_social_behavior_tv.setText("화합 행동 평가를 완료하세요");
-                }else {
+
                     viewModel.setSocialBehaviorScore(
                             viewModel.calculatorSocialBehaviorScore(
                                     ((QuestionTemplateViewModel.BehaviorQuestion)viewModel.StruggleQuestion).getBehaviorPerOneAvg(),
@@ -134,7 +117,7 @@ public class BreedHarmony extends Fragment {
                     );
                     breed_social_behavior_tv.setText(String.valueOf(viewModel.getSocialBehaviorScore()));
 
-                }
+
                 break;
             default:
                 break;

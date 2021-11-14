@@ -25,6 +25,13 @@ public class BreedHornQ3 extends Fragment {
         RadioGroup breed_horn_q3_rg = (RadioGroup) view.findViewById(R.id.breed_horn_q3_rg);
         breed_horn_removal_score_tv = view.findViewById(R.id.breed_horn_removal_score_tv);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
+        if(viewModel.getHornRemovalScore() != -1){
+            breed_horn_removal_score_tv.setText(
+                    String.valueOf(
+                            viewModel.getHornRemovalScore()
+                    )
+            );
+        }
         breed_horn_q3_rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -37,11 +44,7 @@ public class BreedHornQ3 extends Fragment {
                 int selectedItem =((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornPainkiller).getSelectedItem();
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornPainkiller).setAnswer(breed_horn_q3_rg,selectedItem);
 
-                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornRemoval).getSelectedItem()== -1){
-                    breed_horn_removal_score_tv.setText("28번 문항을 완료하세요");
-                } else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornAnesthesia).getSelectedItem() == -1){
-                    breed_horn_removal_score_tv.setText("29번 문항을 완료하세요");
-                } else {
+
                     viewModel.setHornRemovalScore(
                             viewModel.calculatorHornRemovalScore(
                                     ((QuestionTemplateViewModel.RadioQuestion)viewModel.BreedHornRemoval).getSelectedItem(),
@@ -50,7 +53,7 @@ public class BreedHornQ3 extends Fragment {
                             )
                     );
                     breed_horn_removal_score_tv.setText(String.valueOf(viewModel.getHornRemovalScore()));
-                }
+
             }
         });
         // Inflate the layout for this fragment

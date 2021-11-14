@@ -46,7 +46,6 @@ public class WaterTankClean extends Fragment {
                         viewModel.getWaterTimeQuestion().getMaxWaterTimeScore());
                 viewModel.setWaterScore(waterScore);
 
-
             }
         });
 

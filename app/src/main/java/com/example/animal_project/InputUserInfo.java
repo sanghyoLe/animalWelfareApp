@@ -139,7 +139,6 @@ public class InputUserInfo extends AppCompatActivity {
         parentScroll.setOnTouchListener(new View.OnTouchListener() {
 
             public boolean onTouch(View v, MotionEvent event) {
-                Log.v("PARENT", "PARENT TOUCH");
                 findViewById(R.id.agree_privacy_scroll_view).getParent()
                         .requestDisallowInterceptTouchEvent(false);
                 return false;

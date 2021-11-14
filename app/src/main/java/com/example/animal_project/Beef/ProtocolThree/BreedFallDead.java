@@ -34,6 +34,50 @@ public class BreedFallDead extends Fragment {
         if(!viewModel.isBeef(viewModel.getFarmType())){
             diseaseScoreLayout.setVisibility(View.GONE);
         }
+        if(viewModel.getDiseaseScore() != -1){
+            breed_disease_score_tv.setText(String.valueOf(
+                    viewModel.getDiseaseScore()
+            ));
+        }
+        penLocationOne.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewModel.penQuestionAfterTextChanged(breed_fall_dead_ed,breed_fall_dead_tv,
+                        penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead);
+            }
+        });
+
+        penLocationTwo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewModel.penQuestionAfterTextChanged(breed_fall_dead_ed,breed_fall_dead_tv,
+                        penLocationOne,penLocationTwo,(QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead);
+            }
+        });
+
+
+
+
         breed_fall_dead_ed.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -53,21 +97,7 @@ public class BreedFallDead extends Fragment {
 
                 if(viewModel.isBeef(viewModel.getFarmType()))
                 {
-                    if(viewModel.getCoughQuestion().getCoughPerOneAvg() == -1){
-                        breed_disease_score_tv.setText("기침 평가를 완료하세요");
-                    }else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRunnyNose).getRatio() == -1){
-                        breed_disease_score_tv.setText("비강분비물 평가를 완료하세요");
-                    }else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOphthalmic).getRatio() == -1){
-                        breed_disease_score_tv.setText("안구분비물 평가를 완료하세요");
-                    }else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedBreath).getRatio() == -1){
-                        breed_disease_score_tv.setText("호흡 장애 평가를 완료하세요");
-                    }else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedDiarrhea).getRatio() == -1){
-                        breed_disease_score_tv.setText("설사 평가를 완료하세요");
-                    }else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedRuminant).getRatio() == -1){
-                        breed_disease_score_tv.setText("반추위 팽창 평가를 완료하세요");
-                    } else if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedFallDead).getRatio() == -1){
-                        breed_disease_score_tv.setText("폐사율 평가를 완료하세요");
-                    } else {
+
                         double diseaseScore =
                                 viewModel.calculatorDiseaseScore(
                                         viewModel.calculatorCareWarningScore(
@@ -93,7 +123,7 @@ public class BreedFallDead extends Fragment {
                     }
                 }
 
-            }
+
         });
 
         return view;

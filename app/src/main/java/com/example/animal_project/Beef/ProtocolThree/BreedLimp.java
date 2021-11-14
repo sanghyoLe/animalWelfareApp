@@ -29,15 +29,16 @@ public class BreedLimp extends Fragment {
         view = inflater.inflate(R.layout.fragment_breed_limp, container, false);
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         EditText breedLimpEd = view.findViewById(R.id.breed_limp_ed);
-        TextView breedLimpScoreTV = view.findViewById(R.id.breed_limp_score);
+        TextView breedLimpScoreTv = view.findViewById(R.id.breed_limp_score);
         TextView breedLimpRatioTv = view.findViewById(R.id.breed_limp_ratio);
-
         LinearLayout limpScoreLayout = view.findViewById(R.id.limp_score_layout);
+
+        // 한육우가 아닐 경우 다리절음 기준 버튼 VISIBLE, 점수 Layout GONE
         if(!viewModel.isBeef(viewModel.getFarmType())){
             limpScoreLayout.setVisibility(View.GONE);
         }
 
-        // 한육우가 아닐 경우 다리절음 기준 버튼 VISIBLE, 점수 Layout GONE
+
 
 
         breedLimpEd.addTextChangedListener(new TextWatcher() {
@@ -70,7 +71,7 @@ public class BreedLimp extends Fragment {
                         ((QuestionTemplateViewModel.Question) viewModel.BreedLimp).setRatio(ratio);
                         limpScore = viewModel.calculatorLimpScore(ratio);
                         ((QuestionTemplateViewModel.Question) viewModel.BreedLimp).setScore(limpScore);
-                        breedLimpScoreTV.setText(String.valueOf(limpScore));
+                        breedLimpScoreTv.setText(String.valueOf(limpScore));
                     } else {
 
                         float ratio = Float.parseFloat(breedLimpEd.getText().toString()) / viewModel.getSampleCowSize();

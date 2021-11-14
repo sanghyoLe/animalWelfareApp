@@ -125,7 +125,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/critical_limp_sub_menu_title"
+                    android:text="@string/critical_hair_loss_sub_menu_title"
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:layout_gravity="center_vertical"

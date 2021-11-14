@@ -28,7 +28,40 @@ public class BreedDiarrhea extends Fragment {
         QuestionTemplateViewModel viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
         EditText penLocationOne = view.findViewById(R.id.pen_location_ed_1);
         EditText penLocationTwo = view.findViewById(R.id.pen_location_ed_2);
+        penLocationOne.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewModel.penQuestionAfterTextChanged(breed_diarrhea_ed,breed_diarrhea_tv,
+                        penLocationOne,penLocationTwo, (QuestionTemplateViewModel.PenQuestion)viewModel.BreedDiarrhea);
+            }
+        });
+        penLocationTwo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                viewModel.penQuestionAfterTextChanged(breed_diarrhea_ed,breed_diarrhea_tv,
+                        penLocationOne,penLocationTwo, (QuestionTemplateViewModel.PenQuestion)viewModel.BreedDiarrhea);
+            }
+        });
         breed_diarrhea_ed.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

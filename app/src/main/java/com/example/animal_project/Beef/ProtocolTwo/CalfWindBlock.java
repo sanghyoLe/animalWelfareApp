@@ -29,8 +29,32 @@ public class CalfWindBlock extends Fragment {
         TextView totalWarmVenTv = view.findViewById(R.id.warm_ventilation_score);
         TextView protocolTwoTv = view.findViewById(R.id.breed_protocol_2);
         LinearLayout breedProtocolTwoLayout = view.findViewById(R.id.breed_protocol_two_score_layout);
+
+        if(viewModel.getCalfWinterRestScore() != -1){
+            calfWinterRestScoreTv.setText(
+                    String.valueOf(
+                            viewModel.getCalfWinterRestScore()
+                    )
+            );
+        }
+        if(viewModel.getTotalWarmVentilatingScore() != -1){
+            totalWarmVenTv.setText(
+                    String.valueOf(
+                            viewModel.getTotalWarmVentilatingScore()
+                    )
+            );
+        }
+
         if(!viewModel.isBeef(viewModel.getFarmType())){
             breedProtocolTwoLayout.setVisibility(View.GONE);
+        } else {
+            if(viewModel.getProtocolTwoScore() != -1){
+                protocolTwoTv.setText(
+                        String.valueOf(
+                                viewModel.getProtocolTwoScore()
+                        )
+                );
+            }
         }
         calfWindBlockRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -44,44 +68,42 @@ public class CalfWindBlock extends Fragment {
                 int selectedItem = ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWindBlock).getSelectedItem();
                 ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWindBlock).setAnswer(calfWindBlockRg,selectedItem);
 
-                if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfStraw).getSelectedItem() == -1){
-                    calfWinterRestScoreTv.setText("포유송아지 깔짚 문항을 완료하세요");
-                }else if(((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWarm).getSelectedItem() == 0){
-                    calfWinterRestScoreTv.setText("포유송아지 보온 문항을 완료하세요");
-                }else {
-                    int calfWinterRestScore = viewModel.calculatorCalfWinterRestScore(
+
+
+                    viewModel.setCalfWinterRestScore(
+                            viewModel.calculatorCalfWinterRestScore(
                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfStraw).getSelectedItem(),
                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWarm).getSelectedItem(),
                             ((QuestionTemplateViewModel.RadioQuestion)viewModel.CalfWindBlock).getSelectedItem()
+                        )
                     );
-                    viewModel.setCalfWinterRestScore(calfWinterRestScore);
-                    calfWinterRestScoreTv.setText(String.valueOf(calfWinterRestScore));
-                }
 
-                    if(viewModel.getSummerRestScore() == 0){
-                        totalWarmVenTv.setText("성우 혹서기 설문조사를 완료하세요");
-                    } else if(viewModel.getWinterRestScore() == 0 ){
-                        totalWarmVenTv.setText("성우 혹한기 설문조사를 완료하세요");
-                    } else if(viewModel.getCalfSummerRestScore() == 0 ) {
-                        totalWarmVenTv.setText("송아지 혹서기 설문조사를 완료하세요");
-                    } else if(viewModel.getCalfWinterRestScore() == 0) {
-                        totalWarmVenTv.setText("송아지 혹한기 설문조사를 완료하세요");
-                    } else {
-                        double totalWarmVen = viewModel.calculatorTotalWarmVentilationScore(
-                                viewModel.getFarmType(),
-                                viewModel.getSummerRestScore(),
-                                viewModel.getWinterRestScore(),
-                                viewModel.getCalfSummerRestScore(),
-                                viewModel.getCalfWinterRestScore()
+                    calfWinterRestScoreTv.setText(
+                            String.valueOf(
+                                    viewModel.getCalfWinterRestScore()
+                            )
+                    );
+
+
+
+
+                        viewModel.setTotalWarmVentilatingScore(
+                                viewModel.calculatorTotalWarmVentilationScore(
+                                        viewModel.getFarmType(),
+                                        viewModel.getSummerRestScore(),
+                                        viewModel.getWinterRestScore(),
+                                        viewModel.getCalfSummerRestScore(),
+                                        viewModel.getCalfWinterRestScore()
+                                )
                         );
-                        viewModel.setTotalWarmVentilatingScore(totalWarmVen);
-                        totalWarmVenTv.setText(String.valueOf(totalWarmVen));
+
+                        totalWarmVenTv.setText(
+                                String.valueOf(
+                                        viewModel.getTotalWarmVentilatingScore()
+                                )
+                        );
+
                         if(viewModel.isBeef(viewModel.getFarmType())){
-                            if(viewModel.getRestScore() == -1){
-                                protocolTwoTv.setText("편안한 휴식 평가를 완료해주세요.");
-                            }else if(viewModel.getTotalWarmVentilatingScore() == -1){
-                                protocolTwoTv.setText("편안한 열환경과 환기 평가를 완료해주세요");
-                            }else {
                                 viewModel.setProtocolTwoScore(
                                         viewModel.calculatorProtocolTwoScore(
                                                 viewModel.getRestScore(),
@@ -89,10 +111,10 @@ public class CalfWindBlock extends Fragment {
                                         )
                                 );
                                 protocolTwoTv.setText(String.valueOf(viewModel.getProtocolTwoScore()));
-                            }
+
                         }
 
-                }
+
 
 
             }
