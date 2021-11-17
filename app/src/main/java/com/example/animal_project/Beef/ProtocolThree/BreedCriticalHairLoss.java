@@ -22,6 +22,7 @@ import com.example.animal_project.R;
 public class BreedCriticalHairLoss extends Fragment {
     private View view;
     private QuestionTemplateViewModel viewModel;
+    private float criticalHairLoss;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -82,11 +83,12 @@ public class BreedCriticalHairLoss extends Fragment {
                          ((QuestionTemplateViewModel.Question)viewModel.BreedCriticalHairLoss).setNumberOfCow(
                                  Integer.parseInt(breedCriticalHairLossEd.getText().toString())
                          );
+                         criticalHairLoss = Float.parseFloat(breedCriticalHairLossEd.getText().toString());
                      }
 
                      if(((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getNumberOfCow() != -1) {
-                        float criticalHairLoss = 0;
-                        criticalHairLoss = Float.parseFloat(breedCriticalHairLossEd.getText().toString());
+
+
                         ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedCriticalHairLoss).setNumberOfCow((int)criticalHairLoss);
                         if((((QuestionTemplateViewModel.PenQuestion)viewModel.BreedSlightHairLoss).getNumberOfCow()
                                 + criticalHairLoss) > viewModel.getSampleCowSize()) {

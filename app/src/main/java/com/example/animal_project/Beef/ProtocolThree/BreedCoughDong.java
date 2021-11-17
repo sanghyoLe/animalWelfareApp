@@ -13,12 +13,18 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.animal_project.Beef.ProtocolTwo.BreedStrawDong;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
 public class BreedCoughDong extends AppCompatActivity {
     private int dong_size;
     private QuestionTemplateViewModel viewModel;
+    @Override
+    public void onBackPressed(){
+
+        myOnBackPressed(new AlertDialog.Builder(BreedCoughDong.this));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -192,7 +198,7 @@ public class BreedCoughDong extends AppCompatActivity {
         String[] inputStrings = new String[dong_size];
         String msg = "";
         for(int i = 0 ; i < dong_size ; i++){
-            inputStrings[i] = (i+1) + "동 \n1마리당 15분 동안 기침 평균 수 : " + coughPerOne[i] + "번\n";
+            inputStrings[i] = (i+1) + "동 \n1마리당 15분 동안 기침 평균 수 : " + coughPerOne[i] + "번\n\n";
             msg += inputStrings[i];
         }
         return msg;

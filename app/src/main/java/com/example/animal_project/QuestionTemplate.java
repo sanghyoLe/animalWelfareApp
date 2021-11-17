@@ -765,12 +765,12 @@ public class QuestionTemplate extends AppCompatActivity
 
             case R.id.end_btn:
                 // database 연동
-                if(checkEvaEndBtn() != null) {
-                    String msg = checkEvaEndBtn() + " 항목을 완료해주세요";
-                    Log.d("h",msg);
-                    Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-                }
-                else{
+//                if(checkEvaEndBtn() != null) {
+//                    String msg = checkEvaEndBtn() + " 항목을 완료해주세요";
+//                    Log.d("h",msg);
+//                    Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
+//                }
+//                else{
                     endBtnAlertBuilder.setTitle("완료");
                     endBtnAlertBuilder.setMessage("평가를 완료하면\n평가 내용을 수정할 수 없습니다.\n평가를 완료하시겠습니까?");
                     // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
@@ -800,7 +800,8 @@ public class QuestionTemplate extends AppCompatActivity
                         }
                     });
                     endBtnAlertBuilder.show();
-                }
+
+                // }
 
 
 

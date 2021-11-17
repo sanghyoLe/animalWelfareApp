@@ -141,7 +141,7 @@ public class BreedStrawDong extends AppCompatActivity {
                     msg = viewModel.checkEmptyEditText(penLocationOneEd,dong_size) + "동 펜 위치를 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                 }else if(viewModel.checkEmptyEditText(penLocationTwoEd,dong_size) != -1){
-                    msg = viewModel.checkEmptyEditText(penLocationOneEd,dong_size) + "동 펜 위치를 입력하세요";
+                    msg = viewModel.checkEmptyEditText(penLocationTwoEd,dong_size) + "동 펜 위치를 입력하세요";
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                 }  else {
                     for(int i = 0 ;i < dong_size;i++){

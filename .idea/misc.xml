@@ -134,15 +134,17 @@
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/eva_score_search_result.xml" value="0.5" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_castration_q2.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_critical_hair_loss.xml" value="0.12777777777777777" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_fall_dead.xml" value="0.21354166666666666" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_limp.xml" value="0.19907407407407407" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_ophthalmic.xml" value="0.36770833333333336" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_summer_ventilating.xml" value="0.22" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_wind_block.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_winter_ventilating.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_breed_winter_ventilating.xml" value="0.25" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_calf_summer_ventilating.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_calf_wind_block.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_critical_limp.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_freestall_sit_collision.xml" value="0.19831223628691982" />
+        <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_milk_in_cell.xml" value="0.25" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/fragment_sit_time.xml" value="0.33" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/free_stall_count_item_list.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/animal_project/app/src/main/res/layout/free_stall_sit_collision_num_template.xml" value="0.33" />

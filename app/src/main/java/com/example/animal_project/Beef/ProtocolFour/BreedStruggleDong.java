@@ -13,12 +13,18 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.animal_project.Beef.ProtocolTwo.BreedStrawDong;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
 public class BreedStruggleDong extends AppCompatActivity {
     private int dong_size;
     private QuestionTemplateViewModel viewModel;
+    @Override
+    public void onBackPressed(){
+
+        myOnBackPressed(new AlertDialog.Builder(BreedStruggleDong.this));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

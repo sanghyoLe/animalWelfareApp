@@ -290,14 +290,14 @@ public class CustomDialog {
         beforeDatePicker.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-
-                beforeDateTv.setText(year + "-" + (month+1) + "-" + dayOfMonth);
                 if(beforeCalendar != null){
                     beforeCalendar.set(year, month, dayOfMonth);
                     afterDatePicker.getDatePicker().setMinDate(beforeCalendar.getTimeInMillis());
                     afterDatePicker.show();
                 }
+
+                beforeDateTv.setText(year + "-" + (month+1) + "-" + dayOfMonth);
+
 
             }
 
@@ -314,7 +314,47 @@ public class CustomDialog {
         beforeDateTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                beforeCalendar = Calendar.getInstance();
+                beforeCalendar = new Calendar() {
+                    @Override
+                    protected void computeTime() {
+
+                    }
+
+                    @Override
+                    protected void computeFields() {
+
+                    }
+
+                    @Override
+                    public void add(int field, int amount) {
+
+                    }
+
+                    @Override
+                    public void roll(int field, boolean up) {
+
+                    }
+
+                    @Override
+                    public int getMinimum(int field) {
+                        return 0;
+                    }
+
+                    @Override
+                    public int getMaximum(int field) {
+                        return 0;
+                    }
+
+                    @Override
+                    public int getGreatestMinimum(int field) {
+                        return 0;
+                    }
+
+                    @Override
+                    public int getLeastMaximum(int field) {
+                        return 0;
+                    }
+                };
                 afterDatePicker.getDatePicker().setMinDate(new Date().getTime()-2000000000);
                 if (beforeDateTv.isClickable()) {
                     beforeDatePicker.show();

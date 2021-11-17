@@ -21,12 +21,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.animal_project.Beef.ProtocolTwo.BreedStrawDong;
 import com.example.animal_project.QuestionTemplateViewModel;
 import com.example.animal_project.R;
 
 public class AvoidDistanceCowQuestions extends AppCompatActivity {
     private int cow_size;
     private int pen_number;
+    @Override
+    public void onBackPressed(){
+        myOnBackPressed(new AlertDialog.Builder(AvoidDistanceCowQuestions.this));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
