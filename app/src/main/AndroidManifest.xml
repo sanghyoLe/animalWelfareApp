@@ -14,53 +14,66 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-
         <activity
-            android:screenOrientation="portrait"
+            android:name=".WebViewPdfActivity"
+            android:exported="false" />
+        <activity
             android:name=".MultipleAnswerResult.AvoidDistanceDetailSearchResult"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".MultipleAnswerResult.MultipleAnswerSearchResultActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".Result.DetailSearchAdminMemberActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".Result.ResultActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
-            android:name=".MilkCow.FreeStallCountDong" />
+            android:name=".MilkCow.FreeStallCountDong"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MilkCow.MilkCowStruggleDong"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Beef.ProtocolFour.AvoidDistanceCowQuestions"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Beef.ProtocolFour.BreedHarmonyDong"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Beef.ProtocolFour.BreedStruggleDong"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Beef.ProtocolThree.BreedCoughDong"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Beef.ProtocolTwo.BreedStrawDong"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Beef.ProtocolOne.WaterTimeDong"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".QuestionTemplate"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".WebViewActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".InputUserInfo"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".SearchActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Result.DetailSearchNormalMemberActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Beef.ProtocolFour.BreedHarmonyDong"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Beef.ProtocolFour.BreedStruggleDong"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Beef.ProtocolThree.BreedCoughDong"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Beef.ProtocolTwo.BreedStrawDong"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Beef.ProtocolOne.WaterTimeDong"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuestionTemplate"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WebViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InputUserInfo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Result.DetailSearchNormalMemberActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

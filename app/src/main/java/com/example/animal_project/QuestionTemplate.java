@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -97,7 +98,7 @@ public class QuestionTemplate extends AppCompatActivity
         private String IP_ADDRESS = "218.151.112.65";
 
      private MilkCowScoreCalculator mc = new MilkCowScoreCalculator();
-
+     String pdfQuestionName = null;
      // 정보 입력 창에서 넘어온 정보들
      private String farmName;
      private String address;
@@ -198,6 +199,7 @@ public class QuestionTemplate extends AppCompatActivity
     private ImageButton list_menu_btn_4;
     private Button checkSampleSizeBtn;
     private Button evaWayBtn;
+    private Button introWayBtn;
     // --------------------------------------------------------
 
 
@@ -248,6 +250,8 @@ public class QuestionTemplate extends AppCompatActivity
         // ------------------------------------------
 
         viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
+        // pdfView Intent
+        Intent pdfViewIntent = new Intent(QuestionTemplate.this,WebViewPdfActivity.class);
 
         // 회피거리 배열 초기화
         viewModel.setAvoidDistances();
@@ -269,6 +273,7 @@ public class QuestionTemplate extends AppCompatActivity
         question_top_nav = findViewById(R.id.question_top_nav);
         checkSampleSizeBtn = findViewById(R.id.check_sample_size_btn);
         evaWayBtn = findViewById(R.id.eva_way_btn);
+        introWayBtn = findViewById(R.id.intro_way_btn);
 
         // 평가를 위한 프래그먼트들
         breed_poor = new Poor();
@@ -566,33 +571,67 @@ public class QuestionTemplate extends AppCompatActivity
                 }
 
         });
+
         evaWayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                for (Fragment fragment: getSupportFragmentManager().getFragments()) {
+                for (Fragment fragment : getSupportFragmentManager().getFragments()) {
                     if (fragment.isVisible()) {
                         for (int i = 0; i < breed_frag_arr.length; i++) {
                             if (fragment == breed_frag_arr[i]) {
-                                if(fragment == breed_poor){
-                                    if(viewModel.isBeef(viewModel.getFarmType())){
-                                                setEvaWayFragmentImage(breed_poor,R.drawable.beef_poor);
-                                    }else {
-                                        setEvaWayFragmentImage(breed_poor,R.drawable.milk_cow_poor);
-                                    }
-                                } else {
-                                    setEvaWayFragmentImage(breed_frag_arr[i], drawableIdArr[0]);
-                                }
+                                if (viewModel.isBeef(viewModel.getFarmType())) {
+                                    pdfViewIntent.putExtra("farmType",farmType);
+                                        if (fragment == breed_poor) { pdfQuestionName = "poor"; }
+                                        else if(fragment == breed_water_q2){ pdfQuestionName = "waterClean"; }
+                                        else if(fragment == breed_straw){ pdfQuestionName = "straw";}
+                                        else if(fragment == breed_outward){pdfQuestionName = "outward";}
+                                        else if(fragment == breed_shade
+                                                || fragment == breed_summer_ventilating
+                                                || fragment == breed_winter_ventilating)
+                                        { pdfQuestionName = "shadeVen";}
+                                        else if(fragment == breed_mist_spray
+                                                || fragment == calf_mist_spray)
+                                        {pdfQuestionName = "mistSpray";}
+                                        else if(fragment == breed_wind_block) {pdfQuestionName = "windBlock"; }
+                                        else if(fragment == calf_shade
+                                                || fragment == calf_summer_ventilating
+                                                || fragment == calf_straw
+                                                || fragment == calf_warm
+                                                || fragment == calf_wind_block)
+                                        {pdfQuestionName = "calf";}
+                                        else if(fragment == breed_slight_hair_loss
+                                                || fragment == breed_critical_hair_loss) {pdfQuestionName = "hairLoss";}
+                                        else if(fragment == breed_runny_nose
+                                        || fragment == breed_ophthalmic
+                                        || fragment == breed_diarrhea) {pdfQuestionName = "noseEyeDiarrhea";}
+                                        else if(fragment == breed_struggle) {pdfQuestionName = "struggle";}
+                                        else if(fragment == breed_avoid_distance) {pdfQuestionName = "avoidDistance";}
+                                        else {
+                                            pdfQuestionName = null;
+                                        }
+                                    } else {
 
+                                    }
+                                }
                             }
                         }
                     }
+                if(pdfQuestionName != null){
+                    pdfViewIntent.putExtra("questionName", pdfQuestionName);
+                    startActivity(pdfViewIntent);
+                } else {
+                    Toast.makeText(getApplicationContext(),"해당 평가에 대한 평가방법이 없습니다.",Toast.LENGTH_SHORT).show();
                 }
 
+                }
+            });
+        introWayBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-
-
-
+                pdfViewIntent.putExtra("farmType",farmType);
+                pdfViewIntent.putExtra("questionName","beefIntro");
+                startActivity(pdfViewIntent);
             }
         });
 
