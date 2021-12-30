@@ -73,6 +73,9 @@ public class CustomDialog {
     private String searchAfterDate;
 
 
+    private LinearLayout adminMemberLayout;
+    private LinearLayout normalMemberLayout;
+    private Spinner searchFilterSpinner;
     public CustomDialog(Context context) {
         this.context = context;
 
@@ -123,15 +126,15 @@ public class CustomDialog {
         View searchView = dlg.findViewById(R.id.search_layout);
         TextView normalMemberTv = searchView.findViewById(R.id.normal_member);
         TextView adminMemberTv = searchView.findViewById(R.id.admin_member);
-        Spinner searchFilterSpinner = searchView.findViewById(R.id.search_filter_spinner);
+        searchFilterSpinner = searchView.findViewById(R.id.search_filter_spinner);
         EditText searchEd = searchView.findViewById(R.id.search_ed);
         LinearLayout datePickerLayout = searchView.findViewById(R.id.date_picker_layout);
         TextView beforeDateTv = searchView.findViewById(R.id.before_date_picker_tv);
         TextView afterDateTv = searchView.findViewById(R.id.after_date_picker);
         Button searchBtn = searchView.findViewById(R.id.search_btn);
         RadioGroup cowKindRg = searchView.findViewById(R.id.cow_kind_rg);
-        LinearLayout normalMemberLayout = searchView.findViewById(R.id.normal_member_layout);
-        LinearLayout adminMemberLayout = searchView.findViewById(R.id.admin_member_layout);
+        normalMemberLayout = searchView.findViewById(R.id.normal_member_layout);
+        adminMemberLayout = searchView.findViewById(R.id.admin_member_layout);
         EditText adminMemberIdEd = searchView.findViewById(R.id.admin_member_id);
         EditText adminMemberPasswordEd = searchView.findViewById(R.id.admin_member_password);
         Button adminMemberLoginBtn = searchView.findViewById(R.id.admin_member_login_btn);
@@ -196,16 +199,21 @@ public class CustomDialog {
         adminMemberLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(adminMemberIdEd.getText().toString().equals("1") && adminMemberPasswordEd.getText().toString().equals("1")){
-                    adminMemberLayout.setVisibility(View.GONE);
-                    normalMemberLayout.setVisibility(View.VISIBLE);
-                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
-                            R.array.search_filter_admin_member,R.layout.spinner_item);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    searchFilterSpinner.setAdapter(adapter);
+
+                if(TextUtils.isEmpty(adminMemberIdEd.getText().toString())){
+                    Toast.makeText(context,"아이디를 입력하세요",Toast.LENGTH_SHORT).show();
+                 } else if(TextUtils.isEmpty(adminMemberPasswordEd.getText().toString())){
+                    Toast.makeText(context,"비밀번호를 입력하세요",Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "아이디 또는 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+                    String id = adminMemberIdEd.getText().toString();
+                    String password = adminMemberPasswordEd.getText().toString();
+                    CheckAdmin task = new CheckAdmin();
+                    task.execute("http://" + IP_ADDRESS + "/checkAdmin.php",
+                            id,password
+                            );
                 }
+
+
             }
         });
 
@@ -502,6 +510,115 @@ public class CustomDialog {
 
         }
     }
+    private class CheckAdmin extends AsyncTask<String, Void, String> {
+
+        ProgressDialog progressDialog;
+        String errorString = null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = ProgressDialog.show(context,
+                    "Please Wait", null, true, true);
+        }
+
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+
+//            Log.d(TAG, "response - " + result);
+            Log.d("result",String.valueOf(result));
+            if (result.equals("loginFail")){
+                Toast.makeText(context, "아이디 또는 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(context,"로그인 완료",Toast.LENGTH_SHORT).show();
+                adminMemberLayout.setVisibility(View.GONE);
+                normalMemberLayout.setVisibility(View.VISIBLE);
+                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
+                        R.array.search_filter_admin_member,R.layout.spinner_item);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                searchFilterSpinner.setAdapter(adapter);
+            }
+        }
+
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String serverURL = params[0];
+            String id = params[1];
+            String password = params[2];
+
+
+            String postParameters =
+                    "inputId=" + id
+                            +"&inputPassword=" + password;
+
+
+
+
+
+            try {
+
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoInput(true);
+                httpURLConnection.connect();
+
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d("CheckAdmin", "response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+
+                bufferedReader.close();
+
+                return sb.toString().trim();
+
+
+            } catch (Exception e) {
+
+                Log.d("CheckAdmin", "CheckData : Error ", e);
+                errorString = e.toString();
+
+                return null;
+            }
+
+        }
+    }
+
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 

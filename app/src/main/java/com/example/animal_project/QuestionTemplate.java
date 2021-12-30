@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -172,9 +171,9 @@ public class QuestionTemplate extends AppCompatActivity
     // 착유우 프로토콜 질문 항목 Fragments
      private SitTime sit_time;
      private CriticalLimp criticalLimp;
-     private OutwardBackReg appearance_q1;
-     private OutwardBack appearance_q2;
-     private OutwardBreast appearance_q3;
+     private OutwardBackReg outwardBackReg;
+     private OutwardBack outwardBack;
+     private OutwardBreast outwardBreast;
      private MovementStability movementStability;
      private OutGenitals out_genital;
      private MilkInCell milk_min_cell;
@@ -317,9 +316,9 @@ public class QuestionTemplate extends AppCompatActivity
 
         // 착유우
         sit_time = new SitTime();
-        appearance_q1 = new OutwardBackReg();
-        appearance_q2 = new OutwardBack();
-        appearance_q3 = new OutwardBreast();
+        outwardBackReg = new OutwardBackReg();
+        outwardBack = new OutwardBack();
+        outwardBreast = new OutwardBreast();
         criticalLimp = new CriticalLimp();
         movementStability = new MovementStability();
         milk_min_cell = new MilkInCell();
@@ -388,7 +387,7 @@ public class QuestionTemplate extends AppCompatActivity
                 breed_horn_q1,breed_horn_q2,breed_horn_q3,breed_castration_q1,breed_castration_q2,breed_castration_q3,
                 breed_struggle,breed_harmony,breed_avoid_distance
         };
-        milk_cow_frag_arr = new Fragment[]{breed_poor,breed_water_q1,breed_water_q2,breed_water_q3,sit_time,appearance_q1,appearance_q2,appearance_q3
+        milk_cow_frag_arr = new Fragment[]{breed_poor,breed_water_q1,breed_water_q2,breed_water_q3,sit_time, outwardBackReg, outwardBack, outwardBreast
                 ,breed_shade,breed_summer_ventilating,breed_mist_spray,
                 breed_wind_block,breed_winter_ventilating,calf_shade,calf_summer_ventilating,calf_mist_spray,
                 calf_straw,calf_warm,calf_wind_block,movementStability,breed_limp,criticalLimp,breed_slight_hair_loss,breed_critical_hair_loss,breed_cough,
@@ -397,7 +396,7 @@ public class QuestionTemplate extends AppCompatActivity
         };
 
         freeStall_frag_arr = new Fragment[]{breed_poor,breed_water_q1,breed_water_q2,breed_water_q3,
-                free_stall_count,free_stall_sit_collision, free_stall_area_out_collision, sit_time,appearance_q1,appearance_q2,appearance_q3
+                free_stall_count,free_stall_sit_collision, free_stall_area_out_collision, sit_time, outwardBackReg, outwardBack, outwardBreast
                 ,breed_shade,breed_summer_ventilating,breed_mist_spray,
                 breed_wind_block,breed_winter_ventilating,calf_shade,calf_summer_ventilating,calf_mist_spray,
                 calf_straw,calf_warm,calf_wind_block,movementStability,breed_limp,criticalLimp,breed_slight_hair_loss,breed_critical_hair_loss,breed_cough,
@@ -577,45 +576,82 @@ public class QuestionTemplate extends AppCompatActivity
             public void onClick(View v) {
                 for (Fragment fragment : getSupportFragmentManager().getFragments()) {
                     if (fragment.isVisible()) {
-                        for (int i = 0; i < breed_frag_arr.length; i++) {
-                            if (fragment == breed_frag_arr[i]) {
-                                if (viewModel.isBeef(viewModel.getFarmType())) {
-                                    pdfViewIntent.putExtra("farmType",farmType);
-                                        if (fragment == breed_poor) { pdfQuestionName = "poor"; }
-                                        else if(fragment == breed_water_q2){ pdfQuestionName = "waterClean"; }
-                                        else if(fragment == breed_straw){ pdfQuestionName = "straw";}
-                                        else if(fragment == breed_outward){pdfQuestionName = "outward";}
-                                        else if(fragment == breed_shade
-                                                || fragment == breed_summer_ventilating
-                                                || fragment == breed_winter_ventilating)
-                                        { pdfQuestionName = "shadeVen";}
-                                        else if(fragment == breed_mist_spray
-                                                || fragment == calf_mist_spray)
-                                        {pdfQuestionName = "mistSpray";}
-                                        else if(fragment == breed_wind_block) {pdfQuestionName = "windBlock"; }
-                                        else if(fragment == calf_shade
-                                                || fragment == calf_summer_ventilating
-                                                || fragment == calf_straw
-                                                || fragment == calf_warm
-                                                || fragment == calf_wind_block)
-                                        {pdfQuestionName = "calf";}
-                                        else if(fragment == breed_slight_hair_loss
-                                                || fragment == breed_critical_hair_loss) {pdfQuestionName = "hairLoss";}
-                                        else if(fragment == breed_runny_nose
-                                        || fragment == breed_ophthalmic
-                                        || fragment == breed_diarrhea) {pdfQuestionName = "noseEyeDiarrhea";}
-                                        else if(fragment == breed_struggle) {pdfQuestionName = "struggle";}
-                                        else if(fragment == breed_avoid_distance) {pdfQuestionName = "avoidDistance";}
-                                        else {
-                                            pdfQuestionName = null;
-                                        }
+                        if (viewModel.isBeef(viewModel.getFarmType())) {
+                            for (int i = 0; i < breed_frag_arr.length; i++) {
+                                if (fragment == breed_frag_arr[i]) {
+                                    pdfViewIntent.putExtra("farmType", farmType);
+                                    if (fragment == breed_poor) {
+                                        pdfQuestionName = "poor";
+                                    } else if (fragment == breed_water_q2) {
+                                        pdfQuestionName = "waterClean";
+                                    } else if (fragment == breed_straw) {
+                                        pdfQuestionName = "straw";
+                                    } else if (fragment == breed_outward) {
+                                        pdfQuestionName = "outward";
+                                    } else if (fragment == breed_shade
+                                            || fragment == breed_summer_ventilating
+                                            || fragment == breed_winter_ventilating) {
+                                        pdfQuestionName = "shadeVen";
+                                    } else if (fragment == breed_mist_spray
+                                            || fragment == calf_mist_spray) {
+                                        pdfQuestionName = "mistSpray";
+                                    } else if (fragment == breed_wind_block) {
+                                        pdfQuestionName = "windBlock";
+                                    } else if (fragment == calf_shade
+                                            || fragment == calf_summer_ventilating
+                                            || fragment == calf_straw
+                                            || fragment == calf_warm
+                                            || fragment == calf_wind_block) {
+                                        pdfQuestionName = "calf";
+                                    } else if (fragment == breed_slight_hair_loss
+                                            || fragment == breed_critical_hair_loss) {
+                                    pdfQuestionName = "hairLoss";
+                                    } else if (fragment == breed_runny_nose
+                                            || fragment == breed_ophthalmic
+                                            || fragment == breed_diarrhea) {
+                                        pdfQuestionName = "noseEyeDiarrhea";
+                                    } else if (fragment == breed_struggle) {
+                                        pdfQuestionName = "struggle";
+                                    } else if (fragment == breed_avoid_distance) {
+                                        pdfQuestionName = "avoidDistance";
                                     } else {
+                                        pdfQuestionName = null;
+                                    }
+                                }
 
+                            }
+                        } else {
+                            for(int i = 0; i < freeStall_frag_arr.length; i++){
+                                if(fragment == freeStall_frag_arr[i]){
+                                    if(!viewModel.isBeef(viewModel.getFarmType())) {
+                                        pdfViewIntent.putExtra("farmType",farmType);
+                                        if(fragment == breed_poor) { pdfQuestionName = "poor";}
+                                        else if(fragment == breed_water_q2) { pdfQuestionName = "waterClean";}
+                                        else if(fragment == free_stall_count) { pdfQuestionName = "freeStallCount"; }
+                                        else if(fragment == free_stall_sit_collision) { pdfQuestionName = "sitCollision"; }
+                                        else if(fragment == sit_time) { pdfQuestionName = "sitTime"; }
+                                        else if(fragment == outwardBackReg) { pdfQuestionName = "outwardBackReg"; }
+                                        else if(fragment == outwardBack) { pdfQuestionName = "outwardBack"; }
+                                        else if(fragment == breed_shade) { pdfQuestionName = "shade"; }
+                                        else if(fragment == breed_summer_ventilating) { pdfQuestionName = "pen"; }
+                                        else if(fragment == breed_mist_spray) { pdfQuestionName = "mistSpray"; }
+                                        else if(fragment == breed_wind_block) { pdfQuestionName = "windBlock"; }
+                                        else if(fragment == breed_winter_ventilating) { pdfQuestionName = "ventilating"; }
+                                        else if(fragment == calf_shade) { pdfQuestionName = "shade"; }
+                                        else if(fragment == calf_summer_ventilating) { pdfQuestionName = "pen"; }
+                                        else if(fragment == calf_mist_spray) { pdfQuestionName = "mistSpray"; }
+                                        else if(fragment == calf_straw) { pdfQuestionName = "calf"; }
+                                        else if(fragment == calf_warm) { pdfQuestionName = "calf"; }
+                                        else if(fragment == calf_wind_block) { pdfQuestionName = "windBlock"; }
+                                        else if(fragment == breed_avoid_distance) { pdfQuestionName = "avoidDistance"; }
+                                        else { pdfQuestionName = null; }
                                     }
                                 }
                             }
                         }
+                        }
                     }
+
                 if(pdfQuestionName != null){
                     pdfViewIntent.putExtra("questionName", pdfQuestionName);
                     startActivity(pdfViewIntent);
@@ -628,9 +664,13 @@ public class QuestionTemplate extends AppCompatActivity
         introWayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                pdfViewIntent.putExtra("farmType",farmType);
-                pdfViewIntent.putExtra("questionName","beefIntro");
+                if(viewModel.isBeef(viewModel.getFarmType())){
+                    pdfViewIntent.putExtra("farmType",farmType);
+                    pdfViewIntent.putExtra("questionName","beefIntro");
+                } else {
+                    pdfViewIntent.putExtra("farmType",farmType);
+                    pdfViewIntent.putExtra("questionName","intro");
+                }
                 startActivity(pdfViewIntent);
             }
         });

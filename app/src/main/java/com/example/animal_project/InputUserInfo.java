@@ -320,10 +320,14 @@ public class InputUserInfo extends AppCompatActivity {
                 @Override
                 public boolean onTouch(View v, MotionEvent event)
                 {
-                    if(event.getAction() == MotionEvent.ACTION_UP) {
-                        Intent i = new Intent(InputUserInfo.this, com.example.animal_project.WebViewActivity.class);
-                        startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
-                        return true;
+                    if(isNetworkConnected() == false){
+                        Toast.makeText(InputUserInfo.this,"인터넷 연결을 확인해주세요",Toast.LENGTH_SHORT).show();
+                    } else {
+                        if(event.getAction() == MotionEvent.ACTION_UP) {
+                            Intent i = new Intent(InputUserInfo.this, com.example.animal_project.WebViewActivity.class);
+                            startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
+                            return true;
+                        }
                     }
                     return false;
                 }
@@ -334,10 +338,14 @@ public class InputUserInfo extends AppCompatActivity {
                 @Override
                 public boolean onTouch(View v, MotionEvent event)
                 {
-                    if(event.getAction() == MotionEvent.ACTION_UP) {
-                        Intent i = new Intent(InputUserInfo.this, com.example.animal_project.WebViewActivity.class);
-                        startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
-                        return true;
+                    if(isNetworkConnected() == false){
+                        Toast.makeText(InputUserInfo.this,"인터넷 연결을 확인해주세요",Toast.LENGTH_SHORT).show();
+                    } else {
+                        if(event.getAction() == MotionEvent.ACTION_UP) {
+                            Intent i = new Intent(InputUserInfo.this, com.example.animal_project.WebViewActivity.class);
+                            startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
+                            return true;
+                        }
                     }
                     return false;
                 }

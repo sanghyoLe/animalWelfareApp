@@ -49,7 +49,7 @@ public class WebViewPdfActivity extends AppCompatActivity {
         if(viewModel.isBeef(farmType)){
             pdfurl = "http://218.151.112.65/beefCowEvaWayPdf/" + questionName + ".pdf";
         } else {
-            pdfurl = "";
+            pdfurl = "http://218.151.112.65/milkCowEvaWayPdf/" + questionName + ".pdf";
         }
 
 
@@ -67,7 +67,7 @@ public class WebViewPdfActivity extends AppCompatActivity {
                 // below is the step where we are
                 // creating our connection.
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                if (urlConnection.getResponseCode() == 200) {
+                    if (urlConnection.getResponseCode() == 200) {
                     // response is success.
                     // we are getting input stream from url
                     // and storing it in our variable.
