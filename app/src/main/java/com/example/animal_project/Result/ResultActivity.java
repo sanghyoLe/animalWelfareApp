@@ -118,8 +118,6 @@ public class ResultActivity extends AppCompatActivity {
             viewModel.setProtocolFourScore(resultBundle.getDouble("protocolFourScore"));
 
 
-            Log.d("totalScoreString",viewModel.getTotalProtocolScoreString());
-
 
 
 

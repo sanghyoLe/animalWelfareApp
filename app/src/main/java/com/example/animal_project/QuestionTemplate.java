@@ -224,7 +224,7 @@ public class QuestionTemplate extends AppCompatActivity
         for (Fragment fragment: getSupportFragmentManager().getFragments()) {
             if (fragment.isVisible()) {
                 if (fragment == result1 || fragment == result2 || fragment == result3 || fragment == result4 || fragment == result_total) {
-                    Log.d("back", String.valueOf("back"));
+
                     break;
                 } else {
                     myOnBackPressed(myAlertBuilder);
@@ -844,12 +844,12 @@ public class QuestionTemplate extends AppCompatActivity
 
             case R.id.end_btn:
                 // database 연동
-//                if(checkEvaEndBtn() != null) {
-//                    String msg = checkEvaEndBtn() + " 항목을 완료해주세요";
-//                    Log.d("h",msg);
-//                    Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-//                }
-//                else{
+                if(checkEvaEndBtn() != null) {
+                    String msg = checkEvaEndBtn() + " 항목을 완료해주세요";
+
+                    Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
+                }
+                else{
                     endBtnAlertBuilder.setTitle("완료");
                     endBtnAlertBuilder.setMessage("평가를 완료하면\n평가 내용을 수정할 수 없습니다.\n평가를 완료하시겠습니까?");
                     // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
@@ -880,7 +880,7 @@ public class QuestionTemplate extends AppCompatActivity
                     });
                     endBtnAlertBuilder.show();
 
-                // }
+                 }
 
 
 
@@ -1900,13 +1900,39 @@ public class QuestionTemplate extends AppCompatActivity
                      )
              );
          }
+
          if(viewModel.getRestScore() != -1){
-             viewModel.setRestScore(
-                     viewModel.calculatorBreedRestScore(
-                             viewModel.getStrawScore(),
-                             viewModel.getOutWardScore()
-                     )
-             );
+             if(viewModel.isBeef(viewModel.getFarmType()))
+             {
+                 viewModel.setRestScore(
+                         viewModel.calculatorBreedRestScore(
+                                 viewModel.getStrawScore(),
+                                 viewModel.getOutWardScore()
+                         )
+                 );
+             } else if(viewModel.getFarmType() == 4){
+                 viewModel.setRestScore(
+                         mc.calculatorRestScore(
+                                 ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore(),
+                                 ((QuestionTemplateViewModel.Question)viewModel.OutwardBackReg).getScore(),
+                                 ((QuestionTemplateViewModel.Question)viewModel.OutwardBack).getScore(),
+                                 ((QuestionTemplateViewModel.Question)viewModel.OutwardBreast).getScore()
+                    )
+                 );
+             } else if(viewModel.getFarmType() == 5){
+                 viewModel.setRestScore(
+                         mc.calculatorFreeStallRestScore(
+                                 ((QuestionTemplateViewModel.FreeStallCountQuestion)viewModel.FreeStallCountQuestion).getLowestScore(),
+                                 ((QuestionTemplateViewModel.SitCollisionQuestion)viewModel.SitCollision).getScore(),
+                                 ((QuestionTemplateViewModel.FreeStallAreaOutCollision)viewModel.FreeStallAreaOutCollision).getScore(),
+                                 ((QuestionTemplateViewModel.SitTimeQuestion)viewModel.SitTimeQuestion).getScore(),
+                                 ((QuestionTemplateViewModel.Question)viewModel.OutwardBackReg).getScore(),
+                                 ((QuestionTemplateViewModel.Question)viewModel.OutwardBack).getScore(),
+                                 ((QuestionTemplateViewModel.Question)viewModel.OutwardBreast).getScore()
+                         )
+                 );
+             }
+
          }
          if(viewModel.getSummerRestScore() != -1){
              viewModel.setSummerRestScore(viewModel.calculatorBreedSummerRestScore(

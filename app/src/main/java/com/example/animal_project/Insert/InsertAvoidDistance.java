@@ -77,7 +77,7 @@ public class InsertAvoidDistance extends AsyncTask<Object[], Void, String> {
 
 
             int responseStatusCode = httpURLConnection.getResponseCode();
-            Log.d("avoidDistance", "POST response code - " + responseStatusCode);
+
 
             InputStream inputStream;
             if(responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -103,7 +103,7 @@ public class InsertAvoidDistance extends AsyncTask<Object[], Void, String> {
             return sb.toString();
 
         } catch (Exception e) {
-            Log.d("InsertAvoidDistance", "InsertData: Error ", e);
+
             return new String("Error: " + e.getMessage());
         }
 

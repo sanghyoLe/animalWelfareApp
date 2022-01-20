@@ -150,7 +150,7 @@ public class AvoidDistanceDetailSearchResult extends AppCompatActivity {
 
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d("GetAvoidDistanceDetail", "response code - " + responseStatusCode);
+
 
 
                 InputStream inputStream;
@@ -179,7 +179,7 @@ public class AvoidDistanceDetailSearchResult extends AppCompatActivity {
 
             } catch (Exception e) {
 
-                Log.d("GetAvoidDistanceDetail", "adminMemberSearchResult : Error ", e);
+
                 errorString = e.toString();
 
                 return null;
@@ -210,7 +210,7 @@ public class AvoidDistanceDetailSearchResult extends AppCompatActivity {
                     }
                 }
             } catch (JSONException e){
-                Log.d("GetAvoidDistanceDetail","showResult : ", e);
+
             }
 
         }

@@ -411,7 +411,6 @@ public class CustomDialog {
 
             progressDialog.dismiss();
 
-//            Log.d(TAG, "response - " + result);
 
             if (result.equals("searchNothing")){
                 Toast.makeText(context, "검색결과가 없습니다", Toast.LENGTH_SHORT).show();
@@ -474,7 +473,7 @@ public class CustomDialog {
 
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d("CheckData", "response code - " + responseStatusCode);
+
 
                 InputStream inputStream;
                 if(responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -502,7 +501,7 @@ public class CustomDialog {
 
             } catch (Exception e) {
 
-                Log.d("CheckData", "CheckData : Error ", e);
+
                 errorString = e.toString();
 
                 return null;
@@ -529,8 +528,7 @@ public class CustomDialog {
 
             progressDialog.dismiss();
 
-//            Log.d(TAG, "response - " + result);
-            Log.d("result",String.valueOf(result));
+
             if (result.equals("loginFail")){
                 Toast.makeText(context, "아이디 또는 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
             }
@@ -582,7 +580,7 @@ public class CustomDialog {
 
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d("CheckAdmin", "response code - " + responseStatusCode);
+
 
                 InputStream inputStream;
                 if(responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -610,7 +608,7 @@ public class CustomDialog {
 
             } catch (Exception e) {
 
-                Log.d("CheckAdmin", "CheckData : Error ", e);
+
                 errorString = e.toString();
 
                 return null;

@@ -366,7 +366,7 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
 
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d("adminMemberSearchResult", "response code - " + responseStatusCode);
+
 
 
                 InputStream inputStream;
@@ -395,7 +395,7 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
 
             } catch (Exception e) {
 
-                Log.d("adminMemberSearchResult", "adminMemberSearchResult : Error ", e);
+
                 errorString = e.toString();
 
                 return null;
@@ -575,7 +575,7 @@ public class DetailSearchAdminMemberActivity extends AppCompatActivity {
 
 
             } catch (JSONException e){
-                Log.d("evaInfoData","showResult : ", e);
+
             }
 
         }

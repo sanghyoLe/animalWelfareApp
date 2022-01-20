@@ -140,7 +140,6 @@ public class SearchActivity extends AppCompatActivity {
 
             progressDialog.dismiss();
 
-//            Log.d(TAG, "response - " + result);
 
 
 
@@ -188,7 +187,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
+
 
                 InputStream inputStream;
                 if(responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -216,7 +215,7 @@ public class SearchActivity extends AppCompatActivity {
 
             } catch (Exception e) {
 
-                Log.d(TAG, "GetData : Error ", e);
+
                 errorString = e.toString();
 
                 return null;
@@ -271,7 +270,6 @@ public class SearchActivity extends AppCompatActivity {
 
         } catch (JSONException e) {
 
-            Log.d(TAG, "showResult : ", e);
         }
 
     }

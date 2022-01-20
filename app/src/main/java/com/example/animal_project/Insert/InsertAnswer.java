@@ -39,7 +39,7 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
         super.onPostExecute(result);
         progressDialog.dismiss();
 
-        Log.d(TAG, "POST response  - " + result);
+
 
 
     }
@@ -356,7 +356,7 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
 
 
             int responseStatusCode = httpURLConnection.getResponseCode();
-            Log.d(TAG, "POST response code - " + responseStatusCode);
+
 
             InputStream inputStream;
             if(responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -382,7 +382,7 @@ public class InsertAnswer extends AsyncTask<String, Void, String> {
             return sb.toString();
 
         } catch (Exception e) {
-            Log.d(TAG, "InsertData: Error ", e);
+
             return new String("Error: " + e.getMessage());
         }
 

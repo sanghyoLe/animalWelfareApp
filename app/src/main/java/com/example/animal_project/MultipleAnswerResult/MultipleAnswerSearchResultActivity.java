@@ -203,7 +203,6 @@ public class MultipleAnswerSearchResultActivity extends AppCompatActivity {
 
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d("MultipleAnswerQuestion", "response code - " + responseStatusCode);
 
 
                 InputStream inputStream;
@@ -232,7 +231,6 @@ public class MultipleAnswerSearchResultActivity extends AppCompatActivity {
 
             } catch (Exception e) {
 
-                Log.d("MultipleAnswerQuestion", "adminMemberSearchResult : Error ", e);
                 errorString = e.toString();
 
                 return null;
@@ -555,7 +553,7 @@ public class MultipleAnswerSearchResultActivity extends AppCompatActivity {
 
                 }
             } catch (JSONException e){
-                Log.d("MultipleAnswerQuestion","showResult : ", e);
+
             }
 
         }

@@ -109,9 +109,7 @@ public class BreedOutward extends Fragment {
                         breed_rest_score.setText(String.valueOf(viewModel.getRestScore()));
                         }
                     }
-                Log.d("penLocation",String.valueOf(
-                        ((QuestionTemplateViewModel.PenQuestion)viewModel.BreedOutward).getPenLocation()
-                ));
+
                 }
             });
         return view;

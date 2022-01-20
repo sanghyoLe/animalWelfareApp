@@ -178,7 +178,7 @@ public class WaterTimeDong extends AppCompatActivity {
                waterTimeScore[i] = 0;
            } else if(waitingRatio[i] > 0 && drinkTime[i] < 10){
                waterTimeScore[i] = 1;
-           } else {
+           } else if(waitingRatio[i] > 0 && drinkTime[i] >= 10){
                waterTimeScore[i] = 2;
            }
         }

@@ -43,8 +43,7 @@ public class WebViewPdfActivity extends AppCompatActivity {
         String questionName = beforeIntent.getStringExtra("questionName");
 
         QuestionTemplateViewModel viewModel = new ViewModelProvider(this).get(QuestionTemplateViewModel.class);
-        Log.d("farmType",String.valueOf(farmType));
-        Log.d("questionName",questionName);
+
 
         if(viewModel.isBeef(farmType)){
             pdfurl = "http://218.151.112.65/beefCowEvaWayPdf/" + questionName + ".pdf";

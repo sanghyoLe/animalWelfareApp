@@ -586,7 +586,7 @@ public class QuestionTemplateViewModel extends ViewModel {
             }else if(totalRatio >= 0.1){
                 score = 90;
             }else if(totalRatio == 0){
-                score = 0;
+                score = 100;
             }
             return score;
 

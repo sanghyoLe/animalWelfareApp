@@ -29,7 +29,7 @@ public class ResultTotal extends Fragment {
         viewModel = new ViewModelProvider(getActivity()).get(QuestionTemplateViewModel.class);
 
 
-        viewModel.setTotalProtocolScoreString("Acceptable");
+
 
         ImageView totalScoreImageView = view.findViewById(R.id.total_score_image_view);
         TextView totalScoreTitleTv = view.findViewById(R.id.total_score_title_tv);

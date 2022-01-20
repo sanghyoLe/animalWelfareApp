@@ -157,7 +157,7 @@ public class DetailSearchNormalMemberActivity extends AppCompatActivity {
 
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d("GetScoreData", "response code - " + responseStatusCode);
+
 
 
                 InputStream inputStream;
@@ -186,7 +186,7 @@ public class DetailSearchNormalMemberActivity extends AppCompatActivity {
 
             } catch (Exception e) {
 
-                Log.d("GetScoreData", "GetData : Error ", e);
+
                 errorString = e.toString();
 
                 return null;
@@ -235,7 +235,7 @@ public class DetailSearchNormalMemberActivity extends AppCompatActivity {
                 setTextViewText();
                 
             } catch (JSONException e){
-                Log.d("DetailSearch","showResult : ", e);
+
             }
         }
     }

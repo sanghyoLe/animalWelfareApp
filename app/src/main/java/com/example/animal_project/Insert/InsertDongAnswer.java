@@ -192,9 +192,6 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
         }
 
 
-
-
-        Log.d("postpar",postParameters);
         try {
 
             URL url = new URL(serverURL);
@@ -214,7 +211,7 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
 
 
             int responseStatusCode = httpURLConnection.getResponseCode();
-            Log.d("InsertDongAnswer", "POST response code - " + responseStatusCode);
+
 
             InputStream inputStream;
             if(responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -240,7 +237,7 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
             return sb.toString();
 
         } catch (Exception e) {
-            Log.d("PHP", "InsertData: Error ", e);
+
             return new String("Error: " + e.getMessage());
         }
     }
@@ -255,7 +252,7 @@ public class InsertDongAnswer extends AsyncTask<Object, Void,String> {
         super.onPostExecute(result);
         progressDialog.dismiss();
 
-        Log.d("PHP", "POST response  - " + result);
+
 
 
     }
